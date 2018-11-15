@@ -17,15 +17,15 @@ namespace CMS.API.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Room()
         {
-            this.ConferenceRooms = new HashSet<ConferenceRoom>();
             this.Events = new HashSet<Event>();
             this.Presentations = new HashSet<Presentation>();
         }
     
-        public int RoomId { get; set; }
+        public int RoomID { get; set; }
+        public string Code { get; set; }
+        public int BuildingID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConferenceRoom> ConferenceRooms { get; set; }
+        public virtual Building Building { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

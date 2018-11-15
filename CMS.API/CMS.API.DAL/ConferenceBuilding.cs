@@ -12,13 +12,13 @@ namespace CMS.API.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class ConferenceRoom
+    public partial class ConferenceBuilding
     {
-        public int ConferenceRoomId { get; set; }
+        public int ConferenceBuildingId { get; set; }
         public int ConferenceId { get; set; }
-        public int RoomId { get; set; }
+        public int BuildingId { get; set; }
     
+        public virtual Building Building { get; set; }
         public virtual Conference Conference { get; set; }
-        public virtual Room Room { get; set; }
     }
 }

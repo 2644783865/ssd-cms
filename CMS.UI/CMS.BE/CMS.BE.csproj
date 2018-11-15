@@ -58,10 +58,16 @@
     <Compile Include="Article.cs">
       <DependentUpon>cms.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArticleAuthor.cs">
+      <DependentUpon>cms.tt</DependentUpon>
+    </Compile>
     <Compile Include="Author.cs">
       <DependentUpon>cms.tt</DependentUpon>
     </Compile>
     <Compile Include="Award.cs">
+      <DependentUpon>cms.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Building.cs">
       <DependentUpon>cms.tt</DependentUpon>
     </Compile>
     <Compile Include="cms.cs">
@@ -77,7 +83,7 @@
     <Compile Include="Conference.cs">
       <DependentUpon>cms.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConferenceRoom.cs">
+    <Compile Include="ConferenceBuilding.cs">
       <DependentUpon>cms.tt</DependentUpon>
     </Compile>
     <Compile Include="ConferenceStaff.cs">
@@ -87,9 +93,6 @@
       <DependentUpon>cms.tt</DependentUpon>
     </Compile>
     <Compile Include="Event.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Grade.cs">
       <DependentUpon>cms.tt</DependentUpon>
     </Compile>
     <Compile Include="Message.cs">

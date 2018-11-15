@@ -18,9 +18,9 @@ namespace CMS.API.DAL
         public int ConferenceId { get; set; }
         public string Title { get; set; }
         public string AirportRoad { get; set; }
-        public string AirportRoadTime { get; set; }
+        public Nullable<int> AirportRoadTime { get; set; }
         public string RailwayRoad { get; set; }
-        public string RailwayRoadTime { get; set; }
+        public Nullable<int> RailwayRoadTime { get; set; }
         public string TaxiNum { get; set; }
     
         public virtual Conference Conference { get; set; }

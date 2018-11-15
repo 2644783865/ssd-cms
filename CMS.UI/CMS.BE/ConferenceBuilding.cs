@@ -12,13 +12,13 @@ namespace CMS.BE
     using System;
     using System.Collections.Generic;
     
-    public partial class Submission
+    public partial class ConferenceBuilding
     {
-        public int SubmissionId { get; set; }
-        public int ArticleId { get; set; }
-        public byte[] ArticleFile { get; set; }
-        public System.DateTime SubmissionDate { get; set; }
+        public int ConferenceBuildingId { get; set; }
+        public int ConferenceId { get; set; }
+        public int BuildingId { get; set; }
     
-        public virtual Article Article { get; set; }
+        public virtual Building Building { get; set; }
+        public virtual Conference Conference { get; set; }
     }
 }

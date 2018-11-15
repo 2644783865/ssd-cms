@@ -20,14 +20,14 @@ namespace CMS.API.DAL
             this.AccommodationInfoes = new HashSet<AccommodationInfo>();
             this.Articles = new HashSet<Article>();
             this.ConferenceStaffs = new HashSet<ConferenceStaff>();
-            this.ConferenceRooms = new HashSet<ConferenceRoom>();
+            this.ConferenceBuildings = new HashSet<ConferenceBuilding>();
             this.EmergencyInfoes = new HashSet<EmergencyInfo>();
             this.Events = new HashSet<Event>();
-            this.Sessions = new HashSet<Session>();
-            this.SpecialSessions = new HashSet<SpecialSession>();
             this.Tasks = new HashSet<Task>();
             this.TravelInfoes = new HashSet<TravelInfo>();
             this.WelcomePacks = new HashSet<WelcomePack>();
+            this.SpecialSessions = new HashSet<SpecialSession>();
+            this.Sessions = new HashSet<Session>();
         }
     
         public int ConferenceId { get; set; }
@@ -44,20 +44,20 @@ namespace CMS.API.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ConferenceStaff> ConferenceStaffs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConferenceRoom> ConferenceRooms { get; set; }
+        public virtual ICollection<ConferenceBuilding> ConferenceBuildings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmergencyInfo> EmergencyInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Session> Sessions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SpecialSession> SpecialSessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TravelInfo> TravelInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WelcomePack> WelcomePacks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SpecialSession> SpecialSessions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Session> Sessions { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="cmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="cmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccommodationInfo">
           <Key>
             <PropertyRef Name="AccommodationInfoId" />
@@ -33,13 +33,21 @@
             <PropertyRef Name="ArticleId" />
           </Key>
           <Property Name="ArticleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ArticleTopic" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Topic" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="PresentationId" Type="int" />
           <Property Name="SpecialSessionId" Type="int" />
-          <Property Name="AuthorId" Type="int" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="AcceptanceDate" Type="date" />
           <Property Name="ConferenceID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArticleAuthor">
+          <Key>
+            <PropertyRef Name="ArticleAuthorId" />
+          </Key>
+          <Property Name="ArticleAuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleId" Type="int" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -60,6 +68,14 @@
           <Property Name="PresentationId" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
         <EntityType Name="Conference">
           <Key>
             <PropertyRef Name="ConferenceId" />
@@ -71,13 +87,13 @@
           <Property Name="BeginDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
         </EntityType>
-        <EntityType Name="ConferenceRoom">
+        <EntityType Name="ConferenceBuilding">
           <Key>
-            <PropertyRef Name="ConferenceRoomId" />
+            <PropertyRef Name="ConferenceBuildingId" />
           </Key>
-          <Property Name="ConferenceRoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConferenceBuildingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ConferenceId" Type="int" Nullable="false" />
-          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="BuildingId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ConferenceStaff">
           <Key>
@@ -111,21 +127,30 @@
         </EntityType>
         <EntityType Name="Message">
           <Key>
-            <PropertyRef Name="MessageId" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="SequenceNumber" />
           </Key>
-          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SenderId" Type="int" Nullable="false" />
           <Property Name="ReceiverId" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="bigint" Nullable="false" />
+          <Property Name="SequenceNumber" Type="int" Nullable="false" />
+          <Property Name="Content" Type="varchar" MaxLength="170" Nullable="false" />
         </EntityType>
         <EntityType Name="Presentation">
           <Key>
             <PropertyRef Name="PresentationId" />
           </Key>
           <Property Name="PresentationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PresenterId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
           <Property Name="ArticleId" Type="int" Nullable="false" />
           <Property Name="RoomId" Type="int" Nullable="false" />
           <Property Name="SessionId" Type="int" />
           <Property Name="SpecialSessionId" Type="int" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="Grade" Type="decimal" Precision="3" Scale="2" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -148,9 +173,11 @@
         </EntityType>
         <EntityType Name="Room">
           <Key>
-            <PropertyRef Name="RoomId" />
+            <PropertyRef Name="RoomID" />
           </Key>
-          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BuildingID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
@@ -158,6 +185,9 @@
           </Key>
           <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ConferenceId" Type="int" Nullable="false" />
+          <Property Name="ChairId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="SpecialSession">
           <Key>
@@ -166,6 +196,8 @@
           <Property Name="SpecialSessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ConferenceId" Type="int" Nullable="false" />
           <Property Name="ChairId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="Submission">
           <Key>
@@ -197,9 +229,9 @@
           <Property Name="ConferenceId" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="100" />
           <Property Name="AirportRoad" Type="varchar" MaxLength="1000" />
-          <Property Name="AirportRoadTime" Type="varchar" MaxLength="100" />
+          <Property Name="AirportRoadTime" Type="int" />
           <Property Name="RailwayRoad" Type="varchar" MaxLength="1000" />
-          <Property Name="RailwayRoadTime" Type="varchar" MaxLength="1000" />
+          <Property Name="RailwayRoadTime" Type="int" />
           <Property Name="TaxiNum" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="WelcomePack">
@@ -229,7 +261,7 @@
           <Property Name="LastName" Type="varchar" MaxLength="150" />
           <Property Name="Type" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Accommoda__Confe__5AEE82B9">
+        <Association Name="FK__Accommoda__Confe__60A75C0F">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="AccommodationInfo" Type="Self.AccommodationInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -241,8 +273,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__AuthorI__778AC167">
-          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+        <Association Name="FK__Article__AuthorI__7C4F7684">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Author">
@@ -253,7 +285,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Confere__787EE5A0">
+        <Association Name="FK__Article__Confere__7D439ABD">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -265,7 +297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Present__19DFD96B">
+        <Association Name="FK__Article__Present__245D67DE">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -277,19 +309,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Present__1BC821DD">
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="0..1" />
-          <End Role="Article" Type="Self.Article" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Presentation">
-              <PropertyRef Name="PresentationId" />
-            </Principal>
-            <Dependent Role="Article">
-              <PropertyRef Name="PresentationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Article__Special__1AD3FDA4">
+        <Association Name="FK__Article__Special__25518C17">
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -301,19 +321,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Special__1CBC4616">
-          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
-          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+        <Association Name="FK__ArticleAu__Artic__00200768">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="ArticleAuthor" Type="Self.ArticleAuthor" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SpecialSession">
-              <PropertyRef Name="SpecialSessionId" />
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
             </Principal>
-            <Dependent Role="Article">
-              <PropertyRef Name="SpecialSessionId" />
+            <Dependent Role="ArticleAuthor">
+              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Author__AccountI__534D60F1">
+        <Association Name="FK__ArticleAu__Autho__01142BA1">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="ArticleAuthor" Type="Self.ArticleAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="ArticleAuthor">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Author__AccountI__59063A47">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Author" Type="Self.Author" Multiplicity="*" />
           <ReferentialConstraint>
@@ -325,7 +357,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Award__Presentat__114A936A">
+        <Association Name="FK__Award__Presentat__1BC821DD">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="1" />
           <End Role="Award" Type="Self.Award" Multiplicity="*" />
           <ReferentialConstraint>
@@ -337,7 +369,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Accou__412EB0B6">
+        <Association Name="FK__Conferenc__Accou__4222D4EF">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="ConferenceStaff" Type="Self.ConferenceStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -349,7 +381,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Confe__4316F928">
+        <Association Name="FK__Conferenc__Build__778AC167">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="ConferenceBuilding" Type="Self.ConferenceBuilding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="ConferenceBuilding">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__Confe__440B1D61">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="ConferenceStaff" Type="Self.ConferenceStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -361,19 +405,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Confe__71D1E811">
+        <Association Name="FK__Conferenc__Confe__76969D2E">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
-          <End Role="ConferenceRoom" Type="Self.ConferenceRoom" Multiplicity="*" />
+          <End Role="ConferenceBuilding" Type="Self.ConferenceBuilding" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Conference">
               <PropertyRef Name="ConferenceId" />
             </Principal>
-            <Dependent Role="ConferenceRoom">
+            <Dependent Role="ConferenceBuilding">
               <PropertyRef Name="ConferenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__RoleI__4222D4EF">
+        <Association Name="FK__Conferenc__RoleI__4316F928">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="ConferenceStaff" Type="Self.ConferenceStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -385,19 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__RoomI__72C60C4A">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="ConferenceRoom" Type="Self.ConferenceRoom" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="RoomId" />
-            </Principal>
-            <Dependent Role="ConferenceRoom">
-              <PropertyRef Name="RoomId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Emergency__Confe__5812160E">
+        <Association Name="FK__Emergency__Confe__5DCAEF64">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="EmergencyInfo" Type="Self.EmergencyInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -409,7 +441,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Event__Conferenc__619B8048">
+        <Association Name="FK__Event__Conferenc__66603565">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
@@ -421,19 +453,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Event__RoomId__628FA481">
+        <Association Name="FK__Event__RoomId__6754599E">
           <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
-              <PropertyRef Name="RoomId" />
+              <PropertyRef Name="RoomID" />
             </Principal>
             <Dependent Role="Event">
               <PropertyRef Name="RoomId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Message__Receive__46E78A0C">
+        <Association Name="FK__Message__Receive__47DBAE45">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Message" Type="Self.Message" Multiplicity="*" />
           <ReferentialConstraint>
@@ -445,7 +477,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Message__SenderI__45F365D3">
+        <Association Name="FK__Message__SenderI__46E78A0C">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Message" Type="Self.Message" Multiplicity="*" />
           <ReferentialConstraint>
@@ -457,55 +489,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Presentat__Artic__07C12930">
-          <End Role="Article" Type="Self.Article" Multiplicity="1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Article">
-              <PropertyRef Name="ArticleId" />
-            </Principal>
-            <Dependent Role="Presentation">
-              <PropertyRef Name="ArticleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Presentat__RoomI__08B54D69">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="RoomId" />
-            </Principal>
-            <Dependent Role="Presentation">
-              <PropertyRef Name="RoomId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Presentat__Sessi__09A971A2">
-          <End Role="Session" Type="Self.Session" Multiplicity="0..1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Session">
-              <PropertyRef Name="SessionId" />
-            </Principal>
-            <Dependent Role="Presentation">
-              <PropertyRef Name="SessionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Presentat__Speci__0A9D95DB">
-          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SpecialSession">
-              <PropertyRef Name="SpecialSessionId" />
-            </Principal>
-            <Dependent Role="Presentation">
-              <PropertyRef Name="SpecialSessionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Review__ArticleI__7B5B524B">
+        <Association Name="FK__Review__ArticleI__03F0984C">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -517,7 +501,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__Reviewer__7C4F7684">
+        <Association Name="FK__Review__Reviewer__04E4BC85">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -529,43 +513,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Session__Confere__01142BA1">
-          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
-          <End Role="Session" Type="Self.Session" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Conference">
-              <PropertyRef Name="ConferenceId" />
-            </Principal>
-            <Dependent Role="Session">
-              <PropertyRef Name="ConferenceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SpecialSe__Chair__04E4BC85">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
-          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="SpecialSession">
-              <PropertyRef Name="ChairId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SpecialSe__Confe__03F0984C">
-          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
-          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Conference">
-              <PropertyRef Name="ConferenceId" />
-            </Principal>
-            <Dependent Role="SpecialSession">
-              <PropertyRef Name="ConferenceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Submissio__Artic__14270015">
+        <Association Name="FK__Submissio__Artic__1EA48E88">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -577,7 +525,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__Conference__4BAC3F29">
+        <Association Name="FK__Task__Conference__5165187F">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -589,7 +537,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__EmployeeId__4CA06362">
+        <Association Name="FK__Task__EmployeeId__52593CB8">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -601,7 +549,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__ManagerId__4F7CD00D">
+        <Association Name="FK__Task__ManagerId__5535A963">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -613,7 +561,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TravelInf__Confe__5DCAEF64">
+        <Association Name="FK__TravelInf__Confe__6383C8BA">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="TravelInfo" Type="Self.TravelInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -625,7 +573,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Confe__6754599E">
+        <Association Name="FK__WelcomePa__Confe__6C190EBB">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="*" />
           <ReferentialConstraint>
@@ -637,7 +585,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Welco__6A30C649">
+        <Association Name="FK__WelcomePa__Welco__6EF57B66">
           <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="1" />
           <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="*" />
           <ReferentialConstraint>
@@ -649,7 +597,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Welco__6E01572D">
+        <Association Name="FK__WelcomePa__Welco__72C60C4A">
           <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="1" />
           <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
           <ReferentialConstraint>
@@ -661,14 +609,136 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_PresentationArticle">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PresentationPresenter">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="PresenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PresentationRoom">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PresentationSession">
+          <End Role="Session" Type="Self.Session" Multiplicity="0..1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Session">
+              <PropertyRef Name="SessionId" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PresentationSpecialSession">
+          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialSession">
+              <PropertyRef Name="SpecialSessionId" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="SpecialSessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoomBuilding">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SessionChair">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="SpecialSession">
+              <PropertyRef Name="ChairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SessionConference">
+          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
+          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conference">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="SpecialSession">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SpecialSessionChair">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="ChairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SpecialSessionConference">
+          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conference">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="cmsModelStoreContainer">
           <EntitySet Name="AccommodationInfo" EntityType="Self.AccommodationInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticleAuthor" EntityType="Self.ArticleAuthor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Award" EntityType="Self.Award" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Conference" EntityType="Self.Conference" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ConferenceRoom" EntityType="Self.ConferenceRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConferenceBuilding" EntityType="Self.ConferenceBuilding" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConferenceStaff" EntityType="Self.ConferenceStaff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmergencyInfo" EntityType="Self.EmergencyInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
@@ -685,152 +755,165 @@
           <EntitySet Name="WelcomePack" EntityType="Self.WelcomePack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WelcomePackGift" EntityType="Self.WelcomePackGift" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WelcomePackReceiver" EntityType="Self.WelcomePackReceiver" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Accommoda__Confe__5AEE82B9" Association="Self.FK__Accommoda__Confe__5AEE82B9">
+          <AssociationSet Name="FK__Accommoda__Confe__60A75C0F" Association="Self.FK__Accommoda__Confe__60A75C0F">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="AccommodationInfo" EntitySet="AccommodationInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__AuthorI__778AC167" Association="Self.FK__Article__AuthorI__778AC167">
+          <AssociationSet Name="FK__Article__AuthorI__7C4F7684" Association="Self.FK__Article__AuthorI__7C4F7684">
             <End Role="Author" EntitySet="Author" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Confere__787EE5A0" Association="Self.FK__Article__Confere__787EE5A0">
+          <AssociationSet Name="FK__Article__Confere__7D439ABD" Association="Self.FK__Article__Confere__7D439ABD">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Present__19DFD96B" Association="Self.FK__Article__Present__19DFD96B">
+          <AssociationSet Name="FK__Article__Present__245D67DE" Association="Self.FK__Article__Present__245D67DE">
             <End Role="Presentation" EntitySet="Presentation" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Present__1BC821DD" Association="Self.FK__Article__Present__1BC821DD">
-            <End Role="Presentation" EntitySet="Presentation" />
-            <End Role="Article" EntitySet="Article" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Article__Special__1AD3FDA4" Association="Self.FK__Article__Special__1AD3FDA4">
+          <AssociationSet Name="FK__Article__Special__25518C17" Association="Self.FK__Article__Special__25518C17">
             <End Role="SpecialSession" EntitySet="SpecialSession" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Special__1CBC4616" Association="Self.FK__Article__Special__1CBC4616">
-            <End Role="SpecialSession" EntitySet="SpecialSession" />
+          <AssociationSet Name="FK__ArticleAu__Artic__00200768" Association="Self.FK__ArticleAu__Artic__00200768">
             <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleAuthor" EntitySet="ArticleAuthor" />
           </AssociationSet>
-          <AssociationSet Name="FK__Author__AccountI__534D60F1" Association="Self.FK__Author__AccountI__534D60F1">
+          <AssociationSet Name="FK__ArticleAu__Autho__01142BA1" Association="Self.FK__ArticleAu__Autho__01142BA1">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="ArticleAuthor" EntitySet="ArticleAuthor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Author__AccountI__59063A47" Association="Self.FK__Author__AccountI__59063A47">
             <End Role="Account" EntitySet="Account" />
             <End Role="Author" EntitySet="Author" />
           </AssociationSet>
-          <AssociationSet Name="FK__Award__Presentat__114A936A" Association="Self.FK__Award__Presentat__114A936A">
+          <AssociationSet Name="FK__Award__Presentat__1BC821DD" Association="Self.FK__Award__Presentat__1BC821DD">
             <End Role="Presentation" EntitySet="Presentation" />
             <End Role="Award" EntitySet="Award" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Accou__412EB0B6" Association="Self.FK__Conferenc__Accou__412EB0B6">
+          <AssociationSet Name="FK__Conferenc__Accou__4222D4EF" Association="Self.FK__Conferenc__Accou__4222D4EF">
             <End Role="Account" EntitySet="Account" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Confe__4316F928" Association="Self.FK__Conferenc__Confe__4316F928">
+          <AssociationSet Name="FK__Conferenc__Build__778AC167" Association="Self.FK__Conferenc__Build__778AC167">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="ConferenceBuilding" EntitySet="ConferenceBuilding" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__Confe__440B1D61" Association="Self.FK__Conferenc__Confe__440B1D61">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Confe__71D1E811" Association="Self.FK__Conferenc__Confe__71D1E811">
+          <AssociationSet Name="FK__Conferenc__Confe__76969D2E" Association="Self.FK__Conferenc__Confe__76969D2E">
             <End Role="Conference" EntitySet="Conference" />
-            <End Role="ConferenceRoom" EntitySet="ConferenceRoom" />
+            <End Role="ConferenceBuilding" EntitySet="ConferenceBuilding" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__RoleI__4222D4EF" Association="Self.FK__Conferenc__RoleI__4222D4EF">
+          <AssociationSet Name="FK__Conferenc__RoleI__4316F928" Association="Self.FK__Conferenc__RoleI__4316F928">
             <End Role="Role" EntitySet="Role" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__RoomI__72C60C4A" Association="Self.FK__Conferenc__RoomI__72C60C4A">
-            <End Role="Room" EntitySet="Room" />
-            <End Role="ConferenceRoom" EntitySet="ConferenceRoom" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Emergency__Confe__5812160E" Association="Self.FK__Emergency__Confe__5812160E">
+          <AssociationSet Name="FK__Emergency__Confe__5DCAEF64" Association="Self.FK__Emergency__Confe__5DCAEF64">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="EmergencyInfo" EntitySet="EmergencyInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Event__Conferenc__619B8048" Association="Self.FK__Event__Conferenc__619B8048">
+          <AssociationSet Name="FK__Event__Conferenc__66603565" Association="Self.FK__Event__Conferenc__66603565">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
-          <AssociationSet Name="FK__Event__RoomId__628FA481" Association="Self.FK__Event__RoomId__628FA481">
+          <AssociationSet Name="FK__Event__RoomId__6754599E" Association="Self.FK__Event__RoomId__6754599E">
             <End Role="Room" EntitySet="Room" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
-          <AssociationSet Name="FK__Message__Receive__46E78A0C" Association="Self.FK__Message__Receive__46E78A0C">
+          <AssociationSet Name="FK__Message__Receive__47DBAE45" Association="Self.FK__Message__Receive__47DBAE45">
             <End Role="Account" EntitySet="Account" />
             <End Role="Message" EntitySet="Message" />
           </AssociationSet>
-          <AssociationSet Name="FK__Message__SenderI__45F365D3" Association="Self.FK__Message__SenderI__45F365D3">
+          <AssociationSet Name="FK__Message__SenderI__46E78A0C" Association="Self.FK__Message__SenderI__46E78A0C">
             <End Role="Account" EntitySet="Account" />
             <End Role="Message" EntitySet="Message" />
           </AssociationSet>
-          <AssociationSet Name="FK__Presentat__Artic__07C12930" Association="Self.FK__Presentat__Artic__07C12930">
-            <End Role="Article" EntitySet="Article" />
-            <End Role="Presentation" EntitySet="Presentation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Presentat__RoomI__08B54D69" Association="Self.FK__Presentat__RoomI__08B54D69">
-            <End Role="Room" EntitySet="Room" />
-            <End Role="Presentation" EntitySet="Presentation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Presentat__Sessi__09A971A2" Association="Self.FK__Presentat__Sessi__09A971A2">
-            <End Role="Session" EntitySet="Session" />
-            <End Role="Presentation" EntitySet="Presentation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Presentat__Speci__0A9D95DB" Association="Self.FK__Presentat__Speci__0A9D95DB">
-            <End Role="SpecialSession" EntitySet="SpecialSession" />
-            <End Role="Presentation" EntitySet="Presentation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Review__ArticleI__7B5B524B" Association="Self.FK__Review__ArticleI__7B5B524B">
+          <AssociationSet Name="FK__Review__ArticleI__03F0984C" Association="Self.FK__Review__ArticleI__03F0984C">
             <End Role="Article" EntitySet="Article" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__Reviewer__7C4F7684" Association="Self.FK__Review__Reviewer__7C4F7684">
+          <AssociationSet Name="FK__Review__Reviewer__04E4BC85" Association="Self.FK__Review__Reviewer__04E4BC85">
             <End Role="Account" EntitySet="Account" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK__Session__Confere__01142BA1" Association="Self.FK__Session__Confere__01142BA1">
-            <End Role="Conference" EntitySet="Conference" />
-            <End Role="Session" EntitySet="Session" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SpecialSe__Chair__04E4BC85" Association="Self.FK__SpecialSe__Chair__04E4BC85">
-            <End Role="Account" EntitySet="Account" />
-            <End Role="SpecialSession" EntitySet="SpecialSession" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SpecialSe__Confe__03F0984C" Association="Self.FK__SpecialSe__Confe__03F0984C">
-            <End Role="Conference" EntitySet="Conference" />
-            <End Role="SpecialSession" EntitySet="SpecialSession" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Submissio__Artic__14270015" Association="Self.FK__Submissio__Artic__14270015">
+          <AssociationSet Name="FK__Submissio__Artic__1EA48E88" Association="Self.FK__Submissio__Artic__1EA48E88">
             <End Role="Article" EntitySet="Article" />
             <End Role="Submission" EntitySet="Submission" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__Conference__4BAC3F29" Association="Self.FK__Task__Conference__4BAC3F29">
+          <AssociationSet Name="FK__Task__Conference__5165187F" Association="Self.FK__Task__Conference__5165187F">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__EmployeeId__4CA06362" Association="Self.FK__Task__EmployeeId__4CA06362">
+          <AssociationSet Name="FK__Task__EmployeeId__52593CB8" Association="Self.FK__Task__EmployeeId__52593CB8">
             <End Role="Account" EntitySet="Account" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__ManagerId__4F7CD00D" Association="Self.FK__Task__ManagerId__4F7CD00D">
+          <AssociationSet Name="FK__Task__ManagerId__5535A963" Association="Self.FK__Task__ManagerId__5535A963">
             <End Role="Account" EntitySet="Account" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__TravelInf__Confe__5DCAEF64" Association="Self.FK__TravelInf__Confe__5DCAEF64">
+          <AssociationSet Name="FK__TravelInf__Confe__6383C8BA" Association="Self.FK__TravelInf__Confe__6383C8BA">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="TravelInfo" EntitySet="TravelInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Confe__6754599E" Association="Self.FK__WelcomePa__Confe__6754599E">
+          <AssociationSet Name="FK__WelcomePa__Confe__6C190EBB" Association="Self.FK__WelcomePa__Confe__6C190EBB">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="WelcomePack" EntitySet="WelcomePack" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__6A30C649" Association="Self.FK__WelcomePa__Welco__6A30C649">
+          <AssociationSet Name="FK__WelcomePa__Welco__6EF57B66" Association="Self.FK__WelcomePa__Welco__6EF57B66">
             <End Role="WelcomePack" EntitySet="WelcomePack" />
             <End Role="WelcomePackGift" EntitySet="WelcomePackGift" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__6E01572D" Association="Self.FK__WelcomePa__Welco__6E01572D">
+          <AssociationSet Name="FK__WelcomePa__Welco__72C60C4A" Association="Self.FK__WelcomePa__Welco__72C60C4A">
             <End Role="WelcomePackGift" EntitySet="WelcomePackGift" />
             <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceiver" />
           </AssociationSet>
+          <AssociationSet Name="fk_PresentationArticle" Association="Self.fk_PresentationArticle">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Presentation" EntitySet="Presentation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PresentationPresenter" Association="Self.fk_PresentationPresenter">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Presentation" EntitySet="Presentation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PresentationRoom" Association="Self.fk_PresentationRoom">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Presentation" EntitySet="Presentation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PresentationSession" Association="Self.fk_PresentationSession">
+            <End Role="Session" EntitySet="Session" />
+            <End Role="Presentation" EntitySet="Presentation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PresentationSpecialSession" Association="Self.fk_PresentationSpecialSession">
+            <End Role="SpecialSession" EntitySet="SpecialSession" />
+            <End Role="Presentation" EntitySet="Presentation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoomBuilding" Association="Self.fk_RoomBuilding">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SessionChair" Association="Self.fk_SessionChair">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="SpecialSession" EntitySet="SpecialSession" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SessionConference" Association="Self.fk_SessionConference">
+            <End Role="Conference" EntitySet="Conference" />
+            <End Role="SpecialSession" EntitySet="SpecialSession" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SpecialSessionChair" Association="Self.fk_SpecialSessionChair">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SpecialSessionConference" Association="Self.fk_SpecialSessionConference">
+            <End Role="Conference" EntitySet="Conference" />
+            <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -840,12 +923,12 @@
           </Key>
           <Property Name="AccommodationInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Accommoda__Confe__6C190EBB" FromRole="AccommodationInfo" ToRole="Conference" />
           <Property Name="PlaceName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CityDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Accommoda__Confe__60A75C0F" FromRole="AccommodationInfo" ToRole="Conference" />
         </EntityType>
         <EntityType Name="Account">
           <Key>
@@ -857,35 +940,47 @@
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Authors" Relationship="Self.FK__Author__AccountI__656C112C" FromRole="Account" ToRole="Author" />
-          <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__Accou__5441852A" FromRole="Account" ToRole="ConferenceStaff" />
-          <NavigationProperty Name="Conferences" Relationship="Self.FK__Conferenc__Chair__5165187F" FromRole="Account" ToRole="Conference" />
-          <NavigationProperty Name="Messages" Relationship="Self.FK__Message__Receive__59FA5E80" FromRole="Account" ToRole="Message" />
-          <NavigationProperty Name="Messages1" Relationship="Self.FK__Message__SenderI__59063A47" FromRole="Account" ToRole="Message" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__Reviewer__05D8E0BE" FromRole="Account" ToRole="Review" />
-          <NavigationProperty Name="SpecialSessions" Relationship="Self.FK__SpecialSe__Chair__0C85DE4D" FromRole="Account" ToRole="SpecialSession" />
-          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__EmployeeId__5FB337D6" FromRole="Account" ToRole="Task" />
-          <NavigationProperty Name="Tasks1" Relationship="Self.FK__Task__ManagerId__619B8048" FromRole="Account" ToRole="Task" />
+          <NavigationProperty Name="Authors" Relationship="Self.FK__Author__AccountI__59063A47" FromRole="Account" ToRole="Author" />
+          <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__Accou__4222D4EF" FromRole="Account" ToRole="ConferenceStaff" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK__Message__Receive__47DBAE45" FromRole="Account" ToRole="Message" />
+          <NavigationProperty Name="Messages1" Relationship="Self.FK__Message__SenderI__46E78A0C" FromRole="Account" ToRole="Message" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__Reviewer__04E4BC85" FromRole="Account" ToRole="Review" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__EmployeeId__52593CB8" FromRole="Account" ToRole="Task" />
+          <NavigationProperty Name="Tasks1" Relationship="Self.FK__Task__ManagerId__5535A963" FromRole="Account" ToRole="Task" />
+          <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationPresenter" FromRole="Account" ToRole="Presentation" />
+          <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SessionChair" FromRole="Account" ToRole="SpecialSession" />
+          <NavigationProperty Name="Sessions" Relationship="Self.fk_SpecialSessionChair" FromRole="Account" ToRole="Session" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="ArticleId" />
           </Key>
           <Property Name="ArticleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Topic" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PresentationId" Type="Int32" />
           <Property Name="SpecialSessionId" Type="Int32" />
-          <NavigationProperty Name="Presentation" Relationship="Self.FK__Article__Present__1BC821DD" FromRole="Article" ToRole="Presentation" />
-          <NavigationProperty Name="SpecialSession" Relationship="Self.FK__Article__Special__1CBC4616" FromRole="Article" ToRole="SpecialSession" />
-          <NavigationProperty Name="Presentations" Relationship="Self.FK__Presentat__Artic__0F624AF8" FromRole="Article" ToRole="Presentation" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__ArticleI__04E4BC85" FromRole="Article" ToRole="Review" />
-          <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__Artic__1AD3FDA4" FromRole="Article" ToRole="Submission" />
-          <Property Name="ArticleTopic" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="AuthorId" Type="Int32" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AcceptanceDate" Type="DateTime" Precision="0" />
           <Property Name="ConferenceID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Author" Relationship="cmsModel.FK__Article__AuthorI__778AC167" FromRole="Article" ToRole="Author" />
-          <NavigationProperty Name="Conference" Relationship="cmsModel.FK__Article__Confere__787EE5A0" FromRole="Article" ToRole="Conference" />
+          <NavigationProperty Name="Author" Relationship="Self.FK__Article__AuthorI__7C4F7684" FromRole="Article" ToRole="Author" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Article__Confere__7D439ABD" FromRole="Article" ToRole="Conference" />
+          <NavigationProperty Name="Presentation" Relationship="Self.FK__Article__Present__245D67DE" FromRole="Article" ToRole="Presentation" />
+          <NavigationProperty Name="SpecialSession" Relationship="Self.FK__Article__Special__25518C17" FromRole="Article" ToRole="SpecialSession" />
+          <NavigationProperty Name="ArticleAuthors" Relationship="Self.FK__ArticleAu__Artic__00200768" FromRole="Article" ToRole="ArticleAuthor" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__ArticleI__03F0984C" FromRole="Article" ToRole="Review" />
+          <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__Artic__1EA48E88" FromRole="Article" ToRole="Submission" />
+          <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationArticle" FromRole="Article" ToRole="Presentation" />
+        </EntityType>
+        <EntityType Name="ArticleAuthor">
+          <Key>
+            <PropertyRef Name="ArticleAuthorId" />
+          </Key>
+          <Property Name="ArticleAuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__ArticleAu__Artic__00200768" FromRole="ArticleAuthor" ToRole="Article" />
+          <NavigationProperty Name="Author" Relationship="Self.FK__ArticleAu__Autho__01142BA1" FromRole="ArticleAuthor" ToRole="Author" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -893,12 +988,13 @@
           </Key>
           <Property Name="AuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AccountId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Author__AccountI__656C112C" FromRole="Author" ToRole="Account" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="FieldOfStudy" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Articles" Relationship="cmsModel.FK__Article__AuthorI__778AC167" FromRole="Author" ToRole="Article" />
+          <Property Name="FieldOfStudy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Author__AccountI__59063A47" FromRole="Author" ToRole="Account" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__AuthorI__7C4F7684" FromRole="Author" ToRole="Article" />
+          <NavigationProperty Name="ArticleAuthors" Relationship="Self.FK__ArticleAu__Autho__01142BA1" FromRole="Author" ToRole="ArticleAuthor" />
         </EntityType>
         <EntityType Name="Award">
           <Key>
@@ -907,42 +1003,49 @@
           <Property Name="AwardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PresentationId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Presentation" Relationship="Self.FK__Award__Presentat__17F790F9" FromRole="Award" ToRole="Presentation" />
-          <NavigationProperty Name="Presentations" Relationship="Self.FK__Presentat__Award__1DB06A4F" FromRole="Award" ToRole="Presentation" />
+          <NavigationProperty Name="Presentation" Relationship="Self.FK__Award__Presentat__1BC821DD" FromRole="Award" ToRole="Presentation" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ConferenceBuildings" Relationship="Self.FK__Conferenc__Build__778AC167" FromRole="Building" ToRole="ConferenceBuilding" />
+          <NavigationProperty Name="Rooms" Relationship="Self.fk_RoomBuilding" FromRole="Building" ToRole="Room" />
         </EntityType>
         <EntityType Name="Conference">
           <Key>
             <PropertyRef Name="ConferenceId" />
           </Key>
           <Property Name="ConferenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChairId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Place" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="AccommodationInfoes" Relationship="Self.FK__Accommoda__Confe__6C190EBB" FromRole="Conference" ToRole="AccommodationInfo" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Conferenc__Chair__5165187F" FromRole="Conference" ToRole="Account" />
-          <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__Confe__5629CD9C" FromRole="Conference" ToRole="ConferenceStaff" />
-          <NavigationProperty Name="ConferenceRooms" Relationship="Self.FK__Conferenc__Confe__7F2BE32F" FromRole="Conference" ToRole="ConferenceRoom" />
-          <NavigationProperty Name="EmergencyInfoes" Relationship="Self.FK__Emergency__Confe__693CA210" FromRole="Conference" ToRole="EmergencyInfo" />
-          <NavigationProperty Name="Events" Relationship="Self.FK__Event__Conferenc__71D1E811" FromRole="Conference" ToRole="Event" />
-          <NavigationProperty Name="Sessions" Relationship="Self.FK__Session__Confere__08B54D69" FromRole="Conference" ToRole="Session" />
-          <NavigationProperty Name="SpecialSessions" Relationship="Self.FK__SpecialSe__Confe__0B91BA14" FromRole="Conference" ToRole="SpecialSession" />
-          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__Conference__5EBF139D" FromRole="Conference" ToRole="Task" />
-          <NavigationProperty Name="TravelInfoes" Relationship="Self.FK__TravelInf__Confe__6EF57B66" FromRole="Conference" ToRole="TravelInfo" />
-          <NavigationProperty Name="WelcomePacks" Relationship="Self.FK__WelcomePa__Confe__76969D2E" FromRole="Conference" ToRole="WelcomePack" />
-          <NavigationProperty Name="Articles" Relationship="cmsModel.FK__Article__Confere__787EE5A0" FromRole="Conference" ToRole="Article" />
+          <NavigationProperty Name="AccommodationInfoes" Relationship="Self.FK__Accommoda__Confe__60A75C0F" FromRole="Conference" ToRole="AccommodationInfo" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Confere__7D439ABD" FromRole="Conference" ToRole="Article" />
+          <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__Confe__440B1D61" FromRole="Conference" ToRole="ConferenceStaff" />
+          <NavigationProperty Name="ConferenceBuildings" Relationship="Self.FK__Conferenc__Confe__76969D2E" FromRole="Conference" ToRole="ConferenceBuilding" />
+          <NavigationProperty Name="EmergencyInfoes" Relationship="Self.FK__Emergency__Confe__5DCAEF64" FromRole="Conference" ToRole="EmergencyInfo" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__Event__Conferenc__66603565" FromRole="Conference" ToRole="Event" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__Conference__5165187F" FromRole="Conference" ToRole="Task" />
+          <NavigationProperty Name="TravelInfoes" Relationship="Self.FK__TravelInf__Confe__6383C8BA" FromRole="Conference" ToRole="TravelInfo" />
+          <NavigationProperty Name="WelcomePacks" Relationship="Self.FK__WelcomePa__Confe__6C190EBB" FromRole="Conference" ToRole="WelcomePack" />
+          <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SessionConference" FromRole="Conference" ToRole="SpecialSession" />
+          <NavigationProperty Name="Sessions" Relationship="Self.fk_SpecialSessionConference" FromRole="Conference" ToRole="Session" />
         </EntityType>
-        <EntityType Name="ConferenceRoom">
+        <EntityType Name="ConferenceBuilding">
           <Key>
-            <PropertyRef Name="ConferenceRoomId" />
+            <PropertyRef Name="ConferenceBuildingId" />
           </Key>
-          <Property Name="ConferenceRoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConferenceBuildingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
-          <Property Name="RoomId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Conferenc__Confe__7F2BE32F" FromRole="ConferenceRoom" ToRole="Conference" />
-          <NavigationProperty Name="Room" Relationship="Self.FK__Conferenc__RoomI__00200768" FromRole="ConferenceRoom" ToRole="Room" />
+          <Property Name="BuildingId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="Self.FK__Conferenc__Build__778AC167" FromRole="ConferenceBuilding" ToRole="Building" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Conferenc__Confe__76969D2E" FromRole="ConferenceBuilding" ToRole="Conference" />
         </EntityType>
         <EntityType Name="ConferenceStaff">
           <Key>
@@ -952,9 +1055,9 @@
           <Property Name="AccountId" Type="Int32" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Conferenc__Accou__5441852A" FromRole="ConferenceStaff" ToRole="Account" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Conferenc__Confe__5629CD9C" FromRole="ConferenceStaff" ToRole="Conference" />
-          <NavigationProperty Name="Role" Relationship="Self.FK__Conferenc__RoleI__5535A963" FromRole="ConferenceStaff" ToRole="Role" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Conferenc__Accou__4222D4EF" FromRole="ConferenceStaff" ToRole="Account" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Conferenc__Confe__440B1D61" FromRole="ConferenceStaff" ToRole="Conference" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Conferenc__RoleI__4316F928" FromRole="ConferenceStaff" ToRole="Role" />
         </EntityType>
         <EntityType Name="EmergencyInfo">
           <Key>
@@ -962,9 +1065,9 @@
           </Key>
           <Property Name="EmergencyInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Emergency__Confe__693CA210" FromRole="EmergencyInfo" ToRole="Conference" />
           <Property Name="EmergencyNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="EmergencyInfo1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Emergency__Confe__5DCAEF64" FromRole="EmergencyInfo" ToRole="Conference" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -977,49 +1080,44 @@
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Event__Conferenc__71D1E811" FromRole="Event" ToRole="Conference" />
-          <NavigationProperty Name="Room" Relationship="Self.FK__Event__Conferenc__72C60C4A" FromRole="Event" ToRole="Room" />
-          <NavigationProperty Name="Room1" Relationship="cmsModel.FK__Event__RoomId__628FA481" FromRole="Event" ToRole="Room" />
-        </EntityType>
-        <EntityType Name="Grade">
-          <Key>
-            <PropertyRef Name="GradeId" />
-          </Key>
-          <Property Name="GradeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PresentationId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Presentation" Relationship="Self.FK__Grade__Presentat__151B244E" FromRole="Grade" ToRole="Presentation" />
-          <NavigationProperty Name="Presentations" Relationship="Self.FK__Presentat__Grade__1EA48E88" FromRole="Grade" ToRole="Presentation" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Event__Conferenc__66603565" FromRole="Event" ToRole="Conference" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Event__RoomId__6754599E" FromRole="Event" ToRole="Room" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
-            <PropertyRef Name="MessageId" />
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="SequenceNumber" />
           </Key>
-          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SenderId" Type="Int32" Nullable="false" />
           <Property Name="ReceiverId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Message__Receive__59FA5E80" FromRole="Message" ToRole="Account" />
-          <NavigationProperty Name="Account1" Relationship="Self.FK__Message__SenderI__59063A47" FromRole="Message" ToRole="Account" />
+          <Property Name="GroupID" Type="Int64" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="170" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Message__Receive__47DBAE45" FromRole="Message" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK__Message__SenderI__46E78A0C" FromRole="Message" ToRole="Account" />
         </EntityType>
         <EntityType Name="Presentation">
           <Key>
             <PropertyRef Name="PresentationId" />
           </Key>
           <Property Name="PresentationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PresenterId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ArticleId" Type="Int32" Nullable="false" />
           <Property Name="RoomId" Type="Int32" Nullable="false" />
           <Property Name="SessionId" Type="Int32" />
           <Property Name="SpecialSessionId" Type="Int32" />
-          <Property Name="GradeId" Type="Int32" />
-          <Property Name="AwardId" Type="Int32" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Present__1BC821DD" FromRole="Presentation" ToRole="Article" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Presentat__Artic__0F624AF8" FromRole="Presentation" ToRole="Article" />
-          <NavigationProperty Name="Awards" Relationship="Self.FK__Award__Presentat__17F790F9" FromRole="Presentation" ToRole="Award" />
-          <NavigationProperty Name="Award" Relationship="Self.FK__Presentat__Award__1DB06A4F" FromRole="Presentation" ToRole="Award" />
-          <NavigationProperty Name="Grades" Relationship="Self.FK__Grade__Presentat__151B244E" FromRole="Presentation" ToRole="Grade" />
-          <NavigationProperty Name="Grade" Relationship="Self.FK__Presentat__Grade__1EA48E88" FromRole="Presentation" ToRole="Grade" />
-          <NavigationProperty Name="Room" Relationship="Self.FK__Presentat__RoomI__10566F31" FromRole="Presentation" ToRole="Room" />
-          <NavigationProperty Name="Session" Relationship="Self.FK__Presentat__Sessi__114A936A" FromRole="Presentation" ToRole="Session" />
-          <NavigationProperty Name="SpecialSession" Relationship="Self.FK__Presentat__Speci__123EB7A3" FromRole="Presentation" ToRole="SpecialSession" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Grade" Type="Decimal" Precision="3" Scale="2" />
+          <NavigationProperty Name="Account" Relationship="Self.fk_PresentationPresenter" FromRole="Presentation" ToRole="Account" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Present__245D67DE" FromRole="Presentation" ToRole="Article" />
+          <NavigationProperty Name="Article" Relationship="Self.fk_PresentationArticle" FromRole="Presentation" ToRole="Article" />
+          <NavigationProperty Name="Awards" Relationship="Self.FK__Award__Presentat__1BC821DD" FromRole="Presentation" ToRole="Award" />
+          <NavigationProperty Name="Room" Relationship="Self.fk_PresentationRoom" FromRole="Presentation" ToRole="Room" />
+          <NavigationProperty Name="Session" Relationship="Self.fk_PresentationSession" FromRole="Presentation" ToRole="Session" />
+          <NavigationProperty Name="SpecialSession" Relationship="Self.fk_PresentationSpecialSession" FromRole="Presentation" ToRole="SpecialSession" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -1028,12 +1126,12 @@
           <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ArticleId" Type="Int32" Nullable="false" />
           <Property Name="ReviewerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Review__Reviewer__05D8E0BE" FromRole="Review" ToRole="Account" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Review__ArticleI__04E4BC85" FromRole="Review" ToRole="Article" />
           <Property Name="ReviewDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Grade" Type="Decimal" Nullable="false" Precision="2" Scale="1" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Grade" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Review__Reviewer__04E4BC85" FromRole="Review" ToRole="Account" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Review__ArticleI__03F0984C" FromRole="Review" ToRole="Article" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1041,17 +1139,18 @@
           </Key>
           <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__RoleI__5535A963" FromRole="Role" ToRole="ConferenceStaff" />
+          <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__RoleI__4316F928" FromRole="Role" ToRole="ConferenceStaff" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
-            <PropertyRef Name="RoomId" />
+            <PropertyRef Name="RoomID" />
           </Key>
-          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="ConferenceRooms" Relationship="Self.FK__Conferenc__RoomI__00200768" FromRole="Room" ToRole="ConferenceRoom" />
-          <NavigationProperty Name="Events" Relationship="Self.FK__Event__Conferenc__72C60C4A" FromRole="Room" ToRole="Event" />
-          <NavigationProperty Name="Presentations" Relationship="Self.FK__Presentat__RoomI__10566F31" FromRole="Room" ToRole="Presentation" />
-          <NavigationProperty Name="Events1" Relationship="cmsModel.FK__Event__RoomId__628FA481" FromRole="Room" ToRole="Event" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BuildingID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="Self.fk_RoomBuilding" FromRole="Room" ToRole="Building" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__Event__RoomId__6754599E" FromRole="Room" ToRole="Event" />
+          <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationRoom" FromRole="Room" ToRole="Presentation" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
@@ -1059,8 +1158,12 @@
           </Key>
           <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Session__Confere__08B54D69" FromRole="Session" ToRole="Conference" />
-          <NavigationProperty Name="Presentations" Relationship="Self.FK__Presentat__Sessi__114A936A" FromRole="Session" ToRole="Presentation" />
+          <Property Name="ChairId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account" Relationship="Self.fk_SpecialSessionChair" FromRole="Session" ToRole="Account" />
+          <NavigationProperty Name="Conference" Relationship="Self.fk_SpecialSessionConference" FromRole="Session" ToRole="Conference" />
+          <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationSession" FromRole="Session" ToRole="Presentation" />
         </EntityType>
         <EntityType Name="SpecialSession">
           <Key>
@@ -1069,10 +1172,12 @@
           <Property Name="SpecialSessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
           <Property Name="ChairId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__SpecialSe__Chair__0C85DE4D" FromRole="SpecialSession" ToRole="Account" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Special__1CBC4616" FromRole="SpecialSession" ToRole="Article" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__SpecialSe__Confe__0B91BA14" FromRole="SpecialSession" ToRole="Conference" />
-          <NavigationProperty Name="Presentations" Relationship="Self.FK__Presentat__Speci__123EB7A3" FromRole="SpecialSession" ToRole="Presentation" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Account" Relationship="Self.fk_SessionChair" FromRole="SpecialSession" ToRole="Account" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Special__25518C17" FromRole="SpecialSession" ToRole="Article" />
+          <NavigationProperty Name="Conference" Relationship="Self.fk_SessionConference" FromRole="SpecialSession" ToRole="Conference" />
+          <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationSpecialSession" FromRole="SpecialSession" ToRole="Presentation" />
         </EntityType>
         <EntityType Name="Submission">
           <Key>
@@ -1080,9 +1185,9 @@
           </Key>
           <Property Name="SubmissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ArticleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Submissio__Artic__1AD3FDA4" FromRole="Submission" ToRole="Article" />
-          <Property Name="ArticleFile" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ArticleFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="SubmissionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Submissio__Artic__1EA48E88" FromRole="Submission" ToRole="Article" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -1096,9 +1201,9 @@
           <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ManagerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Task__EmployeeId__5FB337D6" FromRole="Task" ToRole="Account" />
-          <NavigationProperty Name="Account1" Relationship="Self.FK__Task__ManagerId__619B8048" FromRole="Task" ToRole="Account" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Task__Conference__5EBF139D" FromRole="Task" ToRole="Conference" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Task__EmployeeId__52593CB8" FromRole="Task" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK__Task__ManagerId__5535A963" FromRole="Task" ToRole="Account" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Task__Conference__5165187F" FromRole="Task" ToRole="Conference" />
         </EntityType>
         <EntityType Name="TravelInfo">
           <Key>
@@ -1106,13 +1211,13 @@
           </Key>
           <Property Name="TravelInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__TravelInf__Confe__6EF57B66" FromRole="TravelInfo" ToRole="Conference" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AirportRoad" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="AirportRoadTime" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AirportRoadTime" Type="Int32" />
           <Property Name="RailwayRoad" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="RailwayRoadTime" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="RailwayRoadTime" Type="Int32" />
           <Property Name="TaxiNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__TravelInf__Confe__6383C8BA" FromRole="TravelInfo" ToRole="Conference" />
         </EntityType>
         <EntityType Name="WelcomePack">
           <Key>
@@ -1120,10 +1225,9 @@
           </Key>
           <Property Name="WelcomePackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__WelcomePa__Confe__76969D2E" FromRole="WelcomePack" ToRole="Conference" />
-          <NavigationProperty Name="WelcomePackReceivers" Relationship="Self.FK__WelcomePa__Welco__797309D9" FromRole="WelcomePack" ToRole="WelcomePackReceiver" />
-          <NavigationProperty Name="WelcomePackGifts" Relationship="Self.FK__WelcomePa__Welco__7C4F7684" FromRole="WelcomePack" ToRole="WelcomePackGift" />
           <Property Name="EmployeeName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__WelcomePa__Confe__6C190EBB" FromRole="WelcomePack" ToRole="Conference" />
+          <NavigationProperty Name="WelcomePackGifts" Relationship="Self.FK__WelcomePa__Welco__6EF57B66" FromRole="WelcomePack" ToRole="WelcomePackGift" />
         </EntityType>
         <EntityType Name="WelcomePackGift">
           <Key>
@@ -1131,25 +1235,23 @@
           </Key>
           <Property Name="WelcomePackGiftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="WelcomePackId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="WelcomePack" Relationship="Self.FK__WelcomePa__Welco__7C4F7684" FromRole="WelcomePackGift" ToRole="WelcomePack" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="WelcomePackReceivers" Relationship="cmsModel.FK__WelcomePa__Welco__6E01572D" FromRole="WelcomePackGift" ToRole="WelcomePackReceiver" />
+          <NavigationProperty Name="WelcomePack" Relationship="Self.FK__WelcomePa__Welco__6EF57B66" FromRole="WelcomePackGift" ToRole="WelcomePack" />
+          <NavigationProperty Name="WelcomePackReceivers" Relationship="Self.FK__WelcomePa__Welco__72C60C4A" FromRole="WelcomePackGift" ToRole="WelcomePackReceiver" />
         </EntityType>
         <EntityType Name="WelcomePackReceiver">
           <Key>
             <PropertyRef Name="WelcomePackReceiverId" />
           </Key>
           <Property Name="WelcomePackReceiverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WelcomePackId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="WelcomePack" Relationship="Self.FK__WelcomePa__Welco__797309D9" FromRole="WelcomePackReceiver" ToRole="WelcomePack" />
           <Property Name="WelcomePackGiftId" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Type" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="WelcomePackGift" Relationship="cmsModel.FK__WelcomePa__Welco__6E01572D" FromRole="WelcomePackReceiver" ToRole="WelcomePackGift" />
+          <Property Name="Type" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="WelcomePackGift" Relationship="Self.FK__WelcomePa__Welco__72C60C4A" FromRole="WelcomePackReceiver" ToRole="WelcomePackGift" />
         </EntityType>
-        <Association Name="FK__Accommoda__Confe__6C190EBB">
+        <Association Name="FK__Accommoda__Confe__60A75C0F">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="AccommodationInfo" Type="Self.AccommodationInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1161,7 +1263,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Author__AccountI__656C112C">
+        <Association Name="FK__Author__AccountI__59063A47">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Author" Type="Self.Author" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1173,7 +1275,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Accou__5441852A">
+        <Association Name="FK__Conferenc__Accou__4222D4EF">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="ConferenceStaff" Type="Self.ConferenceStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1185,19 +1287,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Chair__5165187F">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
-          <End Role="Conference" Type="Self.Conference" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="Conference">
-              <PropertyRef Name="ChairId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Message__Receive__59FA5E80">
+        <Association Name="FK__Message__Receive__47DBAE45">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Message" Type="Self.Message" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1209,7 +1299,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Message__SenderI__59063A47">
+        <Association Name="FK__Message__SenderI__46E78A0C">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Message" Type="Self.Message" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1221,7 +1311,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__Reviewer__05D8E0BE">
+        <Association Name="FK__Review__Reviewer__04E4BC85">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1233,19 +1323,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SpecialSe__Chair__0C85DE4D">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
-          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="SpecialSession">
-              <PropertyRef Name="ChairId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Task__EmployeeId__5FB337D6">
+        <Association Name="FK__Task__EmployeeId__52593CB8">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1257,7 +1335,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__ManagerId__619B8048">
+        <Association Name="FK__Task__ManagerId__5535A963">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1269,7 +1347,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Present__1BC821DD">
+        <Association Name="fk_PresentationPresenter">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="PresenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SessionChair">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="SpecialSession">
+              <PropertyRef Name="ChairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SpecialSessionChair">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="ChairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Article__AuthorI__7C4F7684">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Article__Confere__7D439ABD">
+          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conference">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="ConferenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Article__Present__245D67DE">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1281,7 +1419,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Special__1CBC4616">
+        <Association Name="FK__Article__Special__25518C17">
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1293,19 +1431,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Presentat__Artic__0F624AF8">
+        <Association Name="FK__ArticleAu__Artic__00200768">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <End Role="ArticleAuthor" Type="Self.ArticleAuthor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Article">
               <PropertyRef Name="ArticleId" />
             </Principal>
-            <Dependent Role="Presentation">
+            <Dependent Role="ArticleAuthor">
               <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__ArticleI__04E4BC85">
+        <Association Name="FK__Review__ArticleI__03F0984C">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1317,7 +1455,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Submissio__Artic__1AD3FDA4">
+        <Association Name="FK__Submissio__Artic__1EA48E88">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1329,7 +1467,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Award__Presentat__17F790F9">
+        <Association Name="fk_PresentationArticle">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleId" />
+            </Principal>
+            <Dependent Role="Presentation">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ArticleAu__Autho__01142BA1">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="ArticleAuthor" Type="Self.ArticleAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="ArticleAuthor">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Award__Presentat__1BC821DD">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="1" />
           <End Role="Award" Type="Self.Award" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1341,19 +1503,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Presentat__Award__1DB06A4F">
-          <End Role="Award" Type="Self.Award" Multiplicity="0..1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
+        <Association Name="FK__Conferenc__Build__778AC167">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="ConferenceBuilding" Type="Self.ConferenceBuilding" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Award">
-              <PropertyRef Name="AwardId" />
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
             </Principal>
-            <Dependent Role="Presentation">
-              <PropertyRef Name="AwardId" />
+            <Dependent Role="ConferenceBuilding">
+              <PropertyRef Name="BuildingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Confe__5629CD9C">
+        <Association Name="fk_RoomBuilding">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__Confe__440B1D61">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="ConferenceStaff" Type="Self.ConferenceStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1365,19 +1539,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Confe__7F2BE32F">
+        <Association Name="FK__Conferenc__Confe__76969D2E">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
-          <End Role="ConferenceRoom" Type="Self.ConferenceRoom" Multiplicity="*" />
+          <End Role="ConferenceBuilding" Type="Self.ConferenceBuilding" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Conference">
               <PropertyRef Name="ConferenceId" />
             </Principal>
-            <Dependent Role="ConferenceRoom">
+            <Dependent Role="ConferenceBuilding">
               <PropertyRef Name="ConferenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Emergency__Confe__693CA210">
+        <Association Name="FK__Emergency__Confe__5DCAEF64">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="EmergencyInfo" Type="Self.EmergencyInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1389,7 +1563,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Event__Conferenc__71D1E811">
+        <Association Name="FK__Event__Conferenc__66603565">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1401,31 +1575,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Session__Confere__08B54D69">
-          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
-          <End Role="Session" Type="Self.Session" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Conference">
-              <PropertyRef Name="ConferenceId" />
-            </Principal>
-            <Dependent Role="Session">
-              <PropertyRef Name="ConferenceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SpecialSe__Confe__0B91BA14">
-          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
-          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Conference">
-              <PropertyRef Name="ConferenceId" />
-            </Principal>
-            <Dependent Role="SpecialSession">
-              <PropertyRef Name="ConferenceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Task__Conference__5EBF139D">
+        <Association Name="FK__Task__Conference__5165187F">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1437,7 +1587,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TravelInf__Confe__6EF57B66">
+        <Association Name="FK__TravelInf__Confe__6383C8BA">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="TravelInfo" Type="Self.TravelInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1449,7 +1599,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Confe__76969D2E">
+        <Association Name="FK__WelcomePa__Confe__6C190EBB">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1461,19 +1611,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__RoomI__00200768">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="ConferenceRoom" Type="Self.ConferenceRoom" Multiplicity="*" />
+        <Association Name="fk_SessionConference">
+          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
+          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="RoomId" />
+            <Principal Role="Conference">
+              <PropertyRef Name="ConferenceId" />
             </Principal>
-            <Dependent Role="ConferenceRoom">
-              <PropertyRef Name="RoomId" />
+            <Dependent Role="SpecialSession">
+              <PropertyRef Name="ConferenceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__RoleI__5535A963">
+        <Association Name="fk_SpecialSessionConference">
+          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conference">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Conferenc__RoleI__4316F928">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="ConferenceStaff" Type="Self.ConferenceStaff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1485,55 +1647,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Event__Conferenc__72C60C4A">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+        <Association Name="FK__Event__RoomId__6754599E">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
-              <PropertyRef Name="RoomId" />
+              <PropertyRef Name="RoomID" />
             </Principal>
             <Dependent Role="Event">
-              <PropertyRef Name="ConferenceId" />
+              <PropertyRef Name="RoomId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Grade__Presentat__151B244E">
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="1" />
-          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Presentation">
-              <PropertyRef Name="PresentationId" />
-            </Principal>
-            <Dependent Role="Grade">
-              <PropertyRef Name="PresentationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Presentat__Grade__1EA48E88">
-          <End Role="Grade" Type="Self.Grade" Multiplicity="0..1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Grade">
-              <PropertyRef Name="GradeId" />
-            </Principal>
-            <Dependent Role="Presentation">
-              <PropertyRef Name="GradeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Presentat__RoomI__10566F31">
+        <Association Name="fk_PresentationRoom">
           <End Role="Room" Type="Self.Room" Multiplicity="1" />
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
-              <PropertyRef Name="RoomId" />
+              <PropertyRef Name="RoomID" />
             </Principal>
             <Dependent Role="Presentation">
               <PropertyRef Name="RoomId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Presentat__Sessi__114A936A">
+        <Association Name="fk_PresentationSession">
           <End Role="Session" Type="Self.Session" Multiplicity="0..1" />
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1545,7 +1683,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Presentat__Speci__123EB7A3">
+        <Association Name="fk_PresentationSpecialSession">
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1557,19 +1695,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Welco__797309D9">
-          <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="1" />
-          <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WelcomePack">
-              <PropertyRef Name="WelcomePackId" />
-            </Principal>
-            <Dependent Role="WelcomePackReceiver">
-              <PropertyRef Name="WelcomePackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WelcomePa__Welco__7C4F7684">
+        <Association Name="FK__WelcomePa__Welco__6EF57B66">
           <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="1" />
           <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1581,18 +1707,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__WelcomePa__Welco__72C60C4A">
+          <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="1" />
+          <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WelcomePackGift">
+              <PropertyRef Name="WelcomePackGiftId" />
+            </Principal>
+            <Dependent Role="WelcomePackReceiver">
+              <PropertyRef Name="WelcomePackGiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cmsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AccommodationInfoes" EntityType="Self.AccommodationInfo" />
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="ArticleAuthors" EntityType="Self.ArticleAuthor" />
           <EntitySet Name="Authors" EntityType="Self.Author" />
           <EntitySet Name="Awards" EntityType="Self.Award" />
+          <EntitySet Name="Buildings" EntityType="Self.Building" />
           <EntitySet Name="Conferences" EntityType="Self.Conference" />
-          <EntitySet Name="ConferenceRooms" EntityType="Self.ConferenceRoom" />
+          <EntitySet Name="ConferenceBuildings" EntityType="Self.ConferenceBuilding" />
           <EntitySet Name="ConferenceStaffs" EntityType="Self.ConferenceStaff" />
           <EntitySet Name="EmergencyInfoes" EntityType="Self.EmergencyInfo" />
           <EntitySet Name="Events" EntityType="Self.Event" />
-          <EntitySet Name="Grades" EntityType="Self.Grade" />
           <EntitySet Name="Messages" EntityType="Self.Message" />
           <EntitySet Name="Presentations" EntityType="Self.Presentation" />
           <EntitySet Name="Reviews" EntityType="Self.Review" />
@@ -1606,231 +1745,179 @@
           <EntitySet Name="WelcomePacks" EntityType="Self.WelcomePack" />
           <EntitySet Name="WelcomePackGifts" EntityType="Self.WelcomePackGift" />
           <EntitySet Name="WelcomePackReceivers" EntityType="Self.WelcomePackReceiver" />
-          <AssociationSet Name="FK__Accommoda__Confe__6C190EBB" Association="Self.FK__Accommoda__Confe__6C190EBB">
+          <AssociationSet Name="FK__Accommoda__Confe__60A75C0F" Association="Self.FK__Accommoda__Confe__60A75C0F">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="AccommodationInfo" EntitySet="AccommodationInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Author__AccountI__656C112C" Association="Self.FK__Author__AccountI__656C112C">
+          <AssociationSet Name="FK__Author__AccountI__59063A47" Association="Self.FK__Author__AccountI__59063A47">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Author" EntitySet="Authors" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Accou__5441852A" Association="Self.FK__Conferenc__Accou__5441852A">
+          <AssociationSet Name="FK__Conferenc__Accou__4222D4EF" Association="Self.FK__Conferenc__Accou__4222D4EF">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaffs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Chair__5165187F" Association="Self.FK__Conferenc__Chair__5165187F">
+          <AssociationSet Name="FK__Message__Receive__47DBAE45" Association="Self.FK__Message__Receive__47DBAE45">
             <End Role="Account" EntitySet="Accounts" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Message__SenderI__46E78A0C" Association="Self.FK__Message__SenderI__46E78A0C">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Review__Reviewer__04E4BC85" Association="Self.FK__Review__Reviewer__04E4BC85">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__EmployeeId__52593CB8" Association="Self.FK__Task__EmployeeId__52593CB8">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__ManagerId__5535A963" Association="Self.FK__Task__ManagerId__5535A963">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PresentationPresenter" Association="Self.fk_PresentationPresenter">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Presentation" EntitySet="Presentations" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SessionChair" Association="Self.fk_SessionChair">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="SpecialSession" EntitySet="SpecialSessions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SpecialSessionChair" Association="Self.fk_SpecialSessionChair">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Article__AuthorI__7C4F7684" Association="Self.FK__Article__AuthorI__7C4F7684">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Article__Confere__7D439ABD" Association="Self.FK__Article__Confere__7D439ABD">
             <End Role="Conference" EntitySet="Conferences" />
+            <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Message__Receive__59FA5E80" Association="Self.FK__Message__Receive__59FA5E80">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Message" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Message__SenderI__59063A47" Association="Self.FK__Message__SenderI__59063A47">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Message" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Review__Reviewer__05D8E0BE" Association="Self.FK__Review__Reviewer__05D8E0BE">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Review" EntitySet="Reviews" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SpecialSe__Chair__0C85DE4D" Association="Self.FK__SpecialSe__Chair__0C85DE4D">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="SpecialSession" EntitySet="SpecialSessions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Task__EmployeeId__5FB337D6" Association="Self.FK__Task__EmployeeId__5FB337D6">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Task__ManagerId__619B8048" Association="Self.FK__Task__ManagerId__619B8048">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="Task" EntitySet="Tasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Article__Present__1BC821DD" Association="Self.FK__Article__Present__1BC821DD">
+          <AssociationSet Name="FK__Article__Present__245D67DE" Association="Self.FK__Article__Present__245D67DE">
             <End Role="Presentation" EntitySet="Presentations" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Special__1CBC4616" Association="Self.FK__Article__Special__1CBC4616">
+          <AssociationSet Name="FK__Article__Special__25518C17" Association="Self.FK__Article__Special__25518C17">
             <End Role="SpecialSession" EntitySet="SpecialSessions" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Presentat__Artic__0F624AF8" Association="Self.FK__Presentat__Artic__0F624AF8">
+          <AssociationSet Name="FK__ArticleAu__Artic__00200768" Association="Self.FK__ArticleAu__Artic__00200768">
             <End Role="Article" EntitySet="Articles" />
-            <End Role="Presentation" EntitySet="Presentations" />
+            <End Role="ArticleAuthor" EntitySet="ArticleAuthors" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__ArticleI__04E4BC85" Association="Self.FK__Review__ArticleI__04E4BC85">
+          <AssociationSet Name="FK__Review__ArticleI__03F0984C" Association="Self.FK__Review__ArticleI__03F0984C">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__Submissio__Artic__1AD3FDA4" Association="Self.FK__Submissio__Artic__1AD3FDA4">
+          <AssociationSet Name="FK__Submissio__Artic__1EA48E88" Association="Self.FK__Submissio__Artic__1EA48E88">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Submission" EntitySet="Submissions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Award__Presentat__17F790F9" Association="Self.FK__Award__Presentat__17F790F9">
+          <AssociationSet Name="fk_PresentationArticle" Association="Self.fk_PresentationArticle">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Presentation" EntitySet="Presentations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ArticleAu__Autho__01142BA1" Association="Self.FK__ArticleAu__Autho__01142BA1">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="ArticleAuthor" EntitySet="ArticleAuthors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Award__Presentat__1BC821DD" Association="Self.FK__Award__Presentat__1BC821DD">
             <End Role="Presentation" EntitySet="Presentations" />
             <End Role="Award" EntitySet="Awards" />
           </AssociationSet>
-          <AssociationSet Name="FK__Presentat__Award__1DB06A4F" Association="Self.FK__Presentat__Award__1DB06A4F">
-            <End Role="Award" EntitySet="Awards" />
-            <End Role="Presentation" EntitySet="Presentations" />
+          <AssociationSet Name="FK__Conferenc__Build__778AC167" Association="Self.FK__Conferenc__Build__778AC167">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="ConferenceBuilding" EntitySet="ConferenceBuildings" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Confe__5629CD9C" Association="Self.FK__Conferenc__Confe__5629CD9C">
+          <AssociationSet Name="fk_RoomBuilding" Association="Self.fk_RoomBuilding">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Room" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__Confe__440B1D61" Association="Self.FK__Conferenc__Confe__440B1D61">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaffs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Confe__7F2BE32F" Association="Self.FK__Conferenc__Confe__7F2BE32F">
+          <AssociationSet Name="FK__Conferenc__Confe__76969D2E" Association="Self.FK__Conferenc__Confe__76969D2E">
             <End Role="Conference" EntitySet="Conferences" />
-            <End Role="ConferenceRoom" EntitySet="ConferenceRooms" />
+            <End Role="ConferenceBuilding" EntitySet="ConferenceBuildings" />
           </AssociationSet>
-          <AssociationSet Name="FK__Emergency__Confe__693CA210" Association="Self.FK__Emergency__Confe__693CA210">
+          <AssociationSet Name="FK__Emergency__Confe__5DCAEF64" Association="Self.FK__Emergency__Confe__5DCAEF64">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="EmergencyInfo" EntitySet="EmergencyInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Event__Conferenc__71D1E811" Association="Self.FK__Event__Conferenc__71D1E811">
+          <AssociationSet Name="FK__Event__Conferenc__66603565" Association="Self.FK__Event__Conferenc__66603565">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="Event" EntitySet="Events" />
           </AssociationSet>
-          <AssociationSet Name="FK__Session__Confere__08B54D69" Association="Self.FK__Session__Confere__08B54D69">
-            <End Role="Conference" EntitySet="Conferences" />
-            <End Role="Session" EntitySet="Sessions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SpecialSe__Confe__0B91BA14" Association="Self.FK__SpecialSe__Confe__0B91BA14">
-            <End Role="Conference" EntitySet="Conferences" />
-            <End Role="SpecialSession" EntitySet="SpecialSessions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Task__Conference__5EBF139D" Association="Self.FK__Task__Conference__5EBF139D">
+          <AssociationSet Name="FK__Task__Conference__5165187F" Association="Self.FK__Task__Conference__5165187F">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="Task" EntitySet="Tasks" />
           </AssociationSet>
-          <AssociationSet Name="FK__TravelInf__Confe__6EF57B66" Association="Self.FK__TravelInf__Confe__6EF57B66">
+          <AssociationSet Name="FK__TravelInf__Confe__6383C8BA" Association="Self.FK__TravelInf__Confe__6383C8BA">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="TravelInfo" EntitySet="TravelInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Confe__76969D2E" Association="Self.FK__WelcomePa__Confe__76969D2E">
+          <AssociationSet Name="FK__WelcomePa__Confe__6C190EBB" Association="Self.FK__WelcomePa__Confe__6C190EBB">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="WelcomePack" EntitySet="WelcomePacks" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__RoomI__00200768" Association="Self.FK__Conferenc__RoomI__00200768">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="ConferenceRoom" EntitySet="ConferenceRooms" />
+          <AssociationSet Name="fk_SessionConference" Association="Self.fk_SessionConference">
+            <End Role="Conference" EntitySet="Conferences" />
+            <End Role="SpecialSession" EntitySet="SpecialSessions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__RoleI__5535A963" Association="Self.FK__Conferenc__RoleI__5535A963">
+          <AssociationSet Name="fk_SpecialSessionConference" Association="Self.fk_SpecialSessionConference">
+            <End Role="Conference" EntitySet="Conferences" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Conferenc__RoleI__4316F928" Association="Self.FK__Conferenc__RoleI__4316F928">
             <End Role="Role" EntitySet="Roles" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaffs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Event__Conferenc__72C60C4A" Association="Self.FK__Event__Conferenc__72C60C4A">
+          <AssociationSet Name="FK__Event__RoomId__6754599E" Association="Self.FK__Event__RoomId__6754599E">
             <End Role="Room" EntitySet="Rooms" />
             <End Role="Event" EntitySet="Events" />
           </AssociationSet>
-          <AssociationSet Name="FK__Grade__Presentat__151B244E" Association="Self.FK__Grade__Presentat__151B244E">
-            <End Role="Presentation" EntitySet="Presentations" />
-            <End Role="Grade" EntitySet="Grades" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Presentat__Grade__1EA48E88" Association="Self.FK__Presentat__Grade__1EA48E88">
-            <End Role="Grade" EntitySet="Grades" />
-            <End Role="Presentation" EntitySet="Presentations" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Presentat__RoomI__10566F31" Association="Self.FK__Presentat__RoomI__10566F31">
+          <AssociationSet Name="fk_PresentationRoom" Association="Self.fk_PresentationRoom">
             <End Role="Room" EntitySet="Rooms" />
             <End Role="Presentation" EntitySet="Presentations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Presentat__Sessi__114A936A" Association="Self.FK__Presentat__Sessi__114A936A">
+          <AssociationSet Name="fk_PresentationSession" Association="Self.fk_PresentationSession">
             <End Role="Session" EntitySet="Sessions" />
             <End Role="Presentation" EntitySet="Presentations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Presentat__Speci__123EB7A3" Association="Self.FK__Presentat__Speci__123EB7A3">
+          <AssociationSet Name="fk_PresentationSpecialSession" Association="Self.fk_PresentationSpecialSession">
             <End Role="SpecialSession" EntitySet="SpecialSessions" />
             <End Role="Presentation" EntitySet="Presentations" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__797309D9" Association="Self.FK__WelcomePa__Welco__797309D9">
-            <End Role="WelcomePack" EntitySet="WelcomePacks" />
-            <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceivers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__7C4F7684" Association="Self.FK__WelcomePa__Welco__7C4F7684">
+          <AssociationSet Name="FK__WelcomePa__Welco__6EF57B66" Association="Self.FK__WelcomePa__Welco__6EF57B66">
             <End Role="WelcomePack" EntitySet="WelcomePacks" />
             <End Role="WelcomePackGift" EntitySet="WelcomePackGifts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__AuthorI__778AC167" Association="cmsModel.FK__Article__AuthorI__778AC167">
-            <End Role="Author" EntitySet="Authors" />
-            <End Role="Article" EntitySet="Articles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Article__Confere__787EE5A0" Association="cmsModel.FK__Article__Confere__787EE5A0">
-            <End Role="Conference" EntitySet="Conferences" />
-            <End Role="Article" EntitySet="Articles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Event__RoomId__628FA481" Association="cmsModel.FK__Event__RoomId__628FA481">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="Event" EntitySet="Events" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__6E01572D" Association="cmsModel.FK__WelcomePa__Welco__6E01572D">
+          <AssociationSet Name="FK__WelcomePa__Welco__72C60C4A" Association="Self.FK__WelcomePa__Welco__72C60C4A">
             <End Role="WelcomePackGift" EntitySet="WelcomePackGifts" />
             <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceivers" />
           </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__Article__AuthorI__778AC167">
-          <End Type="cmsModel.Author" Role="Author" Multiplicity="0..1" />
-          <End Type="cmsModel.Article" Role="Article" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Author">
-              <PropertyRef Name="AuthorId" />
-            </Principal>
-            <Dependent Role="Article">
-              <PropertyRef Name="AuthorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Article__Confere__787EE5A0">
-          <End Type="cmsModel.Conference" Role="Conference" Multiplicity="1" />
-          <End Type="cmsModel.Article" Role="Article" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Conference">
-              <PropertyRef Name="ConferenceId" />
-            </Principal>
-            <Dependent Role="Article">
-              <PropertyRef Name="ConferenceID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Event__RoomId__628FA481">
-          <End Type="cmsModel.Room" Role="Room" Multiplicity="0..1" />
-          <End Type="cmsModel.Event" Role="Event" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="RoomId" />
-            </Principal>
-            <Dependent Role="Event">
-              <PropertyRef Name="RoomId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WelcomePa__Welco__6E01572D">
-          <End Type="cmsModel.WelcomePackGift" Role="WelcomePackGift" Multiplicity="1" />
-          <End Type="cmsModel.WelcomePackReceiver" Role="WelcomePackReceiver" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WelcomePackGift">
-              <PropertyRef Name="WelcomePackGiftId" />
-            </Principal>
-            <Dependent Role="WelcomePackReceiver">
-              <PropertyRef Name="WelcomePackGiftId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="cmsModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="cmsModelStoreContainer" CdmEntityContainer="cmsEntities">
           <EntitySetMapping Name="AccommodationInfoes">
             <EntityTypeMapping TypeName="cmsModel.AccommodationInfo">
               <MappingFragment StoreEntitySet="AccommodationInfo">
-                <ScalarProperty Name="CityDesc" ColumnName="CityDesc" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="PlaceName" ColumnName="PlaceName" />
                 <ScalarProperty Name="AccommodationInfoId" ColumnName="AccommodationInfoId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="PlaceName" ColumnName="PlaceName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CityDesc" ColumnName="CityDesc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1849,26 +1936,35 @@
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="cmsModel.Article">
               <MappingFragment StoreEntitySet="Article">
-                <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
-                <ScalarProperty Name="AcceptanceDate" ColumnName="AcceptanceDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
-                <ScalarProperty Name="ArticleTopic" ColumnName="ArticleTopic" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
                 <ScalarProperty Name="PresentationId" ColumnName="PresentationId" />
                 <ScalarProperty Name="SpecialSessionId" ColumnName="SpecialSessionId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AcceptanceDate" ColumnName="AcceptanceDate" />
+                <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleAuthors">
+            <EntityTypeMapping TypeName="cmsModel.ArticleAuthor">
+              <MappingFragment StoreEntitySet="ArticleAuthor">
+                <ScalarProperty Name="ArticleAuthorId" ColumnName="ArticleAuthorId" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="cmsModel.Author">
               <MappingFragment StoreEntitySet="Author">
-                <ScalarProperty Name="FieldOfStudy" ColumnName="FieldOfStudy" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FieldOfStudy" ColumnName="FieldOfStudy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1878,6 +1974,15 @@
                 <ScalarProperty Name="AwardId" ColumnName="AwardId" />
                 <ScalarProperty Name="PresentationId" ColumnName="PresentationId" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="cmsModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1893,12 +1998,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ConferenceRooms">
-            <EntityTypeMapping TypeName="cmsModel.ConferenceRoom">
-              <MappingFragment StoreEntitySet="ConferenceRoom">
-                <ScalarProperty Name="ConferenceRoomId" ColumnName="ConferenceRoomId" />
+          <EntitySetMapping Name="ConferenceBuildings">
+            <EntityTypeMapping TypeName="cmsModel.ConferenceBuilding">
+              <MappingFragment StoreEntitySet="ConferenceBuilding">
+                <ScalarProperty Name="ConferenceBuildingId" ColumnName="ConferenceBuildingId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
-                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1915,10 +2020,10 @@
           <EntitySetMapping Name="EmergencyInfoes">
             <EntityTypeMapping TypeName="cmsModel.EmergencyInfo">
               <MappingFragment StoreEntitySet="EmergencyInfo">
-                <ScalarProperty Name="EmergencyInfo1" ColumnName="EmergencyInfo" />
-                <ScalarProperty Name="EmergencyNum" ColumnName="EmergencyNum" />
                 <ScalarProperty Name="EmergencyInfoId" ColumnName="EmergencyInfoId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="EmergencyNum" ColumnName="EmergencyNum" />
+                <ScalarProperty Name="EmergencyInfo1" ColumnName="EmergencyInfo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1938,9 +2043,11 @@
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="cmsModel.Message">
               <MappingFragment StoreEntitySet="Message">
-                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
                 <ScalarProperty Name="SenderId" ColumnName="SenderId" />
                 <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1948,23 +2055,29 @@
             <EntityTypeMapping TypeName="cmsModel.Presentation">
               <MappingFragment StoreEntitySet="Presentation">
                 <ScalarProperty Name="PresentationId" ColumnName="PresentationId" />
+                <ScalarProperty Name="PresenterId" ColumnName="PresenterId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
                 <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="SpecialSessionId" ColumnName="SpecialSessionId" />
-                </MappingFragment>
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reviews">
             <EntityTypeMapping TypeName="cmsModel.Review">
               <MappingFragment StoreEntitySet="Review">
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
                 <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
                 <ScalarProperty Name="ReviewerId" ColumnName="ReviewerId" />
+                <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1979,7 +2092,9 @@
           <EntitySetMapping Name="Rooms">
             <EntityTypeMapping TypeName="cmsModel.Room">
               <MappingFragment StoreEntitySet="Room">
-                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1988,6 +2103,9 @@
               <MappingFragment StoreEntitySet="Session">
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="ChairId" ColumnName="ChairId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1997,16 +2115,18 @@
                 <ScalarProperty Name="SpecialSessionId" ColumnName="SpecialSessionId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
                 <ScalarProperty Name="ChairId" ColumnName="ChairId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Submissions">
             <EntityTypeMapping TypeName="cmsModel.Submission">
               <MappingFragment StoreEntitySet="Submission">
-                <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
-                <ScalarProperty Name="ArticleFile" ColumnName="ArticleFile" />
                 <ScalarProperty Name="SubmissionId" ColumnName="SubmissionId" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ArticleFile" ColumnName="ArticleFile" />
+                <ScalarProperty Name="SubmissionDate" ColumnName="SubmissionDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2027,44 +2147,44 @@
           <EntitySetMapping Name="TravelInfoes">
             <EntityTypeMapping TypeName="cmsModel.TravelInfo">
               <MappingFragment StoreEntitySet="TravelInfo">
-                <ScalarProperty Name="TaxiNum" ColumnName="TaxiNum" />
-                <ScalarProperty Name="RailwayRoadTime" ColumnName="RailwayRoadTime" />
-                <ScalarProperty Name="RailwayRoad" ColumnName="RailwayRoad" />
-                <ScalarProperty Name="AirportRoadTime" ColumnName="AirportRoadTime" />
-                <ScalarProperty Name="AirportRoad" ColumnName="AirportRoad" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="TravelInfoId" ColumnName="TravelInfoId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AirportRoad" ColumnName="AirportRoad" />
+                <ScalarProperty Name="AirportRoadTime" ColumnName="AirportRoadTime" />
+                <ScalarProperty Name="RailwayRoad" ColumnName="RailwayRoad" />
+                <ScalarProperty Name="RailwayRoadTime" ColumnName="RailwayRoadTime" />
+                <ScalarProperty Name="TaxiNum" ColumnName="TaxiNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WelcomePacks">
             <EntityTypeMapping TypeName="cmsModel.WelcomePack">
               <MappingFragment StoreEntitySet="WelcomePack">
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
                 <ScalarProperty Name="WelcomePackId" ColumnName="WelcomePackId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WelcomePackGifts">
             <EntityTypeMapping TypeName="cmsModel.WelcomePackGift">
               <MappingFragment StoreEntitySet="WelcomePackGift">
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="WelcomePackGiftId" ColumnName="WelcomePackGiftId" />
                 <ScalarProperty Name="WelcomePackId" ColumnName="WelcomePackId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="WelcomePackReceivers">
             <EntityTypeMapping TypeName="cmsModel.WelcomePackReceiver">
               <MappingFragment StoreEntitySet="WelcomePackReceiver">
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="WelcomePackGiftId" ColumnName="WelcomePackGiftId" />
                 <ScalarProperty Name="WelcomePackReceiverId" ColumnName="WelcomePackReceiverId" />
+                <ScalarProperty Name="WelcomePackGiftId" ColumnName="WelcomePackGiftId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2084,7 +2204,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

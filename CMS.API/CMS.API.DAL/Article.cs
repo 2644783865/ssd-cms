@@ -17,16 +17,17 @@ namespace CMS.API.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Article()
         {
-            this.Presentations = new HashSet<Presentation>();
+            this.ArticleAuthors = new HashSet<ArticleAuthor>();
             this.Reviews = new HashSet<Review>();
             this.Submissions = new HashSet<Submission>();
+            this.Presentations = new HashSet<Presentation>();
         }
     
         public int ArticleId { get; set; }
-        public string ArticleTopic { get; set; }
+        public string Topic { get; set; }
         public Nullable<int> PresentationId { get; set; }
         public Nullable<int> SpecialSessionId { get; set; }
-        public Nullable<int> AuthorId { get; set; }
+        public int AuthorId { get; set; }
         public string Status { get; set; }
         public Nullable<System.DateTime> AcceptanceDate { get; set; }
         public int ConferenceID { get; set; }
@@ -34,14 +35,14 @@ namespace CMS.API.DAL
         public virtual Author Author { get; set; }
         public virtual Conference Conference { get; set; }
         public virtual Presentation Presentation { get; set; }
-        public virtual Presentation Presentation1 { get; set; }
         public virtual SpecialSession SpecialSession { get; set; }
-        public virtual SpecialSession SpecialSession1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Presentation> Presentations { get; set; }
+        public virtual ICollection<ArticleAuthor> ArticleAuthors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Reviews { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Submission> Submissions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Presentation> Presentations { get; set; }
     }
 }

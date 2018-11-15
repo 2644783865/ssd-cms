@@ -28,10 +28,12 @@ namespace CMS.API.DAL
         public virtual DbSet<AccommodationInfo> AccommodationInfoes { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Article> Articles { get; set; }
+        public virtual DbSet<ArticleAuthor> ArticleAuthors { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Award> Awards { get; set; }
+        public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<Conference> Conferences { get; set; }
-        public virtual DbSet<ConferenceRoom> ConferenceRooms { get; set; }
+        public virtual DbSet<ConferenceBuilding> ConferenceBuildings { get; set; }
         public virtual DbSet<ConferenceStaff> ConferenceStaffs { get; set; }
         public virtual DbSet<EmergencyInfo> EmergencyInfoes { get; set; }
         public virtual DbSet<Event> Events { get; set; }

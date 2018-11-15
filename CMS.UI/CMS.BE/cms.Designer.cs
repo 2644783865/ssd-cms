@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\KINGA\Documents\University\Software System Development\Program\CMS\CMS.BE\cms.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Kinga\Documents\University\Software System Development\Program\CMS\CMS.UI\CMS.BE\cms.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

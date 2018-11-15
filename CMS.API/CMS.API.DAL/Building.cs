@@ -7,28 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMS.BE
+namespace CMS.API.DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Session
+    public partial class Building
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Session()
+        public Building()
         {
-            this.Presentations = new HashSet<Presentation>();
+            this.ConferenceBuildings = new HashSet<ConferenceBuilding>();
+            this.Rooms = new HashSet<Room>();
         }
     
-        public int SessionId { get; set; }
-        public int ConferenceId { get; set; }
-        public int ChairId { get; set; }
-        public string Title { get; set; }
-        public string DESCRIPTION { get; set; }
+        public int BuildingID { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
     
-        public virtual Account Account { get; set; }
-        public virtual Conference Conference { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Presentation> Presentations { get; set; }
+        public virtual ICollection<ConferenceBuilding> ConferenceBuildings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }

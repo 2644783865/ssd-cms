@@ -22,9 +22,11 @@ namespace CMS.API.DAL
             this.Messages = new HashSet<Message>();
             this.Messages1 = new HashSet<Message>();
             this.Reviews = new HashSet<Review>();
-            this.SpecialSessions = new HashSet<SpecialSession>();
             this.Tasks = new HashSet<Task>();
             this.Tasks1 = new HashSet<Task>();
+            this.Presentations = new HashSet<Presentation>();
+            this.SpecialSessions = new HashSet<SpecialSession>();
+            this.Sessions = new HashSet<Session>();
         }
     
         public int AccountId { get; set; }
@@ -45,10 +47,14 @@ namespace CMS.API.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Reviews { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SpecialSession> SpecialSessions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Presentation> Presentations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SpecialSession> SpecialSessions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Session> Sessions { get; set; }
     }
 }

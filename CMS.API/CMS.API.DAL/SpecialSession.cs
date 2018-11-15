@@ -18,19 +18,18 @@ namespace CMS.API.DAL
         public SpecialSession()
         {
             this.Articles = new HashSet<Article>();
-            this.Articles1 = new HashSet<Article>();
             this.Presentations = new HashSet<Presentation>();
         }
     
         public int SpecialSessionId { get; set; }
         public int ConferenceId { get; set; }
         public int ChairId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     
         public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Article> Articles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Article> Articles1 { get; set; }
         public virtual Conference Conference { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Presentation> Presentations { get; set; }
