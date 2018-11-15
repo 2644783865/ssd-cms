@@ -1,0 +1,22 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Home.LogIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="CMS Log In" Height="320" Width="300"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
+            <Label Content="Login:" Margin="0,0,0,10"/>
+            <TextBox Name="LoginBox" Height="23" TextWrapping="Wrap" Text="" Width="230" KeyDown="Box_KeyDown"/>
+            <Label Content="Password:" Margin="0,10,0,0"/>
+            <PasswordBox Name="PasswordBox" Width="230" Height="23" KeyDown="Box_KeyDown"/>
+        </StackPanel>
+        <Button Name="LogInButton" Content="Log In" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Bottom" Width="75" Click="LogInButton_Click"/>
+        <Label Name="LoginFailed" Content="Login Failed!" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,110" VerticalAlignment="Bottom" Width="86" Foreground="Red" FontWeight="Medium"/>
+        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" HorizontalAlignment="Center" Margin="0,0,0,60" VerticalAlignment="Bottom" Height="40" Width="35"/>
+    </Grid>
+</Controls:MetroWindow>

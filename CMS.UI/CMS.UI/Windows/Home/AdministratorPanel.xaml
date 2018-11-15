@@ -1,0 +1,34 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Home.AdministratorPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Administrator" Height="450" Width="900"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="logout" Click="LogOut_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Button Name="AddAccount" Content="Add Account" HorizontalAlignment="Left" Margin="25,19,0,0" VerticalAlignment="Top" Width="120" Click="AddAccountButton_Click"/>
+        <Button Name="EditAccount" Content="Edit Account" HorizontalAlignment="Left" Margin="237,112,0,0" VerticalAlignment="Top" Width="120" Click="EditAccount_Click" />
+        <Button Name="AssignRole" Content="Assign Role" HorizontalAlignment="Left" Margin="362,112,0,0" VerticalAlignment="Top" Width="120" Click="AssignRole_Click" />
+        <Button Name="RemoveRole" Content="Remove Role" HorizontalAlignment="Left" Margin="487,112,0,0" VerticalAlignment="Top" Width="120" Background="Red" Click="RemoveRole_Click"/>
+        <TextBox Name="LoginBox" HorizontalAlignment="Left" Height="23" Margin="77,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <ComboBox Name="RoleBox" HorizontalAlignment="Left" Margin="77,66,0,0" VerticalAlignment="Top" Width="280"/>
+        <ComboBox Name="ConferencesBox" HorizontalAlignment="Left" Margin="440,66,0,0" VerticalAlignment="Top" Width="280"/>
+        <Label Content="Role:" HorizontalAlignment="Left" Margin="30,66,0,0" VerticalAlignment="Top"/>
+        <Label Content="Login:" HorizontalAlignment="Left" Margin="30,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.286,0.5"/>
+        <Label Content="Conference:" HorizontalAlignment="Left" Margin="362,66,0,0" VerticalAlignment="Top"/>
+        <Button Name="AddConference" Content="Add Conference" HorizontalAlignment="Left" Margin="25,186,0,0" VerticalAlignment="Top" Width="120" Click="AddConference_Click"/>
+        <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="38" Height="36" Click="Refresh_Click">
+            <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Button>
+        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="787,10,72,371" Height="40" Width="35"/>
+    </Grid>
+</Controls:MetroWindow>

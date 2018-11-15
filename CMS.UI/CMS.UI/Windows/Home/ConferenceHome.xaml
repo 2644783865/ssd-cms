@@ -1,0 +1,18 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Home.ConferenceHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Conference Home" Height="450" Width="800">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Label Name="UserLabel" Content="unknown user"/>
+            <Button Content="logout" Click="LogOut_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Button Name="GoToUserPanelButton" Content="User Panel" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToUserPanelButton_Click"/>
+    </Grid>
+</Controls:MetroWindow>

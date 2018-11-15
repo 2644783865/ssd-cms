@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5811DC9-3DFE-4ADE-9231-C85B434CC173}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CMS.API.DAL</RootNamespace>
+    <AssemblyName>CMS.API.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccommodationInfo.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Account.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Article.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Author.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Award.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Conference.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConferenceRoom.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConferenceStaff.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmergencyInfo.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IAuthenticationRepository.cs" />
+    <Compile Include="Interfaces\IConferenceRepository.cs" />
+    <Compile Include="Message.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AuthenticationRepository.cs" />
+    <Compile Include="Repositories\ConferenceRepository.cs" />
+    <Compile Include="Review.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Room.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Session.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialSession.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Submission.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TravelInfo.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomePack.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomePackGift.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomePackReceiver.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="CMS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CMS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CMS.edmx.diagram">
+      <DependentUpon>CMS.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CMS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CMS.edmx</DependentUpon>
+      <LastGenOutput>CMS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CMS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CMS.edmx</DependentUpon>
+      <LastGenOutput>CMS.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

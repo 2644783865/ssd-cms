@@ -1,0 +1,30 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Conference.AddConference"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Add Conference" Height="400" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
+            <Label Content="Title:" Margin="0,0,0,0"/>
+            <TextBox Name="TitleBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <Label Content="Description:" Margin="0,0,0,0"/>
+            <TextBox Name="DescriptionBox" Margin="0,0,0,0" Width="337" Height="23"/>
+            <Label Content="Place:" Margin="0,0,0,0"/>
+            <TextBox Name="PlaceBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <StackPanel HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top">
+                <Label Content="Begin Date:" Margin="0,0,0,0"/>
+                <DatePicker Name="BeginDatePicker" Margin="0,0,0,0"/>
+                <Label Content="End Date:" Margin="0,10,0,0"/>
+                <DatePicker Name="EndDatePicker" Margin="0,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Name="AddButton" Content="Add Conference" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="121" Click="AddButton_Click"/>
+        <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,150,20" VerticalAlignment="Bottom" Width="79" Click="CancelButton_Click"/>
+        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" HorizontalAlignment="Left" Margin="20,0,0,20" VerticalAlignment="Bottom" Height="45" Width="35"/>
+    </Grid>
+</Controls:MetroWindow>

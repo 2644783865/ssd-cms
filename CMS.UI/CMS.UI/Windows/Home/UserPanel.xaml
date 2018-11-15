@@ -1,0 +1,30 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Home.UserPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      mc:Ignorable="d"
+        Title="User Panel" Height="450" Width="800">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Label Name="UserLabel" Content="unknown user"/>
+            <Button Content="logout" Click="LogOut_Click"/>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,0,20">
+            <ComboBox Name="ConferencesBox" Margin="20,10,20,10"  Width="196"/>
+            <Button Name="GoToConferenceButton" Content="Go To Conference" Margin="0,0,0,0" Width="158" Click="GoToConferenceButton_Click" Height="48"/>
+            <Button Name="GoToManagerPanelButton" Content="Manager Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToManagerPanelButton_Click"/>
+            <Button Name="GoToAuthorPanelButton" Content="Author Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToAuthorPanelButton_Click"/>
+        </StackPanel>
+        <Button Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Right" Margin="0,78,10,0" VerticalAlignment="Top" Width="124" Click="ChangePasswordButton_Click"/>
+        <TextBox Text="To change any other data please contact your manager" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="0,110,10,0" VerticalAlignment="Top" Width="197" Height="46" BorderThickness="0"/>
+        <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="38" Height="36" Click="Refresh_Click">
+            <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Button>
+        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="787,10,72,371" Height="40" Width="35"/>
+    </Grid>
+</Controls:MetroWindow>
