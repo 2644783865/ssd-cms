@@ -1,8 +1,11 @@
-﻿namespace CMS.API.BLL.Interfaces.Conference
+﻿using CMS.BE.DTO;
+using System.Collections.Generic;
+
+namespace CMS.API.BLL.Interfaces.Conference
 {
     public interface IConferenceBLL
     {
-        object GetConferences();
-        bool AddConference(DAL.Conference conference);
+        IEnumerable<ConferenceDTO> GetConferences();
+        bool AddConference(ConferenceDTO conference);
     }
 }

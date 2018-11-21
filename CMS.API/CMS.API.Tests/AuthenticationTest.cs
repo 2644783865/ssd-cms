@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CMS.API.BLL.Models.Authentication;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CMS.API.BLL.BLL.Authentication;
-using CMS.API.DAL;
 using System.Linq;
 using CMS.API.BLL.Interfaces.Authentication;
+using CMS.BE.Models.Authentication;
 
 namespace CMS.API.Tests
 {
@@ -85,7 +83,7 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestGetRoles()
         {
-            var result = bll.GetRoles() as IEnumerable<Role>;
+            var result = bll.GetRoles();
             Assert.AreEqual("Test Role", result.FirstOrDefault(role => role.RoleId==1).Name);
         }
 
@@ -99,14 +97,14 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestGetRolesForConferenceAndAccount()
         {
-            var result = bll.GetRolesForConferenceAndAccount(1, 1) as IEnumerable<Role>;
+            var result = bll.GetRolesForConferenceAndAccount(1, 1);
             Assert.AreEqual(1, result.FirstOrDefault().RoleId);
         }
 
         [TestMethod]
         public void TestGetConferencesForAccount()
         {
-            var result = bll.GetConferencesForAccount(1) as IEnumerable<Conference>;
+            var result = bll.GetConferencesForAccount(1);
             Assert.AreEqual(1, result.FirstOrDefault().ConferenceId);
         }
     }

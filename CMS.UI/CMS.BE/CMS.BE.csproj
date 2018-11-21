@@ -49,117 +49,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccommodationInfo.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Account.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Article.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ArticleAuthor.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Author.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Award.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Building.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cms.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cms.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>cms.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Conference.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ConferenceBuilding.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ConferenceStaff.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EmergencyInfo.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Event.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Message.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
+    <Compile Include="DTO\AccountDTO.cs" />
+    <Compile Include="DTO\ConferenceDTO.cs" />
+    <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="Models\Authentication\ChangePasswordModel.cs" />
     <Compile Include="Models\Authentication\LoginModel.cs" />
     <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Models\ResponseType.cs" />
-    <Compile Include="Presentation.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Review.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Role.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Room.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Session.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SpecialSession.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Submission.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Task.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TravelInfo.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomePack.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomePackGift.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomePackReceiver.cs">
-      <DependentUpon>cms.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="cms.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>cms.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="cms.edmx.diagram">
-      <DependentUpon>cms.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="cms.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>cms.edmx</DependentUpon>
-      <LastGenOutput>cms.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using CMS.BE.Models;
+﻿using CMS.BE.DTO;
+using CMS.BE.Models;
 using CMS.Core.Helpers;
 using CMS.Core.Interfaces.Conference;
 using Newtonsoft.Json;
@@ -21,7 +22,7 @@ namespace CMS.Core.Core.Conference
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                var conferences = JsonConvert.DeserializeObject<List<BE.Conference>>(result.Content);
+                var conferences = JsonConvert.DeserializeObject<List<ConferenceDTO>>(result.Content);
                 foreach (var conference in conferences)
                 {
                     conferencesBox.Items.Add(conference);
@@ -29,7 +30,7 @@ namespace CMS.Core.Core.Conference
             }
         }
 
-        public async Task<bool> AddConferenceAsync(BE.Conference conference)
+        public async Task<bool> AddConferenceAsync(ConferenceDTO conference)
         {
             var path = Properties.Resources.addConferencePath;
             var result = await _apiHelper.Post(path, conference);

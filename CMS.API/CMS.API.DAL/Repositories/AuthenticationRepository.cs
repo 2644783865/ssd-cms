@@ -1,4 +1,6 @@
-﻿using CMS.API.DAL.Interfaces;
+﻿using CMS.API.DAL.Extensions;
+using CMS.API.DAL.Interfaces;
+using CMS.BE.DTO;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,39 +10,24 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
-        public Account GetAccountByLogin(string login)
+        public AccountDTO GetAccountByLogin(string login)
         {
             var account = _db.Accounts.FirstOrDefault(user => user.Login.Equals(login));
             if (account == null) return null;
-            else return new Account()
-            {
-                AccountId = account.AccountId,
-                Email = account.Email,
-                Login = account.Login,
-                Name = account.Name,
-                PasswordHash = account.PasswordHash,
-                PhoneNumber = account.PhoneNumber
-            };
+            else return MapperExtension.mapper.Map<Account, AccountDTO>(account);
         }
 
-        public Account GetAccountById(int id)
+        public AccountDTO GetAccountById(int id)
         {
             var account = _db.Accounts.Find(id);
             if (account == null) return null;
-            else return new Account()
-            {
-                AccountId = account.AccountId,
-                Email = account.Email,
-                Login = account.Login,
-                Name = account.Name,
-                PasswordHash = account.PasswordHash,
-                PhoneNumber = account.PhoneNumber
-            };
+            else return MapperExtension.mapper.Map<Account, AccountDTO>(account);
         }
 
-        public void AddAccount(Account user)
+        public void AddAccount(AccountDTO accountDTO)
         {
-            _db.Accounts.Add(user);
+            var account = MapperExtension.mapper.Map<AccountDTO, Account>(accountDTO);
+            _db.Accounts.Add(account);
             _db.SaveChanges();
         }
 
@@ -50,16 +37,10 @@ namespace CMS.API.DAL.Repositories
             _db.SaveChanges();
         }
 
-        public IEnumerable<Role> GetRoles()
+        public IEnumerable<RoleDTO> GetRoles()
         {
-            foreach(var role in _db.Roles.ToList())
-            {
-                yield return new Role()
-                {
-                    RoleId = role.RoleId,
-                    Name = role.Name
-                };
-            }
+            var test = _db.Roles.Project().To<RoleDTO>();
+            return test.ToList();
         }
 
         public string GetRoleNameById(int roleId)
@@ -67,35 +48,15 @@ namespace CMS.API.DAL.Repositories
             return _db.Roles.Find(roleId).Name;
         }
 
-        public IEnumerable<Role> GetRolesForConferenceAndAccount(int conferenceId, int accountId)
+        public IEnumerable<RoleDTO> GetRolesForConferenceAndAccount(int conferenceId, int accountId)
         {
-            var roles = _db.ConferenceStaffs.Where(staff => staff.AccountId == accountId && staff.ConferenceId==conferenceId)
-                .Select(staff => staff.Role).Distinct();
-            foreach (var role in roles)
-            {
-                yield return new Role()
-                {
-                    RoleId = role.RoleId,
-                    Name = role.Name
-                };
-            }
+            return _db.ConferenceStaffs.Where(staff => staff.AccountId == accountId && staff.ConferenceId==conferenceId)
+                .Select(staff => staff.Role).Distinct().Project().To<RoleDTO>();
         }
 
-        public IEnumerable<Conference> GetConferencesForAccount(int accountId)
+        public IEnumerable<ConferenceDTO> GetConferencesForAccount(int accountId)
         {
-            var conferences = _db.ConferenceStaffs.Where(staff => staff.AccountId == accountId).Select(staff => staff.Conference).Distinct();
-            foreach (var conference in conferences)
-            {
-                yield return new Conference()
-                {
-                    ConferenceId = conference.ConferenceId,
-                    BeginDate = conference.BeginDate,
-                    Description = conference.Description,
-                    EndDate = conference.EndDate,
-                    Place = conference.Place,
-                    Title = conference.Title
-                };
-            }
+            return _db.ConferenceStaffs.Where(staff => staff.AccountId == accountId).Select(staff => staff.Conference).Distinct().Project().To<ConferenceDTO>();
         }
 
         public void AddConferenceStaff(ConferenceStaff staff)
@@ -104,8 +65,9 @@ namespace CMS.API.DAL.Repositories
             _db.SaveChanges();
         }
 
-        public void AddRole(Role role)
+        public void AddRole(RoleDTO roleDTO)
         {
+            var role = MapperExtension.mapper.Map<RoleDTO, Role>(roleDTO);
             _db.Roles.Add(role);
             _db.SaveChanges();
         }

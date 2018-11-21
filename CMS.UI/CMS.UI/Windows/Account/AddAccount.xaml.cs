@@ -1,10 +1,10 @@
-﻿using CMS.Core.Core.Authentication;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core.Authentication;
 using CMS.Core.Helpers;
 using CMS.Core.Interfaces.Authentication;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
-using System.Windows.Media;
 
 namespace CMS.UI.Windows.Account
 {
@@ -30,7 +30,7 @@ namespace CMS.UI.Windows.Account
             {
                 using (IAuthenticationCore core = new AuthenticationCore())
                 {
-                    var loginModel = new BE.Account()
+                    var loginModel = new AccountDTO()
                     {
                         Login = LoginBox.Text,
                         Name = NameBox.Text,

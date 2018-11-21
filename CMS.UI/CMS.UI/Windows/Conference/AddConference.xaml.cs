@@ -1,9 +1,9 @@
-﻿using CMS.Core.Core.Conference;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core.Conference;
 using CMS.Core.Interfaces.Conference;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
-using System.Windows.Media;
 
 namespace CMS.UI.Windows.Conference
 {
@@ -29,7 +29,7 @@ namespace CMS.UI.Windows.Conference
         {
             if (ValidateForm())
             {
-                var conference = new BE.Conference()
+                var conference = new ConferenceDTO()
                 {
                     Title = TitleBox.Text,
                     Description = DescriptionBox.Text,

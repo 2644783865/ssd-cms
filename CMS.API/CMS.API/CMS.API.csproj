@@ -61,6 +61,9 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -131,16 +134,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CMS.UI\CMS.BE\CMS.BE.csproj">
+      <Project>{F03B04C9-1E75-4DBF-B181-D5D314AF433D}</Project>
+      <Name>CMS.BE</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CMS.API.BLL\CMS.API.BLL.csproj">
       <Project>{52671429-5cc7-4200-b923-bd74e1ca1315}</Project>
       <Name>CMS.API.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CMS.API.DAL\CMS.API.DAL.csproj">
-      <Project>{F5811DC9-3DFE-4ADE-9231-C85B434CC173}</Project>
-      <Name>CMS.API.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

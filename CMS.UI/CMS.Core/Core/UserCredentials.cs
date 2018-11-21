@@ -1,5 +1,4 @@
-﻿using CMS.BE;
-using System;
+﻿using CMS.BE.DTO;
 using System.Collections.Generic;
 
 namespace CMS.Core.Core
@@ -8,14 +7,14 @@ namespace CMS.Core.Core
     {
         static UserCredentials()
         {
-            Roles = new List<Role>();
-            Conferences = new List<BE.Conference>();
+            Roles = new List<RoleDTO>();
+            Conferences = new List<ConferenceDTO>();
         }
 
         public static void Clear()
         {
             AccountId = -1;
-            Username = String.Empty;
+            Username = string.Empty;
             ConferenceId = -1;
             Roles.Clear();
             Conferences.Clear();
@@ -28,9 +27,9 @@ namespace CMS.Core.Core
 
         public static int ConferenceId { get; set; }
 
-        public static List<BE.Conference> Conferences { get; set; }
+        public static List<ConferenceDTO> Conferences { get; set; }
 
-        public static List<Role> Roles { get; set; }
+        public static List<RoleDTO> Roles { get; set; }
 
         public static bool IsAuthor { get; set; } = false;
     }

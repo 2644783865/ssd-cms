@@ -1,9 +1,11 @@
 ﻿using CMS.API.BLL.Helpers;
 using CMS.API.BLL.Interfaces.Authentication;
-using CMS.API.BLL.Models.Authentication;
 using CMS.API.DAL;
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
+using CMS.BE.DTO;
+using CMS.BE.Models.Authentication;
+using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL.Authentication
 {
@@ -34,21 +36,13 @@ namespace CMS.API.BLL.BLL.Authentication
             return false;
         }
 
-        public bool AddAccount(Account accountModel)
+        public bool AddAccount(AccountDTO account)
         {
-            var newAccount = new Account()
-            {
-                Name = accountModel.Name,
-                PhoneNumber = accountModel.PhoneNumber,
-                Email = accountModel.Email,
-                Login = accountModel.Login,
-                PasswordHash = string.IsNullOrEmpty(accountModel.PasswordHash) ? HashHelper.ComputeHash(AppSettings.DefaultPassword) 
-                : HashHelper.ComputeHash(accountModel.PasswordHash)
-            };
-
+            account.PasswordHash = string.IsNullOrEmpty(account.PasswordHash) ? HashHelper.ComputeHash(AppSettings.DefaultPassword)
+                : HashHelper.ComputeHash(account.PasswordHash);
             try
             {
-                _repository.AddAccount(newAccount);
+                _repository.AddAccount(account);
             }
             catch
             {
@@ -78,7 +72,7 @@ namespace CMS.API.BLL.BLL.Authentication
             return false;
         }
 
-        public object GetRoles()
+        public IEnumerable<RoleDTO> GetRoles()
         {
             return _repository.GetRoles();
         }
@@ -95,7 +89,7 @@ namespace CMS.API.BLL.BLL.Authentication
             }
         }
 
-        public object GetRolesForConferenceAndAccount(int conferenceId, int accountId)
+        public IEnumerable<RoleDTO> GetRolesForConferenceAndAccount(int conferenceId, int accountId)
         {
             try
             {
@@ -107,7 +101,7 @@ namespace CMS.API.BLL.BLL.Authentication
             }
         }
 
-        public object GetConferencesForAccount(int accountId)
+        public IEnumerable<ConferenceDTO> GetConferencesForAccount(int accountId)
         {
             try
             {
@@ -143,7 +137,7 @@ namespace CMS.API.BLL.BLL.Authentication
 
         public bool AddRole(string name)
         {
-            var newRole = new Role()
+            var newRole = new RoleDTO()
             {
                 Name = name
             };
@@ -159,17 +153,12 @@ namespace CMS.API.BLL.BLL.Authentication
             return true;
         }
 
-        public object GetAccountByLogin(string login)
+        public AccountDTO GetAccountByLogin(string login)
         {
             var account =_repository.GetAccountByLogin(login);
             if (account == null) return null;
-            return new Account() //omit password
-            {
-                Login = account.Login,
-                Name = account.Name,
-                PhoneNumber = account.PhoneNumber,
-                Email = account.Email
-            };
+            account.PasswordHash = string.Empty; //omit password
+            return account;
         }
     }
 }

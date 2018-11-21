@@ -1,4 +1,4 @@
-﻿using CMS.BE;
+﻿using CMS.BE.DTO;
 using CMS.BE.Models;
 using CMS.BE.Models.Authentication;
 using CMS.Core.Helpers;
@@ -35,11 +35,12 @@ namespace CMS.Core.Core.Authentication
 
         public async void LoadConferencesAsync(ComboBox conferencesBox)
         {
+            conferencesBox.Items.Clear();
             var path = $"{Properties.Resources.conferencesForAccountPath}?accountId={UserCredentials.AccountId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                UserCredentials.Conferences = JsonConvert.DeserializeObject<List<BE.Conference>>(result.Content);
+                UserCredentials.Conferences = JsonConvert.DeserializeObject<List<ConferenceDTO>>(result.Content);
                 foreach (var conference in UserCredentials.Conferences)
                 {
                     conferencesBox.Items.Add($"{conference.ConferenceId} {conference.Title} {conference.BeginDate.ToShortDateString()}");
@@ -53,7 +54,7 @@ namespace CMS.Core.Core.Authentication
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                UserCredentials.Roles = JsonConvert.DeserializeObject<List<Role>>(result.Content);
+                UserCredentials.Roles = JsonConvert.DeserializeObject<List<RoleDTO>>(result.Content);
             }
         }
 
@@ -66,7 +67,7 @@ namespace CMS.Core.Core.Authentication
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                var roles = JsonConvert.DeserializeObject<List<Role>>(result.Content);
+                var roles = JsonConvert.DeserializeObject<List<RoleDTO>>(result.Content);
                 foreach (var role in roles)
                 {
                     rolesBox.Items.Add(role);
@@ -74,7 +75,7 @@ namespace CMS.Core.Core.Authentication
             }
         }
 
-        public async Task<bool> AddAccountAsync(Account accountModel)
+        public async Task<bool> AddAccountAsync(AccountDTO accountModel)
         {
             var path = Properties.Resources.addAccountPath;
             var result = await _apiHelper.Post(path, accountModel);
@@ -101,7 +102,7 @@ namespace CMS.Core.Core.Authentication
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                return JsonConvert.DeserializeObject<Account>(result.Content).AccountId;
+                return JsonConvert.DeserializeObject<AccountDTO>(result.Content).AccountId;
             }
             else return -1;
         }

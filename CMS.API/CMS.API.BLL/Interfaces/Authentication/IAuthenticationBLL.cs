@@ -1,5 +1,7 @@
-﻿using CMS.API.BLL.Models.Authentication;
-using CMS.API.DAL;
+﻿using CMS.API.DAL;
+using CMS.BE.DTO;
+using CMS.BE.Models.Authentication;
+using System.Collections.Generic;
 
 namespace CMS.API.BLL.Interfaces.Authentication
 {
@@ -7,14 +9,14 @@ namespace CMS.API.BLL.Interfaces.Authentication
     {
         int Login(LoginModel loginModel);
         bool CheckCredentials(LoginModel loginModel);
-        bool AddAccount(Account accountModel);
+        bool AddAccount(AccountDTO accountModel);
         bool ChangePassword(ChangePasswordModel changePasswordModel);
-        object GetRoles();
+        IEnumerable<RoleDTO> GetRoles();
         string GetRoleName(int roleId);
-        object GetRolesForConferenceAndAccount(int conferenceId, int accountId);
-        object GetConferencesForAccount(int accountId);
+        IEnumerable<RoleDTO> GetRolesForConferenceAndAccount(int conferenceId, int accountId);
+        IEnumerable<ConferenceDTO> GetConferencesForAccount(int accountId);
         bool SetRoleForConferenceAndAccount(int conferenceId, string login, int roleId);
         bool AddRole(string name);
-        object GetAccountByLogin(string login);
+        AccountDTO GetAccountByLogin(string login);
     }
 }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.API.DAL", "CMS.API.DAL\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.API.BLL", "CMS.API.BLL\CMS.API.BLL.csproj", "{52671429-5CC7-4200-B923-BD74E1CA1315}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS.BE", "..\CMS.UI\CMS.BE\CMS.BE.csproj", "{F03B04C9-1E75-4DBF-B181-D5D314AF433D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{52671429-5CC7-4200-B923-BD74E1CA1315}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52671429-5CC7-4200-B923-BD74E1CA1315}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52671429-5CC7-4200-B923-BD74E1CA1315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F03B04C9-1E75-4DBF-B181-D5D314AF433D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F03B04C9-1E75-4DBF-B181-D5D314AF433D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F03B04C9-1E75-4DBF-B181-D5D314AF433D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F03B04C9-1E75-4DBF-B181-D5D314AF433D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

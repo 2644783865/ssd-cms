@@ -57,11 +57,13 @@
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Interfaces\Authentication\IAuthenticationBLL.cs" />
     <Compile Include="Interfaces\Conference\IConferenceBLL.cs" />
-    <Compile Include="Models\Authentication\ChangePasswordModel.cs" />
-    <Compile Include="Models\Authentication\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CMS.UI\CMS.BE\CMS.BE.csproj">
+      <Project>{F03B04C9-1E75-4DBF-B181-D5D314AF433D}</Project>
+      <Name>CMS.BE</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CMS.API.DAL\CMS.API.DAL.csproj">
       <Project>{f5811dc9-3dfe-4ade-9231-c85b434cc173}</Project>
       <Name>CMS.API.DAL</Name>

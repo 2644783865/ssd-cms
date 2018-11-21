@@ -1,9 +1,9 @@
 ﻿using CMS.API.BLL.BLL.Authentication;
-using CMS.API.BLL.Models.Authentication;
 using System.Web.Http;
 using CMS.API.Helpers;
 using CMS.API.BLL.Interfaces.Authentication;
-using CMS.API.DAL;
+using CMS.BE.Models.Authentication;
+using CMS.BE.DTO;
 
 namespace CMS.API.Controllers
 {
@@ -38,12 +38,12 @@ namespace CMS.API.Controllers
         // POST: api/Authentication/AddAccount
         [HttpPost]
         [Route("api/authentication/addaccount")]
-        public IHttpActionResult AddAccount([FromBody] Account addAccountModel)
+        public IHttpActionResult AddAccount([FromBody] AccountDTO account)
         {
-            if (string.IsNullOrEmpty(addAccountModel.Name) || string.IsNullOrEmpty(addAccountModel.PhoneNumber)
-                || string.IsNullOrEmpty(addAccountModel.Email) || string.IsNullOrEmpty(addAccountModel.Login)) return BadRequest();
+            if (string.IsNullOrEmpty(account.Name) || string.IsNullOrEmpty(account.PhoneNumber)
+                || string.IsNullOrEmpty(account.Email) || string.IsNullOrEmpty(account.Login)) return BadRequest();
 
-            if(_bll.AddAccount(addAccountModel)) return Ok();
+            if(_bll.AddAccount(account)) return Ok();
             return InternalServerError();  
         }
 

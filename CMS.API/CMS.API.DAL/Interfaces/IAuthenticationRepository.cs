@@ -1,19 +1,20 @@
-﻿using System;
+﻿using CMS.BE.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace CMS.API.DAL.Interfaces
 {
     public interface IAuthenticationRepository : IDisposable
     {
-        Account GetAccountByLogin(string login);
-        Account GetAccountById(int id);
-        void AddAccount(Account user);
+        AccountDTO GetAccountByLogin(string login);
+        AccountDTO GetAccountById(int id);
+        void AddAccount(AccountDTO user);
         void ChangePassword(int accountId, string newPasswordHash);
-        IEnumerable<Role> GetRoles();
+        IEnumerable<RoleDTO> GetRoles();
         string GetRoleNameById(int roleId);
-        IEnumerable<Role> GetRolesForConferenceAndAccount(int conferenceId, int accountId);
-        IEnumerable<Conference> GetConferencesForAccount(int accountId);
+        IEnumerable<RoleDTO> GetRolesForConferenceAndAccount(int conferenceId, int accountId);
+        IEnumerable<ConferenceDTO> GetConferencesForAccount(int accountId);
         void AddConferenceStaff(ConferenceStaff staff);
-        void AddRole(Role role);
+        void AddRole(RoleDTO role);
     }
 }

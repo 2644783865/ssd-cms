@@ -27,12 +27,10 @@ namespace CMS.API.DAL
         public string Topic { get; set; }
         public Nullable<int> PresentationId { get; set; }
         public Nullable<int> SpecialSessionId { get; set; }
-        public int AuthorId { get; set; }
         public string Status { get; set; }
         public Nullable<System.DateTime> AcceptanceDate { get; set; }
         public int ConferenceID { get; set; }
     
-        public virtual Author Author { get; set; }
         public virtual Conference Conference { get; set; }
         public virtual Presentation Presentation { get; set; }
         public virtual SpecialSession SpecialSession { get; set; }

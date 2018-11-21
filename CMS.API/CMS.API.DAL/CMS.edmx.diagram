@@ -4,53 +4,52 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fa9e99e21764445b8c8daf8ba8d5cd1e" Name="Diagram1">
+      <Diagram DiagramId="8afca783eb7b4d08a251e380d57b9639" Name="Diagram1">
         <EntityTypeShape EntityType="cmsModel.AccommodationInfo" Width="1.5" PointX="3" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.Account" Width="1.5" PointX="6.75" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Article" Width="1.5" PointX="3" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Article" Width="1.5" PointX="3" PointY="24.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.ArticleAuthor" Width="1.5" PointX="8.25" PointY="29.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Author" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Award" Width="1.5" PointX="13.5" PointY="27.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Building" Width="1.5" PointX="6.75" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Author" Width="1.5" PointX="6" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Award" Width="1.5" PointX="13.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Building" Width="1.5" PointX="6.75" PointY="32.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.Conference" Width="1.5" PointX="0.75" PointY="24" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.ConferenceBuilding" Width="1.5" PointX="6" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.ConferenceStaff" Width="1.5" PointX="6" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.EmergencyInfo" Width="1.5" PointX="3" PointY="34.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Event" Width="1.5" PointX="6" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.EmergencyInfo" Width="1.5" PointX="3" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Event" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.Message" Width="1.5" PointX="9" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Presentation" Width="1.5" PointX="11.25" PointY="26" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Review" Width="1.5" PointX="11.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Presentation" Width="1.5" PointX="11.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Review" Width="1.5" PointX="11.25" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.Role" Width="1.5" PointX="3.75" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Room" Width="1.5" PointX="9" PointY="33.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.Session" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Room" Width="1.5" PointX="9" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.Session" Width="1.5" PointX="6" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.SpecialSession" Width="1.5" PointX="9" PointY="24.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.Submission" Width="1.5" PointX="5.25" PointY="36.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cmsModel.Task" Width="1.5" PointX="9" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.TravelInfo" Width="1.5" PointX="3" PointY="51.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.WelcomePack" Width="1.5" PointX="3" PointY="54.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.WelcomePackGift" Width="1.5" PointX="5.25" PointY="54.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cmsModel.WelcomePackReceiver" Width="1.5" PointX="7.5" PointY="54.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.TravelInfo" Width="1.5" PointX="3" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.WelcomePack" Width="1.5" PointX="3" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.WelcomePackGift" Width="1.5" PointX="5.25" PointY="54.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cmsModel.WelcomePackReceiver" Width="1.5" PointX="7.5" PointY="54.25" IsExpanded="true" />
         <AssociationConnector Association="cmsModel.FK__Accommoda__Confe__60A75C0F" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.FK__Author__AccountI__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.FK__Conferenc__Accou__4222D4EF" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.FK__Message__Receive__47DBAE45" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.FK__Message__SenderI__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__Review__Reviewer__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__Review__Reviewer__03F0984C" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.FK__Task__EmployeeId__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.FK__Task__ManagerId__5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.fk_PresentationPresenter" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.fk_SessionChair" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.fk_SpecialSessionChair" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__Article__AuthorI__7C4F7684" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__Article__Confere__7D439ABD" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__Article__Present__245D67DE" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__Article__Special__25518C17" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__ArticleAu__Artic__00200768" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__Review__ArticleI__03F0984C" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__Submissio__Artic__1EA48E88" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__Article__Confere__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__Article__Present__236943A5" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__Article__Special__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__ArticleAu__Artic__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__Review__ArticleI__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__Submissio__Artic__1DB06A4F" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.fk_PresentationArticle" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__ArticleAu__Autho__01142BA1" ManuallyRouted="false" />
-        <AssociationConnector Association="cmsModel.FK__Award__Presentat__1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__ArticleAu__Autho__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="cmsModel.FK__Award__Presentat__1AD3FDA4" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.FK__Conferenc__Build__778AC167" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.fk_RoomBuilding" ManuallyRouted="false" />
         <AssociationConnector Association="cmsModel.FK__Conferenc__Confe__440B1D61" ManuallyRouted="false" />

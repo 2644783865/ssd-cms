@@ -1,6 +1,7 @@
-﻿using CMS.API.DAL.Interfaces;
+﻿using CMS.API.DAL.Extensions;
+using CMS.API.DAL.Interfaces;
+using CMS.BE.DTO;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -8,25 +9,14 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
-        public IEnumerable<Conference> GetConferences()
+        public IEnumerable<ConferenceDTO> GetConferences()
         {
-            var conferences = _db.Conferences.ToList();
-            foreach (var conference in conferences)
-            {
-                yield return new Conference()
-                {
-                    ConferenceId = conference.ConferenceId,
-                    BeginDate = conference.BeginDate,
-                    Description = conference.Description,
-                    EndDate = conference.EndDate,
-                    Place = conference.Place,
-                    Title = conference.Title
-                };
-            }
+            return _db.Conferences.Project().To<ConferenceDTO>();
         }
 
-        public void AddConference(Conference conference)
+        public void AddConference(ConferenceDTO conferenceDTO)
         {
+            var conference = MapperExtension.mapper.Map<ConferenceDTO, Conference>(conferenceDTO);
             _db.Conferences.Add(conference);
             _db.SaveChanges();
         }

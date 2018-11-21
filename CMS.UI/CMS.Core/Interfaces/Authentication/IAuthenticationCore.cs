@@ -1,4 +1,4 @@
-﻿using CMS.BE;
+﻿using CMS.BE.DTO;
 using CMS.BE.Models.Authentication;
 using System;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace CMS.Core.Interfaces.Authentication
         Task<bool> LoginAsync(LoginModel loginModel);
         void LoadConferencesAsync(ComboBox conferencesBox);
         void LoadRolesAsync();
-        Task<bool> AddAccountAsync(Account accountModel);
+        Task<bool> AddAccountAsync(AccountDTO accountModel);
         void LoadAllRolesAsync(ComboBox rolesBox);
         Task<bool> SetRoleForConferenceAndAccountAsync(int conferenceId, string login, int roleId);
         Task<bool> ChangePasswordAsync(ChangePasswordModel passwordModel);

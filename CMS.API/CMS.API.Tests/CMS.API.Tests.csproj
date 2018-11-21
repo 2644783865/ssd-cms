@@ -77,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CMS.UI\CMS.BE\CMS.BE.csproj">
+      <Project>{F03B04C9-1E75-4DBF-B181-D5D314AF433D}</Project>
+      <Name>CMS.BE</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CMS.API.BLL\CMS.API.BLL.csproj">
       <Project>{52671429-5CC7-4200-B923-BD74E1CA1315}</Project>
       <Name>CMS.API.BLL</Name>

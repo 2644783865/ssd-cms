@@ -1,6 +1,8 @@
 ﻿using CMS.API.BLL.Interfaces.Conference;
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
+using CMS.BE.DTO;
+using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL.Conference
 {
@@ -8,12 +10,12 @@ namespace CMS.API.BLL.BLL.Conference
     {
         private IConferenceRepository _repository = new ConferenceRepository();
 
-        public object GetConferences()
+        public IEnumerable<ConferenceDTO> GetConferences()
         {
             return _repository.GetConferences();
         }
 
-        public bool AddConference(DAL.Conference conference)
+        public bool AddConference(ConferenceDTO conference)
         {
             try
             {

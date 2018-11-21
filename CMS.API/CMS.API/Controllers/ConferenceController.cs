@@ -1,6 +1,7 @@
 ﻿using CMS.API.BLL.BLL.Conference;
 using CMS.API.BLL.Interfaces.Conference;
 using CMS.API.Helpers;
+using CMS.BE.DTO;
 using System;
 using System.Web.Http;
 
@@ -22,7 +23,7 @@ namespace CMS.API.Controllers
         // POST: api/Conference/AddConference
         [HttpPost]
         [Route("api/conference/addconference")]
-        public IHttpActionResult AddConference([FromBody] DAL.Conference conference)
+        public IHttpActionResult AddConference([FromBody] ConferenceDTO conference)
         {
             if (string.IsNullOrEmpty(conference.Title) || string.IsNullOrEmpty(conference.Place)
                 || conference.BeginDate== default(DateTime) || conference.EndDate == default(DateTime)) return BadRequest();
