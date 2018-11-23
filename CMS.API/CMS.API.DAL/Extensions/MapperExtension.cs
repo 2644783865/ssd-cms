@@ -38,6 +38,16 @@ namespace CMS.API.DAL.Extensions
                     cfg.CreateMap<Message, MessageDTO>();
                     cfg.CreateMap<MessageDTO, Message>();
 
+
+
+                    //team B
+                    cfg.CreateMap<Award, AwardDTO>();
+                    cfg.CreateMap<AwardDTO, Award>();
+                    cfg.CreateMap<Event, EventDTO>();
+                    cfg.CreateMap<EventDTO, Event>();
+                    cfg.CreateMap<Task, TaskDTO>();
+                    cfg.CreateMap<TaskDTO, Task>();
+
                 });
                 return config;
             }
