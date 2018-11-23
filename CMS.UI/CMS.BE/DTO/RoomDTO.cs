@@ -3,7 +3,8 @@
     public class RoomDTO
     {
         public int RoomId { get; set; }
-        public int code { get; set; }
+        public int Code { get; set; }
+        public int BuildingId { get; set; }
         
     }
 }

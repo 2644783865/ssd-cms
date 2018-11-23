@@ -2,10 +2,11 @@
 {
     public class MessageDTO
     {
-        public int MessageId { get; set; }
-        public int groupID { get; set; }
-        public int sequenceNumber { get; set; }
-        public string content { get; set; }
+        public int SenderId { get; set; }
+        public int ReceiverId { get; set; }
+        public int GroupID { get; set; }
+        public int SequenceNumber { get; set; }
+        public string Content { get; set; }
        
     }
 }
