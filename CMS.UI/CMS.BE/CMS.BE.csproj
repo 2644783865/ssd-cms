@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\AccountDTO.cs" />
+    <Compile Include="DTO\SpecialSessionDTO.cs" />
+    <Compile Include="DTO\SessionDTO.cs" />
+    <Compile Include="DTO\PresentationDTO.cs" />
+    <Compile Include="DTO\RoomDTO.cs" />
+    <Compile Include="DTO\BuildingDTO.cs" />
+    <Compile Include="DTO\MessageDTO.cs" />
     <Compile Include="DTO\ConferenceDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="Models\Authentication\ChangePasswordModel.cs" />

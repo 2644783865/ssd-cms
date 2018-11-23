@@ -23,6 +23,21 @@ namespace CMS.API.DAL.Extensions
                     cfg.CreateMap<RoleDTO, Role>();
                     cfg.CreateMap<Conference, ConferenceDTO>();
                     cfg.CreateMap<ConferenceDTO, Conference>();
+
+
+                    cfg.CreateMap<Presentation, PresentationDTO>();
+                    cfg.CreateMap<PresentationDTO, Presentation>();
+                    cfg.CreateMap<SpecialSession, SpecialSessionDTO>();
+                    cfg.CreateMap<SpecialSessionDTO, SpecialSession>();
+                    cfg.CreateMap<Session, SessionDTO>();
+                    cfg.CreateMap<SessionDTO, Session>();
+                    cfg.CreateMap<Room, RoomDTO>();
+                    cfg.CreateMap<RoomDTO, Room>();
+                    cfg.CreateMap<Building, BuildingDTO>();
+                    cfg.CreateMap<BuildingDTO, Building>();
+                    cfg.CreateMap<Message, MessageDTO>();
+                    cfg.CreateMap<MessageDTO, Message>();
+
                 });
                 return config;
             }
