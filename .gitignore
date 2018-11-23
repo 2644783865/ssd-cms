@@ -271,3 +271,8 @@ __pycache__/
 
 /CMS.API/CMS.API/Properties/PublishProfiles
 /CMS.UI/CMS.UI.Tests
+/CMS.API/CMS.API/Configuration/ConnectionStrings.local2
+/CMS.API/CMS.API/Configuration/ConnectionStrings.local2.config
+/CMS.API/CMS.API/Configuration/ConnectionStrings.local.config
+/CMS.API/CMS.API.Tests/Configuration/ConnectionStrings.local.config
+/CMS.API/CMS.API.Tests/Configuration/ConnectionStrings.local2.config
