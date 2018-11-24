@@ -2,7 +2,7 @@
 {
     public class AwardDTO
     {
-        public int sessionID { get; set; }
-        public System.DateTime date { get; set; }
+        public string AwardId { get; set; }
+        public string PresentationId { get; set; }
     }
 }

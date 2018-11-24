@@ -1,6 +1,6 @@
 ﻿namespace CMS.BE.DTO
 {
-    class WelcomePackReceiverDTO
+    public class WelcomePackReceiverDTO
     {
         public int WelcomePackReceiverId { get; set; }
         public int WelcomePackGiftId { get; set; }

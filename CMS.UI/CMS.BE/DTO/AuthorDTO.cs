@@ -1,6 +1,6 @@
 ﻿namespace CMS.BE.DTO
 {
-    class AuthorDTO
+    public class AuthorDTO
     {
         public int AuthorID { get; set; }
         public int AccountId { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace CMS.BE.DTO
 {
-    class SubmissionDTO
+    public class SubmissionDTO
     {
         public int SubmissionID { get; set; }
         public int ArticleId { get; set; }

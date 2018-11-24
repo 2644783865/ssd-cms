@@ -1,6 +1,6 @@
 ﻿namespace CMS.BE.DTO
 {
-    class ArticleDTO
+    public class ArticleDTO
     {
         public int ArticleId { get; set; }
         public string Topic { get; set; }

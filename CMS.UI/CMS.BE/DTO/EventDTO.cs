@@ -2,7 +2,9 @@
 {
     public class EventDTO
     {
-        public string eventID { get; set; }
+        public string EventID { get; set; }
+        public string ConferenceId { get; set; }
+        public string RoomId { get; set; }
         public string Title { get; set; }
         public string Desacription { get; set; }
         public System.DateTime BeginDate { get; set; }

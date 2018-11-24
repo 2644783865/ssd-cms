@@ -1,6 +1,6 @@
 ﻿namespace CMS.BE.DTO
 {
-    class TravelInfoDTO
+    public class TravelInfoDTO
     {
         public int TravelInfoID { get; set; }
         public int ConferenceId { get; set; }

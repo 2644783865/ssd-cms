@@ -2,10 +2,13 @@
 {
     public class TaskDTO
     {
-        public int taskID { get; set; }
+        public int TaskID { get; set; }
+        public string ConferenceId { get; set; }
+        public string EmployeeId { get; set; }
         public string Title { get; set; }
         public string Desacription { get; set; }
         public System.DateTime BeginDate { get; set; }
         public System.DateTime EndDate { get; set; }
+        public string ManagerId { get; set; }
     }
 }
