@@ -48,6 +48,26 @@ namespace CMS.API.DAL.Extensions
                     cfg.CreateMap<Task, TaskDTO>();
                     cfg.CreateMap<TaskDTO, Task>();
 
+                    //team C
+                    cfg.CreateMap<Review, ReviewDTO>();
+                    cfg.CreateMap<ReviewDTO, Review>();
+                    cfg.CreateMap<Author, AuthorDTO>();
+                    cfg.CreateMap<AuthorDTO, Author>();
+                    cfg.CreateMap<Submission, SubmissionDTO>();
+                    cfg.CreateMap<SubmissionDTO, Submission>();
+                    cfg.CreateMap<Article, ArticleDTO>();
+                    cfg.CreateMap<ArticleDTO, Article>();
+                    cfg.CreateMap<TravelInfo, TravelInfoDTO>();
+                    cfg.CreateMap<TravelInfoDTO, TravelInfo>();
+                    cfg.CreateMap<AccommodationInfo, AccommodationInfoDTO>();
+                    cfg.CreateMap<EmergencyInfo, EmergencyInfoDTO>();
+                    cfg.CreateMap<EmergencyInfoDTO, EmergencyInfo>();
+                    cfg.CreateMap<WelcomePack, WelcomePackDTO>();
+                    cfg.CreateMap<WelcomePackDTO, WelcomePack>();
+                    cfg.CreateMap<WelcomePackGift, WelcomePackGiftDTO>();
+                    cfg.CreateMap<WelcomePackGiftDTO, WelcomePackGift>();
+                    cfg.CreateMap<WelcomePackReceiver, WelcomePackReceiverDTO>();
+                    cfg.CreateMap<WelcomePackReceiverDTO, WelcomePackReceiver>();
                 });
                 return config;
             }

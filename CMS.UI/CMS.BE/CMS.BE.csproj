@@ -49,18 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\AccommodationInfoDTO.cs" />
     <Compile Include="DTO\AccountDTO.cs" />
+    <Compile Include="DTO\ArticleDTO.cs" />
+    <Compile Include="DTO\AuthorDTO.cs" />
     <Compile Include="DTO\AwardDTO.cs" />
     <Compile Include="DTO\EventDTO.cs" />
     <Compile Include="DTO\SpecialSessionDTO.cs" />
+    <Compile Include="DTO\SubmissionDTO.cs" />
     <Compile Include="DTO\SessionDTO.cs" />
     <Compile Include="DTO\PresentationDTO.cs" />
+    <Compile Include="DTO\ReviewDTO.cs" />
     <Compile Include="DTO\RoomDTO.cs" />
     <Compile Include="DTO\BuildingDTO.cs" />
     <Compile Include="DTO\MessageDTO.cs" />
     <Compile Include="DTO\ConferenceDTO.cs" />
+    <Compile Include="DTO\EmergencyInfoDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\TaskDTO.cs" />
+    <Compile Include="DTO\TravelInfoDTO.cs" />
+    <Compile Include="DTO\WelcomePackDTO.cs" />
+    <Compile Include="DTO\WelcomePackGiftDTO.cs" />
+    <Compile Include="DTO\WelcomePackReceiverDTO.cs" />
     <Compile Include="Models\Authentication\ChangePasswordModel.cs" />
     <Compile Include="Models\Authentication\LoginModel.cs" />
     <Compile Include="Models\ResponseModel.cs" />
