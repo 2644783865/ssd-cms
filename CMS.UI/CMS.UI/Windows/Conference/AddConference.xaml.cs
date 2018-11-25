@@ -1,6 +1,6 @@
 ﻿using CMS.BE.DTO;
-using CMS.Core.Core.Conference;
-using CMS.Core.Interfaces.Conference;
+using CMS.Core.Core;
+using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;

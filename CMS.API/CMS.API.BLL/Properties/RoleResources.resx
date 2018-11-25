@@ -117,67 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="addAccountPath" xml:space="preserve">
-    <value>api/authentication/addaccount</value>
+  <data name="AwardsCoordinator" xml:space="preserve">
+    <value>AWARDS COORDINATOR</value>
   </data>
-  <data name="addConferencePath" xml:space="preserve">
-    <value>api/conference/addconference</value>
+  <data name="ConferenceChair" xml:space="preserve">
+    <value>CONFERENCE CHAIR</value>
   </data>
-  <data name="addRolePath" xml:space="preserve">
-    <value>api/authentication/addrole</value>
+  <data name="ConferenceManager" xml:space="preserve">
+    <value>CONFERENCE MANAGER</value>
   </data>
-  <data name="changePasswordPath" xml:space="preserve">
-    <value>api/authentication/changepassword</value>
+  <data name="ConferenceStaffManager" xml:space="preserve">
+    <value>CONFERENCE STAFF MANAGER</value>
   </data>
-  <data name="deleteAccountPath" xml:space="preserve">
-    <value>api/authentication/deleteaccount</value>
+  <data name="ConferenceStaffMember" xml:space="preserve">
+    <value>CONFERENCE STAFF MEMBER</value>
   </data>
-  <data name="deleteConferencePath" xml:space="preserve">
-    <value>api/conference/deleteconference</value>
+  <data name="Editor" xml:space="preserve">
+    <value>EDITOR</value>
   </data>
-  <data name="deleteRoleForConferenceAndAccountPath" xml:space="preserve">
-    <value>api/authentication/deleteroleforconferenceandaccount</value>
+  <data name="HRAdministrator" xml:space="preserve">
+    <value>HR ADMINISTRATOR</value>
   </data>
-  <data name="editAccountPath" xml:space="preserve">
-    <value>api/authentication/editaccount</value>
+  <data name="InformationStaff" xml:space="preserve">
+    <value>INFORMATION STAFF</value>
   </data>
-  <data name="editConferencePath" xml:space="preserve">
-    <value>api/conference/editconference</value>
+  <data name="Presenter" xml:space="preserve">
+    <value>PRESENTER</value>
   </data>
-  <data name="getAccountByIdPath" xml:space="preserve">
-    <value>api/authentication/accountbyid</value>
+  <data name="Reviewer" xml:space="preserve">
+    <value>REVIEWER</value>
   </data>
-  <data name="getAccountByLoginPath" xml:space="preserve">
-    <value>api/authentication/accountbylogin</value>
+  <data name="SessionChair" xml:space="preserve">
+    <value>SESSION CHAIR</value>
   </data>
-  <data name="getAccountsForRolePath" xml:space="preserve">
-    <value>api/authentication/accountsforrole</value>
-  </data>
-  <data name="getConferenceByIdPath" xml:space="preserve">
-    <value>api/conference/conferencebyid</value>
-  </data>
-  <data name="getConferencesForAccountPath" xml:space="preserve">
-    <value>api/authentication/conferencesforaccount</value>
-  </data>
-  <data name="getConferencesPath" xml:space="preserve">
-    <value>api/conference/conferences</value>
-  </data>
-  <data name="getHRRolesPath" xml:space="preserve">
-    <value>api/authentication/hrroles</value>
-  </data>
-  <data name="getRoleNamePath" xml:space="preserve">
-    <value>api/authentication/rolename</value>
-  </data>
-  <data name="getRolesForConferenceAndAccountPath" xml:space="preserve">
-    <value>api/authentication/rolesforconferenceandaccount</value>
-  </data>
-  <data name="getRolesPath" xml:space="preserve">
-    <value>api/authentication/roles</value>
-  </data>
-  <data name="loginPath" xml:space="preserve">
-    <value>api/authentication/login</value>
-  </data>
-  <data name="setRoleForConferenceAndAccountPath" xml:space="preserve">
-    <value>api/authentication/setroleforconferenceandaccount</value>
+  <data name="WelcomePackStaff" xml:space="preserve">
+    <value>WELCOME PACK STAFF</value>
   </data>
 </root>

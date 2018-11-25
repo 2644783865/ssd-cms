@@ -13,19 +13,19 @@ namespace CMS.Core.Core
 
         public static void Clear()
         {
-            AccountId = -1;
+            Account = null;
             Username = string.Empty;
-            ConferenceId = -1;
+            Conference = null;
             Roles.Clear();
             Conferences.Clear();
             IsAuthor = false;
         }
 
-        public static int AccountId { get; set; }
+        public static AccountDTO Account { get; set; }
 
         public static string Username { get; set; }
 
-        public static int ConferenceId { get; set; }
+        public static ConferenceDTO Conference { get; set; }
 
         public static List<ConferenceDTO> Conferences { get; set; }
 

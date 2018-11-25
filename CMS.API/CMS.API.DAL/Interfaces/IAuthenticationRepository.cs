@@ -6,15 +6,23 @@ namespace CMS.API.DAL.Interfaces
 {
     public interface IAuthenticationRepository : IDisposable
     {
-        AccountDTO GetAccountByLogin(string login);
-        AccountDTO GetAccountById(int id);
-        void AddAccount(AccountDTO user);
         void ChangePassword(int accountId, string newPasswordHash);
+
+        AccountDTO GetAccountById(int id);
+        AccountDTO GetAccountByLogin(string login);
+        void AddAccount(AccountDTO accountDTO);
+        void EditAccount(AccountDTO accountDTO);
+        void DeleteAccount(int accountId);
+
         IEnumerable<RoleDTO> GetRoles();
-        string GetRoleNameById(int roleId);
+        string GetRoleName(int roleId);
         IEnumerable<RoleDTO> GetRolesForConferenceAndAccount(int conferenceId, int accountId);
-        IEnumerable<ConferenceDTO> GetConferencesForAccount(int accountId);
+        void AddRole(RoleDTO roleDTO);
+        IEnumerable<ConferenceStaff> GetConferenceStaff(int conferenceId, string accountLogin, int roleId);
         void AddConferenceStaff(ConferenceStaff staff);
-        void AddRole(RoleDTO role);
+        void DeleteConferenceStaff(int conferenceStaffId);
+        IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId);
+
+        IEnumerable<ConferenceDTO> GetConferencesForAccount(int accountId);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using CMS.BE.DTO;
-using CMS.Core.Core.Authentication;
+using CMS.Core.Core;
 using CMS.Core.Helpers;
-using CMS.Core.Interfaces.Authentication;
+using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;

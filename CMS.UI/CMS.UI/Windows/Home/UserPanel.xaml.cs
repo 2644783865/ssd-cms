@@ -1,10 +1,10 @@
 ﻿using CMS.Core.Core;
-using CMS.Core.Core.Authentication;
-using CMS.Core.Interfaces.Authentication;
+using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
 using MahApps.Metro.Controls;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace CMS.UI.Windows.Home
@@ -20,34 +20,37 @@ namespace CMS.UI.Windows.Home
         {
             InitializeComponent();
             core = new AuthenticationCore();
-            WindowHelper.WindowSettings(this);
-            UserLabel.Content = UserCredentials.Username;
+            WindowHelper.WindowSettings(this, UserLabel);
             InitializeData();
         }
 
-        private void InitializeData()
+        private async void InitializeData()
         {
             ProgressSpin.IsActive = true;
-            core.LoadConferencesAsync(ConferencesBox);
+            await FillConferenceBox();
             ProgressSpin.IsActive = false;
+        }
+
+        private async Task FillConferenceBox()
+        {
+            ConferencesBox.Items.Clear();
+            await core.LoadConferencesAsync();
+            foreach (var conference in UserCredentials.Conferences)
+            {
+                ConferencesBox.Items.Add($"{conference.ConferenceId} {conference.Title} {conference.BeginDate.ToShortDateString()}");
+            }
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            if (WindowHelper.CheckOtherWindows())
-            {
-                UserCredentials.Clear();
-                LogIn newLoginWindow = new LogIn();
-                newLoginWindow.Show();
-                Close();
-            }
+            WindowHelper.Logout(this);
         }
 
         private void GoToConferenceButton_Click(object sender, RoutedEventArgs e)
         {
             if (ConferencesBox.SelectedIndex >= 0)
             {
-                UserCredentials.ConferenceId = UserCredentials.Conferences.ElementAt(ConferencesBox.SelectedIndex).ConferenceId;
+                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferencesBox.SelectedIndex);
                 ConferenceHome newWindow = new ConferenceHome();
                 newWindow.Show();
                 Close();
@@ -59,15 +62,19 @@ namespace CMS.UI.Windows.Home
         {
             if (ConferencesBox.SelectedIndex >= 0)
             {
-                //UserCredentials.ConferenceId = UserCredentials.Conferences.ElementAt(ConferencesBox.SelectedIndex).ConferenceId;
-                MessageBox.Show("Not implemented");
+                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferencesBox.SelectedIndex);
+                ManagerPanel newWindow = new ManagerPanel();
+                newWindow.Show();
+                Close();
             }
             else MessageBox.Show("Choose conference");
         }
 
         private void GoToAuthorPanelButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not implemented");
+            AuthorPanel newWindow = new AuthorPanel();
+            newWindow.Show();
+            Close();
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)

@@ -61,15 +61,6 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to api/authentication/accountbylogin.
-        /// </summary>
-        internal static string accountByLoginPath {
-            get {
-                return ResourceManager.GetString("accountByLoginPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to api/authentication/addaccount.
         /// </summary>
         internal static string addAccountPath {
@@ -106,20 +97,137 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/authentication/deleteaccount.
+        /// </summary>
+        internal static string deleteAccountPath {
+            get {
+                return ResourceManager.GetString("deleteAccountPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/conference/deleteconference.
+        /// </summary>
+        internal static string deleteConferencePath {
+            get {
+                return ResourceManager.GetString("deleteConferencePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/deleteroleforconferenceandaccount.
+        /// </summary>
+        internal static string deleteRoleForConferenceAndAccountPath {
+            get {
+                return ResourceManager.GetString("deleteRoleForConferenceAndAccountPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/editaccount.
+        /// </summary>
+        internal static string editAccountPath {
+            get {
+                return ResourceManager.GetString("editAccountPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/conference/editconference.
+        /// </summary>
+        internal static string editConferencePath {
+            get {
+                return ResourceManager.GetString("editConferencePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/accountbyid.
+        /// </summary>
+        internal static string getAccountByIdPath {
+            get {
+                return ResourceManager.GetString("getAccountByIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/accountbylogin.
+        /// </summary>
+        internal static string getAccountByLoginPath {
+            get {
+                return ResourceManager.GetString("getAccountByLoginPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/accountsforrole.
+        /// </summary>
+        internal static string getAccountsForRolePath {
+            get {
+                return ResourceManager.GetString("getAccountsForRolePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/conference/conferencebyid.
+        /// </summary>
+        internal static string getConferenceByIdPath {
+            get {
+                return ResourceManager.GetString("getConferenceByIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/authentication/conferencesforaccount.
         /// </summary>
-        internal static string conferencesForAccountPath {
+        internal static string getConferencesForAccountPath {
             get {
-                return ResourceManager.GetString("conferencesForAccountPath", resourceCulture);
+                return ResourceManager.GetString("getConferencesForAccountPath", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to api/conference/conferences.
         /// </summary>
-        internal static string conferencesPath {
+        internal static string getConferencesPath {
             get {
-                return ResourceManager.GetString("conferencesPath", resourceCulture);
+                return ResourceManager.GetString("getConferencesPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/hrroles.
+        /// </summary>
+        internal static string getHRRolesPath {
+            get {
+                return ResourceManager.GetString("getHRRolesPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/rolename.
+        /// </summary>
+        internal static string getRoleNamePath {
+            get {
+                return ResourceManager.GetString("getRoleNamePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/rolesforconferenceandaccount.
+        /// </summary>
+        internal static string getRolesForConferenceAndAccountPath {
+            get {
+                return ResourceManager.GetString("getRolesForConferenceAndAccountPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/authentication/roles.
+        /// </summary>
+        internal static string getRolesPath {
+            get {
+                return ResourceManager.GetString("getRolesPath", resourceCulture);
             }
         }
         
@@ -129,33 +237,6 @@ namespace CMS.Core.Properties {
         internal static string loginPath {
             get {
                 return ResourceManager.GetString("loginPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/authentication/rolename.
-        /// </summary>
-        internal static string roleNamePath {
-            get {
-                return ResourceManager.GetString("roleNamePath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/authentication/rolesforconferenceandaccount.
-        /// </summary>
-        internal static string rolesForConferenceAndAccountPath {
-            get {
-                return ResourceManager.GetString("rolesForConferenceAndAccountPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/authentication/roles.
-        /// </summary>
-        internal static string rolesPath {
-            get {
-                return ResourceManager.GetString("rolesPath", resourceCulture);
             }
         }
         

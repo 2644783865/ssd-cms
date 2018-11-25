@@ -1,6 +1,5 @@
 ﻿using CMS.Core.Core;
-using CMS.Core.Core.Authentication;
-using CMS.Core.Interfaces.Authentication;
+using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
@@ -18,8 +17,7 @@ namespace CMS.UI.Windows.Home
         {
             InitializeComponent();
             core = new AuthenticationCore();
-            WindowHelper.WindowSettings(this);
-            UserLabel.Content = UserCredentials.Username;
+            WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
             InitializeData();
         }
 
@@ -30,18 +28,19 @@ namespace CMS.UI.Windows.Home
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            if (WindowHelper.CheckOtherWindows())
-            {
-                UserCredentials.Clear();
-                LogIn newLoginWindow = new LogIn();
-                newLoginWindow.Show();
-                Close();
-            }
+            WindowHelper.Logout(this);
         }
 
         private void GoToUserPanelButton_Click(object sender, RoutedEventArgs e)
         {
             UserPanel newWindow = new UserPanel();
+            newWindow.Show();
+            Close();
+        }
+
+        private void GoToManagerPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerPanel newWindow = new ManagerPanel();
             newWindow.Show();
             Close();
         }

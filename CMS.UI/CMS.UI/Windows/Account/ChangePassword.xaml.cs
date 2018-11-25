@@ -1,13 +1,11 @@
 ﻿using CMS.BE.Models.Authentication;
 using CMS.Core.Core;
-using CMS.Core.Core.Authentication;
-using CMS.Core.Interfaces.Authentication;
+using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Home;
 using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace CMS.UI.Windows.Account
 {

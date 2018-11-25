@@ -59,6 +59,35 @@ namespace CMS.Core.Helpers
             return await GetResponseModel(response);
         }
 
+        public async Task<ResponseModel> Put(string path, object contentObject)
+        {
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(contentObject), Encoding.UTF8, "application/json");
+            HttpResponseMessage response;
+            try
+            {
+                response = await client.PutAsync(path, content);
+            }
+            catch
+            {
+                return null;
+            }
+            return await GetResponseModel(response);
+        }
+
+        public async Task<ResponseModel> Delete(string path)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                response = await client.DeleteAsync(path);
+            }
+            catch
+            {
+                return null;
+            }
+            return await GetResponseModel(response);
+        }
+
         public void Dispose()
         {
             client.Dispose();

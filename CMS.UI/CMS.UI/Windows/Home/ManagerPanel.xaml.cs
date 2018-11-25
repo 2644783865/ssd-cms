@@ -3,25 +3,33 @@ using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
 using MahApps.Metro.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Home
 {
     /// <summary>
-    /// Interaction logic for AdministratorPanel.xaml
+    /// Interaction logic for ManagerPanel.xaml
     /// </summary>
-    public partial class AdministratorPanel : MetroWindow
+    public partial class ManagerPanel : MetroWindow
     {
         private IAuthenticationCore authCore;
-        private IConferenceCore confCore;
-
-        public AdministratorPanel()
+        public ManagerPanel()
         {
-            authCore = new AuthenticationCore();
-            confCore = new ConferenceCore();
             InitializeComponent();
-            UserCredentials.Username = "Admin";
+            authCore = new AuthenticationCore();
+            WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
             InitializeData();
         }
 
@@ -29,7 +37,6 @@ namespace CMS.UI.Windows.Home
         {
             ProgressSpin.IsActive = true;
             await FillRoleBox();
-            await FillConferenceBox();
             ProgressSpin.IsActive = false;
         }
 
@@ -38,28 +45,50 @@ namespace CMS.UI.Windows.Home
             RoleBox.Items.Clear();
             RoleBox.DisplayMemberPath = "Name";
             RoleBox.SelectedValuePath = "RoleId";
-            var roles = await authCore.GetAllRolesAsync();
+            var roles = await authCore.GetHRRolesAsync();
             foreach (var role in roles)
             {
                 RoleBox.Items.Add(role);
             }
         }
 
-        private async Task FillConferenceBox()
+        private async Task FillAccountRoleBox()
         {
-            ConferencesBox.DisplayMemberPath = "Title";
-            ConferencesBox.SelectedValuePath = "ConferenceId";
-            ConferencesBox.Items.Clear();
-            var conferences = await confCore.GetConferencesAsync();
-            foreach (var conference in conferences)
+            if (LoginBox.Text.Length > 0)
             {
-                ConferencesBox.Items.Add(conference);
+                if (await CheckAccountExistsAsync())
+                {
+                    AccountRoleBox.Items.Clear();
+                    AccountRoleBox.DisplayMemberPath = "Name";
+                    AccountRoleBox.SelectedValuePath = "RoleId";
+                    var roles = await authCore.GetRolesForOtherAccountAsync(LoginBox.Text);
+                    foreach (var role in roles)
+                    {
+                        AccountRoleBox.Items.Add(role);
+                    }
+                }
+                else MessageBox.Show("Account doesn't exists");
             }
+            else MessageBox.Show("Login is empty");
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             WindowHelper.Logout(this);
+        }
+
+        private void GoToUserPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserPanel newWindow = new UserPanel();
+            newWindow.Show();
+            Close();
+        }
+
+        private void GoToConferenceHomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConferenceHome newWindow = new ConferenceHome();
+            newWindow.Show();
+            Close();
         }
 
         private void AddAccountButton_Click(object sender, RoutedEventArgs e)
@@ -71,11 +100,11 @@ namespace CMS.UI.Windows.Home
         private async void AssignRole_Click(object sender, RoutedEventArgs e)
         {
             ProgressSpin.IsActive = true;
-            if (RoleBox.SelectedIndex >= 0 && ConferencesBox.SelectedIndex >= 0 && LoginBox.Text.Length > 0)
+            if (RoleBox.SelectedIndex >= 0 && LoginBox.Text.Length > 0)
             {
                 if (await CheckAccountExistsAsync())
                 {
-                    if (await authCore.SetRoleForConferenceAndAccountAsync(int.Parse(ConferencesBox.SelectedValue.ToString()), LoginBox.Text,
+                    if (await authCore.SetRoleForConferenceAndAccountAsync(UserCredentials.Conference.ConferenceId, LoginBox.Text,
                         int.Parse(RoleBox.SelectedValue.ToString())))
                         MessageBox.Show("Success");
                     else MessageBox.Show("Failure");
@@ -89,13 +118,16 @@ namespace CMS.UI.Windows.Home
         private async void RemoveRole_Click(object sender, RoutedEventArgs e)
         {
             ProgressSpin.IsActive = true;
-            if (RoleBox.SelectedIndex >= 0 && ConferencesBox.SelectedIndex >= 0 && LoginBox.Text.Length > 0)
+            if (AccountRoleBox.SelectedIndex >= 0 && LoginBox.Text.Length > 0)
             {
                 if (await CheckAccountExistsAsync())
                 {
-                    if (await authCore.DeleteRoleForConferenceAndAccountAsync(int.Parse(ConferencesBox.SelectedValue.ToString()), LoginBox.Text,
-                        int.Parse(RoleBox.SelectedValue.ToString())))
+                    if (await authCore.DeleteRoleForConferenceAndAccountAsync(UserCredentials.Conference.ConferenceId, LoginBox.Text,
+                        int.Parse(AccountRoleBox.SelectedValue.ToString())))
+                    {
+                        await FillAccountRoleBox();
                         MessageBox.Show("Success");
+                    }
                     else MessageBox.Show("Failure");
                 }
                 else MessageBox.Show("Account doesn't exists");
@@ -109,12 +141,6 @@ namespace CMS.UI.Windows.Home
             MessageBox.Show("Not implemented");
         }
 
-        private void AddConference_Click(object sender, RoutedEventArgs e)
-        {
-            Conference.AddConference newAddConferenceWindow = new Conference.AddConference();
-            newAddConferenceWindow.ShowDialog();
-        }
-
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             InitializeData();
@@ -125,34 +151,10 @@ namespace CMS.UI.Windows.Home
             return await authCore.GetAccountIdByLoginAsync(LoginBox.Text) >= 0;
         }
 
-        private void EditConference_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Not implemented");
-        }
-
-        private async void RemoveConference_Click(object sender, RoutedEventArgs e)
+        private async void LoadRoles_Click(object sender, RoutedEventArgs e)
         {
             ProgressSpin.IsActive = true;
-            if (ConferencesBox.SelectedIndex >= 0)
-            {
-                if (await confCore.DeleteConferenceAsync(int.Parse(ConferencesBox.SelectedValue.ToString()))) MessageBox.Show("Success");
-                else MessageBox.Show("Failure");
-            }
-            else MessageBox.Show("Select conference");
-            ProgressSpin.IsActive = false;
-            InitializeData();
-        }
-
-        private async void RemoveAccount_Click(object sender, RoutedEventArgs e)
-        {
-            ProgressSpin.IsActive = true;
-            var accountId = await authCore.GetAccountIdByLoginAsync(LoginBox.Text);
-            if (accountId > 0)
-            {
-                if (await authCore.DeleteAccountAsync(accountId)) MessageBox.Show("Success");
-                else MessageBox.Show("Failure");
-            }
-            else MessageBox.Show("Account doesn't exit!");
+            await FillAccountRoleBox();
             ProgressSpin.IsActive = false;
         }
     }

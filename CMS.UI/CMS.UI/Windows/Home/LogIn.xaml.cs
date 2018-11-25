@@ -1,7 +1,6 @@
 ﻿using CMS.BE.Models.Authentication;
 using CMS.Core.Core;
-using CMS.Core.Core.Authentication;
-using CMS.Core.Interfaces.Authentication;
+using CMS.Core.Interfaces;
 using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;

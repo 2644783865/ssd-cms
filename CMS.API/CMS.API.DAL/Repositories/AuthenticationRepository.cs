@@ -17,6 +17,20 @@ namespace CMS.API.DAL.Repositories
             else return MapperExtension.mapper.Map<Account, AccountDTO>(account);
         }
 
+        public void EditAccount(AccountDTO accountDTO)
+        {
+            var account = MapperExtension.mapper.Map<AccountDTO, Account>(accountDTO);
+            _db.Entry(account).CurrentValues.SetValues(account);
+            _db.SaveChanges();
+        }
+
+        public void DeleteAccount(int accountId)
+        {
+            var account = _db.Accounts.Find(accountId);
+            _db.Accounts.Remove(account);
+            _db.SaveChanges();
+        }
+
         public AccountDTO GetAccountById(int id)
         {
             var account = _db.Accounts.Find(id);
@@ -39,11 +53,19 @@ namespace CMS.API.DAL.Repositories
 
         public IEnumerable<RoleDTO> GetRoles()
         {
-            var test = _db.Roles.Project().To<RoleDTO>();
-            return test.ToList();
+            var roles = _db.Roles.Project().To<RoleDTO>();
+            return roles.ToList();
         }
 
-        public string GetRoleNameById(int roleId)
+        public IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId)
+        {
+            var selectedAccounts = _db.Accounts.Where(account => 
+            account.ConferenceStaffs.Where(cs => cs.Role.Name.Equals(roleName) && cs.ConferenceId==conferenceId).Count() != 0);
+            var result = selectedAccounts.Project().To<AccountDTO>();
+            return result.ToList();
+        }
+
+        public string GetRoleName(int roleId)
         {
             return _db.Roles.Find(roleId).Name;
         }
@@ -59,9 +81,21 @@ namespace CMS.API.DAL.Repositories
             return _db.ConferenceStaffs.Where(staff => staff.AccountId == accountId).Select(staff => staff.Conference).Distinct().Project().To<ConferenceDTO>();
         }
 
+        public IEnumerable<ConferenceStaff> GetConferenceStaff(int conferenceId, string accountLogin, int roleId)
+        {
+            return _db.ConferenceStaffs.Where(staff => staff.ConferenceId==conferenceId && staff.Account.Login.Equals(accountLogin) && staff.RoleId==roleId).ToList();
+        }
+
         public void AddConferenceStaff(ConferenceStaff staff)
         {
             _db.ConferenceStaffs.Add(staff);
+            _db.SaveChanges();
+        }
+
+        public void DeleteConferenceStaff(int conferenceStaffId)
+        {
+            var conferenceStaff = _db.ConferenceStaffs.Find(conferenceStaffId);
+            _db.ConferenceStaffs.Remove(conferenceStaff);
             _db.SaveChanges();
         }
 

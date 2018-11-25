@@ -51,13 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\Authentication\AuthenticationBLL.cs" />
-    <Compile Include="BLL\Conference\ConferenceBLL.cs" />
+    <Compile Include="BLL\AuthenticationBLL.cs" />
+    <Compile Include="BLL\ConferenceBLL.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
-    <Compile Include="Interfaces\Authentication\IAuthenticationBLL.cs" />
-    <Compile Include="Interfaces\Conference\IConferenceBLL.cs" />
+    <Compile Include="Helpers\RoleHelper.cs" />
+    <Compile Include="Interfaces\IAuthenticationBLL.cs" />
+    <Compile Include="Interfaces\IConferenceBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\RoleResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoleResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CMS.UI\CMS.BE\CMS.BE.csproj">
@@ -72,6 +78,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\RoleResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RoleResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

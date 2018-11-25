@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CMS.API.BLL.BLL.Authentication;
+using CMS.API.BLL.BLL;
 using System.Linq;
-using CMS.API.BLL.Interfaces.Authentication;
+using CMS.API.BLL.Interfaces;
 using CMS.BE.Models.Authentication;
 
 namespace CMS.API.Tests
@@ -26,14 +26,14 @@ namespace CMS.API.Tests
                 Password = "testpass"
             };
             var result = bll.Login(loginModel);
-            Assert.AreEqual(1, result);
+            Assert.AreNotEqual(null, result);
             loginModel = new LoginModel()
             {
                 Login = "testlogin",
                 Password = "wrong password"
             };
             result = bll.Login(loginModel);
-            Assert.AreEqual(-1, result);
+            Assert.AreEqual(null, result);
         }
 
         [TestMethod]

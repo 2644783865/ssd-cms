@@ -1,7 +1,7 @@
-﻿using CMS.API.BLL.BLL.Authentication;
+﻿using CMS.API.BLL.BLL;
 using System.Web.Http;
 using CMS.API.Helpers;
-using CMS.API.BLL.Interfaces.Authentication;
+using CMS.API.BLL.Interfaces;
 using CMS.BE.Models.Authentication;
 using CMS.BE.DTO;
 
@@ -20,7 +20,7 @@ namespace CMS.API.Controllers
             if (string.IsNullOrEmpty(loginModel.Login) || string.IsNullOrEmpty(loginModel.Password))
                 return BadRequest();
             var result = _bll.Login(loginModel);
-            if(result > 0) return Ok(result);
+            if(result != null) return Ok(result);
             return Unauthorized();
         }
 
@@ -35,18 +35,6 @@ namespace CMS.API.Controllers
             return Unauthorized();
         }
 
-        // POST: api/Authentication/AddAccount
-        [HttpPost]
-        [Route("api/authentication/addaccount")]
-        public IHttpActionResult AddAccount([FromBody] AccountDTO account)
-        {
-            if (string.IsNullOrEmpty(account.Name) || string.IsNullOrEmpty(account.PhoneNumber)
-                || string.IsNullOrEmpty(account.Email) || string.IsNullOrEmpty(account.Login)) return BadRequest();
-
-            if(_bll.AddAccount(account)) return Ok();
-            return InternalServerError();  
-        }
-
         // POST: api/Authentication/ChangePassword
         [HttpPost]
         [Route("api/authentication/changepassword")]
@@ -59,12 +47,74 @@ namespace CMS.API.Controllers
             return Unauthorized();
         }
 
+        // GET: api/Authentication/AccountById?accountId=
+        [HttpGet]
+        [Route("api/authentication/accountbyid")]
+        public IHttpActionResult GetAccountById(int accountId)
+        {
+            var account = _bll.GetAccountById(accountId);
+            if (account == null) return BadRequest();
+            return Ok(account);
+        }
+
+        // GET: api/Authentication/AccountByLogin?login=
+        [HttpGet]
+        [Route("api/authentication/accountbylogin")]
+        public IHttpActionResult GetAccountByLogin(string login)
+        {
+            var account = _bll.GetAccountByLogin(login);
+            if (account == null) return BadRequest();
+            return Ok(account);
+        }
+        
+        // POST: api/Authentication/AddAccount
+        [HttpPost]
+        [Route("api/authentication/addaccount")]
+        public IHttpActionResult AddAccount([FromBody] AccountDTO account)
+        {
+            if (string.IsNullOrEmpty(account.Name) || string.IsNullOrEmpty(account.PhoneNumber)
+                || string.IsNullOrEmpty(account.Email) || string.IsNullOrEmpty(account.Login)) return BadRequest();
+
+            if(_bll.AddAccount(account)) return Ok();
+            return InternalServerError();  
+        }
+
+        // PUT: api/Authentication/EditAccount
+        [HttpPut]
+        [Route("api/authentication/editaccount")]
+        public IHttpActionResult EditAccount([FromBody] AccountDTO account)
+        {
+            if (string.IsNullOrEmpty(account.Name) || string.IsNullOrEmpty(account.PhoneNumber)
+                || string.IsNullOrEmpty(account.Email) || string.IsNullOrEmpty(account.Login)) return BadRequest();
+
+            if (_bll.EditAccount(account)) return Ok();
+            return InternalServerError();
+        }
+
+        // DELETE: api/Authentication/DeleteAccount?accountId=
+        [HttpDelete]
+        [Route("api/authentication/deleteaccount")]
+        public IHttpActionResult DeleteAccount(int accountId)
+        {
+            if (_bll.DeleteAccount(accountId)) return Ok();
+            return InternalServerError();
+        }
+
+
         // GET: api/Authentication/Roles
         [HttpGet]
         [Route("api/authentication/roles")]
         public IHttpActionResult GetRoles()
         {
             return Ok(_bll.GetRoles());
+        }
+
+        // GET: api/Authentication/HRRoles
+        [HttpGet]
+        [Route("api/authentication/hrroles")]
+        public IHttpActionResult GetHRRoles()
+        {
+            return Ok(_bll.GetHRRoles());
         }
 
         // GET: api/Authentication/Rolename?roleId=
@@ -87,14 +137,13 @@ namespace CMS.API.Controllers
             return Ok(roles);
         }
 
-        // GET: api/Authentication/Conferencesforaccount?accountId=
-        [HttpGet]
-        [Route("api/authentication/conferencesforaccount")]
-        public IHttpActionResult GetConferencesForAccount(int accountId)
+        // POST: api/Authentication/addrole?name=
+        [HttpPost]
+        [Route("api/authentication/addrole")]
+        public IHttpActionResult AddRole(string name)
         {
-            var conferences = _bll.GetConferencesForAccount(accountId);
-            if (conferences == null) return BadRequest();
-            return Ok(conferences);
+            if (_bll.AddRole(name)) return Ok();
+            return BadRequest();
         }
 
         // POST: api/Authentication/SetRoleForConferenceAndAccount?conferenceId=&login=&roleId=
@@ -106,23 +155,34 @@ namespace CMS.API.Controllers
             return BadRequest();
         }
 
-        // POST: api/Authentication/addrole?name=
-        [HttpPost]
-        [Route("api/authentication/addrole")]
-        public IHttpActionResult AddRole(string name)
+        // DELETE: api/Authentication/DeleteAccount?conferenceId=&login=&roleId=
+        [HttpDelete]
+        [Route("api/authentication/deleteroleforconferenceandaccount")]
+        public IHttpActionResult DeleteRoleForConferenceAccount(int conferenceId, string login, int roleId)
         {
-            if (_bll.AddRole(name)) return Ok();
-            return BadRequest();
+            if (_bll.DeleteAssignmentRoleForConferenceAndAccount(conferenceId, login, roleId)) return Ok();
+            return InternalServerError();
         }
 
-        // GET: api/Authentication/AccountByLogin?login=
+        // GET: api/Authentication/AccountsForRole?roleName=&conferenceId=
         [HttpGet]
-        [Route("api/authentication/accountbylogin")]
-        public IHttpActionResult GetAccountByLogin(string login)
+        [Route("api/authentication/accountsforrole")]
+        public IHttpActionResult GetAccountByLogin(string roleName, int conferenceId)
         {
-            var account = _bll.GetAccountByLogin(login);
-            if (account == null) return BadRequest();
-            return Ok(account);
+            var accounts = _bll.GetAccountsForRole(roleName, conferenceId);
+            if (accounts == null) return BadRequest();
+            return Ok(accounts);
+        }
+
+
+        // GET: api/Authentication/ConferencesForAccount?accountId=
+        [HttpGet]
+        [Route("api/authentication/conferencesforaccount")]
+        public IHttpActionResult GetConferencesForAccount(int accountId)
+        {
+            var conferences = _bll.GetConferencesForAccount(accountId);
+            if (conferences == null) return BadRequest();
+            return Ok(conferences);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using CMS.Core.Core;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
+using System.Collections.Generic;
 
 namespace CMS.Core.Helpers
 {

@@ -9,7 +9,7 @@
         Title="User Panel" Height="450" Width="800">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
-            <Label Name="UserLabel" Content="unknown user"/>
+            <Label Name="UserLabel" Content="User: unknown user"/>
             <Button Content="logout" Click="LogOut_Click"/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>

@@ -15,20 +15,23 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
     <Grid>
-        <Button Name="AddAccount" Content="Add Account" HorizontalAlignment="Left" Margin="25,19,0,0" VerticalAlignment="Top" Width="120" Click="AddAccountButton_Click"/>
-        <Button Name="EditAccount" Content="Edit Account" HorizontalAlignment="Left" Margin="237,112,0,0" VerticalAlignment="Top" Width="120" Click="EditAccount_Click" />
-        <Button Name="AssignRole" Content="Assign Role" HorizontalAlignment="Left" Margin="362,112,0,0" VerticalAlignment="Top" Width="120" Click="AssignRole_Click" />
-        <Button Name="RemoveRole" Content="Remove Role" HorizontalAlignment="Left" Margin="487,112,0,0" VerticalAlignment="Top" Width="120" Background="Red" Click="RemoveRole_Click"/>
-        <TextBox Name="LoginBox" HorizontalAlignment="Left" Height="23" Margin="77,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
-        <ComboBox Name="RoleBox" HorizontalAlignment="Left" Margin="77,66,0,0" VerticalAlignment="Top" Width="280"/>
-        <ComboBox Name="ConferencesBox" HorizontalAlignment="Left" Margin="440,66,0,0" VerticalAlignment="Top" Width="280"/>
-        <Label Content="Role:" HorizontalAlignment="Left" Margin="30,66,0,0" VerticalAlignment="Top"/>
-        <Label Content="Login:" HorizontalAlignment="Left" Margin="30,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.286,0.5"/>
-        <Label Content="Conference:" HorizontalAlignment="Left" Margin="362,66,0,0" VerticalAlignment="Top"/>
-        <Button Name="AddConference" Content="Add Conference" HorizontalAlignment="Left" Margin="25,186,0,0" VerticalAlignment="Top" Width="120" Click="AddConference_Click"/>
+        <Button Name="AddAccount" Content="Add Account" HorizontalAlignment="Left" Margin="18,154,0,0" VerticalAlignment="Top" Width="120" Click="AddAccountButton_Click"/>
+        <Button Name="EditAccount" Content="Edit Account" HorizontalAlignment="Left" Margin="18,186,0,0" VerticalAlignment="Top" Width="120" Click="EditAccount_Click" />
+        <Button Name="AssignRole" Content="Assign Role" HorizontalAlignment="Left" Margin="376,154,0,0" VerticalAlignment="Top" Width="120" Click="AssignRole_Click" />
+        <Button Name="RemoveRole" Content="Remove Role" HorizontalAlignment="Left" Margin="376,186,0,0" VerticalAlignment="Top" Width="120" Background="Red" Click="RemoveRole_Click"/>
+        <TextBox Name="LoginBox" HorizontalAlignment="Left" Height="23" Margin="143,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <ComboBox Name="RoleBox" HorizontalAlignment="Left" Margin="139,92,0,0" VerticalAlignment="Top" Width="280"/>
+        <ComboBox Name="ConferencesBox" HorizontalAlignment="Left" Margin="435,92,0,0" VerticalAlignment="Top" Width="280"/>
+        <Button Name="AddConference" Content="Add Conference" HorizontalAlignment="Left" Margin="739,90,0,0" VerticalAlignment="Top" Width="120" Click="AddConference_Click"/>
+        <Button Name="EditConference" Content="Edit Conference" HorizontalAlignment="Left" Margin="739,122,0,0" VerticalAlignment="Top" Width="120" Click="EditConference_Click"/>
+        <Button Name="RemoveConference" Content="Remove Conference" HorizontalAlignment="Left" Margin="739,154,0,0" VerticalAlignment="Top" Width="120" Background="Red" Click="RemoveConference_Click"/>
+        <Button Name="RemoveAccount" Content="Remove Account" HorizontalAlignment="Left" Margin="18,218,0,0" VerticalAlignment="Top" Width="120" Background="Red" Click="RemoveAccount_Click"/>
         <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="38" Height="36" Click="Refresh_Click">
             <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Button>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="787,10,72,371" Height="40" Width="35"/>
+        <Label Content="Role (name):" HorizontalAlignment="Left" Margin="143,61,0,0" VerticalAlignment="Top" Width="276"/>
+        <Label Content="Conference (title):" HorizontalAlignment="Left" Margin="440,61,0,0" VerticalAlignment="Top" Width="276"/>
+        <Label Content="Account (login):" HorizontalAlignment="Left" Margin="143,123,0,0" VerticalAlignment="Top" Width="141"/>
     </Grid>
 </Controls:MetroWindow>

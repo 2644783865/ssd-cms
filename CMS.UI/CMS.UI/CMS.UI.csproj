@@ -81,11 +81,17 @@
     <Compile Include="Windows\Home\AdministratorPanel.xaml.cs">
       <DependentUpon>AdministratorPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Home\AuthorPanel.xaml.cs">
+      <DependentUpon>AuthorPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Home\ConferenceHome.xaml.cs">
       <DependentUpon>ConferenceHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Home\LogIn.xaml.cs">
       <DependentUpon>LogIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Home\ManagerPanel.xaml.cs">
+      <DependentUpon>ManagerPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Home\UserPanel.xaml.cs">
       <DependentUpon>UserPanel.xaml</DependentUpon>
@@ -110,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Home\AuthorPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Home\ConferenceHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +127,10 @@
     <Page Include="Windows\Home\LogIn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Home\ManagerPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Home\UserPanel.xaml">
       <Generator>MSBuild:Compile</Generator>

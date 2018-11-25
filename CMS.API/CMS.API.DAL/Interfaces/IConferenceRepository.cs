@@ -7,6 +7,9 @@ namespace CMS.API.DAL.Interfaces
     public interface IConferenceRepository : IDisposable
     {
         IEnumerable<ConferenceDTO> GetConferences();
-        void AddConference(ConferenceDTO conference);
+        ConferenceDTO GetConferenceById(int id);
+        void AddConference(ConferenceDTO conferenceDTO);
+        void EditConference(ConferenceDTO conferenceDTO);
+        void DeleteConference(int conferenceId);
     }
 }
