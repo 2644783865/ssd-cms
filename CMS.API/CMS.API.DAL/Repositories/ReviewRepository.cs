@@ -9,6 +9,18 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
+        public IEnumerable<ReviewDTO> GetReviewInfo()
+        {
+            return _db.Reviews.Project().To<ReviewDTO>();
+        }
+
+        public ReviewDTO GetReviewById(int reviewId)
+        {
+            var review = _db.Reviews.Find(reviewId);
+            if (review == null) return null;
+            else return MapperExtension.mapper.Map<Review, ReviewDTO>(review);
+        }
+
         public void AddReview(ReviewDTO reviewDTO)
         {
             var review = MapperExtension.mapper.Map<ReviewDTO, Review>(reviewDTO);

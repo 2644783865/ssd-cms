@@ -9,6 +9,18 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
+        public IEnumerable<AuthorDTO> GetAuthors()
+        {
+            return _db.Authors.Project().To<AuthorDTO>();
+        }
+
+        public AuthorDTO GetAuthorById(int authorId)
+        {
+            var author = _db.Authors.Find(authorId);
+            if (author == null) return null;
+            else return MapperExtension.mapper.Map<Author, AuthorDTO>(author);
+        }
+
         public void AddAuthor(AuthorDTO authorDTO)
         {
             var author = MapperExtension.mapper.Map<AuthorDTO, Author>(authorDTO);

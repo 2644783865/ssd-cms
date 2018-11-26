@@ -9,6 +9,18 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
+        public IEnumerable<TravelInfoDTO> GetTravelInfo()
+        {
+            return _db.TravelInfoes.Project().To<TravelInfoDTO>();
+        }
+
+        public TravelInfoDTO GetTravelInfoById(int travelId)
+        {
+            var travel = _db.TravelInfoes.Find(travelId);
+            if (travel == null) return null;
+            else return MapperExtension.mapper.Map<TravelInfo, TravelInfoDTO>(travel);
+        }
+
         public void AddTravel(TravelInfoDTO travelDTO)
         {
             var travel = MapperExtension.mapper.Map<TravelInfoDTO, TravelInfo>(travelDTO);

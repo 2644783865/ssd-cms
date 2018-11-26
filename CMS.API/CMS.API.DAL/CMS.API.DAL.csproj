@@ -107,6 +107,9 @@
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Extensions\MapperExtension.cs" />
+    <Compile Include="Interfaces\IAccommodationRepository.cs" />
+    <Compile Include="Interfaces\IArticleRepository.cs" />
+    <Compile Include="Interfaces\IEmergencyRepository.cs" />
     <Compile Include="Interfaces\IPresentationRepository.cs" />
     <Compile Include="Interfaces\ISessionRepository.cs" />
     <Compile Include="Interfaces\IRoomRepository.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="Interfaces\IAuthorRepository.cs" />
     <Compile Include="Interfaces\IConferenceRepository.cs" />
     <Compile Include="Interfaces\IReviewRepository.cs" />
+    <Compile Include="Interfaces\IWelcomePackRepository.cs" />
     <Compile Include="Message.cs">
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>
@@ -124,6 +128,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\QueryableExtension.cs" />
+    <Compile Include="Repositories\AccommodationRepository.cs" />
+    <Compile Include="Repositories\ArticleRepository.cs" />
+    <Compile Include="Repositories\EmergencyRepository.cs" />
     <Compile Include="Repositories\PresentationRepository.cs" />
     <Compile Include="Repositories\SessionRepository.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />
@@ -133,6 +140,7 @@
     <Compile Include="Repositories\AuthorRepository.cs" />
     <Compile Include="Repositories\ConferenceRepository.cs" />
     <Compile Include="Repositories\ReviewRepository.cs" />
+    <Compile Include="Repositories\WelcomePackRepository.cs" />
     <Compile Include="Review.cs">
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>
