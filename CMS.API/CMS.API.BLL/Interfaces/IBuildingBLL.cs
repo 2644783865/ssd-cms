@@ -4,8 +4,8 @@ namespace CMS.API.BLL.Interfaces
 {
     interface IBuildingBLL
     {
-        bool AddBuilding(BuildingDTO building);
+        bool AddBuilding(BuildingDTO buildingId);
         bool EditBuilding(BuildingDTO building);
-        bool DeleteBuilding(int buildingId);
+        bool DeleteBuilding(int building);
     }
 }

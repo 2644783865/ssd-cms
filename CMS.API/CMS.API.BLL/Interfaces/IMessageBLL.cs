@@ -4,8 +4,8 @@ namespace CMS.API.BLL.Interfaces
 {
     interface IMessageBLL
     {
-        bool AddMessage(MessageDTO message);
+        bool AddMessage(MessageDTO messageId);
         bool EditMessage(MessageDTO message);
-        bool DeleteMessage(int messageId);
+        bool DeleteMessage(int message);
     }
 }

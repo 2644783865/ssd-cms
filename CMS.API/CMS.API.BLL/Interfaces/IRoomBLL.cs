@@ -4,8 +4,8 @@ namespace CMS.API.BLL.Interfaces
 {
     interface IRoomBLL
     {
-        bool AddRoom(RoomDTO room);
+        bool AddRoom(RoomDTO roomId);
         bool EditRoom(RoomDTO room);
-        bool DeleteRoom(int roomId);
+        bool DeleteRoom(int room);
     }
 }

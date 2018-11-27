@@ -4,8 +4,8 @@ namespace CMS.API.BLL.Interfaces
 {
     interface ISessionBLL
     {
-        bool AddSession(SessionDTO session);
+        bool AddSession(SessionDTO sessionId);
         bool EditSession(SessionDTO session);
-        bool DeleteSession(int sessionId);
+        bool DeleteSession(int session);
     }
 }
