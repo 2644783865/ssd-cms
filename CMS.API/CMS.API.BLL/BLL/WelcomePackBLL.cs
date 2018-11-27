@@ -10,6 +10,8 @@ namespace CMS.API.BLL.BLL
     {
         private IWelcomePackRepository _repository = new WelcomePackRepository();
 
+        //Welcome Pack
+
         public IEnumerable<WelcomePackDTO> GetWelcomePackInfo()
         {
             try
@@ -67,6 +69,140 @@ namespace CMS.API.BLL.BLL
             try
             {
                 _repository.DeleteWelcomePack(welcomepackId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public IEnumerable<WelcomePackReceiverDTO> GetWelcomePackReceiverInfo()
+        {
+            try
+            {
+                return _repository.GetWelcomePackReceiverInfo();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        //Welcome Pack Receiver
+
+        public WelcomePackReceiverDTO GetWelcomePackReceiverById(int id)
+        {
+            try
+            {
+                var welcomepackreceiver = _repository.GetWelcomePackReceiverById(id);
+                if (welcomepackreceiver == null) return null;
+                return welcomepackreceiver;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public bool AddWelcomePackReceiver(WelcomePackReceiverDTO welcomepackreceiver)
+        {
+            try
+            {
+                _repository.AddWelcomePackReceiver(welcomepackreceiver);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool EditWelcomePackReceiver(WelcomePackReceiverDTO welcomepackreceiver)
+        {
+            try
+            {
+                _repository.EditWelcomePackReceiver(welcomepackreceiver);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteWelcomePackReceiver(int welcomepackreceiverId)
+        {
+            try
+            {
+                _repository.DeleteWelcomePackReceiver(welcomepackreceiverId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //Welcome Pack Gift
+
+        public IEnumerable<WelcomePackGiftDTO> GetWelcomePackGiftInfo()
+        {
+            try
+            {
+                return _repository.GetWelcomePackGiftInfo();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public WelcomePackGiftDTO GetWelcomePackGiftById(int id)
+        {
+            try
+            {
+                var welcomepackgift = _repository.GetWelcomePackGiftById(id);
+                if (welcomepackgift == null) return null;
+                return welcomepackgift;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public bool AddWelcomePackGift(WelcomePackGiftDTO welcomepackgift)
+        {
+            try
+            {
+                _repository.AddWelcomePackGift(welcomepackgift);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool EditWelcomePackGift(WelcomePackGiftDTO welcomepackgift)
+        {
+            try
+            {
+                _repository.EditWelcomePackGift(welcomepackgift);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteWelcomePackGift(int welcomepackgiftId)
+        {
+            try
+            {
+                _repository.DeleteWelcomePackGift(welcomepackgiftId);
             }
             catch
             {

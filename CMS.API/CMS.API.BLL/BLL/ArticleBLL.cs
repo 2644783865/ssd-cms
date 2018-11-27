@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {
+    //Article
     public class ArticleBLL : IArticleBLL
     {
         private IArticleRepository _repository = new ArticleRepository();
@@ -67,6 +68,73 @@ namespace CMS.API.BLL.BLL
             try
             {
                 _repository.DeleteArticle(articleId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        //Submission
+
+        public IEnumerable<SubmissionDTO> GetSubmissions()
+        {
+            try
+            {
+                return _repository.GetSubmissions();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public SubmissionDTO GetSubmissionById(int id)
+        {
+            try
+            {
+                var submission = _repository.GetSubmissionById(id);
+                if (submission == null) return null;
+                return submission;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public bool AddSubmission(SubmissionDTO submission)
+        {
+            try
+            {
+                _repository.AddSubmission(submission);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool EditSubmission(SubmissionDTO submission)
+        {
+            try
+            {
+                _repository.EditSubmission(submission);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteSubmission(int submissionId)
+        {
+            try
+            {
+                _repository.DeleteSubmission(submissionId);
             }
             catch
             {
