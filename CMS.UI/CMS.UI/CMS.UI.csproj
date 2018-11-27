@@ -69,14 +69,17 @@
     <Compile Include="Helpers\BrushSettings.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\WindowHelper.cs" />
-    <Compile Include="Windows\Account\AddAccount.xaml.cs">
-      <DependentUpon>AddAccount.xaml</DependentUpon>
+    <Compile Include="Windows\Account\AddEditAccount.xaml.cs">
+      <DependentUpon>AddEditAccount.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Account\ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Conference\AddConference.xaml.cs">
-      <DependentUpon>AddConference.xaml</DependentUpon>
+    <Compile Include="Windows\Account\ManageAccount.xaml.cs">
+      <DependentUpon>ManageAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Conference\AddEditConference.xaml.cs">
+      <DependentUpon>AddEditConference.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Home\AdministratorPanel.xaml.cs">
       <DependentUpon>AdministratorPanel.xaml</DependentUpon>
@@ -100,7 +103,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\Account\AddAccount.xaml">
+    <Page Include="Windows\Account\AddEditAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,7 +111,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Conference\AddConference.xaml">
+    <Page Include="Windows\Account\ManageAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Conference\AddEditConference.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +166,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Configuration\AppSettings.prod.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

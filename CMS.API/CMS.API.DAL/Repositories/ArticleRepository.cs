@@ -31,7 +31,7 @@ namespace CMS.API.DAL.Repositories
         public void EditArticle(ArticleDTO articleDTO)
         {
             var article = MapperExtension.mapper.Map<ArticleDTO, Article>(articleDTO);
-            _db.Entry(article).CurrentValues.SetValues(article);
+            _db.Entry(_db.Articles.Find(articleDTO.ArticleId)).CurrentValues.SetValues(article);
             _db.SaveChanges();
         }
 
@@ -64,7 +64,7 @@ namespace CMS.API.DAL.Repositories
         public void EditSubmission(SubmissionDTO submissionDTO)
         {
             var submission = MapperExtension.mapper.Map<SubmissionDTO, Submission>(submissionDTO);
-            _db.Entry(submission).CurrentValues.SetValues(submission);
+            _db.Entry(_db.Submissions.Find(submissionDTO.SubmissionID)).CurrentValues.SetValues(submission);
             _db.SaveChanges();
         }
 

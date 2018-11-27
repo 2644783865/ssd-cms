@@ -13,9 +13,9 @@ namespace CMS.API.DAL.Repositories
         {
             return _db.Messages.Project().To<MessageDTO>();
         }
-        public MessageDTO GetMessageById(int id)
+        public MessageDTO GetMessageById(int groupId, int sequenceNumber)
         {
-            var message = _db.Messages.Find(id);
+            var message = _db.Messages.Find(groupId, sequenceNumber);
             if (message == null) return null;
             else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
         }
@@ -30,13 +30,13 @@ namespace CMS.API.DAL.Repositories
         public void EditMessage(MessageDTO messageDTO)
         {
             var message = MapperExtension.mapper.Map<MessageDTO, Message>(messageDTO);
-            _db.Entry(message).CurrentValues.SetValues(message);
+            _db.Entry(_db.Messages.Find(messageDTO.GroupID, messageDTO.SequenceNumber)).CurrentValues.SetValues(message);
             _db.SaveChanges();
         }
 
-        public void DeleteMessage(int messageId)
+        public void DeleteMessage(int groupId, int sequenceNumber)
         {
-            var message = _db.Messages.Find(messageId);
+            var message = _db.Messages.Find(groupId, sequenceNumber);
             _db.Messages.Remove(message);
             _db.SaveChanges();
         }

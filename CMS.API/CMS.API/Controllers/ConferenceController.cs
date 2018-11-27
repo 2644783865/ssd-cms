@@ -43,7 +43,7 @@ namespace CMS.API.Controllers
 
         // PUT: api/Conference/EditConference
         [HttpPut]
-        [Route("api/conference/addconference")]
+        [Route("api/conference/editconference")]
         public IHttpActionResult EditConference([FromBody] ConferenceDTO conference)
         {
             if (string.IsNullOrEmpty(conference.Title) || string.IsNullOrEmpty(conference.Place)

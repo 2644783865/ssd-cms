@@ -31,7 +31,7 @@ namespace CMS.API.DAL.Repositories
         public void EditEmergencyInfo(EmergencyInfoDTO emergencyInfoDTO)
         {
             var emergencyInfo = MapperExtension.mapper.Map<EmergencyInfoDTO, EmergencyInfo>(emergencyInfoDTO);
-            _db.Entry(emergencyInfo).CurrentValues.SetValues(emergencyInfo);
+            _db.Entry(_db.EmergencyInfoes.Find(emergencyInfo.EmergencyInfoId)).CurrentValues.SetValues(emergencyInfo);
             _db.SaveChanges();
 
         }

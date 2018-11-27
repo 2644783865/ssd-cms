@@ -54,7 +54,7 @@
     <Compile Include="BLL\AccommodationInfoBLL.cs" />
     <Compile Include="BLL\ArticleBLL.cs" />
     <Compile Include="BLL\AuthenticationBLL.cs" />
-    <Compile Include="BLL\BuildungBLL.cs" />
+    <Compile Include="BLL\BuildingBLL.cs" />
     <Compile Include="BLL\AuthorBLL.cs" />
     <Compile Include="BLL\SubmissionBLL.cs" />
     <Compile Include="BLL\WelcomePackBLL.cs" />

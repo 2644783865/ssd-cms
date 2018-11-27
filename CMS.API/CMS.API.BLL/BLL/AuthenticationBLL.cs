@@ -117,7 +117,7 @@ namespace CMS.API.BLL.BLL
                     account.PasswordHash = _repository.GetAccountById(account.AccountId).PasswordHash;
                 }
                 else account.PasswordHash = HashHelper.ComputeHash(account.PasswordHash);
-                _repository.AddAccount(account);
+                _repository.EditAccount(account);
             }
             catch
             {

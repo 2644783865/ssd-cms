@@ -30,7 +30,7 @@ namespace CMS.API.DAL.Repositories
         public void EditPresentation(PresentationDTO presentationDTO)
         {
             var presentation = MapperExtension.mapper.Map<PresentationDTO, Presentation>(presentationDTO);
-            _db.Entry(presentation).CurrentValues.SetValues(presentation);
+            _db.Entry(_db.Presentations.Find(presentationDTO.PresentationId)).CurrentValues.SetValues(presentation);
             _db.SaveChanges();
         }
 

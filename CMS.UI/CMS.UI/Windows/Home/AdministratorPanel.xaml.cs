@@ -64,7 +64,7 @@ namespace CMS.UI.Windows.Home
 
         private void AddAccountButton_Click(object sender, RoutedEventArgs e)
         {
-            AddAccount newAddAccountWindow = new AddAccount();
+            AddEditAccount newAddAccountWindow = new AddEditAccount(null);
             newAddAccountWindow.ShowDialog();
         }
 
@@ -104,14 +104,24 @@ namespace CMS.UI.Windows.Home
             ProgressSpin.IsActive = false;
         }
 
-        private void EditAccount_Click(object sender, RoutedEventArgs e)
+        private async void EditAccount_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not implemented");
+            if (LoginBox.Text.Length > 0)
+            {
+                if (await CheckAccountExistsAsync())
+                {
+                    var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
+                    AddEditAccount newAddAccountWindow = new AddEditAccount(account);
+                    newAddAccountWindow.ShowDialog();
+                }
+                else MessageBox.Show("Account doesn't exist");
+            }
+            else MessageBox.Show("Login empty");
         }
 
         private void AddConference_Click(object sender, RoutedEventArgs e)
         {
-            Conference.AddConference newAddConferenceWindow = new Conference.AddConference();
+            Conference.AddEditConference newAddConferenceWindow = new Conference.AddEditConference(null);
             newAddConferenceWindow.ShowDialog();
         }
 
@@ -125,9 +135,15 @@ namespace CMS.UI.Windows.Home
             return await authCore.GetAccountIdByLoginAsync(LoginBox.Text) >= 0;
         }
 
-        private void EditConference_Click(object sender, RoutedEventArgs e)
+        private async void EditConference_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not implemented");
+            if (ConferencesBox.SelectedIndex >= 0)
+            {
+                var conference = await confCore.GetConferenceByIdAsync(int.Parse(ConferencesBox.SelectedValue.ToString()));
+                Conference.AddEditConference newAddConferenceWindow = new Conference.AddEditConference(conference);
+                newAddConferenceWindow.ShowDialog();
+            }
+            else MessageBox.Show("Select conference");
         }
 
         private async void RemoveConference_Click(object sender, RoutedEventArgs e)

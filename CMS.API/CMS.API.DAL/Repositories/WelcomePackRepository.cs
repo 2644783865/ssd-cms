@@ -32,7 +32,7 @@ namespace CMS.API.DAL.Repositories
         public void EditWelcomePack(WelcomePackDTO welcomePackDTO)
         {
             var welcomePack = MapperExtension.mapper.Map<WelcomePackDTO, WelcomePack>(welcomePackDTO);
-            _db.Entry(welcomePack).CurrentValues.SetValues(welcomePack);
+            _db.Entry(_db.WelcomePacks.Find(welcomePackDTO.WelcomePackId)).CurrentValues.SetValues(welcomePack);
             _db.SaveChanges();
 
         }
@@ -67,7 +67,7 @@ namespace CMS.API.DAL.Repositories
         public void EditWelcomePackGift(WelcomePackGiftDTO welcomePackGiftDTO)
         {
             var welcomePackGift = MapperExtension.mapper.Map<WelcomePackGiftDTO, WelcomePackGift>(welcomePackGiftDTO);
-            _db.Entry(welcomePackGift).CurrentValues.SetValues(welcomePackGift);
+            _db.Entry(_db.WelcomePackGifts.Find(welcomePackGiftDTO.WelcomePackGiftId)).CurrentValues.SetValues(welcomePackGift);
             _db.SaveChanges();
 
         }
@@ -102,7 +102,7 @@ namespace CMS.API.DAL.Repositories
         public void EditWelcomePackReceiver(WelcomePackReceiverDTO welcomePackReceiverDTO)
         {
             var welcomePackReceiver = MapperExtension.mapper.Map<WelcomePackReceiverDTO, WelcomePackReceiver>(welcomePackReceiverDTO);
-            _db.Entry(welcomePackReceiver).CurrentValues.SetValues(welcomePackReceiver);
+            _db.Entry(_db.WelcomePackReceivers.Find(welcomePackReceiverDTO.WelcomePackReceiverId)).CurrentValues.SetValues(welcomePackReceiver);
             _db.SaveChanges();
 
         }

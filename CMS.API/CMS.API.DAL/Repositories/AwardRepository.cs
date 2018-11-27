@@ -21,17 +21,17 @@ namespace CMS.API.DAL.Repositories
             else return MapperExtension.mapper.Map<Award, AwardDTO>(award);
         }
 
-        public void AddAward(AwardDTO AwardDTO)
+        public void AddAward(AwardDTO awardDTO)
         {
-            var award = MapperExtension.mapper.Map<AwardDTO, Award>(AwardDTO);
+            var award = MapperExtension.mapper.Map<AwardDTO, Award>(awardDTO);
             _db.Awards.Add(award);
             _db.SaveChanges();
         }
 
-        public void EditAward(AwardDTO AwardDTO)
+        public void EditAward(AwardDTO awardDTO)
         {
-            var award = MapperExtension.mapper.Map<AwardDTO, Award>(AwardDTO);
-            _db.Entry(award).CurrentValues.SetValues(award);
+            var award = MapperExtension.mapper.Map<AwardDTO, Award>(awardDTO);
+            _db.Entry(_db.Awards.Find(awardDTO.AwardId)).CurrentValues.SetValues(award);
             _db.SaveChanges();
         }
 

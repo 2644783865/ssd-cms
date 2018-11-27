@@ -30,7 +30,7 @@ namespace CMS.API.DAL.Repositories
         public void EditRoom(RoomDTO roomDTO)
         {
             var room = MapperExtension.mapper.Map<RoomDTO, Room>(roomDTO);
-            _db.Entry(room).CurrentValues.SetValues(room);
+            _db.Entry(_db.Rooms.Find(roomDTO.RoomId)).CurrentValues.SetValues(room);
             _db.SaveChanges();
         }
 
@@ -71,7 +71,7 @@ namespace CMS.API.DAL.Repositories
         public void EditBuilding(BuildingDTO buildingDTO)
         {
             var building = MapperExtension.mapper.Map<BuildingDTO, Building>(buildingDTO);
-            _db.Entry(building).CurrentValues.SetValues(building);
+            _db.Entry(_db.Buildings.Find(buildingDTO.BuildingId)).CurrentValues.SetValues(building);
             _db.SaveChanges();
         }
 

@@ -5,15 +5,15 @@ using CMS.BE.DTO;
 
 namespace CMS.API.BLL.BLL
 {
-    class PresentationBLL : IPresentationBLL
+    public class PresentationBLL : IPresentationBLL
     {
         private IPresentationRepository _repository = new PresentationRepository();
 
-        public bool AddPresentation(PresentationDTO presentationId)
+        public bool AddPresentation(PresentationDTO presentation)
         {
             try
             {
-                _repository.AddPresentation(presentationId);
+                _repository.AddPresentation(presentation);
             }
             catch
             {
@@ -22,11 +22,11 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public bool DeletePresentation(int presentation)
+        public bool DeletePresentation(int presentationId)
         {
             try
             {
-                _repository.DeletePresentation(presentation);
+                _repository.DeletePresentation(presentationId);
             }
             catch
             {

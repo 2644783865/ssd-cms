@@ -63,7 +63,6 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        //not implemented
         public async Task<bool> EditAccountAsync(AccountDTO account)
         {
             var path = Properties.Resources.editAccountPath;

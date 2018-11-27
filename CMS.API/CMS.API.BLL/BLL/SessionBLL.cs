@@ -5,15 +5,15 @@ using CMS.BE.DTO;
 
 namespace CMS.API.BLL.BLL
 {
-    class SessionBLL : ISessionBLL
+    public class SessionBLL : ISessionBLL
     {
         private ISessionRepository _repository = new SessionRepository();
 
-        public bool AddSession(SessionDTO sessionId)
+        public bool AddSession(SessionDTO session)
         {
             try
             {
-                _repository.AddSession(sessionId);
+                _repository.AddSession(session);
             }
             catch
             {
@@ -22,11 +22,11 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public bool DeleteSession(int session)
+        public bool DeleteSession(int sessionId)
         {
             try
             {
-                _repository.DeleteSession(session);
+                _repository.DeleteSession(sessionId);
             }
             catch
             {

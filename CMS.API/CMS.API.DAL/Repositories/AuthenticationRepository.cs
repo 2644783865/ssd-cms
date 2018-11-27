@@ -20,7 +20,7 @@ namespace CMS.API.DAL.Repositories
         public void EditAccount(AccountDTO accountDTO)
         {
             var account = MapperExtension.mapper.Map<AccountDTO, Account>(accountDTO);
-            _db.Entry(account).CurrentValues.SetValues(account);
+            _db.Entry(_db.Accounts.Find(accountDTO.AccountId)).CurrentValues.SetValues(account);
             _db.SaveChanges();
         }
 

@@ -6,6 +6,6 @@ namespace CMS.API.BLL.Interfaces
     {
         bool AddPresentation(PresentationDTO presentation);
         bool EditPresentation(PresentationDTO presentation);
-        bool DeletePresentation(int presentation);
+        bool DeletePresentation(int presentationId);
     }
 }

@@ -30,7 +30,7 @@ namespace CMS.API.DAL.Repositories
         public void EditSession(SessionDTO sessionDTO)
         {
             var session = MapperExtension.mapper.Map<SessionDTO, Session>(sessionDTO);
-            _db.Entry(session).CurrentValues.SetValues(session);
+            _db.Entry(_db.Sessions.Find(sessionDTO.SessionId)).CurrentValues.SetValues(session);
             _db.SaveChanges();
         }
 
@@ -71,7 +71,7 @@ namespace CMS.API.DAL.Repositories
         public void EditSpecialSession(SpecialSessionDTO specialSessionDTO)
         {
             var specialSession = MapperExtension.mapper.Map<SpecialSessionDTO, SpecialSession>(specialSessionDTO);
-            _db.Entry(specialSession).CurrentValues.SetValues(specialSession);
+            _db.Entry(_db.SpecialSessions.Find(specialSessionDTO.SpecialSessionId)).CurrentValues.SetValues(specialSession);
             _db.SaveChanges();
         }
 

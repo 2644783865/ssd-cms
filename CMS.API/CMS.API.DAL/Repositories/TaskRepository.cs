@@ -31,7 +31,7 @@ namespace CMS.API.DAL.Repositories
         public void EditTask(TaskDTO taskDTO)
         {
             var task = MapperExtension.mapper.Map<TaskDTO, Task>(taskDTO);
-            _db.Entry(task).CurrentValues.SetValues(task);
+            _db.Entry(_db.Tasks.Find(taskDTO.TaskID)).CurrentValues.SetValues(task);
             _db.SaveChanges();
         }
 

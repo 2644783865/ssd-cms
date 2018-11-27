@@ -11,11 +11,26 @@ namespace CMS.UI.Windows.Account
     /// <summary>
     /// Interaction logic for AddAccount.xaml
     /// </summary>
-    public partial class AddAccount : MetroWindow
+    public partial class AddEditAccount : MetroWindow
     {
-        public AddAccount()
+        private AccountDTO currentAccount;
+
+        public AddEditAccount(AccountDTO account)
         {
             InitializeComponent();
+            currentAccount = account;
+            if (account != null) InitializeEditFields();
+        }
+
+        private void InitializeEditFields()
+        {
+            LoginBox.Text = currentAccount.Login;
+            LoginBox.IsReadOnly = true;
+            NameBox.Text = currentAccount.Name;
+            PhoneBox.Text = currentAccount.PhoneNumber;
+            EmailBox.Text = currentAccount.Email;
+            SubmitButton.Content = "Save";
+            this.Title = "Edit Account";
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -23,23 +38,36 @@ namespace CMS.UI.Windows.Account
             Close();
         }
 
-        private async void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             ProgressSpin.IsActive = true;
             if (ValidateForm())
             {
                 using (IAuthenticationCore core = new AuthenticationCore())
                 {
-                    var loginModel = new AccountDTO()
+                    bool result = false;
+
+                    if (currentAccount == null)
                     {
-                        Login = LoginBox.Text,
-                        Name = NameBox.Text,
-                        PhoneNumber = PhoneBox.Text,
-                        Email = EmailBox.Text
-                    };
+                        var loginModel = new AccountDTO()
+                        {
+                            Login = LoginBox.Text,
+                            Name = NameBox.Text,
+                            PhoneNumber = PhoneBox.Text,
+                            Email = EmailBox.Text
+                        };
+                        result = await core.AddAccountAsync(loginModel);
+                    }
+                    else
+                    {
+                        currentAccount.Name = NameBox.Text;
+                        currentAccount.PhoneNumber = PhoneBox.Text;
+                        currentAccount.Email = EmailBox.Text;
 
+                        result = await core.EditAccountAsync(currentAccount);
+                    }
 
-                    if (await core.AddAccountAsync(loginModel))
+                    if (result)
                     {
                         MessageBox.Show("Success");
                         Close();

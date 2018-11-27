@@ -31,7 +31,7 @@ namespace CMS.API.DAL.Repositories
         public void EditAccommodationInfo(AccommodationInfoDTO accommodationDTO)
         {
             var accommodation = MapperExtension.mapper.Map<AccommodationInfoDTO, AccommodationInfo>(accommodationDTO);
-            _db.Entry(accommodation).CurrentValues.SetValues(accommodation);
+            _db.Entry(_db.AccommodationInfoes.Find(accommodationDTO.AccommodationIntoId)).CurrentValues.SetValues(accommodation);
             _db.SaveChanges();
 
         }

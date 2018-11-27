@@ -31,7 +31,7 @@ namespace CMS.API.DAL.Repositories
         public void EditReview(ReviewDTO reviewDTO)
         {
             var review = MapperExtension.mapper.Map<ReviewDTO, Review>(reviewDTO);
-            _db.Entry(review).CurrentValues.SetValues(review);
+            _db.Entry(_db.Reviews.Find(reviewDTO.ReviewerId)).CurrentValues.SetValues(review);
             _db.SaveChanges();
 
         }

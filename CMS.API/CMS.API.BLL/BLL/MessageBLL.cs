@@ -5,15 +5,15 @@ using CMS.BE.DTO;
 
 namespace CMS.API.BLL.BLL
 {
-    class MessageBLL : IMessageBLL
+    public class MessageBLL : IMessageBLL
     {
         private IMessageRepository _repository = new MessageRepository();
 
-        public bool AddMessage(MessageDTO messageId)
+        public bool AddMessage(MessageDTO message)
         {
             try
             {
-                _repository.AddMessage(messageId);
+                _repository.AddMessage(message);
             }
             catch
             {
@@ -22,11 +22,11 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public bool DeleteMessage(int message)
+        public bool DeleteMessage(int groupId, int sequenceNumber)
         {
             try
             {
-                _repository.DeleteMessage(message);
+                _repository.DeleteMessage(groupId, sequenceNumber);
             }
             catch
             {

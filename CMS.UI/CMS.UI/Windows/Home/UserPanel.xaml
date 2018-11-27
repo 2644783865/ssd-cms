@@ -25,6 +25,6 @@
         <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="38" Height="36" Click="Refresh_Click">
             <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Button>
-        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="787,10,72,371" Height="40" Width="35"/>
+        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="0,10,55,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="35"/>
     </Grid>
 </Controls:MetroWindow>

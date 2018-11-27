@@ -31,7 +31,7 @@ namespace CMS.API.DAL.Repositories
         public void EditEvent(EventDTO eventDTO)
         {
             var _event = MapperExtension.mapper.Map<EventDTO, Event>(eventDTO);
-            _db.Entry(_event).CurrentValues.SetValues(_event);
+            _db.Entry(_db.Events.Find(eventDTO.EventID)).CurrentValues.SetValues(_event);
             _db.SaveChanges();
         }
 

@@ -19,6 +19,7 @@ namespace CMS.API.DAL
         public long GroupID { get; set; }
         public int SequenceNumber { get; set; }
         public string Content { get; set; }
+        public System.DateTime Date { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Account Account1 { get; set; }

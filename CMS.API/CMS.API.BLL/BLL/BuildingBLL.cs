@@ -5,15 +5,15 @@ using CMS.BE.DTO;
 
 namespace CMS.API.BLL.BLL
 {
-    class BuildungBLL : IBuildingBLL
+    public class BuildingBLL : IBuildingBLL
     {
         private IRoomRepository _repository = new RoomRepository();
 
-        public bool AddBuilding(BuildingDTO buildingId)
+        public bool AddBuilding(BuildingDTO building)
         {
             try
             {
-                _repository.AddBuilding(buildingId);
+                _repository.AddBuilding(building);
             }
             catch
             {
@@ -22,11 +22,11 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public bool DeleteBuilding(int building)
+        public bool DeleteBuilding(int buildingId)
         {
             try
             {
-                _repository.DeleteBuilding(building);
+                _repository.DeleteBuilding(buildingId);
             }
             catch
             {

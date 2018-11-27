@@ -30,7 +30,7 @@ namespace CMS.API.DAL.Repositories
         public void EditConference(ConferenceDTO conferenceDTO)
         {
             var conference = MapperExtension.mapper.Map<ConferenceDTO, Conference>(conferenceDTO);
-            _db.Entry(conference).CurrentValues.SetValues(conference);
+            _db.Entry(_db.Conferences.Find(conferenceDTO.ConferenceId)).CurrentValues.SetValues(conference);
             _db.SaveChanges();
         }
 

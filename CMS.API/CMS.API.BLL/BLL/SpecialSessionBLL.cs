@@ -9,11 +9,11 @@ namespace CMS.API.BLL.BLL
     {
         private ISessionRepository _repository = new SessionRepository();
 
-        public bool AddSpecialSession(SpecialSessionDTO specialSessionId)
+        public bool AddSpecialSession(SpecialSessionDTO specialSession)
         {
             try
             {
-                _repository.AddSpecialSession(specialSessionId);
+                _repository.AddSpecialSession(specialSession);
             }
             catch
             {
@@ -22,11 +22,11 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public bool DeleteSpecialSession(int specialSession)
+        public bool DeleteSpecialSession(int specialSessionId)
         {
             try
             {
-                _repository.DeleteSpecialSession(specialSession);
+                _repository.DeleteSpecialSession(specialSessionId);
             }
             catch
             {
