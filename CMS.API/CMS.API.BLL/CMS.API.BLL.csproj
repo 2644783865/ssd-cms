@@ -51,25 +51,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AccommodationInfoBLL.cs" />
+    <Compile Include="BLL\ArticleBLL.cs" />
     <Compile Include="BLL\AuthenticationBLL.cs" />
     <Compile Include="BLL\BuildungBLL.cs" />
+    <Compile Include="BLL\AuthorBLL.cs" />
+    <Compile Include="BLL\SubmissionBLL.cs" />
+    <Compile Include="BLL\WelcomePackBLL.cs" />
+    <Compile Include="BLL\EmergencyInfoBLL.cs" />
     <Compile Include="BLL\MessageBLL.cs" />
+    <Compile Include="BLL\ReviewBLL.cs" />
     <Compile Include="BLL\RoomBLL.cs" />
     <Compile Include="BLL\ConferenceBLL.cs" />
     <Compile Include="BLL\PresentationBLL.cs" />
     <Compile Include="BLL\SessionBLL.cs" />
     <Compile Include="BLL\SpecialSessionBLL.cs" />
+    <Compile Include="BLL\TravelBLL.cs" />
+    <Compile Include="BLL\WelcomePackGiftBLL.cs" />
+    <Compile Include="BLL\WelcomePackReceiverBLL.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Helpers\RoleHelper.cs" />
+    <Compile Include="Interfaces\IAccommodationInfoBLL.cs" />
+    <Compile Include="Interfaces\IArticleBLL.cs" />
     <Compile Include="Interfaces\IAuthenticationBLL.cs" />
+    <Compile Include="Interfaces\IAuthorBLL.cs" />
     <Compile Include="Interfaces\IBuildingBLL.cs" />
     <Compile Include="Interfaces\IConferenceBLL.cs" />
+    <Compile Include="Interfaces\IEmergencyInfoBLL.cs" />
     <Compile Include="Interfaces\IMessageBLL.cs" />
     <Compile Include="Interfaces\IPresentationBLL.cs" />
+    <Compile Include="Interfaces\IReviewBLL.cs" />
     <Compile Include="Interfaces\IRoomBLL.cs" />
     <Compile Include="Interfaces\ISessionBLL.cs" />
     <Compile Include="Interfaces\ISpecialSessionBLL.cs" />
+    <Compile Include="Interfaces\ISubmissionBLL.cs" />
+    <Compile Include="Interfaces\ITravelBLL.cs" />
+    <Compile Include="Interfaces\IWelcomePackBLL.cs" />
+    <Compile Include="Interfaces\IWelcomePackGiftBLL.cs" />
+    <Compile Include="Interfaces\IWelcomePackReceiverBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\RoleResources.Designer.cs">
       <AutoGen>True</AutoGen>
