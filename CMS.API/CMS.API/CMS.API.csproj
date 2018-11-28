@@ -103,6 +103,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\PresentationController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

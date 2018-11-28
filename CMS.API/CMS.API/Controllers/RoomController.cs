@@ -17,7 +17,7 @@ namespace CMS.API.Controllers
         [Route("api/room/addroom")]
         public IHttpActionResult AddRoom([FromBody] RoomDTO room)
         {
-            if (string.IsNullOrEmpty(room.Code) || string.IsNullOrEmpty(room.BuildingID)) return BadRequest();
+            //if (string.IsNullOrEmpty(room.Code) || string.IsNullOrEmpty(room.BuildingID)) return BadRequest();
             if (_bll.AddRoom(room)) return Ok();
             return InternalServerError();
         }
@@ -27,7 +27,7 @@ namespace CMS.API.Controllers
         [Route("api/room/editroom")]
         public IHttpActionResult EditRoom([FromBody] RoomDTO room)
         {
-            if (string.IsNullOrEmpty(room.Code) || string.IsNullOrEmpty(room.BuildingID)) return BadRequest();
+            //if (string.IsNullOrEmpty(room.Code) || string.IsNullOrEmpty(room.BuildingID)) return BadRequest();
             if (_bll.EditRoom(room)) return Ok();
             return InternalServerError();
         }

@@ -17,8 +17,7 @@ namespace CMS.API.Controllers
         [Route("api/session/addsession")]
         public IHttpActionResult AddSession([FromBody] SessionDTO session)
         {
-            if (string.IsNullOrEmpty(session.ConferenceId) || string.IsNullOrEmpty(session.ChairId)
-                || string.IsNullOrEmpty(session.Title)) return BadRequest();
+            if (string.IsNullOrEmpty(session.Title)) return BadRequest();
             if (_bll.AddSession(session)) return Ok();
             return InternalServerError();
         }
@@ -28,8 +27,7 @@ namespace CMS.API.Controllers
         [Route("api/session/editsession")]
         public IHttpActionResult EditSession([FromBody] SessionDTO session)
         {
-            if (string.IsNullOrEmpty(session.ConferenceId) || string.IsNullOrEmpty(session.ChairId)
-                || string.IsNullOrEmpty(session.Title)) return BadRequest();
+            if (string.IsNullOrEmpty(session.Title)) return BadRequest();
             if (_bll.EditSession(session)) return Ok();
             return InternalServerError();
         }
@@ -48,10 +46,9 @@ namespace CMS.API.Controllers
         // POST: api/Session/AddSpecialSession
         [HttpPost]
         [Route("api/session/addsespecialsession")]
-        public IHttpActionResult AddSpecialSession([FromBody] SpecialSessionDTO specialSessio)
+        public IHttpActionResult AddSpecialSession([FromBody] SpecialSessionDTO specialSession)
         {
-            if (string.IsNullOrEmpty(specialSession.ConferenceId) || string.IsNullOrEmpty(specialSession.ChairId)
-                || string.IsNullOrEmpty(specialSession.Title)) return BadRequest();
+            if (string.IsNullOrEmpty(specialSession.Title)) return BadRequest();
             if (_bll.AddSpecialSession(specialSession)) return Ok();
             return InternalServerError();
         }
@@ -59,10 +56,9 @@ namespace CMS.API.Controllers
         // PUT: api/Session/EditSpecialSession
         [HttpPut]
         [Route("api/session/editspecialsession")]
-        public IHttpActionResult EditSpecialSession([FromBody] SpecialSessionDTO specialSessio)
+        public IHttpActionResult EditSpecialSession([FromBody] SpecialSessionDTO specialSession)
         {
-            if (string.IsNullOrEmpty(specialSession.ConferenceId) || string.IsNullOrEmpty(specialSession.ChairId)
-                || string.IsNullOrEmpty(specialSession.Title)) return BadRequest();
+            if (string.IsNullOrEmpty(specialSession.Title)) return BadRequest();
             if (_bll.EditSpecialSession(specialSession)) return Ok();
             return InternalServerError();
         }

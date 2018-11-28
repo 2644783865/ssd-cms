@@ -17,9 +17,8 @@ namespace CMS.API.Controllers
         [Route("api/presentation/addpresentation")]
         public IHttpActionResult AddPresentation([FromBody] PresentationDTO presentation)
         {
-            if (string.IsNullOrEmpty(presentation.PresenterId) || string.IsNullOrEmpty(presentation.Title)
-                || string.IsNullOrEmpty(presentation.ArticleId) || string.IsNullOrEmpty(presentation.RoomId)
-                || (string.IsNullOrEmpty(presentation.SessionId) ^ string.IsNullOrEmpty(presentation.SpecialSessionId))
+            if (string.IsNullOrEmpty(presentation.Title)
+                || ((presentation.SessionId==null) ^ (presentation.SpecialSessionId == null))
                 || presentation.BeginDate == default(DateTime) || presentation.EndDate == default(DateTime)) return BadRequest();
             if (_bll.AddPresentation(presentation)) return Ok();
             return InternalServerError();
@@ -30,9 +29,8 @@ namespace CMS.API.Controllers
         [Route("api/presentation/editpresentation")]
         public IHttpActionResult EditPresentation([FromBody] PresentationDTO presentation)
         {
-            if (string.IsNullOrEmpty(presentation.PresenterId) || string.IsNullOrEmpty(presentation.Title)
-                || string.IsNullOrEmpty(presentation.ArticleId) || string.IsNullOrEmpty(presentation.RoomId)
-                || (string.IsNullOrEmpty(presentation.SessionId) ^ string.IsNullOrEmpty(presentation.SpecialSessionId))
+            if (string.IsNullOrEmpty(presentation.Title)
+                || ((presentation.SessionId == null) ^ (presentation.SpecialSessionId == null))
                 || presentation.BeginDate == default(DateTime) || presentation.EndDate == default(DateTime)) return BadRequest();
             if (_bll.EditPresentation(presentation)) return Ok();
             return InternalServerError();
