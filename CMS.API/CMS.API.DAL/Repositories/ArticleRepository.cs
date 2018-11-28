@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -79,6 +80,20 @@ namespace CMS.API.DAL.Repositories
         public void Dispose()
         {
             _db.Dispose();
+        }
+
+        //ArticleAuthor
+
+        public void AddArticleAuthor(int articleId, int authorId)
+        {
+            _db.Database.ExecuteSqlCommand("INSERT INTO ArticleAuthor  VALUES (@p0, @p1)",
+                articleId, authorId);
+        }
+
+        public void DeleteArticleAuthor(int articleId, int authorId)
+        {
+            _db.Database.ExecuteSqlCommand("DELETE FROM ArticleAuthor WHERE ArticleId=@p0 AND AuthorId=@p1",
+                articleId, authorId);
         }
 
     }

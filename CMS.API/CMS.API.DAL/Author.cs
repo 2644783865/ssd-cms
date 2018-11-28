@@ -17,7 +17,7 @@ namespace CMS.API.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Author()
         {
-            this.ArticleAuthors = new HashSet<ArticleAuthor>();
+            this.Articles = new HashSet<Article>();
         }
     
         public int AuthorId { get; set; }
@@ -29,6 +29,6 @@ namespace CMS.API.DAL
     
         public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ArticleAuthor> ArticleAuthors { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
     }
 }

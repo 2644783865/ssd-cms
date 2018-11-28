@@ -81,9 +81,9 @@ namespace CMS.API.DAL.Repositories
             return _db.ConferenceStaffs.Where(staff => staff.AccountId == accountId).Select(staff => staff.Conference).Distinct().Project().To<ConferenceDTO>();
         }
 
-        public IEnumerable<ConferenceStaff> GetConferenceStaff(int conferenceId, string accountLogin, int roleId)
+        public ConferenceStaff GetConferenceStaff(int conferenceId, string accountLogin, int roleId)
         {
-            return _db.ConferenceStaffs.Where(staff => staff.ConferenceId==conferenceId && staff.Account.Login.Equals(accountLogin) && staff.RoleId==roleId).ToList();
+            return _db.ConferenceStaffs.Where(staff => staff.ConferenceId==conferenceId && staff.Account.Login.Equals(accountLogin) && staff.RoleId==roleId).FirstOrDefault();
         }
 
         public void AddConferenceStaff(ConferenceStaff staff)
@@ -92,9 +92,9 @@ namespace CMS.API.DAL.Repositories
             _db.SaveChanges();
         }
 
-        public void DeleteConferenceStaff(int conferenceStaffId)
+        public void DeleteConferenceStaff(int accountId, int roleId, int conferenceId)
         {
-            var conferenceStaff = _db.ConferenceStaffs.Find(conferenceStaffId);
+            var conferenceStaff = _db.ConferenceStaffs.Find(accountId, roleId, conferenceId);
             _db.ConferenceStaffs.Remove(conferenceStaff);
             _db.SaveChanges();
         }

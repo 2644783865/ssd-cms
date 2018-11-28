@@ -155,7 +155,7 @@ namespace CMS.API.Controllers
             return BadRequest();
         }
 
-        // DELETE: api/Authentication/DeleteAccount?conferenceId=&login=&roleId=
+        // DELETE: api/Authentication/DeleteRoleForConferenceAndAccount?conferenceId=&login=&roleId=
         [HttpDelete]
         [Route("api/authentication/deleteroleforconferenceandaccount")]
         public IHttpActionResult DeleteRoleForConferenceAccount(int conferenceId, string login, int roleId)

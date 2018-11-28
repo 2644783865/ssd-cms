@@ -13,5 +13,9 @@ namespace CMS.API.BLL.Interfaces
         bool AddBuilding(BuildingDTO building);
         bool EditBuilding(BuildingDTO building);
         bool DeleteBuilding(int buildingId);
+
+        // ConferenceBuilding
+        bool SetBuildingForConference(int conferenceId, int buildingId);
+        bool DeleteAssignmentBuildingForConference(int conferenceId, int buildingId);
     }
 }

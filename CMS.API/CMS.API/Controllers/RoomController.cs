@@ -17,7 +17,6 @@ namespace CMS.API.Controllers
         [Route("api/room/addroom")]
         public IHttpActionResult AddRoom([FromBody] RoomDTO room)
         {
-            //if (string.IsNullOrEmpty(room.Code) || string.IsNullOrEmpty(room.BuildingID)) return BadRequest();
             if (_bll.AddRoom(room)) return Ok();
             return InternalServerError();
         }
@@ -27,7 +26,6 @@ namespace CMS.API.Controllers
         [Route("api/room/editroom")]
         public IHttpActionResult EditRoom([FromBody] RoomDTO room)
         {
-            //if (string.IsNullOrEmpty(room.Code) || string.IsNullOrEmpty(room.BuildingID)) return BadRequest();
             if (_bll.EditRoom(room)) return Ok();
             return InternalServerError();
         }
@@ -69,6 +67,26 @@ namespace CMS.API.Controllers
         public IHttpActionResult DeleteBuilding(int buildingId)
         {
             if (_bll.DeleteBuilding(buildingId)) return Ok();
+            return InternalServerError();
+        }
+
+
+
+        // POST: api/Room/SetBuildingForConference?conferenceId=&buildingId=
+        [HttpPost]
+        [Route("api/room/setbuildingforconference")]
+        public IHttpActionResult SetBuildingForConference(int conferenceId, int buildingId)
+        {
+            if (_bll.SetBuildingForConference(conferenceId, buildingId)) return Ok();
+            return BadRequest();
+        }
+
+        // DELETE: api/Room/DeleteBuildingForConference?conferenceId=&buildingId=
+        [HttpDelete]
+        [Route("api/room/deletebuildingforconference")]
+        public IHttpActionResult DeleteBuildingForConference(int conferenceId, int buildingId)
+        {
+            if (_bll.DeleteAssignmentBuildingForConference(conferenceId, buildingId)) return Ok();
             return InternalServerError();
         }
     }

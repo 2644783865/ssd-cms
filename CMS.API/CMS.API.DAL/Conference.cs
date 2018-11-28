@@ -20,7 +20,6 @@ namespace CMS.API.DAL
             this.AccommodationInfoes = new HashSet<AccommodationInfo>();
             this.Articles = new HashSet<Article>();
             this.ConferenceStaffs = new HashSet<ConferenceStaff>();
-            this.ConferenceBuildings = new HashSet<ConferenceBuilding>();
             this.EmergencyInfoes = new HashSet<EmergencyInfo>();
             this.Events = new HashSet<Event>();
             this.Tasks = new HashSet<Task>();
@@ -28,6 +27,7 @@ namespace CMS.API.DAL
             this.WelcomePacks = new HashSet<WelcomePack>();
             this.SpecialSessions = new HashSet<SpecialSession>();
             this.Sessions = new HashSet<Session>();
+            this.Buildings = new HashSet<Building>();
         }
     
         public int ConferenceId { get; set; }
@@ -44,8 +44,6 @@ namespace CMS.API.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ConferenceStaff> ConferenceStaffs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConferenceBuilding> ConferenceBuildings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmergencyInfo> EmergencyInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
@@ -59,5 +57,7 @@ namespace CMS.API.DAL
         public virtual ICollection<SpecialSession> SpecialSessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Session> Sessions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Building> Buildings { get; set; }
     }
 }

@@ -19,5 +19,9 @@ namespace CMS.API.DAL.Interfaces
         void AddSubmission(SubmissionDTO submissionDTO);
         void EditSubmission(SubmissionDTO submissionDTO);
         void DeleteSubmission(int submissionId);
+
+        //ArticleAuthor
+        void AddArticleAuthor(int articleId, int authorId);
+        void DeleteArticleAuthor(int articleId, int authorId);
     }
 }

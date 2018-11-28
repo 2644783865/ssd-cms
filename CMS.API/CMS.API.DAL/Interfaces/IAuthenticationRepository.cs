@@ -18,9 +18,9 @@ namespace CMS.API.DAL.Interfaces
         string GetRoleName(int roleId);
         IEnumerable<RoleDTO> GetRolesForConferenceAndAccount(int conferenceId, int accountId);
         void AddRole(RoleDTO roleDTO);
-        IEnumerable<ConferenceStaff> GetConferenceStaff(int conferenceId, string accountLogin, int roleId);
+        ConferenceStaff GetConferenceStaff(int conferenceId, string accountLogin, int roleId);
         void AddConferenceStaff(ConferenceStaff staff);
-        void DeleteConferenceStaff(int conferenceStaffId);
+        void DeleteConferenceStaff(int accountId, int roleId, int conferenceId);
         IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId);
 
         IEnumerable<ConferenceDTO> GetConferencesForAccount(int accountId);

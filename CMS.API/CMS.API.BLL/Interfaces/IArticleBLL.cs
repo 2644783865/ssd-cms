@@ -20,5 +20,9 @@ namespace CMS.API.BLL.Interfaces
         bool AddSubmission(SubmissionDTO submission);
         bool EditSubmission(SubmissionDTO submission);
         bool DeleteSubmission(int submissionId);
+
+        //ArticleAuthor
+        bool SetAuthorForArticle(int articleId, int authorId);
+        bool DeleteAssignmentAuthorForArticle(int articleId, int authorId);
     }
 }

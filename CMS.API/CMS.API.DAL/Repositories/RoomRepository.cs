@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -82,5 +83,18 @@ namespace CMS.API.DAL.Repositories
             _db.SaveChanges();
         }
 
+        //ConferenceBuilding
+
+        public void AddConferenceBuilding(int buildingId, int conferenceId)
+        {
+            _db.Database.ExecuteSqlCommand("INSERT INTO ConferenceBuilding  VALUES (@p0, @p1)", 
+                conferenceId, buildingId);
+        }
+
+        public void DeleteConferenceBuilding(int buildingId, int conferenceId)
+        {
+            _db.Database.ExecuteSqlCommand("DELETE FROM ConferenceBuilding WHERE ConferenceId=@p0 AND BuildingId=@p1", 
+                conferenceId, buildingId);
+        }
     }
 }

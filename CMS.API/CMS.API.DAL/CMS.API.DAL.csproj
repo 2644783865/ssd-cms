@@ -64,9 +64,6 @@
     <Compile Include="Article.cs">
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>
-    <Compile Include="ArticleAuthor.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Author.cs">
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>
@@ -92,9 +89,6 @@
       <DependentUpon>CMS.edmx</DependentUpon>
     </Compile>
     <Compile Include="Conference.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ConferenceBuilding.cs">
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>
     <Compile Include="ConferenceStaff.cs">

@@ -1,4 +1,5 @@
 ﻿using CMS.API.BLL.Interfaces;
+using CMS.API.DAL;
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
@@ -142,5 +143,35 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+
+
+        //ArticleAuthor
+
+        public bool SetAuthorForArticle(int articleId, int authorId)
+        {
+            try
+            {
+                _repository.AddArticleAuthor(articleId, authorId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteAssignmentAuthorForArticle(int articleId, int authorId)
+        {
+            try
+            {
+                _repository.DeleteArticleAuthor(articleId, authorId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

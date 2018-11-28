@@ -230,20 +230,18 @@ namespace CMS.API.BLL.BLL
 
         public bool DeleteAssignmentRoleForConferenceAndAccount(int conferenceId, string login, int roleId)
         {
-            if (!(_repository.GetConferenceStaff(conferenceId, login, roleId) is List<ConferenceStaff> staffs) || staffs.Count == 0) return false;
+            var staff = _repository.GetConferenceStaff(conferenceId, login, roleId);
 
-            foreach (var staff in staffs)
+            if (staff != null)
             {
                 try
                 {
-                    _repository.DeleteConferenceStaff(staff.ConferenceStaffId);
+                    _repository.DeleteConferenceStaff(staff.AccountId, staff.RoleId, staff.ConferenceId);
+                    return true;
                 }
-                catch
-                {
-                    return false;
-                }
+                catch { }
             }
-            return true;
+            return false;
         }
 
         public IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId)

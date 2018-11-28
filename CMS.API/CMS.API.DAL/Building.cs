@@ -17,8 +17,8 @@ namespace CMS.API.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Building()
         {
-            this.ConferenceBuildings = new HashSet<ConferenceBuilding>();
             this.Rooms = new HashSet<Room>();
+            this.Conferences = new HashSet<Conference>();
         }
     
         public int BuildingID { get; set; }
@@ -26,8 +26,8 @@ namespace CMS.API.DAL
         public string Address { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConferenceBuilding> ConferenceBuildings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Conference> Conferences { get; set; }
     }
 }

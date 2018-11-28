@@ -2,7 +2,6 @@ using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
 using CMS.API.Helpers;
 using CMS.BE.DTO;
-using System;
 using System.Web.Http;
 
 namespace CMS.API.Controllers
@@ -17,7 +16,7 @@ namespace CMS.API.Controllers
         [Route("api/message/addmessage")]
         public IHttpActionResult AddMessage([FromBody] MessageDTO message)
         {
-            if (string.IsNullOrEmpty(message.Content) || message.Date == default(DateTime)) return BadRequest();
+            if (string.IsNullOrEmpty(message.Content)) return BadRequest();
             if (_bll.AddMessage(message)) return Ok();
             return InternalServerError();
         }
@@ -27,7 +26,7 @@ namespace CMS.API.Controllers
         [Route("api/message/editmessage")]
         public IHttpActionResult EditMessage([FromBody] MessageDTO message)
         {
-            if (string.IsNullOrEmpty(message.Content) || message.Date == default(DateTime)) return BadRequest();
+            if (string.IsNullOrEmpty(message.Content)) return BadRequest();
             if (_bll.EditMessage(message)) return Ok();
             return InternalServerError();
         }

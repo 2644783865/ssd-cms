@@ -19,5 +19,9 @@ namespace CMS.API.DAL.Interfaces
         void AddBuilding(BuildingDTO buildingDTO);
         void EditBuilding(BuildingDTO buildingDTO);
         void DeleteBuilding(int buildingId);
+
+        //ConferenceBuilding
+        void AddConferenceBuilding(int buildingId, int conferenceId);
+        void DeleteConferenceBuilding(int buildingId, int conferenceId);
     }
 }

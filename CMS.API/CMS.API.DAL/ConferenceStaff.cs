@@ -14,7 +14,6 @@ namespace CMS.API.DAL
     
     public partial class ConferenceStaff
     {
-        public int ConferenceStaffId { get; set; }
         public int AccountId { get; set; }
         public int RoleId { get; set; }
         public int ConferenceId { get; set; }

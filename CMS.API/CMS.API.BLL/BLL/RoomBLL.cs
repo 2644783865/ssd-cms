@@ -1,4 +1,5 @@
 ﻿using CMS.API.BLL.Interfaces;
+using CMS.API.DAL;
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
@@ -87,6 +88,34 @@ namespace CMS.API.BLL.BLL
                 return false;
             }
             return true;
+        }
+
+        // ConferenceBuilding
+
+        public bool SetBuildingForConference(int conferenceId, int buildingId)
+        {
+            try
+            {
+                _repository.AddConferenceBuilding(buildingId, conferenceId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteAssignmentBuildingForConference(int conferenceId, int buildingId)
+        {
+            try
+            {
+                _repository.DeleteConferenceBuilding(buildingId, conferenceId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
