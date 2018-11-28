@@ -2,7 +2,7 @@
 
 namespace CMS.API.BLL.Interfaces
 {
-    interface IMessageBLL
+    public interface IMessageBLL
     {
         bool AddMessage(MessageDTO message);
         bool EditMessage(MessageDTO message);

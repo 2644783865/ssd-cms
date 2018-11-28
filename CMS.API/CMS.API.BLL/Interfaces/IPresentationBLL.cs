@@ -2,7 +2,7 @@
 
 namespace CMS.API.BLL.Interfaces
 {
-    interface IPresentationBLL
+    public interface IPresentationBLL
     {
         bool AddPresentation(PresentationDTO presentation);
         bool EditPresentation(PresentationDTO presentation);

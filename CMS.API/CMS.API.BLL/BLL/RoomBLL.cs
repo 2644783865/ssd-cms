@@ -9,6 +9,7 @@ namespace CMS.API.BLL.BLL
     {
         private IRoomRepository _repository = new RoomRepository();
 
+        // Room 
         public bool AddRoom(RoomDTO room)
         {
             try
@@ -40,6 +41,46 @@ namespace CMS.API.BLL.BLL
             try
             {
                 _repository.EditRoom(room);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        // Building
+        public bool AddBuilding(BuildingDTO building)
+        {
+            try
+            {
+                _repository.AddBuilding(building);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteBuilding(int buildingId)
+        {
+            try
+            {
+                _repository.DeleteBuilding(buildingId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool EditBuilding(BuildingDTO building)
+        {
+            try
+            {
+                _repository.EditBuilding(building);
             }
             catch
             {
