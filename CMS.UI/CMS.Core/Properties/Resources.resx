@@ -120,11 +120,29 @@
   <data name="addAccountPath" xml:space="preserve">
     <value>api/authentication/addaccount</value>
   </data>
+  <data name="addBuildingPath" xml:space="preserve">
+    <value>api/room/addbuilding</value>
+  </data>
   <data name="addConferencePath" xml:space="preserve">
     <value>api/conference/addconference</value>
   </data>
+  <data name="addMessagePath" xml:space="preserve">
+    <value>api/message/addmessage</value>
+  </data>
+  <data name="addPresentationPath" xml:space="preserve">
+    <value>api/presentation/addpresentation</value>
+  </data>
   <data name="addRolePath" xml:space="preserve">
     <value>api/authentication/addrole</value>
+  </data>
+  <data name="addRoomPath" xml:space="preserve">
+    <value>api/room/addroom</value>
+  </data>
+  <data name="addSessionPath" xml:space="preserve">
+    <value>api/session/addsession</value>
+  </data>
+  <data name="addSpecialSessionPath" xml:space="preserve">
+    <value>api/session/addsespecialsession</value>
   </data>
   <data name="changePasswordPath" xml:space="preserve">
     <value>api/authentication/changepassword</value>
@@ -132,17 +150,56 @@
   <data name="deleteAccountPath" xml:space="preserve">
     <value>api/authentication/deleteaccount</value>
   </data>
+  <data name="deleteBuildingForConferencePath" xml:space="preserve">
+    <value>api/room/deletebuildingforconference</value>
+  </data>
+  <data name="deleteBuildingPath" xml:space="preserve">
+    <value>api/room/deletebuilding</value>
+  </data>
   <data name="deleteConferencePath" xml:space="preserve">
     <value>api/conference/deleteconference</value>
+  </data>
+  <data name="deleteMessagePath" xml:space="preserve">
+    <value>api/message/deletemessage</value>
+  </data>
+  <data name="deletePresentationPath" xml:space="preserve">
+    <value>api/presentation/deletepresentation</value>
   </data>
   <data name="deleteRoleForConferenceAndAccountPath" xml:space="preserve">
     <value>api/authentication/deleteroleforconferenceandaccount</value>
   </data>
+  <data name="deleteRoomPath" xml:space="preserve">
+    <value>api/room/deleteroom</value>
+  </data>
+  <data name="deleteSessionPath" xml:space="preserve">
+    <value>api/session/deletesession</value>
+  </data>
+  <data name="deleteSpecialSessionPath" xml:space="preserve">
+    <value>api/session/deletespecialsession</value>
+  </data>
   <data name="editAccountPath" xml:space="preserve">
     <value>api/authentication/editaccount</value>
   </data>
+  <data name="editBuildingPath" xml:space="preserve">
+    <value>api/room/editbuilding</value>
+  </data>
   <data name="editConferencePath" xml:space="preserve">
     <value>api/conference/editconference</value>
+  </data>
+  <data name="editMessagePath" xml:space="preserve">
+    <value>api/message/editmessage</value>
+  </data>
+  <data name="editPresentationPath" xml:space="preserve">
+    <value>api/presentation/editpresentation</value>
+  </data>
+  <data name="editRoomPath" xml:space="preserve">
+    <value>api/room/editroom</value>
+  </data>
+  <data name="editSessionPath" xml:space="preserve">
+    <value>api/session/editsession</value>
+  </data>
+  <data name="editSpecialSessionPath" xml:space="preserve">
+    <value>api/session/editspecialsession</value>
   </data>
   <data name="getAccountByIdPath" xml:space="preserve">
     <value>api/authentication/accountbyid</value>
@@ -176,6 +233,9 @@
   </data>
   <data name="loginPath" xml:space="preserve">
     <value>api/authentication/login</value>
+  </data>
+  <data name="setBuildingForConferencePath" xml:space="preserve">
+    <value>api/room/setbuildingforconference</value>
   </data>
   <data name="setRoleForConferenceAndAccountPath" xml:space="preserve">
     <value>api/authentication/setroleforconferenceandaccount</value>

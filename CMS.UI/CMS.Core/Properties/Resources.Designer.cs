@@ -70,6 +70,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/room/addbuilding.
+        /// </summary>
+        internal static string addBuildingPath {
+            get {
+                return ResourceManager.GetString("addBuildingPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/conference/addconference.
         /// </summary>
         internal static string addConferencePath {
@@ -79,11 +88,56 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/message/addmessage.
+        /// </summary>
+        internal static string addMessagePath {
+            get {
+                return ResourceManager.GetString("addMessagePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/presentation/addpresentation.
+        /// </summary>
+        internal static string addPresentationPath {
+            get {
+                return ResourceManager.GetString("addPresentationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/authentication/addrole.
         /// </summary>
         internal static string addRolePath {
             get {
                 return ResourceManager.GetString("addRolePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/room/addroom.
+        /// </summary>
+        internal static string addRoomPath {
+            get {
+                return ResourceManager.GetString("addRoomPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/addsession.
+        /// </summary>
+        internal static string addSessionPath {
+            get {
+                return ResourceManager.GetString("addSessionPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/addsespecialsession.
+        /// </summary>
+        internal static string addSpecialSessionPath {
+            get {
+                return ResourceManager.GetString("addSpecialSessionPath", resourceCulture);
             }
         }
         
@@ -106,11 +160,47 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/room/deletebuildingforconference.
+        /// </summary>
+        internal static string deleteBuildingForConferencePath {
+            get {
+                return ResourceManager.GetString("deleteBuildingForConferencePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/room/deletebuilding.
+        /// </summary>
+        internal static string deleteBuildingPath {
+            get {
+                return ResourceManager.GetString("deleteBuildingPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/conference/deleteconference.
         /// </summary>
         internal static string deleteConferencePath {
             get {
                 return ResourceManager.GetString("deleteConferencePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/message/deletemessage.
+        /// </summary>
+        internal static string deleteMessagePath {
+            get {
+                return ResourceManager.GetString("deleteMessagePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/presentation/deletepresentation.
+        /// </summary>
+        internal static string deletePresentationPath {
+            get {
+                return ResourceManager.GetString("deletePresentationPath", resourceCulture);
             }
         }
         
@@ -124,6 +214,33 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/room/deleteroom.
+        /// </summary>
+        internal static string deleteRoomPath {
+            get {
+                return ResourceManager.GetString("deleteRoomPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/deletesession.
+        /// </summary>
+        internal static string deleteSessionPath {
+            get {
+                return ResourceManager.GetString("deleteSessionPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/deletespecialsession.
+        /// </summary>
+        internal static string deleteSpecialSessionPath {
+            get {
+                return ResourceManager.GetString("deleteSpecialSessionPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/authentication/editaccount.
         /// </summary>
         internal static string editAccountPath {
@@ -133,11 +250,65 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/room/editbuilding.
+        /// </summary>
+        internal static string editBuildingPath {
+            get {
+                return ResourceManager.GetString("editBuildingPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/conference/editconference.
         /// </summary>
         internal static string editConferencePath {
             get {
                 return ResourceManager.GetString("editConferencePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/message/editmessage.
+        /// </summary>
+        internal static string editMessagePath {
+            get {
+                return ResourceManager.GetString("editMessagePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/presentation/editpresentation.
+        /// </summary>
+        internal static string editPresentationPath {
+            get {
+                return ResourceManager.GetString("editPresentationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/room/editroom.
+        /// </summary>
+        internal static string editRoomPath {
+            get {
+                return ResourceManager.GetString("editRoomPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/editsession.
+        /// </summary>
+        internal static string editSessionPath {
+            get {
+                return ResourceManager.GetString("editSessionPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/editspecialsession.
+        /// </summary>
+        internal static string editSpecialSessionPath {
+            get {
+                return ResourceManager.GetString("editSpecialSessionPath", resourceCulture);
             }
         }
         
@@ -237,6 +408,15 @@ namespace CMS.Core.Properties {
         internal static string loginPath {
             get {
                 return ResourceManager.GetString("loginPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/room/setbuildingforconference.
+        /// </summary>
+        internal static string setBuildingForConferencePath {
+            get {
+                return ResourceManager.GetString("setBuildingForConferencePath", resourceCulture);
             }
         }
         
