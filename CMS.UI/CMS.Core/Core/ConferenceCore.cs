@@ -23,7 +23,6 @@ namespace CMS.Core.Core
             return null;
         }
 
-        //for edit function
         public async Task<ConferenceDTO> GetConferenceByIdAsync(int conferenceId)
         {
             var path = $"{Properties.Resources.getConferenceByIdPath}?conferenceId={conferenceId}";

@@ -167,7 +167,7 @@ namespace CMS.API.Controllers
         // GET: api/Authentication/AccountsForRole?roleName=&conferenceId=
         [HttpGet]
         [Route("api/authentication/accountsforrole")]
-        public IHttpActionResult GetAccountByLogin(string roleName, int conferenceId)
+        public IHttpActionResult GetAccountsForRole(string roleName, int conferenceId)
         {
             var accounts = _bll.GetAccountsForRole(roleName, conferenceId);
             if (accounts == null) return BadRequest();

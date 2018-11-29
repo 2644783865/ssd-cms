@@ -46,12 +46,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Authentication\AuthenticationCore.cs" />
-    <Compile Include="Core\Conference\ConferenceCore.cs" />
-    <Compile Include="Core\Message\MessageCore.cs" />
-    <Compile Include="Core\Presentation\PresentationCore.cs" />
-    <Compile Include="Core\Room\RoomCore.cs" />
-    <Compile Include="Core\Session\SessionCore.cs" />
+    <Compile Include="Core\AuthenticationCore.cs" />
+    <Compile Include="Core\ConferenceCore.cs" />
+    <Compile Include="Core\MessageCore.cs" />
+    <Compile Include="Core\PresentationCore.cs" />
+    <Compile Include="Core\RoomCore.cs" />
+    <Compile Include="Core\SessionCore.cs" />
     <Compile Include="Core\UserCredentials.cs" />
     <Compile Include="Helpers\ApiHelper.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
