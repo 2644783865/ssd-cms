@@ -73,7 +73,7 @@ namespace CMS.API.Controllers
 
 
         // POST: api/Room/SetBuildingForConference?conferenceId=&buildingId=
-        [HttpPost]
+        [HttpGet]
         [Route("api/room/setbuildingforconference")]
         public IHttpActionResult SetBuildingForConference(int conferenceId, int buildingId)
         {
