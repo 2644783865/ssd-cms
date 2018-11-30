@@ -55,6 +55,9 @@
     <Compile Include="BLL\ArticleBLL.cs" />
     <Compile Include="BLL\AuthenticationBLL.cs" />
     <Compile Include="BLL\AuthorBLL.cs" />
+    <Compile Include="BLL\AwardBLL.cs" />
+    <Compile Include="BLL\EventBLL.cs" />
+    <Compile Include="BLL\TaskBLL.cs" />
     <Compile Include="BLL\WelcomePackBLL.cs" />
     <Compile Include="BLL\EmergencyInfoBLL.cs" />
     <Compile Include="BLL\MessageBLL.cs" />
@@ -71,13 +74,16 @@
     <Compile Include="Interfaces\IArticleBLL.cs" />
     <Compile Include="Interfaces\IAuthenticationBLL.cs" />
     <Compile Include="Interfaces\IAuthorBLL.cs" />
+    <Compile Include="Interfaces\IAwardBLL.cs" />
     <Compile Include="Interfaces\IConferenceBLL.cs" />
     <Compile Include="Interfaces\IEmergencyInfoBLL.cs" />
+    <Compile Include="Interfaces\IEventBLL.cs" />
     <Compile Include="Interfaces\IMessageBLL.cs" />
     <Compile Include="Interfaces\IPresentationBLL.cs" />
     <Compile Include="Interfaces\IReviewBLL.cs" />
     <Compile Include="Interfaces\IRoomBLL.cs" />
     <Compile Include="Interfaces\ISessionBLL.cs" />
+    <Compile Include="Interfaces\ITaskBLL.cs" />
     <Compile Include="Interfaces\ITravelBLL.cs" />
     <Compile Include="Interfaces\IWelcomePackBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

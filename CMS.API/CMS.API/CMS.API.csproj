@@ -118,9 +118,6 @@
     <Content Include="Configuration\AppSettings.local.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Configuration\ConnectionStrings.local.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Configuration\ConnectionStrings.local2.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
