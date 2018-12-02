@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="addAccommodationInfoPath" xml:space="preserve">
+    <value>api/accommodationInfo/addaccommodationinfo</value>
+  </data>
   <data name="addAccountPath" xml:space="preserve">
     <value>api/authentication/addaccount</value>
+  </data>
+  <data name="addArticlePath" xml:space="preserve">
+    <value>api/article/addarticle</value>
+  </data>
+  <data name="addAuthorPath" xml:space="preserve">
+    <value>api/author/addauthor</value>
   </data>
   <data name="addBuildingPath" xml:space="preserve">
     <value>api/room/addbuilding</value>
@@ -126,11 +135,17 @@
   <data name="addConferencePath" xml:space="preserve">
     <value>api/conference/addconference</value>
   </data>
+  <data name="addEmergencyInfoPath" xml:space="preserve">
+    <value>api/emergencyinfo/addemergencyinfo</value>
+  </data>
   <data name="addMessagePath" xml:space="preserve">
     <value>api/message/addmessage</value>
   </data>
   <data name="addPresentationPath" xml:space="preserve">
     <value>api/presentation/addpresentation</value>
+  </data>
+  <data name="addReviewPath" xml:space="preserve">
+    <value>api/review/addreview</value>
   </data>
   <data name="addRolePath" xml:space="preserve">
     <value>api/authentication/addrole</value>
@@ -144,11 +159,35 @@
   <data name="addSpecialSessionPath" xml:space="preserve">
     <value>api/session/addsespecialsession</value>
   </data>
+  <data name="addSubmissionPath" xml:space="preserve">
+    <value>api/submission/addsubmission</value>
+  </data>
+  <data name="addTravelPath" xml:space="preserve">
+    <value>api/travelinfo/addtravel</value>
+  </data>
+  <data name="addWelcomePackGiftPath" xml:space="preserve">
+    <value>api/welcomepackgift/addwelcomepackgift</value>
+  </data>
+  <data name="addWelcomePackPath" xml:space="preserve">
+    <value>api/welcomepack/addwelcomepack</value>
+  </data>
+  <data name="addWelcomePackReceiverPath" xml:space="preserve">
+    <value>api/welcomepackreceiver/addwelcomepackreceiver</value>
+  </data>
   <data name="changePasswordPath" xml:space="preserve">
     <value>api/authentication/changepassword</value>
   </data>
+  <data name="deleteAccommodationInfo" xml:space="preserve">
+    <value>api/accommodationinfo/deleteaccommodationinfo</value>
+  </data>
   <data name="deleteAccountPath" xml:space="preserve">
     <value>api/authentication/deleteaccount</value>
+  </data>
+  <data name="deleteArticlePath" xml:space="preserve">
+    <value>api/article/deletearticle</value>
+  </data>
+  <data name="deleteAuthorPath" xml:space="preserve">
+    <value>api/author/deleteauthor</value>
   </data>
   <data name="deleteBuildingForConferencePath" xml:space="preserve">
     <value>api/room/deletebuildingforconference</value>
@@ -159,11 +198,17 @@
   <data name="deleteConferencePath" xml:space="preserve">
     <value>api/conference/deleteconference</value>
   </data>
+  <data name="deleteEmergencyInfoPath" xml:space="preserve">
+    <value>api/emergencyinfo/deletemergencyinfo</value>
+  </data>
   <data name="deleteMessagePath" xml:space="preserve">
     <value>api/message/deletemessage</value>
   </data>
   <data name="deletePresentationPath" xml:space="preserve">
     <value>api/presentation/deletepresentation</value>
+  </data>
+  <data name="deleteReviewPath" xml:space="preserve">
+    <value>api/review/deletereview</value>
   </data>
   <data name="deleteRoleForConferenceAndAccountPath" xml:space="preserve">
     <value>api/authentication/deleteroleforconferenceandaccount</value>
@@ -177,8 +222,32 @@
   <data name="deleteSpecialSessionPath" xml:space="preserve">
     <value>api/session/deletespecialsession</value>
   </data>
+  <data name="deleteSubmissionPath" xml:space="preserve">
+    <value>api/submission/deletesubmission</value>
+  </data>
+  <data name="deleteTravelPath" xml:space="preserve">
+    <value>api/travelinfo/deletetravel</value>
+  </data>
+  <data name="deleteWelcomePackGiftPath" xml:space="preserve">
+    <value>api/welcomepackgift/deletewelcomepackgift</value>
+  </data>
+  <data name="deleteWelcomePackPath" xml:space="preserve">
+    <value>api/welcomepack/deletewelcomepack</value>
+  </data>
+  <data name="deleteWelcomePackReceiverPath" xml:space="preserve">
+    <value>api/welcomepackreceiver/deletewelcomepackreceiver</value>
+  </data>
+  <data name="editAccommodationInfo" xml:space="preserve">
+    <value>api/accommodationinfo/editaccommodationinfo</value>
+  </data>
   <data name="editAccountPath" xml:space="preserve">
     <value>api/authentication/editaccount</value>
+  </data>
+  <data name="editArticlePath" xml:space="preserve">
+    <value>api/article/editarticle</value>
+  </data>
+  <data name="editAuthorPath" xml:space="preserve">
+    <value>api/author/editauthor</value>
   </data>
   <data name="editBuildingPath" xml:space="preserve">
     <value>api/room/editbuilding</value>
@@ -186,11 +255,17 @@
   <data name="editConferencePath" xml:space="preserve">
     <value>api/conference/editconference</value>
   </data>
+  <data name="editEmergencyInfoPath" xml:space="preserve">
+    <value>api/emergencyinfo/editemergencyinfo</value>
+  </data>
   <data name="editMessagePath" xml:space="preserve">
     <value>api/message/editmessage</value>
   </data>
   <data name="editPresentationPath" xml:space="preserve">
     <value>api/presentation/editpresentation</value>
+  </data>
+  <data name="editReviewPath" xml:space="preserve">
+    <value>api/review/editreview</value>
   </data>
   <data name="editRoomPath" xml:space="preserve">
     <value>api/room/editroom</value>
@@ -201,6 +276,27 @@
   <data name="editSpecialSessionPath" xml:space="preserve">
     <value>api/session/editspecialsession</value>
   </data>
+  <data name="editSubmissionPath" xml:space="preserve">
+    <value>api/submission/editsubmission</value>
+  </data>
+  <data name="editTravelPath" xml:space="preserve">
+    <value>api/travelinfo/edittravel</value>
+  </data>
+  <data name="editWelcomePackGiftPath" xml:space="preserve">
+    <value>api/welcomepackgift/editwelcomepackgift</value>
+  </data>
+  <data name="editWelcomePackPath" xml:space="preserve">
+    <value>api/welcomepack/editwelcomepack</value>
+  </data>
+  <data name="editWelcomePackReceiverPath" xml:space="preserve">
+    <value>api/welcomepackreceiver/editwelcomepackreceiver</value>
+  </data>
+  <data name="getAccommodationInfoByIdPath" xml:space="preserve">
+    <value>api/accommodationinfo/accommodationinfobyid</value>
+  </data>
+  <data name="getAccommodationInfoInfoPath" xml:space="preserve">
+    <value>api/accommodationinfo/accommodationinfoinfo</value>
+  </data>
   <data name="getAccountByIdPath" xml:space="preserve">
     <value>api/authentication/accountbyid</value>
   </data>
@@ -209,6 +305,18 @@
   </data>
   <data name="getAccountsForRolePath" xml:space="preserve">
     <value>api/authentication/accountsforrole</value>
+  </data>
+  <data name="getArticleByIdPath" xml:space="preserve">
+    <value>api/article/articlebyid</value>
+  </data>
+  <data name="getArticlesPath" xml:space="preserve">
+    <value>api/article/articles</value>
+  </data>
+  <data name="getAuthorById" xml:space="preserve">
+    <value>api/author/authorbyid</value>
+  </data>
+  <data name="getAuthorsPath" xml:space="preserve">
+    <value>api/author/authors</value>
   </data>
   <data name="getConferenceByIdPath" xml:space="preserve">
     <value>api/conference/conferencebyid</value>
@@ -219,8 +327,20 @@
   <data name="getConferencesPath" xml:space="preserve">
     <value>api/conference/conferences</value>
   </data>
+  <data name="getEmergencyInfoByIdPath" xml:space="preserve">
+    <value>api/emergencyinfo/emergencyinfobyid</value>
+  </data>
+  <data name="getEmergencyInfoInfoPath" xml:space="preserve">
+    <value>api/emergencyinfo/emergencyinfoinfo</value>
+  </data>
   <data name="getHRRolesPath" xml:space="preserve">
     <value>api/authentication/hrroles</value>
+  </data>
+  <data name="getReviewByIdPath" xml:space="preserve">
+    <value>api/review/reviewbyid</value>
+  </data>
+  <data name="getReviewInfoPath" xml:space="preserve">
+    <value>api/review/reviews</value>
   </data>
   <data name="getRoleNamePath" xml:space="preserve">
     <value>api/authentication/rolename</value>
@@ -230,6 +350,36 @@
   </data>
   <data name="getRolesPath" xml:space="preserve">
     <value>api/authentication/roles</value>
+  </data>
+  <data name="getSubmissionByIdPath" xml:space="preserve">
+    <value>api/submission/submissionbyid</value>
+  </data>
+  <data name="getSubmissionsPath" xml:space="preserve">
+    <value>api/submission/submissions</value>
+  </data>
+  <data name="getTravelByIdPath" xml:space="preserve">
+    <value>api/travelinfo/travelbyid</value>
+  </data>
+  <data name="getTravelInfoPath" xml:space="preserve">
+    <value>api/travelinfo/travelinfo</value>
+  </data>
+  <data name="getWelcomePackByIdPath" xml:space="preserve">
+    <value>api/welcomepack/welcomepackbyid</value>
+  </data>
+  <data name="getWelcomePackGiftByIdPath" xml:space="preserve">
+    <value>api/welcomepackgift/welcomepackgiftbyid</value>
+  </data>
+  <data name="getWelcomePackGiftInfoPath" xml:space="preserve">
+    <value>api/welcomepackgift/welcomepackgiftinfo</value>
+  </data>
+  <data name="getWelcomePackInfoPath" xml:space="preserve">
+    <value>api/welcomepack/welcomepackinfo</value>
+  </data>
+  <data name="getWelcomePackReceiverByIdPath" xml:space="preserve">
+    <value>api/welcomepackreceiver/welcomepackreceiverbyid</value>
+  </data>
+  <data name="getWelcomePackReceiverInfoPath" xml:space="preserve">
+    <value>api/welcomepackreceiver/welcomepackreceiverinfo</value>
   </data>
   <data name="loginPath" xml:space="preserve">
     <value>api/authentication/login</value>
