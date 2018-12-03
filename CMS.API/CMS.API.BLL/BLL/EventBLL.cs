@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {
-    class EventBLL: IEventBLL
+    public class EventBLL: IEventBLL
     {
         private IEventRepository _repository = new EventRepository();
 

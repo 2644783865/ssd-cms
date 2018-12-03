@@ -24,7 +24,7 @@ namespace CMS.Core.Core
             var result = await _apiHelper.Post(path, loginModel);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                UserCredentials.Account = JsonConvert.DeserializeObject<AccountDTO>(result.Content);
+                UserCredentials.Account = JsonConvert.DeserializeObject<RoleDTO>(result.Content);
                 UserCredentials.Username = loginModel.Login;
                 return true;
             }
@@ -38,13 +38,13 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<AccountDTO> GetAccountByLoginAsync(string login)
+        public async Task<RoleDTO> GetAccountByLoginAsync(string login)
         {
             var path = $"{Properties.Resources.getAccountByLoginPath}?login={login}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                return JsonConvert.DeserializeObject<AccountDTO>(result.Content);
+                return JsonConvert.DeserializeObject<RoleDTO>(result.Content);
             }
             return null;
         }
@@ -56,14 +56,14 @@ namespace CMS.Core.Core
             else return -1;
         }
 
-        public async Task<bool> AddAccountAsync(AccountDTO account)
+        public async Task<bool> AddAccountAsync(RoleDTO account)
         {
             var path = Properties.Resources.addAccountPath;
             var result = await _apiHelper.Post(path, account);
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<bool> EditAccountAsync(AccountDTO account)
+        public async Task<bool> EditAccountAsync(RoleDTO account)
         {
             var path = Properties.Resources.editAccountPath;
             var result = await _apiHelper.Put(path, account);

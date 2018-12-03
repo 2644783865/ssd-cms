@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AuthenticationCore.cs" />
+    <Compile Include="Core\AwardCore.cs" />
+    <Compile Include="Core\EventCore.cs" />
+    <Compile Include="Core\TaskCore.cs" />
     <Compile Include="Core\ConferenceCore.cs" />
     <Compile Include="Core\MessageCore.cs" />
     <Compile Include="Core\PresentationCore.cs" />
@@ -58,12 +61,15 @@
     <Compile Include="Helpers\BasicAuthorizeHelper.cs" />
     <Compile Include="Helpers\ConstraintHelper.cs" />
     <Compile Include="Helpers\RoleHelper.cs" />
+    <Compile Include="Interfaces\IAwardCore.cs" />
+    <Compile Include="Interfaces\IEventCore.cs" />
     <Compile Include="Interfaces\IPresentationCore.cs" />
     <Compile Include="Interfaces\IAuthenticationCore.cs" />
     <Compile Include="Interfaces\IConferenceCore.cs" />
     <Compile Include="Interfaces\IMessageCore.cs" />
     <Compile Include="Interfaces\IRoomCore.cs" />
     <Compile Include="Interfaces\ISessionCore.cs" />
+    <Compile Include="Interfaces\ITaskCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

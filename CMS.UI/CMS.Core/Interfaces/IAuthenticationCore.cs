@@ -13,10 +13,10 @@ namespace CMS.Core.Interfaces
         Task LoadConferencesAsync();
         void LoadRolesAsync();
         Task<List<RoleDTO>> GetRolesForOtherAccountAsync(string login);
-        Task<AccountDTO> GetAccountByLoginAsync(string login);
+        Task<RoleDTO> GetAccountByLoginAsync(string login);
         Task<int> GetAccountIdByLoginAsync(string login);
-        Task<bool> AddAccountAsync(AccountDTO account);
-        Task<bool> EditAccountAsync(AccountDTO account);
+        Task<bool> AddAccountAsync(RoleDTO account);
+        Task<bool> EditAccountAsync(RoleDTO account);
         Task<bool> DeleteAccountAsync(int accountId);
         Task<List<RoleDTO>> GetAllRolesAsync();
         Task<List<RoleDTO>> GetHRRolesAsync();

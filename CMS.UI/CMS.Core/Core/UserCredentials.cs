@@ -21,7 +21,7 @@ namespace CMS.Core.Core
             IsAuthor = false;
         }
 
-        public static AccountDTO Account { get; set; }
+        public static RoleDTO Account { get; set; }
 
         public static string Username { get; set; }
 

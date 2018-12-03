@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {
-    class TaskBLL: ITaskBLL
+    public class TaskBLL: ITaskBLL
     {
         private ITaskRepository _repository = new TaskRepository();
 

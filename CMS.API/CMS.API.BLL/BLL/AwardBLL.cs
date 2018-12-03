@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {
-    class AwardBLL : IAwardBLL
+   public class AwardBLL : IAwardBLL
     {
         private IAwardRepository _repository = new AwardRepository();
 
