@@ -3,6 +3,8 @@ using CMS.API.DAL;
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
+using System.Collections.Generic;
+
 
 namespace CMS.API.BLL.BLL
 {
@@ -51,6 +53,32 @@ namespace CMS.API.BLL.BLL
         }
 
         // Building
+        public IEnumerable<BuildingDTO> GetBuildings()
+        {
+            try
+            {
+                return _repository.GetBuildings();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        BuildingDTO GetBuildingById(int id)
+        {
+            try
+            {
+                var building = _repository.GetBuildingById(id);
+                if (building == null) return null;
+                return building;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public bool AddBuilding(BuildingDTO building)
         {
             try

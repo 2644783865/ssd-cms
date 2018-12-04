@@ -1,4 +1,5 @@
 ﻿using CMS.BE.DTO;
+using System.Collections.Generic;
 
 namespace CMS.API.BLL.Interfaces
 {
@@ -10,6 +11,8 @@ namespace CMS.API.BLL.Interfaces
         bool DeleteRoom(int roomId);
 
         // Building
+        IEnumerable<BuildingDTO> GetBuildings();
+        BuildingDTO GetBuildingById(int id);
         bool AddBuilding(BuildingDTO building);
         bool EditBuilding(BuildingDTO building);
         bool DeleteBuilding(int buildingId);
