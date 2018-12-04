@@ -9,10 +9,10 @@ namespace CMS.API.Controllers
     {
         private IEventBLL _bll = new EventBLL();
 
-        // GET: api/Event/Events
+        // GET: api/Event/Events?ConferenceId=
         [HttpGet]
         [Route("api/event/events")]
-        public IHttpActionResult GetEvents()
+        public IHttpActionResult GetEvents(int conferenceId)
         {
             return Ok(_bll.GetEvents());
         }

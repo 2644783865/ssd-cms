@@ -14,7 +14,7 @@ namespace CMS.Core.Core
 
         public async Task<List<EventDTO>> GetEventsAsync(int conferenceId)
         {
-            var path = $"{Properties.Resources.getEventsPath}";
+            var path = $"{Properties.Resources.getEventsPath}?conferenceId={conferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -55,7 +55,7 @@ namespace CMS.Core.Core
         }
         public async Task<List<RoomDTO>> GetListRoomsAsync(int conferenceId)
         {
-            var path = $"{Properties.Resources.getListRoomsPath}";
+            var path = $"{Properties.Resources.getListRoomsPath}?conferenceId={conferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -67,6 +67,4 @@ namespace CMS.Core.Core
 
         public void Dispose() => _apiHelper.Dispose();
     }
-}
-
 }

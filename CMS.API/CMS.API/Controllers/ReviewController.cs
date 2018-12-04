@@ -35,7 +35,7 @@ namespace CMS.API.Controllers
         [Route("api/review/addreview")]
         public IHttpActionResult AddReview([FromBody] ReviewDTO review)
         {
-            if (string.IsNullOrEmpty(review.Title));
+            if (string.IsNullOrEmpty(review.Title)) return BadRequest();
             if (_bll.AddReview(review)) return Ok();
             return InternalServerError();
         }

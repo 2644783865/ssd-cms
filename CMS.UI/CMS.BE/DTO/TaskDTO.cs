@@ -9,6 +9,6 @@
         public string Description { get; set; }
         public System.DateTime BeginDate { get; set; }
         public System.DateTime EndDate { get; set; }
-        public string ManagerId { get; set; }
+        public int ManagerId { get; set; }
     }
 }

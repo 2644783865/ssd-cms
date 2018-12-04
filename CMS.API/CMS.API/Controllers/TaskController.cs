@@ -11,10 +11,10 @@ namespace CMS.API.Controllers
     {
         private ITaskBLL _bll = new TaskBLL();
 
-        // GET: api/Task/Tasks
+        // GET: api/Task/Tasks?ConferenceId=
         [HttpGet]
         [Route("api/task/tasks")]
-        public IHttpActionResult GetTasks()
+        public IHttpActionResult GetTasks(int conferenceId)
         {
             return Ok(_bll.GetTasks());
         }

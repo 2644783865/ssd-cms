@@ -14,7 +14,7 @@ namespace CMS.Core.Core
 
         public async Task<List<TaskDTO>> GetTasksAsync(int conferenceId)
         {
-            var path = $"{Properties.Resources.getTasksPath}";
+            var path = $"{Properties.Resources.getTasksPath}?conferenceId={conferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

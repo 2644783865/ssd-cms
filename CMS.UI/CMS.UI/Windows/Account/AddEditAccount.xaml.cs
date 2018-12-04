@@ -13,9 +13,9 @@ namespace CMS.UI.Windows.Account
     /// </summary>
     public partial class AddEditAccount : MetroWindow
     {
-        private RoleDTO currentAccount;
+        private AccountDTO currentAccount;
 
-        public AddEditAccount(RoleDTO account)
+        public AddEditAccount(AccountDTO account)
         {
             InitializeComponent();
             currentAccount = account;
@@ -49,7 +49,7 @@ namespace CMS.UI.Windows.Account
 
                     if (currentAccount == null)
                     {
-                        var loginModel = new RoleDTO()
+                        var loginModel = new AccountDTO()
                         {
                             Login = LoginBox.Text,
                             Name = NameBox.Text,
