@@ -24,7 +24,7 @@ namespace CMS.UI.Windows.Articles
             InitializeComponent();
         }
 
-        private void LoadArticles_Click(object sender, RoutedEventArgs e)
+        private void AddArticles_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -39,7 +39,7 @@ namespace CMS.UI.Windows.Articles
 
         }
 
-        private void SendFile_Click(object sender, RoutedEventArgs e)
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

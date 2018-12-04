@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace CMS.UI.Windows.Articles
 {
     /// <summary>
-    /// Interaction logic for SubmitArticle.xaml
+    /// Interaction logic for ArticleDetails.xaml
     /// </summary>
-    public partial class SubmitArticle : Window
+    public partial class ArticleDetails : Window
     {
-        public SubmitArticle()
+        public ArticleDetails()
         {
             InitializeComponent();
         }
@@ -29,12 +29,17 @@ namespace CMS.UI.Windows.Articles
 
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void PresentationButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void ChooseButton_Click(object sender, RoutedEventArgs e)
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RejectButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

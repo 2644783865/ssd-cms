@@ -9,11 +9,10 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <ComboBox x:Name="AccountRoleBox" Margin="10,22,104,169"/>
-        <Button x:Name="LoadArticles" Content="Load Article" Margin="190,22,14,169" Click="LoadArticles_Click"/>
-        <Button x:Name="EditArticles" Content="Edit Articles" Margin="10,77,194,114" Click="EditArticles_Click"/>
-        <Button x:Name="SendFile" Content="Send File" Margin="10,147,194,44" Click="SendFile_Click"/>
-        <Button x:Name="DeleteArticle" Content="Delete" Margin="10,112,194,79" Background="Red" Click="DeleteArticle_Click" />
+        <Button x:Name="AddArticles" Content="Add" Margin="10,105,194,86" Click="AddArticles_Click"/>
+        <Button x:Name="EditArticles" Content="Edit" Margin="10,140,194,51" Click="EditArticles_Click"/>
+        <Button x:Name="DeleteArticle" Content="Delete" Margin="10,175,194,16" Background="Red" Click="DeleteArticle_Click" />
+        <DataGrid HorizontalAlignment="Left" Height="95" Margin="10,5,0,0" VerticalAlignment="Top" Width="267" SelectionChanged="DataGrid_SelectionChanged"/>
     </Grid>
 
 

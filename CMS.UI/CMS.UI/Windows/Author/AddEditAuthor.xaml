@@ -10,14 +10,14 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-            <Label Content="Login:" Margin="0,0,0,0"/>
-            <TextBox Name="LoginBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
-            <Label Content="Name:" Margin="0,0,0,0"/>
-            <TextBox Name="NameBox" Margin="0,0,0,0" Width="337" Height="23"/>
-            <Label Content="Phone number:" Margin="0,0,0,0"/>
-            <TextBox Name="PhoneBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
-            <Label Content="Email:" Margin="0,0,0,0"/>
-            <TextBox Name="EmailBox" Margin="0,0,0,0" Width="337" Height="23"/>
+            <Label Content="First Name:" Margin="0,0,0,0"/>
+            <TextBox Name="FirstNameBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <Label Content="Last Name:" Margin="0,0,0,0"/>
+            <TextBox Name="LastNameBox" Margin="0,0,0,0" Width="337" Height="23"/>
+            <Label Content="Title:" Margin="0,0,0,0"/>
+            <TextBox Name="TitleBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <Label Content="FieldOfStudy:" Margin="0,0,0,0"/>
+            <TextBox Name="FieldOfStudyBox" Margin="0,0,0,0" Width="337" Height="23"/>
         </StackPanel>
         <Button Name="SubmitButton" Content="Add Author" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="121" Click="SubmitButton_Click"/>
         <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,150,20" VerticalAlignment="Bottom" Width="79" Click="CancelButton_Click"/>

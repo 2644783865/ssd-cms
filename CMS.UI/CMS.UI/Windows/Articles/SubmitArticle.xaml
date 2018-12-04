@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CMS.UI.Windows.Author"
         mc:Ignorable="d"
-        Title="Submit Articles" Height="200" Width="250"
+        Title="Submit Articles" Height="200" Width="274.072"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,4,0" Height="221" VerticalAlignment="Top">
-        <Button x:Name="SubmitButton" Content="Submit" HorizontalAlignment="Right" Margin="0,0,10,94" VerticalAlignment="Bottom" Width="95" Click="SubmitButton_Click"/>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,123,94" VerticalAlignment="Bottom" Width="96" Click="CancelButton_Click"/>
-        <Label Content="Topic:" Margin="21,19,10,180"/>
-        <TextBox x:Name="Topic" Margin="21,51,10,144" Height="23"/>
+        <Button x:Name="SubmitButton" Content="Submit" HorizontalAlignment="Right" Margin="0,0,19,64" VerticalAlignment="Bottom" Width="95" Click="SubmitButton_Click"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,147,64" VerticalAlignment="Bottom" Width="96" Click="CancelButton_Click"/>
+        <Button x:Name="ChooseButton" Content="Choose File" HorizontalAlignment="Right" Margin="0,0,19,126" VerticalAlignment="Bottom" Width="95" Click="ChooseButton_Click"/>
+        <Label Content="Topic:" Margin="21,10,164,189"/>
+        <TextBox x:Name="Topic" Margin="21,37,19,158" Height="23"/>
+        <TextBox x:Name="File" Margin="21,69,119,126" Height="23"/>
+
     </Grid>
 </Window>

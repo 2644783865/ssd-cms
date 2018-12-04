@@ -78,6 +78,9 @@
     <Compile Include="Windows\Account\ManageAccount.xaml.cs">
       <DependentUpon>ManageAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Articles\ArticleDetails.xaml.cs">
+      <DependentUpon>ArticleDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Articles\SubmitArticle.xaml.cs">
       <DependentUpon>SubmitArticle.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Account\ManageAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Articles\ArticleDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
