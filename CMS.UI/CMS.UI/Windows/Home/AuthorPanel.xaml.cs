@@ -39,5 +39,22 @@ namespace CMS.UI.Windows.Home
             newWindow.Show();
             Close();
         }
+
+        private void GoToAddAuthor_Click(object sender, RoutedEventArgs e)
+        {
+
+
+        }
+
+        private void GoToEditAuthor_Click(object sender, RoutedEventArgs e)
+        {
+
+
+        }
+
+        private void GoToDeleteAuthor_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,0 +1,20 @@
+﻿<Window x:Class="CMS.UI.Windows.Articles.ViewArticles"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CMS.UI.Windows.Author"
+        mc:Ignorable="d"
+        Title="View My Articles" Height="250" Width="300"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ComboBox x:Name="AccountRoleBox" Margin="10,22,104,169"/>
+        <Button x:Name="LoadArticles" Content="Load Article" Margin="190,22,14,169" Click="LoadArticles_Click"/>
+        <Button x:Name="EditArticles" Content="Edit Articles" Margin="10,77,194,114" Click="EditArticles_Click"/>
+        <Button x:Name="SendFile" Content="Send File" Margin="10,147,194,44" Click="SendFile_Click"/>
+        <Button x:Name="DeleteArticle" Content="Delete" Margin="10,112,194,79" Background="Red" Click="DeleteArticle_Click" />
+    </Grid>
+
+
+</Window>
