@@ -13,9 +13,16 @@ namespace CMS.API.DAL.Repositories
         {
             return _db.Messages.Project().To<MessageDTO>();
         }
-        public MessageDTO GetMessageById(int groupId, int sequenceNumber)
+        public MessageDTO GetMessageBySenderId(int senderId, int groupId, int sequenceNumber)
         {
-            var message = _db.Messages.Find(groupId, sequenceNumber);
+            var message = _db.Messages.Find(senderId, groupId, sequenceNumber);
+            if (message == null) return null;
+            else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
+        }
+
+        public MessageDTO GetMessageByReceiverId(int receiverId, int groupId, int sequenceNumber)
+        {
+            var message = _db.Messages.Find(receiverId, groupId, sequenceNumber);
             if (message == null) return null;
             else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
         }

@@ -1,6 +1,7 @@
 ﻿using CMS.API.DAL.Extensions;
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +15,28 @@ namespace CMS.API.DAL.Repositories
         {
             return _db.Rooms.Project().To<RoomDTO>();
         }
+
+        public IEnumerable<RoomDTO> GetRoomsForBuilding(int buildingId)
+        {
+            return _db.Rooms.Where(room => room.BuildingID == buildingId).Project().To<RoomDTO>();
+        }
+
+        bool teilweise(DateTime startTime1, DateTime endTime1, DateTime startTime2, DateTime endTime2)
+        {
+            return startTime2 >= startTime1 & startTime2 <= endTime1 | endTime2 >= startTime1 & endTime2 <= endTime1;
+        }
+        public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
+        { 
+                //Does not work
+            return null;
+        }
+
+        public IEnumerable<RoomDTO> GetAllRooms()
+        {
+            var rooms = _db.Rooms.Project().To<RoomDTO>();
+            return rooms.ToList();
+        }
+
         public RoomDTO GetRoomById(int id)
         {
             var room = _db.Rooms.Find(id);
@@ -62,6 +85,12 @@ namespace CMS.API.DAL.Repositories
             else return MapperExtension.mapper.Map<Building, BuildingDTO>(building);
         }
 
+        public IEnumerable<BuildingDTO> GetBuildingsForConference(int conferenceId)
+        {
+            //Does not work, pls change this function Kinga:)
+            return null;
+        }
+
         public void AddBuilding(BuildingDTO buildingDTO)
         {
             var building = MapperExtension.mapper.Map<BuildingDTO, Building>(buildingDTO);
@@ -70,6 +99,7 @@ namespace CMS.API.DAL.Repositories
         }
 
         public void EditBuilding(BuildingDTO buildingDTO)
+       
         {
             var building = MapperExtension.mapper.Map<BuildingDTO, Building>(buildingDTO);
             _db.Entry(_db.Buildings.Find(buildingDTO.BuildingId)).CurrentValues.SetValues(building);
