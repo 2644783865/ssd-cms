@@ -1,4 +1,5 @@
 ﻿using CMS.BE.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.Interfaces
@@ -6,11 +7,15 @@ namespace CMS.API.BLL.Interfaces
     public interface IRoomBLL
     {
         // Room 
+        IEnumerable<RoomDTO> GetAllRooms();
+        IEnumerable<RoomDTO> GetRoomsForBuilding(int buildingId);
+        IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate);
         bool AddRoom(RoomDTO room);
         bool EditRoom(RoomDTO room);
         bool DeleteRoom(int roomId);
 
         // Building
+        IEnumerable<BuildingDTO> GetBuildingsForConference(int conferenceId);
         IEnumerable<BuildingDTO> GetBuildings();
         BuildingDTO GetBuildingById(int id);
         bool AddBuilding(BuildingDTO building);

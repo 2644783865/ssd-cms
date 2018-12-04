@@ -4,6 +4,7 @@ using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System;
 
 
 namespace CMS.API.BLL.BLL
@@ -13,6 +14,42 @@ namespace CMS.API.BLL.BLL
         private IRoomRepository _repository = new RoomRepository();
 
         // Room 
+        public IEnumerable<RoomDTO> GetRoomsForBuilding(int buildingId)
+        {
+            try
+            {
+                return _repository.GetBuildingsForConference(buildingId) as IList<RoomDTO>;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
+        {
+            try
+            {
+                return _repository.GetAvailableRooms(buildingId, beginDate, endDate) as List<RoomDTO>;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<RoomDTO> GetAllRooms()
+        {
+            try
+            { 
+                return _repository.GetAllRooms() as List<RoomDTO>;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public bool AddRoom(RoomDTO room)
         {
             try
@@ -53,6 +90,18 @@ namespace CMS.API.BLL.BLL
         }
 
         // Building
+        public IEnumerable<BuildingDTO> GetBuildingsForConference(int conferenceId)
+        {
+            try
+            {
+                return _repository.GetBuildingsForConference(conferenceId) as List<BuildingDTO>;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public IEnumerable<BuildingDTO> GetBuildings()
         {
             try
@@ -65,7 +114,7 @@ namespace CMS.API.BLL.BLL
             }
         }
 
-        BuildingDTO GetBuildingById(int id)
+        public BuildingDTO GetBuildingById(int id)
         {
             try
             {
