@@ -1,0 +1,22 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Author.ManageAuthor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Manage Author" Height="350" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Name="GoToAddAuthor" Content="Add Author" HorizontalAlignment="Left" Margin="73,61,0,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToAddAuthor_Click"/>
+        <Button Name="GoToEditAuthor" Content="Edit Author" HorizontalAlignment="Left" Margin="73,139,0,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToEditAuthor_Click"/>
+        <Button Name="GoToDeleteAuthor" Content="Delete Author" HorizontalAlignment="Left" Margin="73,222,0,0" VerticalAlignment="Top" Width="101" Height="34" Background="Red" Click="GoToDeleteAuthor_Click"/>
+        <TextBox Name="LoginBox" Margin="200,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left"/>
+        <TextBox Name="AuthorBox" Margin="200,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left" RenderTransformOrigin="1.471,0.809"/>
+        <TextBox Name="AuthorBox2" Margin="200,222,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left"/>
+        <Label Content="Account (login:)" Margin="200,28,0,0" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left"/>
+        <Label Content="Author (Account Login:)" Margin="174,105,0,0" VerticalAlignment="Top" Width="182" Height="34" HorizontalAlignment="Left"/>
+        <Label Content="Author (Account Login:)" Margin="174,188,0,0" VerticalAlignment="Top" Width="182" Height="34" HorizontalAlignment="Left"/>
+    </Grid>
+</Controls:MetroWindow>

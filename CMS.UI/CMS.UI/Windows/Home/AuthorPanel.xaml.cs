@@ -40,19 +40,22 @@ namespace CMS.UI.Windows.Home
             Close();
         }
 
-        private void GoToAddAuthor_Click(object sender, RoutedEventArgs e)
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
 
         }
 
-        private void GoToEditAuthor_Click(object sender, RoutedEventArgs e)
+        private void AddArticles_Click(object sender, RoutedEventArgs e)
         {
-
 
         }
 
-        private void GoToDeleteAuthor_Click(object sender, RoutedEventArgs e)
+        private void EditArticles_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteArticle_Click(object sender, RoutedEventArgs e)
         {
 
         }

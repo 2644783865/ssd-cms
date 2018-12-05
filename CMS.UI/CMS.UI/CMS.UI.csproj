@@ -84,11 +84,11 @@
     <Compile Include="Windows\Articles\SubmitArticle.xaml.cs">
       <DependentUpon>SubmitArticle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Articles\ViewArticles.xaml.cs">
-      <DependentUpon>ViewArticles.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Author\AddEditAuthor.xaml.cs">
       <DependentUpon>AddEditAuthor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Author\ManageAuthor.xaml.cs">
+      <DependentUpon>ManageAuthor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Conference\AddEditConference.xaml.cs">
       <DependentUpon>AddEditConference.xaml</DependentUpon>
@@ -135,13 +135,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\Articles\ViewArticles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Windows\Author\AddEditAuthor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Author\ManageAuthor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Conference\AddEditConference.xaml">
       <SubType>Designer</SubType>

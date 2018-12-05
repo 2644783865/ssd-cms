@@ -72,9 +72,14 @@ namespace CMS.UI.Windows.Home
 
         private void GoToAuthorPanelButton_Click(object sender, RoutedEventArgs e)
         {
-            AuthorPanel newWindow = new AuthorPanel();
-            newWindow.Show();
-            Close();
+            if (ConferencesBox.SelectedIndex >= 0)
+            {
+                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferencesBox.SelectedIndex);
+                AuthorPanel newWindow = new AuthorPanel();
+                newWindow.Show();
+                Close();
+            }
+            else MessageBox.Show("Choose conference");
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)

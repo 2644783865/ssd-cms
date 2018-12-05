@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace CMS.UI.Windows.Articles
     /// <summary>
     /// Interaction logic for SubmitArticle.xaml
     /// </summary>
-    public partial class SubmitArticle : Window
+    public partial class SubmitArticle : MetroWindow
     {
         public SubmitArticle()
         {

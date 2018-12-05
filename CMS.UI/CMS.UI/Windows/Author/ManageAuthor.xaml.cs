@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,34 +13,31 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CMS.UI.Windows.Articles
+namespace CMS.UI.Windows.Author
 {
     /// <summary>
-    /// Interaction logic for ViewArticles.xaml
+    /// Interaction logic for ManageAuthor.xaml
     /// </summary>
-    public partial class ViewArticles : Window
+    public partial class ManageAuthor : MetroWindow
     {
-        public ViewArticles()
+        public ManageAuthor()
         {
             InitializeComponent();
         }
 
-        private void AddArticles_Click(object sender, RoutedEventArgs e)
+        private void GoToAddAuthor_Click(object sender, RoutedEventArgs e)
         {
+
 
         }
 
-        private void EditArticles_Click(object sender, RoutedEventArgs e)
+        private void GoToEditAuthor_Click(object sender, RoutedEventArgs e)
         {
+
 
         }
 
-        private void DeleteArticle_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void GoToDeleteAuthor_Click(object sender, RoutedEventArgs e)
         {
 
         }

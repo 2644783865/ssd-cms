@@ -2,6 +2,7 @@
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
+using CMS.UI.Windows.Author;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,12 @@ namespace CMS.UI.Windows.Home
         private void ManageAccountButton_Click(object sender, RoutedEventArgs e)
         {
             ManageAccount newWindow = new ManageAccount();
+            newWindow.ShowDialog();
+        }
+
+        private void ManageAuthor_Click(object sender, RoutedEventArgs e)
+        {
+            ManageAuthor newWindow = new ManageAuthor();
             newWindow.ShowDialog();
         }
     }
