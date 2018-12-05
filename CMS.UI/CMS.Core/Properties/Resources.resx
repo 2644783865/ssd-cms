@@ -177,7 +177,7 @@
   <data name="changePasswordPath" xml:space="preserve">
     <value>api/authentication/changepassword</value>
   </data>
-  <data name="deleteAccommodationInfo" xml:space="preserve">
+  <data name="deleteAccommodationInfoPath" xml:space="preserve">
     <value>api/accommodationinfo/deleteaccommodationinfo</value>
   </data>
   <data name="deleteAccountPath" xml:space="preserve">
@@ -237,7 +237,7 @@
   <data name="deleteWelcomePackReceiverPath" xml:space="preserve">
     <value>api/welcomepackreceiver/deletewelcomepackreceiver</value>
   </data>
-  <data name="editAccommodationInfo" xml:space="preserve">
+  <data name="editAccommodationInfoPath" xml:space="preserve">
     <value>api/accommodationinfo/editaccommodationinfo</value>
   </data>
   <data name="editAccountPath" xml:space="preserve">
@@ -312,7 +312,7 @@
   <data name="getArticlesPath" xml:space="preserve">
     <value>api/article/articles</value>
   </data>
-  <data name="getAuthorById" xml:space="preserve">
+  <data name="getAuthorByIdPath" xml:space="preserve">
     <value>api/author/authorbyid</value>
   </data>
   <data name="getAuthorsPath" xml:space="preserve">
