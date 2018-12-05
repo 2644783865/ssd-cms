@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -54,7 +54,6 @@
     <Compile Include="Core\EmergencyInfoCore.cs" />
     <Compile Include="Core\EventCore.cs" />
     <Compile Include="Core\ReviewCore.cs" />
-    <Compile Include="Core\SubmissionCore.cs" />
     <Compile Include="Core\TaskCore.cs" />
     <Compile Include="Core\ConferenceCore.cs" />
     <Compile Include="Core\MessageCore.cs" />
@@ -64,8 +63,6 @@
     <Compile Include="Core\TravelInfoCore.cs" />
     <Compile Include="Core\UserCredentials.cs" />
     <Compile Include="Core\WelcomePackCore.cs" />
-    <Compile Include="Core\WelcomePackGiftCore.cs" />
-    <Compile Include="Core\WelcomePackReceiverCore.cs" />
     <Compile Include="Helpers\ApiHelper.cs" />
     <Compile Include="Helpers\AppSettings.cs" />
     <Compile Include="Helpers\BasicAuthorizeHelper.cs" />

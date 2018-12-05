@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Core
 {
-    class ArticleCore : IArticleCore
+    class ArticleCore : IArticleCore, ISubmissionCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
 
@@ -52,6 +52,50 @@ namespace CMS.Core.Core
         public async Task<bool> DeleteArticleAsync(int articleId)
         {
             var path = $"{Properties.Resources.deleteArticlePath}?articleId={articleId}";
+            var result = await _apiHelper.Delete(path);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
+        public async Task<List<SubmissionDTO>> GetSubmissionsAsync()
+        {
+            var path = $"{Properties.Resources.getSubmissionsPath}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<SubmissionDTO>>(result.Content);
+            }
+            return null;
+        }
+
+        public async Task<SubmissionDTO> GetSubmissionByIdAsync(int submissionId)
+        {
+            var path = $"{Properties.Resources.getSubmissionByIdPath}?submissionId={submissionId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<SubmissionDTO>(result.Content);
+            }
+            else return null;
+        }
+
+        public async Task<bool> AddSubmissionAsync(SubmissionDTO submission)
+        {
+            var path = Properties.Resources.addSubmissionPath;
+            var result = await _apiHelper.Post(path, submission);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
+        //not implemented
+        public async Task<bool> EditSubmissionAsync(SubmissionDTO submission)
+        {
+            var path = Properties.Resources.editSubmissionPath;
+            var result = await _apiHelper.Put(path, submission);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
+        public async Task<bool> DeleteSubmissionAsync(int submissionId)
+        {
+            var path = $"{Properties.Resources.deleteSubmissionPath}?submissionId={submissionId}";
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }
