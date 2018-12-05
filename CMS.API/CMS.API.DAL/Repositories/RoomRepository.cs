@@ -3,6 +3,7 @@ using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace CMS.API.DAL.Repositories
@@ -10,11 +11,6 @@ namespace CMS.API.DAL.Repositories
     public class RoomRepository : IRoomRepository
     {
         private cmsEntities _db = new cmsEntities();
-
-        public IEnumerable<RoomDTO> GetRooms()
-        {
-            return _db.Rooms.Project().To<RoomDTO>();
-        }
 
         public IEnumerable<RoomDTO> GetRoomsForBuilding(int buildingId)
         {
@@ -26,15 +22,18 @@ namespace CMS.API.DAL.Repositories
             return startTime2 >= startTime1 & startTime2 <= endTime1 | endTime2 >= startTime1 & endTime2 <= endTime1;
         }
         public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
-        { 
-                //Does not work
-            return null;
-        }
-
-        public IEnumerable<RoomDTO> GetAllRooms()
         {
-            var rooms = _db.Rooms.Project().To<RoomDTO>();
-            return rooms.ToList();
+            var rooms = _db.Rooms.SqlQuery("SELECT DISTINCT * FROM Room WHERE BuildingID = @buildingid " +
+                "AND RoomID NOT IN(SELECT RoomId FROM Event WHERE((@begindate >= BeginDate AND @begindate < EndDate) " +
+                "OR(@enddate > BeginDate AND @enddate <= EndDate)) " +
+                "UNION SELECT RoomId FROM Presentation WHERE((@begindate >= BeginDate AND @begindate < EndDate) " +
+                "OR(@enddate > BeginDate AND @enddate <= EndDate)))",
+               new SqlParameter("@buildingid", buildingId), new SqlParameter("@begindate", beginDate), 
+               new SqlParameter("@enddate", endDate)).ToList();
+            foreach (var room in rooms)
+            {
+                yield return MapperExtension.mapper.Map<Room, RoomDTO>(room);
+            }
         }
 
         public RoomDTO GetRoomById(int id)
@@ -54,7 +53,7 @@ namespace CMS.API.DAL.Repositories
         public void EditRoom(RoomDTO roomDTO)
         {
             var room = MapperExtension.mapper.Map<RoomDTO, Room>(roomDTO);
-            _db.Entry(_db.Rooms.Find(roomDTO.RoomId)).CurrentValues.SetValues(room);
+            _db.Entry(_db.Rooms.Find(roomDTO.RoomID)).CurrentValues.SetValues(room);
             _db.SaveChanges();
         }
 
@@ -85,10 +84,24 @@ namespace CMS.API.DAL.Repositories
             else return MapperExtension.mapper.Map<Building, BuildingDTO>(building);
         }
 
-        public IEnumerable<BuildingDTO> GetBuildingsForConference(int conferenceId)
+        public IEnumerable<BuildingDTO> GetAssignedBuildingsForConference(int conferenceId)
         {
-            //Does not work, pls change this function Kinga:)
-            return null;
+            var buildings = _db.Buildings.SqlQuery("SELECT * FROM Building WHERE BuildingID IN (SELECT BuildingId FROM ConferenceBuilding WHERE ConferenceId = @conferenceid)",
+                new SqlParameter("@conferenceid", conferenceId)).ToList();
+            foreach (var building in buildings)
+            {
+                yield return MapperExtension.mapper.Map<Building, BuildingDTO>(building);
+            }
+        }
+
+        public IEnumerable<BuildingDTO> GetUnassignedBuildingsForConference(int conferenceId)
+        {
+            var buildings = _db.Buildings.SqlQuery("SELECT * FROM Building WHERE BuildingID NOT IN (SELECT BuildingId FROM ConferenceBuilding WHERE ConferenceId = @conferenceid)",
+                new SqlParameter("@conferenceid", conferenceId)).ToList();
+            foreach (var building in buildings)
+            {
+                yield return MapperExtension.mapper.Map<Building, BuildingDTO>(building);
+            }
         }
 
         public void AddBuilding(BuildingDTO buildingDTO)
@@ -99,7 +112,7 @@ namespace CMS.API.DAL.Repositories
         }
 
         public void EditBuilding(BuildingDTO buildingDTO)
-       
+
         {
             var building = MapperExtension.mapper.Map<BuildingDTO, Building>(buildingDTO);
             _db.Entry(_db.Buildings.Find(buildingDTO.BuildingId)).CurrentValues.SetValues(building);
@@ -117,13 +130,13 @@ namespace CMS.API.DAL.Repositories
 
         public void AddConferenceBuilding(int buildingId, int conferenceId)
         {
-            _db.Database.ExecuteSqlCommand("INSERT INTO ConferenceBuilding  VALUES (@p0, @p1)", 
+            _db.Database.ExecuteSqlCommand("INSERT INTO ConferenceBuilding  VALUES (@p0, @p1)",
                 conferenceId, buildingId);
         }
 
         public void DeleteConferenceBuilding(int buildingId, int conferenceId)
         {
-            _db.Database.ExecuteSqlCommand("DELETE FROM ConferenceBuilding WHERE ConferenceId=@p0 AND BuildingId=@p1", 
+            _db.Database.ExecuteSqlCommand("DELETE FROM ConferenceBuilding WHERE ConferenceId=@p0 AND BuildingId=@p1",
                 conferenceId, buildingId);
         }
     }

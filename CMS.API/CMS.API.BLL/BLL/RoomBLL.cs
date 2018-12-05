@@ -18,7 +18,7 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                return _repository.GetBuildingsForConference(buildingId) as IList<RoomDTO>;
+                return _repository.GetRoomsForBuilding(buildingId);
             }
             catch
             {
@@ -30,19 +30,7 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                return _repository.GetAvailableRooms(buildingId, beginDate, endDate) as List<RoomDTO>;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public IEnumerable<RoomDTO> GetAllRooms()
-        {
-            try
-            { 
-                return _repository.GetAllRooms() as List<RoomDTO>;
+                return _repository.GetAvailableRooms(buildingId, beginDate, endDate);
             }
             catch
             {
@@ -90,11 +78,23 @@ namespace CMS.API.BLL.BLL
         }
 
         // Building
-        public IEnumerable<BuildingDTO> GetBuildingsForConference(int conferenceId)
+        public IEnumerable<BuildingDTO> GetAssignedBuildingsForConference(int conferenceId)
         {
             try
             {
-                return _repository.GetBuildingsForConference(conferenceId) as List<BuildingDTO>;
+                return _repository.GetAssignedBuildingsForConference(conferenceId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<BuildingDTO> GetUnassignedBuildingsForConference(int conferenceId)
+        {
+            try
+            {
+                return _repository.GetUnassignedBuildingsForConference(conferenceId);
             }
             catch
             {

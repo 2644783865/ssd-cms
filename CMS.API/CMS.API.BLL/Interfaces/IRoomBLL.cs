@@ -7,7 +7,6 @@ namespace CMS.API.BLL.Interfaces
     public interface IRoomBLL
     {
         // Room 
-        IEnumerable<RoomDTO> GetAllRooms();
         IEnumerable<RoomDTO> GetRoomsForBuilding(int buildingId);
         IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate);
         bool AddRoom(RoomDTO room);
@@ -15,7 +14,8 @@ namespace CMS.API.BLL.Interfaces
         bool DeleteRoom(int roomId);
 
         // Building
-        IEnumerable<BuildingDTO> GetBuildingsForConference(int conferenceId);
+        IEnumerable<BuildingDTO> GetAssignedBuildingsForConference(int conferenceId);
+        IEnumerable<BuildingDTO> GetUnassignedBuildingsForConference(int conferenceId);
         IEnumerable<BuildingDTO> GetBuildings();
         BuildingDTO GetBuildingById(int id);
         bool AddBuilding(BuildingDTO building);

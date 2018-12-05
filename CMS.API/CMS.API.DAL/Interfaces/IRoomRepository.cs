@@ -7,18 +7,17 @@ namespace CMS.API.DAL.Interfaces
     public interface IRoomRepository : IDisposable
     {
         //Room
-        IEnumerable<RoomDTO> GetRooms();
         RoomDTO GetRoomById(int id);
         IEnumerable<RoomDTO> GetRoomsForBuilding(int buildingId);
         IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate);
-        IEnumerable<RoomDTO> GetAllRooms();
         void AddRoom(RoomDTO roomDTO);
         void EditRoom(RoomDTO roomDTO);
         void DeleteRoom(int roomId);
 
         //Building
         IEnumerable<BuildingDTO> GetBuildings();
-        IEnumerable<BuildingDTO> GetBuildingsForConference(int conferenceId);
+        IEnumerable<BuildingDTO> GetAssignedBuildingsForConference(int conferenceId);
+        IEnumerable<BuildingDTO> GetUnassignedBuildingsForConference(int conferenceId);
         BuildingDTO GetBuildingById(int id);
         void AddBuilding(BuildingDTO buildingDTO);
         void EditBuilding(BuildingDTO buildingDTO);

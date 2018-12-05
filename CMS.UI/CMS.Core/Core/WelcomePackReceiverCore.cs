@@ -37,7 +37,7 @@ namespace CMS.Core.Core
         public async Task<bool> AddWelcomePackReceiverAsync(WelcomePackReceiverDTO welcomePackReceiver)
         {
             var path = Properties.Resources.addWelcomePackReceiverPath;
-            var result = await _apiHelper.Post(path, conference);
+            var result = await _apiHelper.Post(path, welcomePackReceiver);
             return result != null && result.ResponseType == ResponseType.Success;
         }
 

@@ -2,9 +2,9 @@
 {
     public class RoomDTO
     {
-        public int RoomId { get; set; }
-        public int Code { get; set; }
-        public int BuildingId { get; set; }
+        public int RoomID { get; set; }
+        public string Code { get; set; }
+        public int BuildingID { get; set; }
         
     }
 }
