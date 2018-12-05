@@ -3,6 +3,7 @@ using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.SqlClient;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -20,6 +21,18 @@ namespace CMS.API.DAL.Repositories
             var article = _db.Articles.Find(articleId);
             if (article == null) return null;
             else return MapperExtension.mapper.Map<Article, ArticleDTO>(article);
+        }
+
+        public IEnumerable<ArticleDTO> GetArticlesForConferenceAndAuthor(int conferenceId, int authorId)
+        {
+            var articles = _db.Articles.SqlQuery("SELECT * FROM Article WHERE ArticleId IN " +
+                "(SELECT * FROM Article JOIN ArticleAuthor ON Article.ArticleId = ArticleAuthor.ArticleId" +
+                "WHERE ConferenceID = @conferenceId AND AuthorId = @authorId)", new SqlParameter("@conferenceId", conferenceId),
+                new SqlParameter("@authorId", authorId));
+            foreach (var article in articles)
+            {
+                yield return MapperExtension.mapper.Map<Article, ArticleDTO>(article);
+            }
         }
 
         public void AddArticle(ArticleDTO articleDTO)

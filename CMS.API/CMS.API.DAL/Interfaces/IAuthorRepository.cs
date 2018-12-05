@@ -8,6 +8,7 @@ namespace CMS.API.DAL.Interfaces
     {
         IEnumerable<AuthorDTO> GetAuthors();
         AuthorDTO GetAuthorById(int id);
+        AuthorDTO GetAuthorByAccountId(int accoutnId);
         void AddAuthor(AuthorDTO authorDTO);
         void EditAuthor(AuthorDTO authorDTO);
         void DeleteAuthor(int authorId);
