@@ -339,17 +339,26 @@
   <data name="getArticlesPath" xml:space="preserve">
     <value>api/article/articles</value>
   </data>
+  <data name="getAssignedBuildForConfPath" xml:space="preserve">
+    <value>api/authentication/getassignedbuildforconf</value>
+  </data>
   <data name="getAuthorByIdPath" xml:space="preserve">
     <value>api/author/authorbyid</value>
   </data>
   <data name="getAuthorsPath" xml:space="preserve">
     <value>api/author/authors</value>
   </data>
+  <data name="getAvailableRoomsPath" xml:space="preserve">
+    <value>api/authentication/getavailablerooms</value>
+  </data>
   <data name="getAwardByIdPath" xml:space="preserve">
     <value>api/award/awardbyid</value>
   </data>
   <data name="getAwardsPath" xml:space="preserve">
     <value>api/award/awards</value>
+  </data>
+  <data name="getBuildingsPath" xml:space="preserve">
+    <value>api/room/building</value>
   </data>
   <data name="getConferenceByIdPath" xml:space="preserve">
     <value>api/conference/conferencebyid</value>
@@ -396,6 +405,9 @@
   <data name="getRolesPath" xml:space="preserve">
     <value>api/authentication/roles</value>
   </data>
+  <data name="getRoomsForBuildingPath" xml:space="preserve">
+    <value>api/authentication/getroomsforbuilding</value>
+  </data>
   <data name="getSubmissionByIdPath" xml:space="preserve">
     <value>api/submission/submissionbyid</value>
   </data>
@@ -416,6 +428,9 @@
   </data>
   <data name="getTravelInfoPath" xml:space="preserve">
     <value>api/travelinfo/travelinfo</value>
+  </data>
+  <data name="getUnassignedBuildForConfPath" xml:space="preserve">
+    <value>api/authentication/getunassignedbuildforconf</value>
   </data>
   <data name="getWelcomePackByIdPath" xml:space="preserve">
     <value>api/welcomepack/welcomepackbyid</value>

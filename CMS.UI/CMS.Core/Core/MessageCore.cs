@@ -11,7 +11,29 @@ namespace CMS.Core.Core
     public class MessageCore : IMessageCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
-      
+        /*
+        public async Task<List<MessageDTO>> GetMessagesAsync()
+        {
+            var path = $"{Properties.Resources.getMessagesPath}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<MessageDTO>>(result.Content);
+            }
+            return null;
+        }
+
+        public async Task<MessageDTO> GetMessageByIdAsync(int groupId, int sequenceNumber)
+        {
+            var path = $"{Properties.Resources.getMessageByIdPath}?groupId={groupId}&sequenceNumber={sequenceNumber}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<MessageDTO>(result.Content);
+            }
+            else return null;
+        }
+        */
         public async Task<bool> AddMessageAsync(MessageDTO message)
         {
             var path = Properties.Resources.addMessagePath;

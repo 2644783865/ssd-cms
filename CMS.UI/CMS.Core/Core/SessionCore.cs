@@ -11,7 +11,29 @@ namespace CMS.Core.Core
     public class SessionCore : ISessionCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
+        /*
+        public async Task<List<SessionDTO>> GetSessionsAsync()
+        {
+            var path = $"{Properties.Resources.getSessionsPath}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<SessionDTO>>(result.Content);
+            }
+            return null;
+        }
 
+        public async Task<SessionDTO> GetSessionByIdAsync(int sessionId)
+        {
+            var path = $"{Properties.Resources.getSessionByIdPath}?sessionId={sessionId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<SessionDTO>(result.Content);
+            }
+            else return null;
+        }
+        */
         public async Task<bool> AddSessionAsync(SessionDTO session)
         {
             var path = Properties.Resources.addSessionPath;
@@ -33,9 +55,30 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
+        /*
+        public async Task<List<SpecialSessionDTO>> GetSpecialSessionsAsync()
+        {
+            var path = $"{Properties.Resources.getSpecialSessionsPath}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<SpecialSessionDTO>>(result.Content);
+            }
+            return null;
+        }
 
-
-        public async Task<bool> AddSpecialSessionnAsync(SpecialSessionDTO specialSession)
+        public async Task<SpecialSessionDTO> GetSpecialSessionByIdAsync(int specialsessionId)
+        {
+            var path = $"{Properties.Resources.getSpecialSessionByIdPath}?specialsessionId={specialsessionId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<SpecialSessionDTO>(result.Content);
+            }
+            else return null;
+        }
+        */
+        public async Task<bool> AddSpecialSessionAsync(SpecialSessionDTO specialSession)
         {
             var path = Properties.Resources.addSpecialSessionPath;
             var result = await _apiHelper.Post(path, specialSession);

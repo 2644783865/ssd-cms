@@ -11,7 +11,25 @@ namespace CMS.API.Controllers
     public class SessionController : ApiController
     {
         private ISessionBLL _bll = new SessionBLL();
+        /*
+        // GET: api/Session/Session
+        [HttpGet]
+        [Route("api/session/session")]
+        public IHttpActionResult GetSessions()
+        {
+            return Ok(_bll.GetSessions());
+        }
 
+        // GET: api/Session/GetSessionById?sessionId=
+        [HttpGet]
+        [Route("api/session/getsessionbyid")]
+        public IHttpActionResult GetSessionById(int sessionId)
+        {
+            var session = _bll.GetSessionById(sessionId);
+            if (session == null) return BadRequest();
+            return Ok(session);
+        }
+        */
         // POST: api/Session/AddSession
         [HttpPost]
         [Route("api/session/addsession")]
@@ -40,9 +58,26 @@ namespace CMS.API.Controllers
             if (_bll.DeleteSession(sessionId)) return Ok();
             return InternalServerError();
         }
-        
 
+        /*
+        // GET: api/Session/SpecialSession
+        [HttpGet]
+        [Route("api/session/session")]
+        public IHttpActionResult GetSpecialSessions()
+        {
+            return Ok(_bll.GetSpecialSessions());
+        }
 
+        // GET: api/Session/GetSpecialSessionById?specialSessionId=
+        [HttpGet]
+        [Route("api/session/getspecialsessionbyid")]
+        public IHttpActionResult GetSpecialSessionById(int specialSessionId)
+        {
+            var specialsession = _bll.GetSpecialSessionById(specialSessionId);
+            if (specialsession == null) return BadRequest();
+            return Ok(specialsession);
+        }
+        */
         // POST: api/Session/AddSpecialSession
         [HttpPost]
         [Route("api/session/addsespecialsession")]

@@ -10,7 +10,25 @@ namespace CMS.API.Controllers
     public class MessageController : ApiController
     {
         private IMessageBLL _bll = new MessageBLL();
+        /*
+        // GET: api/Message/Message
+        [HttpGet]
+        [Route("api/message/message")]
+        public IHttpActionResult GetMessages()
+        {
+            return Ok(_bll.GetMessages());
+        }
 
+        // GET: api/Message/GetMessageById?groupId=&sequenceNumber=
+        [HttpGet]
+        [Route("api/message/getmessagebyid")]
+        public IHttpActionResult GetMessageById(int groupId, int sequenceNumber)
+        {
+            var message = _bll.GetMessageById(groupId, sequenceNumber);
+            if (message == null) return BadRequest();
+            return Ok(message);
+        }
+        */
         // POST: api/Message/AddMessage
         [HttpPost]
         [Route("api/message/addmessage")]
