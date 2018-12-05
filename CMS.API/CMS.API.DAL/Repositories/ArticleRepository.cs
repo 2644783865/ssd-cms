@@ -67,6 +67,11 @@ namespace CMS.API.DAL.Repositories
             return _db.Submissions.Project().To<SubmissionDTO>();
         }
 
+        public IEnumerable<SubmissionDTO> GetSubmissionsForArticle(int articleId)
+        {
+            return _db.Submissions.Where(sub => sub.ArticleId==articleId).Project().To<SubmissionDTO>();
+        }
+
         public SubmissionDTO GetSubmissionById(int submissionId)
         {
             var submission = _db.Submissions.Find(submissionId);

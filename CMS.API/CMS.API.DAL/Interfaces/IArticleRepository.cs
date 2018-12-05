@@ -17,6 +17,7 @@ namespace CMS.API.DAL.Interfaces
 
         //Submission
         IEnumerable<SubmissionDTO> GetSubmissions();
+        IEnumerable<SubmissionDTO> GetSubmissionsForArticle(int articleId);
         SubmissionDTO GetSubmissionById(int id);
         void AddSubmission(SubmissionDTO submissionDTO);
         void EditSubmission(SubmissionDTO submissionDTO);
