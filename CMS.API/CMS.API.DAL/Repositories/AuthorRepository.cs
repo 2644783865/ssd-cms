@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -19,6 +20,13 @@ namespace CMS.API.DAL.Repositories
             var author = _db.Authors.Find(authorId);
             if (author == null) return null;
             else return MapperExtension.mapper.Map<Author, AuthorDTO>(author);
+        }
+
+        public AuthorDTO GetAuthorByAccountId(int accountId)
+        {
+            var aut = _db.Authors.Where(author => author.AccountId == accountId).ToList().First();
+            if (aut == null) return null;
+            else return MapperExtension.mapper.Map<Author, AuthorDTO>(aut);
         }
 
         public void AddAuthor(AuthorDTO authorDTO)
