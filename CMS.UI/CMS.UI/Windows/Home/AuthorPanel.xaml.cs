@@ -1,4 +1,5 @@
-﻿using CMS.Core.Core;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Articles;
 using MahApps.Metro.Controls;
@@ -48,12 +49,14 @@ namespace CMS.UI.Windows.Home
 
         private void AddArticles_Click(object sender, RoutedEventArgs e)
         {
-
+            SubmitArticle newSubmitArticleWindow = new SubmitArticle();
+            newSubmitArticleWindow.ShowDialog();
         }
 
         private void EditArticles_Click(object sender, RoutedEventArgs e)
         {
-
+            ArticleDetails newArticleDetailsWindow= new ArticleDetails(null);     //Shouldn't be null
+            newArticleDetailsWindow.ShowDialog();
         }
 
         private void DeleteArticle_Click(object sender, RoutedEventArgs e)

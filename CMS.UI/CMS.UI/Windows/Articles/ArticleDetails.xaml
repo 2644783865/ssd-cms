@@ -14,9 +14,9 @@
         <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,108,0,0" Width="345"/>
         <Label Content="Acceptance Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,170,0,0" Width="345"/>
         <Label Content="Submissions" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,243,0,0" Width="345"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Topic" VerticalAlignment="Top" Width="345" Margin="17,74,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" Width="345" Margin="19,139,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Acceptance Date" VerticalAlignment="Top" Width="345" Margin="19,201,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="17,74,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,139,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,201,0,0"/>
         <ComboBox Name="SubmissionBox" HorizontalAlignment="Left" Margin="19,274,0,0" VerticalAlignment="Top" Width="345"/>
         <Button x:Name="Submit" Content="Submit new" HorizontalAlignment="Right" Margin="0,0,283,140" VerticalAlignment="Bottom" Width="96" Click="SubmitButton_Click"/>
         <Button x:Name="View" Content="View pdf" HorizontalAlignment="Right" Margin="0,0,34,140" VerticalAlignment="Bottom" Width="96" Click="View_Click"/>

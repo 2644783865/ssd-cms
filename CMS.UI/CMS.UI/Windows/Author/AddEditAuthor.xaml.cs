@@ -12,6 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CMS.BE.DTO;
+using CMS.Core.Core;
+using CMS.Core.Helpers;
+using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
+
 
 namespace CMS.UI.Windows.Author
 {
@@ -21,6 +27,25 @@ namespace CMS.UI.Windows.Author
     /// </summary>
     public partial class AddEditAuthor : MetroWindow
     {
+        private AuthorDTO currentAuthor;
+
+        public AddEditAuthor(AuthorDTO author)
+        {
+            InitializeComponent();
+            currentAuthor = author;
+            if (author != null) InitializeEditFields();
+        }
+
+        private void InitializeEditFields()
+        {
+            FirstNameBox.Text = currentAuthor.FirstName;
+            LastNameBox.Text = currentAuthor.LastName;
+            TitleBox.Text = currentAuthor.Title;
+            FieldOfStudyBox.Text = currentAuthor.FieldOfStudy;
+            SubmitButton.Content = "Save";
+            this.Title = "Edit Author";
+        }
+
         public AddEditAuthor()
         {
             InitializeComponent();
@@ -28,12 +53,46 @@ namespace CMS.UI.Windows.Author
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            //missing validate form
+            using (IAuthenticationCore core = new AuthenticationCore())
+            {
+                bool result = false;
 
+                if (currentAuthor == null)
+                {
+                    var authorModel = new AuthorDTO()
+                    {
+                        FirstName = FirstNameBox.Text,
+                        LastName = LastNameBox.Text,
+                        Title = TitleBox.Text,
+                        FieldOfStudy = FieldOfStudyBox.Text
+                    };
+                   // result = await core.AddAuthorAsync(authorModel);
+                }
+                else
+                {
+                    currentAuthor.FirstName = FirstNameBox.Text;
+                    currentAuthor.LastName = LastNameBox.Text;
+                    currentAuthor.Title = TitleBox.Text;
+                    currentAuthor.FieldOfStudy= FieldOfStudyBox.Text;
+
+                //    result = await core.EditAuthorAsync(currentAuthor);
+                }
+
+                if (result)
+                {
+                    MessageBox.Show("Success");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Failure");
+                }
+            }
         }
-
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

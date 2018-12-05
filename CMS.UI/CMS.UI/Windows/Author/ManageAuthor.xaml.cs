@@ -27,13 +27,15 @@ namespace CMS.UI.Windows.Author
 
         private void GoToAddAuthor_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEditAuthor newAddEditAuthorWindow = new AddEditAuthor();
+            newAddEditAuthorWindow.ShowDialog();
 
         }
 
         private void GoToEditAuthor_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEditAuthor newAddEditAuthorWindow = new AddEditAuthor();
+            newAddEditAuthorWindow.ShowDialog();
 
         }
 

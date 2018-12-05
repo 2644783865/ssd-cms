@@ -37,6 +37,7 @@ namespace CMS.UI.Windows.Articles
 
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+
             OpenFileDialog fileDialog = new OpenFileDialog()
             {
                 Filter = "pdf files (*.pdf)|*.pdf"
@@ -73,7 +74,7 @@ namespace CMS.UI.Windows.Articles
 
         private void RejectButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
         private async void View_Click(object sender, RoutedEventArgs e)
