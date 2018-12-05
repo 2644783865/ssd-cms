@@ -17,7 +17,7 @@
         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Topic" VerticalAlignment="Top" Width="345" Margin="17,74,0,0"/>
         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Status" VerticalAlignment="Top" Width="345" Margin="19,139,0,0"/>
         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Acceptance Date" VerticalAlignment="Top" Width="345" Margin="19,201,0,0"/>
-        <ComboBox HorizontalAlignment="Left" Margin="19,274,0,0" VerticalAlignment="Top" Width="345"/>
+        <ComboBox Name="SubmissionBox" HorizontalAlignment="Left" Margin="19,274,0,0" VerticalAlignment="Top" Width="345"/>
         <Button x:Name="Submit" Content="Submit new" HorizontalAlignment="Right" Margin="0,0,283,140" VerticalAlignment="Bottom" Width="96" Click="SubmitButton_Click"/>
         <Button x:Name="View" Content="View pdf" HorizontalAlignment="Right" Margin="0,0,34,140" VerticalAlignment="Bottom" Width="96" Click="View_Click"/>
         <Button x:Name="Presentation" Content="Presentation" HorizontalAlignment="Right" Margin="0,0,32,87" VerticalAlignment="Bottom" Width="96" Click="PresentationButton_Click"/>

@@ -42,6 +42,12 @@ namespace CMS.API.DAL.Repositories
             _db.Articles.Remove(article);
             _db.SaveChanges();
         }
+
+        public decimal GetLastArticleId()
+        {
+            return _db.Database.SqlQuery<decimal>("SELECT IDENT_CURRENT('Article')").FirstOrDefault();
+        }
+
         //Submission
         public IEnumerable<SubmissionDTO> GetSubmissions()
         {
@@ -86,7 +92,7 @@ namespace CMS.API.DAL.Repositories
 
         public void AddArticleAuthor(int articleId, int authorId)
         {
-            _db.Database.ExecuteSqlCommand("INSERT INTO ArticleAuthor  VALUES (@p0, @p1)",
+            _db.Database.ExecuteSqlCommand("INSERT INTO ArticleAuthor VALUES (@p0, @p1)",
                 articleId, authorId);
         }
 

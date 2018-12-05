@@ -1,5 +1,6 @@
 ﻿using CMS.BE.DTO;
 using CMS.BE.Models;
+using CMS.BE.Models.Article;
 using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using Newtonsoft.Json;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Core
 {
-    class ArticleCore : IArticleCore, ISubmissionCore
+    public class ArticleCore : IArticleCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
 
@@ -34,10 +35,10 @@ namespace CMS.Core.Core
             else return null;
         }
 
-        public async Task<bool> AddArticleAsync(ArticleDTO article)
+        public async Task<bool> AddArticleAsync(AddArticleModel articleModel)
         {
             var path = Properties.Resources.addArticlePath;
-            var result = await _apiHelper.Post(path, article);
+            var result = await _apiHelper.Post(path, articleModel);
             return result != null && result.ResponseType == ResponseType.Success;
         }
 

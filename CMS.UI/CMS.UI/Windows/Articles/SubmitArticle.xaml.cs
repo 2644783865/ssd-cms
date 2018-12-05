@@ -1,6 +1,8 @@
 ﻿using MahApps.Metro.Controls;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +29,10 @@ namespace CMS.UI.Windows.Articles
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-
+                
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ChooseButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

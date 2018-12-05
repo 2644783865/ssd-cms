@@ -18,7 +18,7 @@ namespace CMS.Core.Core
             Conference = null;
             Roles.Clear();
             Conferences.Clear();
-            IsAuthor = false;
+            AuthorId = 0;
         }
 
         public static AccountDTO Account { get; set; }
@@ -31,6 +31,6 @@ namespace CMS.Core.Core
 
         public static List<RoleDTO> Roles { get; set; }
 
-        public static bool IsAuthor { get; set; } = false;
+        public static int AuthorId { get; set; } = 0;
     }
 }

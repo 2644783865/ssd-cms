@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Core
 {
-    class WelcomePackCore : IWelcomePackCore, IWelcomePackGiftCore, IWelcomePackReceiverCore
+    class WelcomePackCore : IWelcomePackCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
 

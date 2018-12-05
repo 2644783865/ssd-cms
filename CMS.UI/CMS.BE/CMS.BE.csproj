@@ -71,6 +71,7 @@
     <Compile Include="DTO\WelcomePackDTO.cs" />
     <Compile Include="DTO\WelcomePackGiftDTO.cs" />
     <Compile Include="DTO\WelcomePackReceiverDTO.cs" />
+    <Compile Include="Models\Article\AddArticleModel.cs" />
     <Compile Include="Models\Authentication\ChangePasswordModel.cs" />
     <Compile Include="Models\Authentication\LoginModel.cs" />
     <Compile Include="Models\ResponseModel.cs" />

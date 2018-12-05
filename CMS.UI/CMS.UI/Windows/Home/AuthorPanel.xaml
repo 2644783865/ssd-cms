@@ -8,13 +8,14 @@
         Title="Author Panel" Height="700" Width="1200">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
+            <Label Name="ConferenceLabel" Content="Conference: unknown conference"/>
             <Label Name="UserLabel" Content="User: unknown user"/>
             <Button Content="logout" Click="LogOut_Click"/>
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
     <Grid>
         <Button Name="GoToUserPanelButton" Content="User Panel" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToUserPanelButton_Click"/>
-        <Button x:Name="AddArticles" Content="Add" Margin="10,374,667,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="AddArticles_Click"/>
+        <Button x:Name="AddArticles" Content="Add" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="AddArticles_Click"/>
         <Button x:Name="EditArticles" Content="Details" Margin="115,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="EditArticles_Click"/>
         <Button x:Name="DeleteArticle" Content="Delete" Margin="220,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30"  Background="Red" Click="DeleteArticle_Click" />
         <DataGrid HorizontalAlignment="Center" Height="400" Margin="0,0,0,0" VerticalAlignment="Center" Width="900" MouseDoubleClick="DataGrid_MouseDoubleClick"/>

@@ -2,6 +2,7 @@
 using CMS.API.BLL.Interfaces;
 using CMS.API.Helpers;
 using CMS.BE.DTO;
+using CMS.BE.Models.Article;
 using System;
 using System.Collections.ObjectModel;
 using System.Web.Http;
@@ -34,10 +35,10 @@ namespace CMS.API.Controllers
         // POST: api/Article/AddArticle
         [HttpPost]
         [Route("api/article/addarticle")]
-        public IHttpActionResult AddArticle([FromBody] ArticleDTO article)
+        public IHttpActionResult AddArticle([FromBody] AddArticleModel articleModel)
         {
-            if (string.IsNullOrEmpty(article.Topic) || string.IsNullOrEmpty(article.Status)) return BadRequest();
-            if (_bll.AddArticle(article)) return Ok();
+            if (string.IsNullOrEmpty(articleModel.Article.Topic) || string.IsNullOrEmpty(articleModel.Article.Status)) return BadRequest();
+            if (_bll.AddArticle(articleModel)) return Ok();
             return InternalServerError();
         }
 
@@ -83,7 +84,7 @@ namespace CMS.API.Controllers
         [Route("api/submission/addsubmission")]
         public IHttpActionResult AddSubmission([FromBody] SubmissionDTO submission)
         {
-            if (submission.ArticleFile != null) return BadRequest();
+            if (submission.ArticleFile == null) return BadRequest();
             if (_bll.AddSubmission(submission)) return Ok();
             return InternalServerError();
         }

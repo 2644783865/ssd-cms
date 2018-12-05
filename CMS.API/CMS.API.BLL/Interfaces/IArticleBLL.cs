@@ -1,4 +1,5 @@
 ﻿using CMS.BE.DTO;
+using CMS.BE.Models.Article;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.Interfaces
@@ -9,7 +10,7 @@ namespace CMS.API.BLL.Interfaces
 
         IEnumerable<ArticleDTO> GetArticles();
         ArticleDTO GetArticleById(int id);
-        bool AddArticle(ArticleDTO article);
+        bool AddArticle(AddArticleModel articleModel);
         bool EditArticle(ArticleDTO article);
         bool DeleteArticle(int articleId);
 

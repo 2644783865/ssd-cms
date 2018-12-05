@@ -1,8 +1,8 @@
 ﻿using CMS.API.BLL.Interfaces;
-using CMS.API.DAL;
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
+using CMS.BE.Models.Article;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
@@ -38,11 +38,13 @@ namespace CMS.API.BLL.BLL
             }
         }
 
-        public bool AddArticle(ArticleDTO article)
+        public bool AddArticle(AddArticleModel articleModel)
         {
             try
             {
-                _repository.AddArticle(article);
+                _repository.AddArticle(articleModel.Article);
+                var articleId = (int)_repository.GetLastArticleId();
+                _repository.AddArticleAuthor(articleId, articleModel.AuthorId);
             }
             catch
             {

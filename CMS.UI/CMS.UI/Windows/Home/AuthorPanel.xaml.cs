@@ -1,5 +1,6 @@
 ﻿using CMS.Core.Core;
 using CMS.UI.Helpers;
+using CMS.UI.Windows.Articles;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace CMS.UI.Windows.Home
         public AuthorPanel()
         {
             InitializeComponent();
-            WindowHelper.WindowSettings(this, UserLabel);
+            WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -42,7 +43,7 @@ namespace CMS.UI.Windows.Home
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            EditArticles_Click(sender, e);
         }
 
         private void AddArticles_Click(object sender, RoutedEventArgs e)
