@@ -36,6 +36,20 @@ namespace CMS.API.BLL.BLL
             }
         }
 
+        public AuthorDTO GetAuthorByAccountId(int accountId)
+        {
+            try
+            {
+                var author = _repository.GetAuthorByAccountId(accountId);
+                if (author == null) return null;
+                return author;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public bool AddAuthor(AuthorDTO author)
         {
             try
@@ -74,5 +88,6 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+
     }
 }

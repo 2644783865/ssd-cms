@@ -4,6 +4,7 @@ using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
 using CMS.BE.Models.Article;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.BLL.BLL
 {
@@ -31,6 +32,20 @@ namespace CMS.API.BLL.BLL
                 var article = _repository.GetArticleById(id);
                 if (article == null) return null;
                 return article;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<ArticleDTO> GetArticlesForConferenceAndAuthor(int conferenceId, int authorId)
+        {
+            try
+            {
+                var articles = _repository.GetArticlesForConferenceAndAuthor(conferenceId, authorId);
+                if (articles == null) return null;
+                return articles;
             }
             catch
             {
@@ -70,7 +85,38 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
+                foreach(var submission in _repository.GetSubmissionsForArticle(articleId))
+                {
+                    DeleteSubmission(submission.SubmissionID);
+                }
+                
                 _repository.DeleteArticle(articleId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool AcceptArticle(int articleId)
+        {
+            try
+            {
+                _repository.GetArticleById(articleId).Status = "Accepted";
+                _repository.GetArticleById(articleId).AcceptanceDate = System.DateTime.Now;
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool RejectArticle(int articleId)
+        {
+            try
+            {
+                _repository.GetArticleById(articleId).Status = "Rejected";
             }
             catch
             {
@@ -100,6 +146,18 @@ namespace CMS.API.BLL.BLL
                 var submission = _repository.GetSubmissionById(id);
                 if (submission == null) return null;
                 return submission;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<SubmissionDTO> GetSubmissionsForArticle(int articleId)
+        {
+            try
+            {
+                return _repository.GetSubmissionsForArticle(articleId).OrderByDescending(s => s.SubmissionDate);
             }
             catch
             {

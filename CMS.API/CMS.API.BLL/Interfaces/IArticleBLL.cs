@@ -10,14 +10,18 @@ namespace CMS.API.BLL.Interfaces
 
         IEnumerable<ArticleDTO> GetArticles();
         ArticleDTO GetArticleById(int id);
+        IEnumerable<ArticleDTO> GetArticlesForConferenceAndAuthor(int conferenceId, int authorId);
         bool AddArticle(AddArticleModel articleModel);
         bool EditArticle(ArticleDTO article);
         bool DeleteArticle(int articleId);
+        bool AcceptArticle(int articleId);
+        bool RejectArticle(int articleId);
 
         //Submission
 
         IEnumerable<SubmissionDTO> GetSubmissions();
         SubmissionDTO GetSubmissionById(int id);
+        IEnumerable<SubmissionDTO> GetSubmissionsForArticle(int articleId);
         bool AddSubmission(SubmissionDTO submission);
         bool EditSubmission(SubmissionDTO submission);
         bool DeleteSubmission(int submissionId);
