@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Core
 {
-    class AuthorCore : IAuthorCore
+    public class AuthorCore : IAuthorCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
 

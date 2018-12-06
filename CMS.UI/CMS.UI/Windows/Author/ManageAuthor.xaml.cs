@@ -1,4 +1,6 @@
-﻿using MahApps.Metro.Controls;
+﻿using CMS.Core.Core;
+using CMS.Core.Interfaces;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,28 +22,45 @@ namespace CMS.UI.Windows.Author
     /// </summary>
     public partial class ManageAuthor : MetroWindow
     {
+        private IAuthenticationCore authCore;
+        private IAuthorCore authorCore;
+
         public ManageAuthor()
         {
             InitializeComponent();
+            authCore = new AuthenticationCore();
+            authorCore = new AuthorCore();
         }
 
-        private void GoToAddAuthor_Click(object sender, RoutedEventArgs e)
+        private async void GoToAddAuthor_Click(object sender, RoutedEventArgs e)
         {
-            AddEditAuthor newAddEditAuthorWindow = new AddEditAuthor();
-            newAddEditAuthorWindow.ShowDialog();
-
+            if (LoginBox.Text.Length > 0)
+            {
+                if (await CheckAccountExistsAsync())
+                {
+                    var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
+                    AddEditAuthor newAddAuthorWindow = new AddEditAuthor(null, account);
+                    newAddAuthorWindow.ShowDialog();
+                }
+                else MessageBox.Show("Account doesn't exist");
+            }
+            else MessageBox.Show("Login empty");
         }
 
         private void GoToEditAuthor_Click(object sender, RoutedEventArgs e)
         {
-            AddEditAuthor newAddEditAuthorWindow = new AddEditAuthor();
-            newAddEditAuthorWindow.ShowDialog();
+            //AddEditAuthor newAddEditAuthorWindow = new AddEditAuthor();
+            //newAddEditAuthorWindow.ShowDialog();
 
         }
 
         private void GoToDeleteAuthor_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private async Task<bool> CheckAccountExistsAsync()
+        {
+            return await authCore.GetAccountIdByLoginAsync(LoginBox.Text) >= 0;
         }
     }
 }

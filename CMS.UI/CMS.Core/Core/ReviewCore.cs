@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Core
 {
-    class ReviewCore :IReviewCore
+    public class ReviewCore :IReviewCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
 

@@ -28,11 +28,13 @@ namespace CMS.UI.Windows.Author
     public partial class AddEditAuthor : MetroWindow
     {
         private AuthorDTO currentAuthor;
+        private AccountDTO currentAccount;
 
-        public AddEditAuthor(AuthorDTO author)
+        public AddEditAuthor(AuthorDTO author, AccountDTO account)
         {
             InitializeComponent();
             currentAuthor = author;
+            currentAccount = account;
             if (author != null) InitializeEditFields();
         }
 
@@ -46,15 +48,10 @@ namespace CMS.UI.Windows.Author
             this.Title = "Edit Author";
         }
 
-        public AddEditAuthor()
-        {
-            InitializeComponent();
-        }
-
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             //missing validate form
-            using (IAuthenticationCore core = new AuthenticationCore())
+            using (IAuthorCore core = new AuthorCore())
             {
                 bool result = false;
 
@@ -65,9 +62,10 @@ namespace CMS.UI.Windows.Author
                         FirstName = FirstNameBox.Text,
                         LastName = LastNameBox.Text,
                         Title = TitleBox.Text,
-                        FieldOfStudy = FieldOfStudyBox.Text
+                        FieldOfStudy = FieldOfStudyBox.Text,
+                        AccountId = currentAccount.AccountId 
                     };
-                   // result = await core.AddAuthorAsync(authorModel);
+                    result = await core.AddAuthorAsync(authorModel);
                 }
                 else
                 {
@@ -76,7 +74,7 @@ namespace CMS.UI.Windows.Author
                     currentAuthor.Title = TitleBox.Text;
                     currentAuthor.FieldOfStudy= FieldOfStudyBox.Text;
 
-                //    result = await core.EditAuthorAsync(currentAuthor);
+                    result = await core.EditAuthorAsync(currentAuthor);
                 }
 
                 if (result)

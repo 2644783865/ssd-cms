@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Core
 {
-    class EmergencyInfoCore : IEmergencyInfoCore
+    public class EmergencyInfoCore : IEmergencyInfoCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMS.Core.Core
 {
-    class TravelInfoCore : ITravelInfoCore
+    public class TravelInfoCore : ITravelInfoCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
 
