@@ -20,7 +20,7 @@ namespace CMS.API.Controllers
             return Ok(_bll.GetAuthors());
         }
 
-        // GET: api/Author/GetAuthorByAccountId?accountId=
+        // GET: api/Author/AuthorByAccountId?accountId=
         [HttpGet]
         [Route("api/author/authorbyaccountid")]
         public IHttpActionResult GetAuthorByAccountId(int accountId)
@@ -33,7 +33,7 @@ namespace CMS.API.Controllers
         // GET: api/Author/AuthorById?authorid=
         [HttpGet]
         [Route("api/author/authorbyid")]
-        public IHttpActionResult GetAuthorById(int accountId)
+        public IHttpActionResult GetAuthorById(int authorid)
         {
             var author = _bll.GetAuthorById(authorid);
             if (author == null) return BadRequest();

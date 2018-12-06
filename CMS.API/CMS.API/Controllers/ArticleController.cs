@@ -22,6 +22,16 @@ namespace CMS.API.Controllers
             return Ok(_bll.GetArticles());
         }
 
+        // GET: api/Article/ArticlesForConferenceAndAuthor
+        [HttpGet]
+        [Route("api/article/articlesforconferenceandauthor")]
+        public IHttpActionResult GetArticlesForConferenceAndAuthor(int conferenceId, int authorId)
+        {
+            var article = _bll.GetArticlesForConferenceAndAuthor(conferenceId, authorId);
+            if (article == null) return BadRequest();
+            return Ok(article);
+        }
+
         // GET: api/Article/ArticleById?articleid=
         [HttpGet]
         [Route("api/article/articlebyid")]
@@ -67,6 +77,14 @@ namespace CMS.API.Controllers
         public IHttpActionResult GetSubmissions()
         {
             return Ok(_bll.GetSubmissions());
+        }
+
+        // GET: api/Submission/SubmissionsForArticle
+        [HttpGet]
+        [Route("api/submission/submissionsforarticle")]
+        public IHttpActionResult GetSubmissionsForArticle(int articleId)
+        {
+            return Ok(_bll.GetSubmissionsForArticle(articleId));
         }
 
         // GET: api/Submission/SubmissionById?submissionid=
