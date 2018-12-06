@@ -14,12 +14,20 @@ namespace CMS.UI.Windows.Account
     public partial class AddEditAccount : MetroWindow
     {
         private AccountDTO currentAccount;
+        private AuthorDTO author;
+        private AccountDTO account;
 
         public AddEditAccount(AccountDTO account)
         {
             InitializeComponent();
             currentAccount = account;
             if (account != null) InitializeEditFields();
+        }
+
+        public AddEditAccount(AuthorDTO author, AccountDTO account)
+        {
+            this.author = author;
+            this.account = account;
         }
 
         private void InitializeEditFields()

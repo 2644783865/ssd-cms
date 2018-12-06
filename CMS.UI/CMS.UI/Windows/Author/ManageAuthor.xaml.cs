@@ -1,5 +1,6 @@
 ﻿using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Windows.Account;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -47,17 +48,42 @@ namespace CMS.UI.Windows.Author
             else MessageBox.Show("Login empty");
         }
 
-        private void GoToEditAuthor_Click(object sender, RoutedEventArgs e)
+        private async void GoToEditAuthor_Click(object sender, RoutedEventArgs e)
         {
-            //AddEditAuthor newAddEditAuthorWindow = new AddEditAuthor();
-            //newAddEditAuthorWindow.ShowDialog();
+            if (LoginBox.Text.Length > 0)
+            {
+                if (await CheckAccountExistsAsync())
+                {
+                    var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
+                    var author = await authorCore.GetAuthorByAccountIdAsync(account.AccountId);
+                    AddEditAuthor newAddAuthorWindow = new AddEditAuthor(author, account);
+                    newAddAuthorWindow.ShowDialog();
+                }
+                else MessageBox.Show("Account doesn't exist");
+            }
+            else MessageBox.Show("Login empty");
 
         }
 
-        private void GoToDeleteAuthor_Click(object sender, RoutedEventArgs e)
+        private async void GoToDeleteAuthor_Click(object sender, RoutedEventArgs e)
         {
+            if (LoginBox.Text.Length > 0)
+            {
+                if (await CheckAccountExistsAsync())
+                {
+                    var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
+                    var author = await authorCore.GetAuthorByAccountIdAsync(account.AccountId);
 
+                    if (await authorCore.DeleteAuthorAsync(author.AuthorID))
+                        MessageBox.Show("Success");
+                    else
+                        MessageBox.Show("Failure");
+                }
+                else MessageBox.Show("Account doesn't exist");
+            }
+            else MessageBox.Show("Login empty");
         }
+
         private async Task<bool> CheckAccountExistsAsync()
         {
             return await authCore.GetAccountIdByLoginAsync(LoginBox.Text) >= 0;
