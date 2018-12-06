@@ -34,6 +34,18 @@ namespace CMS.Core.Core
             else return null;
         }
 
+
+        public async Task<AuthorDTO> GetAuthorByAccountIdAsync(int accountId)
+        {
+            var path = $"{Properties.Resources.getAuthorByAccountIdPath}?accountId={accountId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<AuthorDTO>(result.Content);
+            }
+            else return null;
+        }
+
         public async Task<bool> AddAuthorAsync(AuthorDTO author)
         {
             var path = Properties.Resources.addAuthorPath;

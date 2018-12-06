@@ -24,6 +24,17 @@ namespace CMS.Core.Core
             return null;
         }
 
+        public async Task<List<ArticleDTO>> GetArticlesForConferenceAndAuthor()
+        {
+            var path = $"{Properties.Resources.getArticlesForConferenceAndAuthorPath}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<ArticleDTO>>(result.Content);
+            }
+            return null;
+        }
+
         public async Task<ArticleDTO> GetArticleByIdAsync(int articleId)
         {
             var path = $"{Properties.Resources.getArticleByIdPath}?articleId={articleId}";

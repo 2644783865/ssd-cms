@@ -20,10 +20,20 @@ namespace CMS.API.Controllers
             return Ok(_bll.GetAuthors());
         }
 
+        // GET: api/Author/GetAuthorByAccountId?accountId=
+        [HttpGet]
+        [Route("api/author/authorbyaccountid")]
+        public IHttpActionResult GetAuthorByAccountId(int accountId)
+        {
+            var author = _bll.GetAuthorByAccountId(accountId);
+            if (accountId == null) return BadRequest();
+            return Ok(author);
+        }
+
         // GET: api/Author/AuthorById?authorid=
         [HttpGet]
         [Route("api/author/authorbyid")]
-        public IHttpActionResult GetAuthorById(int authorid)
+        public IHttpActionResult GetAuthorById(int accountId)
         {
             var author = _bll.GetAuthorById(authorid);
             if (author == null) return BadRequest();

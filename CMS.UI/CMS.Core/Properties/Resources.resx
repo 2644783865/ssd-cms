@@ -336,11 +336,17 @@
   <data name="getArticleByIdPath" xml:space="preserve">
     <value>api/article/articlebyid</value>
   </data>
+  <data name="getArticlesForConferenceAndAuthorPath" xml:space="preserve">
+    <value>api/article/articlesforconferenceandauthor</value>
+  </data>
   <data name="getArticlesPath" xml:space="preserve">
     <value>api/article/articles</value>
   </data>
   <data name="getAssignedBuildForConfPath" xml:space="preserve">
     <value>api/authentication/getassignedbuildforconf</value>
+  </data>
+  <data name="getAuthorByAccountIdPath" xml:space="preserve">
+    <value>api/author/authorbyaccountid</value>
   </data>
   <data name="getAuthorByIdPath" xml:space="preserve">
     <value>api/author/authorbyid</value>
@@ -410,6 +416,9 @@
   </data>
   <data name="getSubmissionByIdPath" xml:space="preserve">
     <value>api/submission/submissionbyid</value>
+  </data>
+  <data name="getSubmissionsForArticle" xml:space="preserve">
+    <value>api/submission/submissionsforarticle</value>
   </data>
   <data name="getSubmissionsPath" xml:space="preserve">
     <value>api/submission/submissions</value>
