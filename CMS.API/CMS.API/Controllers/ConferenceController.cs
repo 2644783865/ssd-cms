@@ -2,6 +2,7 @@
 using CMS.API.BLL.Interfaces;
 using CMS.API.Helpers;
 using CMS.BE.DTO;
+using CMS.BE.Models;
 using System;
 using System.Web.Http;
 
@@ -59,6 +60,16 @@ namespace CMS.API.Controllers
         {
             if (_bll.DeleteConference(conferenceId)) return Ok();
             return InternalServerError();
+        }
+
+        // GET: api/Conference/Program
+        [HttpGet]
+        [Route("api/conference/program")]
+        public IHttpActionResult GetConferenceProgram(int conferenceId)
+        {
+            var model = _bll.GetConferenceProgram(conferenceId);
+            PdfController controller = PdfHelper.Setup();
+            return Ok(new ByteArray() { Content = controller.GetPdf(model) });
         }
     }
 }

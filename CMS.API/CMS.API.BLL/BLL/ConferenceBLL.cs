@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
+using CMS.BE.Models.Program;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
@@ -73,6 +74,16 @@ namespace CMS.API.BLL.BLL
                 return false;
             }
             return true;
+        }
+
+        public ConferenceProgramModel GetConferenceProgram(int conferenceId)
+        {
+            // not implemented
+            var conference = _repository.GetConferenceById(conferenceId);
+            return new ConferenceProgramModel()
+            {
+                Conference = conference
+            };
         }
     }
 }

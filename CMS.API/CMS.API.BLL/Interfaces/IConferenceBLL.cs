@@ -1,4 +1,5 @@
 ﻿using CMS.BE.DTO;
+using CMS.BE.Models.Program;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.Interfaces
@@ -10,5 +11,6 @@ namespace CMS.API.BLL.Interfaces
         bool AddConference(ConferenceDTO conference);
         bool EditConference(ConferenceDTO conference);
         bool DeleteConference(int conferenceId);
+        ConferenceProgramModel GetConferenceProgram(int conferenceId);
     }
 }

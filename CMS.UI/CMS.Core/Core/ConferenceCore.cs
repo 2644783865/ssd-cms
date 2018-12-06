@@ -56,6 +56,16 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
+        public async Task<byte[]> GetConferenceProgramAsync(int conferenceId)
+        {
+            var path = $"{Properties.Resources.getConferenceProgram}?conferenceId={conferenceId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<ByteArray>(result.Content).Content;
+            }
+            return null;
+        }
         public void Dispose() => _apiHelper.Dispose();
     }
 }

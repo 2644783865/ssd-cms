@@ -12,5 +12,6 @@ namespace CMS.Core.Interfaces
         Task<bool> AddConferenceAsync(ConferenceDTO conference);
         Task<bool> EditConferenceAsync(ConferenceDTO conference);
         Task<bool> DeleteConferenceAsync(int conferenceId);
+        Task<byte[]> GetConferenceProgramAsync(int conferenceId);
     }
 }
