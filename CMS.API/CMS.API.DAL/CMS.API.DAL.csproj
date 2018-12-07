@@ -117,6 +117,9 @@
     <Compile Include="Interfaces\IConferenceRepository.cs" />
     <Compile Include="Interfaces\IReviewRepository.cs" />
     <Compile Include="Interfaces\IWelcomePackRepository.cs" />
+    <Compile Include="LastMessage.cs">
+      <DependentUpon>CMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Message.cs">
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>

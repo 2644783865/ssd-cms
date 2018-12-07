@@ -1,0 +1,49 @@
+INSERT INTO Account
+     VALUES
+           ('TestUser'
+           ,'123456789'
+           ,'test@cms.com'
+           ,'testlogin'
+           ,'13d249f2cb4127b40cfa757866850278793f814ded3c587fe5889e889a7a9f6c'); --testpass
+
+INSERT INTO Role
+     VALUES
+           ('Test Role');
+INSERT INTO Role
+     VALUES
+           ('AWARDS COORDINATOR'),('INFORMATION STAFF'), ('CONFERENCE CHAIR'), ('CONFERENCE MANAGER'), ('SESSION CHAIR'),
+		   ('PRESENTER'), ('WELCOME PACK STAFF'), ('REVIEWER'), ('EDITOR'), ('CONFERENCE STAFF MANAGER'), ('CONFERENCE STAFF MEMBER'),
+		   ('HR ADMINISTRATOR');
+
+INSERT INTO Conference
+     VALUES
+           ('Test Conference'
+           ,'Test'
+           ,'No place'
+           ,'2018-11-20'
+           ,'2018-11-25');
+
+INSERT INTO ConferenceStaff
+     VALUES (1, 1, 1);
+
+INSERT INTO Building
+     VALUES
+           ('Test Building'
+           ,'Street 1'), ('Test Building2'
+           ,'Street 2'), ('Test Building3'
+           ,'Street 3');
+
+INSERT INTO Room
+     VALUES
+           ('123'
+           ,1), ('456'
+           ,1);
+
+INSERT INTO ConferenceBuilding
+     VALUES
+           (1
+           ,1),
+		   (1
+           ,4);
+
+

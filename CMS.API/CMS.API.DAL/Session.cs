@@ -23,12 +23,16 @@ namespace CMS.API.DAL
         public int SessionId { get; set; }
         public int ConferenceId { get; set; }
         public int ChairId { get; set; }
+        public int RoomId { get; set; }
+        public System.DateTime BeginDate { get; set; }
+        public System.DateTime EndDate { get; set; }
         public string Title { get; set; }
-        public string DESCRIPTION { get; set; }
+        public string Description { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Conference Conference { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Presentation> Presentations { get; set; }
+        public virtual Room Room { get; set; }
     }
 }

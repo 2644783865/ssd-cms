@@ -18,7 +18,8 @@ namespace CMS.API.DAL
         public Room()
         {
             this.Events = new HashSet<Event>();
-            this.Presentations = new HashSet<Presentation>();
+            this.Sessions = new HashSet<Session>();
+            this.SpecialSessions = new HashSet<SpecialSession>();
         }
     
         public int RoomID { get; set; }
@@ -29,6 +30,8 @@ namespace CMS.API.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Presentation> Presentations { get; set; }
+        public virtual ICollection<Session> Sessions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SpecialSession> SpecialSessions { get; set; }
     }
 }

@@ -22,7 +22,7 @@
         </Button>
         <Label Content="Download &#xD;&#xA;Conference &#xD;&#xA;Program" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,101" Width="85" Height="65" HorizontalContentAlignment="Center"/>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="0,0,110,45" Height="40" Width="35" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="1273" FontSize="50" FontWeight="Bold"/>
+        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="1000" FontSize="50" FontWeight="Bold"/>
         <Label Name="DatesLabel" Content="" HorizontalAlignment="Left" Margin="769,92,0,0" VerticalAlignment="Top" Width="525" FontSize="40"/>
         <TextBox Name="DescriptionBox" HorizontalAlignment="Left" Height="204" Margin="21,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1273" BorderThickness="0" FontSize="20"/>
         <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="21,92,0,0" VerticalAlignment="Top" Width="723" FontSize="40"/>

@@ -86,8 +86,6 @@
           <Property Name="BeginDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ConferenceBuilding">
           <Key>
             <PropertyRef Name="ConferenceId" />
@@ -127,15 +125,25 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="2000" Nullable="false" />
         </EntityType>
+        <EntityType Name="LastMessages">
+          <Key>
+            <PropertyRef Name="PairID" />
+          </Key>
+          <Property Name="PairID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstId" Type="int" Nullable="false" />
+          <Property Name="SecondId" Type="int" Nullable="false" />
+          <Property Name="LastDate" Type="datetime" Nullable="false" />
+          <Property Name="LastMessage" Type="varchar" MaxLength="280" Nullable="false" />
+          <Property Name="firstIdReceived" Type="bit" Nullable="false" />
+          <Property Name="secondIdReceived" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Message">
           <Key>
-            <PropertyRef Name="GroupID" />
-            <PropertyRef Name="SequenceNumber" />
+            <PropertyRef Name="MessageId" />
           </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SenderId" Type="int" Nullable="false" />
           <Property Name="ReceiverId" Type="int" Nullable="false" />
-          <Property Name="GroupID" Type="bigint" Nullable="false" />
-          <Property Name="SequenceNumber" Type="int" Nullable="false" />
           <Property Name="Content" Type="varchar" MaxLength="170" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
@@ -146,13 +154,10 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="PresentationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PresenterId" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
           <Property Name="ArticleId" Type="int" Nullable="false" />
-          <Property Name="RoomId" Type="int" Nullable="false" />
           <Property Name="SessionId" Type="int" />
           <Property Name="SpecialSessionId" Type="int" />
-          <Property Name="BeginDate" Type="datetime" Nullable="false" />
-          <Property Name="EndDate" Type="datetime" Nullable="false" />
           <Property Name="Grade" Type="decimal" Precision="3" Scale="2" />
         </EntityType>
         <EntityType Name="Review">
@@ -189,8 +194,11 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ConferenceId" Type="int" Nullable="false" />
           <Property Name="ChairId" Type="int" Nullable="false" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="SpecialSession">
           <Key>
@@ -199,6 +207,9 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="SpecialSessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ConferenceId" Type="int" Nullable="false" />
           <Property Name="ChairId" Type="int" Nullable="false" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="300" />
         </EntityType>
@@ -264,7 +275,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="LastName" Type="varchar" MaxLength="150" />
           <Property Name="Type" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Accommoda__Confe__60A75C0F">
+        <Association Name="FK__Accommoda__Confe__68487DD7">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="AccommodationInfo" Type="Self.AccommodationInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -276,7 +287,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Confere__7C4F7684">
+        <Association Name="FK__Article__Confere__03F0984C">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,7 +299,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Present__236943A5">
+        <Association Name="FK__Article__Present__2BFE89A6">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -300,7 +311,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Special__245D67DE">
+        <Association Name="FK__Article__Special__2CF2ADDF">
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -312,7 +323,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ArticleAu__Artic__7F2BE32F">
+        <Association Name="FK__ArticleAu__Artic__06CD04F7">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="ArticleAuthor" Type="Self.ArticleAuthor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -324,7 +335,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ArticleAu__Autho__00200768">
+        <Association Name="FK__ArticleAu__Autho__07C12930">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
           <End Role="ArticleAuthor" Type="Self.ArticleAuthor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -336,7 +347,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Author__AccountI__59063A47">
+        <Association Name="FK__Author__AccountI__60A75C0F">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Author" Type="Self.Author" Multiplicity="*" />
           <ReferentialConstraint>
@@ -348,7 +359,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Award__Presentat__1AD3FDA4">
+        <Association Name="FK__Award__Presentat__245D67DE">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="1" />
           <End Role="Award" Type="Self.Award" Multiplicity="*" />
           <ReferentialConstraint>
@@ -372,7 +383,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Build__778AC167">
+        <Association Name="FK__Conferenc__Build__7F2BE32F">
           <End Role="Building" Type="Self.Building" Multiplicity="1" />
           <End Role="ConferenceBuilding" Type="Self.ConferenceBuilding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -396,7 +407,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Confe__76969D2E">
+        <Association Name="FK__Conferenc__Confe__7E37BEF6">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="ConferenceBuilding" Type="Self.ConferenceBuilding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -420,7 +431,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Emergency__Confe__5DCAEF64">
+        <Association Name="FK__Emergency__Confe__656C112C">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="EmergencyInfo" Type="Self.EmergencyInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -432,7 +443,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Event__Conferenc__66603565">
+        <Association Name="FK__Event__Conferenc__6E01572D">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
@@ -444,7 +455,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Event__RoomId__6754599E">
+        <Association Name="FK__Event__RoomId__6EF57B66">
           <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
@@ -453,6 +464,30 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Principal>
             <Dependent Role="Event">
               <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LastMessa__First__4CA06362">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="LastMessages" Type="Self.LastMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="LastMessages">
+              <PropertyRef Name="FirstId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LastMessa__Secon__4D94879B">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="LastMessages" Type="Self.LastMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="LastMessages">
+              <PropertyRef Name="FirstId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -480,7 +515,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__ArticleI__02FC7413">
+        <Association Name="FK__Review__ArticleI__0A9D95DB">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -492,7 +527,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__Reviewer__03F0984C">
+        <Association Name="FK__Review__Reviewer__0B91BA14">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -504,7 +539,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Submissio__Artic__1DB06A4F">
+        <Association Name="FK__Submissio__Artic__2739D489">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -516,7 +551,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__Conference__5165187F">
+        <Association Name="FK__Task__Conference__59063A47">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -528,7 +563,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__EmployeeId__52593CB8">
+        <Association Name="FK__Task__EmployeeId__59FA5E80">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -540,7 +575,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__ManagerId__5535A963">
+        <Association Name="FK__Task__ManagerId__5CD6CB2B">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -552,7 +587,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TravelInf__Confe__6383C8BA">
+        <Association Name="FK__TravelInf__Confe__6B24EA82">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="TravelInfo" Type="Self.TravelInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -564,7 +599,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Confe__6C190EBB">
+        <Association Name="FK__WelcomePa__Confe__73BA3083">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="*" />
           <ReferentialConstraint>
@@ -576,7 +611,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Welco__6EF57B66">
+        <Association Name="FK__WelcomePa__Welco__76969D2E">
           <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="1" />
           <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="*" />
           <ReferentialConstraint>
@@ -588,7 +623,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Welco__72C60C4A">
+        <Association Name="FK__WelcomePa__Welco__7A672E12">
           <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="1" />
           <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
           <ReferentialConstraint>
@@ -624,18 +659,6 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_PresentationRoom">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="RoomID" />
-            </Principal>
-            <Dependent Role="Presentation">
-              <PropertyRef Name="RoomId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_PresentationSession">
           <End Role="Session" Type="Self.Session" Multiplicity="0..1" />
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
@@ -696,6 +719,18 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_SessionRoom">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_SpecialSessionChair">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Session" Type="Self.Session" Multiplicity="*" />
@@ -720,6 +755,18 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_SpecialSessionRoom">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="SpecialSession">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="cmsModelStoreContainer">
           <EntitySet Name="AccommodationInfo" EntityType="Self.AccommodationInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
@@ -729,9 +776,11 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <EntitySet Name="Award" EntityType="Self.Award" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Conference" EntityType="Self.Conference" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConferenceBuilding" EntityType="Self.ConferenceBuilding" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConferenceStaff" EntityType="Self.ConferenceStaff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmergencyInfo" EntityType="Self.EmergencyInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LastMessages" EntityType="Self.LastMessages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Presentation" EntityType="Self.Presentation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
@@ -745,41 +794,35 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <EntitySet Name="WelcomePack" EntityType="Self.WelcomePack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WelcomePackGift" EntityType="Self.WelcomePackGift" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WelcomePackReceiver" EntityType="Self.WelcomePackReceiver" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ConferenceBuilding" EntityType="Self.ConferenceBuilding" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ConferenceBuilding].[ConferenceId] AS [ConferenceId], 
-    [ConferenceBuilding].[BuildingId] AS [BuildingId]
-    FROM [dbo].[ConferenceBuilding] AS [ConferenceBuilding]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__Accommoda__Confe__60A75C0F" Association="Self.FK__Accommoda__Confe__60A75C0F">
+          <AssociationSet Name="FK__Accommoda__Confe__68487DD7" Association="Self.FK__Accommoda__Confe__68487DD7">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="AccommodationInfo" EntitySet="AccommodationInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Confere__7C4F7684" Association="Self.FK__Article__Confere__7C4F7684">
+          <AssociationSet Name="FK__Article__Confere__03F0984C" Association="Self.FK__Article__Confere__03F0984C">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Present__236943A5" Association="Self.FK__Article__Present__236943A5">
+          <AssociationSet Name="FK__Article__Present__2BFE89A6" Association="Self.FK__Article__Present__2BFE89A6">
             <End Role="Presentation" EntitySet="Presentation" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Special__245D67DE" Association="Self.FK__Article__Special__245D67DE">
+          <AssociationSet Name="FK__Article__Special__2CF2ADDF" Association="Self.FK__Article__Special__2CF2ADDF">
             <End Role="SpecialSession" EntitySet="SpecialSession" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__ArticleAu__Artic__7F2BE32F" Association="Self.FK__ArticleAu__Artic__7F2BE32F">
+          <AssociationSet Name="FK__ArticleAu__Artic__06CD04F7" Association="Self.FK__ArticleAu__Artic__06CD04F7">
             <End Role="Article" EntitySet="Article" />
             <End Role="ArticleAuthor" EntitySet="ArticleAuthor" />
           </AssociationSet>
-          <AssociationSet Name="FK__ArticleAu__Autho__00200768" Association="Self.FK__ArticleAu__Autho__00200768">
+          <AssociationSet Name="FK__ArticleAu__Autho__07C12930" Association="Self.FK__ArticleAu__Autho__07C12930">
             <End Role="Author" EntitySet="Author" />
             <End Role="ArticleAuthor" EntitySet="ArticleAuthor" />
           </AssociationSet>
-          <AssociationSet Name="FK__Author__AccountI__59063A47" Association="Self.FK__Author__AccountI__59063A47">
+          <AssociationSet Name="FK__Author__AccountI__60A75C0F" Association="Self.FK__Author__AccountI__60A75C0F">
             <End Role="Account" EntitySet="Account" />
             <End Role="Author" EntitySet="Author" />
           </AssociationSet>
-          <AssociationSet Name="FK__Award__Presentat__1AD3FDA4" Association="Self.FK__Award__Presentat__1AD3FDA4">
+          <AssociationSet Name="FK__Award__Presentat__245D67DE" Association="Self.FK__Award__Presentat__245D67DE">
             <End Role="Presentation" EntitySet="Presentation" />
             <End Role="Award" EntitySet="Award" />
           </AssociationSet>
@@ -787,7 +830,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Account" EntitySet="Account" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Build__778AC167" Association="Self.FK__Conferenc__Build__778AC167">
+          <AssociationSet Name="FK__Conferenc__Build__7F2BE32F" Association="Self.FK__Conferenc__Build__7F2BE32F">
             <End Role="Building" EntitySet="Building" />
             <End Role="ConferenceBuilding" EntitySet="ConferenceBuilding" />
           </AssociationSet>
@@ -795,7 +838,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Conference" EntitySet="Conference" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Confe__76969D2E" Association="Self.FK__Conferenc__Confe__76969D2E">
+          <AssociationSet Name="FK__Conferenc__Confe__7E37BEF6" Association="Self.FK__Conferenc__Confe__7E37BEF6">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="ConferenceBuilding" EntitySet="ConferenceBuilding" />
           </AssociationSet>
@@ -803,17 +846,25 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Role" EntitySet="Role" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__Emergency__Confe__5DCAEF64" Association="Self.FK__Emergency__Confe__5DCAEF64">
+          <AssociationSet Name="FK__Emergency__Confe__656C112C" Association="Self.FK__Emergency__Confe__656C112C">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="EmergencyInfo" EntitySet="EmergencyInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Event__Conferenc__66603565" Association="Self.FK__Event__Conferenc__66603565">
+          <AssociationSet Name="FK__Event__Conferenc__6E01572D" Association="Self.FK__Event__Conferenc__6E01572D">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
-          <AssociationSet Name="FK__Event__RoomId__6754599E" Association="Self.FK__Event__RoomId__6754599E">
+          <AssociationSet Name="FK__Event__RoomId__6EF57B66" Association="Self.FK__Event__RoomId__6EF57B66">
             <End Role="Room" EntitySet="Room" />
             <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LastMessa__First__4CA06362" Association="Self.FK__LastMessa__First__4CA06362">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="LastMessages" EntitySet="LastMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LastMessa__Secon__4D94879B" Association="Self.FK__LastMessa__Secon__4D94879B">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="LastMessages" EntitySet="LastMessages" />
           </AssociationSet>
           <AssociationSet Name="FK__Message__Receive__47DBAE45" Association="Self.FK__Message__Receive__47DBAE45">
             <End Role="Account" EntitySet="Account" />
@@ -823,43 +874,43 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Account" EntitySet="Account" />
             <End Role="Message" EntitySet="Message" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__ArticleI__02FC7413" Association="Self.FK__Review__ArticleI__02FC7413">
+          <AssociationSet Name="FK__Review__ArticleI__0A9D95DB" Association="Self.FK__Review__ArticleI__0A9D95DB">
             <End Role="Article" EntitySet="Article" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__Reviewer__03F0984C" Association="Self.FK__Review__Reviewer__03F0984C">
+          <AssociationSet Name="FK__Review__Reviewer__0B91BA14" Association="Self.FK__Review__Reviewer__0B91BA14">
             <End Role="Account" EntitySet="Account" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK__Submissio__Artic__1DB06A4F" Association="Self.FK__Submissio__Artic__1DB06A4F">
+          <AssociationSet Name="FK__Submissio__Artic__2739D489" Association="Self.FK__Submissio__Artic__2739D489">
             <End Role="Article" EntitySet="Article" />
             <End Role="Submission" EntitySet="Submission" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__Conference__5165187F" Association="Self.FK__Task__Conference__5165187F">
+          <AssociationSet Name="FK__Task__Conference__59063A47" Association="Self.FK__Task__Conference__59063A47">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__EmployeeId__52593CB8" Association="Self.FK__Task__EmployeeId__52593CB8">
+          <AssociationSet Name="FK__Task__EmployeeId__59FA5E80" Association="Self.FK__Task__EmployeeId__59FA5E80">
             <End Role="Account" EntitySet="Account" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__ManagerId__5535A963" Association="Self.FK__Task__ManagerId__5535A963">
+          <AssociationSet Name="FK__Task__ManagerId__5CD6CB2B" Association="Self.FK__Task__ManagerId__5CD6CB2B">
             <End Role="Account" EntitySet="Account" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__TravelInf__Confe__6383C8BA" Association="Self.FK__TravelInf__Confe__6383C8BA">
+          <AssociationSet Name="FK__TravelInf__Confe__6B24EA82" Association="Self.FK__TravelInf__Confe__6B24EA82">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="TravelInfo" EntitySet="TravelInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Confe__6C190EBB" Association="Self.FK__WelcomePa__Confe__6C190EBB">
+          <AssociationSet Name="FK__WelcomePa__Confe__73BA3083" Association="Self.FK__WelcomePa__Confe__73BA3083">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="WelcomePack" EntitySet="WelcomePack" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__6EF57B66" Association="Self.FK__WelcomePa__Welco__6EF57B66">
+          <AssociationSet Name="FK__WelcomePa__Welco__76969D2E" Association="Self.FK__WelcomePa__Welco__76969D2E">
             <End Role="WelcomePack" EntitySet="WelcomePack" />
             <End Role="WelcomePackGift" EntitySet="WelcomePackGift" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__72C60C4A" Association="Self.FK__WelcomePa__Welco__72C60C4A">
+          <AssociationSet Name="FK__WelcomePa__Welco__7A672E12" Association="Self.FK__WelcomePa__Welco__7A672E12">
             <End Role="WelcomePackGift" EntitySet="WelcomePackGift" />
             <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceiver" />
           </AssociationSet>
@@ -869,10 +920,6 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           </AssociationSet>
           <AssociationSet Name="fk_PresentationPresenter" Association="Self.fk_PresentationPresenter">
             <End Role="Account" EntitySet="Account" />
-            <End Role="Presentation" EntitySet="Presentation" />
-          </AssociationSet>
-          <AssociationSet Name="fk_PresentationRoom" Association="Self.fk_PresentationRoom">
-            <End Role="Room" EntitySet="Room" />
             <End Role="Presentation" EntitySet="Presentation" />
           </AssociationSet>
           <AssociationSet Name="fk_PresentationSession" Association="Self.fk_PresentationSession">
@@ -895,6 +942,10 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Conference" EntitySet="Conference" />
             <End Role="SpecialSession" EntitySet="SpecialSession" />
           </AssociationSet>
+          <AssociationSet Name="fk_SessionRoom" Association="Self.fk_SessionRoom">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
           <AssociationSet Name="fk_SpecialSessionChair" Association="Self.fk_SpecialSessionChair">
             <End Role="Account" EntitySet="Account" />
             <End Role="Session" EntitySet="Session" />
@@ -902,6 +953,10 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <AssociationSet Name="fk_SpecialSessionConference" Association="Self.fk_SpecialSessionConference">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SpecialSessionRoom" Association="Self.fk_SpecialSessionRoom">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="SpecialSession" EntitySet="SpecialSession" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -920,7 +975,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="Currency" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CityDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Accommoda__Confe__60A75C0F" FromRole="AccommodationInfo" ToRole="Conference" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Accommoda__Confe__68487DD7" FromRole="AccommodationInfo" ToRole="Conference" />
         </EntityType>
         <EntityType Name="Account">
           <Key>
@@ -932,13 +987,15 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Authors" Relationship="Self.FK__Author__AccountI__59063A47" FromRole="Account" ToRole="Author" />
+          <NavigationProperty Name="Authors" Relationship="Self.FK__Author__AccountI__60A75C0F" FromRole="Account" ToRole="Author" />
           <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__Accou__4222D4EF" FromRole="Account" ToRole="ConferenceStaff" />
+          <NavigationProperty Name="LastMessages" Relationship="Self.FK__LastMessa__First__4CA06362" FromRole="Account" ToRole="LastMessages" />
+          <NavigationProperty Name="LastMessages1" Relationship="Self.FK__LastMessa__Secon__4D94879B" FromRole="Account" ToRole="LastMessages" />
           <NavigationProperty Name="Messages" Relationship="Self.FK__Message__Receive__47DBAE45" FromRole="Account" ToRole="Message" />
           <NavigationProperty Name="Messages1" Relationship="Self.FK__Message__SenderI__46E78A0C" FromRole="Account" ToRole="Message" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__Reviewer__03F0984C" FromRole="Account" ToRole="Review" />
-          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__EmployeeId__52593CB8" FromRole="Account" ToRole="Task" />
-          <NavigationProperty Name="Tasks1" Relationship="Self.FK__Task__ManagerId__5535A963" FromRole="Account" ToRole="Task" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__Reviewer__0B91BA14" FromRole="Account" ToRole="Review" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__EmployeeId__59FA5E80" FromRole="Account" ToRole="Task" />
+          <NavigationProperty Name="Tasks1" Relationship="Self.FK__Task__ManagerId__5CD6CB2B" FromRole="Account" ToRole="Task" />
           <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationPresenter" FromRole="Account" ToRole="Presentation" />
           <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SessionChair" FromRole="Account" ToRole="SpecialSession" />
           <NavigationProperty Name="Sessions" Relationship="Self.fk_SpecialSessionChair" FromRole="Account" ToRole="Session" />
@@ -954,11 +1011,11 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AcceptanceDate" Type="DateTime" Precision="0" />
           <Property Name="ConferenceID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Article__Confere__7C4F7684" FromRole="Article" ToRole="Conference" />
-          <NavigationProperty Name="Presentation" Relationship="Self.FK__Article__Present__236943A5" FromRole="Article" ToRole="Presentation" />
-          <NavigationProperty Name="SpecialSession" Relationship="Self.FK__Article__Special__245D67DE" FromRole="Article" ToRole="SpecialSession" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__ArticleI__02FC7413" FromRole="Article" ToRole="Review" />
-          <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__Artic__1DB06A4F" FromRole="Article" ToRole="Submission" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Article__Confere__03F0984C" FromRole="Article" ToRole="Conference" />
+          <NavigationProperty Name="Presentation" Relationship="Self.FK__Article__Present__2BFE89A6" FromRole="Article" ToRole="Presentation" />
+          <NavigationProperty Name="SpecialSession" Relationship="Self.FK__Article__Special__2CF2ADDF" FromRole="Article" ToRole="SpecialSession" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__ArticleI__0A9D95DB" FromRole="Article" ToRole="Review" />
+          <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__Artic__2739D489" FromRole="Article" ToRole="Submission" />
           <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationArticle" FromRole="Article" ToRole="Presentation" />
           <NavigationProperty Name="Authors" Relationship="Self.ArticleAuthor" FromRole="Article" ToRole="Author" />
         </EntityType>
@@ -972,7 +1029,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="FieldOfStudy" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Author__AccountI__59063A47" FromRole="Author" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Author__AccountI__60A75C0F" FromRole="Author" ToRole="Account" />
           <NavigationProperty Name="Articles" Relationship="Self.ArticleAuthor" FromRole="Author" ToRole="Article" />
         </EntityType>
         <EntityType Name="Award">
@@ -982,7 +1039,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="AwardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PresentationId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Presentation" Relationship="Self.FK__Award__Presentat__1AD3FDA4" FromRole="Award" ToRole="Presentation" />
+          <NavigationProperty Name="Presentation" Relationship="Self.FK__Award__Presentat__245D67DE" FromRole="Award" ToRole="Presentation" />
         </EntityType>
         <EntityType Name="Building">
           <Key>
@@ -1004,14 +1061,14 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="Place" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="AccommodationInfoes" Relationship="Self.FK__Accommoda__Confe__60A75C0F" FromRole="Conference" ToRole="AccommodationInfo" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Confere__7C4F7684" FromRole="Conference" ToRole="Article" />
+          <NavigationProperty Name="AccommodationInfoes" Relationship="Self.FK__Accommoda__Confe__68487DD7" FromRole="Conference" ToRole="AccommodationInfo" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Confere__03F0984C" FromRole="Conference" ToRole="Article" />
           <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__Confe__440B1D61" FromRole="Conference" ToRole="ConferenceStaff" />
-          <NavigationProperty Name="EmergencyInfoes" Relationship="Self.FK__Emergency__Confe__5DCAEF64" FromRole="Conference" ToRole="EmergencyInfo" />
-          <NavigationProperty Name="Events" Relationship="Self.FK__Event__Conferenc__66603565" FromRole="Conference" ToRole="Event" />
-          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__Conference__5165187F" FromRole="Conference" ToRole="Task" />
-          <NavigationProperty Name="TravelInfoes" Relationship="Self.FK__TravelInf__Confe__6383C8BA" FromRole="Conference" ToRole="TravelInfo" />
-          <NavigationProperty Name="WelcomePacks" Relationship="Self.FK__WelcomePa__Confe__6C190EBB" FromRole="Conference" ToRole="WelcomePack" />
+          <NavigationProperty Name="EmergencyInfoes" Relationship="Self.FK__Emergency__Confe__656C112C" FromRole="Conference" ToRole="EmergencyInfo" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__Event__Conferenc__6E01572D" FromRole="Conference" ToRole="Event" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__Conference__59063A47" FromRole="Conference" ToRole="Task" />
+          <NavigationProperty Name="TravelInfoes" Relationship="Self.FK__TravelInf__Confe__6B24EA82" FromRole="Conference" ToRole="TravelInfo" />
+          <NavigationProperty Name="WelcomePacks" Relationship="Self.FK__WelcomePa__Confe__73BA3083" FromRole="Conference" ToRole="WelcomePack" />
           <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SessionConference" FromRole="Conference" ToRole="SpecialSession" />
           <NavigationProperty Name="Sessions" Relationship="Self.fk_SpecialSessionConference" FromRole="Conference" ToRole="Session" />
           <NavigationProperty Name="Buildings" Relationship="Self.ConferenceBuilding" FromRole="Conference" ToRole="Building" />
@@ -1037,7 +1094,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
           <Property Name="EmergencyNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="EmergencyInfo1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Emergency__Confe__5DCAEF64" FromRole="EmergencyInfo" ToRole="Conference" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Emergency__Confe__656C112C" FromRole="EmergencyInfo" ToRole="Conference" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -1050,18 +1107,30 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Event__Conferenc__66603565" FromRole="Event" ToRole="Conference" />
-          <NavigationProperty Name="Room" Relationship="Self.FK__Event__RoomId__6754599E" FromRole="Event" ToRole="Room" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Event__Conferenc__6E01572D" FromRole="Event" ToRole="Conference" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Event__RoomId__6EF57B66" FromRole="Event" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="LastMessage">
+          <Key>
+            <PropertyRef Name="PairID" />
+          </Key>
+          <Property Name="PairID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstId" Type="Int32" Nullable="false" />
+          <Property Name="SecondId" Type="Int32" Nullable="false" />
+          <Property Name="LastDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastMessage1" Type="String" MaxLength="280" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstIdReceived" Type="Boolean" Nullable="false" />
+          <Property Name="secondIdReceived" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__LastMessa__First__4CA06362" FromRole="LastMessages" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK__LastMessa__Secon__4D94879B" FromRole="LastMessages" ToRole="Account" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
-            <PropertyRef Name="GroupID" />
-            <PropertyRef Name="SequenceNumber" />
+            <PropertyRef Name="MessageId" />
           </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SenderId" Type="Int32" Nullable="false" />
           <Property Name="ReceiverId" Type="Int32" Nullable="false" />
-          <Property Name="GroupID" Type="Int64" Nullable="false" />
-          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
           <Property Name="Content" Type="String" MaxLength="170" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Account" Relationship="Self.FK__Message__Receive__47DBAE45" FromRole="Message" ToRole="Account" />
@@ -1074,19 +1143,15 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="PresentationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PresenterId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ArticleId" Type="Int32" Nullable="false" />
-          <Property Name="RoomId" Type="Int32" Nullable="false" />
           <Property Name="SessionId" Type="Int32" />
           <Property Name="SpecialSessionId" Type="Int32" />
-          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Grade" Type="Decimal" Precision="3" Scale="2" />
           <NavigationProperty Name="Account" Relationship="Self.fk_PresentationPresenter" FromRole="Presentation" ToRole="Account" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Present__236943A5" FromRole="Presentation" ToRole="Article" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Present__2BFE89A6" FromRole="Presentation" ToRole="Article" />
           <NavigationProperty Name="Article" Relationship="Self.fk_PresentationArticle" FromRole="Presentation" ToRole="Article" />
-          <NavigationProperty Name="Awards" Relationship="Self.FK__Award__Presentat__1AD3FDA4" FromRole="Presentation" ToRole="Award" />
-          <NavigationProperty Name="Room" Relationship="Self.fk_PresentationRoom" FromRole="Presentation" ToRole="Room" />
+          <NavigationProperty Name="Awards" Relationship="Self.FK__Award__Presentat__245D67DE" FromRole="Presentation" ToRole="Award" />
           <NavigationProperty Name="Session" Relationship="Self.fk_PresentationSession" FromRole="Presentation" ToRole="Session" />
           <NavigationProperty Name="SpecialSession" Relationship="Self.fk_PresentationSpecialSession" FromRole="Presentation" ToRole="SpecialSession" />
         </EntityType>
@@ -1101,8 +1166,8 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="Grade" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Review__Reviewer__03F0984C" FromRole="Review" ToRole="Account" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Review__ArticleI__02FC7413" FromRole="Review" ToRole="Article" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Review__Reviewer__0B91BA14" FromRole="Review" ToRole="Account" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Review__ArticleI__0A9D95DB" FromRole="Review" ToRole="Article" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1120,8 +1185,9 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="Code" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BuildingID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Building" Relationship="Self.fk_RoomBuilding" FromRole="Room" ToRole="Building" />
-          <NavigationProperty Name="Events" Relationship="Self.FK__Event__RoomId__6754599E" FromRole="Room" ToRole="Event" />
-          <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationRoom" FromRole="Room" ToRole="Presentation" />
+          <NavigationProperty Name="Events" Relationship="Self.FK__Event__RoomId__6EF57B66" FromRole="Room" ToRole="Event" />
+          <NavigationProperty Name="Sessions" Relationship="Self.fk_SessionRoom" FromRole="Room" ToRole="Session" />
+          <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SpecialSessionRoom" FromRole="Room" ToRole="SpecialSession" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
@@ -1130,11 +1196,15 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
           <Property Name="ChairId" Type="Int32" Nullable="false" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Account" Relationship="Self.fk_SpecialSessionChair" FromRole="Session" ToRole="Account" />
           <NavigationProperty Name="Conference" Relationship="Self.fk_SpecialSessionConference" FromRole="Session" ToRole="Conference" />
           <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationSession" FromRole="Session" ToRole="Presentation" />
+          <NavigationProperty Name="Room" Relationship="Self.fk_SessionRoom" FromRole="Session" ToRole="Room" />
         </EntityType>
         <EntityType Name="SpecialSession">
           <Key>
@@ -1143,12 +1213,16 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="SpecialSessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
           <Property Name="ChairId" Type="Int32" Nullable="false" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Account" Relationship="Self.fk_SessionChair" FromRole="SpecialSession" ToRole="Account" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Special__245D67DE" FromRole="SpecialSession" ToRole="Article" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Special__2CF2ADDF" FromRole="SpecialSession" ToRole="Article" />
           <NavigationProperty Name="Conference" Relationship="Self.fk_SessionConference" FromRole="SpecialSession" ToRole="Conference" />
           <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationSpecialSession" FromRole="SpecialSession" ToRole="Presentation" />
+          <NavigationProperty Name="Room" Relationship="Self.fk_SpecialSessionRoom" FromRole="SpecialSession" ToRole="Room" />
         </EntityType>
         <EntityType Name="Submission">
           <Key>
@@ -1158,7 +1232,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="ArticleId" Type="Int32" Nullable="false" />
           <Property Name="ArticleFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="SubmissionDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Submissio__Artic__1DB06A4F" FromRole="Submission" ToRole="Article" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Submissio__Artic__2739D489" FromRole="Submission" ToRole="Article" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -1172,9 +1246,9 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ManagerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Task__EmployeeId__52593CB8" FromRole="Task" ToRole="Account" />
-          <NavigationProperty Name="Account1" Relationship="Self.FK__Task__ManagerId__5535A963" FromRole="Task" ToRole="Account" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Task__Conference__5165187F" FromRole="Task" ToRole="Conference" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Task__EmployeeId__59FA5E80" FromRole="Task" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK__Task__ManagerId__5CD6CB2B" FromRole="Task" ToRole="Account" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Task__Conference__59063A47" FromRole="Task" ToRole="Conference" />
         </EntityType>
         <EntityType Name="TravelInfo">
           <Key>
@@ -1188,7 +1262,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="RailwayRoad" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="RailwayRoadTime" Type="Int32" />
           <Property Name="TaxiNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__TravelInf__Confe__6383C8BA" FromRole="TravelInfo" ToRole="Conference" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__TravelInf__Confe__6B24EA82" FromRole="TravelInfo" ToRole="Conference" />
         </EntityType>
         <EntityType Name="WelcomePack">
           <Key>
@@ -1197,8 +1271,8 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="WelcomePackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ConferenceId" Type="Int32" Nullable="false" />
           <Property Name="EmployeeName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__WelcomePa__Confe__6C190EBB" FromRole="WelcomePack" ToRole="Conference" />
-          <NavigationProperty Name="WelcomePackGifts" Relationship="Self.FK__WelcomePa__Welco__6EF57B66" FromRole="WelcomePack" ToRole="WelcomePackGift" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__WelcomePa__Confe__73BA3083" FromRole="WelcomePack" ToRole="Conference" />
+          <NavigationProperty Name="WelcomePackGifts" Relationship="Self.FK__WelcomePa__Welco__76969D2E" FromRole="WelcomePack" ToRole="WelcomePackGift" />
         </EntityType>
         <EntityType Name="WelcomePackGift">
           <Key>
@@ -1208,8 +1282,8 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="WelcomePackId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="WelcomePack" Relationship="Self.FK__WelcomePa__Welco__6EF57B66" FromRole="WelcomePackGift" ToRole="WelcomePack" />
-          <NavigationProperty Name="WelcomePackReceivers" Relationship="Self.FK__WelcomePa__Welco__72C60C4A" FromRole="WelcomePackGift" ToRole="WelcomePackReceiver" />
+          <NavigationProperty Name="WelcomePack" Relationship="Self.FK__WelcomePa__Welco__76969D2E" FromRole="WelcomePackGift" ToRole="WelcomePack" />
+          <NavigationProperty Name="WelcomePackReceivers" Relationship="Self.FK__WelcomePa__Welco__7A672E12" FromRole="WelcomePackGift" ToRole="WelcomePackReceiver" />
         </EntityType>
         <EntityType Name="WelcomePackReceiver">
           <Key>
@@ -1220,9 +1294,9 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="WelcomePackGift" Relationship="Self.FK__WelcomePa__Welco__72C60C4A" FromRole="WelcomePackReceiver" ToRole="WelcomePackGift" />
+          <NavigationProperty Name="WelcomePackGift" Relationship="Self.FK__WelcomePa__Welco__7A672E12" FromRole="WelcomePackReceiver" ToRole="WelcomePackGift" />
         </EntityType>
-        <Association Name="FK__Accommoda__Confe__60A75C0F">
+        <Association Name="FK__Accommoda__Confe__68487DD7">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="AccommodationInfo" Type="Self.AccommodationInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1234,7 +1308,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Author__AccountI__59063A47">
+        <Association Name="FK__Author__AccountI__60A75C0F">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Author" Type="Self.Author" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1255,6 +1329,30 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Principal>
             <Dependent Role="ConferenceStaff">
               <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LastMessa__First__4CA06362">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="LastMessages" Type="Self.LastMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="LastMessages">
+              <PropertyRef Name="FirstId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LastMessa__Secon__4D94879B">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="LastMessages" Type="Self.LastMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="LastMessages">
+              <PropertyRef Name="FirstId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1282,7 +1380,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__Reviewer__03F0984C">
+        <Association Name="FK__Review__Reviewer__0B91BA14">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1294,7 +1392,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__EmployeeId__52593CB8">
+        <Association Name="FK__Task__EmployeeId__59FA5E80">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1306,7 +1404,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__ManagerId__5535A963">
+        <Association Name="FK__Task__ManagerId__5CD6CB2B">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1354,7 +1452,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Confere__7C4F7684">
+        <Association Name="FK__Article__Confere__03F0984C">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1366,7 +1464,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Present__236943A5">
+        <Association Name="FK__Article__Present__2BFE89A6">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1378,7 +1476,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Special__245D67DE">
+        <Association Name="FK__Article__Special__2CF2ADDF">
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1390,7 +1488,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__ArticleI__02FC7413">
+        <Association Name="FK__Review__ArticleI__0A9D95DB">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1402,7 +1500,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Submissio__Artic__1DB06A4F">
+        <Association Name="FK__Submissio__Artic__2739D489">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1426,7 +1524,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Award__Presentat__1AD3FDA4">
+        <Association Name="FK__Award__Presentat__245D67DE">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="1" />
           <End Role="Award" Type="Self.Award" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1462,7 +1560,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Emergency__Confe__5DCAEF64">
+        <Association Name="FK__Emergency__Confe__656C112C">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="EmergencyInfo" Type="Self.EmergencyInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1474,7 +1572,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Event__Conferenc__66603565">
+        <Association Name="FK__Event__Conferenc__6E01572D">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1486,7 +1584,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__Conference__5165187F">
+        <Association Name="FK__Task__Conference__59063A47">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1498,7 +1596,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TravelInf__Confe__6383C8BA">
+        <Association Name="FK__TravelInf__Confe__6B24EA82">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="TravelInfo" Type="Self.TravelInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1510,7 +1608,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Confe__6C190EBB">
+        <Association Name="FK__WelcomePa__Confe__73BA3083">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1558,7 +1656,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Event__RoomId__6754599E">
+        <Association Name="FK__Event__RoomId__6EF57B66">
           <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1566,18 +1664,6 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
               <PropertyRef Name="RoomID" />
             </Principal>
             <Dependent Role="Event">
-              <PropertyRef Name="RoomId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_PresentationRoom">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="RoomID" />
-            </Principal>
-            <Dependent Role="Presentation">
               <PropertyRef Name="RoomId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1606,7 +1692,31 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Welco__6EF57B66">
+        <Association Name="fk_SessionRoom">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SpecialSessionRoom">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="SpecialSession">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WelcomePa__Welco__76969D2E">
           <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="1" />
           <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1618,7 +1728,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Welco__72C60C4A">
+        <Association Name="FK__WelcomePa__Welco__7A672E12">
           <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="1" />
           <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1649,6 +1759,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <EntitySet Name="ConferenceStaffs" EntityType="Self.ConferenceStaff" />
           <EntitySet Name="EmergencyInfoes" EntityType="Self.EmergencyInfo" />
           <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="LastMessages" EntityType="Self.LastMessage" />
           <EntitySet Name="Messages" EntityType="Self.Message" />
           <EntitySet Name="Presentations" EntityType="Self.Presentation" />
           <EntitySet Name="Reviews" EntityType="Self.Review" />
@@ -1662,17 +1773,25 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
           <EntitySet Name="WelcomePacks" EntityType="Self.WelcomePack" />
           <EntitySet Name="WelcomePackGifts" EntityType="Self.WelcomePackGift" />
           <EntitySet Name="WelcomePackReceivers" EntityType="Self.WelcomePackReceiver" />
-          <AssociationSet Name="FK__Accommoda__Confe__60A75C0F" Association="Self.FK__Accommoda__Confe__60A75C0F">
+          <AssociationSet Name="FK__Accommoda__Confe__68487DD7" Association="Self.FK__Accommoda__Confe__68487DD7">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="AccommodationInfo" EntitySet="AccommodationInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Author__AccountI__59063A47" Association="Self.FK__Author__AccountI__59063A47">
+          <AssociationSet Name="FK__Author__AccountI__60A75C0F" Association="Self.FK__Author__AccountI__60A75C0F">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Author" EntitySet="Authors" />
           </AssociationSet>
           <AssociationSet Name="FK__Conferenc__Accou__4222D4EF" Association="Self.FK__Conferenc__Accou__4222D4EF">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LastMessa__First__4CA06362" Association="Self.FK__LastMessa__First__4CA06362">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="LastMessages" EntitySet="LastMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LastMessa__Secon__4D94879B" Association="Self.FK__LastMessa__Secon__4D94879B">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="LastMessages" EntitySet="LastMessages" />
           </AssociationSet>
           <AssociationSet Name="FK__Message__Receive__47DBAE45" Association="Self.FK__Message__Receive__47DBAE45">
             <End Role="Account" EntitySet="Accounts" />
@@ -1682,15 +1801,15 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Message" EntitySet="Messages" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__Reviewer__03F0984C" Association="Self.FK__Review__Reviewer__03F0984C">
+          <AssociationSet Name="FK__Review__Reviewer__0B91BA14" Association="Self.FK__Review__Reviewer__0B91BA14">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__EmployeeId__52593CB8" Association="Self.FK__Task__EmployeeId__52593CB8">
+          <AssociationSet Name="FK__Task__EmployeeId__59FA5E80" Association="Self.FK__Task__EmployeeId__59FA5E80">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Task" EntitySet="Tasks" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__ManagerId__5535A963" Association="Self.FK__Task__ManagerId__5535A963">
+          <AssociationSet Name="FK__Task__ManagerId__5CD6CB2B" Association="Self.FK__Task__ManagerId__5CD6CB2B">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Task" EntitySet="Tasks" />
           </AssociationSet>
@@ -1706,23 +1825,23 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Session" EntitySet="Sessions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Confere__7C4F7684" Association="Self.FK__Article__Confere__7C4F7684">
+          <AssociationSet Name="FK__Article__Confere__03F0984C" Association="Self.FK__Article__Confere__03F0984C">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Present__236943A5" Association="Self.FK__Article__Present__236943A5">
+          <AssociationSet Name="FK__Article__Present__2BFE89A6" Association="Self.FK__Article__Present__2BFE89A6">
             <End Role="Presentation" EntitySet="Presentations" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Special__245D67DE" Association="Self.FK__Article__Special__245D67DE">
+          <AssociationSet Name="FK__Article__Special__2CF2ADDF" Association="Self.FK__Article__Special__2CF2ADDF">
             <End Role="SpecialSession" EntitySet="SpecialSessions" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__ArticleI__02FC7413" Association="Self.FK__Review__ArticleI__02FC7413">
+          <AssociationSet Name="FK__Review__ArticleI__0A9D95DB" Association="Self.FK__Review__ArticleI__0A9D95DB">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__Submissio__Artic__1DB06A4F" Association="Self.FK__Submissio__Artic__1DB06A4F">
+          <AssociationSet Name="FK__Submissio__Artic__2739D489" Association="Self.FK__Submissio__Artic__2739D489">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Submission" EntitySet="Submissions" />
           </AssociationSet>
@@ -1730,7 +1849,7 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Article" EntitySet="Articles" />
             <End Role="Presentation" EntitySet="Presentations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Award__Presentat__1AD3FDA4" Association="Self.FK__Award__Presentat__1AD3FDA4">
+          <AssociationSet Name="FK__Award__Presentat__245D67DE" Association="Self.FK__Award__Presentat__245D67DE">
             <End Role="Presentation" EntitySet="Presentations" />
             <End Role="Award" EntitySet="Awards" />
           </AssociationSet>
@@ -1742,23 +1861,23 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaffs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Emergency__Confe__5DCAEF64" Association="Self.FK__Emergency__Confe__5DCAEF64">
+          <AssociationSet Name="FK__Emergency__Confe__656C112C" Association="Self.FK__Emergency__Confe__656C112C">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="EmergencyInfo" EntitySet="EmergencyInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Event__Conferenc__66603565" Association="Self.FK__Event__Conferenc__66603565">
+          <AssociationSet Name="FK__Event__Conferenc__6E01572D" Association="Self.FK__Event__Conferenc__6E01572D">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="Event" EntitySet="Events" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__Conference__5165187F" Association="Self.FK__Task__Conference__5165187F">
+          <AssociationSet Name="FK__Task__Conference__59063A47" Association="Self.FK__Task__Conference__59063A47">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="Task" EntitySet="Tasks" />
           </AssociationSet>
-          <AssociationSet Name="FK__TravelInf__Confe__6383C8BA" Association="Self.FK__TravelInf__Confe__6383C8BA">
+          <AssociationSet Name="FK__TravelInf__Confe__6B24EA82" Association="Self.FK__TravelInf__Confe__6B24EA82">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="TravelInfo" EntitySet="TravelInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Confe__6C190EBB" Association="Self.FK__WelcomePa__Confe__6C190EBB">
+          <AssociationSet Name="FK__WelcomePa__Confe__73BA3083" Association="Self.FK__WelcomePa__Confe__73BA3083">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="WelcomePack" EntitySet="WelcomePacks" />
           </AssociationSet>
@@ -1774,13 +1893,9 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="Role" EntitySet="Roles" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaffs" />
           </AssociationSet>
-          <AssociationSet Name="FK__Event__RoomId__6754599E" Association="Self.FK__Event__RoomId__6754599E">
+          <AssociationSet Name="FK__Event__RoomId__6EF57B66" Association="Self.FK__Event__RoomId__6EF57B66">
             <End Role="Room" EntitySet="Rooms" />
             <End Role="Event" EntitySet="Events" />
-          </AssociationSet>
-          <AssociationSet Name="fk_PresentationRoom" Association="Self.fk_PresentationRoom">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="Presentation" EntitySet="Presentations" />
           </AssociationSet>
           <AssociationSet Name="fk_PresentationSession" Association="Self.fk_PresentationSession">
             <End Role="Session" EntitySet="Sessions" />
@@ -1790,11 +1905,19 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
             <End Role="SpecialSession" EntitySet="SpecialSessions" />
             <End Role="Presentation" EntitySet="Presentations" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__6EF57B66" Association="Self.FK__WelcomePa__Welco__6EF57B66">
+          <AssociationSet Name="fk_SessionRoom" Association="Self.fk_SessionRoom">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SpecialSessionRoom" Association="Self.fk_SpecialSessionRoom">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="SpecialSession" EntitySet="SpecialSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WelcomePa__Welco__76969D2E" Association="Self.FK__WelcomePa__Welco__76969D2E">
             <End Role="WelcomePack" EntitySet="WelcomePacks" />
             <End Role="WelcomePackGift" EntitySet="WelcomePackGifts" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__72C60C4A" Association="Self.FK__WelcomePa__Welco__72C60C4A">
+          <AssociationSet Name="FK__WelcomePa__Welco__7A672E12" Association="Self.FK__WelcomePa__Welco__7A672E12">
             <End Role="WelcomePackGift" EntitySet="WelcomePackGifts" />
             <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceivers" />
           </AssociationSet>
@@ -1925,13 +2048,25 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LastMessages">
+            <EntityTypeMapping TypeName="cmsModel.LastMessage">
+              <MappingFragment StoreEntitySet="LastMessages">
+                <ScalarProperty Name="PairID" ColumnName="PairID" />
+                <ScalarProperty Name="FirstId" ColumnName="FirstId" />
+                <ScalarProperty Name="SecondId" ColumnName="SecondId" />
+                <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+                <ScalarProperty Name="LastMessage1" ColumnName="LastMessage" />
+                <ScalarProperty Name="firstIdReceived" ColumnName="firstIdReceived" />
+                <ScalarProperty Name="secondIdReceived" ColumnName="secondIdReceived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="cmsModel.Message">
               <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
                 <ScalarProperty Name="SenderId" ColumnName="SenderId" />
                 <ScalarProperty Name="ReceiverId" ColumnName="ReceiverId" />
-                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
-                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
@@ -1943,13 +2078,10 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
                 <ScalarProperty Name="PresentationId" ColumnName="PresentationId" />
                 <ScalarProperty Name="PresenterId" ColumnName="PresenterId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
-                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="SpecialSessionId" ColumnName="SpecialSessionId" />
-                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Grade" ColumnName="Grade" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1990,8 +2122,11 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
                 <ScalarProperty Name="ChairId" ColumnName="ChairId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2001,6 +2136,9 @@ warning 6002: The table/view 'cms.dbo.ConferenceBuilding' does not have a primar
                 <ScalarProperty Name="SpecialSessionId" ColumnName="SpecialSessionId" />
                 <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
                 <ScalarProperty Name="ChairId" ColumnName="ChairId" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>

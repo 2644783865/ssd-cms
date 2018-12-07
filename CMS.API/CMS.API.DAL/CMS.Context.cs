@@ -35,6 +35,7 @@ namespace CMS.API.DAL
         public virtual DbSet<ConferenceStaff> ConferenceStaffs { get; set; }
         public virtual DbSet<EmergencyInfo> EmergencyInfoes { get; set; }
         public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<LastMessage> LastMessages { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Presentation> Presentations { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }

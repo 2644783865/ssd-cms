@@ -89,7 +89,7 @@ namespace CMS.UI.Windows.Articles
                     FileName = $"{currentArticle.Topic} submission {selectedSubmission.SubmissionDate.ToShortDateString()}"
                 };
 
-                var submission = await core.GetSubmissionByIdAsync(selectedSubmission.SubmissionID);
+                var submission = await core.GetSubmissionByIdAsync(selectedSubmission.SubmissionId);
                 if ((bool)fileDialog.ShowDialog())
                 {
                     WriteData(fileDialog.FileName, submission.ArticleFile);

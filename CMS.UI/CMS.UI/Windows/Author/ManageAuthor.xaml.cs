@@ -74,7 +74,7 @@ namespace CMS.UI.Windows.Author
                     var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
                     var author = await authorCore.GetAuthorByAccountIdAsync(account.AccountId);
 
-                    if (await authorCore.DeleteAuthorAsync(author.AuthorID))
+                    if (await authorCore.DeleteAuthorAsync(author.AuthorId))
                         MessageBox.Show("Success");
                     else
                         MessageBox.Show("Failure");
