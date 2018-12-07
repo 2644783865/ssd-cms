@@ -61,6 +61,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a api/article/acceptarticle.
+        /// </summary>
+        internal static string acceptArticlePath {
+            get {
+                return ResourceManager.GetString("acceptArticlePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a api/accommodationInfo/addaccommodationinfo.
         /// </summary>
         internal static string addAccommodationInfoPath {
@@ -291,6 +300,15 @@ namespace CMS.Core.Properties {
         internal static string deleteArticlePath {
             get {
                 return ResourceManager.GetString("deleteArticlePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a api/article/deleteassignmentauthorforarticle.
+        /// </summary>
+        internal static string deleteAssignmentAuthorForArticlePath {
+            get {
+                return ResourceManager.GetString("deleteAssignmentAuthorForArticlePath", resourceCulture);
             }
         }
         
@@ -963,9 +981,9 @@ namespace CMS.Core.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a api/submission/submissionsforarticle.
         /// </summary>
-        internal static string getSubmissionsForArticle {
+        internal static string getSubmissionsForArticlePath {
             get {
-                return ResourceManager.GetString("getSubmissionsForArticle", resourceCulture);
+                return ResourceManager.GetString("getSubmissionsForArticlePath", resourceCulture);
             }
         }
         
@@ -1092,6 +1110,24 @@ namespace CMS.Core.Properties {
         internal static string loginPath {
             get {
                 return ResourceManager.GetString("loginPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a api/article/rejectarticle.
+        /// </summary>
+        internal static string rejectArticlePath {
+            get {
+                return ResourceManager.GetString("rejectArticlePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a api/article/setauthorforarticle.
+        /// </summary>
+        internal static string setAuthorForArticlePath {
+            get {
+                return ResourceManager.GetString("setAuthorForArticlePath", resourceCulture);
             }
         }
         

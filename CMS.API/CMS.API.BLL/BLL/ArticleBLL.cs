@@ -87,7 +87,7 @@ namespace CMS.API.BLL.BLL
             {
                 foreach(var submission in _repository.GetSubmissionsForArticle(articleId))
                 {
-                    DeleteSubmission(submission.SubmissionID);
+                    DeleteSubmission(submission.SubmissionId);
                 }
                 
                 _repository.DeleteArticle(articleId);

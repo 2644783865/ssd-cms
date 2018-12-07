@@ -22,22 +22,22 @@ namespace CMS.API.Controllers
             return Ok(_bll.GetArticles());
         }
 
-        // GET: api/Article/ArticlesForConferenceAndAuthor
-        [HttpGet]
-        [Route("api/article/articlesforconferenceandauthor")]
-        public IHttpActionResult GetArticlesForConferenceAndAuthor(int conferenceId, int authorId)
-        {
-            var article = _bll.GetArticlesForConferenceAndAuthor(conferenceId, authorId);
-            if (article == null) return BadRequest();
-            return Ok(article);
-        }
-
         // GET: api/Article/ArticleById?articleid=
         [HttpGet]
         [Route("api/article/articlebyid")]
         public IHttpActionResult GetArticleById(int articleid)
         {
             var article = _bll.GetArticleById(articleid);
+            if (article == null) return BadRequest();
+            return Ok(article);
+        }
+
+        // GET: api/Article/ArticlesForConferenceAndAuthor?conferenceId=?authorId=
+        [HttpGet]
+        [Route("api/article/articlesforconferenceandauthor")]
+        public IHttpActionResult GetArticlesForConferenceAndAuthor(int conferenceId, int authorId)
+        {
+            var article = _bll.GetArticlesForConferenceAndAuthor(conferenceId, authorId);
             if (article == null) return BadRequest();
             return Ok(article);
         }
@@ -52,8 +52,8 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // PUT: api/Article/EditArticle
-        [HttpPut]
+        // POST: api/Article/EditArticle
+        [HttpPost]
         [Route("api/article/editarticle")]
         public IHttpActionResult EditArticle([FromBody] ArticleDTO article)
         {
@@ -71,20 +71,32 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
+        // POST: api/Article/AcceptArticle
+        [HttpPost]
+        [Route("api/article/acceptarticle")]
+        public IHttpActionResult AcceptArticle(int articleId)
+        {
+            if (articleId == 0) return BadRequest();
+            if (_bll.AcceptArticle(articleId)) return Ok();
+            return InternalServerError();
+        }
+
+        // POST: api/Article/RejectArticle
+        [HttpPost]
+        [Route("api/article/rejectarticle")]
+        public IHttpActionResult RejectArticle(int articleId)
+        {
+            if (articleId == 0) return BadRequest();
+            if (_bll.RejectArticle(articleId)) return Ok();
+            return InternalServerError();
+        }
+
         // GET: api/Submission/Submissions
         [HttpGet]
         [Route("api/submission/submissions")]
         public IHttpActionResult GetSubmissions()
         {
             return Ok(_bll.GetSubmissions());
-        }
-
-        // GET: api/Submission/SubmissionsForArticle
-        [HttpGet]
-        [Route("api/submission/submissionsforarticle")]
-        public IHttpActionResult GetSubmissionsForArticle(int articleId)
-        {
-            return Ok(_bll.GetSubmissionsForArticle(articleId));
         }
 
         // GET: api/Submission/SubmissionById?submissionid=
@@ -95,6 +107,14 @@ namespace CMS.API.Controllers
             var submission = _bll.GetSubmissionById(submissionid);
             if (submission == null) return BadRequest();
             return Ok(submission);
+        }
+
+        // GET: api/Submission/SubmissionsForArticle
+        [HttpGet]
+        [Route("api/submission/submissionsforarticle")]
+        public IHttpActionResult GetSubmissionsForArticle(int articleId)
+        {
+            return Ok(_bll.GetSubmissionsForArticle(articleId));
         }
 
         // POST: api/Submission/AddSubmission
@@ -123,6 +143,26 @@ namespace CMS.API.Controllers
         public IHttpActionResult DeleteSubmission(int submissionid)
         {
             if (_bll.DeleteSubmission(submissionid)) return Ok();
+            return InternalServerError();
+        }
+
+        // GET: api/Article/SetAuthorForArticle?articleId=&authorId
+        [HttpGet]
+        [Route("api/article/setauthorforarticle")]
+        public IHttpActionResult SetAuthorForArticle(int articleId, int authorId)
+        {
+            if (articleId == 0 || authorId == 0) return BadRequest();
+            if (_bll.SetAuthorForArticle(articleId, authorId)) return Ok();
+            return InternalServerError();
+        }
+
+        // DELETE: api/Article/DeleteAssignmentAuthorForArticle?articleId=&authorId
+        [HttpDelete]
+        [Route("api/article/deleteassignmentauthorforarticle")]
+        public IHttpActionResult DeleteAssignmentAuthorForArticle(int articleId, int authorId)
+        {
+            if (articleId == 0 || authorId == 0) return BadRequest();
+            if (_bll.DeleteAssignmentAuthorForArticle(articleId, authorId)) return Ok();
             return InternalServerError();
         }
     }
