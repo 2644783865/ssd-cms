@@ -37,7 +37,7 @@ namespace CMS.Core.Core
 
         public async Task<List<ArticleDTO>> GetArticlesForConferenceAndAuthorAsync(int conferenceId, int authorId)
         {
-            var path = $"{Properties.Resources.getArticlesForConferenceAndAuthorPath}?articleId={conferenceId}&articleId={authorId}";
+            var path = $"{Properties.Resources.getArticlesForConferenceAndAuthorPath}?conferenceId={conferenceId}&authorId={authorId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

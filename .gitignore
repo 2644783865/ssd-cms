@@ -267,6 +267,8 @@ __pycache__/
 
 # Office files
 *.docx
+!CMS_sql.docx
+
 
 
 /CMS.API/CMS.API/Properties/PublishProfiles
