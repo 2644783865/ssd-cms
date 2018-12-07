@@ -89,7 +89,7 @@ namespace CMS.API.DAL.Repositories
         public void EditSubmission(SubmissionDTO submissionDTO)
         {
             var submission = MapperExtension.mapper.Map<SubmissionDTO, Submission>(submissionDTO);
-            _db.Entry(_db.Submissions.Find(submissionDTO.SubmissionID)).CurrentValues.SetValues(submission);
+            _db.Entry(_db.Submissions.Find(submissionDTO.SubmissionId)).CurrentValues.SetValues(submission);
             _db.SaveChanges();
         }
 

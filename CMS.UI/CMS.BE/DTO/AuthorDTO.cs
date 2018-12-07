@@ -2,7 +2,7 @@
 {
     public class AuthorDTO
     {
-        public int AuthorID { get; set; }
+        public int AuthorId { get; set; }
         public int AccountId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

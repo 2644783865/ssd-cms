@@ -2,7 +2,7 @@
 {
     public class ReviewDTO
     {
-        public int ReviewID { get; set; }
+        public int ReviewId { get; set; }
         public int ArticleId { get; set; }
         public int ReviewerId { get; set; }
         public System.DateTime ReviewDate { get; set; }

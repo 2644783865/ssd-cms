@@ -39,7 +39,7 @@ namespace CMS.API.DAL.Repositories
         public void EditAuthor(AuthorDTO authorDTO)
         {
             var author = MapperExtension.mapper.Map<AuthorDTO, Author>(authorDTO);
-            _db.Entry(_db.Authors.Find(authorDTO.AuthorID)).CurrentValues.SetValues(author);
+            _db.Entry(_db.Authors.Find(authorDTO.AuthorId)).CurrentValues.SetValues(author);
             _db.SaveChanges();
         }
 

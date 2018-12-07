@@ -31,7 +31,7 @@ namespace CMS.API.DAL.Repositories
         public void EditTravel(TravelInfoDTO travelDTO)
         {
             var travel = MapperExtension.mapper.Map<TravelInfoDTO, TravelInfo>(travelDTO);
-            _db.Entry(_db.TravelInfoes.Find(travelDTO.TravelInfoID)).CurrentValues.SetValues(travel);
+            _db.Entry(_db.TravelInfoes.Find(travelDTO.TravelInfoId)).CurrentValues.SetValues(travel);
             _db.SaveChanges();
 
         }

@@ -2,7 +2,7 @@
 {
     public class TravelInfoDTO
     {
-        public int TravelInfoID { get; set; }
+        public int TravelInfoId { get; set; }
         public int ConferenceId { get; set; }
         public string Title { get; set; }
         public string AirportRoad { get; set; }
