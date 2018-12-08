@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Author Panel" Height="700" Width="1200">
+        Title="Author Panel" Height="720" Width="1280">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Label Name="ConferenceLabel" Content="Conference: unknown conference"/>

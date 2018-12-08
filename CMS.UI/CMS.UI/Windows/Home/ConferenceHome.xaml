@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Conference Home" Height="900" Width="1500">
+        Title="Conference Home" Height="720" Width="1280">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Label Name="ConferenceLabel" Content="Conference: unknown conference"/>
@@ -22,15 +22,15 @@
         </Button>
         <Label Content="Download &#xD;&#xA;Conference &#xD;&#xA;Program" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,101" Width="85" Height="65" HorizontalContentAlignment="Center"/>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="0,0,110,45" Height="40" Width="35" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="1000" FontSize="50" FontWeight="Bold"/>
-        <Label Name="DatesLabel" Content="" HorizontalAlignment="Left" Margin="769,92,0,0" VerticalAlignment="Top" Width="525" FontSize="40"/>
-        <TextBox Name="DescriptionBox" HorizontalAlignment="Left" Height="204" Margin="21,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1273" BorderThickness="0" FontSize="20"/>
-        <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="21,92,0,0" VerticalAlignment="Top" Width="723" FontSize="40"/>
-        <ListBox Name="SessionList" HorizontalAlignment="Left" Height="283" Margin="45,0,0,30" VerticalAlignment="Bottom" Width="363" FontSize="20" BorderThickness="1"/>
-        <ListBox Name="SpecialSessionList" HorizontalAlignment="Left" Height="283" Margin="432,0,0,30" VerticalAlignment="Bottom" Width="363" FontSize="20" BorderThickness="1"/>
-        <ListBox Name="EventList" HorizontalAlignment="Left" Height="283" Margin="823,0,0,30" VerticalAlignment="Bottom" Width="363" FontSize="20" BorderThickness="1"/>
-        <Label Content="Sessions:" HorizontalAlignment="Left" Margin="45,0,0,342" VerticalAlignment="Bottom" FontSize="20"/>
-        <Label Content="Special Sessions:" HorizontalAlignment="Left" Margin="432,0,0,342" VerticalAlignment="Bottom" FontSize="20"/>
-        <Label Content="Events:" HorizontalAlignment="Left" Margin="823,0,0,342" VerticalAlignment="Bottom" FontSize="20"/>
+        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="1000" FontSize="30" FontWeight="SemiBold"/>
+        <Label Name="DatesLabel" Content="" HorizontalAlignment="Left" Margin="21,107,0,0" VerticalAlignment="Top" Width="526" FontSize="20"/>
+        <TextBox Name="DescriptionBox" HorizontalAlignment="Left" Height="74" Margin="21,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1200" BorderThickness="0" FontSize="15"/>
+        <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="21,65,0,0" VerticalAlignment="Top" Width="571" FontSize="20"/>
+        <ListBox Name="SessionList" HorizontalAlignment="Left" Height="371" Margin="45,0,0,45" VerticalAlignment="Bottom" Width="320" FontSize="20" BorderThickness="1"/>
+        <ListBox Name="SpecialSessionList" HorizontalAlignment="Left" Height="371" Margin="390,0,0,45" VerticalAlignment="Bottom" Width="320" FontSize="20" BorderThickness="1"/>
+        <ListBox Name="EventList" HorizontalAlignment="Left" Height="371" Margin="737,0,0,45" VerticalAlignment="Bottom" Width="320" FontSize="20" BorderThickness="1"/>
+        <Label Content="Sessions:" HorizontalAlignment="Left" Margin="45,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
+        <Label Content="Special Sessions:" HorizontalAlignment="Left" Margin="390,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
+        <Label Content="Events:" HorizontalAlignment="Left" Margin="737,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
     </Grid>
 </Controls:MetroWindow>

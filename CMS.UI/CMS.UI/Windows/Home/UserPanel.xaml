@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
-        Title="User Panel" Height="450" Width="800">
+        Title="User Panel" Height="720" Width="1280">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Label Name="UserLabel" Content="User: unknown user"/>
@@ -14,17 +14,24 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,0,20">
-            <ComboBox Name="ConferencesBox" Margin="20,10,20,10"  Width="196"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,0,25">
             <Button Name="GoToConferenceButton" Content="Go To Conference" Margin="0,0,0,0" Width="158" Click="GoToConferenceButton_Click" Height="48"/>
             <Button Name="GoToManagerPanelButton" Content="Manager Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToManagerPanelButton_Click"/>
-            <Button Name="GoToAuthorPanelButton" Content="Author Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToAuthorPanelButton_Click"/>
+            <Button x:Name="GoToAuthorPanelButton" Content="Author Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToAuthorPanelButton_Click"/>
         </StackPanel>
-        <Button Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Right" Margin="0,78,10,0" VerticalAlignment="Top" Width="124" Click="ChangePasswordButton_Click"/>
-        <TextBox Text="To change any other data please contact your manager" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="0,110,10,0" VerticalAlignment="Top" Width="197" Height="46" BorderThickness="0"/>
+        <Button Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Left" Margin="371,301,0,0" VerticalAlignment="Top" Width="124" Click="ChangePasswordButton_Click"/>
+        <TextBox Text="To change any other data please contact your manager" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="500,301,0,0" VerticalAlignment="Top" Width="197" Height="46" BorderThickness="0"/>
         <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="38" Height="36" Click="Refresh_Click">
             <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Button>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="0,10,55,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="35"/>
+        <Image HorizontalAlignment="Left" Height="243" Margin="53,56,0,0" VerticalAlignment="Top" Width="252" Source="/Assets/Avatar.png"/>
+        <Label Name="NameLabel" Content="Name:" HorizontalAlignment="Left" Margin="371,76,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>
+        <Label Name="LoginLabel" Content="Login:" HorizontalAlignment="Left" Margin="371,130,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>
+        <Label Name="EmailLabel" Content="Email:" HorizontalAlignment="Left" Margin="371,185,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>
+        <Label Name="PhoneLabel" Content="Phone:" HorizontalAlignment="Left" Margin="371,241,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>
+        <ListBox Name="ConferenceList" HorizontalAlignment="Center" Height="260" Margin="53,0,1010,25" VerticalAlignment="Bottom" Width="209" BorderThickness="1"/>
+        <Label Content="Active Conferences:" HorizontalAlignment="Center" Margin="53,0,1010,290" VerticalAlignment="Bottom" Width="209" FontSize="15"/>
+        <Label Name="IdLabel" Content="" HorizontalAlignment="Left" Margin="371,30,0,0" VerticalAlignment="Top" FontSize="20" Width="124"/>
     </Grid>
 </Controls:MetroWindow>

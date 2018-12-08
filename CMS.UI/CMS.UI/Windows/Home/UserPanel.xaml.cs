@@ -27,18 +27,28 @@ namespace CMS.UI.Windows.Home
         private async void InitializeData()
         {
             ProgressSpin.IsActive = true;
-            await FillConferenceBox();
+            await FillConferenceList();
+            FillUserData();
             ProgressSpin.IsActive = false;
         }
 
-        private async Task FillConferenceBox()
+        private async Task FillConferenceList()
         {
-            ConferencesBox.Items.Clear();
+            ConferenceList.Items.Clear();
             await core.LoadConferencesAsync();
             foreach (var conference in UserCredentials.Conferences)
             {
-                ConferencesBox.Items.Add($"{conference.ConferenceId} {conference.Title} {conference.BeginDate.ToShortDateString()}");
+                ConferenceList.Items.Add($"{conference.ConferenceId} {conference.Title} {conference.BeginDate.ToShortDateString()}");
             }
+        }
+
+        private void FillUserData()
+        {
+            IdLabel.Content = "Id: " + UserCredentials.Account.AccountId;
+            NameLabel.Content = "Name: " + UserCredentials.Account.Name;
+            LoginLabel.Content = "Login: " + UserCredentials.Account.Login;
+            EmailLabel.Content = "Email: " + UserCredentials.Account.Email;
+            PhoneLabel.Content = "Phone: " + UserCredentials.Account.PhoneNumber;
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -48,9 +58,9 @@ namespace CMS.UI.Windows.Home
 
         private void GoToConferenceButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ConferencesBox.SelectedIndex >= 0)
+            if (ConferenceList.SelectedIndex >= 0)
             {
-                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferencesBox.SelectedIndex);
+                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
                 ConferenceHome newWindow = new ConferenceHome();
                 newWindow.Show();
                 Close();
@@ -60,9 +70,9 @@ namespace CMS.UI.Windows.Home
 
         private void GoToManagerPanelButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ConferencesBox.SelectedIndex >= 0)
+            if (ConferenceList.SelectedIndex >= 0)
             {
-                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferencesBox.SelectedIndex);
+                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
                 ManagerPanel newWindow = new ManagerPanel();
                 newWindow.Show();
                 Close();
@@ -72,9 +82,9 @@ namespace CMS.UI.Windows.Home
 
         private void GoToAuthorPanelButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ConferencesBox.SelectedIndex >= 0)
+            if (ConferenceList.SelectedIndex >= 0)
             {
-                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferencesBox.SelectedIndex);
+                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
                 AuthorPanel newWindow = new AuthorPanel();
                 newWindow.Show();
                 Close();
