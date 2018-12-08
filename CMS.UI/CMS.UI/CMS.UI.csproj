@@ -115,6 +115,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\Reviews\AddReview.xaml.cs">
+      <DependentUpon>AddReview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Reviews\Review.xaml.cs">
+      <DependentUpon>Review.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Reviews\ReviewsShow.xaml.cs">
+      <DependentUpon>ReviewsShow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\Account\AddEditAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +179,18 @@
     <Page Include="Windows\Home\UserPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Reviews\AddReview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Reviews\Review.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Reviews\ReviewsShow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

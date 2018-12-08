@@ -55,7 +55,7 @@ namespace CMS.UI.Windows.Home
 
         private void EditArticles_Click(object sender, RoutedEventArgs e)
         {
-            ArticleDetails newArticleDetailsWindow= new ArticleDetails(null);     //Shouldn't be null
+            ArticleDetails newArticleDetailsWindow = new ArticleDetails(null);     //Shouldn't be null
             newArticleDetailsWindow.ShowDialog();
         }
 

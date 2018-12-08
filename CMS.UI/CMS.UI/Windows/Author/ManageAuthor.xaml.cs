@@ -50,11 +50,11 @@ namespace CMS.UI.Windows.Author
 
         private async void GoToEditAuthor_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginBox.Text.Length > 0)
+            if (AuthorBox.Text.Length > 0)
             {
                 if (await CheckAccountExistsAsync())
                 {
-                    var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
+                    var account = await authCore.GetAccountByLoginAsync(AuthorBox.Text);
                     var author = await authorCore.GetAuthorByAccountIdAsync(account.AccountId);
                     AddEditAuthor newAddAuthorWindow = new AddEditAuthor(author, account);
                     newAddAuthorWindow.ShowDialog();
@@ -67,11 +67,11 @@ namespace CMS.UI.Windows.Author
 
         private async void GoToDeleteAuthor_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginBox.Text.Length > 0)
+            if (AuthorBox2.Text.Length > 0)
             {
                 if (await CheckAccountExistsAsync())
                 {
-                    var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
+                    var account = await authCore.GetAccountByLoginAsync(AuthorBox2.Text);
                     var author = await authorCore.GetAuthorByAccountIdAsync(account.AccountId);
 
                     if (await authorCore.DeleteAuthorAsync(author.AuthorId))

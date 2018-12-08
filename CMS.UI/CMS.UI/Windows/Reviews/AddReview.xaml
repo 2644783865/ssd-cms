@@ -1,0 +1,23 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Reviews.AddReview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Add Review" Height="350" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
+            <Label Content="Title:" Margin="0,0,0,0"/>
+            <TextBox Name="TitleBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <Label Content="Grade:" Margin="0,0,0,0"/>
+            <TextBox Name="GradeBox" Margin="0,0,0,0" Width="337" Height="23"/>
+            <Label Content="Comment:" Margin="0,0,0,0"/>
+            <TextBox Name="CommentBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+        </StackPanel>
+        <Button Name="AddButton" Content="Add" HorizontalAlignment="Right" Margin="0,0,31,38" VerticalAlignment="Bottom" Width="122"  Click="AddButton_Click"/>
+        <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,245,38" VerticalAlignment="Bottom" Width="122" Click="CancelButton_Click"/>
+    </Grid>
+</Controls:MetroWindow>

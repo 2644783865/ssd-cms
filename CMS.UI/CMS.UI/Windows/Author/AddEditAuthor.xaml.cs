@@ -50,47 +50,61 @@ namespace CMS.UI.Windows.Author
 
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            //missing validate form
-            using (IAuthorCore core = new AuthorCore())
-            {
-                bool result = false;
 
-                if (currentAuthor == null)
+            ProgressSpin.IsActive = true;
+            if (ValidateForm()) using (IAuthorCore core = new AuthorCore())
                 {
-                    var authorModel = new AuthorDTO()
+                    bool result = false;
+
+                    if (currentAuthor == null)
                     {
-                        FirstName = FirstNameBox.Text,
-                        LastName = LastNameBox.Text,
-                        Title = TitleBox.Text,
-                        FieldOfStudy = FieldOfStudyBox.Text,
-                        AccountId = currentAccount.AccountId 
-                    };
-                    result = await core.AddAuthorAsync(authorModel);
-                }
-                else
-                {
-                    currentAuthor.FirstName = FirstNameBox.Text;
-                    currentAuthor.LastName = LastNameBox.Text;
-                    currentAuthor.Title = TitleBox.Text;
-                    currentAuthor.FieldOfStudy= FieldOfStudyBox.Text;
+                        var authorModel = new AuthorDTO()
+                        {
+                            FirstName = FirstNameBox.Text,
+                            LastName = LastNameBox.Text,
+                            Title = TitleBox.Text,
+                            FieldOfStudy = FieldOfStudyBox.Text,
+                            AccountId = currentAccount.AccountId
+                        };
+                        result = await core.AddAuthorAsync(authorModel);
+                    }
+                    else
+                    {
+                        currentAuthor.FirstName = FirstNameBox.Text;
+                        currentAuthor.LastName = LastNameBox.Text;
+                        currentAuthor.Title = TitleBox.Text;
+                        currentAuthor.FieldOfStudy = FieldOfStudyBox.Text;
 
-                    result = await core.EditAuthorAsync(currentAuthor);
-                }
+                        result = await core.EditAuthorAsync(currentAuthor);
+                    }
 
-                if (result)
-                {
-                    MessageBox.Show("Success");
-                    Close();
+                    if (result)
+                    {
+                        MessageBox.Show("Success");
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failure");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Failure");
-                }
-            }
+            else MessageBox.Show("Form invalid");
+            ProgressSpin.IsActive = false;
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
+        private bool ValidateForm()
+        {
+            var result = true;
+            result = !ValidationHelper.ValidateTextFiled(FirstNameBox.Text.Length > 0, FirstNameBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(LastNameBox.Text.Length > 0, LastNameBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(TitleBox.Text.Length < 10, TitleBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(FieldOfStudyBox.Text.Length > 0, FieldOfStudyBox) ? false : result;
+            return result;
+        }
+
     }
 }
