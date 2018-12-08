@@ -24,7 +24,7 @@ namespace CMS.API.DAL.Extensions
                     cfg.CreateMap<Conference, ConferenceDTO>();
                     cfg.CreateMap<ConferenceDTO, Conference>();
 
-
+                    //TEAM A 
                     cfg.CreateMap<Presentation, PresentationDTO>();
                     cfg.CreateMap<PresentationDTO, Presentation>();
                     cfg.CreateMap<SpecialSession, SpecialSessionDTO>();
@@ -37,6 +37,8 @@ namespace CMS.API.DAL.Extensions
                     cfg.CreateMap<BuildingDTO, Building>();
                     cfg.CreateMap<Message, MessageDTO>();
                     cfg.CreateMap<MessageDTO, Message>();
+                    cfg.CreateMap<LastMessage, LastMessageDTO>();
+                    cfg.CreateMap<LastMessageDTO, LastMessage>();
 
 
 

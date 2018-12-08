@@ -7,10 +7,11 @@ namespace CMS.API.DAL.Interfaces
     public interface IMessageRepository : IDisposable
     {
         IEnumerable<MessageDTO> GetMessages();
-        MessageDTO GetMessageBySenderId(int senderId, int groupId, int sequenceNumber);
-        MessageDTO GetMessageByReceiverId(int receiverId, int groupId, int sequenceNumber);
+        MessageDTO GetMessageBySenderId(int senderId);
+        MessageDTO GetMessageByReceiverId(int receiverId);
+        MessageDTO GetMessageById(int messageId);
         void AddMessage(MessageDTO messageDTO);
         void EditMessage(MessageDTO messageDTO);
-        void DeleteMessage(int groupId, int sequenceNumber);
+        void DeleteMessage(int messageId);
     }
 }

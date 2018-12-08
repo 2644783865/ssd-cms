@@ -55,6 +55,7 @@
     <Compile Include="DTO\AuthorDTO.cs" />
     <Compile Include="DTO\AwardDTO.cs" />
     <Compile Include="DTO\EventDTO.cs" />
+    <Compile Include="DTO\LastMessageDTO.cs" />
     <Compile Include="DTO\SpecialSessionDTO.cs" />
     <Compile Include="DTO\SubmissionDTO.cs" />
     <Compile Include="DTO\SessionDTO.cs" />

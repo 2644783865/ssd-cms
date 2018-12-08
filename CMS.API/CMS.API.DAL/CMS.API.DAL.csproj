@@ -106,6 +106,7 @@
     <Compile Include="Interfaces\IAwardRepository.cs" />
     <Compile Include="Interfaces\IEmergencyRepository.cs" />
     <Compile Include="Interfaces\IEventRepository.cs" />
+    <Compile Include="Interfaces\ILastMessageRepository.cs" />
     <Compile Include="Interfaces\IPresentationRepository.cs" />
     <Compile Include="Interfaces\ISessionRepository.cs" />
     <Compile Include="Interfaces\IRoomRepository.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Repositories\AwardRepository.cs" />
     <Compile Include="Repositories\EmergencyRepository.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
+    <Compile Include="Repositories\LastMessageRepository.cs" />
     <Compile Include="Repositories\PresentationRepository.cs" />
     <Compile Include="Repositories\SessionRepository.cs" />
     <Compile Include="Repositories\RoomRepository.cs" />

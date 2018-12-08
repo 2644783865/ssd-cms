@@ -13,16 +13,23 @@ namespace CMS.API.DAL.Repositories
         {
             return _db.Messages.Project().To<MessageDTO>();
         }
-        public MessageDTO GetMessageBySenderId(int senderId, int groupId, int sequenceNumber)
+
+        public MessageDTO GetMessageById(int messageId)
         {
-            var message = _db.Messages.Find(senderId, groupId, sequenceNumber);
+            var message = _db.Messages.Find(messageId);
+            if (message == null) return null;
+            else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
+        }
+        public MessageDTO GetMessageBySenderId(int senderId)
+        {
+            var message = _db.Messages.Find(senderId);
             if (message == null) return null;
             else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
         }
 
-        public MessageDTO GetMessageByReceiverId(int receiverId, int groupId, int sequenceNumber)
+        public MessageDTO GetMessageByReceiverId(int receiverId)
         {
-            var message = _db.Messages.Find(receiverId, groupId, sequenceNumber);
+            var message = _db.Messages.Find(receiverId);
             if (message == null) return null;
             else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
         }
@@ -37,13 +44,13 @@ namespace CMS.API.DAL.Repositories
         public void EditMessage(MessageDTO messageDTO)
         {
             var message = MapperExtension.mapper.Map<MessageDTO, Message>(messageDTO);
-            _db.Entry(_db.Messages.Find(messageDTO.GroupID, messageDTO.SequenceNumber)).CurrentValues.SetValues(message);
+            _db.Entry(_db.Messages.Find(messageDTO.MessageId)).CurrentValues.SetValues(message);
             _db.SaveChanges();
         }
 
-        public void DeleteMessage(int groupId, int sequenceNumber)
+        public void DeleteMessage(int messageId)
         {
-            var message = _db.Messages.Find(groupId, sequenceNumber);
+            var message = _db.Messages.Find(messageId);
             _db.Messages.Remove(message);
             _db.SaveChanges();
         }
