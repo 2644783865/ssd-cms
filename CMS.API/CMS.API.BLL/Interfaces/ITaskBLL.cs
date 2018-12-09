@@ -5,11 +5,13 @@ namespace CMS.API.BLL.Interfaces
 {
         public interface ITaskBLL
         { 
-           IEnumerable<TaskDTO> GetTasks();
+           IEnumerable<TaskDTO> GetTasks(int ConferenceId);
             TaskDTO GetTaskById(int id);
             bool AddTask(TaskDTO task);
             bool EditTask(TaskDTO task);
-            bool DeleteTask(int taskId);
-        }
+            bool DeleteTask(int TaskId);
+           IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId);
+           IEnumerable<TaskDTO> GetTasksForEmployee(int EmployeeId, int ConferenceId);
     }
+}
 

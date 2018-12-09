@@ -14,9 +14,9 @@ namespace CMS.API.Controllers
         // GET: api/Task/Tasks?ConferenceId=
         [HttpGet]
         [Route("api/task/tasks")]
-        public IHttpActionResult GetTasks(int conferenceId)
+        public IHttpActionResult GetTasks(int ConferenceId)
         {
-            return Ok(_bll.GetTasks());
+            return Ok(_bll.GetTasks(ConferenceId));
         }
 
 
@@ -24,9 +24,9 @@ namespace CMS.API.Controllers
         // GET: api/Task/TaskById?TaskId=
         [HttpGet]
         [Route("api/task/taskbyid")]
-        public IHttpActionResult GetTaskById(int taskId)
+        public IHttpActionResult GetTaskById(int TaskID)
         {
-            var task = _bll.GetTaskById(taskId);
+            var task = _bll.GetTaskById(TaskID);
             if (task == null) return BadRequest();
             return Ok(task);
         }
@@ -56,6 +56,29 @@ namespace CMS.API.Controllers
         {
             if (_bll.DeleteTask(taskId)) return Ok();
             return InternalServerError();
+        }
+
+
+        // GET: api/Authentication/AccountsForRole?roleName=&conferenceId=
+        [HttpGet]
+        [Route("api/authentication/accountsforrole")]
+        public IHttpActionResult GetAccountsForRole(string roleName, int ConferenceId)
+        {
+            var accounts = _bll.GetAccountsForRole(roleName, ConferenceId);
+            if (accounts == null) return BadRequest();
+            return Ok(accounts);
+        }
+
+
+
+        // GET: api/Task/TasksForEmployee?EmployeeId=&ConferenceId=
+        [HttpGet]
+        [Route("api/authentication/accountsforrole")]
+        public IHttpActionResult GetTasksForRole(int EmployeeId, int ConferenceId)
+        {
+            var tasks = _bll.GetTasksForEmployee(EmployeeId, ConferenceId);
+            if (tasks == null) return BadRequest();
+            return Ok(tasks);
         }
     }
 }

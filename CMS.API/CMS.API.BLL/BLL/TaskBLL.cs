@@ -6,15 +6,15 @@ using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {
-    public class TaskBLL: ITaskBLL
+    public class TaskBLL : ITaskBLL
     {
         private ITaskRepository _repository = new TaskRepository();
 
-        public IEnumerable<TaskDTO> GetTasks()
+        public IEnumerable<TaskDTO> GetTasks(int ConferenceId)
         {
             try
             {
-                return _repository.GetTasks();
+                return _repository.GetTasks(ConferenceId);
             }
             catch
             {
@@ -47,18 +47,18 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-    public bool EditTask(TaskDTO task)
-    {
-        try
+        public bool EditTask(TaskDTO task)
         {
-            _repository.EditTask(task);
+            try
+            {
+                _repository.EditTask(task);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
-        catch
-        {
-            return false;
-        }
-        return true;
-    }
         public bool DeleteTask(int taskId)
         {
             try
@@ -70,6 +70,28 @@ namespace CMS.API.BLL.BLL
                 return false;
             }
             return true;
+        }
+        public IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId)
+        {
+            try
+            {
+                return _repository.GetAccountsForRole(roleName, conferenceId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public IEnumerable<TaskDTO> GetTasksForEmployee(int EmployeeID, int ConferenceId)
+        {
+            try
+            {
+                return _repository.GetTasksForEmployee(EmployeeID, ConferenceId);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

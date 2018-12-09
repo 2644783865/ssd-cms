@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -9,7 +10,7 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
-        public IEnumerable<TaskDTO> GetTasks()
+        public IEnumerable<TaskDTO> GetTasks(int conferenceId)
         {
             return _db.Tasks.Project().To<TaskDTO>();
         }
@@ -40,6 +41,18 @@ namespace CMS.API.DAL.Repositories
             var task = _db.Tasks.Find(taskId);
             _db.Tasks.Remove(task);
             _db.SaveChanges();
+        }
+        public IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int ConferenceId)
+        {
+            var selectedAccounts = _db.Accounts.Where(account =>
+            account.ConferenceStaffs.Where(cs => cs.Role.Name.Equals(roleName) && cs.ConferenceId == ConferenceId).Count() != 0);
+            var result = selectedAccounts.Project().To<AccountDTO>();
+            return result.ToList();
+        }
+        public IEnumerable<TaskDTO> GetTasksForEmployee(int EmployeeId, int ConferenceId)
+        {
+            return _db.Tasks.Where(task => task.EmployeeId == EmployeeId && task.ConferenceId == ConferenceId)
+                .Select(task => task.TaskId).Distinct().Project().To<TaskDTO>();
         }
 
         public void Dispose()

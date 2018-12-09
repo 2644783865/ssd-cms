@@ -12,9 +12,9 @@ namespace CMS.Core.Core
     {
         private ApiHelper _apiHelper = new ApiHelper();
 
-        public async Task<List<EventDTO>> GetEventsAsync(int conferenceId)
+        public async Task<List<EventDTO>> GetEventsAsync(int ConferenceId)
         {
-            var path = $"{Properties.Resources.getEventsPath}?conferenceId={conferenceId}";
+            var path = $"{Properties.Resources.getEventsPath}?ConferenceId={ConferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -23,9 +23,9 @@ namespace CMS.Core.Core
             return null;
         }
 
-        public async Task<EventDTO> GetEventByIdAsync(int eventId)
+        public async Task<EventDTO> GetEventByIdAsync(int EventID)
         {
-            var path = $"{Properties.Resources.getEventByIdPath}?eventId={eventId}";
+            var path = $"{Properties.Resources.getEventByIdPath}?EventID={EventID}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -47,15 +47,15 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<bool> DeleteEventAsync(int eventId)
+        public async Task<bool> DeleteEventAsync(int EventID)
         {
-            var path = $"{Properties.Resources.deleteEventPath}?eventId={eventId}";
+            var path = $"{Properties.Resources.deleteEventPath}?EventID={EventID}";
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }
-        public async Task<List<RoomDTO>> GetListRoomsAsync(int conferenceId)
+        public async Task<List<RoomDTO>> GetListRoomsAsync(int ConferenceId)
         {
-            var path = $"{Properties.Resources.getListRoomsPath}?conferenceId={conferenceId}";
+            var path = $"{Properties.Resources.getListRoomsPath}?ConferenceId={ConferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

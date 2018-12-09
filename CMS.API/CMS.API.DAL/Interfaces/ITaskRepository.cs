@@ -6,10 +6,12 @@ namespace CMS.API.DAL.Interfaces
 {
     public interface ITaskRepository : IDisposable
     {
-        IEnumerable<TaskDTO> GetTasks();
+        IEnumerable<TaskDTO> GetTasks(int conferenceId);
         TaskDTO GetTaskById(int id);
         void AddTask(TaskDTO taskDTO);
         void EditTask(TaskDTO taskDTO);
         void DeleteTask(int taskId);
+        IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId);
+        IEnumerable<TaskDTO> GetTasksForEmployee(int employeeId, int conferenceId);
     }
 }
