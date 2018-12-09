@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -19,6 +20,15 @@ namespace CMS.API.DAL.Repositories
             var review = _db.Reviews.Find(reviewId);
             if (review == null) return null;
             else return MapperExtension.mapper.Map<Review, ReviewDTO>(review);
+        }
+
+        public IEnumerable<ReviewDTO> GetReviewsByArticleId(int articleId)
+        {
+            var reviews = _db.Reviews.Where(review => review.ArticleId == articleId).ToList();
+            foreach (var review in reviews)
+            {
+                yield return MapperExtension.mapper.Map<Review, ReviewDTO>(review);
+            }
         }
 
         public void AddReview(ReviewDTO reviewDTO)

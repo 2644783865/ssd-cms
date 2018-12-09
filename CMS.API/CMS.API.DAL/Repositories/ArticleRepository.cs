@@ -35,6 +35,18 @@ namespace CMS.API.DAL.Repositories
             }
         }
 
+        public IEnumerable<AuthorDTO> GetAuthorsFromArticleId(int articleId)
+        {
+            var authors = _db.Authors.SqlQuery("SELECT * FROM Author WHERE AuthorId IN " +
+                "(SELECT AuthorId FROM Article JOIN ArticleAuthor" +
+                " ON Article.ArticleId = ArticleAuthor.ArticleId WHERE Article.ArticleId = @articleId)", 
+                new SqlParameter("@articleId", articleId));
+            foreach (var author in authors)
+            {
+                yield return MapperExtension.mapper.Map<Author, AuthorDTO>(author);
+            }
+        }
+
         public void AddArticle(ArticleDTO articleDTO)
         {
             var article = MapperExtension.mapper.Map<ArticleDTO, Article>(articleDTO);
