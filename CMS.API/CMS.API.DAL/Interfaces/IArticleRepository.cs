@@ -14,6 +14,7 @@ namespace CMS.API.DAL.Interfaces
         void DeleteArticle(int articleId);
         decimal GetLastArticleId();
         IEnumerable<ArticleDTO> GetArticlesForConferenceAndAuthor(int conferenceId, int authorId);
+        IEnumerable<AuthorDTO> GetAuthorsFromArticleId(int articleId);
 
         //Submission
         IEnumerable<SubmissionDTO> GetSubmissions();

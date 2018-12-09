@@ -8,6 +8,7 @@ namespace CMS.API.DAL.Interfaces
     {
         IEnumerable<ReviewDTO> GetReviewInfo();
         ReviewDTO GetReviewById(int id);
+        IEnumerable<ReviewDTO> GetReviewsByArticleId(int articleId);
         void AddReview(ReviewDTO reviewDTO);
         void EditReview(ReviewDTO reviewDTO);
         void DeleteReview(int reviewId);
