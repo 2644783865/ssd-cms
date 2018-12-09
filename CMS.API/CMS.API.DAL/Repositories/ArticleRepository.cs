@@ -39,7 +39,8 @@ namespace CMS.API.DAL.Repositories
         {
             var authors = _db.Authors.SqlQuery("SELECT * FROM Author WHERE AuthorId IN " +
                 "(SELECT AuthorId FROM Article JOIN ArticleAuthor" +
-                " ON Article.ArticleId = ArticleAuthor.ArticleId WHERE Article.ArticleId = 1)");
+                " ON Article.ArticleId = ArticleAuthor.ArticleId WHERE Article.ArticleId = @articleId)", 
+                new SqlParameter("@articleId", articleId));
             foreach (var author in authors)
             {
                 yield return MapperExtension.mapper.Map<Author, AuthorDTO>(author);
