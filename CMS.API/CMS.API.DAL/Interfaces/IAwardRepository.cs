@@ -10,6 +10,6 @@ namespace CMS.API.DAL.Interfaces
         AwardDTO GetAwardById(int id);
         void AddAward(AwardDTO awardDTO);
         void EditAward(AwardDTO awardDTO);
-        void DeleteAward(int awardId);
+        void DeleteAward(int AwardId);
     }
 }

@@ -35,9 +35,9 @@ namespace CMS.API.DAL.Repositories
             _db.SaveChanges();
         }
 
-        public void DeleteAward(int awardId)
+        public void DeleteAward(int AwardId)
         {
-            var award = _db.Awards.Find(awardId);
+            var award = _db.Awards.Find(AwardId);
             _db.Awards.Remove(award);
             _db.SaveChanges();
         }

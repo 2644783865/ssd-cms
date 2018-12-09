@@ -60,11 +60,11 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
-        public bool DeleteAward(int awardId)
+        public bool DeleteAward(int AwardId)
         {
             try
             {
-                _repository.DeleteAward(awardId);
+                _repository.DeleteAward(AwardId);
             }
             catch
             {

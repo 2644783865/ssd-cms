@@ -9,6 +9,6 @@ namespace CMS.API.BLL.Interfaces
         AwardDTO GetAwardById(int id);
         bool AddAward(AwardDTO award);
         bool EditAward(AwardDTO award);
-        bool DeleteAward(int awardId);
+        bool DeleteAward(int AwardId);
     }
 }

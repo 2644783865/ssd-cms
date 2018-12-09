@@ -49,13 +49,13 @@ namespace CMS.Core.Core
 
         public async Task<bool> DeleteEventAsync(int EventID)
         {
-            var path = $"{Properties.Resources.deleteEventPath}?EventID={EventID}";
+            var path = $"{Properties.Resources.deleteEventPath}?eventID={EventID}";
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }
         public async Task<List<RoomDTO>> GetListRoomsAsync(int ConferenceId)
         {
-            var path = $"{Properties.Resources.getListRoomsPath}?ConferenceId={ConferenceId}";
+            var path = $"{Properties.Resources.getListRoomsPath}?conferenceId={ConferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

@@ -23,9 +23,9 @@ namespace CMS.Core.Core
             return null;
         }
 
-        public async Task<AwardDTO> GetAwardByIdAsync(int awardId)
+        public async Task<AwardDTO> GetAwardByIdAsync(int AwardId)
         {
-            var path = $"{Properties.Resources.getAwardByIdPath}?awardId={awardId}";
+            var path = $"{Properties.Resources.getAwardByIdPath}?awardId={AwardId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -47,9 +47,9 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<bool> DeleteAwardAsync(int awardId)
+        public async Task<bool> DeleteAwardAsync(int AwardId)
         {
-            var path = $"{Properties.Resources.deleteAwardPath}?awardId={awardId}";
+            var path = $"{Properties.Resources.deleteAwardPath}?awardId={AwardId}";
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }
