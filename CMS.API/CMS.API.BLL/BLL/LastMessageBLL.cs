@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {
-    public class LastMessageBBL
+    public class LastMessageBLL : ILastMessageBLL
     {
         private ILastMessageRepository _repository = new LastMessageRepository();
 

@@ -147,6 +147,7 @@
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\EmergencyInfoController.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\LastMessageController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PresentationController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
@@ -194,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\LastMessage\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CMS.UI\CMS.BE\CMS.BE.csproj">

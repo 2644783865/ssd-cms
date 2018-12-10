@@ -10,7 +10,7 @@ namespace CMS.API.Controllers
     public class MessageController : ApiController
     {
         private IMessageBLL _bll = new MessageBLL();
-        /*
+        
         // GET: api/Message/Message
         [HttpGet]
         [Route("api/message/message")]
@@ -19,16 +19,35 @@ namespace CMS.API.Controllers
             return Ok(_bll.GetMessages());
         }
 
-        // GET: api/Message/GetMessageById?groupId=&sequenceNumber=
+        // GET: api/Message/GetMessageById?messageId=
         [HttpGet]
         [Route("api/message/getmessagebyid")]
-        public IHttpActionResult GetMessageById(int groupId, int sequenceNumber)
+        public IHttpActionResult GetMessageById(int messageId)
         {
-            var message = _bll.GetMessageById(groupId, sequenceNumber);
+            var message = _bll.GetMessageById(messageId);
             if (message == null) return BadRequest();
             return Ok(message);
         }
-        */
+
+        // GET: api/Message/GetMessageBySenderId?senderId=
+        [HttpGet]
+        [Route("api/message/getmessagebysenderid")]
+        public IHttpActionResult GetMessagesBySenderId(int senderId)
+        {
+            var message = _bll.GetMessagesBySenderId(senderId);
+            if (message == null) return BadRequest();
+            return Ok(message);
+        }
+        // GET: api/Message/GetMessageByReceiverId?receiverId=
+        [HttpGet]
+        [Route("api/message/getmessagebyreceiverid")]
+        public IHttpActionResult GetMessagesByReceiverId(int receiverId)
+        {
+            var message = _bll.GetMessagesByReceiverId(receiverId);
+            if (message == null) return BadRequest();
+            return Ok(message);
+        }
+
         // POST: api/Message/AddMessage
         [HttpPost]
         [Route("api/message/addmessage")]
@@ -49,12 +68,12 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // DELETE: api/Message/DeleteMessage?groupId=&sequenceNumber=
+        // DELETE: api/Message/DeleteMessage?messageId=
         [HttpDelete]
         [Route("api/message/deletemessage")]
-        public IHttpActionResult DeleteMessage(int groupId, int sequenceNumber)
+        public IHttpActionResult DeleteMessage(int messageId)
         {
-            if (_bll.DeleteMessage(groupId, sequenceNumber)) return Ok();
+            if (_bll.DeleteMessage(messageId)) return Ok();
             return InternalServerError();
         }
     }

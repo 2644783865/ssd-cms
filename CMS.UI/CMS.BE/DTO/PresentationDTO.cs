@@ -7,8 +7,8 @@
         public string Title { get; set; }
         public string Description { get; set; }
         public int ArticleId { get; set; }
-        public int SessionId { get; set; }
-        public int SpecialSessionId { get; set; }
+        public int? SessionId { get; set; }
+        public int? SpecialSessionId { get; set; }
         public int Grade { get; set; }
 
     }

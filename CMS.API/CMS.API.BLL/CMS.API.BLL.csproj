@@ -57,7 +57,7 @@
     <Compile Include="BLL\AuthorBLL.cs" />
     <Compile Include="BLL\AwardBLL.cs" />
     <Compile Include="BLL\EventBLL.cs" />
-    <Compile Include="BLL\LastMessageBBL.cs" />
+    <Compile Include="BLL\LastMessageBLL.cs" />
     <Compile Include="BLL\TaskBLL.cs" />
     <Compile Include="BLL\WelcomePackBLL.cs" />
     <Compile Include="BLL\EmergencyInfoBLL.cs" />

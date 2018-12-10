@@ -11,7 +11,7 @@ namespace CMS.Core.Core
     public class MessageCore : IMessageCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
-        /*
+        
         public async Task<List<MessageDTO>> GetMessagesAsync()
         {
             var path = $"{Properties.Resources.getMessagesPath}";
@@ -23,9 +23,9 @@ namespace CMS.Core.Core
             return null;
         }
 
-        public async Task<MessageDTO> GetMessageByIdAsync(int groupId, int sequenceNumber)
+        public async Task<MessageDTO> GetMessageByIdAsync(int messageId)
         {
-            var path = $"{Properties.Resources.getMessageByIdPath}?groupId={groupId}&sequenceNumber={sequenceNumber}";
+            var path = $"{Properties.Resources.getMessageByIdPath}?messageId={messageId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -33,7 +33,29 @@ namespace CMS.Core.Core
             }
             else return null;
         }
-        */
+
+        public async Task<MessageDTO> GetMessageBySenderIdAsync(int senderId)
+        {
+            var path = $"{Properties.Resources.getMessageBySenderIdPath}?senderId={senderId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<MessageDTO>(result.Content);
+            }
+            else return null;
+        }
+
+        public async Task<MessageDTO> GetMessageByReceiverIdAsync(int receiverId)
+        {
+            var path = $"{Properties.Resources.getMessageByReceiverIdPath}?receiverId={receiverId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<MessageDTO>(result.Content);
+            }
+            else return null;
+        }
+
         public async Task<bool> AddMessageAsync(MessageDTO message)
         {
             var path = Properties.Resources.addMessagePath;
@@ -48,9 +70,9 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<bool> DeleteMessageAsync(int groupId, int sequenceNumber)
+        public async Task<bool> DeleteMessageAsync(int messageId)
         {
-            var path = $"{Properties.Resources.deleteMessagePath}?groupId={groupId}&sequenceNumber={sequenceNumber}";
+            var path = $"{Properties.Resources.deleteMessagePath}?messageId={messageId}";
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }

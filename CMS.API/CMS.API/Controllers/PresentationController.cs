@@ -36,8 +36,7 @@ namespace CMS.API.Controllers
         public IHttpActionResult AddPresentation([FromBody] PresentationDTO presentation)
         {
             if (string.IsNullOrEmpty(presentation.Title)
-                || ((presentation.SessionId==null) ^ (presentation.SpecialSessionId == null))
-                || presentation.BeginDate == default(DateTime) || presentation.EndDate == default(DateTime)) return BadRequest();
+                || ((presentation.SessionId==null) ^ (presentation.SpecialSessionId == null))) return BadRequest();
             if (_bll.AddPresentation(presentation)) return Ok();
             return InternalServerError();
         }
@@ -48,8 +47,7 @@ namespace CMS.API.Controllers
         public IHttpActionResult EditPresentation([FromBody] PresentationDTO presentation)
         {
             if (string.IsNullOrEmpty(presentation.Title)
-                || ((presentation.SessionId == null) ^ (presentation.SpecialSessionId == null))
-                || presentation.BeginDate == default(DateTime) || presentation.EndDate == default(DateTime)) return BadRequest();
+                || ((presentation.SessionId == null) ^ (presentation.SpecialSessionId == null))) return BadRequest();
             if (_bll.EditPresentation(presentation)) return Ok();
             return InternalServerError();
         }

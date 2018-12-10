@@ -53,6 +53,7 @@
     <Compile Include="Core\AwardCore.cs" />
     <Compile Include="Core\EmergencyInfoCore.cs" />
     <Compile Include="Core\EventCore.cs" />
+    <Compile Include="Core\LastMessageCore.cs" />
     <Compile Include="Core\ReviewCore.cs" />
     <Compile Include="Core\TaskCore.cs" />
     <Compile Include="Core\ConferenceCore.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Interfaces\IAwardCore.cs" />
     <Compile Include="Interfaces\IEmergencyInfoCore.cs" />
     <Compile Include="Interfaces\IEventCore.cs" />
+    <Compile Include="Interfaces\ILastMessageCore.cs" />
     <Compile Include="Interfaces\IPresentationCore.cs" />
     <Compile Include="Interfaces\IAuthenticationCore.cs" />
     <Compile Include="Interfaces\IConferenceCore.cs" />

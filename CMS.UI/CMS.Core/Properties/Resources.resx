@@ -147,6 +147,9 @@
   <data name="addEventPath" xml:space="preserve">
     <value>api/event/addevent</value>
   </data>
+  <data name="addLastMessagePath" xml:space="preserve">
+    <value>api/lastmessage/addlastmessage</value>
+  </data>
   <data name="addMessagePath" xml:space="preserve">
     <value>api/message/addmessage</value>
   </data>
@@ -222,6 +225,9 @@
   <data name="deleteEventPath" xml:space="preserve">
     <value>api/event/deleteevent</value>
   </data>
+  <data name="deleteLastMessagePath" xml:space="preserve">
+    <value>api/lastmessage/deletelastmessage</value>
+  </data>
   <data name="deleteMessagePath" xml:space="preserve">
     <value>api/message/deletemessage</value>
   </data>
@@ -287,6 +293,9 @@
   </data>
   <data name="editEventPath" xml:space="preserve">
     <value>api/event/editevent</value>
+  </data>
+  <data name="editLastMessagePath" xml:space="preserve">
+    <value>api/lastmessage/editlastmessage</value>
   </data>
   <data name="editMessagePath" xml:space="preserve">
     <value>api/message/editmessage</value>
@@ -399,8 +408,29 @@
   <data name="getHRRolesPath" xml:space="preserve">
     <value>api/authentication/hrroles</value>
   </data>
+  <data name="getLastMessageByFirstIdPath" xml:space="preserve">
+    <value>api/lastmessage/getlastmessagebysenderid</value>
+  </data>
+  <data name="getLastMessageByPairIdPath" xml:space="preserve">
+    <value>api/lastmessage/getlastmessagebypairid</value>
+  </data>
+  <data name="getLastMessageBySecondIdPath" xml:space="preserve">
+    <value>api/lastmessage/getlastmessagebysecondid</value>
+  </data>
   <data name="getListRoomsPath" xml:space="preserve">
     <value>null</value>
+  </data>
+  <data name="getMessageByIdPath" xml:space="preserve">
+    <value>api/message/getmessagebyid</value>
+  </data>
+  <data name="getMessageByReceiverIdPath" xml:space="preserve">
+    <value>api/message/getmessagebyreceiverid</value>
+  </data>
+  <data name="getMessageBySenderIdPath" xml:space="preserve">
+    <value>api/message/getmessagebysenderid</value>
+  </data>
+  <data name="getMessagesPath" xml:space="preserve">
+    <value>api/message/message</value>
   </data>
   <data name="getReviewByIdPath" xml:space="preserve">
     <value>api/review/reviewbyid</value>
