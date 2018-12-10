@@ -59,18 +59,6 @@ namespace CMS.API.Controllers
         }
 
 
-        // GET: api/Authentication/AccountsForRole?roleName=&conferenceId=
-        [HttpGet]
-        [Route("api/authentication/accountsforrole")]
-        public IHttpActionResult GetAccountsForRole(string roleName, int ConferenceId)
-        {
-            var accounts = _bll.GetAccountsForRole(roleName, ConferenceId);
-            if (accounts == null) return BadRequest();
-            return Ok(accounts);
-        }
-
-
-
         // GET: api/Task/TasksForEmployee?EmployeeId=&ConferenceId=
         [HttpGet]
         [Route("api/authentication/accountsforrole")]

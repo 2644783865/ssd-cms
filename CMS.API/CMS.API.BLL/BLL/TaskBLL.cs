@@ -71,17 +71,7 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
-        public IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId)
-        {
-            try
-            {
-                return _repository.GetAccountsForRole(roleName, conferenceId);
-            }
-            catch
-            {
-                return null;
-            }
-        }
+
         public IEnumerable<TaskDTO> GetTasksForEmployee(int EmployeeID, int ConferenceId)
         {
             try

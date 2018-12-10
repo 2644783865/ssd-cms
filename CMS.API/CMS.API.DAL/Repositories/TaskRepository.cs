@@ -12,7 +12,7 @@ namespace CMS.API.DAL.Repositories
 
         public IEnumerable<TaskDTO> GetTasks(int conferenceId)
         {
-            return _db.Tasks.Project().To<TaskDTO>();
+            return _db.Tasks.Where(task => task.ConferenceId == conferenceId).Project().To<TaskDTO>();
         }
 
         public TaskDTO GetTaskById(int id)
@@ -42,17 +42,11 @@ namespace CMS.API.DAL.Repositories
             _db.Tasks.Remove(task);
             _db.SaveChanges();
         }
-        public IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int ConferenceId)
-        {
-            var selectedAccounts = _db.Accounts.Where(account =>
-            account.ConferenceStaffs.Where(cs => cs.Role.Name.Equals(roleName) && cs.ConferenceId == ConferenceId).Count() != 0);
-            var result = selectedAccounts.Project().To<AccountDTO>();
-            return result.ToList();
-        }
+
         public IEnumerable<TaskDTO> GetTasksForEmployee(int EmployeeId, int ConferenceId)
         {
             return _db.Tasks.Where(task => task.EmployeeId == EmployeeId && task.ConferenceId == ConferenceId)
-                .Select(task => task.TaskId).Distinct().Project().To<TaskDTO>();
+                .Distinct().Project().To<TaskDTO>();
         }
 
         public void Dispose()

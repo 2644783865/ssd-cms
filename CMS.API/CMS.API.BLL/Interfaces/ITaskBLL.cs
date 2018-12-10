@@ -10,7 +10,6 @@ namespace CMS.API.BLL.Interfaces
             bool AddTask(TaskDTO task);
             bool EditTask(TaskDTO task);
             bool DeleteTask(int TaskId);
-           IEnumerable<AccountDTO> GetAccountsForRole(string roleName, int conferenceId);
            IEnumerable<TaskDTO> GetTasksForEmployee(int EmployeeId, int ConferenceId);
     }
 }
