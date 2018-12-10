@@ -1,6 +1,7 @@
 ﻿using CMS.API.DAL.Extensions;
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace CMS.API.DAL.Repositories
@@ -23,14 +24,13 @@ namespace CMS.API.DAL.Repositories
         }
         public IEnumerable<MessageDTO> GetMessagesBySenderId(int senderId)
         {
-            //return _db.Messages.Where(message => message.SenderId == senderId).Select(message => message.Content).Distinct().Project().To<MessageDTO>();
-            return null;
-            //Problem with where 
+            return _db.Messages.Where(message => message.SenderId == senderId).Select(message => message.Content).Distinct().Project().To<MessageDTO>();
+         
         }
 
         public IEnumerable<MessageDTO> GetMessagesByReceiverId(int receiverId)
-        {//the same problem
-            return null;
+        {
+            return _db.Messages.Where(message => message.ReceiverId == receiverId).Select(message => message.Content).Distinct().Project().To<MessageDTO>();
         }
 
         public void AddMessage(MessageDTO messageDTO)
