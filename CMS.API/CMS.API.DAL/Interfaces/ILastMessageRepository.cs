@@ -6,11 +6,11 @@ namespace CMS.API.DAL.Interfaces
 {
     public interface ILastMessageRepository : IDisposable
     {
-        LastMessageDTO GetLastMessageByPairId(int PairId);
-        LastMessageDTO GetLastMessageByFirstId(int FirstId);
-        LastMessageDTO GetLastMessageBySecondId(int SecondId);
+        LastMessageDTO GetLastMessageByPairId(int pairId);
+        LastMessageDTO GetLastMessageByFirstId(int firstId);
+        LastMessageDTO GetLastMessageBySecondId(int secondId);
         void AddLastMessage(LastMessageDTO lastMessageDTO);
         void EditLastMessage(LastMessageDTO lastMessageDTO);
-        void DeleteLastMessage(int PairId);
+        void DeleteLastMessage(int pairId);
     }
 }

@@ -16,22 +16,21 @@ namespace CMS.API.DAL.Repositories
 
         public MessageDTO GetMessageById(int messageId)
         {
+
             var message = _db.Messages.Find(messageId);
             if (message == null) return null;
             else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
         }
-        public MessageDTO GetMessageBySenderId(int senderId)
+        public IEnumerable<MessageDTO> GetMessagesBySenderId(int senderId)
         {
-            var message = _db.Messages.Find(senderId);
-            if (message == null) return null;
-            else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
+            //return _db.Messages.Where(message => message.SenderId == senderId).Select(message => message.Content).Distinct().Project().To<MessageDTO>();
+            return null;
+            //Problem with where 
         }
 
-        public MessageDTO GetMessageByReceiverId(int receiverId)
-        {
-            var message = _db.Messages.Find(receiverId);
-            if (message == null) return null;
-            else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
+        public IEnumerable<MessageDTO> GetMessagesByReceiverId(int receiverId)
+        {//the same problem
+            return null;
         }
 
         public void AddMessage(MessageDTO messageDTO)
