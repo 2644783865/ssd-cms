@@ -57,6 +57,7 @@
     <Compile Include="BLL\AuthorBLL.cs" />
     <Compile Include="BLL\AwardBLL.cs" />
     <Compile Include="BLL\EventBLL.cs" />
+    <Compile Include="BLL\LastMessageBBL.cs" />
     <Compile Include="BLL\TaskBLL.cs" />
     <Compile Include="BLL\WelcomePackBLL.cs" />
     <Compile Include="BLL\EmergencyInfoBLL.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Interfaces\IEmergencyInfoBLL.cs" />
     <Compile Include="Interfaces\IEventBLL.cs" />
     <Compile Include="Interfaces\IMessageBLL.cs" />
+    <Compile Include="Interfaces\ILastMessageBLL.cs" />
     <Compile Include="Interfaces\IPresentationBLL.cs" />
     <Compile Include="Interfaces\IReviewBLL.cs" />
     <Compile Include="Interfaces\IRoomBLL.cs" />
