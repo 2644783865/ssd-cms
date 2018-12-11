@@ -6,6 +6,7 @@ using CMS.BE.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.BLL.BLL
 {
@@ -92,31 +93,74 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
-   /*
-        public Response CheckOverlappingSession(DateTime begin, DateTime end)
+ /* not ready yet
+        public Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
         {
+            try
+            {
+                if (_repository.CheckSession == true)
+                {
+                    Response res = 
+                }
+                else
+                {
 
+                }
+            }
+            catch
+            {
+                return null;
+            }
         }
-
+*/
         public IEnumerable<SessionDTO> GetSessions(int conferenceID)
         {
-
+            try
+            {
+                return _repository.GetSessions(conferenceID) as List<SessionDTO>;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID)
         {
-
+            try
+            {
+                return _repository.GetSpecialSessions(conferenceID) as List<SpecialSessionDTO>;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
-        public SessionDTO GetSessionByID(int SessionID)
+        public SessionDTO GetSessionByID(int sessionID)
         {
+            try
+            {
+                return _repository.GetSessionById(sessionID);
+            }
+            catch
+            {
+                return null;
+            }
 
         }
 
-        public SpecialSessionDTO GetSpeccialSessionByID(int SpecialSessionID)
+        public SpecialSessionDTO GetSpeccialSessionByID(int specialSessionID)
         {
-
+            try
+            {
+                return _repository.GetSpecialSessionById(specialSessionID);
+            }
+            catch
+            {
+                return null;
+            }
         }
-        */
+        
     }
 }

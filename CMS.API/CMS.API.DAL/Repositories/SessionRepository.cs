@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -9,9 +10,9 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
-        public IEnumerable<SessionDTO> GetSessions()
+        public IEnumerable<SessionDTO> GetSessions(int conferenceID)
         {
-            return _db.Sessions.Project().To<SessionDTO>();
+            return _db.Sessions.Where(session => session.ConferenceId == conferenceID).Project().To<SessionDTO>();
         }
         public SessionDTO GetSessionById(int id)
         {
@@ -50,9 +51,9 @@ namespace CMS.API.DAL.Repositories
 
         //SpecialSession
 
-        public IEnumerable<SpecialSessionDTO> GetSpecialSessions()
+        public IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID)
         {
-            return _db.SpecialSessions.Project().To<SpecialSessionDTO>();
+            return _db.SpecialSessions.Where(specialSession => specialSession.ConferenceId == conferenceID).Project().To<SpecialSessionDTO>();
         }
         public SpecialSessionDTO GetSpecialSessionById(int id)
         {
