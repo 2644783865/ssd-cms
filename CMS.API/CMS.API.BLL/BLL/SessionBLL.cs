@@ -2,6 +2,10 @@
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
+using CMS.BE.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {
@@ -88,5 +92,31 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+   /*
+        public Response CheckOverlappingSession(DateTime begin, DateTime end)
+        {
+
+        }
+
+        public IEnumerable<SessionDTO> GetSessions(int conferenceID)
+        {
+
+        }
+
+        public IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID)
+        {
+
+        }
+
+        public SessionDTO GetSessionByID(int SessionID)
+        {
+
+        }
+
+        public SpecialSessionDTO GetSpeccialSessionByID(int SpecialSessionID)
+        {
+
+        }
+        */
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="DTO\ArticleDTO.cs" />
     <Compile Include="DTO\AuthorDTO.cs" />
     <Compile Include="DTO\AwardDTO.cs" />
+    <Compile Include="DTO\BaseTimeEntity.cs" />
     <Compile Include="DTO\EventDTO.cs" />
     <Compile Include="DTO\LastMessageDTO.cs" />
     <Compile Include="DTO\SpecialSessionDTO.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Models\ByteArray.cs" />
     <Compile Include="Models\Program\ConferenceProgramEntryModel.cs" />
     <Compile Include="Models\Program\ConferenceProgramModel.cs" />
+    <Compile Include="Models\Response.cs" />
     <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Models\ResponseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
