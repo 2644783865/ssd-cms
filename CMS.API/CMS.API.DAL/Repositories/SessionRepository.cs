@@ -1,6 +1,7 @@
 ﻿using CMS.API.DAL.Extensions;
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -46,8 +47,31 @@ namespace CMS.API.DAL.Repositories
         {
             _db.Dispose();
         }
+ /* To be implemented
+        public bool CheckSessions(int conferenceId, DateTime begin, DateTime end)
+        {
+            // return false, when no overlapping
+            // return true, when overlapping with sessions
 
 
+        }
+
+        public bool CheckSpecialSessions(int conferenceId, DateTime begin, DateTime end)
+        {
+            // return false, when no overlapping
+            // return true, when overlapping with special sessions
+
+
+        }
+
+        public bool CheckEvents(int conferenceId, DateTime begin, DateTime end)
+        {
+            // return false, when no overlapping
+            // return true, when overlapping with events
+
+
+        }
+ */
 
         //SpecialSession
 
