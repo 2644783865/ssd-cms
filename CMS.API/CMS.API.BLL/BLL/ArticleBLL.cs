@@ -89,7 +89,10 @@ namespace CMS.API.BLL.BLL
                 {
                     DeleteSubmission(submission.SubmissionId);
                 }
-                
+                foreach(var author in _repository.GetAuthorsFromArticleId(articleId))
+                {
+                    DeleteAssignmentAuthorForArticle(articleId, author.AuthorId);
+                }
                 _repository.DeleteArticle(articleId);
             }
             catch
@@ -123,6 +126,18 @@ namespace CMS.API.BLL.BLL
                 return false;
             }
             return true;
+        }
+
+        public IEnumerable<AuthorDTO> GetAuthorsFromArticleId(int articleId)
+        {
+            try
+            {
+                return _repository.GetAuthorsFromArticleId(articleId);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         //Submission
@@ -232,6 +247,5 @@ namespace CMS.API.BLL.BLL
                 return false;
             }
         }
-
     }
 }

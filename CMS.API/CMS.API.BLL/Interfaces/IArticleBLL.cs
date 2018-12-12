@@ -16,6 +16,7 @@ namespace CMS.API.BLL.Interfaces
         bool DeleteArticle(int articleId);
         bool AcceptArticle(int articleId);
         bool RejectArticle(int articleId);
+        IEnumerable<AuthorDTO> GetAuthorsFromArticleId(int articleId);
 
         //Submission
 
@@ -29,5 +30,6 @@ namespace CMS.API.BLL.Interfaces
         //ArticleAuthor
         bool SetAuthorForArticle(int articleId, int authorId);
         bool DeleteAssignmentAuthorForArticle(int articleId, int authorId);
+
     }
 }
