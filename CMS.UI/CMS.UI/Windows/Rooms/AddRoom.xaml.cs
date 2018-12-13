@@ -17,9 +17,9 @@ namespace CMS.UI.Windows.Rooms
     /// <summary>
     /// Logika interakcji dla klasy Window2.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class AddRoomsWindow : Window
     {
-        public Window2()
+        public AddRoomsWindow()
         {
             InitializeComponent();
         }

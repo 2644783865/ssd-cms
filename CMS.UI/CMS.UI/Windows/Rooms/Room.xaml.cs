@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
+using CMS.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +20,16 @@ namespace CMS.UI.Windows.Rooms
     /// <summary>
     /// Logika interakcji dla klasy Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class RoomWindow : Window
     {
-        public Window1()
+        private RoomCore core;
+        public RoomWindow(int building)
         {
+
             InitializeComponent();
+            core = new RoomCore();
+            LoadRoomsToDataGrid(building);
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -31,7 +39,9 @@ namespace CMS.UI.Windows.Rooms
 
         private void AddRoom_Click(object sender, RoutedEventArgs e)
         {
-
+            AddRoomsWindow newAddRoomsWindow = new AddRoomsWindow();
+            newAddRoomsWindow.Show();
+            Close();
         }
 
         private void EditRoom_Click(object sender, RoutedEventArgs e)
@@ -42,6 +52,11 @@ namespace CMS.UI.Windows.Rooms
         private void DeleteRoom_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        async private void LoadRoomsToDataGrid(int building)
+        {
+            RoomList.ItemsSource = await core.GetRoomsForBuildingAsync(building);
         }
     }
 }
