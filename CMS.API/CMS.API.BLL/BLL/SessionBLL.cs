@@ -202,6 +202,10 @@ namespace CMS.API.BLL.BLL
                 return null;
             }
         }
-        
+
+        public Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
