@@ -5,7 +5,7 @@ namespace CMS.API.BLL.Interfaces
 {
     public interface IEventBLL
     {
-        IEnumerable<EventDTO> GetEvents();
+        IEnumerable<EventDTO> GetEvents(int conferenceId);
         EventDTO GetEventById(int id);
         bool AddEvent(EventDTO eventDTO);
         bool EditEvent(EventDTO eventDTO);

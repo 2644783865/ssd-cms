@@ -93,67 +93,67 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
-        /* Functions CheckSessions, CheckSpecialSessions, CheckEvents not implemented in DAL 
-                public Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
-                {
-                    Response res = new Response();
-                    // Function checks, whether a new event/session/special session will overlap with anything.
-                    // If there is an overlapping, the function returns a response with the message what the overlapping items are and the status true.
-                    // If there is no overlapping, the message will be empty and the staus will be false.
-                    try
-                    {
-                        bool resSession = _repository.CheckSessions(int conferenceId, DateTime begin, DateTime end);
-                        bool resSpecial = _repository.CheckSpecialSessions(int conferenceId, DateTime begin, DateTime end);
-                        bool resEvent = _repository.CheckEvents(int conferenceId, DateTime begin, DateTime end);
 
-                        if (resSession == false && resSpecial == false && resEvent == false)
-                        {
-                            res.Message = "";
-                            res.Status = false;
-                        }
-                        else if (resSession == false && resSpecial == false && resEvent == true)
-                        {
-                            res.Message = "Overlapping with Event.";
-                            res.Status = true;
-                        }
-                        else if (resSession == false && resSpecial == true && resEvent == false)
-                        {
-                            res.Message = "Overlapping with SpecialSession.";
-                            res.Status = true;
-                        }
-                        else if (resSession == true && resSpecial == false && resEvent == false)
-                        {
-                            res.Message = "Overlapping with Session.";
-                            res.Status = true;
-                        }
-                        else if(resSession == true && resSpecial == true && resEvent == false)
-                        {
-                            res.Message = "Overlapping with Session, SpecialSession.";
-                            res.Status = true;
-                        }
-                        else if (resSession == true && resSpecial == false && resEvent == true)
-                        {
-                            res.Message = "Overlapping with Session, Event.";
-                            res.Status = true;
-                        }
-                        else if (resSession == false && resSpecial == true && resEvent == true)
-                        {
-                            res.Message = "Overlapping with SpecialSession, Event";
-                            res.Status = true;
-                        }
-                        else
-                        {
-                            res.Message = "Overlapping with Session, SpecialSession, Event.";
-                            res.Status = true;
-                        }
-                    }
-                    catch
-                    {
-                        return null;
-                    }
-                    return res;
+        public Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
+        {
+            Response res = new Response();
+            // Function checks, whether a new event/session/special session will overlap with anything.
+            // If there is an overlapping, the function returns a response with the message what the overlapping items are and the status true.
+            // If there is no overlapping, the message will be empty and the staus will be false.
+            try
+            {
+                bool resSession = _repository.CheckSessions(conferenceId, begin, end);
+                bool resSpecial = _repository.CheckSpecialSessions(conferenceId, begin, end);
+                bool resEvent = _repository.CheckEvents(conferenceId, begin, end);
+
+                if (resSession == false && resSpecial == false && resEvent == false)
+                {
+                    res.Message = "";
+                    res.Status = false;
                 }
-        */
+                else if (resSession == false && resSpecial == false && resEvent == true)
+                {
+                    res.Message = "Overlapping with Event.";
+                    res.Status = true;
+                }
+                else if (resSession == false && resSpecial == true && resEvent == false)
+                {
+                    res.Message = "Overlapping with SpecialSession.";
+                    res.Status = true;
+                }
+                else if (resSession == true && resSpecial == false && resEvent == false)
+                {
+                    res.Message = "Overlapping with Session.";
+                    res.Status = true;
+                }
+                else if (resSession == true && resSpecial == true && resEvent == false)
+                {
+                    res.Message = "Overlapping with Session, SpecialSession.";
+                    res.Status = true;
+                }
+                else if (resSession == true && resSpecial == false && resEvent == true)
+                {
+                    res.Message = "Overlapping with Session, Event.";
+                    res.Status = true;
+                }
+                else if (resSession == false && resSpecial == true && resEvent == true)
+                {
+                    res.Message = "Overlapping with SpecialSession, Event";
+                    res.Status = true;
+                }
+                else
+                {
+                    res.Message = "Overlapping with Session, SpecialSession, Event.";
+                    res.Status = true;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            return res;
+        }
+        
         public IEnumerable<SessionDTO> GetSessions(int conferenceID)
         {
             try
@@ -201,11 +201,6 @@ namespace CMS.API.BLL.BLL
             {
                 return null;
             }
-        }
-
-        public Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
-        {
-            throw new NotImplementedException();
         }
     }
 }

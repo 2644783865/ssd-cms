@@ -14,7 +14,7 @@ namespace CMS.API.Controllers
         [Route("api/event/events")]
         public IHttpActionResult GetEvents(int conferenceId)
         {
-            return Ok(_bll.GetEvents());
+            return Ok(_bll.GetEvents(conferenceId));
         }
         // GET: api/Event/EventById?EventId=
         [HttpGet]

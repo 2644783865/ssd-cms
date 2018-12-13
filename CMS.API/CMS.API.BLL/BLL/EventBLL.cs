@@ -10,11 +10,11 @@ namespace CMS.API.BLL.BLL
     {
         private IEventRepository _repository = new EventRepository();
 
-        public IEnumerable<EventDTO> GetEvents()
+        public IEnumerable<EventDTO> GetEvents(int conferenceId)
         {
             try
             {
-                return _repository.GetEvents();
+                return _repository.GetEvents(conferenceId);
             }
             catch
             {

@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -9,9 +10,9 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
-        public IEnumerable<EventDTO> GetEvents()
+        public IEnumerable<EventDTO> GetEvents(int conferenceId)
         {
-            return _db.Events.Project().To<EventDTO>();
+            return _db.Events.Where(events => events.ConferenceId == conferenceId).Project().To<EventDTO>();
         }
 
         public EventDTO GetEventById(int id)
