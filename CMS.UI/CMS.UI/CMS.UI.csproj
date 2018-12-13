@@ -135,6 +135,9 @@
       <DependentUpon>Building.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Tasks\AddEditTask.xaml.cs" />
+    <Compile Include="Windows\Tasks\ManageTasks.xaml.cs">
+      <DependentUpon>ManageTasks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Tasks\ViewTaskSchedule.xaml.cs" />
     <Page Include="Windows\Account\AddEditAccount.xaml">
       <SubType>Designer</SubType>
@@ -223,6 +226,10 @@
     <Page Include="Windows\Tasks\AddEditTask.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Tasks\ManageTasks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Tasks\ViewTaskSchedule.xaml">
       <Generator>MSBuild:Compile</Generator>
