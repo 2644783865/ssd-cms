@@ -28,5 +28,20 @@ namespace CMS.UI.Windows.Rooms
         {
 
         }
+
+        private void AddRoom_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditRoom_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteRoom_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
