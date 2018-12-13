@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,9 @@ namespace CMS.UI.Windows.Rooms
     /// <summary>
     /// Logika interakcji dla klasy Window2.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class AddRoomsWindow : MetroWindow
     {
-        public Window2()
+        public AddRoomsWindow()
         {
             InitializeComponent();
         }
