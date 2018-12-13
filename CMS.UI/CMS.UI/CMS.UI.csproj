@@ -93,6 +93,7 @@
     <Compile Include="Windows\Conference\AddEditConference.xaml.cs">
       <DependentUpon>AddEditConference.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Event\AddEditEvent.xaml.cs" />
     <Compile Include="Windows\Home\AdministratorPanel.xaml.cs">
       <DependentUpon>AdministratorPanel.xaml</DependentUpon>
     </Compile>
@@ -133,6 +134,8 @@
     <Compile Include="Windows\Rooms\Building.xaml.cs">
       <DependentUpon>Building.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Tasks\AddEditTask.xaml.cs" />
+    <Compile Include="Windows\Tasks\ViewTaskSchedule.xaml.cs" />
     <Page Include="Windows\Account\AddEditAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +167,10 @@
     <Page Include="Windows\Conference\AddEditConference.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Event\AddEditEvent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Home\AdministratorPanel.xaml">
       <SubType>Designer</SubType>
@@ -212,6 +219,14 @@
     <Page Include="Windows\Rooms\Building.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Tasks\AddEditTask.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Tasks\ViewTaskSchedule.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
