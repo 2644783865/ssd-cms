@@ -17,10 +17,6 @@ namespace CMS.API.DAL.Repositories
             return _db.Rooms.Where(room => room.BuildingID == buildingId).Project().To<RoomDTO>();
         }
 
-        bool teilweise(DateTime startTime1, DateTime endTime1, DateTime startTime2, DateTime endTime2)
-        {
-            return startTime2 >= startTime1 & startTime2 <= endTime1 | endTime2 >= startTime1 & endTime2 <= endTime1;
-        }
         public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
         {
             var rooms = _db.Rooms.SqlQuery("SELECT DISTINCT * FROM Room WHERE BuildingID = @buildingid " +
