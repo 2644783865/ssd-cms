@@ -22,7 +22,7 @@ namespace CMS.Core.Core
             }
             return null;
         }
-
+        */
         public async Task<SessionDTO> GetSessionByIdAsync(int sessionId)
         {
             var path = $"{Properties.Resources.getSessionByIdPath}?sessionId={sessionId}";
@@ -33,7 +33,18 @@ namespace CMS.Core.Core
             }
             else return null;
         }
-        */
+
+        public async Task<List<SessionDTO>> GetSessionsAsync(int conferenceID)
+        {
+            var path = $"{Properties.Resources.getSessionsPath}?conferenceID={conferenceID}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<SessionDTO>>(result.Content);
+            }
+            else return null;
+        }
+
         public async Task<bool> AddSessionAsync(SessionDTO session)
         {
             var path = Properties.Resources.addSessionPath;
@@ -66,6 +77,7 @@ namespace CMS.Core.Core
             }
             return null;
         }
+        */
 
         public async Task<SpecialSessionDTO> GetSpecialSessionByIdAsync(int specialsessionId)
         {
@@ -77,7 +89,18 @@ namespace CMS.Core.Core
             }
             else return null;
         }
-        */
+
+        public async Task<List<SpecialSessionDTO>> GetSpecialSessionsAsync(int conferenceID)
+        {
+            var path = $"{Properties.Resources.getSpecialSessionsPath}?conferenceID={conferenceID}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<SpecialSessionDTO>>(result.Content);
+            }
+            else return null;
+        }
+
         public async Task<bool> AddSpecialSessionAsync(SpecialSessionDTO specialSession)
         {
             var path = Properties.Resources.addSpecialSessionPath;

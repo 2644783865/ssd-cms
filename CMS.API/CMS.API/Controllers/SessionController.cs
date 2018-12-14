@@ -19,17 +19,28 @@ namespace CMS.API.Controllers
         {
             return Ok(_bll.GetSessions());
         }
+        */
 
         // GET: api/Session/GetSessionById?sessionId=
         [HttpGet]
         [Route("api/session/getsessionbyid")]
         public IHttpActionResult GetSessionById(int sessionId)
         {
-            var session = _bll.GetSessionById(sessionId);
+            var session = _bll.GetSessionByID(sessionId);
             if (session == null) return BadRequest();
             return Ok(session);
         }
-        */
+
+        // GET: api/Session/GetSessions?conferenceID=
+        [HttpGet]
+        [Route("api/session/getsessions")]
+        public IHttpActionResult GetSessions(int conferenceID)
+        {
+            var sessions = _bll.GetSessions(conferenceID);
+            if (sessions == null) return BadRequest();
+            return Ok(sessions);
+        }
+
         // POST: api/Session/AddSession
         [HttpPost]
         [Route("api/session/addsession")]
@@ -59,6 +70,7 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
+
         /*
         // GET: api/Session/SpecialSession
         [HttpGet]
@@ -67,17 +79,29 @@ namespace CMS.API.Controllers
         {
             return Ok(_bll.GetSpecialSessions());
         }
+        
+        */
 
         // GET: api/Session/GetSpecialSessionById?specialSessionId=
         [HttpGet]
         [Route("api/session/getspecialsessionbyid")]
         public IHttpActionResult GetSpecialSessionById(int specialSessionId)
         {
-            var specialsession = _bll.GetSpecialSessionById(specialSessionId);
+            var specialsession = _bll.GetSpecialSessionByID(specialSessionId);
             if (specialsession == null) return BadRequest();
             return Ok(specialsession);
         }
-        */
+
+        // GET: api/Session/GetSpecialSessions?conferenceID=
+        [HttpGet]
+        [Route("api/session/getspecialsessions")]
+        public IHttpActionResult GetSpecialSessions(int conferenceID)
+        {
+            var specialsession = _bll.GetSpecialSessions(conferenceID);
+            if (specialsession == null) return BadRequest();
+            return Ok(specialsession);
+        }
+
         // POST: api/Session/AddSpecialSession
         [HttpPost]
         [Route("api/session/addsespecialsession")]

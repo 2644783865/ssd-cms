@@ -781,7 +781,7 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to api/authentication/getassignedbuildforconf.
+        ///   Looks up a localized string similar to api/room/getassignedbuildforconf.
         /// </summary>
         internal static string getAssignedBuildForConfPath {
             get {
@@ -817,7 +817,7 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to api/authentication/getavailablerooms.
+        ///   Looks up a localized string similar to api/room/getavailablerooms.
         /// </summary>
         internal static string getAvailableRoomsPath {
             get {
@@ -840,6 +840,15 @@ namespace CMS.Core.Properties {
         internal static string getAwardsPath {
             get {
                 return ResourceManager.GetString("getAwardsPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/room/getbuildingbyid.
+        /// </summary>
+        internal static string getBuildingByIdPath {
+            get {
+                return ResourceManager.GetString("getBuildingByIdPath", resourceCulture);
             }
         }
         
@@ -1051,11 +1060,47 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to api/authentication/getroomsforbuilding.
+        ///   Looks up a localized string similar to api/room/getroomsforbuilding.
         /// </summary>
         internal static string getRoomsForBuildingPath {
             get {
                 return ResourceManager.GetString("getRoomsForBuildingPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/getsessionbyid.
+        /// </summary>
+        internal static string getSessionByIdPath {
+            get {
+                return ResourceManager.GetString("getSessionByIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/getsessions.
+        /// </summary>
+        internal static string getSessionsPath {
+            get {
+                return ResourceManager.GetString("getSessionsPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/getspecialsessionbyid.
+        /// </summary>
+        internal static string getSpecialSessionByIdPath {
+            get {
+                return ResourceManager.GetString("getSpecialSessionByIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/session/getspecialsessions.
+        /// </summary>
+        internal static string getSpecialSessionsPath {
+            get {
+                return ResourceManager.GetString("getSpecialSessionsPath", resourceCulture);
             }
         }
         
@@ -1132,7 +1177,7 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to api/authentication/getunassignedbuildforconf.
+        ///   Looks up a localized string similar to api/room/getunassignedbuildforconf.
         /// </summary>
         internal static string getUnassignedBuildForConfPath {
             get {

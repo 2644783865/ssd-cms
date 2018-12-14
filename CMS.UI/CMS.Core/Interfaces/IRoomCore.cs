@@ -19,7 +19,7 @@ namespace CMS.Core.Interfaces
         Task<List<BuildingDTO>> GetAssignedBuildingsForConferenceAsync(int conferenceId);
         Task<List<BuildingDTO>> GetUnassignedBuildingsForConferenceAsync(int conferenceId);
         Task<List<BuildingDTO>> GetBuildingsAsync();
-        /*Task<BuildingDTO> GetBuildingByIdAsync(int buildingId);*/
+        Task<BuildingDTO> GetBuildingByIdAsync(int buildingId);
         Task<bool> AddBuildingAsync(BuildingDTO building);
         Task<bool> EditBuildingAsync(BuildingDTO building);
         Task<bool> DeleteBuildingAsync(int buildingId);

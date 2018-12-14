@@ -110,7 +110,7 @@ namespace CMS.Core.Core
             }
             return null;
         }
-        /*
+        
         public async Task<BuildingDTO> GetBuildingByIdAsync(int buildingId)
         {
             var path = $"{Properties.Resources.getBuildingByIdPath}?buildingId={buildingId}";
@@ -120,7 +120,7 @@ namespace CMS.Core.Core
                 return JsonConvert.DeserializeObject<BuildingDTO>(result.Content);
             }
             else return null;
-        }*/
+        }
 
         public async Task<bool> AddBuildingAsync(BuildingDTO building)
         {

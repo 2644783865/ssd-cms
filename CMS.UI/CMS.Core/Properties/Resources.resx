@@ -358,7 +358,7 @@
     <value>api/article/articles</value>
   </data>
   <data name="getAssignedBuildForConfPath" xml:space="preserve">
-    <value>api/authentication/getassignedbuildforconf</value>
+    <value>api/room/getassignedbuildforconf</value>
   </data>
   <data name="getAuthorByAccountIdPath" xml:space="preserve">
     <value>api/author/authorbyaccountid</value>
@@ -370,13 +370,16 @@
     <value>api/author/authors</value>
   </data>
   <data name="getAvailableRoomsPath" xml:space="preserve">
-    <value>api/authentication/getavailablerooms</value>
+    <value>api/room/getavailablerooms</value>
   </data>
   <data name="getAwardByIdPath" xml:space="preserve">
     <value>api/award/awardbyid</value>
   </data>
   <data name="getAwardsPath" xml:space="preserve">
     <value>api/award/awards</value>
+  </data>
+  <data name="getBuildingByIdPath" xml:space="preserve">
+    <value>api/room/getbuildingbyid</value>
   </data>
   <data name="getBuildingsPath" xml:space="preserve">
     <value>api/room/building</value>
@@ -448,7 +451,19 @@
     <value>api/authentication/roles</value>
   </data>
   <data name="getRoomsForBuildingPath" xml:space="preserve">
-    <value>api/authentication/getroomsforbuilding</value>
+    <value>api/room/getroomsforbuilding</value>
+  </data>
+  <data name="getSessionByIdPath" xml:space="preserve">
+    <value>api/session/getsessionbyid</value>
+  </data>
+  <data name="getSessionsPath" xml:space="preserve">
+    <value>api/session/getsessions</value>
+  </data>
+  <data name="getSpecialSessionByIdPath" xml:space="preserve">
+    <value>api/session/getspecialsessionbyid</value>
+  </data>
+  <data name="getSpecialSessionsPath" xml:space="preserve">
+    <value>api/session/getspecialsessions</value>
   </data>
   <data name="getSubmissionByIdPath" xml:space="preserve">
     <value>api/submission/submissionbyid</value>
@@ -475,7 +490,7 @@
     <value>api/travelinfo/travelinfo</value>
   </data>
   <data name="getUnassignedBuildForConfPath" xml:space="preserve">
-    <value>api/authentication/getunassignedbuildforconf</value>
+    <value>api/room/getunassignedbuildforconf</value>
   </data>
   <data name="getWelcomePackByIdPath" xml:space="preserve">
     <value>api/welcomepack/welcomepackbyid</value>
