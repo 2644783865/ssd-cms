@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 namespace CMS.Core.Interfaces
 {
     public interface IRoomCore : IDisposable
-    {/*
-        Task<List<RoomDTO>> GetRoomsAsync();*/
+    {
         Task<RoomDTO> GetRoomByIdAsync(int roomId);
         Task<List<RoomDTO>> GetRoomsForBuildingAsync(int buildingId);
         Task<List<RoomDTO>> GetAvailableRoomsAsync(int buildingId, DateTime beginDate, DateTime endDate);

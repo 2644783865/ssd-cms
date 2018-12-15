@@ -11,14 +11,6 @@ namespace CMS.API.Controllers
     public class RoomController : ApiController
     {
         private IRoomBLL _bll = new RoomBLL();
-        /*
-        // GET: api/Room/Room
-        [HttpGet]
-        [Route("api/room/room")]
-        public IHttpActionResult GetRooms()
-        {
-            return Ok(_bll.GetRooms());
-        }*/
 
         // GET: api/Room/GetRoomById?roomId=
         [HttpGet]

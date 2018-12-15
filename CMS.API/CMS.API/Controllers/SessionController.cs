@@ -11,15 +11,6 @@ namespace CMS.API.Controllers
     public class SessionController : ApiController
     {
         private ISessionBLL _bll = new SessionBLL();
-        /*
-        // GET: api/Session/Session
-        [HttpGet]
-        [Route("api/session/session")]
-        public IHttpActionResult GetSessions()
-        {
-            return Ok(_bll.GetSessions());
-        }
-        */
 
         // GET: api/Session/GetSessionById?sessionId=
         [HttpGet]
@@ -70,17 +61,15 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-
-        /*
-        // GET: api/Session/SpecialSession
+        // GET: api/Session/CheckOverlappingSession?conferenceId=&begin=&end=
         [HttpGet]
-        [Route("api/session/session")]
-        public IHttpActionResult GetSpecialSessions()
+        [Route("api/session/checkoverlappingsession")]
+        public IHttpActionResult CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
         {
-            return Ok(_bll.GetSpecialSessions());
+            var session = _bll.CheckOverlappingSession(conferenceId, begin, end);
+            if (session == null) return BadRequest();
+            return Ok(session);
         }
-        
-        */
 
         // GET: api/Session/GetSpecialSessionById?specialSessionId=
         [HttpGet]

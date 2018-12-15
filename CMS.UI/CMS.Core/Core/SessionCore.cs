@@ -3,6 +3,7 @@ using CMS.BE.Models;
 using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,18 +12,7 @@ namespace CMS.Core.Core
     public class SessionCore : ISessionCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
-        /*
-        public async Task<List<SessionDTO>> GetSessionsAsync()
-        {
-            var path = $"{Properties.Resources.getSessionsPath}";
-            var result = await _apiHelper.Get(path);
-            if (result != null && result.ResponseType == ResponseType.Success)
-            {
-                return JsonConvert.DeserializeObject<List<SessionDTO>>(result.Content);
-            }
-            return null;
-        }
-        */
+
         public async Task<SessionDTO> GetSessionByIdAsync(int sessionId)
         {
             var path = $"{Properties.Resources.getSessionByIdPath}?sessionId={sessionId}";
@@ -66,18 +56,16 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        /*
-        public async Task<List<SpecialSessionDTO>> GetSpecialSessionsAsync()
+        public async Task<Response> CheckOverlappingSessiondAsync(int conferenceId, DateTime begin, DateTime end)
         {
-            var path = $"{Properties.Resources.getSpecialSessionsPath}";
+            var path = $"{Properties.Resources.checkOverlappingSessionPath}?conferenceId={conferenceId}&begin={begin}&end={end}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                return JsonConvert.DeserializeObject<List<SpecialSessionDTO>>(result.Content);
+                return JsonConvert.DeserializeObject<Response>(result.Content);
             }
-            return null;
+            else return null;
         }
-        */
 
         public async Task<SpecialSessionDTO> GetSpecialSessionByIdAsync(int specialsessionId)
         {

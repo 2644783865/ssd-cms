@@ -13,16 +13,6 @@ namespace CMS.Core.Core
     {
         private ApiHelper _apiHelper = new ApiHelper();
         
-        /*public async Task<List<RoomDTO>> GetRoomsAsync()
-        {
-            var path = $"{Properties.Resources.getRoomsPath}";
-            var result = await _apiHelper.Get(path);
-            if (result != null && result.ResponseType == ResponseType.Success)
-            {
-                return JsonConvert.DeserializeObject<List<RoomDTO>>(result.Content);
-            }
-            return null;
-        }*/
 
         public async Task<RoomDTO> GetRoomByIdAsync(int roomId)
         {

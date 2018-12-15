@@ -192,6 +192,9 @@
   <data name="changePasswordPath" xml:space="preserve">
     <value>api/authentication/changepassword</value>
   </data>
+  <data name="checkOverlappingSessionPath" xml:space="preserve">
+    <value>api/session/checkoverlappingsession</value>
+  </data>
   <data name="deleteAccommodationInfoPath" xml:space="preserve">
     <value>api/accommodationinfo/deleteaccommodationinfo</value>
   </data>
