@@ -8,6 +8,7 @@ namespace CMS.API.BLL.Interfaces
     {
         // Room 
         IEnumerable<RoomDTO> GetRoomsForBuilding(int buildingId);
+        RoomDTO GetRoomById(int roomId);
         IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate);
         bool AddRoom(RoomDTO room);
         bool EditRoom(RoomDTO room);

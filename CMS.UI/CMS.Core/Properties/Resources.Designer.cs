@@ -1060,6 +1060,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/room/getroombyid.
+        /// </summary>
+        internal static string getRoomByIdPath {
+            get {
+                return ResourceManager.GetString("getRoomByIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/room/getroomsforbuilding.
         /// </summary>
         internal static string getRoomsForBuildingPath {

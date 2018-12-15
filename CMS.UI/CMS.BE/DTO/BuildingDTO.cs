@@ -2,7 +2,7 @@
 {
     public class BuildingDTO
     {
-        public int BuildingId { get; set; }
+        public int BuildingID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         

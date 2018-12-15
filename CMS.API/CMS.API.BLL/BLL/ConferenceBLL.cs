@@ -4,6 +4,7 @@ using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
 using CMS.BE.Models.Program;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.BLL.BLL
 {
@@ -85,5 +86,11 @@ namespace CMS.API.BLL.BLL
                 Conference = conference
             };
         }
+
+       /* public IEnumerable<BaseTimeEntity> GetSortedEntities(int conferenceId)
+        {
+            var x = (_repository.GetConferences() as IEnumerable<BaseTimeEntity>).ToList();
+           
+        }*/
     }
 }

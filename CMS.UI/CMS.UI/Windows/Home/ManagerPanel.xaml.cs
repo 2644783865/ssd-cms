@@ -3,6 +3,7 @@ using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
 using CMS.UI.Windows.Author;
+using CMS.UI.Windows.Event;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,12 @@ namespace CMS.UI.Windows.Home
         private void ManageAuthor_Click(object sender, RoutedEventArgs e)
         {
             ManageAuthor newWindow = new ManageAuthor();
+            newWindow.ShowDialog();
+        }
+
+        private void ManageEvent_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditEvent newWindow = new AddEditEvent();
             newWindow.ShowDialog();
         }
     }

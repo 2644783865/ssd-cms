@@ -450,6 +450,9 @@
   <data name="getRolesPath" xml:space="preserve">
     <value>api/authentication/roles</value>
   </data>
+  <data name="getRoomByIdPath" xml:space="preserve">
+    <value>api/room/getroombyid</value>
+  </data>
   <data name="getRoomsForBuildingPath" xml:space="preserve">
     <value>api/room/getroomsforbuilding</value>
   </data>

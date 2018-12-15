@@ -18,7 +18,7 @@ namespace CMS.API.Controllers
         public IHttpActionResult GetRooms()
         {
             return Ok(_bll.GetRooms());
-        }
+        }*/
 
         // GET: api/Room/GetRoomById?roomId=
         [HttpGet]
@@ -29,7 +29,7 @@ namespace CMS.API.Controllers
             if (room == null) return BadRequest();
             return Ok(room);
         }
-        */
+        
 
         // GET: api/Room/GetRoomsForBuilding?buildingId=
         [HttpGet]
