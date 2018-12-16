@@ -11,14 +11,6 @@ namespace CMS.API.Controllers
     public class RoomController : ApiController
     {
         private IRoomBLL _bll = new RoomBLL();
-        /*
-        // GET: api/Room/Room
-        [HttpGet]
-        [Route("api/room/room")]
-        public IHttpActionResult GetRooms()
-        {
-            return Ok(_bll.GetRooms());
-        }
 
         // GET: api/Room/GetRoomById?roomId=
         [HttpGet]
@@ -29,11 +21,11 @@ namespace CMS.API.Controllers
             if (room == null) return BadRequest();
             return Ok(room);
         }
-        */
+        
 
         // GET: api/Room/GetRoomsForBuilding?buildingId=
         [HttpGet]
-        [Route("api/authentication/getroomsforbuilding")]
+        [Route("api/room/getroomsforbuilding")]
         public IHttpActionResult GetRoomsForBuilding(int buildingId)
         {
             var rooms = _bll.GetRoomsForBuilding(buildingId);
@@ -43,7 +35,7 @@ namespace CMS.API.Controllers
 
         // GET: api/Room/GetAvailableRooms?buildingId=&beginDate=&endDate=
         [HttpGet]
-        [Route("api/authentication/getavailablerooms")]
+        [Route("api/room/getavailablerooms")]
         public IHttpActionResult GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
         {
             var rooms = _bll.GetAvailableRooms(buildingId, beginDate, endDate);
@@ -79,9 +71,9 @@ namespace CMS.API.Controllers
         }
 
 
-        // GET: api/Room/ GetAssignedBuildForConf?conferenceId=
+        // GET: api/Room/GetAssignedBuildForConf?conferenceId=
         [HttpGet]
-        [Route("api/authentication/getassignedbuildforconf")]
+        [Route("api/room/getassignedbuildforconf")]
         public IHttpActionResult GetAssignedBuildingsForConference(int conferenceId)
         {
             var building = _bll.GetAssignedBuildingsForConference(conferenceId);
@@ -91,7 +83,7 @@ namespace CMS.API.Controllers
 
         // GET: api/Room/GetUnassignedBuildForConf?conferenceId=
         [HttpGet]
-        [Route("api/authentication/getunassignedbuildforconf")]
+        [Route("api/room/getunassignedbuildforconf")]
         public IHttpActionResult GetUnassignedBuildingsForConference(int conferenceId)
         {
             var building = _bll.GetUnassignedBuildingsForConference(conferenceId);
@@ -106,7 +98,7 @@ namespace CMS.API.Controllers
         {
             return Ok(_bll.GetBuildings());
         }
-        /*
+
         // GET: api/Room/GetBuildingmById?buildingId=
         [HttpGet]
         [Route("api/room/getbuildingbyid")]
@@ -116,7 +108,7 @@ namespace CMS.API.Controllers
             if (building == null) return BadRequest();
             return Ok(building);
         }
-        */
+
         // POST: api/Room/AddBuilding
         [HttpPost]
         [Route("api/room/addbuilding")]

@@ -21,6 +21,6 @@ namespace CMS.API.BLL.Interfaces
         bool EditSpecialSession(SpecialSessionDTO specialSession);
         bool DeleteSpecialSession(int specialSessionId);
         IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID);
-        SpecialSessionDTO GetSpeccialSessionByID(int specialSessionID);
+        SpecialSessionDTO GetSpecialSessionByID(int specialSessionID);
     }
 }

@@ -25,7 +25,7 @@ namespace CMS.Core.Core
 
         public async Task<EventDTO> GetEventByIdAsync(int EventID)
         {
-            var path = $"{Properties.Resources.getEventByIdPath}?EventID={EventID}";
+            var path = $"{Properties.Resources.getEventByIdPath}?eventId={EventID}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

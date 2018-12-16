@@ -12,17 +12,7 @@ namespace CMS.Core.Core
     public class RoomCore : IRoomCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
-        /*
-        public async Task<List<RoomDTO>> GetRoomsAsync()
-        {
-            var path = $"{Properties.Resources.getRoomsPath}";
-            var result = await _apiHelper.Get(path);
-            if (result != null && result.ResponseType == ResponseType.Success)
-            {
-                return JsonConvert.DeserializeObject<List<RoomDTO>>(result.Content);
-            }
-            return null;
-        }
+        
 
         public async Task<RoomDTO> GetRoomByIdAsync(int roomId)
         {
@@ -34,7 +24,7 @@ namespace CMS.Core.Core
             }
             else return null;
         }
-        */
+       
         public async Task<List<RoomDTO>> GetRoomsForBuildingAsync(int buildingId)
         {
             var path = $"{Properties.Resources.getRoomsForBuildingPath}?buildingId={buildingId}";
@@ -110,7 +100,7 @@ namespace CMS.Core.Core
             }
             return null;
         }
-        /*
+        
         public async Task<BuildingDTO> GetBuildingByIdAsync(int buildingId)
         {
             var path = $"{Properties.Resources.getBuildingByIdPath}?buildingId={buildingId}";
@@ -120,7 +110,7 @@ namespace CMS.Core.Core
                 return JsonConvert.DeserializeObject<BuildingDTO>(result.Content);
             }
             else return null;
-        }*/
+        }
 
         public async Task<bool> AddBuildingAsync(BuildingDTO building)
         {

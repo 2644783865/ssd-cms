@@ -26,6 +26,18 @@ namespace CMS.API.BLL.BLL
             }
         }
 
+        public RoomDTO GetRoomById(int roomId)
+        {
+            try
+            {
+                return _repository.GetRoomById(roomId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
         {
             try

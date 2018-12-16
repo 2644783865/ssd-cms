@@ -113,7 +113,7 @@ namespace CMS.API.DAL.Repositories
 
         {
             var building = MapperExtension.mapper.Map<BuildingDTO, Building>(buildingDTO);
-            _db.Entry(_db.Buildings.Find(buildingDTO.BuildingId)).CurrentValues.SetValues(building);
+            _db.Entry(_db.Buildings.Find(buildingDTO.BuildingID)).CurrentValues.SetValues(building);
             _db.SaveChanges();
         }
 

@@ -27,7 +27,7 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                var eventDTO = GetEventById(id);
+                var eventDTO = _repository.GetEventById(id);
                 if (eventDTO == null) return null;
                 return eventDTO;
             }

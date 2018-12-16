@@ -19,5 +19,6 @@
         <Button Name="GoToConferenceHomeButton" Content="Conference Home" HorizontalAlignment="Right" Margin="0,10,130,0" VerticalAlignment="Top" Width="119" Height="34" Click="GoToConferenceHomeButton_Click"/>
         <Button Name="ManageAccount" Content="Manage Account"  Width="120" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Click="ManageAccountButton_Click"/>
         <Button Name="ManageAuthor" Content="Manage Author"  Width="120" HorizontalAlignment="Left" Margin="30,62,0,0" VerticalAlignment="Top" Click="ManageAuthor_Click"/>
+        <Button Name="ManageEvent" Content="Manage Event"  Width="120" HorizontalAlignment="Left" Margin="30,94,0,0" VerticalAlignment="Top" Click="ManageEvent_Click"/>
     </Grid>
 </Controls:MetroWindow>

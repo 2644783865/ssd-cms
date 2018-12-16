@@ -11,25 +11,7 @@ namespace CMS.API.Controllers
     public class PresentationController : ApiController
     {
         private IPresentationBLL _bll = new PresentationBLL();
-        /*
-        // GET: api/Presentation/Presentation
-        [HttpGet]
-        [Route("api/presentation/presentation")]
-        public IHttpActionResult GetPresentations()
-        {
-            return Ok(_bll.GetPresentations());
-        }
 
-        // GET: api/Presentation/GetPresentationById?presentationId=
-        [HttpGet]
-        [Route("api/presentation/getpresentationbyid")]
-        public IHttpActionResult GetPresentationById(int presentationId)
-        {
-            var presentation = _bll.GetPresentationById(presentationId);
-            if (presentation == null) return BadRequest();
-            return Ok(presentation);
-        }
-        */
         // POST: api/Presentation/AddPresentation
         [HttpPost]
         [Route("api/presentation/addpresentation")]

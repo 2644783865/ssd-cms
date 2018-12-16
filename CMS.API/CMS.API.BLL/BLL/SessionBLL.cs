@@ -170,7 +170,7 @@ namespace CMS.API.BLL.BLL
 
         }
 
-        public SpecialSessionDTO GetSpeccialSessionByID(int specialSessionID)
+        public SpecialSessionDTO GetSpecialSessionByID(int specialSessionID)
         {
             try
             {
