@@ -14,7 +14,6 @@ namespace CMS.API.DAL.Interfaces
         void DeleteSession(int sessionId);
         bool CheckSessions(int conferenceId, DateTime begin, DateTime end);
         bool CheckSpecialSessions(int conferenceId, DateTime begin, DateTime end);
-        bool CheckEvents(int conferenceId, DateTime begin, DateTime end);
 
         //SpecialSession
         IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID);

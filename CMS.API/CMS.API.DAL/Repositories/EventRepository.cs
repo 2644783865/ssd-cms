@@ -1,6 +1,7 @@
 ﻿using CMS.API.DAL.Extensions;
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -46,6 +47,29 @@ namespace CMS.API.DAL.Repositories
         public void Dispose()
         {
             _db.Dispose();
+        }
+
+        public bool CheckEvents(int conferenceId, DateTime begin, DateTime end)
+        {
+            // return false, when no overlapping
+            // return true, when overlapping with events
+            IEnumerable<EventDTO> eve = GetEvents(conferenceId);
+            foreach (EventDTO even in eve)
+            {
+                if (even.BeginDate < begin && even.EndDate < begin)
+                {
+                    return false;
+                }
+                else if (even.BeginDate > begin && even.EndDate > end)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

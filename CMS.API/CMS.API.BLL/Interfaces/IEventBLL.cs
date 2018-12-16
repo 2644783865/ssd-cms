@@ -1,4 +1,6 @@
 ﻿using CMS.BE.DTO;
+using CMS.BE.Models;
+using System;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.Interfaces
@@ -10,5 +12,6 @@ namespace CMS.API.BLL.Interfaces
         bool AddEvent(EventDTO eventDTO);
         bool EditEvent(EventDTO eventDTO);
         bool DeleteEvent(int eventId);
+        Response CheckOverlappingEvent(int conferenceId, DateTime begin, DateTime end);
     }
 }
