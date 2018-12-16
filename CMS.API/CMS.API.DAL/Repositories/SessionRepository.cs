@@ -10,6 +10,7 @@ namespace CMS.API.DAL.Repositories
     public class SessionRepository : ISessionRepository
     {
         private cmsEntities _db = new cmsEntities();
+        private IEventRepository _repository = new EventRepository();
 
         public IEnumerable<SessionDTO> GetSessions(int conferenceID)
         {
@@ -94,7 +95,30 @@ namespace CMS.API.DAL.Repositories
             return false;
         }
 
-       
+        public bool CheckEvents(int conferenceId, DateTime begin, DateTime end)
+        {
+            // return false, when no overlapping
+            // return true, when overlapping with events
+            IEnumerable<EventDTO> eve = _repository.GetEvents(conferenceId);
+            foreach (EventDTO even in eve)
+            {
+                if (even.BeginDate < begin && even.EndDate < begin)
+                {
+                    return false;
+                }
+                else if (even.BeginDate > begin && even.EndDate > end)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
         //SpecialSession
 
         public IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID)
