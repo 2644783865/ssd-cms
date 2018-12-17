@@ -1,4 +1,4 @@
-﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Tasks.ManageTasks"
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Tasks.ManageTasksWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,10 +8,10 @@
         mc:Ignorable="d"
         Title="ManageTasks" Height="300" Width="300">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="38,27,0,0" VerticalAlignment="Top" Height="167" Width="223"/>
-        <Button x:Name="button" Content="ADD" HorizontalAlignment="Left" Margin="38,213,0,0" VerticalAlignment="Top" Width="62"/>
-        <Button x:Name="button1" Content="DELETE" HorizontalAlignment="Left" Margin="122,213,0,0" VerticalAlignment="Top" Width="59"/>
-        <Button x:Name="button2" Content="EDIT&#xA;" HorizontalAlignment="Left" Margin="195,213,0,0" VerticalAlignment="Top" Width="66"  Height="27"/>
+        <DataGrid x:Name="TasksList" HorizontalAlignment="Left" Margin="38,27,0,0" VerticalAlignment="Top" Height="167" Width="223"/>
+        <Button x:Name="buttonAdd" Content="ADD" HorizontalAlignment="Left" Margin="38,213,0,0" VerticalAlignment="Top" Width="62" Click="buttonAdd_Click"/>
+        <Button x:Name="buttonDelete" Content="DELETE" HorizontalAlignment="Left" Margin="122,213,0,0" VerticalAlignment="Top" Width="59" Click="buttonDelete_Click"/>
+        <Button x:Name="buttonEdit" Content="EDIT;" HorizontalAlignment="Left" Margin="195,213,0,0" VerticalAlignment="Top" Width="66"  Height="27" Click="buttonEdit"/>
 
     </Grid>
 </Controls:MetroWindow>
