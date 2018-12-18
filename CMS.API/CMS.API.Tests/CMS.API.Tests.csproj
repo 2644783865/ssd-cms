@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticationTest.cs" />
+    <Compile Include="TaskTest.cs" />
+    <Compile Include="EventTest.cs" />
     <Compile Include="HelpersTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomTest.cs" />

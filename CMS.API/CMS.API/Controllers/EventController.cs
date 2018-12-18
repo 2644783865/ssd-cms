@@ -1,10 +1,13 @@
 ﻿using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
+using CMS.API.Helpers;
 using CMS.BE.DTO;
+using System;
 using System.Web.Http;
 
 namespace CMS.API.Controllers
 {
+    [BasicAuthentication]
     public class EventController : ApiController
     {
         private IEventBLL _bll = new EventBLL();
@@ -14,7 +17,7 @@ namespace CMS.API.Controllers
         [Route("api/event/events")]
         public IHttpActionResult GetEvents(int conferenceId)
         {
-            return Ok(_bll.GetEvents());
+            return Ok(_bll.GetEvents(conferenceId));
         }
         // GET: api/Event/EventById?EventId=
         [HttpGet]
@@ -52,6 +55,16 @@ namespace CMS.API.Controllers
         {
             if (_bll.DeleteEvent(eventId)) return Ok();
             return InternalServerError();
+        }
+
+        // GET: api/Event/CheckOverlappingEvent?conferenceId=&begin=&end=
+        [HttpGet]
+        [Route("api/session/checkoverlappingevent")]
+        public IHttpActionResult CheckOverlappingEvent(int conferenceId, DateTime begin, DateTime end)
+        {
+            var events = _bll.CheckOverlappingEvent(conferenceId, begin, end);
+            if (events == null) return BadRequest();
+            return Ok(events);
         }
     }
 }

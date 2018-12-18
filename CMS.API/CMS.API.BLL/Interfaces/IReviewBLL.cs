@@ -10,5 +10,6 @@ namespace CMS.API.BLL.Interfaces
         bool AddReview(ReviewDTO review);
         bool EditReview(ReviewDTO review);
         bool DeleteReview(int reviewId);
+        IEnumerable<ReviewDTO> GetReviewsByArticleId(int articleId);
     }
 }

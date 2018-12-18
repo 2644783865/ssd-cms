@@ -6,10 +6,11 @@ namespace CMS.API.DAL.Interfaces
 {
     public interface IEventRepository : IDisposable
     {
-        IEnumerable<EventDTO> GetEvents();
+        IEnumerable<EventDTO> GetEvents(int conferenceId);
         EventDTO GetEventById(int id);
         void AddEvent(EventDTO eventDTO);
         void EditEvent(EventDTO eventDTO);
         void DeleteEvent(int eventId);
+        bool CheckEvents(int conferenceId, DateTime begin, DateTime end);
     }
 }

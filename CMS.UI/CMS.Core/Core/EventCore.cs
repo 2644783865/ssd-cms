@@ -3,6 +3,7 @@ using CMS.BE.Models;
 using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -25,7 +26,7 @@ namespace CMS.Core.Core
 
         public async Task<EventDTO> GetEventByIdAsync(int EventID)
         {
-            var path = $"{Properties.Resources.getEventByIdPath}?EventID={EventID}";
+            var path = $"{Properties.Resources.getEventByIdPath}?eventId={EventID}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -64,6 +65,16 @@ namespace CMS.Core.Core
             return null;
         }
 
+        public async Task<Response> CheckOverlappingEventAsync(int conferenceId, DateTime begin, DateTime end)
+        {
+            var path = $"{Properties.Resources.checkOverlappingEventPath}?conferenceId={conferenceId}&begin={begin}&end={end}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<Response>(result.Content);
+            }
+            else return null;
+        }
 
         public void Dispose() => _apiHelper.Dispose();
     }

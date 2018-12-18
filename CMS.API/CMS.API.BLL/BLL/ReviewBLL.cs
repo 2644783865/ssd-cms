@@ -74,5 +74,17 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+
+        public IEnumerable<ReviewDTO> GetReviewsByArticleId(int articleId)
+        {
+            try
+            {
+                return _repository.GetReviewsByArticleId(articleId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

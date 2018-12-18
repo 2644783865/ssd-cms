@@ -14,9 +14,9 @@ namespace CMS.API.Controllers
         // GET: api/LastMessage/GetLastMessageByPairId?PairId=
         [HttpGet]
         [Route("api/lastmessage/getlastmessagebypairid")]
-        public IHttpActionResult GetLastMessageByPairId(int PairId)
+        public IHttpActionResult GetLastMessageByPairId(int pairId)
         {
-            var lastmessage = _bll.GetLastMessageByPairId(PairId);
+            var lastmessage = _bll.GetLastMessageByPairId(pairId);
             if (lastmessage == null) return BadRequest();
             return Ok(lastmessage);
         }
@@ -24,9 +24,9 @@ namespace CMS.API.Controllers
         // GET: api/LastMessage/GetLastMessageByFirstId?FirstId=
         [HttpGet]
         [Route("api/lastmessage/getlastmessagebysenderid")]
-        public IHttpActionResult getlastmessagebyfirstid(int FirstId)
+        public IHttpActionResult getlastmessagebyfirstid(int firstId)
         {
-            var lastmessage = _bll.GetLastMessageByFirstId(FirstId);
+            var lastmessage = _bll.GetLastMessageByFirstId(firstId);
             if (lastmessage == null) return BadRequest();
             return Ok(lastmessage);
         }
@@ -34,9 +34,9 @@ namespace CMS.API.Controllers
         // GET: api/LastMessage/GetLastMessageBySecondId?SecondId=
         [HttpGet]
         [Route("api/lastmessage/getlastmessagebysecondid")]
-        public IHttpActionResult GetLastMessageBySecondId(int SecondId)
+        public IHttpActionResult GetLastMessageBySecondId(int secondId)
         {
-            var lastmessage = _bll.GetLastMessageBySecondId(SecondId);
+            var lastmessage = _bll.GetLastMessageBySecondId(secondId);
             if (lastmessage == null) return BadRequest();
             return Ok(lastmessage);
         }
@@ -64,9 +64,9 @@ namespace CMS.API.Controllers
         // DELETE: api/LastMessage/DeleteLastMessage?PairId=
         [HttpDelete]
         [Route("api/lastmessage/deletelastmessage")]
-        public IHttpActionResult DeleteLastMessage(int PairId)
+        public IHttpActionResult DeleteLastMessage(int pairId)
         {
-            if (_bll.DeleteLastMessage(PairId)) return Ok();
+            if (_bll.DeleteLastMessage(pairId)) return Ok();
             return InternalServerError();
         }
     }

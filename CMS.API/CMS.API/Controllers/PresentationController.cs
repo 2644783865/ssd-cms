@@ -11,25 +11,7 @@ namespace CMS.API.Controllers
     public class PresentationController : ApiController
     {
         private IPresentationBLL _bll = new PresentationBLL();
-        /*
-        // GET: api/Presentation/Presentation
-        [HttpGet]
-        [Route("api/presentation/presentation")]
-        public IHttpActionResult GetPresentations()
-        {
-            return Ok(_bll.GetPresentations());
-        }
 
-        // GET: api/Presentation/GetPresentationById?presentationId=
-        [HttpGet]
-        [Route("api/presentation/getpresentationbyid")]
-        public IHttpActionResult GetPresentationById(int presentationId)
-        {
-            var presentation = _bll.GetPresentationById(presentationId);
-            if (presentation == null) return BadRequest();
-            return Ok(presentation);
-        }
-        */
         // POST: api/Presentation/AddPresentation
         [HttpPost]
         [Route("api/presentation/addpresentation")]
@@ -60,5 +42,60 @@ namespace CMS.API.Controllers
             if (_bll.DeletePresentation(presentationId)) return Ok();
             return InternalServerError();
         }
+
+        // PUT: api/Presentation/EditGradeOfPresentation?presentationId=&grade=
+        [HttpPut]
+        [Route("api/presentation/editgradeofpresentation")]
+        public IHttpActionResult EditGradeOfPresentation(int presentationId, int grade)
+        {
+            if (_bll.EditGradeOfPresentation(presentationId, grade)) return Ok();
+            return InternalServerError();
+        }
+
+        // PUT: api/Presentation/DeleteGradeFromPresentation?presentationId=
+        [HttpPut]
+        [Route("api/presentation/deletegradefrompresentation")]
+        public IHttpActionResult DeleteGradeFromPresentation(int presentationId)
+        {
+            if (_bll.DeleteGradeFromPresentation(presentationId)) return Ok();
+            return InternalServerError();
+        }
+
+        // PUT: api/Presentation/editsessionofpresentation?presentationId=&sessionId=
+        [HttpPut]
+        [Route("api/presentation/EditSessionOfPresentation")]
+        public IHttpActionResult EditSessionOfPresentation(int presentationId, int sessionId)
+        {
+            if (_bll.EditSessionOfPresentation(presentationId, sessionId)) return Ok();
+            return InternalServerError();
+        }
+
+        // PUT: api/Presentation/EditSpecialSessionOfPresentation?presentationId=&specialSessionId=
+        [HttpPut]
+        [Route("api/presentation/editspecialsessionofpresentation")]
+        public IHttpActionResult EditSpecialSessionOfPresentation(int presentationId, int specialSessionId)
+        {
+            if (_bll.EditSpecialSessionOfPresentation(presentationId, specialSessionId)) return Ok();
+            return InternalServerError();
+        }
+
+        // PUT: api/Presentation/DeleteSessionFromPresentation?presentationId=
+        [HttpPut]
+        [Route("api/presentation/deletesessionfrompresentation")]
+        public IHttpActionResult DeleteSessionFromPresentation(int presentationId)
+        {
+            if (_bll.DeleteSessionFromPresentation(presentationId)) return Ok();
+            return InternalServerError();
+        }
+
+        // PUT: api/Presentation/DeleteSpecialSessionFromPresentation?presentationId=
+        [HttpPut]
+        [Route("api/presentation/deletespecialsessionfrompresentation")]
+        public IHttpActionResult DeleteSpecialSessionFromPresentation(int presentationId)
+        {
+            if (_bll.DeleteSpecialSessionFromPresentation(presentationId)) return Ok();
+            return InternalServerError();
+        }
+
     }
 }

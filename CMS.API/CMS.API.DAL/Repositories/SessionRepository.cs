@@ -1,17 +1,20 @@
 ﻿using CMS.API.DAL.Extensions;
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
     public class SessionRepository : ISessionRepository
     {
         private cmsEntities _db = new cmsEntities();
+        private IEventRepository _repository = new EventRepository();
 
-        public IEnumerable<SessionDTO> GetSessions()
+        public IEnumerable<SessionDTO> GetSessions(int conferenceID)
         {
-            return _db.Sessions.Project().To<SessionDTO>();
+            return _db.Sessions.Where(session => session.ConferenceId == conferenceID).Project().To<SessionDTO>();
         }
         public SessionDTO GetSessionById(int id)
         {
@@ -45,14 +48,82 @@ namespace CMS.API.DAL.Repositories
         {
             _db.Dispose();
         }
+ 
+        public bool CheckSessions(int conferenceId, DateTime begin, DateTime end)
+        {
+            // return false, when no overlapping
+            // return true, when overlapping with sessions
+            IEnumerable<SessionDTO> sessions = GetSessions(conferenceId);
+            foreach (SessionDTO session in sessions)
+            {
+                if(session.BeginDate < begin && session.EndDate < begin)
+                {
+                    return false;
+                }
+                else if(session.BeginDate > begin && session.EndDate > end)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        public bool CheckSpecialSessions(int conferenceId, DateTime begin, DateTime end)
+        {
+            // return false, when no overlapping
+            // return true, when overlapping with special sessions
+            IEnumerable<SpecialSessionDTO> specials = GetSpecialSessions(conferenceId);
+            foreach (SpecialSessionDTO special in specials)
+            {
+                if (special.BeginDate < begin && special.EndDate < begin)
+                {
+                    return false;
+                }
+                else if (special.BeginDate > begin && special.EndDate > end)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CheckEvents(int conferenceId, DateTime begin, DateTime end)
+        {
+            // return false, when no overlapping
+            // return true, when overlapping with events
+            IEnumerable<EventDTO> eve = _repository.GetEvents(conferenceId);
+            foreach (EventDTO even in eve)
+            {
+                if (even.BeginDate < begin && even.EndDate < begin)
+                {
+                    return false;
+                }
+                else if (even.BeginDate > begin && even.EndDate > end)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
 
         //SpecialSession
 
-        public IEnumerable<SpecialSessionDTO> GetSpecialSessions()
+        public IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID)
         {
-            return _db.SpecialSessions.Project().To<SpecialSessionDTO>();
+            return _db.SpecialSessions.Where(specialSession => specialSession.ConferenceId == conferenceID).Project().To<SpecialSessionDTO>();
         }
         public SpecialSessionDTO GetSpecialSessionById(int id)
         {

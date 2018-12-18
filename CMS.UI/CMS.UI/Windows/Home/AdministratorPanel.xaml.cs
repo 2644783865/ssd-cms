@@ -2,6 +2,7 @@
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
+using CMS.UI.Windows.Rooms;
 using MahApps.Metro.Controls;
 using System.Threading.Tasks;
 using System.Windows;
@@ -170,6 +171,13 @@ namespace CMS.UI.Windows.Home
             }
             else MessageBox.Show("Account doesn't exit!");
             ProgressSpin.IsActive = false;
+        }
+
+        private void ManageBuilding_Click(object sender, RoutedEventArgs e)
+        {
+            ManageBuildingWindow newManageBuilding = new ManageBuildingWindow();
+            newManageBuilding.ShowDialog();
+            Close();
         }
     }
 }
