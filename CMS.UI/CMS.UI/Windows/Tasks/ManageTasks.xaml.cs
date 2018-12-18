@@ -31,7 +31,7 @@ namespace CMS.UI.Windows.Tasks
             loadTasksToDatagrid(conferenceID);
         }
 
-        private void buttonEdit(object sender, RoutedEventArgs e)
+        private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
 
         }
