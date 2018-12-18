@@ -69,6 +69,9 @@
     <Compile Include="Helpers\BrushSettings.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\WindowHelper.cs" />
+    <Compile Include="Windows\Accommodation\AccommodationInfo.xaml.cs">
+      <DependentUpon>AccommodationInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Account\AddEditAccount.xaml.cs">
       <DependentUpon>AddEditAccount.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,9 @@
     </Compile>
     <Compile Include="Windows\Conference\AddEditConference.xaml.cs">
       <DependentUpon>AddEditConference.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Emergency\EmergencyInfo.xaml.cs">
+      <DependentUpon>EmergencyInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Event\AddEditEvent.xaml.cs" />
     <Compile Include="Windows\Home\AdministratorPanel.xaml.cs">
@@ -139,6 +145,13 @@
       <DependentUpon>ManageTasks.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Tasks\ViewTaskSchedule.xaml.cs" />
+    <Compile Include="Windows\Travel\TravelInfo.xaml.cs">
+      <DependentUpon>TravelInfo.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Windows\Accommodation\AccommodationInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Account\AddEditAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Conference\AddEditConference.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Emergency\EmergencyInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +251,10 @@
     <Page Include="Windows\Tasks\ViewTaskSchedule.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Travel\TravelInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

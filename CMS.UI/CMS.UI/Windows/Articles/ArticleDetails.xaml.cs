@@ -118,7 +118,7 @@ namespace CMS.UI.Windows.Articles
 
         private void AddReview_Click(object sender, RoutedEventArgs e)
         {
-            AddReview newAddReviewWindow = new AddReview();
+            AddReview newAddReviewWindow = new AddReview(null);
             newAddReviewWindow.ShowDialog();
         }
     }

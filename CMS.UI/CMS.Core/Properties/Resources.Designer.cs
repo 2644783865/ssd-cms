@@ -286,6 +286,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/session/checkoverlappingevent.
+        /// </summary>
+        internal static string checkOverlappingEventPath {
+            get {
+                return ResourceManager.GetString("checkOverlappingEventPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/session/checkoverlappingsession.
         /// </summary>
         internal static string checkOverlappingSessionPath {
