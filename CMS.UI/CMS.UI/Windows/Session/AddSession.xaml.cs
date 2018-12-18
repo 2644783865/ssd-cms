@@ -13,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 
-namespace CMS.UI.Windows.Rooms
+namespace CMS.UI.Windows.Session
 {
     /// <summary>
-    /// Logika interakcji dla klasy Window3.xaml
+    /// Logika interakcji dla klasy AddSession.xaml
     /// </summary>
-    public partial class Building : MetroWindow
-
+    public partial class AddSession : MetroWindow
     {
-        public Building()
+        public AddSession()
         {
             InitializeComponent();
-        }
-
-        private void RemoveBuilding_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

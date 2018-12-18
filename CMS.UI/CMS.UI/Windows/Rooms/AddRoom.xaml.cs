@@ -11,17 +11,29 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace CMS.UI.Windows.Rooms
 {
     /// <summary>
     /// Logika interakcji dla klasy Window2.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class AddRoom: MetroWindow
+
     {
-        public Window2()
+        public AddRoom()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddAddRoom_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

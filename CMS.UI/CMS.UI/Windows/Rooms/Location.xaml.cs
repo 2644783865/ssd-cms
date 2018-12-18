@@ -16,17 +16,21 @@ using MahApps.Metro.Controls;
 namespace CMS.UI.Windows.Rooms
 {
     /// <summary>
-    /// Logika interakcji dla klasy Window3.xaml
+    /// Logika interakcji dla klasy Window1.xaml
     /// </summary>
-    public partial class Building : MetroWindow
-
+    public partial class Location : MetroWindow
     {
-        public Building()
+        public Location()
         {
             InitializeComponent();
         }
 
-        private void RemoveBuilding_Click(object sender, RoutedEventArgs e)
+        private void AddLocation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditLocation_Click(object sender, RoutedEventArgs e)
         {
 
         }
