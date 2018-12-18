@@ -41,7 +41,7 @@ namespace CMS.UI.Windows.Rooms
             BuildingDTO current = (BuildingDTO)buildinglist.CurrentItem; 
             RoomWindow newRoomWindow = new RoomWindow(current.BuildingID);
             newRoomWindow.ShowDialog();
-            Close();
+
         }
     }
 }

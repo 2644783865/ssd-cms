@@ -176,7 +176,7 @@ namespace CMS.UI.Windows.Home
         private void ManageBuilding_Click(object sender, RoutedEventArgs e)
         {
             ManageBuildingWindow newManageBuilding = new ManageBuildingWindow();
-            newManageBuilding.Show();
+            newManageBuilding.ShowDialog();
             Close();
         }
     }

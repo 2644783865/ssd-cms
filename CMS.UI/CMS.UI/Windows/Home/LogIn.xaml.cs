@@ -18,6 +18,7 @@ namespace CMS.UI.Windows.Home
             InitializeComponent();
             UserCredentials.Clear();
             LoginFailed.Visibility = Visibility.Hidden;
+            LoginBox.Focus();
         }
 
         private async void LogInButton_Click(object sender, RoutedEventArgs e)
@@ -59,6 +60,7 @@ namespace CMS.UI.Windows.Home
             }
             else MessageBox.Show("Invalid form");
             ProgressSpin.IsActive = false;
+            
         }
 
         private void Box_KeyDown(object sender, KeyEventArgs e)
@@ -68,5 +70,6 @@ namespace CMS.UI.Windows.Home
                 LogInButton_Click(sender, e);
             }
         }
+
     }
 }

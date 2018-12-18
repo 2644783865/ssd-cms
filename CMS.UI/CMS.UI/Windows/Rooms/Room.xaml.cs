@@ -24,9 +24,10 @@ namespace CMS.UI.Windows.Rooms
     public partial class RoomWindow : MetroWindow
     {
         private RoomCore core;
+        private int BuildingID;
         public RoomWindow(int building)
         {
-
+            BuildingID = building;
             InitializeComponent();
             core = new RoomCore();
             LoadRoomsToDataGrid(building);
@@ -50,9 +51,11 @@ namespace CMS.UI.Windows.Rooms
 
         }
 
-        private void DeleteRoom_Click(object sender, RoutedEventArgs e)
+        async private void DeleteRoom_Click(object sender, RoutedEventArgs e)
         {
-
+            RoomDTO roomtodelete = (RoomDTO)RoomList.SelectedItem;
+            await core.DeleteRoomAsync(roomtodelete.RoomID);
+            LoadRoomsToDataGrid(BuildingID);
         }
 
         async private void LoadRoomsToDataGrid(int building)
