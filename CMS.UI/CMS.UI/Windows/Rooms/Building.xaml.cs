@@ -1,4 +1,7 @@
-﻿using MahApps.Metro.Controls;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
+using CMS.Core.Interfaces;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +23,25 @@ namespace CMS.UI.Windows.Rooms
     /// </summary>
     public partial class ManageBuildingWindow : MetroWindow
     {
+        IRoomCore core;
         public ManageBuildingWindow()
         {
+            core = new RoomCore();
             InitializeComponent();
+            initializeBuildingList();
+        }
+
+        async private void initializeBuildingList()
+        {
+            buildinglist.ItemsSource = await core.GetBuildingsAsync();
+        }
+
+        private void buildinglist_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BuildingDTO current = (BuildingDTO)buildinglist.CurrentItem; 
+            RoomWindow newRoomWindow = new RoomWindow(current.BuildingID);
+            newRoomWindow.ShowDialog();
+            Close();
         }
     }
 }
