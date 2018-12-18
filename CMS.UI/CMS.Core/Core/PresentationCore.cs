@@ -33,6 +33,48 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
+        public async Task<bool> EditGradeOfPresentationAsync(int presentationId, int grade)
+        {
+            var path = $"{Properties.Resources.editGradeOfPresentationPath}?presentationId={presentationId}&grade={grade}";
+            var result = await _apiHelper.Put(path, null);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
+        public async Task<bool> DeleteGradeFromPresentationAsync(int presentationId)
+        {
+            var path = $"{Properties.Resources.deleteGradeFromPresentationPath}?presentationId={presentationId}";
+            var result = await _apiHelper.Put(path, null);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
+        public async Task<bool> EditSessionOfPresentationAsync(int presentationId, int sessionId)
+        {
+            var path = $"{Properties.Resources.editSessionOfPresentationPath}?presentationId={presentationId}&sessionId={sessionId}";
+            var result = await _apiHelper.Put(path, null);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
+        public async Task<bool> EditSpecialSessionOfPresentationAsync(int presentationId, int specialSessionId)
+        {
+            var path = $"{Properties.Resources.editSpecialSessionOfPresentationPath}?presentationId={presentationId}&sessionId={specialSessionId}";
+            var result = await _apiHelper.Put(path, null);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
+        public async Task<bool> DeleteSessionFromPresentationAsync(int presentationId)
+        {
+            var path = $"{Properties.Resources.deleteSessionFromPresentationPath}?presentationId={presentationId}";
+            var result = await _apiHelper.Put(path, null);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
+        public async Task<bool> DeleteSpecialSessionFromPresentationAsync(int presentationId)
+        {
+            var path = $"{Properties.Resources.deleteSpecialSessionFromPresentationPath}?presentationId={presentationId}";
+            var result = await _apiHelper.Put(path, null);
+            return result != null && result.ResponseType == ResponseType.Success;
+        }
+
         public void Dispose() => _apiHelper.Dispose();
     }
 }

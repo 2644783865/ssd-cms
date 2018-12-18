@@ -231,6 +231,9 @@
   <data name="deleteEventPath" xml:space="preserve">
     <value>api/event/deleteevent</value>
   </data>
+  <data name="deleteGradeFromPresentationPath" xml:space="preserve">
+    <value>api/presentation/deletegradefrompresentation</value>
+  </data>
   <data name="deleteLastMessagePath" xml:space="preserve">
     <value>api/lastmessage/deletelastmessage</value>
   </data>
@@ -249,8 +252,14 @@
   <data name="deleteRoomPath" xml:space="preserve">
     <value>api/room/deleteroom</value>
   </data>
+  <data name="deleteSessionFromPresentationPath" xml:space="preserve">
+    <value>api/presentation/deletesessionfrompresentation</value>
+  </data>
   <data name="deleteSessionPath" xml:space="preserve">
     <value>api/session/deletesession</value>
+  </data>
+  <data name="deleteSpecialSessionFromPresentationPath" xml:space="preserve">
+    <value>api/presentation/deletespecialsessionfrompresentation</value>
   </data>
   <data name="deleteSpecialSessionPath" xml:space="preserve">
     <value>api/session/deletespecialsession</value>
@@ -300,6 +309,9 @@
   <data name="editEventPath" xml:space="preserve">
     <value>api/event/editevent</value>
   </data>
+  <data name="editGradeOfPresentationPath" xml:space="preserve">
+    <value>api/presentation/editgradeofpresentation</value>
+  </data>
   <data name="editLastMessagePath" xml:space="preserve">
     <value>api/lastmessage/editlastmessage</value>
   </data>
@@ -315,8 +327,14 @@
   <data name="editRoomPath" xml:space="preserve">
     <value>api/room/editroom</value>
   </data>
+  <data name="editSessionOfPresentationPath" xml:space="preserve">
+    <value>api/presentation/EditSessionOfPresentation</value>
+  </data>
   <data name="editSessionPath" xml:space="preserve">
     <value>api/session/editsession</value>
+  </data>
+  <data name="editSpecialSessionOfPresentationPath" xml:space="preserve">
+    <value>api/presentation/editspecialsessionofpresentation</value>
   </data>
   <data name="editSpecialSessionPath" xml:space="preserve">
     <value>api/session/editspecialsession</value>

@@ -403,6 +403,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/presentation/deletegradefrompresentation.
+        /// </summary>
+        internal static string deleteGradeFromPresentationPath {
+            get {
+                return ResourceManager.GetString("deleteGradeFromPresentationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/lastmessage/deletelastmessage.
         /// </summary>
         internal static string deleteLastMessagePath {
@@ -457,11 +466,29 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/presentation/deletesessionfrompresentation.
+        /// </summary>
+        internal static string deleteSessionFromPresentationPath {
+            get {
+                return ResourceManager.GetString("deleteSessionFromPresentationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/session/deletesession.
         /// </summary>
         internal static string deleteSessionPath {
             get {
                 return ResourceManager.GetString("deleteSessionPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/presentation/deletespecialsessionfrompresentation.
+        /// </summary>
+        internal static string deleteSpecialSessionFromPresentationPath {
+            get {
+                return ResourceManager.GetString("deleteSpecialSessionFromPresentationPath", resourceCulture);
             }
         }
         
@@ -610,6 +637,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/presentation/editgradeofpresentation.
+        /// </summary>
+        internal static string editGradeOfPresentationPath {
+            get {
+                return ResourceManager.GetString("editGradeOfPresentationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/lastmessage/editlastmessage.
         /// </summary>
         internal static string editLastMessagePath {
@@ -655,11 +691,29 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/presentation/EditSessionOfPresentation.
+        /// </summary>
+        internal static string editSessionOfPresentationPath {
+            get {
+                return ResourceManager.GetString("editSessionOfPresentationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/session/editsession.
         /// </summary>
         internal static string editSessionPath {
             get {
                 return ResourceManager.GetString("editSessionPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/presentation/editspecialsessionofpresentation.
+        /// </summary>
+        internal static string editSpecialSessionOfPresentationPath {
+            get {
+                return ResourceManager.GetString("editSpecialSessionOfPresentationPath", resourceCulture);
             }
         }
         
