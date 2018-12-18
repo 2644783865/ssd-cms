@@ -97,7 +97,7 @@ namespace CMS.API.BLL.BLL
         public Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
         {
             Response res = new Response();
-            // Function checks, whether a new event/session/special session will overlap with anything.
+            // Function checks, whether a new session/special session will overlap with a existing event/session/special session.
             // If there is an overlapping, the function returns a response with the message what the overlapping items are and the status true.
             // If there is no overlapping, the message will be empty and the staus will be false.
             try
@@ -128,22 +128,22 @@ namespace CMS.API.BLL.BLL
                 }
                 else if (resSession == true && resSpecial == true && resEvent == false)
                 {
-                    res.Message = "Overlapping with Session, SpecialSession.";
+                    res.Message = "Overlapping with Session and SpecialSession.";
                     res.Status = true;
                 }
                 else if (resSession == true && resSpecial == false && resEvent == true)
                 {
-                    res.Message = "Overlapping with Session, Event.";
+                    res.Message = "Overlapping with Session and Event.";
                     res.Status = true;
                 }
                 else if (resSession == false && resSpecial == true && resEvent == true)
                 {
-                    res.Message = "Overlapping with SpecialSession, Event";
+                    res.Message = "Overlapping with SpecialSession and Event.";
                     res.Status = true;
                 }
                 else
                 {
-                    res.Message = "Overlapping with Session, SpecialSession, Event.";
+                    res.Message = "Overlapping with Session, SpecialSession and Event.";
                     res.Status = true;
                 }
             }

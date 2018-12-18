@@ -99,8 +99,8 @@ namespace CMS.API.DAL.Repositories
         {
             // return false, when no overlapping
             // return true, when overlapping with events
-            IEnumerable<EventDTO> events = _repository.GetEvents(conferenceId);
-            foreach (EventDTO even in events)
+            IEnumerable<EventDTO> eve = _repository.GetEvents(conferenceId);
+            foreach (EventDTO even in eve)
             {
                 if (even.BeginDate < begin && even.EndDate < begin)
                 {
@@ -117,7 +117,7 @@ namespace CMS.API.DAL.Repositories
             }
             return false;
         }
- 
+
 
         //SpecialSession
 

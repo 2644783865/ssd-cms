@@ -45,5 +45,21 @@ namespace CMS.API.DAL.Repositories
         {
             _db.Dispose();
         }
+
+        public void EditGradeOfPresentation(int presentationId, int grade)
+        {
+            var presentation = _db.Presentations.Find(presentationId);
+            presentation.Grade = grade;
+            _db.Entry(_db.Presentations.Find(presentationId)).CurrentValues.SetValues(presentation);
+            _db.SaveChanges();
+        }
+
+        public void DeleteGradeFromPresentation(int presentationId)
+        {
+            var presentation = _db.Presentations.Find(presentationId);
+            presentation.Grade = null;
+            _db.Entry(_db.Presentations.Find(presentationId)).CurrentValues.SetValues(presentation);
+            _db.SaveChanges();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using CMS.Core.Core;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,40 @@ namespace CMS.UI.Windows.Tasks
     /// <summary>
     /// Lógica de interacción para ManageTasks.xaml
     /// </summary>
-    public partial class ManageTasks : MetroWindow
+    public partial class ManageTasksWindow : MetroWindow
     {
-        public ManageTasks()
+
+        private TaskCore core;
+
+        public ManageTasksWindow(int conferenceID)
         {
             InitializeComponent();
+            core = new TaskCore();
+            loadTasksToDatagrid(conferenceID);
+        }
+
+        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddTask NewAddTaskWindow = new AddTask();
+            NewAddTaskWindow.Show();
+            Close();
+        }
+
+        async private void loadTasksToDatagrid(int conferenceID)
+        {
+
+            TasksList.ItemsSource = await core.GetTasksAsync(conferenceID);
+            
         }
     }
 }

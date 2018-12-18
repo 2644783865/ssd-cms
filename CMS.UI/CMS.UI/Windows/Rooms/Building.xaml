@@ -10,7 +10,7 @@
 		ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 	<Grid>
-		<DataGrid HorizontalAlignment="Left" Height="302" Margin="52,37,0,0" VerticalAlignment="Top" Width="488"/>
+		<DataGrid Name="buildinglist" IsReadOnly="True" HorizontalAlignment="Left" Height="302" Margin="52,37,0,0" VerticalAlignment="Top" Width="488" MouseDoubleClick="buildinglist_MouseDoubleClick"/>
 
 	</Grid>
 </Controls:MetroWindow>
