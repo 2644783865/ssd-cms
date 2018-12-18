@@ -9,7 +9,7 @@
         public int ArticleId { get; set; }
         public int? SessionId { get; set; }
         public int? SpecialSessionId { get; set; }
-        public int Grade { get; set; }
+        public int? Grade { get; set; }
 
     }
 }

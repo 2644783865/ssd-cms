@@ -12,6 +12,7 @@ namespace CMS.API.BLL.BLL
     public class ArticleBLL : IArticleBLL
     {
         private IArticleRepository _repository = new ArticleRepository();
+        private IPresentationRepository _presentationRepository = new PresentationRepository();
 
         public IEnumerable<ArticleDTO> GetArticles()
         {
@@ -106,8 +107,17 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                _repository.GetArticleById(articleId).Status = "Accepted";
-                _repository.GetArticleById(articleId).AcceptanceDate = System.DateTime.Now;
+                var article = _repository.GetArticleById(articleId);
+                article.Status = "Accepted";
+                article.AcceptanceDate = System.DateTime.Now;
+                var presentation = new PresentationDTO()
+                {
+                    PresenterId = -1,
+                    Title = article.Topic,
+                    ArticleId = article.ArticleId
+                };
+                _repository.EditArticle(article);
+                _presentationRepository.AddPresentation(presentation);
             }
             catch
             {
@@ -119,7 +129,9 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                _repository.GetArticleById(articleId).Status = "Rejected";
+                var article = _repository.GetArticleById(articleId);
+                article.Status = "Rejected";
+                _repository.EditArticle(article);
             }
             catch
             {
