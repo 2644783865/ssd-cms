@@ -100,11 +100,11 @@ namespace CMS.API.BLL.BLL
             try
             {
                 var article = _repository.GetArticleById(articleId);
-                article.Status = "Accepted";
+                article.Status = "accepted";
                 article.AcceptanceDate = System.DateTime.Now;
                 var presentation = new PresentationDTO()
                 {
-                    PresenterId = -1,
+                    PresenterId = _repository.GetAuthorsFromArticleId(articleId).First().AccountId,
                     Title = article.Topic,
                     ArticleId = article.ArticleId
                 };
@@ -122,7 +122,7 @@ namespace CMS.API.BLL.BLL
             try
             {
                 var article = _repository.GetArticleById(articleId);
-                article.Status = "Rejected";
+                article.Status = "rejected";
                 _repository.EditArticle(article);
             }
             catch

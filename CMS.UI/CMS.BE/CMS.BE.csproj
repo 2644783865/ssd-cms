@@ -77,7 +77,6 @@
     <Compile Include="Models\Authentication\ChangePasswordModel.cs" />
     <Compile Include="Models\Authentication\LoginModel.cs" />
     <Compile Include="Models\ByteArray.cs" />
-    <Compile Include="Models\Program\ConferenceProgramEntryModel.cs" />
     <Compile Include="Models\Program\ConferenceProgramModel.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\ResponseModel.cs" />

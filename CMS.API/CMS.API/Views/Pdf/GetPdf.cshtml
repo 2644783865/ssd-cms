@@ -6,4 +6,22 @@
 <h3>@Model.Conference.BeginDate.ToShortDateString() - @Model.Conference.EndDate.ToShortDateString()</h3>
 <br />
 <h2>Program:</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Type</th>
+        <th>Title </th>
+        <th>Begin Date </th>
+        <th>End Date</th>
+    </tr>
+    @foreach (var m in Model.Entries)
+    {
+        <tr>
+            <td>@m.GetType()</td>
+            <td>@m.Title</td>
+            <td>@m.BeginDate</td>
+            <td>@m.EndDate</td>
+        </tr>
+    }
+</table>
+
 

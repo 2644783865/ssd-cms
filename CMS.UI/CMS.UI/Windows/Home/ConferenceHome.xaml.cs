@@ -4,6 +4,7 @@ using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace CMS.UI.Windows.Home
@@ -15,20 +16,25 @@ namespace CMS.UI.Windows.Home
     {
         private IAuthenticationCore authCore;
         private IConferenceCore confCore;
+        private IEventCore eventCore;
+        private ISessionCore sessionCore;
 
         public ConferenceHome()
         {
             InitializeComponent();
             authCore = new AuthenticationCore();
             confCore = new ConferenceCore();
+            eventCore = new EventCore();
+            sessionCore = new SessionCore();
             WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
             InitializeData();
         }
 
-        private void InitializeData()
+        private async void InitializeData()
         {
             authCore.LoadRolesAsync();
             InitializeLabels();
+            await LoadEvents();
         }
 
         private void InitializeLabels()
@@ -37,6 +43,24 @@ namespace CMS.UI.Windows.Home
             DatesLabel.Content = $"{UserCredentials.Conference.BeginDate.ToShortDateString()} - {UserCredentials.Conference.EndDate.ToShortDateString()}";
             PlaceLabel.Content = UserCredentials.Conference.Place;
             DescriptionBox.Text = UserCredentials.Conference.Description;
+        }
+
+        private async Task LoadEvents()
+        {
+            EventList.Items.Clear();
+            EventList.DisplayMemberPath = "Title";
+            EventList.SelectedValuePath = "EventId";
+            EventList.ItemsSource = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
+        }
+
+        private async Task LoadSessions()
+        {
+
+        }
+
+        private async Task LoadSpecialSessions()
+        {
+
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
