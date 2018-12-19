@@ -9,8 +9,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="Manage Location" Height="200" Width="600"
-        WindowStartupLocation="CenterScreen"
-        Closing="Window_Closing">
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Button Name="AddLocation" Content="Add Location" HorizontalAlignment="Left" Margin="75,70,0,0" VerticalAlignment="Top" Width="150" Click="AddLocation_Click"/>
         <Button Name="EditLocation" Content="Edit Location" HorizontalAlignment="Left" Margin="375,70,0,0" VerticalAlignment="Top" Width="150" Click="EditLocation_Click"/>

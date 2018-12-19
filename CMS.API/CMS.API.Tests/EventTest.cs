@@ -20,13 +20,13 @@ namespace CMS.API.Tests
         public void TestGetEvents()
         {
             var result = bll.GetEvents(1);
-            Assert.AreEqual("TestEvent", result.FirstOrDefault(eventDTO => eventDTO.ConferenceId == 1).Title);
+            Assert.AreEqual("Event Title", result.FirstOrDefault(eventDTO => eventDTO.EventId == 1).Title);
         }
         [TestMethod]
         public void TestGetEventById()
         {
             var result = bll.GetEventById(1);
-            Assert.AreEqual("TestEvent", result);
+            Assert.AreEqual("Event Title", result.Title);
         }
     }
 }

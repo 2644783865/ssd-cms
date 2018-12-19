@@ -29,5 +29,15 @@ namespace CMS.UI.Windows.Session
         {
 
         }
+
+        private void EditSession_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteSession_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

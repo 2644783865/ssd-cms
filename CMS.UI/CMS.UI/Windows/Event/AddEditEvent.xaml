@@ -11,8 +11,8 @@
     <Grid Margin="-2,0,2,0">
         <TextBox x:Name="TitleBox" HorizontalAlignment="Left" Height="23" Margin="168,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
         <TextBox x:Name="DescriptionBox" HorizontalAlignment="Left" Height="121" Margin="168,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159"/>
-        <DatePicker Name="BeginDatePicker" HorizontalAlignment="Left" Margin="168,269,0,0" VerticalAlignment="Top" Width="159"/>
-        <DatePicker Name="EndDatePicker" HorizontalAlignment="Left" Margin="168,300,0,0" VerticalAlignment="Top" Width="159"/>
+        <Controls:DateTimePicker Name="BeginDatePicker"  HorizontalAlignment="Left" Margin="168,269,0,0" VerticalAlignment="Top" Width="159"/>
+        <Controls:DateTimePicker Name="EndDatePicker" HorizontalAlignment="Left" Margin="168,300,0,0" VerticalAlignment="Top" Width="159"/>
         <Button x:Name="Submitbutton" Content="CONFIRM" HorizontalAlignment="Left" Margin="427,345,0,0" VerticalAlignment="Top" Width="75" Height="26" Click="Submitbutton_Click"/>
         <Button x:Name="Cancelbutton" Content="CANCEL" HorizontalAlignment="Left" Margin="347,345,0,0" VerticalAlignment="Top" Width="75" Height="26" RenderTransformOrigin="0.64,2.08" Click="Cancelbutton_Click"/>
         <ComboBox x:Name="RoomBox" HorizontalAlignment="Left" Margin="356,197,0,0" VerticalAlignment="Top" Width="131" Height="26"/>
@@ -26,12 +26,7 @@
         <Label Content="Building:" HorizontalAlignment="Left" Margin="356,104,0,0" VerticalAlignment="Top"/>
         <ListBox Name="SelectEventBox" HorizontalAlignment="Left" Height="284" Margin="10,42,0,0" VerticalAlignment="Top" Width="140" BorderThickness="1" SelectionChanged="SelectEventBox_SelectionChanged"/>
         <Button Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="168,345,0,0" VerticalAlignment="Top" Width="55" Background="Red" Click="DeleteButton_Click"/>
-        <Label Content="Time:" HorizontalAlignment="Left" Margin="332,269,0,0" VerticalAlignment="Top"/>
-        <Label Content="Time:" HorizontalAlignment="Left" Margin="332,300,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="BeginHour" HorizontalAlignment="Left" Margin="375,269,0,0" VerticalAlignment="Top" Width="56"/>
-        <ComboBox Name="EndMinute" HorizontalAlignment="Left" Margin="436,300,0,0" VerticalAlignment="Top" Width="56"/>
-        <ComboBox Name="EndHour" HorizontalAlignment="Left" Margin="375,300,0,0" VerticalAlignment="Top" Width="56"/>
-        <ComboBox Name="BeginMinute" HorizontalAlignment="Left" Margin="436,269,0,0" VerticalAlignment="Top" Width="56"/>
-
+        <Border Name="BeginBorderError" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="168,269,0,0" VerticalAlignment="Top" Width="159"/>
+        <Border Name="EndBorderError" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="26" Margin="168,300,0,0" VerticalAlignment="Top" Width="159"/>
     </Grid>
 </Controls:MetroWindow>

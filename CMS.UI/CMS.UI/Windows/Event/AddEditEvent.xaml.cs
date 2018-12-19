@@ -1,6 +1,5 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
-using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
@@ -17,6 +16,7 @@ namespace CMS.UI.Windows.Event
     {
         private IEventCore eventCore;
         private IRoomCore roomCore;
+        private ISessionCore sessionCore;
         private EventDTO currentEvent = null;
         private bool isAutomatic = false;
         public AddEditEvent()
@@ -24,33 +24,16 @@ namespace CMS.UI.Windows.Event
             InitializeComponent();
             eventCore = new EventCore();
             roomCore = new RoomCore();
+            sessionCore = new SessionCore();
             NewButton_Click(null, null);
             InitializeData();
         }
 
         private async void InitializeData()
         {
-            InitializeTimeBoxes();
+            ClearEventBoxes();
             await LoadBuildings();
             await LoadEvents();
-        }
-
-        private void InitializeTimeBoxes()
-        {
-            for (var i=0; i<=23; i++)
-            {
-                BeginHour.Items.Add(i);
-                EndHour.Items.Add(i);
-            }
-            for (var i = 0; i <= 59; i++)
-            {
-                BeginMinute.Items.Add(i);
-                EndMinute.Items.Add(i);
-            }
-            BeginHour.SelectedValue = 0;
-            EndHour.SelectedValue = 0;
-            BeginMinute.SelectedValue = 0;
-            EndMinute.SelectedValue = 0;
         }
 
         private void ClearEventBoxes()
@@ -61,10 +44,6 @@ namespace CMS.UI.Windows.Event
             RoomBox.SelectedIndex = -1;
             BeginDatePicker.SelectedDate = null;
             EndDatePicker.SelectedDate = null;
-            BeginHour.SelectedValue = 0;
-            EndHour.SelectedValue = 0;
-            BeginMinute.SelectedValue = 0;
-            EndMinute.SelectedValue = 0;
         }
 
         private async Task LoadEvents()
@@ -90,7 +69,7 @@ namespace CMS.UI.Windows.Event
                 BuildingBox.Items.Add(building);
             }
             RoomBox.Items.Clear();
-            
+
         }
 
         private async Task LoadRoomsForBuilding(int buildingId)
@@ -126,11 +105,7 @@ namespace CMS.UI.Windows.Event
                     RoomBox.SelectedIndex = -1;
                 }
                 BeginDatePicker.SelectedDate = currentEvent.BeginDate;
-                BeginHour.SelectedValue = currentEvent.BeginDate.Hour;
-                BeginMinute.SelectedValue = currentEvent.BeginDate.Minute;
                 EndDatePicker.SelectedDate = currentEvent.EndDate;
-                EndHour.SelectedValue = currentEvent.EndDate.Hour;
-                EndMinute.SelectedValue = currentEvent.EndDate.Minute;
                 DeleteButton.Visibility = Visibility.Visible;
             }
         }
@@ -141,9 +116,14 @@ namespace CMS.UI.Windows.Event
             var result = true;
             result = !ValidationHelper.ValidateTextFiled(TitleBox.Text.Length > 0, TitleBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(DescriptionBox.Text.Length > 0, DescriptionBox) ? false : result;
-            result = !ValidationHelper.ValidateDatePicker(BeginDatePicker.SelectedDate.HasValue, BeginDatePicker) ? false : result;
-            result = !ValidationHelper.ValidateDatePicker(EndDatePicker.SelectedDate.HasValue && (BeginDatePicker.SelectedDate.HasValue
-                && EndDatePicker.SelectedDate >= BeginDatePicker.SelectedDate), EndDatePicker) ? false : result;
+            result = !ValidationHelper.ValidateDateTimePicker(BeginDatePicker.SelectedDate.HasValue
+                && BeginDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
+                && BeginDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate, BeginBorderError) ? false : result;
+            result = !ValidationHelper.ValidateDateTimePicker(EndDatePicker.SelectedDate.HasValue
+                && (BeginDatePicker.SelectedDate.HasValue
+                && EndDatePicker.SelectedDate >= BeginDatePicker.SelectedDate
+                && EndDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
+                && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate), EndBorderError) ? false : result;
             return result;
         }
 
@@ -167,11 +147,50 @@ namespace CMS.UI.Windows.Event
             else NewButton_Click(null, null);
         }
 
-        private void Submitbutton_Click(object sender, RoutedEventArgs e)
+        private async void Submitbutton_Click(object sender, RoutedEventArgs e)
         {
             if (ValidateForm())
             {
-
+                var response = await sessionCore.CheckOverlappingSessiondAsync(UserCredentials.Conference.ConferenceId,
+                        BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value);
+                if (response != null && !response.Status)
+                {
+                    if (SelectEventBox.SelectedIndex >= 0)
+                    {
+                        currentEvent.ConferenceId = UserCredentials.Conference.ConferenceId;
+                        currentEvent.Title = TitleBox.Text;
+                        currentEvent.Description = DescriptionBox.Text;
+                        currentEvent.BeginDate = BeginDatePicker.SelectedDate.Value;
+                        currentEvent.EndDate = EndDatePicker.SelectedDate.Value;
+                        currentEvent.RoomId = RoomBox.SelectedIndex >= 0 ? (int?)RoomBox.SelectedValue : null;
+                        if (await eventCore.EditEventAsync(currentEvent))
+                        {
+                            MessageBox.Show("Successfully edited event");
+                            InitializeData();
+                        }
+                        else MessageBox.Show("Error occured while editing event");
+                    }
+                    else
+                    {
+                        var newEvent = new EventDTO()
+                        {
+                            ConferenceId = UserCredentials.Conference.ConferenceId,
+                            Title = TitleBox.Text,
+                            Description = DescriptionBox.Text,
+                            BeginDate = BeginDatePicker.SelectedDate.Value,
+                            EndDate = EndDatePicker.SelectedDate.Value,
+                            RoomId = RoomBox.SelectedIndex >= 0 ? (int?)RoomBox.SelectedValue : null
+                        };
+                        if (await eventCore.AddEventAsync(newEvent))
+                        {
+                            MessageBox.Show("Successfully added new event");
+                            InitializeData();
+                        }
+                        else MessageBox.Show("Error occured while adding new event");
+                    }
+                }
+                else if (response == null) MessageBox.Show("Error occured while adding new event");
+                else MessageBox.Show(response.Message);
             }
             else MessageBox.Show("Invalid form");
         }
@@ -192,9 +211,17 @@ namespace CMS.UI.Windows.Event
             if (BuildingBox.SelectedIndex >= 0 && !isAutomatic) await LoadRoomsForBuilding(int.Parse(BuildingBox.SelectedValue.ToString()));
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (SelectEventBox.SelectedIndex >= 0)
+            {
+                if (await eventCore.DeleteEventAsync(currentEvent.EventId))
+                {
+                    MessageBox.Show("Successfully deleted event");
+                    InitializeData();
+                }
+                else MessageBox.Show("Error occured while deleting event");
+            }
         }
     }
 }

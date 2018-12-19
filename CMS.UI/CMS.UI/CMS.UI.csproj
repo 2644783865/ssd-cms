@@ -131,6 +131,12 @@
     <Compile Include="Windows\Reviews\ReviewsShow.xaml.cs">
       <DependentUpon>ReviewsShow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Rooms\AddLocation.xaml.cs">
+      <DependentUpon>AddLocation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Rooms\Location.xaml.cs">
+      <DependentUpon>Location.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Rooms\Room.xaml.cs">
       <DependentUpon>Room.xaml</DependentUpon>
     </Compile>
@@ -139,6 +145,12 @@
     </Compile>
     <Compile Include="Windows\Rooms\Building.xaml.cs">
       <DependentUpon>Building.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Session\AddSession.xaml.cs">
+      <DependentUpon>AddSession.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Session\Session.xaml.cs">
+      <DependentUpon>Session.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Tasks\AddEditTask.xaml.cs" />
     <Compile Include="Windows\Tasks\ManageTasks.xaml.cs">
@@ -228,6 +240,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Rooms\AddLocation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Rooms\Location.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\Rooms\Room.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -239,6 +259,14 @@
     <Page Include="Windows\Rooms\Building.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Session\AddSession.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Session\Session.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Tasks\AddEditTask.xaml">
       <Generator>MSBuild:Compile</Generator>
