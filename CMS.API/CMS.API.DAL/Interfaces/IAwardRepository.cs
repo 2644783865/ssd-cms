@@ -11,5 +11,7 @@ namespace CMS.API.DAL.Interfaces
         void AddAward(AwardDTO awardDTO);
         void EditAward(AwardDTO awardDTO);
         void DeleteAward(int AwardId);
+        bool CheckIfPresentationHasAward(int presentationId);
+        void DeleteAssignmentAwardToPresentation(int presentationId);
     }
 }

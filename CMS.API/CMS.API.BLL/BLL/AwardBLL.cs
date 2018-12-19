@@ -34,13 +34,14 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+
         public AwardDTO GetAwardById(int id)
         {
             try
             {
-                var task = GetAwardById(id);
-                if (task == null) return null;
-                return task;
+                var award = GetAwardById(id);
+                if (award == null) return null;
+                return award;
             }
             catch
             {
@@ -60,6 +61,7 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+
         public bool DeleteAward(int AwardId)
         {
             try
@@ -71,6 +73,32 @@ namespace CMS.API.BLL.BLL
                 return false;
             }
             return true;
+        }
+
+        public bool CheckIfPresentationHasAward(int presentationId)
+        {
+            try
+            {
+                _repository.CheckIfPresentationHasAward(presentationId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteAssignmentAwardToPresentation(int presentationId)
+        {
+            try
+            {
+                _repository.DeleteAssignmentAwardToPresentation(presentationId);
+            }
+            catch
+            {
+                return false;
+            }
+            return false;
         }
     }
 }
