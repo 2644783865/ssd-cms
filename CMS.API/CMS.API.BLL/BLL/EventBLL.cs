@@ -73,6 +73,7 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+
         public Response CheckOverlappingEvent(int conferenceId, DateTime begin, DateTime end)
         {
             Response res = new Response();

@@ -42,6 +42,21 @@ namespace CMS.API.DAL.Repositories
             _db.SaveChanges();
         }
 
+        public bool CheckIfPresentationHasAward(int presentationId)
+        {
+            if (GetAwards() != null)
+            {
+                if (presentationId == GetAwards().GetEnumerator().Current.PresentationId) return true;
+                else return false;
+            }
+           else return false;
+        }
+
+        public void DeleteAssignmentAwardToPresentation(int presentationId)
+        {
+            DeleteAward(presentationId);
+        }
+
         public void Dispose()
         {
             _db.Dispose();

@@ -9,24 +9,35 @@ namespace CMS.API.Tests
     [TestClass]
     public class EventTest
     {
-        IEventBLL bll;
+        IEventBLL eventTest;
 
         [TestInitialize]
         public void InitializeBLL()
         {
-            bll = new EventBLL();
+            eventTest = new EventBLL();
         }
+
+        [TestMethod]
+        public void TestCheckEvents()
+        {
+            int conferenceId = 1;
+            DateTime begin = new DateTime(2008, 5, 1, 8, 30, 52);
+            DateTime end = new DateTime(2004, 5, 1, 8, 30, 52);
+            var result = eventTest.CheckOverlappingEvent(conferenceId, begin, end);
+            Assert.AreEqual(false, result.Status);
+        }
+
         [TestMethod]
         public void TestGetEvents()
         {
-            var result = bll.GetEvents(1);
-            Assert.AreEqual("TestEvent", result.FirstOrDefault(eventDTO => eventDTO.ConferenceId == 1).Title);
+            var result = eventTest.GetEvents(1);
+            Assert.AreEqual("Event Title", result.FirstOrDefault(eventDTO => eventDTO.EventId == 1).Title);
         }
         [TestMethod]
         public void TestGetEventById()
         {
-            var result = bll.GetEventById(1);
-            Assert.AreEqual("TestEvent", result);
+            var result = eventTest.GetEventById(1);
+            Assert.AreEqual("Event Title", result.Title);
         }
     }
 }
