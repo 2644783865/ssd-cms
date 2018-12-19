@@ -1,0 +1,17 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Award.ManageAwards"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CMS.UI.Windows.Award"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Manage Awards" Height="300" Width="300">
+    <Grid>
+        <ComboBox x:Name="SessionComboBox" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ClearButton" Content="Clear Awards" HorizontalAlignment="Left" Margin="159,213,0,0" VerticalAlignment="Top" Width="95" Click="Button_Clear"/>
+        <DataGrid x:Name="SessionDataGrid" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Height="150" Width="120"/>
+        <DataGrid x:Name="PresentationDataGrid" HorizontalAlignment="Left" Margin="159,28,0,0" VerticalAlignment="Top" Height="150" Width="126"/>
+
+    </Grid>
+</Controls:MetroWindow>
