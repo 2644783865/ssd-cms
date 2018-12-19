@@ -4,6 +4,7 @@ using CMS.BE.DTO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
+using System;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -26,8 +27,8 @@ namespace CMS.API.DAL.Repositories
         public IEnumerable<ArticleDTO> GetArticlesForConferenceAndAuthor(int conferenceId, int authorId)
         {
             var articles = _db.Articles.SqlQuery("SELECT * FROM Article WHERE ArticleId IN " +
-                "(SELECT * FROM Article JOIN ArticleAuthor ON Article.ArticleId = ArticleAuthor.ArticleId" +
-                "WHERE ConferenceID = @conferenceId AND AuthorId = @authorId)", new SqlParameter("@conferenceId", conferenceId),
+                "(SELECT Article.ArticleId FROM Article JOIN ArticleAuthor ON Article.ArticleId = ArticleAuthor.ArticleId " +
+                "WHERE ConferenceID=@conferenceId AND AuthorId=@authorId)", new SqlParameter("@conferenceId", conferenceId),
                 new SqlParameter("@authorId", authorId));
             foreach (var article in articles)
             {
@@ -38,8 +39,8 @@ namespace CMS.API.DAL.Repositories
         public IEnumerable<AuthorDTO> GetAuthorsFromArticleId(int articleId)
         {
             var authors = _db.Authors.SqlQuery("SELECT * FROM Author WHERE AuthorId IN " +
-                "(SELECT AuthorId FROM Article JOIN ArticleAuthor" +
-                " ON Article.ArticleId = ArticleAuthor.ArticleId WHERE Article.ArticleId = @articleId)", 
+                "(SELECT AuthorId FROM Article JOIN ArticleAuthor " +
+                " ON Article.ArticleId = ArticleAuthor.ArticleId WHERE Article.ArticleId = @articleId)",
                 new SqlParameter("@articleId", articleId));
             foreach (var author in authors)
             {
@@ -63,9 +64,22 @@ namespace CMS.API.DAL.Repositories
 
         public void DeleteArticle(int articleId)
         {
-            var article = _db.Articles.Find(articleId);
-            _db.Articles.Remove(article);
-            _db.SaveChanges();
+            using (var dbContextTransaction = _db.Database.BeginTransaction())
+            {
+                _db.Submissions.RemoveRange(_db.Submissions.Where(sub => sub.ArticleId == articleId));
+                _db.SaveChanges();
+                var authors = _db.Authors.SqlQuery("SELECT * FROM Author WHERE AuthorId IN " +
+                "(SELECT AuthorId FROM Article JOIN ArticleAuthor " +
+                " ON Article.ArticleId = ArticleAuthor.ArticleId WHERE Article.ArticleId = @articleId)",
+                new SqlParameter("@articleId", articleId)).ToList();
+                foreach (var author in authors)
+                    _db.Articles.Find(articleId).Authors.Remove(author);
+                _db.SaveChanges();
+                var article = _db.Articles.Find(articleId);
+                _db.Articles.Remove(article);
+                _db.SaveChanges();
+                dbContextTransaction.Commit();
+            }
         }
 
         public decimal GetLastArticleId()
@@ -81,7 +95,7 @@ namespace CMS.API.DAL.Repositories
 
         public IEnumerable<SubmissionDTO> GetSubmissionsForArticle(int articleId)
         {
-            return _db.Submissions.Where(sub => sub.ArticleId==articleId).Project().To<SubmissionDTO>();
+            return _db.Submissions.Where(sub => sub.ArticleId == articleId).Project().To<SubmissionDTO>();
         }
 
         public SubmissionDTO GetSubmissionById(int submissionId)

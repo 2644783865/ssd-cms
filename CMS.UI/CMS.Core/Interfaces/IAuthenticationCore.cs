@@ -23,5 +23,6 @@ namespace CMS.Core.Interfaces
         Task<bool> SetRoleForConferenceAndAccountAsync(int conferenceId, string login, int roleId);
         Task<bool> DeleteRoleForConferenceAndAccountAsync(int conferenceId, string login, int roleId);
         Task<bool> ChangePasswordAsync(ChangePasswordModel passwordModel);
+        Task<bool> CheckIsManager(int conferenceId);
     }
 }

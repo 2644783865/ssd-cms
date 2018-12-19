@@ -7,7 +7,7 @@
         public int? PresentationId { get; set; }
         public int? SpecialSessionId { get; set; }
         public string Status { get; set; }
-        public System.DateTime AcceptanceDate { get; set; }
+        public System.DateTime? AcceptanceDate { get; set; }
         public int ConferenceID { get; set; }
     }
 }

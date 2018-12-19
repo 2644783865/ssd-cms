@@ -30,7 +30,7 @@
         <Label Name="LoginLabel" Content="Login:" HorizontalAlignment="Left" Margin="371,130,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>
         <Label Name="EmailLabel" Content="Email:" HorizontalAlignment="Left" Margin="371,185,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>
         <Label Name="PhoneLabel" Content="Phone:" HorizontalAlignment="Left" Margin="371,241,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>
-        <ListBox Name="ConferenceList" HorizontalAlignment="Center" Height="260" Margin="53,0,1010,25" VerticalAlignment="Bottom" Width="209" BorderThickness="1"/>
+        <ListBox Name="ConferenceList" HorizontalAlignment="Center" Height="260" Margin="53,0,1010,25" VerticalAlignment="Bottom" Width="209" BorderThickness="1" SelectionChanged="ConferenceList_SelectionChanged"/>
         <Label Content="Active Conferences:" HorizontalAlignment="Center" Margin="53,0,1010,290" VerticalAlignment="Bottom" Width="209" FontSize="15"/>
         <Label Name="IdLabel" Content="" HorizontalAlignment="Left" Margin="371,30,0,0" VerticalAlignment="Top" FontSize="20" Width="124"/>
     </Grid>

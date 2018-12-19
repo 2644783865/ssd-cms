@@ -56,7 +56,9 @@ namespace CMS.UI.Windows.Articles
                     ArticleFile = articleFile,
                     ArticleId = currentArticle.ArticleId
                 };
-                await core.AddSubmissionAsync(submission);
+                var result = await core.AddSubmissionAsync(submission);
+                if (result) MessageBox.Show("Successfully submitted article");
+                else MessageBox.Show("Error occured while submitting article");
             }
         }
 

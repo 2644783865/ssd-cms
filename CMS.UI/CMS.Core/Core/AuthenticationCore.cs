@@ -12,6 +12,7 @@ namespace CMS.Core.Core
     public class AuthenticationCore : IAuthenticationCore
     {
         private ApiHelper _apiHelper = new ApiHelper();
+        private IAuthorCore authorCore = new AuthorCore();
 
         public bool AdminLogin(LoginModel loginModel)
         {
@@ -26,6 +27,7 @@ namespace CMS.Core.Core
             {
                 UserCredentials.Account = JsonConvert.DeserializeObject<AccountDTO>(result.Content);
                 UserCredentials.Username = loginModel.Login;
+                UserCredentials.Author = await authorCore.GetAuthorByAccountIdAsync(UserCredentials.Account.AccountId);
                 return true;
             }
             else return false;
@@ -108,6 +110,18 @@ namespace CMS.Core.Core
             {
                 UserCredentials.Roles = JsonConvert.DeserializeObject<List<RoleDTO>>(result.Content);
             }
+        }
+
+        public async Task<bool> CheckIsManager(int conferenceId)
+        {
+            var path = $"{Properties.Resources.getRolesForConferenceAndAccountPath}?conferenceId={conferenceId}&accountId={UserCredentials.Account.AccountId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                var roles = JsonConvert.DeserializeObject<List<RoleDTO>>(result.Content);
+                return roles.Count > 0;
+            }
+            return false;
         }
 
         public async Task<List<RoleDTO>> GetRolesForOtherAccountAsync(string login)

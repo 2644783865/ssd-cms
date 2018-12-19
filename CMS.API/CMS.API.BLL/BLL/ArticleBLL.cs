@@ -86,14 +86,6 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                foreach(var submission in _repository.GetSubmissionsForArticle(articleId))
-                {
-                    DeleteSubmission(submission.SubmissionId);
-                }
-                foreach(var author in _repository.GetAuthorsFromArticleId(articleId))
-                {
-                    DeleteAssignmentAuthorForArticle(articleId, author.AuthorId);
-                }
                 _repository.DeleteArticle(articleId);
             }
             catch

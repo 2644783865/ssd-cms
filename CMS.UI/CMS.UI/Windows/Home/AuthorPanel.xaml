@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Author Panel" Height="720" Width="1280">
+        Title="Author Panel" Height="720" Width="1280"
+                      Activated="MetroWindow_Activated">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
             <Label Name="ConferenceLabel" Content="Conference: unknown conference"/>
@@ -18,6 +19,6 @@
         <Button x:Name="AddArticles" Content="Add" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="AddArticles_Click"/>
         <Button x:Name="EditArticles" Content="Details" Margin="115,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="EditArticles_Click"/>
         <Button x:Name="DeleteArticle" Content="Delete" Margin="220,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30"  Background="Red" Click="DeleteArticle_Click" />
-        <DataGrid HorizontalAlignment="Center" Height="400" Margin="0,0,0,0" VerticalAlignment="Center" Width="900" MouseDoubleClick="DataGrid_MouseDoubleClick"/>
+        <DataGrid Name="ArticleDataGrid" HorizontalAlignment="Center" Height="400" Margin="0,0,0,0" VerticalAlignment="Center" Width="900" MouseDoubleClick="DataGrid_MouseDoubleClick"/>
     </Grid>
 </Controls:MetroWindow>

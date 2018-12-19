@@ -20,5 +20,6 @@
         <Button Name="ManageAccount" Content="Manage Account"  Width="120" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top" Click="ManageAccountButton_Click"/>
         <Button Name="ManageAuthor" Content="Manage Author"  Width="120" HorizontalAlignment="Left" Margin="30,62,0,0" VerticalAlignment="Top" Click="ManageAuthor_Click"/>
         <Button Name="ManageEvent" Content="Manage Event"  Width="120" HorizontalAlignment="Left" Margin="30,94,0,0" VerticalAlignment="Top" Click="ManageEvent_Click"/>
+        <Button Name="ManageAward" Content="Manage Awards"  Width="120" HorizontalAlignment="Left" Margin="30,126,0,0" VerticalAlignment="Top" Click="ManageAward_Click"/>
     </Grid>
 </Controls:MetroWindow>

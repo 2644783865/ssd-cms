@@ -1,19 +1,9 @@
-﻿using MahApps.Metro.Controls;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CMS.BE.DTO;
+using CMS.BE.Models.Article;
+using CMS.Core.Core;
+using CMS.Core.Interfaces;
+using MahApps.Metro.Controls;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Articles
 {
@@ -22,14 +12,38 @@ namespace CMS.UI.Windows.Articles
     /// </summary>
     public partial class SubmitArticle : MetroWindow
     {
+        private IArticleCore core;
         public SubmitArticle()
         {
             InitializeComponent();
+            core = new ArticleCore();
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-                
+            if (Topic.Text.Length > 0)
+            {
+                var article = new ArticleDTO()
+                {
+                    Topic = Topic.Text,
+                    ConferenceID = UserCredentials.Conference.ConferenceId,
+                    Status = "submitted"
+                };
+
+                var articleModel = new AddArticleModel()
+                {
+                    Article = article,
+                    AuthorId = UserCredentials.Account.AccountId
+                };
+
+                if (await core.AddArticleAsync(articleModel))
+                {
+                    MessageBox.Show("Successfully added article");
+                    Close();
+                }
+                else MessageBox.Show("Error occured while adding article");
+            }
+            else MessageBox.Show("Provide topic!");
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

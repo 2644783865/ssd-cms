@@ -15,21 +15,30 @@ namespace CMS.UI.Windows.Home
     public partial class UserPanel : MetroWindow
     {
         private IAuthenticationCore core;
-
+        private IAuthorCore authorCore;
         public UserPanel()
         {
             InitializeComponent();
             core = new AuthenticationCore();
+            authorCore = new AuthorCore();
             WindowHelper.WindowSettings(this, UserLabel);
             InitializeData();
         }
 
         private async void InitializeData()
         {
+            UserCredentials.Author = await authorCore.GetAuthorByAccountIdAsync(UserCredentials.Account.AccountId);
             ProgressSpin.IsActive = true;
             await FillConferenceList();
             FillUserData();
+            SetButtonVisibility(false);
             ProgressSpin.IsActive = false;
+        }
+
+        private void SetButtonVisibility(bool isManager)
+        {
+            GoToAuthorPanelButton.Visibility = UserCredentials.Author != null ? Visibility.Visible : Visibility.Hidden;
+            GoToManagerPanelButton.Visibility = isManager ? Visibility.Visible : Visibility.Hidden;
         }
 
         private async Task FillConferenceList()
@@ -104,6 +113,15 @@ namespace CMS.UI.Windows.Home
                 ChangePassword newChangePasswordWindow = new ChangePassword();
                 newChangePasswordWindow.Show();
                 Close();
+            }
+        }
+
+        private async void ConferenceList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (ConferenceList.SelectedIndex >= 0)
+            {
+                var result = await core.CheckIsManager(UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex).ConferenceId);
+                SetButtonVisibility(result);
             }
         }
     }

@@ -3,6 +3,7 @@ using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
 using CMS.UI.Windows.Author;
+using CMS.UI.Windows.Award;
 using CMS.UI.Windows.Event;
 using MahApps.Metro.Controls;
 using System;
@@ -66,6 +67,12 @@ namespace CMS.UI.Windows.Home
         private void ManageEvent_Click(object sender, RoutedEventArgs e)
         {
             AddEditEvent newWindow = new AddEditEvent();
+            newWindow.ShowDialog();
+        }
+
+        private void ManageAward_Click(object sender, RoutedEventArgs e)
+        {
+            ManageAwards newWindow = new ManageAwards();
             newWindow.ShowDialog();
         }
     }
