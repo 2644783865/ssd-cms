@@ -67,9 +67,16 @@ namespace CMS.API.Controllers
         [Route("api/conference/program")]
         public IHttpActionResult GetConferenceProgram(int conferenceId)
         {
-            var model = _bll.GetConferenceProgram(conferenceId);
-            PdfController controller = PdfHelper.Setup();
-            return Ok(new ByteArray() { Content = controller.GetPdf(model) });
+            try
+            {
+                var model = _bll.GetConferenceProgram(conferenceId);
+                PdfController controller = PdfHelper.Setup();
+                return Ok(new ByteArray() { Content = controller.GetPdf(model) });
+            }
+            catch
+            {
+                return InternalServerError();
+            }
         }
     }
 }

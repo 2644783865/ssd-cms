@@ -15,14 +15,14 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
     <Grid>
-        <Button Name="GoToUserPanelButton" Content="User Panel" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToUserPanelButton_Click"/>
-        <Button Name="GoToManagerPanelButton" Content="Manager Panel" HorizontalAlignment="Right" Margin="0,10,129,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToManagerPanelButton_Click"/>
+        <Button Name="GoToUserPanelButton" Background="Blue" Content="User Panel" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToUserPanelButton_Click"/>
+        <Button Name="GoToManagerPanelButton" Background="Blue" Content="Manager Panel" HorizontalAlignment="Right" Margin="0,10,129,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToManagerPanelButton_Click"/>
         <Button Name="DownloadProgram" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Width="65" Height="71" BorderThickness="0" Click="DownloadProgram_Click">
             <iconPacks:FontAwesome Kind="FilePdfRegular"  Width="40" Height="50"/>
         </Button>
         <Label Content="Download &#xD;&#xA;Conference &#xD;&#xA;Program" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,101" Width="85" Height="65" HorizontalContentAlignment="Center"/>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="0,0,110,45" Height="40" Width="35" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="1000" FontSize="30" FontWeight="SemiBold"/>
+        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="592" FontSize="30" FontWeight="SemiBold"/>
         <Label Name="DatesLabel" Content="" HorizontalAlignment="Left" Margin="21,107,0,0" VerticalAlignment="Top" Width="526" FontSize="20"/>
         <TextBox Name="DescriptionBox" HorizontalAlignment="Left" Height="74" Margin="21,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1200" BorderThickness="0" FontSize="15"/>
         <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="21,65,0,0" VerticalAlignment="Top" Width="571" FontSize="20"/>
@@ -32,5 +32,14 @@
         <Label Content="Sessions:" HorizontalAlignment="Left" Margin="45,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
         <Label Content="Special Sessions:" HorizontalAlignment="Left" Margin="390,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
         <Label Content="Events:" HorizontalAlignment="Left" Margin="737,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
+        <Button Name="EmergButton" HorizontalAlignment="Right" Margin="0,10,289,0" Foreground="Red" VerticalAlignment="Top" Width="60" Height="50">
+            <iconPacks:FontAwesome Kind="InfoCircleSolid"  Width="20" Height="20"/>
+        </Button>
+        <Button Name="AccomButton" HorizontalAlignment="Right" Margin="0,10,419,0" VerticalAlignment="Top" Width="60" Height="50">
+            <iconPacks:FontAwesome Kind="BedSolid"  Width="20" Height="20"/>
+        </Button>
+        <Button Name="TravelButton" HorizontalAlignment="Right" Margin="0,10,354,0" VerticalAlignment="Top" Width="60" Height="50">
+            <iconPacks:FontAwesome Kind="PlaneDepartureSolid"  Width="20" Height="20"/>
+        </Button>
     </Grid>
 </Controls:MetroWindow>

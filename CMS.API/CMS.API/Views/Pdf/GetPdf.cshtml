@@ -6,22 +6,100 @@
 <h3>@Model.Conference.BeginDate.ToShortDateString() - @Model.Conference.EndDate.ToShortDateString()</h3>
 <br />
 <h2>Program:</h2>
+<div>
+    <p>Legend:</p>
+    <span style="color:#0000FF">Events &nbsp;&nbsp;</span>
+    <span>Sessions &nbsp;&nbsp;</span>
+    <span style="font-weight: bold">Special sessions</span>
+</div>
+<br />
 <table class="table table-bordered table-responsive table-hover">
     <tr>
-        <th>Type</th>
         <th>Title </th>
         <th>Begin Date </th>
         <th>End Date</th>
     </tr>
     @foreach (var m in Model.Entries)
     {
-        <tr>
-            <td>@m.GetType()</td>
+        var color = m.GetType() == typeof(CMS.BE.DTO.EventDTO) ? "#0000FF" : "#000000";
+        var weigh = m.GetType() == typeof(CMS.BE.DTO.SpecialSessionDTO) ? "bold" : "normal";
+        <tr style="color:@color; font-weight: @weigh">
             <td>@m.Title</td>
             <td>@m.BeginDate</td>
             <td>@m.EndDate</td>
         </tr>
     }
 </table>
-
+<br />
+<h3>Events:</h3>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Title </th>
+        <th>Begin Date </th>
+        <th>End Date</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th>Room</th>
+    </tr>
+    @foreach (var m in Model.Events)
+    {
+        <tr>
+            <td>@m.Title</td>
+            <td>@m.BeginDate</td>
+            <td>@m.EndDate</td>
+            <td>@m.Description</td>
+            <td>@m.RoomCode</td>
+        </tr>
+    }
+</table>
+<br />
+<h3>Sessions:</h3>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Title </th>
+        <th>Begin Date </th>
+        <th>End Date</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th>Room</th>
+        <th>Chairman</th>
+    </tr>
+    @foreach (var m in Model.Sessions)
+    {
+        <tr>
+            <td>@m.Title</td>
+            <td>@m.BeginDate</td>
+            <td>@m.EndDate</td>
+            <td>@m.Description</td>
+            <td>@m.BuildingAddress</td>
+            <td>@m.RoomCode</td>
+            <td>@m.ChairmanName</td>
+        </tr>
+    }
+</table>
+<br />
+<h3>Special Sessions:</h3>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Title </th>
+        <th>Begin Date </th>
+        <th>End Date</th>
+        <th>Description</th>
+        <th>Address</th>
+        <th>Room</th>
+        <th>Chairman</th>
+    </tr>
+    @foreach (var m in Model.SpecialSessions)
+    {
+        <tr>
+            <td>@m.Title</td>
+            <td>@m.BeginDate</td>
+            <td>@m.EndDate</td>
+            <td>@m.Description</td>
+            <td>@m.BuildingAddress</td>
+            <td>@m.RoomCode</td>
+            <td>@m.ChairId</td>
+        </tr>
+    }
+</table>
 

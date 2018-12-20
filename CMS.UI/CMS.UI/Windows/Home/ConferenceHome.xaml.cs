@@ -55,12 +55,18 @@ namespace CMS.UI.Windows.Home
 
         private async Task LoadSessions()
         {
-
+            SessionList.Items.Clear();
+            SessionList.DisplayMemberPath = "Title";
+            SessionList.SelectedValuePath = "SessionId";
+            SessionList.ItemsSource = await sessionCore.GetSessionsAsync(UserCredentials.Conference.ConferenceId);
         }
 
         private async Task LoadSpecialSessions()
         {
-
+            SpecialSessionList.Items.Clear();
+            SpecialSessionList.DisplayMemberPath = "Title";
+            SpecialSessionList.SelectedValuePath = "SpecialSessionId";
+            SpecialSessionList.ItemsSource = await sessionCore.GetSpecialSessionsAsync(UserCredentials.Conference.ConferenceId);
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -86,20 +92,27 @@ namespace CMS.UI.Windows.Home
         {
             ProgressSpin.IsActive = true;
             DownloadProgram.IsEnabled = false;
-            var document = await confCore.GetConferenceProgramAsync(UserCredentials.Conference.ConferenceId);
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            try
             {
-                AddExtension = true,
-                Filter = "pdf files (*.pdf)|*.pdf",
-                FileName = $"{UserCredentials.Conference.Title} Program.pdf"
-            };
-
-            if ((bool)saveFileDialog.ShowDialog())
-            {
-                using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
+                var document = await confCore.GetConferenceProgramAsync(UserCredentials.Conference.ConferenceId);
+                SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
-                    writer.Write(document);
+                    AddExtension = true,
+                    Filter = "pdf files (*.pdf)|*.pdf",
+                    FileName = $"{UserCredentials.Conference.Title} Program.pdf"
+                };
+
+                if ((bool)saveFileDialog.ShowDialog())
+                {
+                    using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
+                    {
+                        writer.Write(document);
+                    }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Error downloading conference program");
             }
             DownloadProgram.IsEnabled = true;
             ProgressSpin.IsActive = false;

@@ -12,6 +12,7 @@ namespace CMS.API.BLL.BLL
     {
         private IConferenceRepository _repository = new ConferenceRepository();
         private IEventRepository _eventRepository = new EventRepository();
+        private ISessionRepository _sessionRepository = new SessionRepository();
 
         public IEnumerable<ConferenceDTO> GetConferences()
         {
@@ -82,18 +83,18 @@ namespace CMS.API.BLL.BLL
         {
             // not implemented
             var conference = _repository.GetConferenceById(conferenceId);
-            var events = (_eventRepository.GetEvents(conferenceId) as IEnumerable<BaseTimeEntity>).OrderBy(ent => ent.BeginDate).ToList();
+            var events = _eventRepository.GetEvents(conferenceId).ToList();
+            var sessions = _sessionRepository.GetSessions(conferenceId).ToList();
+            var specialSessions = _sessionRepository.GetSpecialSessions(conferenceId).ToList();
+            var entries = (_eventRepository.GetEvents(conferenceId) as IEnumerable<BaseTimeEntity>).OrderBy(ent => ent.BeginDate).ToList();
             return new ConferenceProgramModel()
             {
                 Conference = conference,
-                Entries = events
+                Entries = entries,
+                Events = events,
+                Sessions = sessions,
+                SpecialSessions = specialSessions
             };
         }
-
-       /* public IEnumerable<BaseTimeEntity> GetSortedEntities(int conferenceId)
-        {
-            var x = ;
-           
-        }*/
     }
 }
