@@ -393,8 +393,11 @@
   <data name="getConferenceByIdPath" xml:space="preserve">
     <value>api/conference/conferencebyid</value>
   </data>
-  <data name="getConferenceProgram" xml:space="preserve">
+  <data name="getConferenceProgramPath" xml:space="preserve">
     <value>api/conference/program</value>
+  </data>
+  <data name="getConferenceSchedulePath" xml:space="preserve">
+    <value>api/conference/schedule</value>
   </data>
   <data name="getConferencesForAccountPath" xml:space="preserve">
     <value>api/authentication/conferencesforaccount</value>

@@ -38,17 +38,17 @@
         <th>Begin Date </th>
         <th>End Date</th>
         <th>Description</th>
-        <th>Address</th>
+        <th>Building</th>
         <th>Room</th>
     </tr>
     @foreach (var m in Model.Events)
     {
         <tr>
-            <td>@m.Title</td>
+            <td style="max-width:170px; word-wrap: break-word">@m.Title</td>
             <td>@m.BeginDate</td>
             <td>@m.EndDate</td>
-            <td>@m.Description</td>
-            <td>@m.Address</td>
+            <td style="max-width:150px; word-wrap: break-word">@m.Description</td>
+            <td style="max-width:150px; word-wrap: break-word">@m.BuildingName</td>
             <td>@m.RoomCode</td>
         </tr>
     }
@@ -61,20 +61,20 @@
         <th>Begin Date </th>
         <th>End Date</th>
         <th>Description</th>
-        <th>Address</th>
+        <th>Building</th>
         <th>Room</th>
         <th>Chairman</th>
     </tr>
     @foreach (var m in Model.Sessions)
     {
         <tr>
-            <td>@m.Title</td>
+            <td style="max-width:170px; word-wrap: break-word">@m.Title</td>
             <td>@m.BeginDate</td>
             <td>@m.EndDate</td>
-            <td>@m.Description</td>
-            <td>@m.Address</td>
+            <td style="max-width:150px; word-wrap: break-word">@m.Description</td>
+            <td style="max-width:150px; word-wrap: break-word">@m.BuildingName</td>
             <td>@m.RoomCode</td>
-            <td>@m.ChairName</td>
+            <td>@m.AccountName</td>
         </tr>
     }
 </table>
@@ -86,20 +86,20 @@
         <th>Begin Date </th>
         <th>End Date</th>
         <th>Description</th>
-        <th>Address</th>
+        <th>Building</th>
         <th>Room</th>
         <th>Chairman</th>
     </tr>
     @foreach (var m in Model.SpecialSessions)
     {
         <tr>
-            <td>@m.Title</td>
+            <td style="max-width:170px; word-wrap: break-word">@m.Title</td>
             <td>@m.BeginDate</td>
             <td>@m.EndDate</td>
-            <td>@m.Description</td>
-            <td>@m.Address</td>
+            <td style="max-width:150px; word-wrap: break-word">@m.Description</td>
+            <td style="max-width:150px; word-wrap: break-word">@m.BuildingName</td>
             <td>@m.RoomCode</td>
-            <td>@m.ChairName</td>
+            <td>@m.AccountName</td>
         </tr>
     }
 </table>

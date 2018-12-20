@@ -3,6 +3,7 @@ using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace CMS.API.DAL.Repositories
@@ -17,11 +18,6 @@ namespace CMS.API.DAL.Repositories
             return _db.Sessions.Where(session => session.ConferenceId == conferenceID).Project().To<SessionDTO>();
         }
 
-        public IEnumerable<SessionDTO> GetSessionsForChair(int accountId, int conferenceId)
-        {
-            return _db.Sessions.Where(session => session.ConferenceId == conferenceId && session.ChairId == accountId).Project().To<SessionDTO>();
-            
-        }
         public SessionDTO GetSessionById(int id)
         {
             var session = _db.Sessions.Find(id);
@@ -101,12 +97,6 @@ namespace CMS.API.DAL.Repositories
             return false;
         }
 
-        public IEnumerable<SpecialSessionDTO> GetSpecialSessionsForChair(int accountId, int conferenceId)
-        {
-            return _db.SpecialSessions.Where(specialSession => specialSession.ConferenceId == conferenceId && specialSession.ChairId == accountId).Project().To<SpecialSessionDTO>();
-
-        }
-
         public bool CheckEvents(int conferenceId, DateTime begin, DateTime end)
         {
             // return false, when no overlapping
@@ -130,7 +120,28 @@ namespace CMS.API.DAL.Repositories
             return false;
         }
 
+        public IEnumerable<SessionDTO> GetSessionsForConferenceWithBaseEntryAttributes(int conferenceId)
+        {
+            return _db.Database.SqlQuery<SessionDTO>("SELECT Session.BeginDate, Session.EndDate, Session.Title, " +
+                "Session.Description, Room.Code AS RoomCode, Building.Name AS BuildingName, Account.Name AS AccountName " +
+                "FROM Session " +
+                "INNER JOIN Room ON Session.RoomId = Room.RoomID " +
+                "INNER JOIN Building ON Room.BuildingID = Building.BuildingID " +
+                "INNER JOIN Account ON Session.ChairId = Account.AccountId " +
+                "WHERE ConferenceId = @ConferenceId", new SqlParameter("ConferenceId", conferenceId));
+        }
 
+        public IEnumerable<SessionDTO> GetSessionsForConferenceAndChairWithBaseEntryAttributes(int accountId, int conferenceId)
+        {
+            return _db.Database.SqlQuery<SessionDTO>("SELECT Session.BeginDate, Session.EndDate, Session.Title, " +
+                "Session.Description, Room.Code AS RoomCode, Building.Name AS BuildingName, Account.Name AS AccountName " +
+                "FROM Session " +
+                "INNER JOIN Room ON Session.RoomId = Room.RoomID " +
+                "INNER JOIN Building ON Room.BuildingID = Building.BuildingID " +
+                "INNER JOIN Account ON Session.ChairId = Account.AccountId " +
+                "WHERE ConferenceId = @ConferenceId AND ChairId = @ChairId", new SqlParameter("ConferenceId", conferenceId),
+                new SqlParameter("ChairId", accountId));
+        }
 
 
         //SpecialSession
@@ -167,5 +178,29 @@ namespace CMS.API.DAL.Repositories
             _db.SaveChanges();
         }
 
+        public IEnumerable<SpecialSessionDTO> GetSpecialSessionsForConferenceAndChairWithBaseEntryAttributes(int accountId, int conferenceId)
+        {
+            return _db.Database.SqlQuery<SpecialSessionDTO>("SELECT SpecialSession.BeginDate, SpecialSession.EndDate, " +
+                "SpecialSession.Title, SpecialSession.Description, Room.Code AS RoomCode, Building.Name AS BuildingName, " +
+                "Account.Name AS AccountName " +
+                "FROM SpecialSession " +
+                "INNER JOIN Room ON SpecialSession.RoomId = Room.RoomID " +
+                "INNER JOIN Building ON Room.BuildingID = Building.BuildingID " +
+                "INNER JOIN Account ON SpecialSession.ChairId = Account.AccountId " +
+                "WHERE ConferenceId = @ConferenceId AND ChairId = @ChairId", new SqlParameter("ConferenceId", conferenceId), 
+                new SqlParameter("ChairId", accountId));
+        }
+
+        public IEnumerable<SpecialSessionDTO> GetSpecialSessionsForConferenceWithBaseEntryAttributes(int conferenceId)
+        {
+            return _db.Database.SqlQuery<SpecialSessionDTO>("SELECT SpecialSession.BeginDate, SpecialSession.EndDate, " +
+                "SpecialSession.Title, SpecialSession.Description, Room.Code AS RoomCode, Building.Name AS BuildingName, " +
+                "Account.Name AS AccountName " +
+                "FROM SpecialSession " +
+                "INNER JOIN Room ON SpecialSession.RoomId = Room.RoomID " +
+                "INNER JOIN Building ON Room.BuildingID = Building.BuildingID " +
+                "INNER JOIN Account ON SpecialSession.ChairId = Account.AccountId " +
+                "WHERE ConferenceId = @ConferenceId", new SqlParameter("ConferenceId", conferenceId));
+        }
     }
 }

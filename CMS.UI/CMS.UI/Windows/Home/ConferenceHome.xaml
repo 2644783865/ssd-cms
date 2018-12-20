@@ -15,8 +15,8 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
     <Grid>
-        <Button Name="GoToUserPanelButton" Background="Blue" Content="User Panel" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToUserPanelButton_Click"/>
-        <Button Name="GoToManagerPanelButton" Background="Blue" Content="Manager Panel" HorizontalAlignment="Right" Margin="0,10,129,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToManagerPanelButton_Click"/>
+        <Button Name="GoToUserPanelButton" Background="Blue" Content="User Panel" HorizontalAlignment="Right" Margin="0,10,54,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToUserPanelButton_Click"/>
+        <Button Name="GoToManagerPanelButton" Background="Blue" Content="Manager Panel" HorizontalAlignment="Right" Margin="0,10,160,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToManagerPanelButton_Click"/>
         <Button Name="DownloadProgram" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Width="65" Height="71" BorderThickness="0" Click="DownloadProgram_Click">
             <iconPacks:FontAwesome Kind="FilePdfRegular"  Width="40" Height="50"/>
         </Button>
@@ -40,6 +40,13 @@
         </Button>
         <Button Name="TravelButton" HorizontalAlignment="Right" Margin="0,10,354,0" VerticalAlignment="Top" Width="60" Height="50">
             <iconPacks:FontAwesome Kind="PlaneDepartureSolid"  Width="20" Height="20"/>
+        </Button>
+        <Button Name="DownloadSchedule" HorizontalAlignment="Right" Margin="0,0,30,171" VerticalAlignment="Bottom" Width="65" Height="71" BorderThickness="0" Click="DownloadSchedule_Click">
+            <iconPacks:FontAwesome Kind="CalendarAltRegular"  Width="40" Height="50"/>
+        </Button>
+        <Label Content="Download &#xD;&#xA;Schedule" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,247" Width="85" Height="41" HorizontalContentAlignment="Center"/>
+        <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="38" Height="36" Click="Refresh_Click">
+            <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Button>
     </Grid>
 </Controls:MetroWindow>

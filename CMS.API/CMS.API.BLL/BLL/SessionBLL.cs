@@ -4,9 +4,7 @@ using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
 using CMS.BE.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CMS.API.BLL.BLL
 {
@@ -176,7 +174,7 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                return _repository.GetSessions(conferenceID) as List<SessionDTO>;
+                return _repository.GetSessions(conferenceID);
             }
             catch
             {
@@ -188,7 +186,7 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                return _repository.GetSpecialSessions(conferenceID) as List<SpecialSessionDTO>;
+                return _repository.GetSpecialSessions(conferenceID);
             }
             catch
             {

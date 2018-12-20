@@ -11,6 +11,6 @@ namespace CMS.BE.Models.Program
     {
         public ConferenceDTO Conference { get; set; }
         public AccountDTO Person { get; set; }
-        public List<BaseTimeEntity> Entries { get; set; } = new List<BaseTimeEntity>();
+        public List<BaseEntryEntity> Entries { get; set; } = new List<BaseEntryEntity>();
     }
 }

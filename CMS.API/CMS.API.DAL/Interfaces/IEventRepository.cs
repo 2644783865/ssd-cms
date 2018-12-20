@@ -12,5 +12,6 @@ namespace CMS.API.DAL.Interfaces
         void EditEvent(EventDTO eventDTO);
         void DeleteEvent(int eventId);
         bool CheckEvents(int conferenceId, DateTime begin, DateTime end);
+        IEnumerable<EventDTO> GetEventsForConferenceWithBaseEntryAttributes(int conferenceId);
     }
 }

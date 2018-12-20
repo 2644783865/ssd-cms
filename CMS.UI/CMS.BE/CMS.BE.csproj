@@ -48,7 +48,7 @@
     <Compile Include="DTO\ArticleDTO.cs" />
     <Compile Include="DTO\AuthorDTO.cs" />
     <Compile Include="DTO\AwardDTO.cs" />
-    <Compile Include="DTO\BaseTimeEntity.cs" />
+    <Compile Include="DTO\BaseEntryEntity.cs" />
     <Compile Include="DTO\EventDTO.cs" />
     <Compile Include="DTO\LastMessageDTO.cs" />
     <Compile Include="DTO\SpecialSessionDTO.cs" />

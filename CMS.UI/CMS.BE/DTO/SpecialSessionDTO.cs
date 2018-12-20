@@ -2,7 +2,7 @@
 
 namespace CMS.BE.DTO
 {
-    public class SpecialSessionDTO : BaseTimeEntity
+    public class SpecialSessionDTO : BaseEntryEntity
     {
         public int SpecialSessionId { get; set; }
         public int ConferenceId { get; set; }

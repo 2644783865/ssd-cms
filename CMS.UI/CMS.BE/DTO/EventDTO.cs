@@ -1,6 +1,6 @@
 ﻿namespace CMS.BE.DTO
 {
-    public class EventDTO: BaseTimeEntity
+    public class EventDTO: BaseEntryEntity
     {
         public int EventId { get; set; }
         public int ConferenceId { get; set; }

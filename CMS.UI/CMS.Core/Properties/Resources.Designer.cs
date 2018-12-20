@@ -891,9 +891,18 @@ namespace CMS.Core.Properties {
         /// <summary>
         ///   Looks up a localized string similar to api/conference/program.
         /// </summary>
-        internal static string getConferenceProgram {
+        internal static string getConferenceProgramPath {
             get {
-                return ResourceManager.GetString("getConferenceProgram", resourceCulture);
+                return ResourceManager.GetString("getConferenceProgramPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/conference/schedule.
+        /// </summary>
+        internal static string getConferenceSchedulePath {
+            get {
+                return ResourceManager.GetString("getConferenceSchedulePath", resourceCulture);
             }
         }
         

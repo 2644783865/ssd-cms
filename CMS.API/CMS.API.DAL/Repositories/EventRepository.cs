@@ -3,6 +3,7 @@ using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace CMS.API.DAL.Repositories
@@ -70,6 +71,16 @@ namespace CMS.API.DAL.Repositories
                 }
             }
             return false;
+        }
+
+        public IEnumerable<EventDTO> GetEventsForConferenceWithBaseEntryAttributes(int conferenceId)
+        {
+            return _db.Database.SqlQuery<EventDTO>("SELECT Event.BeginDate, Event.EndDate, Event.Title, Event.Description, " +
+                "Room.Code AS RoomCode, Building.Name AS BuildingName " +
+                "FROM Event " +
+                "INNER JOIN Room ON Event.RoomId = Room.RoomID " +
+                "INNER JOIN Building ON Room.BuildingID = Building.BuildingID " +
+                "WHERE ConferenceId = @ConferenceId", new SqlParameter("ConferenceId", conferenceId));
         }
     }
 }

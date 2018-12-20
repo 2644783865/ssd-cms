@@ -82,19 +82,18 @@ namespace CMS.API.Controllers
         // GET: api/Conference/Schedule
         [HttpGet]
         [Route("api/conference/schedule")]
-        public IHttpActionResult GetConferenceSchedule(int conferenceId)
+        public IHttpActionResult GetConferenceSchedule(int accountId, int conferenceId)
         {
-            /*try
+            try
             {
-                var model = _bll.GetConferenceProgram(conferenceId);
+                var model = _bll.GetConferenceSchedule(accountId, conferenceId);
                 PdfController controller = PdfHelper.Setup("GetSchedule");
-                return Ok(new ByteArray() { Content = controller.GetProgram(model) });
+                return Ok(new ByteArray() { Content = controller.GetSchedule(model) });
             }
             catch
             {
                 return InternalServerError();
-            }*/
-            return InternalServerError();
+            }
         }
     }
 }

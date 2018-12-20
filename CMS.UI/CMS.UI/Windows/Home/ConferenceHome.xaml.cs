@@ -3,6 +3,7 @@ using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
+using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,11 +31,20 @@ namespace CMS.UI.Windows.Home
             InitializeData();
         }
 
-        private async void InitializeData()
+        private void InitializeData()
         {
-            authCore.LoadRolesAsync();
-            InitializeLabels();
-            await LoadEvents();
+            try
+            {
+                authCore.LoadRolesAsync();
+                InitializeLabels();
+                LoadEvents();
+                LoadSessions();
+                LoadSpecialSessions();
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong, please try again");
+            }
         }
 
         private void InitializeLabels()
@@ -45,7 +55,7 @@ namespace CMS.UI.Windows.Home
             DescriptionBox.Text = UserCredentials.Conference.Description;
         }
 
-        private async Task LoadEvents()
+        private async void LoadEvents()
         {
             EventList.Items.Clear();
             EventList.DisplayMemberPath = "Title";
@@ -53,7 +63,7 @@ namespace CMS.UI.Windows.Home
             EventList.ItemsSource = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
         }
 
-        private async Task LoadSessions()
+        private async void LoadSessions()
         {
             SessionList.Items.Clear();
             SessionList.DisplayMemberPath = "Title";
@@ -61,7 +71,7 @@ namespace CMS.UI.Windows.Home
             SessionList.ItemsSource = await sessionCore.GetSessionsAsync(UserCredentials.Conference.ConferenceId);
         }
 
-        private async Task LoadSpecialSessions()
+        private async void LoadSpecialSessions()
         {
             SpecialSessionList.Items.Clear();
             SpecialSessionList.DisplayMemberPath = "Title";
@@ -110,12 +120,55 @@ namespace CMS.UI.Windows.Home
                     }
                 }
             }
+            catch (IOException)
+            {
+                MessageBox.Show("Cannot override the file. The file may be opened.");
+            }
             catch
             {
                 MessageBox.Show("Error downloading conference program");
             }
             DownloadProgram.IsEnabled = true;
             ProgressSpin.IsActive = false;
+        }
+
+        private async void DownloadSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ProgressSpin.IsActive = true;
+            DownloadSchedule.IsEnabled = false;
+            try
+            {
+                var document = await confCore.GetConferenceScheduleAsync(UserCredentials.Account.AccountId, UserCredentials.Conference.ConferenceId);
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    AddExtension = true,
+                    Filter = "pdf files (*.pdf)|*.pdf",
+                    FileName = $"{UserCredentials.Conference.Title} Schedule for {UserCredentials.Account.Name}.pdf"
+                };
+
+                if ((bool)saveFileDialog.ShowDialog())
+                {
+                    using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
+                    {
+                        writer.Write(document);
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Cannot override the file. The file may be opened.");
+            }
+            catch
+            {
+                MessageBox.Show("Error downloading schedule");
+            }
+            DownloadSchedule.IsEnabled = true;
+            ProgressSpin.IsActive = false;
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            InitializeData();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace CMS.API.BLL.BLL
         private IConferenceRepository _repository = new ConferenceRepository();
         private IEventRepository _eventRepository = new EventRepository();
         private ISessionRepository _sessionRepository = new SessionRepository();
+        private IAuthenticationRepository _authRepository = new AuthenticationRepository();
 
         public IEnumerable<ConferenceDTO> GetConferences()
         {
@@ -81,12 +82,14 @@ namespace CMS.API.BLL.BLL
 
         public ConferenceProgramModel GetConferenceProgram(int conferenceId)
         {
-            // not implemented
             var conference = _repository.GetConferenceById(conferenceId);
-            var events = _eventRepository.GetEvents(conferenceId).ToList();
-            var sessions = _sessionRepository.GetSessions(conferenceId).ToList();
-            var specialSessions = _sessionRepository.GetSpecialSessions(conferenceId).ToList();
-            var entries = (_eventRepository.GetEvents(conferenceId) as IEnumerable<BaseTimeEntity>).OrderBy(ent => ent.BeginDate).ToList();
+            var events = _eventRepository.GetEventsForConferenceWithBaseEntryAttributes(conferenceId).ToList();
+            var sessions = _sessionRepository.GetSessionsForConferenceWithBaseEntryAttributes(conferenceId).ToList();
+            var specialSessions = _sessionRepository.GetSpecialSessionsForConferenceWithBaseEntryAttributes(conferenceId).ToList();
+            var entries = (_eventRepository.GetEvents(conferenceId) as IEnumerable<BaseEntryEntity>).ToList();
+            entries.AddRange((_sessionRepository.GetSessions(conferenceId) as IEnumerable<BaseEntryEntity>));
+            entries.AddRange((_sessionRepository.GetSpecialSessions(conferenceId) as IEnumerable<BaseEntryEntity>));
+            entries = entries.OrderBy(ent => ent.BeginDate).ToList();
             return new ConferenceProgramModel()
             {
                 Conference = conference,
@@ -94,6 +97,20 @@ namespace CMS.API.BLL.BLL
                 Events = events,
                 Sessions = sessions,
                 SpecialSessions = specialSessions
+            };
+        }
+
+        public ConferenceScheduleModel GetConferenceSchedule(int accountId, int conferenceId)
+        {
+            var conference = _repository.GetConferenceById(conferenceId);
+            var person = _authRepository.GetAccountById(accountId);
+            var entries = (_sessionRepository.GetSessionsForConferenceAndChairWithBaseEntryAttributes(accountId, conferenceId) as IEnumerable<BaseEntryEntity>).OrderBy(ent => ent.BeginDate).ToList();
+            entries.AddRange((_sessionRepository.GetSpecialSessionsForConferenceAndChairWithBaseEntryAttributes(accountId, conferenceId) as IEnumerable<BaseEntryEntity>).OrderBy(ent => ent.BeginDate));
+            return new ConferenceScheduleModel()
+            {
+                Conference = conference,
+                Entries = entries,
+                Person = person
             };
         }
     }

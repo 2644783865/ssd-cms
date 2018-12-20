@@ -58,7 +58,18 @@ namespace CMS.Core.Core
 
         public async Task<byte[]> GetConferenceProgramAsync(int conferenceId)
         {
-            var path = $"{Properties.Resources.getConferenceProgram}?conferenceId={conferenceId}";
+            var path = $"{Properties.Resources.getConferenceProgramPath}?conferenceId={conferenceId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<ByteArray>(result.Content).Content;
+            }
+            return null;
+        }
+
+        public async Task<byte[]> GetConferenceScheduleAsync(int accountId, int conferenceId)
+        {
+            var path = $"{Properties.Resources.getConferenceSchedulePath}?accountId={accountId}&conferenceId={conferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

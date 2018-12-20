@@ -31,9 +31,11 @@ namespace CMS.UI.Windows.Event
 
         private async void InitializeData()
         {
+            ProgressSpin.IsActive = true;
             ClearEventBoxes();
             await LoadBuildings();
             await LoadEvents();
+            ProgressSpin.IsActive = false;
         }
 
         private void ClearEventBoxes()
