@@ -48,7 +48,9 @@ namespace CMS.UI.Windows.Rooms
 
         private void EditRoom_Click(object sender, RoutedEventArgs e)
         {
-
+            EditRoom newEditRoomsWindow = new EditRoom(this.BuildingID);
+            newEditRoomsWindow.Show();
+            Close();
         }
 
         async private void DeleteRoom_Click(object sender, RoutedEventArgs e)

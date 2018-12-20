@@ -137,6 +137,9 @@
     <Compile Include="Windows\Rooms\AddLocation.xaml.cs">
       <DependentUpon>AddLocation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Rooms\EditRoom.xaml.cs">
+      <DependentUpon>EditRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Rooms\Location.xaml.cs">
       <DependentUpon>Location.xaml</DependentUpon>
     </Compile>
@@ -250,6 +253,10 @@
     <Page Include="Windows\Rooms\AddLocation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Rooms\EditRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Rooms\Location.xaml">
       <Generator>MSBuild:Compile</Generator>
