@@ -54,6 +54,24 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
+        public IEnumerable<SessionDTO> GetSessionsForChair(int accountId, int conferenceId)
+        {
+            List<SessionDTO> resSessions = null;
+            var sessions = _repository.GetSessions(conferenceId);
+            if(sessions == null)
+            {
+                return null;
+            }
+            foreach (SessionDTO session in sessions)
+            {
+                if (session.ChairId == accountId)
+                {
+                    resSessions.Add(session);
+                }
+            }
+            return resSessions;
+        }
+
         // Special Session
         public bool AddSpecialSession(SpecialSessionDTO specialSession)
         {
@@ -201,6 +219,24 @@ namespace CMS.API.BLL.BLL
             {
                 return null;
             }
+        }
+
+        public IEnumerable<SpecialSessionDTO> GetSpecialSessionsForChair(int accountId, int conferenceId)
+        {
+            List<SpecialSessionDTO> resSessions = null;
+            var sessions = _repository.GetSpecialSessions(conferenceId);
+            if (sessions == null)
+            {
+                return null;
+            }
+            foreach (SpecialSessionDTO session in sessions)
+            {
+                if (session.ChairId == accountId)
+                {
+                    resSessions.Add(session);
+                }
+            }
+            return resSessions;
         }
     }
 }
