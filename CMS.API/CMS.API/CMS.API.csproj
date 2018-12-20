@@ -181,9 +181,10 @@
     <None Include="Properties\PublishProfiles\testcmstest - Web Deploy.pubxml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Pdf\GetPdf.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Pdf\GetSchedule.cshtml" />
+    <Content Include="Views\Pdf\GetProgram.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -195,7 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\LastMessage\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CMS.UI\CMS.BE\CMS.BE.csproj">

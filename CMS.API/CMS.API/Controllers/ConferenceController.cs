@@ -70,13 +70,31 @@ namespace CMS.API.Controllers
             try
             {
                 var model = _bll.GetConferenceProgram(conferenceId);
-                PdfController controller = PdfHelper.Setup();
-                return Ok(new ByteArray() { Content = controller.GetPdf(model) });
+                PdfController controller = PdfHelper.Setup("GetProgram");
+                return Ok(new ByteArray() { Content = controller.GetProgram(model) });
             }
             catch
             {
                 return InternalServerError();
             }
+        }
+
+        // GET: api/Conference/Schedule
+        [HttpGet]
+        [Route("api/conference/schedule")]
+        public IHttpActionResult GetConferenceSchedule(int conferenceId)
+        {
+            /*try
+            {
+                var model = _bll.GetConferenceProgram(conferenceId);
+                PdfController controller = PdfHelper.Setup("GetSchedule");
+                return Ok(new ByteArray() { Content = controller.GetProgram(model) });
+            }
+            catch
+            {
+                return InternalServerError();
+            }*/
+            return InternalServerError();
         }
     }
 }

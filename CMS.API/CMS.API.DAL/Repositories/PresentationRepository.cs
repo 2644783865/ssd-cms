@@ -37,7 +37,7 @@ namespace CMS.API.DAL.Repositories
                 {
                     if (presentation.SessionId != null)
                     {
-                        var session = _repository.GetSessionById(presentation.SessionId);
+                        var session = _repository.GetSessionById(presentation.SessionId.Value);
                         if (session.ConferenceId == conferenceId)
                         {
                             resPresentations.Add(presentation);
@@ -49,7 +49,7 @@ namespace CMS.API.DAL.Repositories
                     }
                     else
                     {
-                        var specialSession = _repository.GetSpecialSessionById(presentation.SpecialSessionId);
+                        var specialSession = _repository.GetSpecialSessionById(presentation.SpecialSessionId.Value);
                         if (specialSession.ConferenceId == conferenceId)
                         {
                             resPresentations.Add(presentation);

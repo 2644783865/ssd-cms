@@ -170,12 +170,6 @@
     <Compile Include="TravelInfo.cs">
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>
-    <Compile Include="WelcomePack.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomePackGift.cs">
-      <DependentUpon>CMS.tt</DependentUpon>
-    </Compile>
     <Compile Include="WelcomePackReceiver.cs">
       <DependentUpon>CMS.tt</DependentUpon>
     </Compile>

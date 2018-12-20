@@ -250,24 +250,6 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to api/welcomepackgift/addwelcomepackgift.
-        /// </summary>
-        internal static string addWelcomePackGiftPath {
-            get {
-                return ResourceManager.GetString("addWelcomePackGiftPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/welcomepack/addwelcomepack.
-        /// </summary>
-        internal static string addWelcomePackPath {
-            get {
-                return ResourceManager.GetString("addWelcomePackPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to api/welcomepackreceiver/addwelcomepackreceiver.
         /// </summary>
         internal static string addWelcomePackReceiverPath {
@@ -529,24 +511,6 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to api/welcomepackgift/deletewelcomepackgift.
-        /// </summary>
-        internal static string deleteWelcomePackGiftPath {
-            get {
-                return ResourceManager.GetString("deleteWelcomePackGiftPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/welcomepack/deletewelcomepack.
-        /// </summary>
-        internal static string deleteWelcomePackPath {
-            get {
-                return ResourceManager.GetString("deleteWelcomePackPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to api/welcomepackreceiver/deletewelcomepackreceiver.
         /// </summary>
         internal static string deleteWelcomePackReceiverPath {
@@ -750,24 +714,6 @@ namespace CMS.Core.Properties {
         internal static string editTravelPath {
             get {
                 return ResourceManager.GetString("editTravelPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/welcomepackgift/editwelcomepackgift.
-        /// </summary>
-        internal static string editWelcomePackGiftPath {
-            get {
-                return ResourceManager.GetString("editWelcomePackGiftPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/welcomepack/editwelcomepack.
-        /// </summary>
-        internal static string editWelcomePackPath {
-            get {
-                return ResourceManager.GetString("editWelcomePackPath", resourceCulture);
             }
         }
         
@@ -1263,42 +1209,6 @@ namespace CMS.Core.Properties {
         internal static string getUnassignedBuildForConfPath {
             get {
                 return ResourceManager.GetString("getUnassignedBuildForConfPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/welcomepack/welcomepackbyid.
-        /// </summary>
-        internal static string getWelcomePackByIdPath {
-            get {
-                return ResourceManager.GetString("getWelcomePackByIdPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/welcomepackgift/welcomepackgiftbyid.
-        /// </summary>
-        internal static string getWelcomePackGiftByIdPath {
-            get {
-                return ResourceManager.GetString("getWelcomePackGiftByIdPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/welcomepackgift/welcomepackgiftinfo.
-        /// </summary>
-        internal static string getWelcomePackGiftInfoPath {
-            get {
-                return ResourceManager.GetString("getWelcomePackGiftInfoPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to api/welcomepack/welcomepackinfo.
-        /// </summary>
-        internal static string getWelcomePackInfoPath {
-            get {
-                return ResourceManager.GetString("getWelcomePackInfoPath", resourceCulture);
             }
         }
         

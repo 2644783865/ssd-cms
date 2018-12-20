@@ -180,12 +180,6 @@
   <data name="addTravelPath" xml:space="preserve">
     <value>api/travelinfo/addtravel</value>
   </data>
-  <data name="addWelcomePackGiftPath" xml:space="preserve">
-    <value>api/welcomepackgift/addwelcomepackgift</value>
-  </data>
-  <data name="addWelcomePackPath" xml:space="preserve">
-    <value>api/welcomepack/addwelcomepack</value>
-  </data>
   <data name="addWelcomePackReceiverPath" xml:space="preserve">
     <value>api/welcomepackreceiver/addwelcomepackreceiver</value>
   </data>
@@ -273,12 +267,6 @@
   <data name="deleteTravelPath" xml:space="preserve">
     <value>api/travelinfo/deletetravel</value>
   </data>
-  <data name="deleteWelcomePackGiftPath" xml:space="preserve">
-    <value>api/welcomepackgift/deletewelcomepackgift</value>
-  </data>
-  <data name="deleteWelcomePackPath" xml:space="preserve">
-    <value>api/welcomepack/deletewelcomepack</value>
-  </data>
   <data name="deleteWelcomePackReceiverPath" xml:space="preserve">
     <value>api/welcomepackreceiver/deletewelcomepackreceiver</value>
   </data>
@@ -347,12 +335,6 @@
   </data>
   <data name="editTravelPath" xml:space="preserve">
     <value>api/travelinfo/edittravel</value>
-  </data>
-  <data name="editWelcomePackGiftPath" xml:space="preserve">
-    <value>api/welcomepackgift/editwelcomepackgift</value>
-  </data>
-  <data name="editWelcomePackPath" xml:space="preserve">
-    <value>api/welcomepack/editwelcomepack</value>
   </data>
   <data name="editWelcomePackReceiverPath" xml:space="preserve">
     <value>api/welcomepackreceiver/editwelcomepackreceiver</value>
@@ -518,18 +500,6 @@
   </data>
   <data name="getUnassignedBuildForConfPath" xml:space="preserve">
     <value>api/room/getunassignedbuildforconf</value>
-  </data>
-  <data name="getWelcomePackByIdPath" xml:space="preserve">
-    <value>api/welcomepack/welcomepackbyid</value>
-  </data>
-  <data name="getWelcomePackGiftByIdPath" xml:space="preserve">
-    <value>api/welcomepackgift/welcomepackgiftbyid</value>
-  </data>
-  <data name="getWelcomePackGiftInfoPath" xml:space="preserve">
-    <value>api/welcomepackgift/welcomepackgiftinfo</value>
-  </data>
-  <data name="getWelcomePackInfoPath" xml:space="preserve">
-    <value>api/welcomepack/welcomepackinfo</value>
   </data>
   <data name="getWelcomePackReceiverByIdPath" xml:space="preserve">
     <value>api/welcomepackreceiver/welcomepackreceiverbyid</value>

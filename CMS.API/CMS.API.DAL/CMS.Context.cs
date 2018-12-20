@@ -46,8 +46,6 @@ namespace CMS.API.DAL
         public virtual DbSet<Submission> Submissions { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<TravelInfo> TravelInfoes { get; set; }
-        public virtual DbSet<WelcomePack> WelcomePacks { get; set; }
-        public virtual DbSet<WelcomePackGift> WelcomePackGifts { get; set; }
         public virtual DbSet<WelcomePackReceiver> WelcomePackReceivers { get; set; }
     }
 }

@@ -64,14 +64,13 @@
     <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\TaskDTO.cs" />
     <Compile Include="DTO\TravelInfoDTO.cs" />
-    <Compile Include="DTO\WelcomePackDTO.cs" />
-    <Compile Include="DTO\WelcomePackGiftDTO.cs" />
     <Compile Include="DTO\WelcomePackReceiverDTO.cs" />
     <Compile Include="Models\Article\AddArticleModel.cs" />
     <Compile Include="Models\Authentication\ChangePasswordModel.cs" />
     <Compile Include="Models\Authentication\LoginModel.cs" />
     <Compile Include="Models\ByteArray.cs" />
     <Compile Include="Models\Program\ConferenceProgramModel.cs" />
+    <Compile Include="Models\Program\ConferenceScheduleModel.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Models\ResponseType.cs" />

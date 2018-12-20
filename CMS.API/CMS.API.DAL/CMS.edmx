@@ -248,32 +248,15 @@
           <Property Name="RailwayRoadTime" Type="int" />
           <Property Name="TaxiNum" Type="varchar" MaxLength="15" />
         </EntityType>
-        <EntityType Name="WelcomePack">
-          <Key>
-            <PropertyRef Name="WelcomePackId" />
-          </Key>
-          <Property Name="WelcomePackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ConferenceId" Type="int" Nullable="false" />
-          <Property Name="EmployeeName" Type="varchar" MaxLength="300" />
-        </EntityType>
-        <EntityType Name="WelcomePackGift">
-          <Key>
-            <PropertyRef Name="WelcomePackGiftId" />
-          </Key>
-          <Property Name="WelcomePackGiftId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="WelcomePackId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="100" />
-          <Property Name="TypeID" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="WelcomePackReceiver">
           <Key>
             <PropertyRef Name="WelcomePackReceiverId" />
           </Key>
           <Property Name="WelcomePackReceiverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="WelcomePackGiftId" Type="int" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="150" />
           <Property Name="Type" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="GetGift" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__Accommoda__Confe__68487DD7">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
@@ -599,42 +582,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Confe__73BA3083">
-          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
-          <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Conference">
-              <PropertyRef Name="ConferenceId" />
-            </Principal>
-            <Dependent Role="WelcomePack">
-              <PropertyRef Name="ConferenceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WelcomePa__Welco__76969D2E">
-          <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="1" />
-          <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WelcomePack">
-              <PropertyRef Name="WelcomePackId" />
-            </Principal>
-            <Dependent Role="WelcomePackGift">
-              <PropertyRef Name="WelcomePackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WelcomePa__Welco__7A672E12">
-          <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="1" />
-          <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WelcomePackGift">
-              <PropertyRef Name="WelcomePackGiftId" />
-            </Principal>
-            <Dependent Role="WelcomePackReceiver">
-              <PropertyRef Name="WelcomePackGiftId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_PresentationArticle">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
@@ -791,8 +738,6 @@
           <EntitySet Name="Submission" EntityType="Self.Submission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TravelInfo" EntityType="Self.TravelInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WelcomePack" EntityType="Self.WelcomePack" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WelcomePackGift" EntityType="Self.WelcomePackGift" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WelcomePackReceiver" EntityType="Self.WelcomePackReceiver" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Accommoda__Confe__68487DD7" Association="Self.FK__Accommoda__Confe__68487DD7">
             <End Role="Conference" EntitySet="Conference" />
@@ -901,18 +846,6 @@
           <AssociationSet Name="FK__TravelInf__Confe__6B24EA82" Association="Self.FK__TravelInf__Confe__6B24EA82">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="TravelInfo" EntitySet="TravelInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Confe__73BA3083" Association="Self.FK__WelcomePa__Confe__73BA3083">
-            <End Role="Conference" EntitySet="Conference" />
-            <End Role="WelcomePack" EntitySet="WelcomePack" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__76969D2E" Association="Self.FK__WelcomePa__Welco__76969D2E">
-            <End Role="WelcomePack" EntitySet="WelcomePack" />
-            <End Role="WelcomePackGift" EntitySet="WelcomePackGift" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__7A672E12" Association="Self.FK__WelcomePa__Welco__7A672E12">
-            <End Role="WelcomePackGift" EntitySet="WelcomePackGift" />
-            <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceiver" />
           </AssociationSet>
           <AssociationSet Name="fk_PresentationArticle" Association="Self.fk_PresentationArticle">
             <End Role="Article" EntitySet="Article" />
@@ -1068,7 +1001,6 @@
           <NavigationProperty Name="Events" Relationship="Self.FK__Event__Conferenc__6E01572D" FromRole="Conference" ToRole="Event" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__Conference__59063A47" FromRole="Conference" ToRole="Task" />
           <NavigationProperty Name="TravelInfoes" Relationship="Self.FK__TravelInf__Confe__6B24EA82" FromRole="Conference" ToRole="TravelInfo" />
-          <NavigationProperty Name="WelcomePacks" Relationship="Self.FK__WelcomePa__Confe__73BA3083" FromRole="Conference" ToRole="WelcomePack" />
           <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SessionConference" FromRole="Conference" ToRole="SpecialSession" />
           <NavigationProperty Name="Sessions" Relationship="Self.fk_SpecialSessionConference" FromRole="Conference" ToRole="Session" />
           <NavigationProperty Name="Buildings" Relationship="Self.ConferenceBuilding" FromRole="Conference" ToRole="Building" />
@@ -1264,37 +1196,15 @@
           <Property Name="TaxiNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Conference" Relationship="Self.FK__TravelInf__Confe__6B24EA82" FromRole="TravelInfo" ToRole="Conference" />
         </EntityType>
-        <EntityType Name="WelcomePack">
-          <Key>
-            <PropertyRef Name="WelcomePackId" />
-          </Key>
-          <Property Name="WelcomePackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ConferenceId" Type="Int32" Nullable="false" />
-          <Property Name="EmployeeName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__WelcomePa__Confe__73BA3083" FromRole="WelcomePack" ToRole="Conference" />
-          <NavigationProperty Name="WelcomePackGifts" Relationship="Self.FK__WelcomePa__Welco__76969D2E" FromRole="WelcomePack" ToRole="WelcomePackGift" />
-        </EntityType>
-        <EntityType Name="WelcomePackGift">
-          <Key>
-            <PropertyRef Name="WelcomePackGiftId" />
-          </Key>
-          <Property Name="WelcomePackGiftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WelcomePackId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="TypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="WelcomePack" Relationship="Self.FK__WelcomePa__Welco__76969D2E" FromRole="WelcomePackGift" ToRole="WelcomePack" />
-          <NavigationProperty Name="WelcomePackReceivers" Relationship="Self.FK__WelcomePa__Welco__7A672E12" FromRole="WelcomePackGift" ToRole="WelcomePackReceiver" />
-        </EntityType>
         <EntityType Name="WelcomePackReceiver">
           <Key>
             <PropertyRef Name="WelcomePackReceiverId" />
           </Key>
           <Property Name="WelcomePackReceiverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WelcomePackGiftId" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="WelcomePackGift" Relationship="Self.FK__WelcomePa__Welco__7A672E12" FromRole="WelcomePackReceiver" ToRole="WelcomePackGift" />
+          <Property Name="GetGift" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Accommoda__Confe__68487DD7">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
@@ -1608,18 +1518,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Confe__73BA3083">
-          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
-          <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Conference">
-              <PropertyRef Name="ConferenceId" />
-            </Principal>
-            <Dependent Role="WelcomePack">
-              <PropertyRef Name="ConferenceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_SessionConference">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
@@ -1716,30 +1614,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WelcomePa__Welco__76969D2E">
-          <End Role="WelcomePack" Type="Self.WelcomePack" Multiplicity="1" />
-          <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WelcomePack">
-              <PropertyRef Name="WelcomePackId" />
-            </Principal>
-            <Dependent Role="WelcomePackGift">
-              <PropertyRef Name="WelcomePackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WelcomePa__Welco__7A672E12">
-          <End Role="WelcomePackGift" Type="Self.WelcomePackGift" Multiplicity="1" />
-          <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WelcomePackGift">
-              <PropertyRef Name="WelcomePackGiftId" />
-            </Principal>
-            <Dependent Role="WelcomePackReceiver">
-              <PropertyRef Name="WelcomePackGiftId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ArticleAuthor">
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <End Role="Author" Type="Self.Author" Multiplicity="*" />
@@ -1770,8 +1644,6 @@
           <EntitySet Name="Submissions" EntityType="Self.Submission" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
           <EntitySet Name="TravelInfoes" EntityType="Self.TravelInfo" />
-          <EntitySet Name="WelcomePacks" EntityType="Self.WelcomePack" />
-          <EntitySet Name="WelcomePackGifts" EntityType="Self.WelcomePackGift" />
           <EntitySet Name="WelcomePackReceivers" EntityType="Self.WelcomePackReceiver" />
           <AssociationSet Name="FK__Accommoda__Confe__68487DD7" Association="Self.FK__Accommoda__Confe__68487DD7">
             <End Role="Conference" EntitySet="Conferences" />
@@ -1877,10 +1749,6 @@
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="TravelInfo" EntitySet="TravelInfoes" />
           </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Confe__73BA3083" Association="Self.FK__WelcomePa__Confe__73BA3083">
-            <End Role="Conference" EntitySet="Conferences" />
-            <End Role="WelcomePack" EntitySet="WelcomePacks" />
-          </AssociationSet>
           <AssociationSet Name="fk_SessionConference" Association="Self.fk_SessionConference">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="SpecialSession" EntitySet="SpecialSessions" />
@@ -1912,14 +1780,6 @@
           <AssociationSet Name="fk_SpecialSessionRoom" Association="Self.fk_SpecialSessionRoom">
             <End Role="Room" EntitySet="Rooms" />
             <End Role="SpecialSession" EntitySet="SpecialSessions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__76969D2E" Association="Self.FK__WelcomePa__Welco__76969D2E">
-            <End Role="WelcomePack" EntitySet="WelcomePacks" />
-            <End Role="WelcomePackGift" EntitySet="WelcomePackGifts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WelcomePa__Welco__7A672E12" Association="Self.FK__WelcomePa__Welco__7A672E12">
-            <End Role="WelcomePackGift" EntitySet="WelcomePackGifts" />
-            <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceivers" />
           </AssociationSet>
           <AssociationSet Name="ArticleAuthor" Association="Self.ArticleAuthor">
             <End Role="Article" EntitySet="Articles" />
@@ -2182,33 +2042,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WelcomePacks">
-            <EntityTypeMapping TypeName="cmsModel.WelcomePack">
-              <MappingFragment StoreEntitySet="WelcomePack">
-                <ScalarProperty Name="WelcomePackId" ColumnName="WelcomePackId" />
-                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WelcomePackGifts">
-            <EntityTypeMapping TypeName="cmsModel.WelcomePackGift">
-              <MappingFragment StoreEntitySet="WelcomePackGift">
-                <ScalarProperty Name="WelcomePackGiftId" ColumnName="WelcomePackGiftId" />
-                <ScalarProperty Name="WelcomePackId" ColumnName="WelcomePackId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="WelcomePackReceivers">
             <EntityTypeMapping TypeName="cmsModel.WelcomePackReceiver">
               <MappingFragment StoreEntitySet="WelcomePackReceiver">
                 <ScalarProperty Name="WelcomePackReceiverId" ColumnName="WelcomePackReceiverId" />
-                <ScalarProperty Name="WelcomePackGiftId" ColumnName="WelcomePackGiftId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="GetGift" ColumnName="GetGift" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

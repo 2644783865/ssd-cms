@@ -1,0 +1,36 @@
+﻿@model CMS.BE.Models.Program.ConferenceScheduleModel
+
+<h2>@Model.Conference.Title</h2>
+<h3>@Model.Conference.Place</h3>
+<h3>@Model.Conference.Description</h3>
+<h3>@Model.Conference.BeginDate.ToShortDateString() - @Model.Conference.EndDate.ToShortDateString()</h3>
+<br />
+<h2>Schedule</h2>
+<h3>@Model.Person.Name</h3>
+<div>
+    <p>Legend:</p>
+    <span>Sessions &nbsp;&nbsp;</span>
+    <span style="font-weight: bold">Special sessions</span>
+</div>
+<br />
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Title </th>
+        <th>Begin Date </th>
+        <th>End Date</th>
+        <th>Address</th>
+        <th>Room</th>
+    </tr>
+    @foreach (var m in Model.Entries)
+    {
+        var weigh = m.GetType() == typeof(CMS.BE.DTO.SpecialSessionDTO) ? "bold" : "normal";
+        <tr style="font-weight: @weigh">
+            <td>@m.Title</td>
+            <td>@m.BeginDate</td>
+            <td>@m.EndDate</td>
+            <td>@m.Address</td>
+            <td>@m.RoomCode</td>
+        </tr>
+    }
+</table>
+
