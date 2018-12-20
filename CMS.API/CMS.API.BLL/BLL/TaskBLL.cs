@@ -83,5 +83,17 @@ namespace CMS.API.BLL.BLL
                 return null;
             }
         }
+
+        public IEnumerable<TaskDTO> GetTasksByConferenceId(int ConferenceId)
+        {
+            try
+            {
+                return _repository.GetTasksByConferenceId(ConferenceId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

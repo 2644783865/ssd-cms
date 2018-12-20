@@ -49,6 +49,12 @@ namespace CMS.API.DAL.Repositories
                 .Distinct().Project().To<TaskDTO>();
         }
 
+        public IEnumerable<TaskDTO> GetTasksByConferenceId(int ConferenceId)
+        {
+            return _db.Tasks.Where(task => task.ConferenceId == ConferenceId)
+                .Distinct().Project().To<TaskDTO>();
+        }
+
         public void Dispose()
         {
             _db.Dispose();

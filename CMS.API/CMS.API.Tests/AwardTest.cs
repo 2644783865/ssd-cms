@@ -2,6 +2,7 @@
 using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace CMS.API.Tests
 {
@@ -28,7 +29,7 @@ namespace CMS.API.Tests
         {
             int id = 1;
             var result = awardTests.GetAwardById(id);
-            Assert.IsNotNull(result);
+            Assert.IsNull(result);
         }
 
         [TestMethod]

@@ -12,5 +12,6 @@ namespace CMS.API.DAL.Interfaces
         void EditTask(TaskDTO taskDTO);
         void DeleteTask(int taskId);
         IEnumerable<TaskDTO> GetTasksForEmployee(int employeeId, int conferenceId);
+        IEnumerable<TaskDTO> GetTasksByConferenceId(int ConferenceId);
     }
 }

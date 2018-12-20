@@ -38,5 +38,13 @@ namespace CMS.API.Tests
             var result = taskTest.GetTasksForEmployee(EmployeeId, ConferenceId);
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void TestGetTasksByConferenceId()
+        {
+            int ConferenceId = 1;
+            var result = taskTest.GetTasksByConferenceId(ConferenceId);
+            Assert.IsNotNull(result);             
+        }
     }
 }
