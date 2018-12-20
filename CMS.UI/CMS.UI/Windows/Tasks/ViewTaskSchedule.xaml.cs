@@ -30,7 +30,7 @@ namespace CMS.UI.Windows.Tasks
             InitializeComponent();
             WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
             core = new TaskCore();
-            loadTasksForToDatagrid(employeeID, conferenceID);
+            loadTasksForToDatagrid();
             
 
         }
@@ -40,10 +40,10 @@ namespace CMS.UI.Windows.Tasks
             WindowHelper.Logout(this);
         }
 
-        async private void loadTasksForToDatagrid(int employeeID, int conferenceID)
+        async private void loadTasksForToDatagrid()
         {
 
-            TaskDataGrid.ItemsSource = await core.GetTasksForEmployeeAsync(employeeID, conferenceID);
+            TaskDataGrid.ItemsSource = await core.GetTasksForEmployeeAsync(UserCredentials.Account.AccountId, UserCredentials.Conference.ConferenceId);
 
             
         }

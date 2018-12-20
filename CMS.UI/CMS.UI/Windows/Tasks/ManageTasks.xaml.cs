@@ -25,14 +25,13 @@ namespace CMS.UI.Windows.Tasks
 
         private TaskCore core;
 
-        public int ConferenceId { get; private set; }
-
-        public ManageTasksWindow(int conferenceID)
+        
+        public ManageTasksWindow()
         {
             
             InitializeComponent();
             core = new TaskCore();
-            loadTasksToDatagrid(conferenceID);
+            loadTasksToDatagrid();
         }
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
@@ -44,7 +43,7 @@ namespace CMS.UI.Windows.Tasks
         {
             TaskDTO taskToDelete = (TaskDTO)TasksList.SelectedItem;
             await core.DeleteTaskAsync(taskToDelete.TaskID);
-            loadTasksToDatagrid(ConferenceId);
+            loadTasksToDatagrid();
         }
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
@@ -54,10 +53,10 @@ namespace CMS.UI.Windows.Tasks
             Close();
         }
 
-        async private void loadTasksToDatagrid(int conferenceID)
+        async private void loadTasksToDatagrid()
         {
 
-            TasksList.ItemsSource = await core.GetTasksAsync(conferenceID);
+            TasksList.ItemsSource = await core.GetTasksAsync(UserCredentials.Conference.ConferenceId);
             
         }
     }
