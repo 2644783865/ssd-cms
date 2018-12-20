@@ -1,4 +1,7 @@
-﻿using MahApps.Metro.Controls;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
+using CMS.Core.Interfaces;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +23,25 @@ namespace CMS.UI.Windows.Rooms
     /// </summary>
     public partial class AddRoomsWindow : MetroWindow
     {
-        public AddRoomsWindow()
+        private int BuildingID;
+        IRoomCore core;
+        public AddRoomsWindow(int arg_buildingID)
         {
+            core = new RoomCore();
+            this.BuildingID = arg_buildingID;
             InitializeComponent();
+        }
+
+        async private void addRoomButton_Click(object sender, RoutedEventArgs e)
+        {
+            RoomDTO newroom = new RoomDTO();
+            newroom.BuildingID = this.BuildingID;
+            newroom.Code = roomnumber.Text;
+            await core.AddRoomAsync(newroom);
+            /*
+             * todo: inform about success failure 
+             * 
+             */
         }
     }
 }

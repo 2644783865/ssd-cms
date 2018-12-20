@@ -11,6 +11,9 @@
         WindowStartupLocation="CenterScreen">
 	<Grid>
 		<DataGrid Name="buildinglist" IsReadOnly="True" HorizontalAlignment="Left" Height="302" Margin="52,37,0,0" VerticalAlignment="Top" Width="488" MouseDoubleClick="buildinglist_MouseDoubleClick"/>
+		<Button Content="Add building" HorizontalAlignment="Left" Margin="633,53,0,0" VerticalAlignment="Top" Width="75" />
+		<Button Content="Edit Building" HorizontalAlignment="Left" Margin="654,133,0,0" VerticalAlignment="Top" Width="75"/>
+		<Button Content="Delete Nuilding" HorizontalAlignment="Left" Margin="654,227,0,0" VerticalAlignment="Top" Width="75"/>
 
 	</Grid>
 </Controls:MetroWindow>

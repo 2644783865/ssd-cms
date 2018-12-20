@@ -41,7 +41,7 @@ namespace CMS.UI.Windows.Rooms
 
         private void AddRoom_Click(object sender, RoutedEventArgs e)
         {
-            AddRoomsWindow newAddRoomsWindow = new AddRoomsWindow();
+            AddRoomsWindow newAddRoomsWindow = new AddRoomsWindow(this.BuildingID);
             newAddRoomsWindow.Show();
             Close();
         }
