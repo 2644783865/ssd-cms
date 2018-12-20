@@ -56,11 +56,11 @@ namespace CMS.API.DAL.Repositories
             IEnumerable<SessionDTO> sessions = GetSessions(conferenceId);
             foreach (SessionDTO session in sessions)
             {
-                if(session.BeginDate < begin && session.EndDate < begin)
+                if ((DateTime.Compare(session.BeginDate, begin) > 0) && (DateTime.Compare(session.BeginDate, end) > 0))
                 {
                     return false;
                 }
-                else if(session.BeginDate > begin && session.EndDate > end)
+                else if ((DateTime.Compare(session.BeginDate, begin) < 0) && (DateTime.Compare(session.EndDate, begin) < 0))
                 {
                     return false;
                 }
@@ -79,11 +79,11 @@ namespace CMS.API.DAL.Repositories
             IEnumerable<SpecialSessionDTO> specials = GetSpecialSessions(conferenceId);
             foreach (SpecialSessionDTO special in specials)
             {
-                if (special.BeginDate < begin && special.EndDate < begin)
+                if ((DateTime.Compare(special.BeginDate, begin) > 0) && (DateTime.Compare(special.BeginDate, end) > 0))
                 {
                     return false;
                 }
-                else if (special.BeginDate > begin && special.EndDate > end)
+                else if ((DateTime.Compare(special.BeginDate, begin) < 0) && (DateTime.Compare(special.EndDate, begin) < 0))
                 {
                     return false;
                 }
@@ -102,11 +102,11 @@ namespace CMS.API.DAL.Repositories
             IEnumerable<EventDTO> eve = _repository.GetEvents(conferenceId);
             foreach (EventDTO even in eve)
             {
-                if (even.BeginDate < begin && even.EndDate < begin)
+                if ((DateTime.Compare(even.BeginDate, begin) > 0) && (DateTime.Compare(even.BeginDate, end) >= 0))
                 {
                     return false;
                 }
-                else if (even.BeginDate > begin && even.EndDate > end)
+                else if ((DateTime.Compare(even.BeginDate, begin) < 0) && (DateTime.Compare(even.EndDate, begin) <= 0))
                 {
                     return false;
                 }

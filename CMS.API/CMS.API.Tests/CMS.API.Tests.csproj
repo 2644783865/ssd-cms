@@ -64,10 +64,8 @@
   <ItemGroup>
     <Compile Include="AuthenticationTest.cs" />
     <Compile Include="AwardTest.cs" />
-    <Compile Include="SpecialSessionTest.cs" />
     <Compile Include="SessionTest.cs" />
     <Compile Include="PresentationTest.cs" />
-    <Compile Include="BuildingTest.cs" />
     <Compile Include="TaskTest.cs" />
     <Compile Include="EventTest.cs" />
     <Compile Include="HelpersTest.cs" />
