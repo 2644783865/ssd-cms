@@ -1,4 +1,6 @@
-﻿using CMS.UI.Helpers;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -21,15 +23,29 @@ namespace CMS.UI.Windows.Tasks
     /// </summary>
     public partial class ViewTaskSchedule : MetroWindow
     {
-        public ViewTaskSchedule()
+        private TaskCore core;
+
+        public ViewTaskSchedule(int conferenceID,int employeeID)
         {
             InitializeComponent();
             WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
+            core = new TaskCore();
+            loadTasksForToDatagrid(employeeID, conferenceID);
+            
+
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             WindowHelper.Logout(this);
+        }
+
+        async private void loadTasksForToDatagrid(int employeeID, int conferenceID)
+        {
+
+            TaskDataGrid.ItemsSource = await core.GetTasksForEmployeeAsync(employeeID, conferenceID);
+
+            
         }
     }
 }

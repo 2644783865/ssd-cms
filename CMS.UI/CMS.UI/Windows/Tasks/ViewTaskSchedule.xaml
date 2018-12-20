@@ -15,7 +15,7 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.RightWindowCommands>
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="32,30,0,0" VerticalAlignment="Top" Height="210" Width="236"/>
+        <DataGrid x:Name="TaskDataGrid" HorizontalAlignment="Left" Margin="32,30,0,0" VerticalAlignment="Top" Height="210" Width="236" />
 
     </Grid>
 </Controls:MetroWindow>
