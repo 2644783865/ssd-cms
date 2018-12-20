@@ -8,6 +8,7 @@ namespace CMS.API.DAL.Interfaces
     {
         //Session
         IEnumerable<SessionDTO> GetSessions(int conferenceID);
+        IEnumerable<SessionDTO> GetSessionsForChair(int accountId, int conferenceId);
         SessionDTO GetSessionById(int id);
         void AddSession(SessionDTO sessionDTO);
         void EditSession(SessionDTO sessionDTO);
@@ -18,6 +19,7 @@ namespace CMS.API.DAL.Interfaces
 
         //SpecialSession
         IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID);
+        IEnumerable<SpecialSessionDTO> GetSpecialSessionsForChair(int accountId, int conferenceId);
         SpecialSessionDTO GetSpecialSessionById(int id);
         void AddSpecialSession(SpecialSessionDTO specialSessionDTO);
         void EditSpecialSession(SpecialSessionDTO specialSessionDTO);

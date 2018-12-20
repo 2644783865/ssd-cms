@@ -16,6 +16,12 @@ namespace CMS.API.DAL.Repositories
         {
             return _db.Sessions.Where(session => session.ConferenceId == conferenceID).Project().To<SessionDTO>();
         }
+
+        public IEnumerable<SessionDTO> GetSessionsForChair(int accountId, int conferenceId)
+        {
+            return _db.Sessions.Where(session => session.ConferenceId == conferenceId && session.ChairId == accountId).Project().To<SessionDTO>();
+            
+        }
         public SessionDTO GetSessionById(int id)
         {
             var session = _db.Sessions.Find(id);
@@ -95,6 +101,12 @@ namespace CMS.API.DAL.Repositories
             return false;
         }
 
+        public IEnumerable<SpecialSessionDTO> GetSpecialSessionsForChair(int accountId, int conferenceId)
+        {
+            return _db.SpecialSessions.Where(specialSession => specialSession.ConferenceId == conferenceId && specialSession.ChairId == accountId).Project().To<SpecialSessionDTO>();
+
+        }
+
         public bool CheckEvents(int conferenceId, DateTime begin, DateTime end)
         {
             // return false, when no overlapping
@@ -117,6 +129,8 @@ namespace CMS.API.DAL.Repositories
             }
             return false;
         }
+
+
 
 
         //SpecialSession
