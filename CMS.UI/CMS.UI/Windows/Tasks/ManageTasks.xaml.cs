@@ -1,4 +1,5 @@
-﻿using CMS.Core.Core;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,11 @@ namespace CMS.UI.Windows.Tasks
 
         private TaskCore core;
 
+        public int ConferenceId { get; private set; }
+
         public ManageTasksWindow(int conferenceID)
         {
+            
             InitializeComponent();
             core = new TaskCore();
             loadTasksToDatagrid(conferenceID);
@@ -36,9 +40,11 @@ namespace CMS.UI.Windows.Tasks
 
         }
 
-        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        async private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            TaskDTO taskToDelete = (TaskDTO)TasksList.SelectedItem;
+            await core.DeleteTaskAsync(taskToDelete.TaskID);
+            loadTasksToDatagrid(ConferenceId);
         }
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
