@@ -10,10 +10,10 @@
 		ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 	<Grid>
-		<DataGrid Name="buildinglist" IsReadOnly="True" HorizontalAlignment="Left" Height="302" Margin="52,37,0,0" VerticalAlignment="Top" Width="488" MouseDoubleClick="buildinglist_MouseDoubleClick"/>
-		<Button Content="Add building" HorizontalAlignment="Left" Margin="633,53,0,0" VerticalAlignment="Top" Width="75" />
-		<Button Content="Edit Building" HorizontalAlignment="Left" Margin="654,133,0,0" VerticalAlignment="Top" Width="75"/>
-		<Button Content="Delete Nuilding" HorizontalAlignment="Left" Margin="654,227,0,0" VerticalAlignment="Top" Width="75"/>
+		<DataGrid Name="buildinglist" IsReadOnly="True" HorizontalAlignment="Left" Height="302" Margin="52,37,0,0" VerticalAlignment="Top" Width="488" MouseDoubleClick="buildinglist_MouseDoubleClick" CurrentCellChanged="buildinglist_CurrentCellChanged" />
+		<Button Name="addbuildingbutton" Content="Add building" HorizontalAlignment="Left" Margin="633,53,0,0" VerticalAlignment="Top" Width="131" Height="44" />
+		<Button Name="editbuildingbutton" Content="Edit Building" HorizontalAlignment="Left" Margin="633,132,0,0" VerticalAlignment="Top" Width="131" Height="47"/>
+		<Button Name="deletebuildingbutton" Content="Delete Nuilding" HorizontalAlignment="Left" Margin="633,212,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.16,-0.093" Height="43"/>
 
 	</Grid>
 </Controls:MetroWindow>

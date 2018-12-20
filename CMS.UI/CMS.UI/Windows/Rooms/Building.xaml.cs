@@ -29,6 +29,8 @@ namespace CMS.UI.Windows.Rooms
             core = new RoomCore();
             InitializeComponent();
             initializeBuildingList();
+            editbuildingbutton.IsEnabled = false;
+            deletebuildingbutton.IsEnabled = false;
         }
 
         async private void initializeBuildingList()
@@ -42,6 +44,15 @@ namespace CMS.UI.Windows.Rooms
             RoomWindow newRoomWindow = new RoomWindow(current.BuildingID);
             newRoomWindow.ShowDialog();
 
+        }
+
+        private void buildinglist_CurrentCellChanged(object sender, EventArgs e)
+        {
+
+           editbuildingbutton.IsEnabled = true;
+           deletebuildingbutton.IsEnabled = true;
+
+            
         }
     }
 }

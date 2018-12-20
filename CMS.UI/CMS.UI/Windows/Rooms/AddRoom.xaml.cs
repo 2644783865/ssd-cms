@@ -37,11 +37,15 @@ namespace CMS.UI.Windows.Rooms
             RoomDTO newroom = new RoomDTO();
             newroom.BuildingID = this.BuildingID;
             newroom.Code = roomnumber.Text;
-            await core.AddRoomAsync(newroom);
-            /*
-             * todo: inform about success failure 
-             * 
-             */
+            bool response = await core.AddRoomAsync(newroom);
+            if (response)
+            {
+                MessageBox.Show("Successfully added!");
+            } else
+            {
+                MessageBox.Show("Could not add the room!");
+            }
+            
         }
     }
 }
