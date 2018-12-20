@@ -152,5 +152,18 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+
+        public bool GetPresentationsById(int conferenceId)
+        {
+            try
+            {
+                var presentations = _repository.GetPresentationsById(conferenceId);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

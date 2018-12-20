@@ -13,5 +13,6 @@ namespace CMS.API.BLL.Interfaces
         bool EditSpecialSessionOfPresentation(int presentationId, int specialSessionId);
         bool DeleteSessionFromPresentation(int presentationId);
         bool DeleteSpecialSessionFromPresentation(int presentationId);
+        bool GetPresentationsById(int conferenceId);
     }
 }
