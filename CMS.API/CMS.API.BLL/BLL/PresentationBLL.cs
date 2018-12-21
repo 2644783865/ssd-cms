@@ -3,6 +3,7 @@ using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
 using System;
+using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {
@@ -153,17 +154,28 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public bool GetPresentationsById(int conferenceId)
+        public IEnumerable<PresentationDTO> GetPresentationsById(int conferenceId)
         {
             try
             {
-                var presentations = _repository.GetPresentationsById(conferenceId);
+                return _repository.GetPresentationsById(conferenceId);
             }
             catch
             {
-                return false;
+                return null;
             }
-            return true;
+        }
+
+        public PresentationDTO GetPresentationById(int presentationId)
+        {
+            try
+            {
+                return _repository.GetPresentationById(presentationId);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

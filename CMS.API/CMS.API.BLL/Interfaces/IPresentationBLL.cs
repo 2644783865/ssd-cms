@@ -1,4 +1,5 @@
 ﻿using CMS.BE.DTO;
+using System.Collections.Generic;
 
 namespace CMS.API.BLL.Interfaces
 {
@@ -13,6 +14,7 @@ namespace CMS.API.BLL.Interfaces
         bool EditSpecialSessionOfPresentation(int presentationId, int specialSessionId);
         bool DeleteSessionFromPresentation(int presentationId);
         bool DeleteSpecialSessionFromPresentation(int presentationId);
-        bool GetPresentationsById(int conferenceId);
+        IEnumerable<PresentationDTO> GetPresentationsById(int conferenceId);
+        PresentationDTO GetPresentationById(int presentationId);
     }
 }
