@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
 using CMS.BE.Models;
@@ -20,34 +21,18 @@ namespace CMS.API.Tests
         }
 
         // Session
-        public void TestAddSession()
-        {
-            // Not yet implemented
-        }
-
-        public void TestEditSession()
-        {
-            // Not yet implemented
-        }
-
-        public void TestDeleteSession()
-        {
-            // Not yet implemented
-        }
-
+        [TestMethod]
         public void TestGetSessions()
         {
-            // Not yet implemented
+            var result = sessionBll.GetSessions(1);
+            Assert.AreEqual(1, result.Count());
         }
 
-        public void TestGetSessionByID()
+        [TestMethod]
+        public void TestGetSessionById()
         {
-            // Not yet implemented
-        }
-
-        public void TestGetSessionsForChair()
-        {
-            // Not yet implemented
+            var result = sessionBll.GetSessionByID(2);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -90,54 +75,37 @@ namespace CMS.API.Tests
             Response result = sessionBll.CheckOverlappingSession(1, new DateTime(2018, 11, 20, 13, 15, 0), new DateTime(2018, 11, 20, 14, 0, 0));
             Assert.AreEqual(true, result.Status);
         }
-/* Error in trigger
-        [TestMethod]
-        public void TestCheckOverlappingSession6()
-        {
-            // Case 6: Overlapping with event at the end --> shouldn't pass
-            Response result = sessionBll.CheckOverlappingSession(1, new DateTime(2018, 11, 20, 13, 45, 0), new DateTime(2018, 11, 20, 14, 15, 0));
-            Assert.AreEqual(true, result.Status);
-        }
-*/
-/* Error in trigger
-        [TestMethod]
-        public void TestCheckOverlappingSession7()
-        {
-            // Case 7: Overlapping with event at the beginning --> shouldn't pass
-            Response result = sessionBll.CheckOverlappingSession(1, new DateTime(2018, 11, 20, 14, 15, 0), new DateTime(2018, 11, 20, 15, 0, 0));
-            Assert.AreEqual(true, result.Status);
-        }
-*/
+        /* Error in trigger
+                [TestMethod]
+                public void TestCheckOverlappingSession6()
+                {
+                    // Case 6: Overlapping with event at the end --> shouldn't pass
+                    Response result = sessionBll.CheckOverlappingSession(1, new DateTime(2018, 11, 20, 13, 45, 0), new DateTime(2018, 11, 20, 14, 15, 0));
+                    Assert.AreEqual(true, result.Status);
+                }
+        */
+        /* Error in trigger
+                [TestMethod]
+                public void TestCheckOverlappingSession7()
+                {
+                    // Case 7: Overlapping with event at the beginning --> shouldn't pass
+                    Response result = sessionBll.CheckOverlappingSession(1, new DateTime(2018, 11, 20, 14, 15, 0), new DateTime(2018, 11, 20, 15, 0, 0));
+                    Assert.AreEqual(true, result.Status);
+                }
+        */
         // Special Session
-        public void TestAddSpecialSession()
-        {
-            // Not yet implemented
-        }
-
-        public void TestEditSpecialSession()
-        {
-            // Not yet implemented
-        }
-
-        public void TestDeleteSpecialSession()
-        {
-            // Not yet implemented
-        }
-
+        [TestMethod]
         public void TestGetSpecialSessions()
         {
-            // Not yet implemented
+            var result = sessionBll.GetSpecialSessions(1);
+            Assert.AreEqual(1, result.Count());
         }
 
-        public void TestGetSpecialSessionByID()
+        [TestMethod]
+        public void TestGetSpecialSessionById()
         {
-            // Not yet implemented
+            var result = sessionBll.GetSpecialSessionByID(1);
+            Assert.IsNotNull(result);
         }
-
-        public void TestGetSpecialSessionsForChair()
-        {
-            // Not yet implemented
-        }
-
     }
 }

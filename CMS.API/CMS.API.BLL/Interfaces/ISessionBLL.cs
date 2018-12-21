@@ -12,17 +12,15 @@ namespace CMS.API.BLL.Interfaces
         bool AddSession(SessionDTO session);
         bool EditSession(SessionDTO session);
         bool DeleteSession(int sessionId);
-        IEnumerable<SessionDTO> GetSessions(int conferenceID);
-        SessionDTO GetSessionByID(int sessionID);
-        IEnumerable<SessionDTO> GetSessionsForChair(int accountId, int conferenceId);
+        IEnumerable<SessionDTO> GetSessions(int conferenceId);
+        SessionDTO GetSessionByID(int sessionId);
         Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end);
 
         // Special Session
         bool AddSpecialSession(SpecialSessionDTO specialSession);
         bool EditSpecialSession(SpecialSessionDTO specialSession);
         bool DeleteSpecialSession(int specialSessionId);
-        IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID);
-        SpecialSessionDTO GetSpecialSessionByID(int specialSessionID);
-        IEnumerable<SpecialSessionDTO> GetSpecialSessionsForChair(int accountId, int conferenceId);
+        IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceId);
+        SpecialSessionDTO GetSpecialSessionByID(int specialSessionId);
     }
 }
