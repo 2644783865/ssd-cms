@@ -44,5 +44,43 @@ namespace CMS.API.Tests
             var result = bll.GetAvailableRooms(1, new DateTime(2018, 11, 20, 15, 0, 0), new DateTime(2018, 11, 20, 16, 0, 0));
             Assert.AreEqual(2, result.Count());
         }
+
+        [TestMethod]
+        public void TestGetRoomById()
+        {
+            var result = bll.GetRoomById(1);
+            Assert.IsNotNull(result);
+
+        }
+
+        [TestMethod]
+        public void TestGetBuildings()
+        {
+            var result = bll.GetBuildings();
+            Assert.AreEqual(3, result.Count());
+
+        }
+
+        [TestMethod]
+        public void TestGetBuildingById()
+        {
+            var result = bll.GetBuildingById(1);
+            Assert.IsNotNull(result);
+
+        }
+
+        [TestMethod]
+        public void TestSetBuildingForConference()
+        {
+            var result = bll.SetBuildingForConference(1, 2);
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestDeleteAssignmentBuildingForConference()
+        {
+            var result = bll.DeleteAssignmentBuildingForConference(1, 2);
+            Assert.IsTrue(result);
+        }
     }
 }
