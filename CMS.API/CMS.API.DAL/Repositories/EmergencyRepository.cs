@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -19,6 +20,12 @@ namespace CMS.API.DAL.Repositories
             var emergencyInfo = _db.EmergencyInfoes.Find(emergencyInfoId);
             if (emergencyInfo == null) return null;
             else return MapperExtension.mapper.Map<EmergencyInfo, EmergencyInfoDTO>(emergencyInfo);
+        }
+
+        public EmergencyInfoDTO GetEmergencyInfoByConferenceId(int id)
+        {
+            var infos = _db.EmergencyInfoes.Where(info => info.ConferenceId == id).First();
+            return MapperExtension.mapper.Map<EmergencyInfo,EmergencyInfoDTO>(infos);
         }
 
         public void AddEmergencyInfo(EmergencyInfoDTO emergencyInfoDTO)

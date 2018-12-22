@@ -36,6 +36,24 @@ namespace CMS.API.DAL.Repositories
             }
         }
 
+        public IEnumerable<ArticleDTO> GetSubmittedArticles()
+        {
+            var articles = _db.Articles.SqlQuery("SELECT * FROM Article WHERE Article.Status = 'submitted'");
+            foreach (var article in articles)
+            {
+                yield return MapperExtension.mapper.Map<Article, ArticleDTO>(article);
+            }
+        }
+
+        public IEnumerable<ArticleDTO> GetRejectedArticles()
+        {
+            var articles = _db.Articles.SqlQuery("SELECT * FROM Article WHERE Article.Status = 'rejected'");
+            foreach (var article in articles)
+            {
+                yield return MapperExtension.mapper.Map<Article, ArticleDTO>(article);
+            }
+        }
+
         public IEnumerable<AuthorDTO> GetAuthorsFromArticleId(int articleId)
         {
             var authors = _db.Authors.SqlQuery("SELECT * FROM Author WHERE AuthorId IN " +

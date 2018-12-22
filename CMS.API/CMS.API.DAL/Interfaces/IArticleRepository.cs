@@ -15,7 +15,8 @@ namespace CMS.API.DAL.Interfaces
         decimal GetLastArticleId();
         IEnumerable<ArticleDTO> GetArticlesForConferenceAndAuthor(int conferenceId, int authorId);
         IEnumerable<AuthorDTO> GetAuthorsFromArticleId(int articleId);
-
+        IEnumerable<ArticleDTO> GetSubmittedArticles();
+        IEnumerable<ArticleDTO> GetRejectedArticles();
         //Submission
         IEnumerable<SubmissionDTO> GetSubmissions();
         IEnumerable<SubmissionDTO> GetSubmissionsForArticle(int articleId);
