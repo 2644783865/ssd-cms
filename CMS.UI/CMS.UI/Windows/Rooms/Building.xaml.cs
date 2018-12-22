@@ -36,6 +36,7 @@ namespace CMS.UI.Windows.Rooms
         async private void initializeBuildingList()
         {
             buildinglist.ItemsSource = await core.GetBuildingsAsync();
+            
         }
 
         private void buildinglist_MouseDoubleClick(object sender, MouseButtonEventArgs e)
