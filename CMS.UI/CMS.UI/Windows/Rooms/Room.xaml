@@ -10,8 +10,12 @@
 		ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid Name="RoomList" HorizontalAlignment="Left" Height="339" Margin="42,27,0,0" VerticalAlignment="Top" Width="438"/>
-        <Button Name="AddRoom" Content="Add" HorizontalAlignment="Left" Margin="558,45,0,0" VerticalAlignment="Top" Width="176" Click="AddRoom_Click"/>
+		<DataGrid Name="RoomList" IsReadOnly="True" HorizontalAlignment="Left" Height="339" Margin="42,27,0,0" VerticalAlignment="Top" Width="438" AutoGenerateColumns="False">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Code" Binding="{Binding Code}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Button Name="AddRoom" Content="Add" HorizontalAlignment="Left" Margin="558,45,0,0" VerticalAlignment="Top" Width="176" Click="AddRoom_Click"/>
         <Button Name="EditRoom" Content="Edit" HorizontalAlignment="Left" Margin="558,99,0,0" VerticalAlignment="Top" Width="176" Click="EditRoom_Click"/>
         <Button Name="DeleteRoom" Content="Delete" HorizontalAlignment="Left" Margin="558,171,0,0" VerticalAlignment="Top" Width="176" Click="DeleteRoom_Click"/>
 
