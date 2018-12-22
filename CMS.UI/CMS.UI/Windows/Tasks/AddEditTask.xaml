@@ -12,11 +12,11 @@
     <Grid Margin="0,0,-6.4,0.2">
         <ComboBox x:Name="RoleEmployeeBox" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="91" Height="26" />
         <Button x:Name="SubmitButton" Content="Add Task" HorizontalAlignment="Left" Margin="195,234,0,0" VerticalAlignment="Top" Width="75" Click="SubmitButton_Click"/>
-        <TextBox x:Name="TitleBox" HorizontalAlignment="Left" Height="26" Margin="125,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" TextChanged="TitleBox_TextChanged"/>
+        <TextBox x:Name="TitleBox" HorizontalAlignment="Left" Height="26" Margin="125,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" />
         <TextBox x:Name="DescriptionBox" HorizontalAlignment="Left" Height="108" Margin="125,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
-        <DatePicker Name="BeginDatePicker" HorizontalAlignment="Left" Margin="125,185,0,0" VerticalAlignment="Top" Height="28" Width="67"/>
-        <Button x:Name="Cancelbutton" Content="CANCEL" HorizontalAlignment="Left" Margin="115,234,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
-        <DatePicker Name="EndDatePicker" HorizontalAlignment="Left" Margin="197,185,0,0" VerticalAlignment="Top" Height="28" Width="73"/>
+        <Controls:DateTimePicker Name="BeginDatePicker" HorizontalAlignment="Left" Margin="125,185,0,0" VerticalAlignment="Top" Height="28" Width="67"/>
+        <Button x:Name="Cancelbutton" Content="CANCEL" HorizontalAlignment="Left" Margin="115,234,0,10" Width="75" Click="CancelButton_Click"/>
+        <Controls:DateTimePicker Name="EndDatePicker" HorizontalAlignment="Left" Margin="197,185,0,0" VerticalAlignment="Top" Height="28" Width="73"/>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" HorizontalAlignment="Left" Margin="66,0,0,10" VerticalAlignment="Bottom" Height="45" Width="35"/>
     </Grid>
 </Controls:MetroWindow>

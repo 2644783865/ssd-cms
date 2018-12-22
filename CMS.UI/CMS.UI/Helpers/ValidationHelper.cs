@@ -1,5 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using System.Windows.Controls;
+using System;
 
 namespace CMS.UI.Helpers
 {
@@ -27,6 +28,11 @@ namespace CMS.UI.Helpers
         {
             passwordBox.BorderBrush = result ? BrushSettings.NormalBrush : BrushSettings.ErrorBrush;
             return result;
+        }
+
+        internal static bool ValidateDateTimePicker(bool v, object beginBorderError)
+        {
+            throw new NotImplementedException();
         }
     }
 }
