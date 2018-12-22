@@ -25,43 +25,7 @@ namespace CMS.API.DAL.Repositories
 
         public IEnumerable<PresentationDTO> GetPresentationsById(int conferenceId)
         {
-            List<PresentationDTO> resPresentations = null;
-            var presentations = GetPresentations();
-            if (presentations == null)
-            {
-                return null;
-            }
-            else
-            {
-                foreach(PresentationDTO presentation in presentations)
-                {
-                    if (presentation.SessionId != null)
-                    {
-                        var session = _repository.GetSessionById(presentation.SessionId.Value);
-                        if (session.ConferenceId == conferenceId)
-                        {
-                            resPresentations.Add(presentation);
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                    else
-                    {
-                        var specialSession = _repository.GetSpecialSessionById(presentation.SpecialSessionId.Value);
-                        if (specialSession.ConferenceId == conferenceId)
-                        {
-                            resPresentations.Add(presentation);
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-                }
-                return resPresentations;
-            }
+            return _db.Presentations.Where(p => p.Article.ConferenceID == conferenceId).Project().To<PresentationDTO>();
         }
 
         public void AddPresentation(PresentationDTO presentationDTO)

@@ -48,14 +48,13 @@ namespace CMS.API.Tests
         }
 
 
-/* Doesn't work because of error in EditPresentation
         [TestMethod]
         public void TestDeleteSessionFromPresentation()
         {
             var result = bll.DeleteSessionFromPresentation(1);
             Assert.IsTrue(result);
         }
-*/
+
 
 
         [TestMethod]
@@ -73,25 +72,23 @@ namespace CMS.API.Tests
         }
 
 
-/* Doesn't work because of error in EditPresentation
+// Doesn't work because of error in EditPresentation
         [TestMethod]
         public void TestDeleteSpecialSessionFromPresentation()
         {
             var result = bll.DeleteSpecialSessionFromPresentation(1);
             Assert.IsTrue(result);
         }
-*/
 
 
 
-/* Doesn't work because of an error in the core.dll, Exeption not machting arguments
         [TestMethod]
         public void TestGetPresentationsById()
         {
             var result = bll.GetPresentationsById(1);
             Assert.AreEqual(1, result.Count());
         }
-*/
+
 
 
         [TestMethod]
