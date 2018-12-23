@@ -1,4 +1,5 @@
 ﻿using CMS.BE.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.Interfaces
@@ -12,6 +13,8 @@ namespace CMS.API.BLL.Interfaces
         bool DeleteTask(int TaskId);
         IEnumerable<TaskDTO> GetTasksForEmployee(int EmployeeId, int ConferenceId);
         IEnumerable<TaskDTO> GetTasksByConferenceId(int ConferenceId);
+        bool CheckTasks(int employeeId, DateTime beginDate, DateTime endDate);
+        bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate);
     }   
 }
 

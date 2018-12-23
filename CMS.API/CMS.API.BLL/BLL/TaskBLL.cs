@@ -2,6 +2,8 @@
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
+using CMS.BE.Models;
+using System;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
@@ -95,5 +97,30 @@ namespace CMS.API.BLL.BLL
                 return null;
             }
         }
+
+        public bool CheckTasks(int employeeId, DateTime beginDate, DateTime endDate)
+        {
+            try
+            {
+                return _repository.CheckTasks(employeeId, beginDate, endDate);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate)
+        {
+            try
+            {
+                return _repository.CheckOverlappingTask(employeeId, beginDate, endDate);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

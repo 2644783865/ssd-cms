@@ -2,6 +2,7 @@
 using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace CMS.API.Tests
 {
@@ -45,6 +46,26 @@ namespace CMS.API.Tests
             int ConferenceId = 1;
             var result = taskTest.GetTasksByConferenceId(ConferenceId);
             Assert.IsNotNull(result);             
+        }
+
+        [TestMethod]
+        public void TestCheckTasks()
+        {
+            int employeeId = 1;
+            DateTime beginDate = new DateTime(2008, 5, 1, 8, 30, 52);
+            DateTime endDate = new DateTime(2004, 5, 1, 8, 30, 52);
+            var result = taskTest.CheckTasks(employeeId, beginDate, endDate);
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestCheckOverlappingTask()
+        {
+            int employeeId = 1;
+            DateTime beginDate = new DateTime(2008, 5, 1, 8, 30, 52);
+            DateTime endDate = new DateTime(2004, 5, 1, 8, 30, 52);
+            var result = taskTest.CheckOverlappingTask(employeeId, beginDate, endDate);
+            Assert.IsTrue(result);
         }
     }
 }
