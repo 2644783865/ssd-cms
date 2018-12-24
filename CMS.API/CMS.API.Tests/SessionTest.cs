@@ -31,7 +31,7 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestGetSessionById()
         {
-            var result = sessionBll.GetSessionByID(2);
+            var result = sessionBll.GetSessionByID(1);
             Assert.IsNotNull(result);
         }
 
@@ -93,6 +93,48 @@ namespace CMS.API.Tests
                     Assert.AreEqual(true, result.Status);
                 }
         */
+
+        [TestMethod]
+        public void TestCheckOverlappingSessionForChairman1()
+        {
+            // Case 1: no overlapping
+            Response result = sessionBll.CheckOverlappingSessionForChairman(1, new DateTime(2018, 11, 20, 10, 00, 00), new DateTime(2018, 11, 20, 11, 00, 00));
+            Assert.AreEqual(false, result.Status);
+        }
+
+        [TestMethod]
+        public void TestCheckOverlappingSessionForChairman2()
+        {
+            // Case 2: overlapping with session in the beginning
+            Response result = sessionBll.CheckOverlappingSessionForChairman(1, new DateTime(2018, 11, 20, 11, 00, 00), new DateTime(2018, 11, 20, 12, 15, 00));
+            Assert.AreEqual(true, result.Status);
+        }
+
+        [TestMethod]
+        public void TestCheckOverlappingSessionForChairman3()
+        {
+            // Case 3: overlapping with session in the end
+            Response result = sessionBll.CheckOverlappingSessionForChairman(1, new DateTime(2018, 11, 20, 12,15, 00), new DateTime(2018, 11, 20, 12, 45, 00));
+            Assert.AreEqual(true, result.Status);
+        }
+
+        [TestMethod]
+        public void TestCheckOverlappingSessionForChairman4()
+        {
+            // Case 4: overlapping with special session in the beginning
+            Response result = sessionBll.CheckOverlappingSessionForChairman(1, new DateTime(2018, 11, 20, 12, 45, 00), new DateTime(2018, 11, 20, 13, 15, 00));
+            Assert.AreEqual(true, result.Status);
+        }
+
+        [TestMethod]
+        public void TestCheckOverlappingSessionForChairman5()
+        {
+            // Case 1: overlapping with special session in the end
+            Response result = sessionBll.CheckOverlappingSessionForChairman(1, new DateTime(2018, 11, 20, 13, 15, 00), new DateTime(2018, 11, 20, 13, 45, 00));
+            Assert.AreEqual(true, result.Status);
+        }
+
+
         // Special Session
         [TestMethod]
         public void TestGetSpecialSessions()
