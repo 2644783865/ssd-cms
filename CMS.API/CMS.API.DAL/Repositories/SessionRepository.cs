@@ -25,6 +25,11 @@ namespace CMS.API.DAL.Repositories
             else return MapperExtension.mapper.Map<Session, SessionDTO>(session);
         }
 
+        public IEnumerable<SessionDTO> GetSessionsByChairId(int chairId)
+        {
+            return _db.Sessions.Where(session => session.ChairId == chairId).Project().To<SessionDTO>();
+        }
+
         public void AddSession(SessionDTO sessionDTO)
         {
             var session = MapperExtension.mapper.Map<SessionDTO, Session>(sessionDTO);
@@ -143,6 +148,47 @@ namespace CMS.API.DAL.Repositories
                 new SqlParameter("ChairId", accountId));
         }
 
+        public bool CheckSessionForChair(int chairId, DateTime beginDate, DateTime endDate)
+        {
+            IEnumerable<SessionDTO> sessions = GetSessionsByChairId(chairId);
+            foreach (SessionDTO session in sessions)
+            {
+                if ((DateTime.Compare(session.BeginDate, beginDate) > 0) && (DateTime.Compare(session.BeginDate, endDate) > 0))
+                {
+                    return false;
+                }
+                else if ((DateTime.Compare(session.BeginDate, beginDate) < 0) && (DateTime.Compare(session.EndDate, beginDate) < 0))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CheckSpecialSessionForChair(int chairId, DateTime beginDate, DateTime endDate)
+        {
+            IEnumerable<SpecialSessionDTO> specials = GetSpecialSessionsByChairId(chairId);
+            foreach (SpecialSessionDTO session in specials)
+            {
+                if ((DateTime.Compare(session.BeginDate, beginDate) > 0) && (DateTime.Compare(session.BeginDate, endDate) > 0))
+                {
+                    return false;
+                }
+                else if ((DateTime.Compare(session.BeginDate, beginDate) < 0) && (DateTime.Compare(session.EndDate, beginDate) < 0))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         //SpecialSession
 
@@ -155,6 +201,11 @@ namespace CMS.API.DAL.Repositories
             var specialSession = _db.SpecialSessions.Find(id);
             if (specialSession == null) return null;
             else return MapperExtension.mapper.Map<SpecialSession, SpecialSessionDTO>(specialSession);
+        }
+
+        public IEnumerable<SpecialSessionDTO> GetSpecialSessionsByChairId(int chairId)
+        {
+            return _db.SpecialSessions.Where(session => session.ChairId == chairId).Project().To<SpecialSessionDTO>();
         }
 
         public void AddSpecialSession(SpecialSessionDTO specialSessionDTO)

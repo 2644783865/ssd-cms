@@ -152,6 +152,42 @@ namespace CMS.API.BLL.BLL
             return res;
         }
         
+        public Response CheckOverlappingSessionForChairman(int chairId, DateTime beginDate, DateTime endDate)
+        {
+            Response res = new Response();
+            try
+            {
+                bool resSession = _repository.CheckSessionForChair(chairId, beginDate, endDate);
+                bool resSpecial = _repository.CheckSpecialSessionForChair(chairId, beginDate, endDate);
+
+                if (resSession == false && resSpecial == false)
+                {
+                    res.Message = "";
+                    res.Status = false;
+                }
+                else if (resSession == true && resSpecial == false)
+                {
+                    res.Message = "Chair is already assigned to Session.";
+                    res.Status = true;
+                }
+                else if (resSession == false && resSpecial == true)
+                {
+                    res.Message = "Chair is already assiged tp Special Session.";
+                    res.Status = true;
+                }
+                else
+                {
+                    res.Message = "Chair is already assiged to Session and to Special Session.";
+                    res.Status = true;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            return res;
+        }
+
         public IEnumerable<SessionDTO> GetSessions(int conferenceID)
         {
             try
