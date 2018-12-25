@@ -4,18 +4,13 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CMS.UI.Windows.Tasks"
         mc:Ignorable="d"
-        Title="ViewTaskSchedule" Height="300" Width="300">
-    <Controls:MetroWindow.RightWindowCommands>
-        <Controls:WindowCommands>
-            <Label Name="ConferenceLabel" Content="Conference: unknown conference"/>
-            <Label Name="UserLabel" Content="User: unknown user"/>
-            <Button Content="logout" Click="LogOut_Click"/>
-        </Controls:WindowCommands>
-    </Controls:MetroWindow.RightWindowCommands>
+        Title="ViewTaskSchedule" Height="518.41" Width="699.163"
+                      ResizeMode="NoResize"
+                      WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid x:Name="TaskDataGrid" HorizontalAlignment="Left" Margin="32,30,0,0" VerticalAlignment="Top" Height="210" Width="236" />
-
+        <DataGrid x:Name="TaskDataGrid" HorizontalAlignment="Left" Margin="32,68,0,0" VerticalAlignment="Top" Height="389" Width="619" />
+        <ComboBox Name="EmployeeBox" HorizontalAlignment="Left" Margin="156,22,0,0" VerticalAlignment="Top" Width="203"/>
+        <Label Name="ChooseEmpLabel" Content="Display schedule for:" HorizontalAlignment="Left" Margin="32,22,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Controls:MetroWindow>

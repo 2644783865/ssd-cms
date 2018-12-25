@@ -58,6 +58,17 @@ namespace CMS.Core.Core
             else return -1;
         }
 
+        public async Task<AccountDTO> GetAccountByIdAsync(int accountId)
+        {
+            var path = $"{Properties.Resources.getAccountByIdPath}?accountId={accountId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<AccountDTO>(result.Content);
+            }
+            return null;
+        }
+
         public async Task<bool> AddAccountAsync(AccountDTO account)
         {
             var path = Properties.Resources.addAccountPath;
@@ -102,7 +113,7 @@ namespace CMS.Core.Core
             return null;
         }
 
-        public async void LoadRolesAsync()
+        public async Task LoadRolesAsync()
         {
             var path = $"{Properties.Resources.getRolesForConferenceAndAccountPath}?conferenceId={UserCredentials.Conference.ConferenceId}&accountId={UserCredentials.Account.AccountId}";
             var result = await _apiHelper.Get(path);

@@ -268,6 +268,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/task/checkoverlappingtask.
+        /// </summary>
+        internal static string checkOvelappingTaskPath {
+            get {
+                return ResourceManager.GetString("checkOvelappingTaskPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/session/checkoverlappingevent.
         /// </summary>
         internal static string checkOverlappingEventPath {

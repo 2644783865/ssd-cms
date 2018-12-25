@@ -13,7 +13,6 @@ namespace CMS.API.DAL.Interfaces
         void DeleteTask(int taskId);
         IEnumerable<TaskDTO> GetTasksForEmployee(int employeeId, int conferenceId);
         IEnumerable<TaskDTO> GetTasksByConferenceId(int ConferenceId);
-        bool CheckTasks(int employeeId, DateTime beginDate, DateTime endDate);
         bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate);
     }
 }

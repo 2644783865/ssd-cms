@@ -2,11 +2,12 @@
 using CMS.API.BLL.Interfaces;
 using CMS.API.Helpers;
 using CMS.BE.DTO;
-using System;
+using CMS.BE.Models;
 using System.Web.Http;
 
 namespace CMS.API.Controllers
 {
+    [BasicAuthentication]
     public class TaskController : ApiController
     {
         private ITaskBLL _bll = new TaskBLL();
@@ -18,8 +19,6 @@ namespace CMS.API.Controllers
         {
             return Ok(_bll.GetTasks(ConferenceId));
         }
-
-
 
         // GET: api/Task/TaskById?TaskId=
         [HttpGet]
@@ -61,11 +60,20 @@ namespace CMS.API.Controllers
 
         // GET: api/Task/TasksForEmployee?EmployeeId=&ConferenceId=
         [HttpGet]
-        [Route("api/authentication/accountsforrole")]
-        public IHttpActionResult GetTasksForRole(int EmployeeId, int ConferenceId)
+        [Route("api/task/tasksforempployee")]
+        public IHttpActionResult GetTasksForEmployee(int EmployeeId, int ConferenceId)
         {
             var tasks = _bll.GetTasksForEmployee(EmployeeId, ConferenceId);
             if (tasks == null) return BadRequest();
+            return Ok(tasks);
+        }
+
+        // GET: api/Task/CheckOverlappingTask?EmployeeId=&BeginDate=&EndDate=
+        [HttpPost]
+        [Route("api/task/checkoverlappingtask")]
+        public IHttpActionResult CheckOverlappingTask(int employeeId,[FromBody] DateModel dateModel)
+        {
+            var tasks = _bll.CheckOverlappingTask(employeeId, dateModel.beginDate, dateModel.endDate);
             return Ok(tasks);
         }
     }

@@ -6,12 +6,40 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Tasks"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="ManageTasks" Height="300" Width="300">
+        Title="Manage Tasks" Height="551.548" Width="985.356"
+                      ResizeMode="NoResize"
+                      WindowStartupLocation="CenterScreen"
+                      Activated="MetroWindow_Activated">
     <Grid>
-        <DataGrid x:Name="TasksList" HorizontalAlignment="Left" Margin="38,27,0,0" VerticalAlignment="Top" Height="167" Width="223"/>
-        <Button x:Name="buttonAdd" Content="ADD" HorizontalAlignment="Left" Margin="38,213,0,0" VerticalAlignment="Top" Width="62" Click="buttonAdd_Click"/>
-        <Button x:Name="buttonDelete" Content="DELETE" HorizontalAlignment="Left" Margin="122,213,0,0" VerticalAlignment="Top" Width="59" Click="buttonDelete_Click"/>
-        <Button x:Name="buttonEdit" Content="EDIT" HorizontalAlignment="Left" Margin="195,213,0,0" VerticalAlignment="Top" Width="66"  Height="27" Click="buttonEdit_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="188*"/>
+            <RowDefinition Height="81*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="TasksList" HorizontalAlignment="Left" Margin="38,27,0,0" AutoGenerateColumns="False" VerticalAlignment="Top" Height="403" Width="885" Grid.RowSpan="2" IsReadOnly="True" MouseDoubleClick="TasksList_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding TaskId}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="200"/>
+                <DataGridTemplateColumn Header="Begin Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Controls:DateTimePicker SelectedDate="{Binding BeginDate}" BorderThickness="0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="End Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Controls:DateTimePicker SelectedDate="{Binding EndDate}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Employee Id" Binding="{Binding EmployeeId}" />
+                <DataGridTextColumn Header="Manager Id" Binding="{Binding ManagerId}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonAdd" Content="ADD" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="62" Height="30" Click="buttonAdd_Click" Grid.Row="1"/>
+        <Button x:Name="buttonDelete" Content="DELETE" Background="Red" HorizontalAlignment="Left" Margin="148,95,0,0" VerticalAlignment="Top" Height="30" Width="59" Click="buttonDelete_Click" Grid.Row="1" RenderTransformOrigin="-0.106,0.559"/>
+        <Button x:Name="buttonEdit" Content="EDIT" HorizontalAlignment="Left" Margin="77,95,0,0" VerticalAlignment="Top" Width="66"  Height="30" Click="buttonEdit_Click" Grid.Row="1"/>
 
     </Grid>
 </Controls:MetroWindow>

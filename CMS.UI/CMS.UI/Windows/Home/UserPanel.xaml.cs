@@ -65,11 +65,12 @@ namespace CMS.UI.Windows.Home
             WindowHelper.Logout(this);
         }
 
-        private void GoToConferenceButton_Click(object sender, RoutedEventArgs e)
+        private async void GoToConferenceButton_Click(object sender, RoutedEventArgs e)
         {
             if (ConferenceList.SelectedIndex >= 0)
             {
                 UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
+                await core.LoadRolesAsync();
                 ConferenceHome newWindow = new ConferenceHome();
                 newWindow.Show();
                 Close();
@@ -77,11 +78,12 @@ namespace CMS.UI.Windows.Home
             else MessageBox.Show("Choose conference");
         }
 
-        private void GoToManagerPanelButton_Click(object sender, RoutedEventArgs e)
+        private async void GoToManagerPanelButton_Click(object sender, RoutedEventArgs e)
         {
             if (ConferenceList.SelectedIndex >= 0)
             {
                 UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
+                await core.LoadRolesAsync();
                 ManagerPanel newWindow = new ManagerPanel();
                 newWindow.Show();
                 Close();
@@ -89,11 +91,12 @@ namespace CMS.UI.Windows.Home
             else MessageBox.Show("Choose conference");
         }
 
-        private void GoToAuthorPanelButton_Click(object sender, RoutedEventArgs e)
+        private async void GoToAuthorPanelButton_Click(object sender, RoutedEventArgs e)
         {
             if (ConferenceList.SelectedIndex >= 0)
             {
                 UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
+                await core.LoadRolesAsync();
                 AuthorPanel newWindow = new AuthorPanel();
                 newWindow.Show();
                 Close();

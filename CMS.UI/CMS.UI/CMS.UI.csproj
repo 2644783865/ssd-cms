@@ -69,6 +69,11 @@
     <Compile Include="Helpers\BrushSettings.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\WindowHelper.cs" />
+    <Compile Include="Properties\RoleResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoleResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Accommodation\AccommodationInfo.xaml.cs">
       <DependentUpon>AccommodationInfo.xaml</DependentUpon>
     </Compile>
@@ -316,6 +321,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\RoleResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RoleResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Configuration\AppSettings.local.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

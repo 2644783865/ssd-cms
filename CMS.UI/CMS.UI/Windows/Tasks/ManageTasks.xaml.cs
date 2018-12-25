@@ -1,19 +1,9 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Tasks
 {
@@ -22,42 +12,60 @@ namespace CMS.UI.Windows.Tasks
     /// </summary>
     public partial class ManageTasksWindow : MetroWindow
     {
-
         private TaskCore core;
-
         
         public ManageTasksWindow()
         {
-            
             InitializeComponent();
             core = new TaskCore();
             loadTasksToDatagrid();
         }
 
-        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        private async void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            if (TasksList.SelectedIndex >= 0)
+            {
+                var task = await core.GetTaskByIdAsync(((TaskDTO)TasksList.SelectedItem).TaskId);
+                AddEditTask newAddTaskWindow = new AddEditTask(task);
+                newAddTaskWindow.ShowDialog();
+            }
+            else MessageBox.Show("Choose task first");
         }
 
         async private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            TaskDTO taskToDelete = (TaskDTO)TasksList.SelectedItem;
-            await core.DeleteTaskAsync(taskToDelete.TaskID);
-            loadTasksToDatagrid();
+            if (TasksList.SelectedIndex >= 0)
+            {
+                var result = await core.DeleteTaskAsync(((TaskDTO)TasksList.SelectedItem).TaskId);
+                if (result)
+                {
+                    MessageBox.Show("Successfully deleted task");
+                    await loadTasksToDatagrid();
+                }
+                else MessageBox.Show("Error occured while deleting task");
+            }
+            else MessageBox.Show("Choose task first");
         }
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            AddTask NewAddTaskWindow = new AddTask();
-            NewAddTaskWindow.Show();
-            Close();
+            AddEditTask NewAddTaskWindow = new AddEditTask(null);
+            NewAddTaskWindow.ShowDialog();
         }
 
-        async private void loadTasksToDatagrid()
+        async private Task loadTasksToDatagrid()
         {
-
             TasksList.ItemsSource = await core.GetTasksAsync(UserCredentials.Conference.ConferenceId);
-            
+        }
+
+        private void TasksList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            buttonEdit_Click(null, null);
+        }
+
+        private async void MetroWindow_Activated(object sender, System.EventArgs e)
+        {
+            await loadTasksToDatagrid();
         }
     }
 }

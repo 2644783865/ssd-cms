@@ -2,7 +2,7 @@ using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
 using CMS.API.Helpers;
 using CMS.BE.DTO;
-using System;
+using CMS.BE.Models;
 using System.Web.Http;
 
 namespace CMS.API.Controllers
@@ -62,11 +62,11 @@ namespace CMS.API.Controllers
         }
 
         // GET: api/Session/CheckOverlappingSession?conferenceId=&begin=&end=
-        [HttpGet]
+        [HttpPost]
         [Route("api/session/checkoverlappingsession")]
-        public IHttpActionResult CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
+        public IHttpActionResult CheckOverlappingSession(int conferenceId, [FromBody] DateModel dateModel)
         {
-            var session = _bll.CheckOverlappingSession(conferenceId, begin, end);
+            var session = _bll.CheckOverlappingSession(conferenceId, dateModel.beginDate, dateModel.endDate);
             if (session == null) return BadRequest();
             return Ok(session);
         }

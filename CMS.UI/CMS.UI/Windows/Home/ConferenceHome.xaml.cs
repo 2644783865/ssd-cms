@@ -35,7 +35,6 @@ namespace CMS.UI.Windows.Home
         {
             try
             {
-                authCore.LoadRolesAsync();
                 InitializeLabels();
                 LoadEvents();
                 LoadSessions();

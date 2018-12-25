@@ -11,7 +11,7 @@ namespace CMS.Core.Interfaces
         bool AdminLogin(LoginModel loginModel);
         Task<bool> LoginAsync(LoginModel loginModel);
         Task LoadConferencesAsync();
-        void LoadRolesAsync();
+        Task LoadRolesAsync();
         Task<List<RoleDTO>> GetRolesForOtherAccountAsync(string login);
         Task<AccountDTO> GetAccountByLoginAsync(string login);
         Task<int> GetAccountIdByLoginAsync(string login);
@@ -24,5 +24,6 @@ namespace CMS.Core.Interfaces
         Task<bool> DeleteRoleForConferenceAndAccountAsync(int conferenceId, string login, int roleId);
         Task<bool> ChangePasswordAsync(ChangePasswordModel passwordModel);
         Task<bool> CheckIsManager(int conferenceId);
+        Task<AccountDTO> GetAccountByIdAsync(int accountId);
     }
 }

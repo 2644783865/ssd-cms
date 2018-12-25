@@ -24,28 +24,40 @@ namespace CMS.UI.Windows.Tasks
     public partial class ViewTaskSchedule : MetroWindow
     {
         private TaskCore core;
+        private int employeeId;
 
-        public ViewTaskSchedule(int conferenceID,int employeeID)
+        public ViewTaskSchedule(int? employeeID)
         {
             InitializeComponent();
-            WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
             core = new TaskCore();
-            loadTasksForToDatagrid();
+            if (employeeID == null)
+            {
+                employeeId = UserCredentials.Account.AccountId;
+            }
+            else
+            {
+                employeeId = employeeID.Value;
+            }
             
-
+            LoadTasksForToDatagrid();
         }
 
-        private void LogOut_Click(object sender, RoutedEventArgs e)
+        private void ShowChooseEmployee()
         {
-            WindowHelper.Logout(this);
+            ChooseEmpLabel.Visibility = Visibility.Visible;
+            EmployeeBox.Visibility = Visibility.Visible;
+            
         }
 
-        async private void loadTasksForToDatagrid()
+        private void HideChooseEmployee()
         {
+            ChooseEmpLabel.Visibility = Visibility.Hidden;
+            EmployeeBox.Visibility = Visibility.Hidden;
+        }
 
-            TaskDataGrid.ItemsSource = await core.GetTasksForEmployeeAsync(UserCredentials.Account.AccountId, UserCredentials.Conference.ConferenceId);
-
-            
+        async private void LoadTasksForToDatagrid()
+        {
+            TaskDataGrid.ItemsSource = await core.GetTasksForEmployeeAsync(employeeId, UserCredentials.Conference.ConferenceId);
         }
     }
 }

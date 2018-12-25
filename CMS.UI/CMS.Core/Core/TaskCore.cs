@@ -3,6 +3,7 @@ using CMS.BE.Models;
 using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -53,7 +54,7 @@ namespace CMS.Core.Core
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }
-        public async Task<List<AccountDTO>> GetAccountsForRoleAsync(string roleName, int ConferenceId)
+        public async Task<List<AccountDTO>> GetAccountsForConferenceEmployeeAsync(int ConferenceId)
         {
             var path = $"{Properties.Resources.getAccountsForRolePath}?roleName={Properties.RolesResources.ConferenceStaffMember}&conferenceId={ConferenceId}";
             var result = await _apiHelper.Get(path);
@@ -72,6 +73,22 @@ namespace CMS.Core.Core
                 return JsonConvert.DeserializeObject<List<TaskDTO>>(result.Content);
             }
             return null;
+        }
+
+        public async Task<bool> CheckOverlappingTaskAsync(int EmployeeId, DateTime beginDate, DateTime endDate)
+        {
+            var dateModel = new DateModel()
+            {
+                beginDate = beginDate,
+                endDate = endDate
+            };
+            var path = $"{Properties.Resources.checkOvelappingTaskPath}?employeeId={EmployeeId}";
+            var result = await _apiHelper.Post(path, dateModel);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<bool>(result.Content);
+            }
+            return false;
         }
         public void Dispose() => _apiHelper.Dispose();
     }

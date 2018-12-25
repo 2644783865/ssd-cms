@@ -30,6 +30,12 @@ namespace CMS.UI.Helpers
             return result;
         }
 
+        public static bool ValidateComboBox(bool result, ComboBox comboBox)
+        {
+            comboBox.BorderBrush = result ? BrushSettings.NormalBrush : BrushSettings.ErrorBrush;
+            return result;
+        }
+
         internal static bool ValidateDateTimePicker(bool v, object beginBorderError)
         {
             throw new NotImplementedException();

@@ -1,10 +1,12 @@
 ﻿using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
+using CMS.API.Helpers;
 using CMS.BE.DTO;
 using System.Web.Http;
 
 namespace CMS.API.Controllers
 {
+    [BasicAuthentication]
     public class AwardController : ApiController
     {
         private IAwardBLL _bll = new AwardBLL();

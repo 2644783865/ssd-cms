@@ -5,7 +5,6 @@ using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 
 namespace CMS.UI.Windows.Tasks
@@ -13,80 +12,47 @@ namespace CMS.UI.Windows.Tasks
     /// <summary>
     /// Lógica de interacción para AddTask.xaml
     /// </summary>
-    public partial class AddTask : MetroWindow
+    public partial class AddEditTask : MetroWindow
     {
-
         private ITaskCore taskCore;
-        private ISessionCore sessionCore;
+        private IAuthenticationCore authCore;
         private TaskDTO currentTask = null;
-        private AccountDTO currentAccount;
-        private bool isAutomatic = false;
-        private Border BeginBorderError;
 
-        public Border EndBorderError { get; private set; }
-
-        public AddTask()
+        public AddEditTask(TaskDTO task)
         {
             InitializeComponent();
             taskCore = new TaskCore();
+            authCore = new AuthenticationCore();
+            currentTask = task;
             InitializeData();
         }
 
-        private void InitializeData()
+        private async void InitializeData()
         {
             ProgressSpin.IsActive = true;
-            ClearEventBoxes();
-            //await LoadEmployees();
+            await LoadEmployees();
+            if (currentTask != null) InitializeEditFields();
             ProgressSpin.IsActive = false;
         }
 
-        private void ClearEventBoxes()
+        private async void InitializeEditFields()
         {
-            TitleBox.Text = string.Empty;
-            DescriptionBox.Text = string.Empty;
-            RoleEmployeeBox.SelectedIndex = -1;
-            BeginDatePicker.SelectedDate = null;
-            EndDatePicker.SelectedDate = null;
+            TitleBox.Text = currentTask.Title;
+            RoleEmployeeBox.SelectedValue = currentTask.EmployeeId;
+            DescriptionBox.Text = currentTask.Description;
+            BeginDatePicker.SelectedDate = currentTask.BeginDate;
+            EndDatePicker.SelectedDate = currentTask.EndDate;
+            ManagerLabel.Content = (await authCore.GetAccountByIdAsync(currentTask.ManagerId)).AccountId;
+            SubmitButton.Content = "Save";
+            Title = "Edit Task";
         }
 
-        /*private async Task LoadEmployees()
+        private async Task LoadEmployees()
         {
             RoleEmployeeBox.Items.Clear();
             RoleEmployeeBox.DisplayMemberPath = "Name";
-            RoleEmployeeBox.SelectedValuePath = "EmployeeID";
-            var employees = await  here we need the function get ID of emplyees by conference, or accounts in conference
-            foreach (var employee in employees)
-            {
-              RoleEmployeeBox.Items.Add(employee);
-            }
-            
-
-        }*/
-
-        //private Task FillRoleBox()
-        //{
-        /*RoleBox.Items.Clear();
-        RoleBox.DisplayMemberPath = "Employee";
-        RoleBox.SelectedValuePath = "AccountId";
-       // var roles = await authCore.GetHRRolesAsync();
-        foreach (var Employee in Emplyees)
-        {
-            RoleBox.Items.Add(Employee);
-        }*/
-        //}
-
-
-        private void FillEventBoxes()
-        {
-            if (currentTask != null)
-            {
-                TitleBox.Text = currentTask.Title;
-                DescriptionBox.Text = currentTask.Title;
-                RoleEmployeeBox.SelectedIndex = currentTask.EmployeeId;
-                BeginDatePicker.SelectedDate = currentTask.BeginDate;
-                EndDatePicker.SelectedDate = currentTask.EndDate;
-
-            }
+            RoleEmployeeBox.SelectedValuePath = "AccountId";
+            RoleEmployeeBox.ItemsSource = await taskCore.GetAccountsForConferenceEmployeeAsync(UserCredentials.Conference.ConferenceId);
         }
 
         private bool ValidateForm()
@@ -96,12 +62,13 @@ namespace CMS.UI.Windows.Tasks
             result = !ValidationHelper.ValidateTextFiled(DescriptionBox.Text.Length > 0, DescriptionBox) ? false : result;
             result = !ValidationHelper.ValidateDateTimePicker(BeginDatePicker.SelectedDate.HasValue
                 && BeginDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
-                && BeginDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate, BeginBorderError) ? false : result;
+                && BeginDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate, BeginDateErrorBorder) ? false : result;
             result = !ValidationHelper.ValidateDateTimePicker(EndDatePicker.SelectedDate.HasValue
                 && (BeginDatePicker.SelectedDate.HasValue
                 && EndDatePicker.SelectedDate >= BeginDatePicker.SelectedDate
                 && EndDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
-                && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate), EndBorderError) ? false : result;
+                && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate), EndDateErrorBorder) ? false : result;
+            result = !ValidationHelper.ValidateComboBox(RoleEmployeeBox.SelectedIndex >= 0, RoleEmployeeBox) ? false : result;
             return result;
         }
 
@@ -112,24 +79,25 @@ namespace CMS.UI.Windows.Tasks
 
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            ProgressSpin.IsActive = true;
             if (ValidateForm())
             {
-                var response = await sessionCore.CheckOverlappingSessiondAsync(UserCredentials.Conference.ConferenceId,
-                        BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value);
-                if (response != null && !response.Status)
+                var response = await taskCore.CheckOverlappingTaskAsync(((AccountDTO)RoleEmployeeBox.SelectedItem).AccountId, 
+                    BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value);
+                if (response)
                 {
-                    if (response != null)//here we need to think to changed for the task the line inside the if is something to not do it an error
+                    if (currentTask != null)
                     {
-                        currentTask.ConferenceId = UserCredentials.Conference.ConferenceId;
                         currentTask.Title = TitleBox.Text;
                         currentTask.Description = DescriptionBox.Text;
                         currentTask.BeginDate = BeginDatePicker.SelectedDate.Value;
                         currentTask.EndDate = EndDatePicker.SelectedDate.Value;
-                        //error currentTask.EmployeeId = RoleEmployeeBox.SelectedIndex >= 0 ? (int?)
+                        currentTask.EmployeeId = ((AccountDTO)RoleEmployeeBox.SelectedItem).AccountId;
+                        currentTask.ManagerId = UserCredentials.Account.AccountId;
                         if (await taskCore.EditTaskAsync(currentTask))
                         {
                             MessageBox.Show("Successfully edited task");
-                            InitializeData();
+                            Close();
                         }
                         else MessageBox.Show("Error occured while editing task");
                     }
@@ -142,23 +110,26 @@ namespace CMS.UI.Windows.Tasks
                             Description = DescriptionBox.Text,
                             BeginDate = BeginDatePicker.SelectedDate.Value,
                             EndDate = EndDatePicker.SelectedDate.Value,
-                           // error EmployeeId = RoleEmployeeBox.SelectedIndex >= 0 ? (int?)RoleEmployeeBox.SelectedValue : null
+                            EmployeeId = ((AccountDTO)RoleEmployeeBox.SelectedItem).AccountId,
+                            ManagerId = UserCredentials.Account.AccountId
                         };
                         if (await taskCore.AddTaskAsync(newTask))
                         {
                             MessageBox.Show("Successfully added new task");
-                            InitializeData();
+                            Close();
                         }
                         else MessageBox.Show("Error occured while adding new task");
                     }
                 }
-                else if (response == null) MessageBox.Show("Error occured while adding new task");
-                else MessageBox.Show(response.Message);
+                else
+                {
+                    MessageBox.Show("There is an overlapping task for this employee");
+                }
             }
             else MessageBox.Show("Invalid form");
+            ProgressSpin.IsActive = false;
         }
     }
-
 }
 
 
@@ -166,4 +137,3 @@ namespace CMS.UI.Windows.Tasks
 
 
 
-        

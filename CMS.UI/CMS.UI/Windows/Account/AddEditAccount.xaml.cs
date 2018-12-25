@@ -57,6 +57,15 @@ namespace CMS.UI.Windows.Account
                             Email = EmailBox.Text
                         };
                         result = await core.AddAccountAsync(loginModel);
+                        if (result)
+                        {
+                            MessageBox.Show("Successfully added account");
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error occured while adding account");
+                        }
                     }
                     else
                     {
@@ -65,20 +74,19 @@ namespace CMS.UI.Windows.Account
                         currentAccount.Email = EmailBox.Text;
 
                         result = await core.EditAccountAsync(currentAccount);
-                    }
-
-                    if (result)
-                    {
-                        MessageBox.Show("Success");
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failure");
+                        if (result)
+                        {
+                            MessageBox.Show("Successfully edited account");
+                            Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error occured while editing account");
+                        }
                     }
                 }
             }
-            else MessageBox.Show("Form invalid");
+            else MessageBox.Show("Invalid form");
             ProgressSpin.IsActive = false;
         }
 

@@ -56,10 +56,15 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<Response> CheckOverlappingSessiondAsync(int conferenceId, DateTime begin, DateTime end)
+        public async Task<Response> CheckOverlappingSessiondAsync(int conferenceId, DateTime beginDate, DateTime endDate)
         {
-            var path = $"{Properties.Resources.checkOverlappingSessionPath}?conferenceId={conferenceId}&begin={begin}&end={end}";
-            var result = await _apiHelper.Get(path);
+            var dateModel = new DateModel()
+            {
+                beginDate = beginDate,
+                endDate = endDate
+            };
+            var path = $"{Properties.Resources.checkOverlappingSessionPath}?conferenceId={conferenceId}";
+            var result = await _apiHelper.Post(path, dateModel);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
                 return JsonConvert.DeserializeObject<Response>(result.Content);

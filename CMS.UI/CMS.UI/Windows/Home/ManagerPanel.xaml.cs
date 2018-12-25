@@ -5,6 +5,7 @@ using CMS.UI.Windows.Account;
 using CMS.UI.Windows.Author;
 using CMS.UI.Windows.Award;
 using CMS.UI.Windows.Event;
+using CMS.UI.Windows.Tasks;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,20 @@ namespace CMS.UI.Windows.Home
         {
             InitializeComponent();
             WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
+            SetVisibility();
+        }
+
+        private void SetVisibility()
+        {
+            var test = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceManager) || r.Name.Equals(Properties.RoleResources.ConferenceChair));
+            if ( test == null)
+            {
+                ManageTasks.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceStaffManager)) != null ? Visibility.Visible : Visibility.Hidden;
+                ManageAccount.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.HRAdministrator)) != null ? Visibility.Visible : Visibility.Hidden;
+                ManageAuthor.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.HRAdministrator)) != null ? Visibility.Visible : Visibility.Hidden;
+                ManageEvent.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null ? Visibility.Visible : Visibility.Hidden;
+                ManageAward.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.AwardsCoordinator)) != null ? Visibility.Visible : Visibility.Hidden;
+            }
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -73,6 +88,12 @@ namespace CMS.UI.Windows.Home
         private void ManageAward_Click(object sender, RoutedEventArgs e)
         {
             ManageAwards newWindow = new ManageAwards();
+            newWindow.ShowDialog();
+        }
+
+        private void ManageTasks_Click(object sender, RoutedEventArgs e)
+        {
+            ManageTasksWindow newWindow = new ManageTasksWindow();
             newWindow.ShowDialog();
         }
     }
