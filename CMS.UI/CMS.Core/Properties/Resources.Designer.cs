@@ -286,6 +286,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/session/checkoverlappingsessionforchairman.
+        /// </summary>
+        internal static string checkOverlappingSessionForChairmanPath {
+            get {
+                return ResourceManager.GetString("checkOverlappingSessionForChairmanPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/session/checkoverlappingsession.
         /// </summary>
         internal static string checkOverlappingSessionPath {
@@ -1047,6 +1056,24 @@ namespace CMS.Core.Properties {
         internal static string getMessagesPath {
             get {
                 return ResourceManager.GetString("getMessagesPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/presentation/getpresentationbyid.
+        /// </summary>
+        internal static string getPresentationByIdPath {
+            get {
+                return ResourceManager.GetString("getPresentationByIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/presentation/getpresentationsbyid.
+        /// </summary>
+        internal static string getPresentationsByIdPath {
+            get {
+                return ResourceManager.GetString("getPresentationsByIdPath", resourceCulture);
             }
         }
         

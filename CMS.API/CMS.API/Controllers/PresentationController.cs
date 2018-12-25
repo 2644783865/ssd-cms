@@ -97,5 +97,25 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
+        // GET: api/Presentation/GetPresentationsById?conferenceId=
+        [HttpGet]
+        [Route("api/presentation/getpresentationsbyid")]
+        public IHttpActionResult GetPresentationsById(int conferenceId)
+        {
+            var presentation = _bll.GetPresentationsById(conferenceId);
+            if (presentation == null) return BadRequest();
+            return Ok(presentation);
+        }
+
+        // GET: api/Presentation/GetPresentationById?conferenceID=
+        [HttpGet]
+        [Route("api/presentation/getpresentationbyid")]
+        public IHttpActionResult GetPresentationById(int presentationId)
+        {
+            var presentation = _bll.GetPresentationById(presentationId);
+            if (presentation == null) return BadRequest();
+            return Ok(presentationId);
+        }
+
     }
 }

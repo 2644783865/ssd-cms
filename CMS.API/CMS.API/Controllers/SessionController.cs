@@ -61,7 +61,7 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // GET: api/Session/CheckOverlappingSession?conferenceId=&begin=&end=
+        // GET: api/Session/CheckOverlappingSession?conferenceId=
         [HttpPost]
         [Route("api/session/checkoverlappingsession")]
         public IHttpActionResult CheckOverlappingSession(int conferenceId, [FromBody] DateModel dateModel)
@@ -70,6 +70,18 @@ namespace CMS.API.Controllers
             if (session == null) return BadRequest();
             return Ok(session);
         }
+
+        // GET: api/Session/CheckOverlappingSessionForChairman?chairId=
+        [HttpGet]
+        [Route("api/session/checkoverlappingsessionforchairman")]
+        public IHttpActionResult CheckOverlappingSessionForChairman(int chairId, [FromBody] DateModel dateModel)
+        {
+            var session = _bll.CheckOverlappingSessionForChairman(chairId, dateModel.beginDate, dateModel.endDate);
+            if (session == null) return BadRequest();
+            return Ok(session);
+        }
+
+
 
         // GET: api/Session/GetSpecialSessionById?specialSessionId=
         [HttpGet]

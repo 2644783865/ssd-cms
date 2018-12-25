@@ -153,7 +153,7 @@ namespace CMS.UI.Windows.Event
         {
             if (ValidateForm())
             {
-                var response = await sessionCore.CheckOverlappingSessiondAsync(UserCredentials.Conference.ConferenceId,
+                var response = await sessionCore.CheckOverlappingSessionAsync(UserCredentials.Conference.ConferenceId,
                         BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value);
                 if (response != null && !response.Status)
                 {
