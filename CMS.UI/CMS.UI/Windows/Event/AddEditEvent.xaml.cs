@@ -53,11 +53,7 @@ namespace CMS.UI.Windows.Event
             SelectEventBox.Items.Clear();
             SelectEventBox.DisplayMemberPath = "Title";
             SelectEventBox.SelectedValuePath = "EventId";
-            var events = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
-            foreach (var @event in events)
-            {
-                SelectEventBox.Items.Add(@event);
-            }
+            SelectEventBox.ItemsSource = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
         }
 
         private async Task LoadBuildings()
@@ -65,13 +61,8 @@ namespace CMS.UI.Windows.Event
             BuildingBox.Items.Clear();
             BuildingBox.DisplayMemberPath = "Name";
             BuildingBox.SelectedValuePath = "BuildingID";
-            var buildings = await roomCore.GetAssignedBuildingsForConferenceAsync(UserCredentials.Conference.ConferenceId);
-            foreach (var building in buildings)
-            {
-                BuildingBox.Items.Add(building);
-            }
+            BuildingBox.ItemsSource = await roomCore.GetAssignedBuildingsForConferenceAsync(UserCredentials.Conference.ConferenceId);
             RoomBox.Items.Clear();
-
         }
 
         private async Task LoadRoomsForBuilding(int buildingId)
@@ -79,11 +70,7 @@ namespace CMS.UI.Windows.Event
             RoomBox.Items.Clear();
             RoomBox.DisplayMemberPath = "Code";
             RoomBox.SelectedValuePath = "RoomID";
-            var rooms = await roomCore.GetRoomsForBuildingAsync(buildingId);
-            foreach (var room in rooms)
-            {
-                RoomBox.Items.Add(room);
-            }
+            RoomBox.ItemsSource = await roomCore.GetRoomsForBuildingAsync(buildingId);
         }
 
         private async void FillEventBoxes()

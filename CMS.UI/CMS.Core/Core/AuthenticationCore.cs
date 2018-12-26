@@ -5,6 +5,7 @@ using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CMS.Core.Core
@@ -130,7 +131,16 @@ namespace CMS.Core.Core
             if (result != null && result.ResponseType == ResponseType.Success)
             {
                 var roles = JsonConvert.DeserializeObject<List<RoleDTO>>(result.Content);
-                return roles.Count > 0;
+                return roles.Where(r => r.Name.Equals(Properties.RolesResources.AwardsCoordinator)
+                || r.Name.Equals(Properties.RolesResources.ConferenceChair)
+                || r.Name.Equals(Properties.RolesResources.ConferenceManager)
+                || r.Name.Equals(Properties.RolesResources.ConferenceStaffManager)
+                || r.Name.Equals(Properties.RolesResources.HRAdministrator)
+                || r.Name.Equals(Properties.RolesResources.InformationStaff)
+                || r.Name.Equals(Properties.RolesResources.Editor)
+                || r.Name.Equals(Properties.RolesResources.Reviewer)
+                || r.Name.Equals(Properties.RolesResources.SessionChair)
+                || r.Name.Equals(Properties.RolesResources.WelcomePackStaff)).Count()>0;
             }
             return false;
         }

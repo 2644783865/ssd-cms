@@ -49,16 +49,6 @@ namespace CMS.API.Tests
         }
 
         [TestMethod]
-        public void TestCheckTasks()
-        {
-            int employeeId = 1;
-            DateTime beginDate = new DateTime(2008, 5, 1, 8, 30, 52);
-            DateTime endDate = new DateTime(2004, 5, 1, 8, 30, 52);
-            var result = taskTest.CheckTasks(employeeId, beginDate, endDate);
-            Assert.IsTrue(result);
-        }
-
-        [TestMethod]
         public void TestCheckOverlappingTask()
         {
             int employeeId = 1;

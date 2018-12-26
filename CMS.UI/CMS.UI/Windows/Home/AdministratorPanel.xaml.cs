@@ -1,4 +1,5 @@
-﻿using CMS.Core.Core;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
@@ -39,11 +40,7 @@ namespace CMS.UI.Windows.Home
             RoleBox.Items.Clear();
             RoleBox.DisplayMemberPath = "Name";
             RoleBox.SelectedValuePath = "RoleId";
-            var roles = await authCore.GetAllRolesAsync();
-            foreach (var role in roles)
-            {
-                RoleBox.Items.Add(role);
-            }
+            RoleBox.ItemsSource = await authCore.GetAllRolesAsync();
         }
 
         private async Task FillConferenceBox()
@@ -51,11 +48,7 @@ namespace CMS.UI.Windows.Home
             ConferencesBox.DisplayMemberPath = "Title";
             ConferencesBox.SelectedValuePath = "ConferenceId";
             ConferencesBox.Items.Clear();
-            var conferences = await confCore.GetConferencesAsync();
-            foreach (var conference in conferences)
-            {
-                ConferencesBox.Items.Add(conference);
-            }
+            ConferencesBox.ItemsSource = await confCore.GetConferencesAsync();
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -76,8 +69,8 @@ namespace CMS.UI.Windows.Home
             {
                 if (await CheckAccountExistsAsync())
                 {
-                    if (await authCore.SetRoleForConferenceAndAccountAsync(int.Parse(ConferencesBox.SelectedValue.ToString()), LoginBox.Text,
-                        int.Parse(RoleBox.SelectedValue.ToString())))
+                    if (await authCore.SetRoleForConferenceAndAccountAsync(((ConferenceDTO)ConferencesBox.SelectedItem).ConferenceId, LoginBox.Text,
+                        ((RoleDTO)RoleBox.SelectedItem).RoleId))
                         MessageBox.Show("Success");
                     else MessageBox.Show("Failure");
                 }
@@ -94,8 +87,8 @@ namespace CMS.UI.Windows.Home
             {
                 if (await CheckAccountExistsAsync())
                 {
-                    if (await authCore.DeleteRoleForConferenceAndAccountAsync(int.Parse(ConferencesBox.SelectedValue.ToString()), LoginBox.Text,
-                        int.Parse(RoleBox.SelectedValue.ToString())))
+                    if (await authCore.DeleteRoleForConferenceAndAccountAsync(((ConferenceDTO)ConferencesBox.SelectedItem).ConferenceId, LoginBox.Text,
+                        ((RoleDTO)RoleBox.SelectedItem).RoleId))
                         MessageBox.Show("Success");
                     else MessageBox.Show("Failure");
                 }
@@ -177,7 +170,6 @@ namespace CMS.UI.Windows.Home
         {
             ManageBuildingWindow newManageBuilding = new ManageBuildingWindow();
             newManageBuilding.ShowDialog();
-            Close();
         }
     }
 }

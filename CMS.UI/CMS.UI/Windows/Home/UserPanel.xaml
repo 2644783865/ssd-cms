@@ -16,8 +16,8 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,0,25">
             <Button Name="GoToConferenceButton" Content="Go To Conference" Margin="0,0,0,0" Width="158" Click="GoToConferenceButton_Click" Height="48"/>
-            <Button Name="GoToManagerPanelButton" Content="Manager Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToManagerPanelButton_Click"/>
-            <Button x:Name="GoToAuthorPanelButton" Content="Author Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToAuthorPanelButton_Click"/>
+            <Button Name="GoToManagerPanelButton" Content="Manager Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToManagerPanelButton_Click" Visibility="Collapsed"/>
+            <Button x:Name="GoToAuthorPanelButton" Content="Author Panel" Margin="30,0,0,0" Width="119" Height="48" Click="GoToAuthorPanelButton_Click" Visibility="Collapsed"/>
         </StackPanel>
         <Button Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Left" Margin="371,301,0,0" VerticalAlignment="Top" Width="124" Click="ChangePasswordButton_Click"/>
         <TextBox Text="To change any other data please contact your manager" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="500,301,0,0" VerticalAlignment="Top" Width="197" Height="46" BorderThickness="0"/>

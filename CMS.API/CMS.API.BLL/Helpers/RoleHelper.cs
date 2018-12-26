@@ -16,7 +16,8 @@ namespace CMS.API.BLL.Helpers
                 Properties.RoleResources.Reviewer,
                 Properties.RoleResources.SessionChair,
                 Properties.RoleResources.WelcomePackStaff,
-                Properties.RoleResources.Editor
+                Properties.RoleResources.Editor,
+                Properties.RoleResources.Guest
             };
 
             foreach (var allowedRole in allowedRoles)

@@ -32,11 +32,7 @@ namespace CMS.UI.Windows.Account
             RoleBox.Items.Clear();
             RoleBox.DisplayMemberPath = "Name";
             RoleBox.SelectedValuePath = "RoleId";
-            var roles = await authCore.GetHRRolesAsync();
-            foreach (var role in roles)
-            {
-                RoleBox.Items.Add(role);
-            }
+            RoleBox.ItemsSource = await authCore.GetHRRolesAsync();
         }
 
         private async Task FillAccountRoleBox()
@@ -48,11 +44,7 @@ namespace CMS.UI.Windows.Account
                     AccountRoleBox.Items.Clear();
                     AccountRoleBox.DisplayMemberPath = "Name";
                     AccountRoleBox.SelectedValuePath = "RoleId";
-                    var roles = await authCore.GetRolesForOtherAccountAsync(LoginBox.Text);
-                    foreach (var role in roles)
-                    {
-                        AccountRoleBox.Items.Add(role);
-                    }
+                    AccountRoleBox.ItemsSource = await authCore.GetRolesForOtherAccountAsync(LoginBox.Text);
                 }
                 else MessageBox.Show("Account doesn't exists");
             }

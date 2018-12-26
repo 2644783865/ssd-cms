@@ -12,13 +12,13 @@
 	<Grid>
 		<DataGrid Name="buildinglist" IsReadOnly="True" HorizontalAlignment="Left" Height="302" Margin="52,37,0,0" VerticalAlignment="Top" Width="488" MouseDoubleClick="buildinglist_MouseDoubleClick" CurrentCellChanged="buildinglist_CurrentCellChanged" AutoGenerateColumns="False">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
-				<DataGridTextColumn Header="Address" Binding="{Binding Address}"></DataGridTextColumn>
+				<DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}"></DataGridTextColumn>
+				<DataGridTextColumn Header="Address" Width="300" Binding="{Binding Address}"></DataGridTextColumn>
 			</DataGrid.Columns>
 		</DataGrid>
 		<Button Name="addbuildingbutton" Content="Add building" HorizontalAlignment="Left" Margin="633,53,0,0" VerticalAlignment="Top" Width="131" Height="44" />
 		<Button Name="editbuildingbutton" Content="Edit Building" HorizontalAlignment="Left" Margin="633,132,0,0" VerticalAlignment="Top" Width="131" Height="47"/>
-		<Button Name="deletebuildingbutton" Content="Delete Nuilding" HorizontalAlignment="Left" Margin="633,212,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.16,-0.093" Height="43"/>
+		<Button Name="deletebuildingbutton" Content="Delete Building" HorizontalAlignment="Left" Margin="633,212,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.16,-0.093" Height="43"/>
 
 	</Grid>
 </Controls:MetroWindow>

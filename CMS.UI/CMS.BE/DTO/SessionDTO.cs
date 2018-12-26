@@ -9,5 +9,7 @@ namespace CMS.BE.DTO
         public int ChairId { get; set; }
         public int RoomId { get; set; }
         public string Description { get; set; }
+
+        public string SessionDesc { get => $"{Title} {BeginDate}"; }
     }
 }

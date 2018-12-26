@@ -1,9 +1,9 @@
-﻿using CMS.Core.Core;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
 using MahApps.Metro.Controls;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -37,18 +37,17 @@ namespace CMS.UI.Windows.Home
 
         private void SetButtonVisibility(bool isManager)
         {
-            GoToAuthorPanelButton.Visibility = UserCredentials.Author != null ? Visibility.Visible : Visibility.Hidden;
-            GoToManagerPanelButton.Visibility = isManager ? Visibility.Visible : Visibility.Hidden;
+            GoToAuthorPanelButton.Visibility = UserCredentials.Author != null ? Visibility.Visible : Visibility.Collapsed;
+            GoToManagerPanelButton.Visibility = isManager ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private async Task FillConferenceList()
         {
             ConferenceList.Items.Clear();
             await core.LoadConferencesAsync();
-            foreach (var conference in UserCredentials.Conferences)
-            {
-                ConferenceList.Items.Add($"{conference.ConferenceId} {conference.Title} {conference.BeginDate.ToShortDateString()}");
-            }
+            ConferenceList.DisplayMemberPath = "ConferenceDesc";
+            ConferenceList.SelectedValuePath = "ConferenceId";
+            ConferenceList.ItemsSource = UserCredentials.Conferences;
         }
 
         private void FillUserData()
@@ -69,7 +68,7 @@ namespace CMS.UI.Windows.Home
         {
             if (ConferenceList.SelectedIndex >= 0)
             {
-                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
+                UserCredentials.Conference = (ConferenceDTO)ConferenceList.SelectedItem;
                 await core.LoadRolesAsync();
                 ConferenceHome newWindow = new ConferenceHome();
                 newWindow.Show();
@@ -82,7 +81,7 @@ namespace CMS.UI.Windows.Home
         {
             if (ConferenceList.SelectedIndex >= 0)
             {
-                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
+                UserCredentials.Conference = (ConferenceDTO)ConferenceList.SelectedItem;
                 await core.LoadRolesAsync();
                 ManagerPanel newWindow = new ManagerPanel();
                 newWindow.Show();
@@ -95,7 +94,7 @@ namespace CMS.UI.Windows.Home
         {
             if (ConferenceList.SelectedIndex >= 0)
             {
-                UserCredentials.Conference = UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex);
+                UserCredentials.Conference = (ConferenceDTO)ConferenceList.SelectedItem;
                 await core.LoadRolesAsync();
                 AuthorPanel newWindow = new AuthorPanel();
                 newWindow.Show();
@@ -123,7 +122,7 @@ namespace CMS.UI.Windows.Home
         {
             if (ConferenceList.SelectedIndex >= 0)
             {
-                var result = await core.CheckIsManager(UserCredentials.Conferences.ElementAt(ConferenceList.SelectedIndex).ConferenceId);
+                var result = await core.CheckIsManager(((ConferenceDTO)ConferenceList.SelectedItem).ConferenceId);
                 SetButtonVisibility(result);
             }
         }

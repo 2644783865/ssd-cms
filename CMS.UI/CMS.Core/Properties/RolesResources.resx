@@ -135,6 +135,9 @@
   <data name="Editor" xml:space="preserve">
     <value>EDITOR</value>
   </data>
+  <data name="Guest" xml:space="preserve">
+    <value>GUEST</value>
+  </data>
   <data name="HRAdministrator" xml:space="preserve">
     <value>HR ADMINISTRATOR</value>
   </data>

@@ -7,19 +7,9 @@ using CMS.UI.Windows.Award;
 using CMS.UI.Windows.Event;
 using CMS.UI.Windows.Tasks;
 using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Win32;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Home
 {
@@ -28,11 +18,67 @@ namespace CMS.UI.Windows.Home
     /// </summary>
     public partial class ManagerPanel : MetroWindow
     {
+        private IAuthenticationCore authCore;
+        private IConferenceCore confCore;
+        private IEventCore eventCore;
+        private ISessionCore sessionCore;
         public ManagerPanel()
         {
             InitializeComponent();
+            authCore = new AuthenticationCore();
+            confCore = new ConferenceCore();
+            eventCore = new EventCore();
+            sessionCore = new SessionCore();
             WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
-            SetVisibility();
+            InitializeData();
+        }
+
+        private void InitializeData()
+        {
+            try
+            {
+                InitializeLabels();
+                LoadEvents();
+                LoadSessions();
+                LoadSpecialSessions();
+                SetVisibility();
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong, please try again");
+            }
+        }
+
+        private void InitializeLabels()
+        {
+            TitleLabel.Content = UserCredentials.Conference.Title;
+            DatesLabel.Content = $"{UserCredentials.Conference.BeginDate.ToShortDateString()} - {UserCredentials.Conference.EndDate.ToShortDateString()}";
+            PlaceLabel.Content = UserCredentials.Conference.Place;
+            DescriptionBox.Text = UserCredentials.Conference.Description;
+        }
+
+        private async void LoadEvents()
+        {
+            EventList.Items.Clear();
+            EventList.DisplayMemberPath = "EventDesc";
+            EventList.SelectedValuePath = "EventId";
+            EventList.ItemsSource = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
+        }
+
+        private async void LoadSessions()
+        {
+            SessionList.Items.Clear();
+            SessionList.DisplayMemberPath = "SessionDesc";
+            SessionList.SelectedValuePath = "SessionId";
+            SessionList.ItemsSource = await sessionCore.GetSessionsAsync(UserCredentials.Conference.ConferenceId);
+        }
+
+        private async void LoadSpecialSessions()
+        {
+            SpecialSessionList.Items.Clear();
+            SpecialSessionList.DisplayMemberPath = "SpecialSessionDesc";
+            SpecialSessionList.SelectedValuePath = "SpecialSessionId";
+            SpecialSessionList.ItemsSource = await sessionCore.GetSpecialSessionsAsync(UserCredentials.Conference.ConferenceId);
         }
 
         private void SetVisibility()
@@ -40,12 +86,24 @@ namespace CMS.UI.Windows.Home
             var test = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceManager) || r.Name.Equals(Properties.RoleResources.ConferenceChair));
             if ( test == null)
             {
-                ManageTasks.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceStaffManager)) != null ? Visibility.Visible : Visibility.Hidden;
-                ManageAccount.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.HRAdministrator)) != null ? Visibility.Visible : Visibility.Hidden;
-                ManageAuthor.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.HRAdministrator)) != null ? Visibility.Visible : Visibility.Hidden;
-                ManageEvent.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null ? Visibility.Visible : Visibility.Hidden;
-                ManageAward.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.AwardsCoordinator)) != null ? Visibility.Visible : Visibility.Hidden;
+                ManageTasks.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceStaffManager)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageAccount.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.HRAdministrator)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageAuthor.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.HRAdministrator)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageEvent.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageAward.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.AwardsCoordinator)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageSessions.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageAccom.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.InformationStaff)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageEmergency.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.InformationStaff)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageTravel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.InformationStaff)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageWelcomePack.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.WelcomePackStaff)) != null ? Visibility.Visible : Visibility.Collapsed;
             }
+
+            DownloadSchedule.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
+            DownloadScheduleLabel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
+            DownloadICal.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
+            DownloadICalLabel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
+            ReviewArticles.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Reviewer)) != null ? Visibility.Visible : Visibility.Collapsed;
+            ReviewArticlesLabel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Reviewer)) != null ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -95,6 +153,79 @@ namespace CMS.UI.Windows.Home
         {
             ManageTasksWindow newWindow = new ManageTasksWindow();
             newWindow.ShowDialog();
+        }
+
+        private async void DownloadProgram_Click(object sender, RoutedEventArgs e)
+        {
+            ProgressSpin.IsActive = true;
+            DownloadProgram.IsEnabled = false;
+            try
+            {
+                var document = await confCore.GetConferenceProgramAsync(UserCredentials.Conference.ConferenceId);
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    AddExtension = true,
+                    Filter = "pdf files (*.pdf)|*.pdf",
+                    FileName = $"{UserCredentials.Conference.Title} Program.pdf"
+                };
+
+                if ((bool)saveFileDialog.ShowDialog())
+                {
+                    using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
+                    {
+                        writer.Write(document);
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Cannot override the file. The file may be opened.");
+            }
+            catch
+            {
+                MessageBox.Show("Error downloading conference program");
+            }
+            DownloadProgram.IsEnabled = true;
+            ProgressSpin.IsActive = false;
+        }
+
+        private async void DownloadSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ProgressSpin.IsActive = true;
+            DownloadSchedule.IsEnabled = false;
+            try
+            {
+                var document = await confCore.GetConferenceScheduleAsync(UserCredentials.Account.AccountId, UserCredentials.Conference.ConferenceId);
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    AddExtension = true,
+                    Filter = "pdf files (*.pdf)|*.pdf",
+                    FileName = $"{UserCredentials.Conference.Title} Schedule for {UserCredentials.Account.Name}.pdf"
+                };
+
+                if ((bool)saveFileDialog.ShowDialog())
+                {
+                    using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
+                    {
+                        writer.Write(document);
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Cannot override the file. The file may be opened.");
+            }
+            catch
+            {
+                MessageBox.Show("Error downloading schedule");
+            }
+            DownloadSchedule.IsEnabled = true;
+            ProgressSpin.IsActive = false;
+        }
+
+        private void ManageSessions_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

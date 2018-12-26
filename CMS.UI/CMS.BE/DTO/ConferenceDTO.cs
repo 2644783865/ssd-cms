@@ -8,5 +8,7 @@
         public string Place { get; set; }
         public System.DateTime BeginDate { get; set; }
         public System.DateTime EndDate { get; set; }
+
+        public string ConferenceDesc { get => $"{ConferenceId} {Title} {BeginDate.ToShortDateString()}"; }
     }
 }

@@ -115,6 +115,15 @@ namespace CMS.API.BLL.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GUEST.
+        /// </summary>
+        internal static string Guest {
+            get {
+                return ResourceManager.GetString("Guest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HR ADMINISTRATOR.
         /// </summary>
         internal static string HRAdministrator {

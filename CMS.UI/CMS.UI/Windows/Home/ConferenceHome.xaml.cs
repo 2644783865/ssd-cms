@@ -3,9 +3,7 @@ using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
-using System.ComponentModel;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CMS.UI.Windows.Home
@@ -39,11 +37,18 @@ namespace CMS.UI.Windows.Home
                 LoadEvents();
                 LoadSessions();
                 LoadSpecialSessions();
+                SetVisibility();
             }
             catch
             {
                 MessageBox.Show("Something went wrong, please try again");
             }
+        }
+
+        private void SetVisibility()
+        {
+            TaskSchedule.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceStaffMember)) != null ? Visibility.Visible : Visibility.Collapsed;
+            TaskScheduleLabel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceStaffMember)) != null ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void InitializeLabels()
@@ -57,7 +62,7 @@ namespace CMS.UI.Windows.Home
         private async void LoadEvents()
         {
             EventList.Items.Clear();
-            EventList.DisplayMemberPath = "Title";
+            EventList.DisplayMemberPath = "EventDesc";
             EventList.SelectedValuePath = "EventId";
             EventList.ItemsSource = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
         }
@@ -65,7 +70,7 @@ namespace CMS.UI.Windows.Home
         private async void LoadSessions()
         {
             SessionList.Items.Clear();
-            SessionList.DisplayMemberPath = "Title";
+            SessionList.DisplayMemberPath = "SessionDesc";
             SessionList.SelectedValuePath = "SessionId";
             SessionList.ItemsSource = await sessionCore.GetSessionsAsync(UserCredentials.Conference.ConferenceId);
         }
@@ -73,7 +78,7 @@ namespace CMS.UI.Windows.Home
         private async void LoadSpecialSessions()
         {
             SpecialSessionList.Items.Clear();
-            SpecialSessionList.DisplayMemberPath = "Title";
+            SpecialSessionList.DisplayMemberPath = "SpecialSessionDesc";
             SpecialSessionList.SelectedValuePath = "SpecialSessionId";
             SpecialSessionList.ItemsSource = await sessionCore.GetSpecialSessionsAsync(UserCredentials.Conference.ConferenceId);
         }
@@ -86,13 +91,6 @@ namespace CMS.UI.Windows.Home
         private void GoToUserPanelButton_Click(object sender, RoutedEventArgs e)
         {
             UserPanel newWindow = new UserPanel();
-            newWindow.Show();
-            Close();
-        }
-
-        private void GoToManagerPanelButton_Click(object sender, RoutedEventArgs e)
-        {
-            ManagerPanel newWindow = new ManagerPanel();
             newWindow.Show();
             Close();
         }
@@ -131,43 +129,9 @@ namespace CMS.UI.Windows.Home
             ProgressSpin.IsActive = false;
         }
 
-        private async void DownloadSchedule_Click(object sender, RoutedEventArgs e)
+        private void TaskSchedule_Click(object sender, RoutedEventArgs e)
         {
-            ProgressSpin.IsActive = true;
-            DownloadSchedule.IsEnabled = false;
-            try
-            {
-                var document = await confCore.GetConferenceScheduleAsync(UserCredentials.Account.AccountId, UserCredentials.Conference.ConferenceId);
-                SaveFileDialog saveFileDialog = new SaveFileDialog
-                {
-                    AddExtension = true,
-                    Filter = "pdf files (*.pdf)|*.pdf",
-                    FileName = $"{UserCredentials.Conference.Title} Schedule for {UserCredentials.Account.Name}.pdf"
-                };
 
-                if ((bool)saveFileDialog.ShowDialog())
-                {
-                    using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
-                    {
-                        writer.Write(document);
-                    }
-                }
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("Cannot override the file. The file may be opened.");
-            }
-            catch
-            {
-                MessageBox.Show("Error downloading schedule");
-            }
-            DownloadSchedule.IsEnabled = true;
-            ProgressSpin.IsActive = false;
-        }
-
-        private void Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            InitializeData();
         }
     }
 }
