@@ -35,6 +35,7 @@ namespace CMS.UI.Windows.Author
             InitializeComponent();
             currentAuthor = author;
             currentAccount = account;
+            FillTitleBox();
             if (author != null) InitializeEditFields();
         }
 
@@ -42,10 +43,19 @@ namespace CMS.UI.Windows.Author
         {
             FirstNameBox.Text = currentAuthor.FirstName;
             LastNameBox.Text = currentAuthor.LastName;
-            TitleBox.Text = currentAuthor.Title;
+            TitleBox.SelectedValue = currentAuthor.Title;
             FieldOfStudyBox.Text = currentAuthor.FieldOfStudy;
             SubmitButton.Content = "Save";
-            this.Title = "Edit Author";
+            Title = "Edit Author";
+        }
+
+        private void FillTitleBox()
+        {
+            TitleBox.Items.Add("Bachelor");
+            TitleBox.Items.Add("Master");
+            TitleBox.Items.Add("Doctor");
+            TitleBox.Items.Add("Professor");
+            TitleBox.SelectedIndex = 0;
         }
 
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
@@ -62,7 +72,7 @@ namespace CMS.UI.Windows.Author
                         {
                             FirstName = FirstNameBox.Text,
                             LastName = LastNameBox.Text,
-                            Title = TitleBox.Text,
+                            Title = TitleBox.SelectedValue.ToString(),
                             FieldOfStudy = FieldOfStudyBox.Text,
                             AccountId = currentAccount.AccountId
                         };
@@ -72,7 +82,7 @@ namespace CMS.UI.Windows.Author
                     {
                         currentAuthor.FirstName = FirstNameBox.Text;
                         currentAuthor.LastName = LastNameBox.Text;
-                        currentAuthor.Title = TitleBox.Text;
+                        currentAuthor.Title = TitleBox.SelectedValue.ToString();
                         currentAuthor.FieldOfStudy = FieldOfStudyBox.Text;
 
                         result = await core.EditAuthorAsync(currentAuthor);
@@ -101,7 +111,7 @@ namespace CMS.UI.Windows.Author
             var result = true;
             result = !ValidationHelper.ValidateTextFiled(FirstNameBox.Text.Length > 0, FirstNameBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(LastNameBox.Text.Length > 0, LastNameBox) ? false : result;
-            result = !ValidationHelper.ValidateTextFiled(TitleBox.Text.Length < 10, TitleBox) ? false : result;
+            result = !ValidationHelper.ValidateComboBox(TitleBox.SelectedIndex >= 0, TitleBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(FieldOfStudyBox.Text.Length > 0, FieldOfStudyBox) ? false : result;
             return result;
         }

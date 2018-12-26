@@ -119,11 +119,6 @@ namespace CMS.UI.Windows.Home
             newAddConferenceWindow.ShowDialog();
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            InitializeData();
-        }
-
         private async Task<bool> CheckAccountExistsAsync()
         {
             return await authCore.GetAccountIdByLoginAsync(LoginBox.Text) >= 0;

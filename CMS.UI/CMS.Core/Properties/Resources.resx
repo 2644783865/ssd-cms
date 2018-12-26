@@ -378,6 +378,9 @@
   <data name="getAuthorByIdPath" xml:space="preserve">
     <value>api/author/authorbyid</value>
   </data>
+  <data name="getAuthorsForArticle" xml:space="preserve">
+    <value>api/article/authorsforarticle</value>
+  </data>
   <data name="getAuthorsPath" xml:space="preserve">
     <value>api/author/authors</value>
   </data>

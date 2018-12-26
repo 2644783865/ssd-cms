@@ -35,6 +35,17 @@ namespace CMS.Core.Core
             else return null;
         }
 
+        public async Task<List<AuthorDTO>> GetAuthorsForArticleAsync(int articleId)
+        {
+            var path = $"{Properties.Resources.getAuthorsForArticle}?articleId={articleId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<AuthorDTO>>(result.Content);
+            }
+            else return null;
+        }
+
         public async Task<List<ArticleDTO>> GetArticlesForConferenceAndAuthorAsync(int conferenceId, int authorId)
         {
             var path = $"{Properties.Resources.getArticlesForConferenceAndAuthorPath}?conferenceId={conferenceId}&authorId={authorId}";
@@ -53,7 +64,6 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        //not implemented
         public async Task<bool> EditArticleAsync(ArticleDTO article)
         {
             var path = Properties.Resources.editArticlePath;
@@ -108,7 +118,6 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        //not implemented
         public async Task<bool> EditSubmissionAsync(SubmissionDTO submission)
         {
             var path = Properties.Resources.editSubmissionPath;
@@ -125,15 +134,15 @@ namespace CMS.Core.Core
 
         public async Task<bool> AcceptArticleAsync(int articleId)
         {
-            var path = Properties.Resources.acceptArticlePath;
-            var result = await _apiHelper.Post(path, articleId);
+            var path = $"{Properties.Resources.acceptArticlePath}?articleId={articleId}";
+            var result = await _apiHelper.Get(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
         public async Task<bool> RejectArticleAsync(int articleId)
         {
-            var path = Properties.Resources.rejectArticlePath;
-            var result = await _apiHelper.Post(path, articleId);
+            var path = $"{Properties.Resources.rejectArticlePath}?articleId={articleId}";
+            var result = await _apiHelper.Get(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }
 

@@ -103,10 +103,6 @@ namespace CMS.UI.Windows.Home
             else MessageBox.Show("Choose conference");
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            InitializeData();
-        }
 
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {

@@ -8,5 +8,7 @@
         public string LastName { get; set; }
         public string Title { get; set; }
         public string FieldOfStudy { get; set; }
+
+        public string AuthorDesc { get => $"{FirstName} {LastName}"; }
     }
 }

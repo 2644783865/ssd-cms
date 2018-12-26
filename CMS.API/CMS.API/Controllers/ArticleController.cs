@@ -53,7 +53,7 @@ namespace CMS.API.Controllers
         }
 
         // POST: api/Article/EditArticle
-        [HttpPost]
+        [HttpPut]
         [Route("api/article/editarticle")]
         public IHttpActionResult EditArticle([FromBody] ArticleDTO article)
         {
@@ -71,8 +71,8 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // POST: api/Article/AcceptArticle
-        [HttpPost]
+        // GET: api/Article/AcceptArticle
+        [HttpGet]
         [Route("api/article/acceptarticle")]
         public IHttpActionResult AcceptArticle(int articleId)
         {
@@ -81,8 +81,8 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // POST: api/Article/RejectArticle
-        [HttpPost]
+        // GET: api/Article/RejectArticle
+        [HttpGet]
         [Route("api/article/rejectarticle")]
         public IHttpActionResult RejectArticle(int articleId)
         {
@@ -115,6 +115,14 @@ namespace CMS.API.Controllers
         public IHttpActionResult GetSubmissionsForArticle(int articleId)
         {
             return Ok(_bll.GetSubmissionsForArticle(articleId));
+        }
+
+        // GET: api/Article/authorsForArticle
+        [HttpGet]
+        [Route("api/article/authorsforarticle")]
+        public IHttpActionResult GetAuthorsForArticle(int articleId)
+        {
+            return Ok(_bll.GetAuthorsFromArticleId(articleId));
         }
 
         // POST: api/Submission/AddSubmission

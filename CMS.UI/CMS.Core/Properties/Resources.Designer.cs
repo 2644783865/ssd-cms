@@ -844,6 +844,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/article/authorsforarticle.
+        /// </summary>
+        internal static string getAuthorsForArticle {
+            get {
+                return ResourceManager.GetString("getAuthorsForArticle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/author/authors.
         /// </summary>
         internal static string getAuthorsPath {

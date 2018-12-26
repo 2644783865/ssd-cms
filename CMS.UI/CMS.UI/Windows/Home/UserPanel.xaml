@@ -21,10 +21,7 @@
         </StackPanel>
         <Button Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Left" Margin="371,301,0,0" VerticalAlignment="Top" Width="124" Click="ChangePasswordButton_Click"/>
         <TextBox Text="To change any other data please contact your manager" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="500,301,0,0" VerticalAlignment="Top" Width="197" Height="46" BorderThickness="0"/>
-        <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="38" Height="36" Click="Refresh_Click">
-            <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        </Button>
-        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="0,10,55,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="35"/>
+        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="35"/>
         <Image HorizontalAlignment="Left" Height="243" Margin="53,56,0,0" VerticalAlignment="Top" Width="252" Source="/Assets/Avatar.png"/>
         <Label Name="NameLabel" Content="Name:" HorizontalAlignment="Left" Margin="371,76,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>
         <Label Name="LoginLabel" Content="Login:" HorizontalAlignment="Left" Margin="371,130,0,0" VerticalAlignment="Top" FontSize="20" Width="527"/>

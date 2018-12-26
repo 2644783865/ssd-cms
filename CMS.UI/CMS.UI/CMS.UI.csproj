@@ -92,6 +92,9 @@
     <Compile Include="Windows\Articles\ArticleDetails.xaml.cs">
       <DependentUpon>ArticleDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Articles\AssignAuthor.xaml.cs">
+      <DependentUpon>AssignAuthor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Articles\SubmitArticle.xaml.cs">
       <DependentUpon>SubmitArticle.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Articles\ArticleDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Articles\AssignAuthor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

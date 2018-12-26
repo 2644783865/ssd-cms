@@ -1,20 +1,8 @@
 ﻿using CMS.Core.Core;
 using CMS.Core.Interfaces;
-using CMS.UI.Windows.Account;
 using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Author
 {
@@ -39,9 +27,13 @@ namespace CMS.UI.Windows.Author
             {
                 if (await CheckAccountExistsAsync())
                 {
-                    var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
-                    AddEditAuthor newAddAuthorWindow = new AddEditAuthor(null, account);
-                    newAddAuthorWindow.ShowDialog();
+                    if (!await CheckAuthorExistsAsync())
+                    {
+                        var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
+                        AddEditAuthor newAddAuthorWindow = new AddEditAuthor(null, account);
+                        newAddAuthorWindow.ShowDialog();
+                    }
+                    else MessageBox.Show("This account is already an author");
                 }
                 else MessageBox.Show("Account doesn't exist");
             }
@@ -87,6 +79,16 @@ namespace CMS.UI.Windows.Author
         private async Task<bool> CheckAccountExistsAsync()
         {
             return await authCore.GetAccountIdByLoginAsync(LoginBox.Text) >= 0;
+        }
+
+        private async Task<bool> CheckAuthorExistsAsync()
+        {
+            var id = await authCore.GetAccountIdByLoginAsync(LoginBox.Text);
+            if (id >= 0)
+            {
+                return await authorCore.GetAuthorByAccountIdAsync(id) != null;
+            }
+            return false;
         }
     }
 }

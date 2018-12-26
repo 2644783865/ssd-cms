@@ -5,26 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Article Details" Height="503" Width="402"
+        Title="Article Details" Height="553" Width="402"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+                      Activated="MetroWindow_Activated">
     <Grid>
-        <Label Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,10,0,0" Width="345"/>
+        <Label Name="IdLabel" Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,10,0,0" Width="177"/>
         <Label Content="Topic" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,41,0,0" Width="345"/>
         <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,108,0,0" Width="345"/>
         <Label Content="Acceptance Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,170,0,0" Width="345"/>
-        <Label Content="Submissions" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,243,0,0" Width="345"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="17,74,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,139,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,201,0,0"/>
-        <ComboBox Name="SubmissionBox" HorizontalAlignment="Left" Margin="19,274,0,0" VerticalAlignment="Top" Width="345"/>
-        <Button x:Name="Submit" Content="Submit new" HorizontalAlignment="Right" Margin="0,0,283,140" VerticalAlignment="Bottom" Width="96" Click="SubmitButton_Click"/>
-        <Button x:Name="View" Content="View pdf" HorizontalAlignment="Right" Margin="0,0,34,140" VerticalAlignment="Bottom" Width="96" Click="View_Click"/>
-        <Button x:Name="Presentation" Content="Presentation" HorizontalAlignment="Right" Margin="0,0,32,87" VerticalAlignment="Bottom" Width="96" Click="PresentationButton_Click"/>
-        <Button x:Name="Reviews" Content="Reviews" HorizontalAlignment="Right" Margin="0,0,281,87" VerticalAlignment="Bottom" Width="96" Click="Reviews_Click"/>
-        <Button x:Name="AddReview" Content="Add review" HorizontalAlignment="Right" Margin="0,0,281,55" VerticalAlignment="Bottom" Width="96" Background="Blue" Click="AddReview_Click"/>
+        <Label Content="Submissions" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="21,0,0,211" Width="345"/>
+        <TextBox Name="TopicBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="17,74,0,0"/>
+        <TextBox Name="StatusBox" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,139,0,0"/>
+        <TextBox Name="AcceptanceDateBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,201,0,0" IsReadOnly="True"/>
+        <Expander Name="AuthorsExpander" Header="Authors" HorizontalAlignment="Center" Height="30" Margin="21,243,32,0" VerticalAlignment="Top" Width="343" IsExpanded="False" Expanded="Expander_Expanded" Collapsed="Expander_Expanded">
+            <StackPanel Orientation="Horizontal">
+                <ListBox Name="AuthorsBox" HorizontalAlignment="Left" Height="80" Margin="0,0,10,0" VerticalAlignment="Top" Width="265"/>
+                <StackPanel>
+                    <Button Name="AddAuthorButton" Content="Add" HorizontalAlignment="Left" Margin="0,0,0,10" Width="55" Height="20" Click="AddAuthorButton_Click"/>
+                    <Button Name="DeleteAuthorButton" Content="Remove" HorizontalAlignment="Left" Margin="0,0,0,0" Width="55" Height="20" Background="Red" Click="DeleteAuthorButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Expander>
+        <ComboBox Name="SubmissionBox" HorizontalAlignment="Left" Margin="19,0,0,180" VerticalAlignment="Bottom" Width="345"/>
+        <Button x:Name="Submit" Content="Submit new" HorizontalAlignment="Right" Margin="0,0,283,148" VerticalAlignment="Bottom" Width="96" Click="SubmitButton_Click"/>
+        <Button x:Name="View" Content="View pdf" HorizontalAlignment="Right" Margin="0,0,32,148" VerticalAlignment="Bottom" Width="96" Click="View_Click"/>
+        <Button x:Name="Presentation" Content="Presentation" HorizontalAlignment="Right" Margin="0,0,34,91" VerticalAlignment="Bottom" Width="96" Click="PresentationButton_Click"/>
+        <Button x:Name="Reviews" Content="Reviews" HorizontalAlignment="Right" Margin="0,0,283,91" VerticalAlignment="Bottom" Width="96" Click="Reviews_Click"/>
+        <Button x:Name="AddReview" Content="Add review" HorizontalAlignment="Right" Margin="0,0,283,59" VerticalAlignment="Bottom" Width="96" Background="Blue" Click="AddReview_Click"/>
         <Button x:Name="Accept" Content="Accept" HorizontalAlignment="Right" Margin="0,0,281,10" VerticalAlignment="Bottom" Width="96" Click="AcceptButton_Click" Background="Green"/>
         <Button x:Name="Reject" Content="Reject" HorizontalAlignment="Right" Margin="0,0,32,10" VerticalAlignment="Bottom" Width="96" Click="RejectButton_Click" Background="Red"/>
-
+        <Button Name="EditButton" Content="Change topic" HorizontalAlignment="Left" Margin="277,10,0,0" VerticalAlignment="Top" Width="85" Click="EditButton_Click"/>
     </Grid>
 </Controls:MetroWindow>

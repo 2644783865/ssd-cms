@@ -5,18 +5,9 @@ using CMS.UI.Helpers;
 using CMS.UI.Windows.Articles;
 using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Home
 {
@@ -36,7 +27,16 @@ namespace CMS.UI.Windows.Home
 
         private async void InitializeData()
         {
+            FillAuthorBoxes();
             await LoadArticles();
+        }
+
+        private void FillAuthorBoxes()
+        {
+            FirstNameLabel.Content = UserCredentials.Author.FirstName;
+            LastNameLabel.Content = UserCredentials.Author.LastName;
+            TitleLabel.Content = UserCredentials.Author.Title;
+            FieldLabel.Content = UserCredentials.Author.FieldOfStudy;
         }
 
         private async Task LoadArticles()

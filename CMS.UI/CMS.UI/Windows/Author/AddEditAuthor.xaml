@@ -10,12 +10,12 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-            <Label Content="First xccxxcxcxccx" Margin="0,0,0,0"/>
+            <Label Content="First Name:" Margin="0,0,0,0"/>
             <TextBox Name="FirstNameBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="Last Name:" Margin="0,0,0,0"/>
             <TextBox Name="LastNameBox" Margin="0,0,0,0" Width="337" Height="23"/>
             <Label Content="Title:" Margin="0,0,0,0"/>
-            <TextBox Name="TitleBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <ComboBox Name="TitleBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="165"/>
             <Label Content="FieldOfStudy:" Margin="0,0,0,0"/>
             <TextBox Name="FieldOfStudyBox" Margin="0,0,0,0" Width="337" Height="23"/>
 
@@ -23,6 +23,7 @@
         <Button Name="SubmitButton" Content="Add Author" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="121" Click="SubmitButton_Click"/>
         <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,150,20" VerticalAlignment="Bottom" Width="79" Click="CancelButton_Click"/>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" HorizontalAlignment="Left" Margin="20,0,0,20" VerticalAlignment="Bottom" Height="45" Width="35"/>
+        
 
     </Grid>
 </Controls:MetroWindow>

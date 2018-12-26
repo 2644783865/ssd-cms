@@ -19,6 +19,23 @@
         <Button x:Name="AddArticles" Content="Add" Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="AddArticles_Click"/>
         <Button x:Name="EditArticles" Content="Details" Margin="115,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30" Click="EditArticles_Click"/>
         <Button x:Name="DeleteArticle" Content="Delete" Margin="220,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="30"  Background="Red" Click="DeleteArticle_Click" />
-        <DataGrid Name="ArticleDataGrid" HorizontalAlignment="Center" Height="400" Margin="0,0,0,0" VerticalAlignment="Center" Width="900" MouseDoubleClick="DataGrid_MouseDoubleClick"/>
+        <DataGrid Name="ArticleDataGrid" IsReadOnly="True" HorizontalAlignment="Center" Height="400" Margin="0,0,0,0" VerticalAlignment="Center" Width="900" AutoGenerateColumns="False" MouseDoubleClick="DataGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ArticleId}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Topic}" Width="200"/>
+                <DataGridTextColumn Header="Acceptance Date" Binding="{Binding AcceptanceDate}" Width="200"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                <DataGridTextColumn Header="Special Session Id" Binding="{Binding SpecialSessionId}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Image HorizontalAlignment="Left" Height="111" Margin="28,17,0,0" VerticalAlignment="Top" Width="117" Source="/Assets/Avatar.png"/>
+        <Label Content="First Name:" HorizontalAlignment="Left" Margin="165,17,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="165,64,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Title:" HorizontalAlignment="Left" Margin="663,17,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Field Of Study:" HorizontalAlignment="Left" Margin="663,64,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Name="FirstNameLabel" Content="" HorizontalAlignment="Left" Margin="279,17,0,0" VerticalAlignment="Top" FontSize="20" Width="354"/>
+        <Label Name="LastNameLabel" Content="" HorizontalAlignment="Left" Margin="279,64,0,0" VerticalAlignment="Top" FontSize="20" Width="354"/>
+        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="720,17,0,0" VerticalAlignment="Top" FontSize="20" Width="354"/>
+        <Label Name="FieldLabel" Content="" HorizontalAlignment="Left" Margin="806,64,0,0" VerticalAlignment="Top" FontSize="20" Width="354"/>
     </Grid>
 </Controls:MetroWindow>
