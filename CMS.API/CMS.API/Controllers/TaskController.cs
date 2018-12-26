@@ -60,10 +60,10 @@ namespace CMS.API.Controllers
 
         // GET: api/Task/TasksForEmployee?EmployeeId=&ConferenceId=
         [HttpGet]
-        [Route("api/task/tasksforempployee")]
-        public IHttpActionResult GetTasksForEmployee(int EmployeeId, int ConferenceId)
+        [Route("api/task/tasksforemployee")]
+        public IHttpActionResult GetTasksForEmployee(int employeeId, int conferenceId)
         {
-            var tasks = _bll.GetTasksForEmployee(EmployeeId, ConferenceId);
+            var tasks = _bll.GetTasksForEmployee(employeeId, conferenceId);
             if (tasks == null) return BadRequest();
             return Ok(tasks);
         }

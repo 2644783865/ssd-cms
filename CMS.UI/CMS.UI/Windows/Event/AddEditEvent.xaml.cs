@@ -111,7 +111,7 @@ namespace CMS.UI.Windows.Event
             result = !ValidationHelper.ValidateDateTimePicker(EndDatePicker.SelectedDate.HasValue
                 && (BeginDatePicker.SelectedDate.HasValue
                 && EndDatePicker.SelectedDate.Value >= BeginDatePicker.SelectedDate.Value
-                && BeginDatePicker.SelectedDate.Value <= EndDatePicker.SelectedDate.Value.AddHours(5)
+                && BeginDatePicker.SelectedDate.Value.AddHours(5) >= EndDatePicker.SelectedDate.Value
                 && EndDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
                 && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate), EndBorderError) ? false : result;
             return result;

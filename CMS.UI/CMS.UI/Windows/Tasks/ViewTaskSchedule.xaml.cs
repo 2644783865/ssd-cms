@@ -1,20 +1,8 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
-using CMS.UI.Helpers;
+using CMS.Core.Interfaces;
 using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Tasks
 {
@@ -23,30 +11,25 @@ namespace CMS.UI.Windows.Tasks
     /// </summary>
     public partial class ViewTaskSchedule : MetroWindow
     {
-        private TaskCore core;
-        private int employeeId;
+        private ITaskCore taskCore;
 
-        public ViewTaskSchedule(int? employeeID)
+        public ViewTaskSchedule(bool isEmployee)
         {
             InitializeComponent();
-            core = new TaskCore();
-            if (employeeID == null)
+            taskCore = new TaskCore();
+            LoadEmployees();
+            if (isEmployee)
             {
-                employeeId = UserCredentials.Account.AccountId;
+                HideChooseEmployee();
+                LoadTasksForToDatagrid(UserCredentials.Account.AccountId);
             }
-            else
-            {
-                employeeId = employeeID.Value;
-            }
-            
-            LoadTasksForToDatagrid();
+            else ShowChooseEmployee();
         }
 
         private void ShowChooseEmployee()
         {
             ChooseEmpLabel.Visibility = Visibility.Visible;
             EmployeeBox.Visibility = Visibility.Visible;
-            
         }
 
         private void HideChooseEmployee()
@@ -55,9 +38,23 @@ namespace CMS.UI.Windows.Tasks
             EmployeeBox.Visibility = Visibility.Hidden;
         }
 
-        async private void LoadTasksForToDatagrid()
+        private async void LoadEmployees()
         {
-            TaskDataGrid.ItemsSource = await core.GetTasksForEmployeeAsync(employeeId, UserCredentials.Conference.ConferenceId);
+            EmployeeBox.Items.Clear();
+            EmployeeBox.DisplayMemberPath = "Name";
+            EmployeeBox.SelectedValuePath = "AccountId";
+            EmployeeBox.ItemsSource = await taskCore.GetAccountsForConferenceEmployeeAsync(UserCredentials.Conference.ConferenceId);
+        }
+
+        async private void LoadTasksForToDatagrid(int employeeId)
+        {
+            TaskDataGrid.ItemsSource = await taskCore.GetTasksForEmployeeAsync(employeeId, UserCredentials.Conference.ConferenceId);
+        }
+
+        private void EmployeeBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (EmployeeBox.SelectedIndex >= 0)
+            LoadTasksForToDatagrid(((AccountDTO)EmployeeBox.SelectedItem).AccountId);
         }
     }
 }

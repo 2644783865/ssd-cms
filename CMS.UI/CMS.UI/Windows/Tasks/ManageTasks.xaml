@@ -19,20 +19,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding TaskId}"/>
                 <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="200"/>
-                <DataGridTemplateColumn Header="Begin Date">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Controls:DateTimePicker SelectedDate="{Binding BeginDate}" BorderThickness="0"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="End Date">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Controls:DateTimePicker SelectedDate="{Binding EndDate}" BorderThickness="0" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Begin Date" Binding="{Binding BeginDate}"/>
+                <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}"/>
                 <DataGridTextColumn Header="Employee Id" Binding="{Binding EmployeeId}" />
                 <DataGridTextColumn Header="Manager Id" Binding="{Binding ManagerId}" />
             </DataGrid.Columns>
@@ -40,6 +28,7 @@
         <Button x:Name="buttonAdd" Content="ADD" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="62" Height="30" Click="buttonAdd_Click" Grid.Row="1"/>
         <Button x:Name="buttonDelete" Content="DELETE" Background="Red" HorizontalAlignment="Left" Margin="148,95,0,0" VerticalAlignment="Top" Height="30" Width="59" Click="buttonDelete_Click" Grid.Row="1" RenderTransformOrigin="-0.106,0.559"/>
         <Button x:Name="buttonEdit" Content="EDIT" HorizontalAlignment="Left" Margin="77,95,0,0" VerticalAlignment="Top" Width="66"  Height="30" Click="buttonEdit_Click" Grid.Row="1"/>
+        <Button Name="ScheduleForEmployee" Content="View Schedule For Employee" HorizontalAlignment="Left" Margin="741,77,0,0" Grid.Row="1" VerticalAlignment="Top" Width="182" Click="ScheduleForEmployee_Click"/>
 
     </Grid>
 </Controls:MetroWindow>

@@ -69,7 +69,8 @@ namespace CMS.UI.Windows.Tasks
                 && EndDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate.AddMonths(-6)
                 && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate.AddDays(7)
                 && BeginDatePicker.SelectedDate.Value.AddMinutes(10) <= EndDatePicker.SelectedDate.Value
-                && BeginDatePicker.SelectedDate.Value.AddHours(12) <= EndDatePicker.SelectedDate.Value, EndDateErrorBorder) ? false : result;
+                && BeginDatePicker.SelectedDate.Value.AddHours(12) >= EndDatePicker.SelectedDate.Value
+                , EndDateErrorBorder) ? false : result;
             result = !ValidationHelper.ValidateComboBox(RoleEmployeeBox.SelectedIndex >= 0, RoleEmployeeBox) ? false : result;
             return result;
         }

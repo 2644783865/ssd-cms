@@ -5,12 +5,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="ViewTaskSchedule" Height="518.41" Width="699.163"
+        Title="Task Schedule" Height="518.41" Width="699.163"
                       ResizeMode="NoResize"
                       WindowStartupLocation="CenterScreen">
     <Grid>
         <DataGrid x:Name="TaskDataGrid" HorizontalAlignment="Left" Margin="32,68,0,0" VerticalAlignment="Top" Height="389" Width="619" />
-        <ComboBox Name="EmployeeBox" HorizontalAlignment="Left" Margin="156,22,0,0" VerticalAlignment="Top" Width="203"/>
+        <ComboBox Name="EmployeeBox" HorizontalAlignment="Left" Margin="156,22,0,0" VerticalAlignment="Top" Width="203" SelectionChanged="EmployeeBox_SelectionChanged"/>
         <Label Name="ChooseEmpLabel" Content="Display schedule for:" HorizontalAlignment="Left" Margin="32,22,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Controls:MetroWindow>

@@ -1,6 +1,7 @@
 ﻿using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
+using CMS.UI.Windows.Tasks;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
@@ -131,7 +132,8 @@ namespace CMS.UI.Windows.Home
 
         private void TaskSchedule_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewTaskSchedule newWindow = new ViewTaskSchedule(true);
+            newWindow.ShowDialog();
         }
     }
 }

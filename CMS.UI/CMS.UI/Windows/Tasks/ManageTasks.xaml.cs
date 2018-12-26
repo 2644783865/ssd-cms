@@ -67,5 +67,11 @@ namespace CMS.UI.Windows.Tasks
         {
             await loadTasksToDatagrid();
         }
+
+        private void ScheduleForEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            ViewTaskSchedule newWindow = new ViewTaskSchedule(false);
+            newWindow.ShowDialog();
+        }
     }
 }
