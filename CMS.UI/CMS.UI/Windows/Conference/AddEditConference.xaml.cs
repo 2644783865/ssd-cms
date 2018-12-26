@@ -83,7 +83,7 @@ namespace CMS.UI.Windows.Conference
             result = !ValidationHelper.ValidateTextFiled(PlaceBox.Text.Length > 0, PlaceBox) ? false : result;
             result = !ValidationHelper.ValidateDatePicker(BeginDatePicker.SelectedDate.HasValue, BeginDatePicker) ? false : result;
             result = !ValidationHelper.ValidateDatePicker(EndDatePicker.SelectedDate.HasValue && (BeginDatePicker.SelectedDate.HasValue
-                && EndDatePicker.SelectedDate >= BeginDatePicker.SelectedDate), EndDatePicker) ? false : result;
+                && EndDatePicker.SelectedDate.Value >= BeginDatePicker.SelectedDate.Value), EndDatePicker) ? false : result;
             return result;
         }
     }

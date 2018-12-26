@@ -61,13 +61,15 @@ namespace CMS.UI.Windows.Tasks
             result = !ValidationHelper.ValidateTextFiled(TitleBox.Text.Length > 0, TitleBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(DescriptionBox.Text.Length > 0, DescriptionBox) ? false : result;
             result = !ValidationHelper.ValidateDateTimePicker(BeginDatePicker.SelectedDate.HasValue
-                && BeginDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
-                && BeginDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate, BeginDateErrorBorder) ? false : result;
+                && BeginDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate.AddMonths(-6)
+                && BeginDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate.AddDays(7), BeginDateErrorBorder) ? false : result;
             result = !ValidationHelper.ValidateDateTimePicker(EndDatePicker.SelectedDate.HasValue
-                && (BeginDatePicker.SelectedDate.HasValue
-                && EndDatePicker.SelectedDate >= BeginDatePicker.SelectedDate
-                && EndDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
-                && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate), EndDateErrorBorder) ? false : result;
+                && BeginDatePicker.SelectedDate.HasValue
+                && EndDatePicker.SelectedDate.Value >= BeginDatePicker.SelectedDate.Value
+                && EndDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate.AddMonths(-6)
+                && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate.AddDays(7)
+                && BeginDatePicker.SelectedDate.Value.AddMinutes(10) <= EndDatePicker.SelectedDate.Value
+                && BeginDatePicker.SelectedDate.Value.AddHours(12) <= EndDatePicker.SelectedDate.Value, EndDateErrorBorder) ? false : result;
             result = !ValidationHelper.ValidateComboBox(RoleEmployeeBox.SelectedIndex >= 0, RoleEmployeeBox) ? false : result;
             return result;
         }
