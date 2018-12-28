@@ -14,11 +14,11 @@ namespace CMS.API.BLL.BLL
         private IArticleRepository _repository = new ArticleRepository();
         private IPresentationRepository _presentationRepository = new PresentationRepository();
 
-        public IEnumerable<ArticleDTO> GetArticles()
+        public IEnumerable<ArticleDTO> GetArticles(int conferenceId)
         {
             try
             {
-                return _repository.GetArticles();
+                return _repository.GetArticles(conferenceId);
             }
             catch
             {

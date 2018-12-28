@@ -1,24 +1,13 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
-using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
-using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using CMS.UI.Windows.Reviews;
 
 
@@ -184,13 +173,13 @@ namespace CMS.UI.Windows.Articles
 
         private void Reviews_Click(object sender, RoutedEventArgs e)
         {
-            ReviewsShow newReviewsWindow = new ReviewsShow();
+            Review newReviewsWindow = new Review(currentArticle);
             newReviewsWindow.ShowDialog();
         }
 
         private void AddReview_Click(object sender, RoutedEventArgs e)
         {
-            AddReview newAddReviewWindow = new AddReview(null);
+            AddReview newAddReviewWindow = new AddReview(currentArticle);
             newAddReviewWindow.ShowDialog();
         }
 

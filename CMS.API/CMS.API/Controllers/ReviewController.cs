@@ -30,6 +30,16 @@ namespace CMS.API.Controllers
             return Ok(review);
         }
 
+        // GET: api/Review/ReviewsByArticleId?articleId=
+        [HttpGet]
+        [Route("api/review/reviewsbyarticleid")]
+        public IHttpActionResult GetReviewsByArticleId(int articleId)
+        {
+            var reviews = _bll.GetReviewsByArticleId(articleId);
+            if (reviews == null) return BadRequest();
+            return Ok(reviews);
+        }
+
         // POST: api/Review/AddReview
         [HttpPost]
         [Route("api/review/addreview")]

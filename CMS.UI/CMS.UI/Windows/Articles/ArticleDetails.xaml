@@ -28,13 +28,13 @@
             </StackPanel>
         </Expander>
         <ComboBox Name="SubmissionBox" HorizontalAlignment="Left" Margin="19,0,0,180" VerticalAlignment="Bottom" Width="345"/>
-        <Button x:Name="Submit" Content="Submit new" HorizontalAlignment="Right" Margin="0,0,283,148" VerticalAlignment="Bottom" Width="96" Click="SubmitButton_Click"/>
+        <Button x:Name="Submit" Content="Submit new" HorizontalAlignment="Right" Margin="0,0,283,148" VerticalAlignment="Bottom" Width="96" Click="SubmitButton_Click" IsEnabled="False"/>
         <Button x:Name="View" Content="View pdf" HorizontalAlignment="Right" Margin="0,0,32,148" VerticalAlignment="Bottom" Width="96" Click="View_Click"/>
-        <Button x:Name="Presentation" Content="Presentation" HorizontalAlignment="Right" Margin="0,0,34,91" VerticalAlignment="Bottom" Width="96" Click="PresentationButton_Click"/>
+        <Button x:Name="Presentation" Content="Presentation" HorizontalAlignment="Right" Margin="0,0,34,91" VerticalAlignment="Bottom" Width="96" Click="PresentationButton_Click" IsEnabled="False"/>
         <Button x:Name="Reviews" Content="Reviews" HorizontalAlignment="Right" Margin="0,0,283,91" VerticalAlignment="Bottom" Width="96" Click="Reviews_Click"/>
-        <Button x:Name="AddReview" Content="Add review" HorizontalAlignment="Right" Margin="0,0,283,59" VerticalAlignment="Bottom" Width="96" Background="Blue" Click="AddReview_Click"/>
-        <Button x:Name="Accept" Content="Accept" HorizontalAlignment="Right" Margin="0,0,281,10" VerticalAlignment="Bottom" Width="96" Click="AcceptButton_Click" Background="Green"/>
-        <Button x:Name="Reject" Content="Reject" HorizontalAlignment="Right" Margin="0,0,32,10" VerticalAlignment="Bottom" Width="96" Click="RejectButton_Click" Background="Red"/>
-        <Button Name="EditButton" Content="Change topic" HorizontalAlignment="Left" Margin="277,10,0,0" VerticalAlignment="Top" Width="85" Click="EditButton_Click"/>
+        <Button x:Name="AddReview" Content="Add review" HorizontalAlignment="Right" Margin="0,0,283,59" VerticalAlignment="Bottom" Width="96" Background="Blue" Click="AddReview_Click" Visibility="Collapsed"/>
+        <Button x:Name="Accept" Content="Accept" HorizontalAlignment="Right" Margin="0,0,281,10" VerticalAlignment="Bottom" Width="96" Click="AcceptButton_Click" Background="Green" Visibility="Collapsed"/>
+        <Button x:Name="Reject" Content="Reject" HorizontalAlignment="Right" Margin="0,0,32,10" VerticalAlignment="Bottom" Width="96" Click="RejectButton_Click" Background="Red" Visibility="Collapsed"/>
+        <Button Name="EditButton" Content="Change topic" HorizontalAlignment="Left" Margin="277,10,0,0" VerticalAlignment="Top" Width="85" Click="EditButton_Click" Visibility="Collapsed"/>
     </Grid>
 </Controls:MetroWindow>

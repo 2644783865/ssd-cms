@@ -14,12 +14,12 @@ namespace CMS.API.Controllers
     {
         private IArticleBLL _bll = new ArticleBLL();
 
-        // GET: api/Article/Articles
+        // GET: api/Article/Articles?conferenceId=
         [HttpGet]
         [Route("api/article/articles")]
-        public IHttpActionResult GetArticles()
+        public IHttpActionResult GetArticles(int conferenceId)
         {
-            return Ok(_bll.GetArticles());
+            return Ok(_bll.GetArticles(conferenceId));
         }
 
         // GET: api/Article/ArticleById?articleid=

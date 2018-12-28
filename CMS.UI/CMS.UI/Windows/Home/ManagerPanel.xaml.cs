@@ -2,6 +2,7 @@
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
+using CMS.UI.Windows.Articles;
 using CMS.UI.Windows.Author;
 using CMS.UI.Windows.Award;
 using CMS.UI.Windows.Event;
@@ -84,7 +85,7 @@ namespace CMS.UI.Windows.Home
         private void SetVisibility()
         {
             var test = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceManager) || r.Name.Equals(Properties.RoleResources.ConferenceChair));
-            if ( test == null)
+            if (test == null)
             {
                 ManageTasks.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.ConferenceStaffManager)) != null ? Visibility.Visible : Visibility.Collapsed;
                 ManageAccount.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.HRAdministrator)) != null ? Visibility.Visible : Visibility.Collapsed;
@@ -226,6 +227,12 @@ namespace CMS.UI.Windows.Home
         private void ManageSessions_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ManageArticlesEditor_Click(object sender, RoutedEventArgs e)
+        {
+            ArticlePanel newWindow = new ArticlePanel();
+            newWindow.ShowDialog();
         }
     }
 }

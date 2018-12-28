@@ -13,9 +13,9 @@ namespace CMS.Core.Core
     {
         private ApiHelper _apiHelper = new ApiHelper();
 
-        public async Task<List<ArticleDTO>> GetArticlesAsync()
+        public async Task<List<ArticleDTO>> GetArticlesAsync(int conferenceId)
         {
-            var path = $"{Properties.Resources.getArticlesPath}";
+            var path = $"{Properties.Resources.getArticlesPath}?conferenceId={conferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

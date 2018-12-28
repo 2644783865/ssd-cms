@@ -8,7 +8,7 @@ namespace CMS.API.BLL.Interfaces
     {
         //Article
 
-        IEnumerable<ArticleDTO> GetArticles();
+        IEnumerable<ArticleDTO> GetArticles(int conferenceId);
         ArticleDTO GetArticleById(int id);
         IEnumerable<ArticleDTO> GetArticlesForConferenceAndAuthor(int conferenceId, int authorId);
         bool AddArticle(AddArticleModel articleModel);

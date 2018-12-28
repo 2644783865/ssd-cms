@@ -9,6 +9,7 @@ namespace CMS.Core.Interfaces
     {
         Task<List<ReviewDTO>> GetReviewInfoAsync();
         Task<ReviewDTO> GetReviewByIdAsync(int reviewId);
+        Task<List<ReviewDTO>> GetReviewsByArticleIdAsync(int articleId);
         Task<bool> AddReviewAsync(ReviewDTO review);
         Task<bool> EditReviewAsync(ReviewDTO review);
         Task<bool> DeleteReviewAsync(int reviewId);

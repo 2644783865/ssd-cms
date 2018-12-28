@@ -7,7 +7,7 @@ namespace CMS.API.DAL.Interfaces
     public interface IArticleRepository : IDisposable
     {
         //Article
-        IEnumerable<ArticleDTO> GetArticles();
+        IEnumerable<ArticleDTO> GetArticles(int conferenceId);
         ArticleDTO GetArticleById(int id);
         void AddArticle(ArticleDTO articleDTO);
         void EditArticle(ArticleDTO articleDTO);

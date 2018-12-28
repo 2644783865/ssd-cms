@@ -1,0 +1,22 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Articles.ArticlePanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CMS.UI.Windows.Articles"
+        mc:Ignorable="d"
+        Title="Article Panel" Height="450" Width="800"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListBox Name="SubmittedList" HorizontalAlignment="Left" Height="343" Margin="10,40,0,0" VerticalAlignment="Top" Width="235" MouseDoubleClick="SubmittedList_MouseDoubleClick" BorderThickness="1"/>
+        <ListBox Name="AcceptedList" HorizontalAlignment="Left" Height="343" Margin="275,40,0,0" VerticalAlignment="Top" Width="235" MouseDoubleClick="SubmittedList_MouseDoubleClick" BorderThickness="1"/>
+        <ListBox Name="RejectedList" HorizontalAlignment="Left" Height="343" Margin="545,40,0,0" VerticalAlignment="Top" Width="235" MouseDoubleClick="SubmittedList_MouseDoubleClick" BorderThickness="1"/>
+        <Label Content="Submitted:" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top"/>
+        <Label Content="Accepted:" HorizontalAlignment="Left" Margin="275,9,0,0" VerticalAlignment="Top"/>
+        <Label Content="Rejected:" HorizontalAlignment="Left" Margin="545,9,0,0" VerticalAlignment="Top"/>
+        <Label Content="Double click to display details" HorizontalAlignment="Left" Margin="10,390,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Controls:MetroWindow>

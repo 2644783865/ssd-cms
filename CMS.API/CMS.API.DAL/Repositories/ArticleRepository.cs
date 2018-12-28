@@ -12,9 +12,9 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
         //Article
-        public IEnumerable<ArticleDTO> GetArticles()
+        public IEnumerable<ArticleDTO> GetArticles(int conferenceId)
         {
-            return _db.Articles.Project().To<ArticleDTO>();
+            return _db.Articles.Where(article => article.ConferenceID==conferenceId).Project().To<ArticleDTO>();
         }
 
         public ArticleDTO GetArticleById(int articleId)

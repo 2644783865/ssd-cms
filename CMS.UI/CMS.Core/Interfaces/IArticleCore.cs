@@ -8,7 +8,7 @@ namespace CMS.Core.Interfaces
 {
     public interface IArticleCore : IDisposable
     {
-        Task<List<ArticleDTO>> GetArticlesAsync();
+        Task<List<ArticleDTO>> GetArticlesAsync(int conferenceId);
         Task<ArticleDTO> GetArticleByIdAsync(int articleId);
         Task<List<ArticleDTO>> GetArticlesForConferenceAndAuthorAsync(int conferenceId, int authorId);
         Task<bool> AddArticleAsync(AddArticleModel articleModel);

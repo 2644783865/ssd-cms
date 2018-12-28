@@ -34,6 +34,17 @@ namespace CMS.Core.Core
             else return null;
         }
 
+        public async Task<List<ReviewDTO>> GetReviewsByArticleIdAsync(int articleId)
+        {
+            var path = $"{Properties.Resources.getReviewsByArticleIdPath}?articleId={articleId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<ReviewDTO>>(result.Content);
+            }
+            else return null;
+        }
+
         public async Task<bool> AddReviewAsync(ReviewDTO review)
         {
             var path = Properties.Resources.addReviewPath;

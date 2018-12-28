@@ -32,8 +32,8 @@ namespace CMS.UI.Windows.Reviews
 
         private void ReadButton_Click(object sender, RoutedEventArgs e)
         {
-            Review newReviewWindow = new Review();
-            newReviewWindow.ShowDialog();
+            //Review newReviewWindow = new Review();
+           // newReviewWindow.ShowDialog();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

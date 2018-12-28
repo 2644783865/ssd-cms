@@ -465,6 +465,9 @@
   <data name="getReviewInfoPath" xml:space="preserve">
     <value>api/review/reviews</value>
   </data>
+  <data name="getReviewsByArticleIdPath" xml:space="preserve">
+    <value>api/review/reviewsbyarticleid</value>
+  </data>
   <data name="getRoleNamePath" xml:space="preserve">
     <value>api/authentication/rolename</value>
   </data>

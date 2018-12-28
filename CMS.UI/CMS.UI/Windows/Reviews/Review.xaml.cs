@@ -1,22 +1,10 @@
 ﻿using MahApps.Metro.Controls;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using CMS.BE.DTO;
 using CMS.Core.Core;
-using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
-using CMS.UI.Helpers;
 
 
 namespace CMS.UI.Windows.Reviews
@@ -26,9 +14,51 @@ namespace CMS.UI.Windows.Reviews
     /// </summary>
     public partial class Review : MetroWindow
     {
-        public Review()
+        private IReviewCore core;
+        private ArticleDTO article;
+        private List<ReviewDTO> reviews;
+        public Review(ArticleDTO article)
         {
             InitializeComponent();
+            core = new ReviewCore();
+            this.article = article;
+            LoadData();
+        }
+
+        private async void LoadData()
+        {
+            reviews = await core.GetReviewsByArticleIdAsync(article.ArticleId);
+            ReviewsBox.ItemsSource = reviews;
+            CalculateAverage();
+        }
+
+        private void CalculateAverage()
+        {
+            double average = 0;
+            if (reviews != null)
+            {
+                foreach (var review in reviews)
+                {
+                    average += review.Grade;
+                }
+                average = average / reviews.Count;
+            }
+            AvgGrade.Content = average;
+        }
+
+        private void DetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ReviewsBox.SelectedIndex >= 0)
+            {
+                ReviewDetails newWindow = new ReviewDetails((ReviewDTO)ReviewsBox.SelectedItem);
+                newWindow.ShowDialog();
+            }
+            else MessageBox.Show("Select review first");
+        }
+
+        private void ReviewsBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DetailsButton_Click(null, null);
         }
     }
 }

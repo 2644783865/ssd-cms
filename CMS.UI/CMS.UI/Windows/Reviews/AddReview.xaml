@@ -13,9 +13,9 @@
             <Label Content="Title:" Margin="0,0,0,0"/>
             <TextBox Name="TitleBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="Grade:" Margin="0,0,0,0"/>
-            <TextBox Name="GradeBox" Margin="0,0,0,0" Width="337" Height="23"/>
+            <ComboBox Name="GradeBox" Margin="0,0,0,0" Width="162" Height="23" HorizontalAlignment="Left"/>
             <Label Content="Comment:" Margin="0,0,0,0"/>
-            <TextBox Name="CommentBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <TextBox Name="CommentBox" Height="77" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
         </StackPanel>
         <Button Name="AddButton" Content="Add" HorizontalAlignment="Right" Margin="0,0,31,38" VerticalAlignment="Bottom" Width="122"  Click="AddButton_Click"/>
         <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,245,38" VerticalAlignment="Bottom" Width="122" Click="CancelButton_Click"/>

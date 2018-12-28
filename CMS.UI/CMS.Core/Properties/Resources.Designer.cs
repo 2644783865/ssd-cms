@@ -1105,6 +1105,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/review/reviewsbyarticleid.
+        /// </summary>
+        internal static string getReviewsByArticleIdPath {
+            get {
+                return ResourceManager.GetString("getReviewsByArticleIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/authentication/rolename.
         /// </summary>
         internal static string getRoleNamePath {

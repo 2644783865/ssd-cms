@@ -92,6 +92,9 @@
     <Compile Include="Windows\Articles\ArticleDetails.xaml.cs">
       <DependentUpon>ArticleDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Articles\ArticlePanel.xaml.cs">
+      <DependentUpon>ArticlePanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Articles\AssignAuthor.xaml.cs">
       <DependentUpon>AssignAuthor.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,9 @@
     </Compile>
     <Compile Include="Windows\Reviews\Review.xaml.cs">
       <DependentUpon>Review.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Reviews\ReviewDetails.xaml.cs">
+      <DependentUpon>ReviewDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Reviews\ReviewsShow.xaml.cs">
       <DependentUpon>ReviewsShow.xaml</DependentUpon>
@@ -194,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Articles\ArticleDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Articles\ArticlePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -258,6 +268,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Reviews\Review.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Reviews\ReviewDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
