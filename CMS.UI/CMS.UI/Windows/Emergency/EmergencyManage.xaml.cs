@@ -13,29 +13,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 
-namespace CMS.UI.Windows.Travel
+namespace CMS.UI.Windows.Emergency
 {
     /// <summary>
-    /// Interaction logic for TravelManage.xaml
+    /// Interaction logic for EmergencyManage.xaml
     /// </summary>
-    public partial class TravelManage : MetroWindow
+    public partial class EmergencyManage : MetroWindow
     {
-        public TravelManage()
+        public EmergencyManage()
         {
             InitializeComponent();
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            TravelInfo newAddTravelWindow = new TravelInfo(null);
-            newAddTravelWindow.ShowDialog();
+            EmergencyInfo newAddEmergencyWindow = new EmergencyInfo(null);
+            newAddEmergencyWindow.ShowDialog();
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
-            // var travel = DATAGRID INFO
-            TravelInfo newAddTravelWindow = new TravelInfo(null/*travel*/);
-            newAddTravelWindow.ShowDialog();
+            // var emergency = DATAGRID INFO
+            EmergencyInfo newAddEmergencyWindow = new EmergencyInfo(null /*emergency*/);
+            newAddEmergencyWindow.ShowDialog();
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)

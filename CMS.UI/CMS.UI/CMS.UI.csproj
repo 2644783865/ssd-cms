@@ -80,11 +80,11 @@
     <Compile Include="Windows\Accommodation\AccommodationInfo.xaml.cs">
       <DependentUpon>AccommodationInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Accommodation\AccomodationConference.xaml.cs">
-      <DependentUpon>AccomodationConference.xaml</DependentUpon>
+    <Compile Include="Windows\Accommodation\AccommodationConference.xaml.cs">
+      <DependentUpon>AccommodationConference.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Accommodation\AccomodationManage.xaml.cs">
-      <DependentUpon>AccomodationManage.xaml</DependentUpon>
+    <Compile Include="Windows\Accommodation\AccommodationManage.xaml.cs">
+      <DependentUpon>AccommodationManage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Account\AddEditAccount.xaml.cs">
       <DependentUpon>AddEditAccount.xaml</DependentUpon>
@@ -104,6 +104,9 @@
     <Compile Include="Windows\Articles\AssignAuthor.xaml.cs">
       <DependentUpon>AssignAuthor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Articles\EditorPanel.xaml.cs">
+      <DependentUpon>EditorPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Articles\SubmitArticle.xaml.cs">
       <DependentUpon>SubmitArticle.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,9 @@
     </Compile>
     <Compile Include="Windows\Emergency\EmergencyInfo.xaml.cs">
       <DependentUpon>EmergencyInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Emergency\EmergencyManage.xaml.cs">
+      <DependentUpon>EmergencyManage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Event\AddEditEvent.xaml.cs" />
     <Compile Include="Windows\Home\AdministratorPanel.xaml.cs">
@@ -208,11 +214,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Accommodation\AccomodationConference.xaml">
+    <Page Include="Windows\Accommodation\AccommodationConference.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Accommodation\AccomodationManage.xaml">
+    <Page Include="Windows\Accommodation\AccommodationManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -240,6 +246,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Articles\EditorPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Articles\SubmitArticle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -261,6 +271,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Emergency\EmergencyInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Emergency\EmergencyManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

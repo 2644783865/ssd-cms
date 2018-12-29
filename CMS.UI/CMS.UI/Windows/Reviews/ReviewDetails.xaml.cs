@@ -22,9 +22,7 @@ namespace CMS.UI.Windows.Reviews
 
         private async void LoadData()
         {
-            ArticleIdLabel.Content = currentReview.ArticleId;
             ReviewerLabel.Content = (await core.GetAccountByIdAsync(currentReview.ReviewerId)).Name;
-            DateLabel.Content = currentReview.ReviewDate;
             TitleLabel.Content = currentReview.Title;
             GradeLabel.Content = currentReview.Grade;
             CommentBox.Text = currentReview.Comment;
