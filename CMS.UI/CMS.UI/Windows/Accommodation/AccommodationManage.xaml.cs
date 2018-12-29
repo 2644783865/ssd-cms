@@ -13,29 +13,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 
-namespace CMS.UI.Windows.Travel
+namespace CMS.UI.Windows.Accommodation
 {
     /// <summary>
-    /// Interaction logic for TravelManage.xaml
+    /// Interaction logic for AccomodationManage.xaml
     /// </summary>
-    public partial class TravelManage : MetroWindow
+    public partial class AccommodationManage : MetroWindow
     {
-        public TravelManage()
+        public AccommodationManage()
         {
             InitializeComponent();
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            TravelInfo newAddTravelWindow = new TravelInfo(null);
-            newAddTravelWindow.ShowDialog();
+            AccommodationInfo newAddAccommodationWindow = new AccommodationInfo(null);
+            newAddAccommodationWindow.ShowDialog();
         }
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
-            // var travel = DATAGRID INFO
-            TravelInfo newAddTravelWindow = new TravelInfo(null/*travel*/);
-            newAddTravelWindow.ShowDialog();
+            // var account = DATAGRID INFO
+            AccommodationInfo newAddAccommodationWindow = new AccommodationInfo(null /*accommodation*/);
+            newAddAccommodationWindow.ShowDialog();
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)

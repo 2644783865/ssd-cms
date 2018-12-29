@@ -24,5 +24,10 @@ namespace CMS.UI.Windows.WelcomePack
         {
             InitializeComponent();
         }
+
+        private void Button_Add(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

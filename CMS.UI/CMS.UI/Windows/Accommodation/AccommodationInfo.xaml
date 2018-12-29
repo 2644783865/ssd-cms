@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="AccomodationManage" Height="350" Width="400"
+        Title="AccomodationAddEdit" Height="350" Width="400"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
@@ -23,7 +23,8 @@
             <TextBox Name="CityDescBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" IsReadOnly="True" Text="" Height="46
                      "/>
         </StackPanel>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="290,284,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="198,284,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="290,284,0,0" VerticalAlignment="Top" Width="75" Click="Button_Cancel"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="198,284,0,0" VerticalAlignment="Top" Width="75" Click="Button_Save"/>
+        <Controls:ProgressRing Name="ProgressSpin" IsActive="False" HorizontalAlignment="Left" Margin="28,0,0,1" VerticalAlignment="Bottom" Height="45" Width="36"/>
     </Grid>
 </Controls:MetroWindow>

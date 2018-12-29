@@ -18,9 +18,9 @@ namespace CMS.UI.Windows.Accommodation
     /// <summary>
     /// Interaction logic for AccomodationConference.xaml
     /// </summary>
-    public partial class AccomodationConference : MetroWindow
+    public partial class AccommodationConference : MetroWindow
     {
-        public AccomodationConference()
+        public AccommodationConference()
         {
             InitializeComponent();
         }
