@@ -281,3 +281,4 @@ __pycache__/
 /CMS.API/CMS.API/Configuration/AppSettings.prod.config
 /CMS.API/CMS.API/Configuration/ConnectionStrings.prod.config
 /CMS.UI/CMS.UI/Configuration/AppSettings.prod.config
+/CMS.API/CMS.API.Tests/Configuration/ConnectionStrings.prod.config

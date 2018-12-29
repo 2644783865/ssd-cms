@@ -79,6 +79,7 @@
     <Content Include="Configuration\ConnectionStrings.local2.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Configuration\ConnectionStrings.prod.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

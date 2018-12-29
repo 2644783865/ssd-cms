@@ -106,6 +106,7 @@ namespace CMS.API.BLL.BLL
             var person = _authRepository.GetAccountById(accountId);
             var entries = (_sessionRepository.GetSessionsForConferenceAndChairWithBaseEntryAttributes(accountId, conferenceId) as IEnumerable<BaseEntryEntity>).OrderBy(ent => ent.BeginDate).ToList();
             entries.AddRange((_sessionRepository.GetSpecialSessionsForConferenceAndChairWithBaseEntryAttributes(accountId, conferenceId) as IEnumerable<BaseEntryEntity>).OrderBy(ent => ent.BeginDate));
+            entries = entries.OrderBy(ent => ent.BeginDate).ToList();
             return new ConferenceScheduleModel()
             {
                 Conference = conference,

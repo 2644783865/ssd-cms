@@ -270,7 +270,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Confere__03F0984C">
+        <Association Name="FK__Article__Confere__7B5B524B">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,7 +282,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Present__2BFE89A6">
+        <Association Name="FK__Article__Present__2180FB33">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,7 +294,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Special__2CF2ADDF">
+        <Association Name="FK__Article__Special__22751F6C">
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,7 +306,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ArticleAu__Artic__06CD04F7">
+        <Association Name="FK__ArticleAu__Artic__7E37BEF6">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="ArticleAuthor" Type="Self.ArticleAuthor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,7 +318,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ArticleAu__Autho__07C12930">
+        <Association Name="FK__ArticleAu__Autho__7F2BE32F">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
           <End Role="ArticleAuthor" Type="Self.ArticleAuthor" Multiplicity="*" />
           <ReferentialConstraint>
@@ -342,7 +342,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Award__Presentat__245D67DE">
+        <Association Name="FK__Award__Presentat__1AD3FDA4">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="1" />
           <End Role="Award" Type="Self.Award" Multiplicity="*" />
           <ReferentialConstraint>
@@ -366,7 +366,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Build__7F2BE32F">
+        <Association Name="FK__Conferenc__Build__76969D2E">
           <End Role="Building" Type="Self.Building" Multiplicity="1" />
           <End Role="ConferenceBuilding" Type="Self.ConferenceBuilding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -390,7 +390,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Conferenc__Confe__7E37BEF6">
+        <Association Name="FK__Conferenc__Confe__75A278F5">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="ConferenceBuilding" Type="Self.ConferenceBuilding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -498,7 +498,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__ArticleI__0A9D95DB">
+        <Association Name="FK__Review__ArticleI__02084FDA">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -510,7 +510,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__Reviewer__0B91BA14">
+        <Association Name="FK__Review__Reviewer__02FC7413">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -522,7 +522,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Submissio__Artic__2739D489">
+        <Association Name="FK__Submissio__Artic__1DB06A4F">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -534,7 +534,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__Conference__59063A47">
+        <Association Name="FK__Task__Conference__59FA5E80">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -546,7 +546,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__EmployeeId__59FA5E80">
+        <Association Name="FK__Task__EmployeeId__5AEE82B9">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -743,23 +743,23 @@
             <End Role="Conference" EntitySet="Conference" />
             <End Role="AccommodationInfo" EntitySet="AccommodationInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Confere__03F0984C" Association="Self.FK__Article__Confere__03F0984C">
+          <AssociationSet Name="FK__Article__Confere__7B5B524B" Association="Self.FK__Article__Confere__7B5B524B">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Present__2BFE89A6" Association="Self.FK__Article__Present__2BFE89A6">
+          <AssociationSet Name="FK__Article__Present__2180FB33" Association="Self.FK__Article__Present__2180FB33">
             <End Role="Presentation" EntitySet="Presentation" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Special__2CF2ADDF" Association="Self.FK__Article__Special__2CF2ADDF">
+          <AssociationSet Name="FK__Article__Special__22751F6C" Association="Self.FK__Article__Special__22751F6C">
             <End Role="SpecialSession" EntitySet="SpecialSession" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
-          <AssociationSet Name="FK__ArticleAu__Artic__06CD04F7" Association="Self.FK__ArticleAu__Artic__06CD04F7">
+          <AssociationSet Name="FK__ArticleAu__Artic__7E37BEF6" Association="Self.FK__ArticleAu__Artic__7E37BEF6">
             <End Role="Article" EntitySet="Article" />
             <End Role="ArticleAuthor" EntitySet="ArticleAuthor" />
           </AssociationSet>
-          <AssociationSet Name="FK__ArticleAu__Autho__07C12930" Association="Self.FK__ArticleAu__Autho__07C12930">
+          <AssociationSet Name="FK__ArticleAu__Autho__7F2BE32F" Association="Self.FK__ArticleAu__Autho__7F2BE32F">
             <End Role="Author" EntitySet="Author" />
             <End Role="ArticleAuthor" EntitySet="ArticleAuthor" />
           </AssociationSet>
@@ -767,7 +767,7 @@
             <End Role="Account" EntitySet="Account" />
             <End Role="Author" EntitySet="Author" />
           </AssociationSet>
-          <AssociationSet Name="FK__Award__Presentat__245D67DE" Association="Self.FK__Award__Presentat__245D67DE">
+          <AssociationSet Name="FK__Award__Presentat__1AD3FDA4" Association="Self.FK__Award__Presentat__1AD3FDA4">
             <End Role="Presentation" EntitySet="Presentation" />
             <End Role="Award" EntitySet="Award" />
           </AssociationSet>
@@ -775,7 +775,7 @@
             <End Role="Account" EntitySet="Account" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Build__7F2BE32F" Association="Self.FK__Conferenc__Build__7F2BE32F">
+          <AssociationSet Name="FK__Conferenc__Build__76969D2E" Association="Self.FK__Conferenc__Build__76969D2E">
             <End Role="Building" EntitySet="Building" />
             <End Role="ConferenceBuilding" EntitySet="ConferenceBuilding" />
           </AssociationSet>
@@ -783,7 +783,7 @@
             <End Role="Conference" EntitySet="Conference" />
             <End Role="ConferenceStaff" EntitySet="ConferenceStaff" />
           </AssociationSet>
-          <AssociationSet Name="FK__Conferenc__Confe__7E37BEF6" Association="Self.FK__Conferenc__Confe__7E37BEF6">
+          <AssociationSet Name="FK__Conferenc__Confe__75A278F5" Association="Self.FK__Conferenc__Confe__75A278F5">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="ConferenceBuilding" EntitySet="ConferenceBuilding" />
           </AssociationSet>
@@ -819,23 +819,23 @@
             <End Role="Account" EntitySet="Account" />
             <End Role="Message" EntitySet="Message" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__ArticleI__0A9D95DB" Association="Self.FK__Review__ArticleI__0A9D95DB">
+          <AssociationSet Name="FK__Review__ArticleI__02084FDA" Association="Self.FK__Review__ArticleI__02084FDA">
             <End Role="Article" EntitySet="Article" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__Reviewer__0B91BA14" Association="Self.FK__Review__Reviewer__0B91BA14">
+          <AssociationSet Name="FK__Review__Reviewer__02FC7413" Association="Self.FK__Review__Reviewer__02FC7413">
             <End Role="Account" EntitySet="Account" />
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
-          <AssociationSet Name="FK__Submissio__Artic__2739D489" Association="Self.FK__Submissio__Artic__2739D489">
+          <AssociationSet Name="FK__Submissio__Artic__1DB06A4F" Association="Self.FK__Submissio__Artic__1DB06A4F">
             <End Role="Article" EntitySet="Article" />
             <End Role="Submission" EntitySet="Submission" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__Conference__59063A47" Association="Self.FK__Task__Conference__59063A47">
+          <AssociationSet Name="FK__Task__Conference__59FA5E80" Association="Self.FK__Task__Conference__59FA5E80">
             <End Role="Conference" EntitySet="Conference" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__EmployeeId__59FA5E80" Association="Self.FK__Task__EmployeeId__59FA5E80">
+          <AssociationSet Name="FK__Task__EmployeeId__5AEE82B9" Association="Self.FK__Task__EmployeeId__5AEE82B9">
             <End Role="Account" EntitySet="Account" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
@@ -926,8 +926,8 @@
           <NavigationProperty Name="LastMessages1" Relationship="Self.FK__LastMessa__Secon__4D94879B" FromRole="Account" ToRole="LastMessages" />
           <NavigationProperty Name="Messages" Relationship="Self.FK__Message__Receive__47DBAE45" FromRole="Account" ToRole="Message" />
           <NavigationProperty Name="Messages1" Relationship="Self.FK__Message__SenderI__46E78A0C" FromRole="Account" ToRole="Message" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__Reviewer__0B91BA14" FromRole="Account" ToRole="Review" />
-          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__EmployeeId__59FA5E80" FromRole="Account" ToRole="Task" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__Reviewer__02FC7413" FromRole="Account" ToRole="Review" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__EmployeeId__5AEE82B9" FromRole="Account" ToRole="Task" />
           <NavigationProperty Name="Tasks1" Relationship="Self.FK__Task__ManagerId__5CD6CB2B" FromRole="Account" ToRole="Task" />
           <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationPresenter" FromRole="Account" ToRole="Presentation" />
           <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SessionChair" FromRole="Account" ToRole="SpecialSession" />
@@ -944,11 +944,11 @@
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AcceptanceDate" Type="DateTime" Precision="0" />
           <Property Name="ConferenceID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Article__Confere__03F0984C" FromRole="Article" ToRole="Conference" />
-          <NavigationProperty Name="Presentation" Relationship="Self.FK__Article__Present__2BFE89A6" FromRole="Article" ToRole="Presentation" />
-          <NavigationProperty Name="SpecialSession" Relationship="Self.FK__Article__Special__2CF2ADDF" FromRole="Article" ToRole="SpecialSession" />
-          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__ArticleI__0A9D95DB" FromRole="Article" ToRole="Review" />
-          <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__Artic__2739D489" FromRole="Article" ToRole="Submission" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Article__Confere__7B5B524B" FromRole="Article" ToRole="Conference" />
+          <NavigationProperty Name="Presentation" Relationship="Self.FK__Article__Present__2180FB33" FromRole="Article" ToRole="Presentation" />
+          <NavigationProperty Name="SpecialSession" Relationship="Self.FK__Article__Special__22751F6C" FromRole="Article" ToRole="SpecialSession" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__ArticleI__02084FDA" FromRole="Article" ToRole="Review" />
+          <NavigationProperty Name="Submissions" Relationship="Self.FK__Submissio__Artic__1DB06A4F" FromRole="Article" ToRole="Submission" />
           <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationArticle" FromRole="Article" ToRole="Presentation" />
           <NavigationProperty Name="Authors" Relationship="Self.ArticleAuthor" FromRole="Article" ToRole="Author" />
         </EntityType>
@@ -972,7 +972,7 @@
           <Property Name="AwardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PresentationId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Presentation" Relationship="Self.FK__Award__Presentat__245D67DE" FromRole="Award" ToRole="Presentation" />
+          <NavigationProperty Name="Presentation" Relationship="Self.FK__Award__Presentat__1AD3FDA4" FromRole="Award" ToRole="Presentation" />
         </EntityType>
         <EntityType Name="Building">
           <Key>
@@ -995,11 +995,11 @@
           <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="AccommodationInfoes" Relationship="Self.FK__Accommoda__Confe__68487DD7" FromRole="Conference" ToRole="AccommodationInfo" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Confere__03F0984C" FromRole="Conference" ToRole="Article" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Confere__7B5B524B" FromRole="Conference" ToRole="Article" />
           <NavigationProperty Name="ConferenceStaffs" Relationship="Self.FK__Conferenc__Confe__440B1D61" FromRole="Conference" ToRole="ConferenceStaff" />
           <NavigationProperty Name="EmergencyInfoes" Relationship="Self.FK__Emergency__Confe__656C112C" FromRole="Conference" ToRole="EmergencyInfo" />
           <NavigationProperty Name="Events" Relationship="Self.FK__Event__Conferenc__6E01572D" FromRole="Conference" ToRole="Event" />
-          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__Conference__59063A47" FromRole="Conference" ToRole="Task" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__Conference__59FA5E80" FromRole="Conference" ToRole="Task" />
           <NavigationProperty Name="TravelInfoes" Relationship="Self.FK__TravelInf__Confe__6B24EA82" FromRole="Conference" ToRole="TravelInfo" />
           <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SessionConference" FromRole="Conference" ToRole="SpecialSession" />
           <NavigationProperty Name="Sessions" Relationship="Self.fk_SpecialSessionConference" FromRole="Conference" ToRole="Session" />
@@ -1081,9 +1081,9 @@
           <Property Name="SpecialSessionId" Type="Int32" />
           <Property Name="Grade" Type="Decimal" Precision="3" Scale="2" />
           <NavigationProperty Name="Account" Relationship="Self.fk_PresentationPresenter" FromRole="Presentation" ToRole="Account" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Present__2BFE89A6" FromRole="Presentation" ToRole="Article" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Present__2180FB33" FromRole="Presentation" ToRole="Article" />
           <NavigationProperty Name="Article" Relationship="Self.fk_PresentationArticle" FromRole="Presentation" ToRole="Article" />
-          <NavigationProperty Name="Awards" Relationship="Self.FK__Award__Presentat__245D67DE" FromRole="Presentation" ToRole="Award" />
+          <NavigationProperty Name="Awards" Relationship="Self.FK__Award__Presentat__1AD3FDA4" FromRole="Presentation" ToRole="Award" />
           <NavigationProperty Name="Session" Relationship="Self.fk_PresentationSession" FromRole="Presentation" ToRole="Session" />
           <NavigationProperty Name="SpecialSession" Relationship="Self.fk_PresentationSpecialSession" FromRole="Presentation" ToRole="SpecialSession" />
         </EntityType>
@@ -1098,8 +1098,8 @@
           <Property Name="Grade" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Review__Reviewer__0B91BA14" FromRole="Review" ToRole="Account" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Review__ArticleI__0A9D95DB" FromRole="Review" ToRole="Article" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Review__Reviewer__02FC7413" FromRole="Review" ToRole="Account" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Review__ArticleI__02084FDA" FromRole="Review" ToRole="Article" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1151,7 +1151,7 @@
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Account" Relationship="Self.fk_SessionChair" FromRole="SpecialSession" ToRole="Account" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Special__2CF2ADDF" FromRole="SpecialSession" ToRole="Article" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Special__22751F6C" FromRole="SpecialSession" ToRole="Article" />
           <NavigationProperty Name="Conference" Relationship="Self.fk_SessionConference" FromRole="SpecialSession" ToRole="Conference" />
           <NavigationProperty Name="Presentations" Relationship="Self.fk_PresentationSpecialSession" FromRole="SpecialSession" ToRole="Presentation" />
           <NavigationProperty Name="Room" Relationship="Self.fk_SpecialSessionRoom" FromRole="SpecialSession" ToRole="Room" />
@@ -1164,7 +1164,7 @@
           <Property Name="ArticleId" Type="Int32" Nullable="false" />
           <Property Name="ArticleFile" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="SubmissionDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Article" Relationship="Self.FK__Submissio__Artic__2739D489" FromRole="Submission" ToRole="Article" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Submissio__Artic__1DB06A4F" FromRole="Submission" ToRole="Article" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -1178,9 +1178,9 @@
           <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ManagerId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Task__EmployeeId__59FA5E80" FromRole="Task" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Task__EmployeeId__5AEE82B9" FromRole="Task" ToRole="Account" />
           <NavigationProperty Name="Account1" Relationship="Self.FK__Task__ManagerId__5CD6CB2B" FromRole="Task" ToRole="Account" />
-          <NavigationProperty Name="Conference" Relationship="Self.FK__Task__Conference__59063A47" FromRole="Task" ToRole="Conference" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__Task__Conference__59FA5E80" FromRole="Task" ToRole="Conference" />
         </EntityType>
         <EntityType Name="TravelInfo">
           <Key>
@@ -1290,7 +1290,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__Reviewer__0B91BA14">
+        <Association Name="FK__Review__Reviewer__02FC7413">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1302,7 +1302,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__EmployeeId__59FA5E80">
+        <Association Name="FK__Task__EmployeeId__5AEE82B9">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1362,7 +1362,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Confere__03F0984C">
+        <Association Name="FK__Article__Confere__7B5B524B">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1374,7 +1374,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Present__2BFE89A6">
+        <Association Name="FK__Article__Present__2180FB33">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1386,7 +1386,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Article__Special__2CF2ADDF">
+        <Association Name="FK__Article__Special__22751F6C">
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="0..1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1398,7 +1398,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Review__ArticleI__0A9D95DB">
+        <Association Name="FK__Review__ArticleI__02084FDA">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Review" Type="Self.Review" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1410,7 +1410,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Submissio__Artic__2739D489">
+        <Association Name="FK__Submissio__Artic__1DB06A4F">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Submission" Type="Self.Submission" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1434,7 +1434,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Award__Presentat__245D67DE">
+        <Association Name="FK__Award__Presentat__1AD3FDA4">
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="1" />
           <End Role="Award" Type="Self.Award" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1494,7 +1494,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__Conference__59063A47">
+        <Association Name="FK__Task__Conference__59FA5E80">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1673,11 +1673,11 @@
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Message" EntitySet="Messages" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__Reviewer__0B91BA14" Association="Self.FK__Review__Reviewer__0B91BA14">
+          <AssociationSet Name="FK__Review__Reviewer__02FC7413" Association="Self.FK__Review__Reviewer__02FC7413">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__EmployeeId__59FA5E80" Association="Self.FK__Task__EmployeeId__59FA5E80">
+          <AssociationSet Name="FK__Task__EmployeeId__5AEE82B9" Association="Self.FK__Task__EmployeeId__5AEE82B9">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Task" EntitySet="Tasks" />
           </AssociationSet>
@@ -1697,23 +1697,23 @@
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Session" EntitySet="Sessions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Confere__03F0984C" Association="Self.FK__Article__Confere__03F0984C">
+          <AssociationSet Name="FK__Article__Confere__7B5B524B" Association="Self.FK__Article__Confere__7B5B524B">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Present__2BFE89A6" Association="Self.FK__Article__Present__2BFE89A6">
+          <AssociationSet Name="FK__Article__Present__2180FB33" Association="Self.FK__Article__Present__2180FB33">
             <End Role="Presentation" EntitySet="Presentations" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Article__Special__2CF2ADDF" Association="Self.FK__Article__Special__2CF2ADDF">
+          <AssociationSet Name="FK__Article__Special__22751F6C" Association="Self.FK__Article__Special__22751F6C">
             <End Role="SpecialSession" EntitySet="SpecialSessions" />
             <End Role="Article" EntitySet="Articles" />
           </AssociationSet>
-          <AssociationSet Name="FK__Review__ArticleI__0A9D95DB" Association="Self.FK__Review__ArticleI__0A9D95DB">
+          <AssociationSet Name="FK__Review__ArticleI__02084FDA" Association="Self.FK__Review__ArticleI__02084FDA">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK__Submissio__Artic__2739D489" Association="Self.FK__Submissio__Artic__2739D489">
+          <AssociationSet Name="FK__Submissio__Artic__1DB06A4F" Association="Self.FK__Submissio__Artic__1DB06A4F">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Submission" EntitySet="Submissions" />
           </AssociationSet>
@@ -1721,7 +1721,7 @@
             <End Role="Article" EntitySet="Articles" />
             <End Role="Presentation" EntitySet="Presentations" />
           </AssociationSet>
-          <AssociationSet Name="FK__Award__Presentat__245D67DE" Association="Self.FK__Award__Presentat__245D67DE">
+          <AssociationSet Name="FK__Award__Presentat__1AD3FDA4" Association="Self.FK__Award__Presentat__1AD3FDA4">
             <End Role="Presentation" EntitySet="Presentations" />
             <End Role="Award" EntitySet="Awards" />
           </AssociationSet>
@@ -1741,7 +1741,7 @@
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="Event" EntitySet="Events" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__Conference__59063A47" Association="Self.FK__Task__Conference__59063A47">
+          <AssociationSet Name="FK__Task__Conference__59FA5E80" Association="Self.FK__Task__Conference__59FA5E80">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="Task" EntitySet="Tasks" />
           </AssociationSet>
