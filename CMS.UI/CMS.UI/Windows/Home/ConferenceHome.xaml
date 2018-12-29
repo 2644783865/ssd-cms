@@ -34,10 +34,10 @@
         <Button Name="EmergButton" HorizontalAlignment="Right" Margin="0,10,138,0" Foreground="Red" VerticalAlignment="Top" Width="60" Height="50">
             <iconPacks:FontAwesome Kind="InfoCircleSolid"  Width="20" Height="20"/>
         </Button>
-        <Button Name="AccomButton" HorizontalAlignment="Right" Margin="0,10,268,0" VerticalAlignment="Top" Width="60" Height="50">
+        <Button Name="AccomButton" HorizontalAlignment="Right" Margin="0,10,268,0" VerticalAlignment="Top" Width="60" Height="50" Click="AccomButton_Click">
             <iconPacks:FontAwesome Kind="BedSolid"  Width="20" Height="20"/>
         </Button>
-        <Button Name="TravelButton" HorizontalAlignment="Right" Margin="0,10,203,0" VerticalAlignment="Top" Width="60" Height="50">
+        <Button Name="TravelButton" HorizontalAlignment="Right" Margin="0,10,203,0" VerticalAlignment="Top" Width="60" Height="50" Click="TravelButton_Click">
             <iconPacks:FontAwesome Kind="PlaneDepartureSolid"  Width="20" Height="20"/>
         </Button>
         <Button Name="TaskSchedule" HorizontalAlignment="Right" Margin="0,0,30,171" VerticalAlignment="Bottom" Width="65" Height="71" BorderThickness="0" Click="TaskSchedule_Click" >

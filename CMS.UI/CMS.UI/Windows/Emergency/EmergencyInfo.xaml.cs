@@ -16,11 +16,11 @@ namespace CMS.UI.Windows.Emergency
     {
         private EmergencyInfoDTO currentEmergency;
 
-        public EmergencyInfo(EmergencyInfoDTO emergency)
+        public EmergencyInfo()
         {
             InitializeComponent();
-            currentEmergency = emergency;
-            if (emergency != null) InitializeEditFields();
+            //currentEmergency = 
+            //if (emergency != null) InitializeEditFields();
             this.Title = "Add Emergency Info";
 
         }

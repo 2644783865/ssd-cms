@@ -1,7 +1,9 @@
 ﻿using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
+using CMS.UI.Windows.Accommodation;
 using CMS.UI.Windows.Tasks;
+using CMS.UI.Windows.Travel;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
@@ -134,6 +136,18 @@ namespace CMS.UI.Windows.Home
         private void TaskSchedule_Click(object sender, RoutedEventArgs e)
         {
             ViewTaskSchedule newWindow = new ViewTaskSchedule(true);
+            newWindow.ShowDialog();
+        }
+
+        private void AccomButton_Click(object sender, RoutedEventArgs e)
+        {
+            AccommodationConference newWindow = new AccommodationConference();
+            newWindow.ShowDialog();
+        }
+
+        private void TravelButton_Click(object sender, RoutedEventArgs e)
+        {
+            TravelConference newWindow = new TravelConference();
             newWindow.ShowDialog();
         }
     }

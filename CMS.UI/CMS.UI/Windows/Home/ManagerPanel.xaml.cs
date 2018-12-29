@@ -1,12 +1,15 @@
 ﻿using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
+using CMS.UI.Windows.Accommodation;
 using CMS.UI.Windows.Account;
 using CMS.UI.Windows.Articles;
 using CMS.UI.Windows.Author;
 using CMS.UI.Windows.Award;
+using CMS.UI.Windows.Emergency;
 using CMS.UI.Windows.Event;
 using CMS.UI.Windows.Tasks;
+using CMS.UI.Windows.Travel;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
@@ -240,6 +243,24 @@ namespace CMS.UI.Windows.Home
         private void MetroWindow_Activated(object sender, System.EventArgs e)
         {
             InitializeData();
+        }
+
+        private void AccomButton_Click(object sender, RoutedEventArgs e)
+        {
+            AccommodationManage newWindow = new AccommodationManage();
+            newWindow.ShowDialog();
+        }
+
+        private void TravelButton_Click(object sender, RoutedEventArgs e)
+        {
+            TravelManage newWindow = new TravelManage();
+            newWindow.ShowDialog();
+        }
+
+        private void EmergButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmergencyInfo newWindow = new EmergencyInfo();
+            newWindow.ShowDialog();
         }
     }
 }
