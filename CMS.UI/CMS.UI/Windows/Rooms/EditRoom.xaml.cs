@@ -1,4 +1,7 @@
-﻿using MahApps.Metro.Controls;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
+using CMS.Core.Interfaces;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +23,31 @@ namespace CMS.UI.Windows.Rooms
     /// </summary>
     public partial class EditRoom : MetroWindow
     {
-        private int BuildingID;
-        public EditRoom(int BuildingID)
+        private RoomDTO room_being_edited;
+        IRoomCore core;
+        public EditRoom(RoomDTO arg_edit_room)
         {
-            this.BuildingID = BuildingID; 
+            core = new RoomCore(); 
+            this.room_being_edited = arg_edit_room; 
             InitializeComponent();
+            oldroomname.Text = room_being_edited.Code;
+            newroomname.Text = "Enter a new name";
         }
+
+        async private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RoomDTO new_possible_code_room = room_being_edited;
+            new_possible_code_room.Code = newroomname.Text;
+            bool response = await core.EditRoomAsync(new_possible_code_room);
+            if (response)
+            {
+                MessageBox.Show("Successfully edited!");
+            }
+            else
+            {
+                MessageBox.Show("Could not edit the room's code!");
+            }
+        }
+
     }
 }

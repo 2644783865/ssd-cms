@@ -10,7 +10,7 @@
 		ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
-		<DataGrid Name="RoomList" IsReadOnly="True" HorizontalAlignment="Left" Height="339" Margin="42,27,0,0" VerticalAlignment="Top" Width="438" AutoGenerateColumns="False">
+		<DataGrid Name="RoomList" IsReadOnly="True" HorizontalAlignment="Left" Height="339" Margin="42,27,0,0" VerticalAlignment="Top" Width="438" AutoGenerateColumns="False" CurrentCellChanged="RoomList_CurrentCellChanged">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Code" Binding="{Binding Code}"/>
 			</DataGrid.Columns>

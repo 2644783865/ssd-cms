@@ -29,6 +29,8 @@ namespace CMS.UI.Windows.Rooms
         {
             BuildingID = building;
             InitializeComponent();
+            EditRoom.IsEnabled = false;
+            DeleteRoom.IsEnabled = false;
             core = new RoomCore();
             LoadRoomsToDataGrid(building);
             
@@ -48,8 +50,9 @@ namespace CMS.UI.Windows.Rooms
 
         private void EditRoom_Click(object sender, RoutedEventArgs e)
         {
-            EditRoom newEditRoomsWindow = new EditRoom(this.BuildingID);
-            newEditRoomsWindow.Show();
+            RoomDTO roomtoedit = (RoomDTO)RoomList.SelectedItem;
+            EditRoom newEditRoomsWindow = new EditRoom(roomtoedit);
+            newEditRoomsWindow.ShowDialog();
             Close();
         }
 
@@ -64,6 +67,12 @@ namespace CMS.UI.Windows.Rooms
         {
             RoomList.ItemsSource = await core.GetRoomsForBuildingAsync(building);
 
+        }
+
+        private void RoomList_CurrentCellChanged(object sender, EventArgs e)
+        {
+            EditRoom.IsEnabled = true;
+            DeleteRoom.IsEnabled = true;
         }
     }
 }
