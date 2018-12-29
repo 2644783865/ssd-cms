@@ -32,7 +32,8 @@ namespace CMS.UI.Windows.WelcomePack
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-
+            GuestAdd newWindow = new GuestAdd();
+            newWindow.ShowDialog();
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)

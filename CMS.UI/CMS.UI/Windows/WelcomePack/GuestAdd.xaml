@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Add Guest" Height="281.78" Width="400"
+        Title="Add Guest" Height="350" Width="400"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,25">
-        <StackPanel HorizontalAlignment="Center" Height="150" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
-            <Label Content="First Name:" Margin="0,0,0,0" Height="20"/>
-            <TextBox Name="FirstNameBox" Height="30" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
-            <Label Content="Last Name:" Margin="0,0,0,0" Height="20"/>
-            <TextBox Name="LastNameBox" Height="30" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
-            <Label Content="Title:" Margin="0,0,0,0" Height="20"/>
-            <TextBox Name="TitleNameBox" Height="30" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+        <StackPanel HorizontalAlignment="Center" Height="180" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
+            <Label Content="First Name:" Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="FirstNameBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="300"/>
+            <Label Content="Last Name:" Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="LastNameBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="300"/>
+            <Label Content="Title:" Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="TitleNameBox" Height="31" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="300"/>
         </StackPanel>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="272,193,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="272,213,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
     </Grid>
 </Controls:MetroWindow>
