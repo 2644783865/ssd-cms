@@ -6,6 +6,7 @@ using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Home
 {
@@ -62,7 +63,7 @@ namespace CMS.UI.Windows.Home
 
         private async void LoadEvents()
         {
-            EventList.Items.Clear();
+            EventList.ClearValue(ItemsControl.ItemsSourceProperty);
             EventList.DisplayMemberPath = "EventDesc";
             EventList.SelectedValuePath = "EventId";
             EventList.ItemsSource = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
@@ -70,7 +71,7 @@ namespace CMS.UI.Windows.Home
 
         private async void LoadSessions()
         {
-            SessionList.Items.Clear();
+            SessionList.ClearValue(ItemsControl.ItemsSourceProperty);
             SessionList.DisplayMemberPath = "SessionDesc";
             SessionList.SelectedValuePath = "SessionId";
             SessionList.ItemsSource = await sessionCore.GetSessionsAsync(UserCredentials.Conference.ConferenceId);
@@ -78,7 +79,7 @@ namespace CMS.UI.Windows.Home
 
         private async void LoadSpecialSessions()
         {
-            SpecialSessionList.Items.Clear();
+            SpecialSessionList.ClearValue(ItemsControl.ItemsSourceProperty);
             SpecialSessionList.DisplayMemberPath = "SpecialSessionDesc";
             SpecialSessionList.SelectedValuePath = "SpecialSessionId";
             SpecialSessionList.ItemsSource = await sessionCore.GetSpecialSessionsAsync(UserCredentials.Conference.ConferenceId);

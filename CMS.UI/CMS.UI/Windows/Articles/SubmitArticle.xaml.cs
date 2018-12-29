@@ -4,6 +4,7 @@ using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using MahApps.Metro.Controls;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Articles
 {
@@ -24,6 +25,7 @@ namespace CMS.UI.Windows.Articles
 
         private async void LoadSpecialSessions()
         {
+            SSList.ClearValue(ItemsControl.ItemsSourceProperty);
             SSList.DisplayMemberPath = "SpecialSessionDesc";
             SSList.SelectedValuePath = "SpecialSessionId";
             SSList.ItemsSource = await sessionCore.GetSpecialSessionsAsync(UserCredentials.Conference.ConferenceId);

@@ -6,6 +6,7 @@ using CMS.UI.Windows.Account;
 using MahApps.Metro.Controls;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Home
 {
@@ -43,7 +44,7 @@ namespace CMS.UI.Windows.Home
 
         private async Task FillConferenceList()
         {
-            ConferenceList.Items.Clear();
+            ConferenceList.ClearValue(ItemsControl.ItemsSourceProperty);
             await core.LoadConferencesAsync();
             ConferenceList.DisplayMemberPath = "ConferenceDesc";
             ConferenceList.SelectedValuePath = "ConferenceId";

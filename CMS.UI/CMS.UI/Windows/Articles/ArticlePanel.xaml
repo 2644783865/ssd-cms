@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="Article Panel" Height="450" Width="800"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+                      Activated="MetroWindow_Activated">
     <Grid>
         <ListBox Name="SubmittedList" HorizontalAlignment="Left" Height="343" Margin="10,40,0,0" VerticalAlignment="Top" Width="235" MouseDoubleClick="SubmittedList_MouseDoubleClick" BorderThickness="1"/>
         <ListBox Name="AcceptedList" HorizontalAlignment="Left" Height="343" Margin="275,40,0,0" VerticalAlignment="Top" Width="235" MouseDoubleClick="SubmittedList_MouseDoubleClick" BorderThickness="1"/>

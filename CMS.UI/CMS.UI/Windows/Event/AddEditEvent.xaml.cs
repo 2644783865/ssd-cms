@@ -31,11 +31,18 @@ namespace CMS.UI.Windows.Event
 
         private async void InitializeData()
         {
-            ProgressSpin.IsActive = true;
-            ClearEventBoxes();
-            await LoadBuildings();
-            await LoadEvents();
-            ProgressSpin.IsActive = false;
+            try
+            {
+                ProgressSpin.IsActive = true;
+                ClearEventBoxes();
+                await LoadBuildings();
+                await LoadEvents();
+                ProgressSpin.IsActive = false;
+            }
+            catch
+            {
+                Close();
+            }
         }
 
         private void ClearEventBoxes()
@@ -50,7 +57,7 @@ namespace CMS.UI.Windows.Event
 
         private async Task LoadEvents()
         {
-            SelectEventBox.Items.Clear();
+            SelectEventBox.ClearValue(ItemsControl.ItemsSourceProperty);
             SelectEventBox.DisplayMemberPath = "Title";
             SelectEventBox.SelectedValuePath = "EventId";
             SelectEventBox.ItemsSource = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
@@ -58,16 +65,16 @@ namespace CMS.UI.Windows.Event
 
         private async Task LoadBuildings()
         {
-            BuildingBox.Items.Clear();
+            BuildingBox.ClearValue(ItemsControl.ItemsSourceProperty);
             BuildingBox.DisplayMemberPath = "Name";
             BuildingBox.SelectedValuePath = "BuildingID";
             BuildingBox.ItemsSource = await roomCore.GetAssignedBuildingsForConferenceAsync(UserCredentials.Conference.ConferenceId);
-            RoomBox.Items.Clear();
+            RoomBox.ClearValue(ItemsControl.ItemsSourceProperty);
         }
 
         private async Task LoadRoomsForBuilding(int buildingId)
         {
-            RoomBox.Items.Clear();
+            RoomBox.ClearValue(ItemsControl.ItemsSourceProperty);
             RoomBox.DisplayMemberPath = "Code";
             RoomBox.SelectedValuePath = "RoomID";
             RoomBox.ItemsSource = await roomCore.GetRoomsForBuildingAsync(buildingId);
@@ -139,10 +146,12 @@ namespace CMS.UI.Windows.Event
 
         private async void Submitbutton_Click(object sender, RoutedEventArgs e)
         {
+            ProgressSpin.IsActive = true;
+            Submitbutton.IsEnabled = false;
             if (ValidateForm())
             {
                 var response = await sessionCore.CheckOverlappingSessionAsync(UserCredentials.Conference.ConferenceId,
-                        BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value);
+                        BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value, currentEvent != null ? currentEvent.EventId : 0);
                 if (response != null && !response.Status)
                 {
                     if (SelectEventBox.SelectedIndex >= 0)
@@ -183,6 +192,8 @@ namespace CMS.UI.Windows.Event
                 else MessageBox.Show(response.Message);
             }
             else MessageBox.Show("Invalid form");
+            ProgressSpin.IsActive = false;
+            Submitbutton.IsEnabled = true;
         }
 
         private void Cancelbutton_Click(object sender, RoutedEventArgs e)

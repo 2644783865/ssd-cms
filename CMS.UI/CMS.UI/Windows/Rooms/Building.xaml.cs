@@ -34,6 +34,7 @@ namespace CMS.UI.Windows.Rooms
 
         async private void LoadBuildingList()
         {
+            buildinglist.ClearValue(ItemsControl.ItemsSourceProperty);
             buildinglist.ItemsSource = await core.GetBuildingsAsync();
             
         }

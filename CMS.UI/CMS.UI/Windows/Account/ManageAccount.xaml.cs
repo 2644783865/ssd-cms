@@ -3,6 +3,7 @@ using CMS.Core.Interfaces;
 using MahApps.Metro.Controls;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Account
 {
@@ -29,7 +30,7 @@ namespace CMS.UI.Windows.Account
 
         private async Task FillRoleBox()
         {
-            RoleBox.Items.Clear();
+            RoleBox.ClearValue(ItemsControl.ItemsSourceProperty);
             RoleBox.DisplayMemberPath = "Name";
             RoleBox.SelectedValuePath = "RoleId";
             RoleBox.ItemsSource = await authCore.GetHRRolesAsync();
@@ -41,7 +42,7 @@ namespace CMS.UI.Windows.Account
             {
                 if (await CheckAccountExistsAsync())
                 {
-                    AccountRoleBox.Items.Clear();
+                    AccountRoleBox.ClearValue(ItemsControl.ItemsSourceProperty);
                     AccountRoleBox.DisplayMemberPath = "Name";
                     AccountRoleBox.SelectedValuePath = "RoleId";
                     AccountRoleBox.ItemsSource = await authCore.GetRolesForOtherAccountAsync(LoginBox.Text);

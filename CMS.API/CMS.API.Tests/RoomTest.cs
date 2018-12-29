@@ -41,7 +41,7 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestAvailableRooms()
         {
-            var result = bll.GetAvailableRooms(1, new DateTime(2018, 11, 20, 15, 0, 0), new DateTime(2018, 11, 20, 16, 0, 0));
+            var result = bll.GetAvailableRooms(1, new DateTime(2018, 11, 20, 15, 0, 0), new DateTime(2018, 11, 20, 16, 0, 0), 0);
             Assert.AreEqual(2, result.Count());
         }
 

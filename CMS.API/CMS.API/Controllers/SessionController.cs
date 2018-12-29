@@ -61,22 +61,22 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // GET: api/Session/CheckOverlappingSession?conferenceId=
+        // GET: api/Session/CheckOverlappingSession?conferenceId=&eventId=
         [HttpPost]
         [Route("api/session/checkoverlappingsession")]
-        public IHttpActionResult CheckOverlappingSession(int conferenceId, [FromBody] DateModel dateModel)
+        public IHttpActionResult CheckOverlappingSession(int conferenceId, int eventId, [FromBody] DateModel dateModel)
         {
-            var session = _bll.CheckOverlappingSession(conferenceId, dateModel.beginDate, dateModel.endDate);
+            var session = _bll.CheckOverlappingSession(conferenceId, dateModel.beginDate, dateModel.endDate, eventId);
             if (session == null) return BadRequest();
             return Ok(session);
         }
 
-        // GET: api/Session/CheckOverlappingSessionForChairman?chairId=
-        [HttpGet]
+        // POST: api/Session/CheckOverlappingSessionForChairman?chairId=&sessionId=&specialSessionId=
+        [HttpPost]
         [Route("api/session/checkoverlappingsessionforchairman")]
-        public IHttpActionResult CheckOverlappingSessionForChairman(int chairId, [FromBody] DateModel dateModel)
+        public IHttpActionResult CheckOverlappingSessionForChairman(int chairId, int sessionId, int specialSessionId, [FromBody] DateModel dateModel)
         {
-            var session = _bll.CheckOverlappingSessionForChairman(chairId, dateModel.beginDate, dateModel.endDate);
+            var session = _bll.CheckOverlappingSessionForChairman(chairId, dateModel.beginDate, dateModel.endDate, sessionId, specialSessionId);
             if (session == null) return BadRequest();
             return Ok(session);
         }

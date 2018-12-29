@@ -9,7 +9,7 @@ namespace CMS.API.DAL.Interfaces
         //Room
         RoomDTO GetRoomById(int id);
         IEnumerable<RoomDTO> GetRoomsForBuilding(int buildingId);
-        IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate);
+        IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate, int roomId);
         void AddRoom(RoomDTO roomDTO);
         void EditRoom(RoomDTO roomDTO);
         void DeleteRoom(int roomId);

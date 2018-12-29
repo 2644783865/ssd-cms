@@ -56,14 +56,14 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<Response> CheckOverlappingSessionAsync(int conferenceId, DateTime beginDate, DateTime endDate)
+        public async Task<Response> CheckOverlappingSessionAsync(int conferenceId, DateTime beginDate, DateTime endDate, int eventId)
         {
             var dateModel = new DateModel()
             {
                 beginDate = beginDate,
                 endDate = endDate
             };
-            var path = $"{Properties.Resources.checkOverlappingSessionPath}?conferenceId={conferenceId}";
+            var path = $"{Properties.Resources.checkOverlappingSessionPath}?conferenceId={conferenceId}&eventId={eventId}";
             var result = await _apiHelper.Post(path, dateModel);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -72,14 +72,14 @@ namespace CMS.Core.Core
             else return null;
         }
 
-        public async Task<Response> CheckOverlappingSessionForChairmanAsync(int chairId, DateTime beginDate, DateTime endDate)
+        public async Task<Response> CheckOverlappingSessionForChairmanAsync(int chairId, DateTime beginDate, DateTime endDate, int sessionId, int specialSessionId)
         {
             var dateModel = new DateModel()
             {
                 beginDate = beginDate,
                 endDate = endDate
             };
-            var path = $"{Properties.Resources.checkOverlappingSessionForChairmanPath}?chairId={chairId}";
+            var path = $"{Properties.Resources.checkOverlappingSessionForChairmanPath}?chairId={chairId}&sessionId={sessionId}&specialSessionId={specialSessionId}";
             var result = await _apiHelper.Post(path, dateModel);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

@@ -55,7 +55,7 @@ namespace CMS.API.DAL.Repositories
         {
             _db.Dispose();
         }
- 
+
         public bool CheckSessions(int conferenceId, DateTime begin, DateTime end)
         {
             // return false, when no overlapping
@@ -63,15 +63,8 @@ namespace CMS.API.DAL.Repositories
             IEnumerable<SessionDTO> sessions = GetSessions(conferenceId);
             foreach (SessionDTO session in sessions)
             {
-                if ((DateTime.Compare(session.BeginDate, begin) > 0) && (DateTime.Compare(session.BeginDate, end) > 0))
-                {
-                    return false;
-                }
-                else if ((DateTime.Compare(session.BeginDate, begin) < 0) && (DateTime.Compare(session.EndDate, begin) < 0))
-                {
-                    return false;
-                }
-                else
+                if (!(((DateTime.Compare(session.BeginDate, begin) > 0) && (DateTime.Compare(session.BeginDate, end) >= 0))
+                || ((DateTime.Compare(session.BeginDate, begin) < 0) && (DateTime.Compare(session.EndDate, begin) <= 0))))
                 {
                     return true;
                 }
@@ -86,15 +79,8 @@ namespace CMS.API.DAL.Repositories
             IEnumerable<SpecialSessionDTO> specials = GetSpecialSessions(conferenceId);
             foreach (SpecialSessionDTO special in specials)
             {
-                if ((DateTime.Compare(special.BeginDate, begin) > 0) && (DateTime.Compare(special.BeginDate, end) > 0))
-                {
-                    return false;
-                }
-                else if ((DateTime.Compare(special.BeginDate, begin) < 0) && (DateTime.Compare(special.EndDate, begin) < 0))
-                {
-                    return false;
-                }
-                else
+                if (!(((DateTime.Compare(special.BeginDate, begin) > 0) && (DateTime.Compare(special.BeginDate, end) >= 0))
+                || ((DateTime.Compare(special.BeginDate, begin) < 0) && (DateTime.Compare(special.EndDate, begin) <= 0))))
                 {
                     return true;
                 }
@@ -102,24 +88,20 @@ namespace CMS.API.DAL.Repositories
             return false;
         }
 
-        public bool CheckEvents(int conferenceId, DateTime begin, DateTime end)
+        public bool CheckEvents(int conferenceId, DateTime begin, DateTime end, int eventId)
         {
             // return false, when no overlapping
             // return true, when overlapping with events
             IEnumerable<EventDTO> eve = _repository.GetEvents(conferenceId);
             foreach (EventDTO even in eve)
             {
-                if ((DateTime.Compare(even.BeginDate, begin) > 0) && (DateTime.Compare(even.BeginDate, end) >= 0))
+                if (even.EventId != eventId)
                 {
-                    return false;
-                }
-                else if ((DateTime.Compare(even.BeginDate, begin) < 0) && (DateTime.Compare(even.EndDate, begin) <= 0))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
+                    if (!(((DateTime.Compare(even.BeginDate, begin) > 0) && (DateTime.Compare(even.BeginDate, end) >= 0))
+                        || ((DateTime.Compare(even.BeginDate, begin) < 0) && (DateTime.Compare(even.EndDate, begin) <= 0))))
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -148,43 +130,35 @@ namespace CMS.API.DAL.Repositories
                 new SqlParameter("ChairId", accountId));
         }
 
-        public bool CheckSessionForChair(int chairId, DateTime beginDate, DateTime endDate)
+        public bool CheckSessionForChair(int chairId, DateTime beginDate, DateTime endDate, int sessionId)
         {
             IEnumerable<SessionDTO> sessions = GetSessionsByChairId(chairId);
             foreach (SessionDTO session in sessions)
             {
-                if ((DateTime.Compare(session.BeginDate, beginDate) > 0) && (DateTime.Compare(session.BeginDate, endDate) > 0))
+                if (session.SessionId != sessionId)
                 {
-                    return false;
-                }
-                else if ((DateTime.Compare(session.BeginDate, beginDate) < 0) && (DateTime.Compare(session.EndDate, beginDate) < 0))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
+                    if (!(((DateTime.Compare(session.BeginDate, beginDate) > 0) && (DateTime.Compare(session.BeginDate, endDate) >= 0))
+                    || ((DateTime.Compare(session.BeginDate, beginDate) < 0) && (DateTime.Compare(session.EndDate, beginDate) <= 0))))
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
         }
 
-        public bool CheckSpecialSessionForChair(int chairId, DateTime beginDate, DateTime endDate)
+        public bool CheckSpecialSessionForChair(int chairId, DateTime beginDate, DateTime endDate, int specialSessionId)
         {
             IEnumerable<SpecialSessionDTO> specials = GetSpecialSessionsByChairId(chairId);
             foreach (SpecialSessionDTO session in specials)
             {
-                if ((DateTime.Compare(session.BeginDate, beginDate) > 0) && (DateTime.Compare(session.BeginDate, endDate) > 0))
+                if (session.SpecialSessionId != specialSessionId)
                 {
-                    return false;
-                }
-                else if ((DateTime.Compare(session.BeginDate, beginDate) < 0) && (DateTime.Compare(session.EndDate, beginDate) < 0))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
+                    if (!(((DateTime.Compare(session.BeginDate, beginDate) > 0) && (DateTime.Compare(session.BeginDate, endDate) > 0))
+                    ||((DateTime.Compare(session.BeginDate, beginDate) < 0) && (DateTime.Compare(session.EndDate, beginDate) < 0))))
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -238,7 +212,7 @@ namespace CMS.API.DAL.Repositories
                 "INNER JOIN Room ON SpecialSession.RoomId = Room.RoomID " +
                 "INNER JOIN Building ON Room.BuildingID = Building.BuildingID " +
                 "INNER JOIN Account ON SpecialSession.ChairId = Account.AccountId " +
-                "WHERE ConferenceId = @ConferenceId AND ChairId = @ChairId", new SqlParameter("ConferenceId", conferenceId), 
+                "WHERE ConferenceId = @ConferenceId AND ChairId = @ChairId", new SqlParameter("ConferenceId", conferenceId),
                 new SqlParameter("ChairId", accountId));
         }
 

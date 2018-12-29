@@ -38,11 +38,11 @@ namespace CMS.API.BLL.BLL
             }
         }
 
-        public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
+        public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate, int roomId)
         {
             try
             {
-                return _repository.GetAvailableRooms(buildingId, beginDate, endDate);
+                return _repository.GetAvailableRooms(buildingId, beginDate, endDate, roomId);
             }
             catch
             {

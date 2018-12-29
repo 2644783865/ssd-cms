@@ -132,16 +132,16 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<bool> AcceptArticleAsync(int articleId)
+        public async Task<bool> AcceptArticleAsync(int articleId, int editorId)
         {
-            var path = $"{Properties.Resources.acceptArticlePath}?articleId={articleId}";
+            var path = $"{Properties.Resources.acceptArticlePath}?articleId={articleId}&editorId={editorId}";
             var result = await _apiHelper.Get(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<bool> RejectArticleAsync(int articleId)
+        public async Task<bool> RejectArticleAsync(int articleId, int editorId)
         {
-            var path = $"{Properties.Resources.rejectArticlePath}?articleId={articleId}";
+            var path = $"{Properties.Resources.rejectArticlePath}?articleId={articleId}&editorId={editorId}";
             var result = await _apiHelper.Get(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }

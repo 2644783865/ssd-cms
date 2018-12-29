@@ -7,14 +7,38 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:CMS.UI.Windows.Session"
         mc:Ignorable="d"
-        Title="Session" Height="450" Width="700"
+        Title="Session" Height="515" Width="1151.35"
      ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"   >
+        WindowStartupLocation="CenterScreen"
+    Activated="MetroWindow_Activated">
     <Grid>
-        <DataGrid Name="SessionList"  HorizontalAlignment="Left" Height="301" Margin="59,57,0,0" VerticalAlignment="Top" Width="304"/>
-        <Button Name="AddSession" Content="Add" HorizontalAlignment="Left" Margin="488,64,0,0" VerticalAlignment="Top" Width="176" Click="AddSession_Click"/>
-        <Button Name="EditSession" Content="Edit" HorizontalAlignment="Left" Margin="488,118,0,0" VerticalAlignment="Top" Width="176" Click="EditSession_Click"/>
-        <Button Name="DeletSession" Content="Delete" HorizontalAlignment="Left" Margin="488,190,0,0" VerticalAlignment="Top" Width="176" Click="DeleteSession_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="258*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="SessionList"  HorizontalAlignment="Left" Height="301" AutoGenerateColumns="False" Margin="28,48,0,0" IsReadOnly="True" VerticalAlignment="Top" Width="490" Grid.ColumnSpan="2" MouseDoubleClick="SessionList_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ArticleId}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" MaxWidth="200"/>
+                <DataGridTextColumn Header="BeginDate" Binding="{Binding BeginDate}"/>
+                <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Name="SpecialSessionList"  HorizontalAlignment="Left" Height="301" AutoGenerateColumns="False" Margin="291,48,0,0" IsReadOnly="True" VerticalAlignment="Top" Width="490" Grid.Column="1" MouseDoubleClick="SpecialSessionList_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ArticleId}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" MaxWidth="200"/>
+                <DataGridTextColumn Header="BeginDate" Binding="{Binding BeginDate}"/>
+                <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="AddSession" Content="Add" HorizontalAlignment="Left" Margin="159,434,0,0" VerticalAlignment="Top" Width="220" Click="AddSession_Click" Grid.Column="1"/>
+        <Button Name="EditSession" Content="Edit" HorizontalAlignment="Left" Margin="33,354,0,0" VerticalAlignment="Top" Width="92" Click="EditSession_Click" Grid.Column="1"/>
+        <Button Name="DeletSession" Content="Delete" HorizontalAlignment="Left" Background="Red" Margin="130,354,0,0" VerticalAlignment="Top" Width="94" Click="DeleteSession_Click" Grid.Column="1" RenderTransformOrigin="0.723,0.741"/>
+        <Button Name="EditSpecialSession" Content="Edit" HorizontalAlignment="Left" Margin="590,354,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1" Click="EditSpecialSession_Click"/>
+        <Button Name="DeleteSpecialSession" Content="Delete" Background="Red" HorizontalAlignment="Left" Margin="687,354,0,0" VerticalAlignment="Top" Width="94"  Grid.Column="1" Click="DeleteSpecialSession_Click"/>
+        <Label Content="Sessions:" HorizontalAlignment="Left" Margin="28,17,0,0" VerticalAlignment="Top"/>
+        <Label Content="Special sessions:" Grid.Column="1" HorizontalAlignment="Left" Margin="291,17,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Controls:MetroWindow>

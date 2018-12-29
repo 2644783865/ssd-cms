@@ -3,6 +3,7 @@ using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using MahApps.Metro.Controls;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Tasks
 {
@@ -40,7 +41,7 @@ namespace CMS.UI.Windows.Tasks
 
         private async void LoadEmployees()
         {
-            EmployeeBox.Items.Clear();
+            EmployeeBox.ClearValue(ItemsControl.ItemsSourceProperty);
             EmployeeBox.DisplayMemberPath = "Name";
             EmployeeBox.SelectedValuePath = "AccountId";
             EmployeeBox.ItemsSource = await taskCore.GetAccountsForConferenceEmployeeAsync(UserCredentials.Conference.ConferenceId);

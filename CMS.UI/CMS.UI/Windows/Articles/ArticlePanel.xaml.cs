@@ -2,19 +2,9 @@
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Articles
 {
@@ -33,14 +23,17 @@ namespace CMS.UI.Windows.Articles
 
         private async void LoadData()
         {
+            SubmittedList.ClearValue(ItemsControl.ItemsSourceProperty);
             SubmittedList.DisplayMemberPath = "Topic";
             SubmittedList.SelectedValuePath = "ArticleId";
             SubmittedList.ItemsSource = (await core.GetArticlesAsync(UserCredentials.Conference.ConferenceId))
                 .Where(article => article.Status == "submitted");
+            AcceptedList.ClearValue(ItemsControl.ItemsSourceProperty);
             AcceptedList.DisplayMemberPath = "Topic";
             AcceptedList.SelectedValuePath = "ArticleId";
             AcceptedList.ItemsSource = (await core.GetArticlesAsync(UserCredentials.Conference.ConferenceId))
                 .Where(article => article.Status == "accepted");
+            RejectedList.ClearValue(ItemsControl.ItemsSourceProperty);
             RejectedList.DisplayMemberPath = "Topic";
             RejectedList.SelectedValuePath = "ArticleId";
             RejectedList.ItemsSource = (await core.GetArticlesAsync(UserCredentials.Conference.ConferenceId))
@@ -54,6 +47,11 @@ namespace CMS.UI.Windows.Articles
                 ArticleDetails newWindow = new ArticleDetails((ArticleDTO)((ListBox)sender).SelectedItem);
                 newWindow.ShowDialog();
             }
+        }
+
+        private void MetroWindow_Activated(object sender, System.EventArgs e)
+        {
+            LoadData();
         }
     }
 }

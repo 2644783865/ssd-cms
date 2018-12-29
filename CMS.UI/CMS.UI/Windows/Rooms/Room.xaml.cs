@@ -78,6 +78,7 @@ namespace CMS.UI.Windows.Rooms
 
         async private void LoadRoomsToDataGrid(int building)
         {
+            RoomList.ClearValue(ItemsControl.ItemsSourceProperty);
             RoomList.ItemsSource = await core.GetRoomsForBuildingAsync(building);
         }
 

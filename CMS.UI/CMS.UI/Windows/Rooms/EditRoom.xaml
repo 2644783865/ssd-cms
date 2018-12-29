@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Rooms"
         mc:Ignorable="d"
         Title="Edit Room" Height="250" Width="400"
-		WindowStartupLocation="CenterScreen">
+		WindowStartupLocation="CenterScreen"
+                      ResizeMode="NoResize">
     <Grid>
 		<TextBox Name ="oldroomname" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="136,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 		<TextBox Name = "newroomname" HorizontalAlignment="Left" Height="23" Margin="136,88,0,0" TextWrapping="Wrap" Text="new name" VerticalAlignment="Top" Width="120"/>

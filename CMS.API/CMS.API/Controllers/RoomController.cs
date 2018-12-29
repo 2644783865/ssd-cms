@@ -33,12 +33,12 @@ namespace CMS.API.Controllers
             return Ok(rooms);
         }
 
-        // GET: api/Room/GetAvailableRooms?buildingId=&beginDate=&endDate=
+        // GET: api/Room/GetAvailableRooms?buildingId=&beginDate=&endDate=&roomId=
         [HttpGet]
         [Route("api/room/getavailablerooms")]
-        public IHttpActionResult GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
+        public IHttpActionResult GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate, int roomId)
         {
-            var rooms = _bll.GetAvailableRooms(buildingId, beginDate, endDate);
+            var rooms = _bll.GetAvailableRooms(buildingId, beginDate, endDate, roomId);
             if (rooms == null) return BadRequest();
             return Ok(rooms);
         }

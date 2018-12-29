@@ -1,8 +1,8 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using MahApps.Metro.Controls;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CMS.UI.Windows.Tasks
@@ -40,7 +40,7 @@ namespace CMS.UI.Windows.Tasks
                 if (result)
                 {
                     MessageBox.Show("Successfully deleted task");
-                    await loadTasksToDatagrid();
+                    loadTasksToDatagrid();
                 }
                 else MessageBox.Show("Error occured while deleting task");
             }
@@ -53,8 +53,9 @@ namespace CMS.UI.Windows.Tasks
             NewAddTaskWindow.ShowDialog();
         }
 
-        async private Task loadTasksToDatagrid()
+        async private void loadTasksToDatagrid()
         {
+            TasksList.ClearValue(ItemsControl.ItemsSourceProperty);
             TasksList.ItemsSource = await core.GetTasksAsync(UserCredentials.Conference.ConferenceId);
         }
 
@@ -63,9 +64,9 @@ namespace CMS.UI.Windows.Tasks
             buttonEdit_Click(null, null);
         }
 
-        private async void MetroWindow_Activated(object sender, System.EventArgs e)
+        private void MetroWindow_Activated(object sender, System.EventArgs e)
         {
-            await loadTasksToDatagrid();
+            loadTasksToDatagrid();
         }
 
         private void ScheduleForEmployee_Click(object sender, RoutedEventArgs e)

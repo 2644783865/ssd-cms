@@ -17,17 +17,17 @@ namespace CMS.API.DAL.Repositories
             return _db.Rooms.Where(room => room.BuildingID == buildingId).Project().To<RoomDTO>();
         }
 
-        public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate)
+        public IEnumerable<RoomDTO> GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate, int roomId)
         {
             var rooms = _db.Rooms.SqlQuery("SELECT DISTINCT * FROM Room WHERE BuildingID = @buildingid " +
-                "AND RoomID NOT IN(SELECT RoomId FROM Event WHERE((@begindate >= BeginDate AND @begindate < EndDate) " +
+                "AND (RoomID NOT IN(SELECT RoomId FROM Event WHERE((@begindate >= BeginDate AND @begindate < EndDate) " +
                 "OR(@enddate > BeginDate AND @enddate <= EndDate)) " +
                 "UNION SELECT RoomId FROM Session WHERE((@begindate >= BeginDate AND @begindate < EndDate) " +
                 "OR(@enddate > BeginDate AND @enddate <= EndDate)) " +
                 "UNION SELECT RoomId FROM SpecialSession WHERE((@begindate >= BeginDate AND @begindate < EndDate) " +
-                "OR(@enddate > BeginDate AND @enddate <= EndDate)))",
+                "OR(@enddate > BeginDate AND @enddate <= EndDate))) OR RoomID=@currentRoom)",
                new SqlParameter("@buildingid", buildingId), new SqlParameter("@begindate", beginDate), 
-               new SqlParameter("@enddate", endDate)).ToList();
+               new SqlParameter("@enddate", endDate), new SqlParameter("@currentRoom", roomId)).ToList();
             foreach (var room in rooms)
             {
                 yield return MapperExtension.mapper.Map<Room, RoomDTO>(room);

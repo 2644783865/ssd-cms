@@ -9,7 +9,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using CMS.UI.Windows.Reviews;
-
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Articles
 {
@@ -43,6 +43,7 @@ namespace CMS.UI.Windows.Articles
 
         private async Task LoadSubmissions()
         {
+            SubmissionBox.ClearValue(ItemsControl.ItemsSourceProperty);
             SubmissionBox.DisplayMemberPath = "SubmissionDate";
             SubmissionBox.SelectedValuePath = "SubmissionId";
             SubmissionBox.ItemsSource = await core.GetSubmissionsForArticleAsync(currentArticle.ArticleId);
@@ -51,6 +52,7 @@ namespace CMS.UI.Windows.Articles
 
         private async Task LoadAuthors()
         {
+            AuthorsBox.ClearValue(ItemsControl.ItemsSourceProperty);
             AuthorsBox.DisplayMemberPath = "AuthorDesc";
             AuthorsBox.SelectedValuePath = "AuthorId";
             authors = await core.GetAuthorsForArticleAsync(currentArticle.ArticleId);
@@ -107,7 +109,7 @@ namespace CMS.UI.Windows.Articles
                 var result = await core.AddSubmissionAsync(submission);
                 if (result) MessageBox.Show("Successfully submitted article");
                 else MessageBox.Show("Error occured while submitting article");
-                LoadSubmissions();
+                await LoadSubmissions();
             }
         }
 
@@ -124,7 +126,7 @@ namespace CMS.UI.Windows.Articles
 
         private async void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            if (await core.AcceptArticleAsync(currentArticle.ArticleId))
+            if (await core.AcceptArticleAsync(currentArticle.ArticleId, UserCredentials.Account.AccountId))
             {
                 MessageBox.Show($"Article {currentArticle.Topic} accepted");
                 Close();
@@ -134,7 +136,7 @@ namespace CMS.UI.Windows.Articles
 
         private async void RejectButton_Click(object sender, RoutedEventArgs e)
         {
-            if (await core.RejectArticleAsync(currentArticle.ArticleId))
+            if (await core.RejectArticleAsync(currentArticle.ArticleId, UserCredentials.Account.AccountId))
             {
                 MessageBox.Show($"Article {currentArticle.Topic} rejected");
                 Close();
@@ -226,17 +228,17 @@ namespace CMS.UI.Windows.Articles
                     ((AuthorDTO)AuthorsBox.SelectedItem).AuthorId))
                 {
                     MessageBox.Show("Successfully removed author from article");
-                    LoadAuthors();
+                    await LoadAuthors();
                 }
                 else MessageBox.Show("Something went wrong while removing author from article");
             }
             else MessageBox.Show("Select author first");
         }
 
-        private void MetroWindow_Activated(object sender, EventArgs e)
+        private async void MetroWindow_Activated(object sender, EventArgs e)
         {
-            LoadAuthors();
-            LoadSubmissions();
+            await LoadAuthors();
+            await LoadSubmissions();
         }
     }
 }

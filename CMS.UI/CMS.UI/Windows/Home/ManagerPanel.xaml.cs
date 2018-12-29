@@ -11,6 +11,7 @@ using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Home
 {
@@ -60,7 +61,7 @@ namespace CMS.UI.Windows.Home
 
         private async void LoadEvents()
         {
-            EventList.Items.Clear();
+            EventList.ClearValue(ItemsControl.ItemsSourceProperty);
             EventList.DisplayMemberPath = "EventDesc";
             EventList.SelectedValuePath = "EventId";
             EventList.ItemsSource = await eventCore.GetEventsAsync(UserCredentials.Conference.ConferenceId);
@@ -68,7 +69,7 @@ namespace CMS.UI.Windows.Home
 
         private async void LoadSessions()
         {
-            SessionList.Items.Clear();
+            SessionList.ClearValue(ItemsControl.ItemsSourceProperty);
             SessionList.DisplayMemberPath = "SessionDesc";
             SessionList.SelectedValuePath = "SessionId";
             SessionList.ItemsSource = await sessionCore.GetSessionsAsync(UserCredentials.Conference.ConferenceId);
@@ -76,7 +77,7 @@ namespace CMS.UI.Windows.Home
 
         private async void LoadSpecialSessions()
         {
-            SpecialSessionList.Items.Clear();
+            SpecialSessionList.ClearValue(ItemsControl.ItemsSourceProperty);
             SpecialSessionList.DisplayMemberPath = "SpecialSessionDesc";
             SpecialSessionList.SelectedValuePath = "SpecialSessionId";
             SpecialSessionList.ItemsSource = await sessionCore.GetSpecialSessionsAsync(UserCredentials.Conference.ConferenceId);
@@ -226,13 +227,19 @@ namespace CMS.UI.Windows.Home
 
         private void ManageSessions_Click(object sender, RoutedEventArgs e)
         {
-
+            Session.Session newWindow = new Session.Session();
+            newWindow.ShowDialog();
         }
 
         private void ManageArticlesEditor_Click(object sender, RoutedEventArgs e)
         {
             ArticlePanel newWindow = new ArticlePanel();
             newWindow.ShowDialog();
+        }
+
+        private void MetroWindow_Activated(object sender, System.EventArgs e)
+        {
+            InitializeData();
         }
     }
 }

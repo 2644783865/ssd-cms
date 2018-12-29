@@ -5,7 +5,7 @@ using System.Windows.Input;
 using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
-
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Reviews
 {
@@ -28,6 +28,7 @@ namespace CMS.UI.Windows.Reviews
         private async void LoadData()
         {
             reviews = await core.GetReviewsByArticleIdAsync(article.ArticleId);
+            ReviewsBox.ClearValue(ItemsControl.ItemsSourceProperty);
             ReviewsBox.ItemsSource = reviews;
             CalculateAverage();
         }

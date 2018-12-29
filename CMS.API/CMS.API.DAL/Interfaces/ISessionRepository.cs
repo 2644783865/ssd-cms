@@ -15,11 +15,11 @@ namespace CMS.API.DAL.Interfaces
         void DeleteSession(int sessionId);
         bool CheckSessions(int conferenceId, DateTime begin, DateTime end);
         bool CheckSpecialSessions(int conferenceId, DateTime begin, DateTime end);
-        bool CheckEvents(int conferenceId, DateTime begin, DateTime end);
+        bool CheckEvents(int conferenceId, DateTime begin, DateTime end, int eventId);
         IEnumerable<SessionDTO> GetSessionsForConferenceWithBaseEntryAttributes(int conferenceId);
         IEnumerable<SessionDTO> GetSessionsForConferenceAndChairWithBaseEntryAttributes(int accountId, int conferenceId);
-        bool CheckSessionForChair(int chairId, DateTime beginDate, DateTime endDate);
-        bool CheckSpecialSessionForChair(int chairId, DateTime beginDate, DateTime endDate);
+        bool CheckSessionForChair(int chairId, DateTime beginDate, DateTime endDate, int sessionId);
+        bool CheckSpecialSessionForChair(int chairId, DateTime beginDate, DateTime endDate, int specialSessionId);
 
         //SpecialSession
         IEnumerable<SpecialSessionDTO> GetSpecialSessions(int conferenceID);

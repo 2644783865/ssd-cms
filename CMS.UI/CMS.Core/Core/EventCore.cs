@@ -67,8 +67,13 @@ namespace CMS.Core.Core
 
         public async Task<Response> CheckOverlappingEventAsync(int conferenceId, DateTime begin, DateTime end)
         {
-            var path = $"{Properties.Resources.checkOverlappingEventPath}?conferenceId={conferenceId}&begin={begin}&end={end}";
-            var result = await _apiHelper.Get(path);
+            var dateModel = new DateModel()
+            {
+                beginDate = begin,
+                endDate = end
+            };
+            var path = $"{Properties.Resources.checkOverlappingEventPath}?conferenceId={conferenceId}";
+            var result = await _apiHelper.Post(path, dateModel);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
                 return JsonConvert.DeserializeObject<Response>(result.Content);

@@ -3,8 +3,6 @@ using CMS.API.BLL.Interfaces;
 using CMS.API.Helpers;
 using CMS.BE.DTO;
 using CMS.BE.Models.Article;
-using System;
-using System.Collections.ObjectModel;
 using System.Web.Http;
 
 namespace CMS.API.Controllers
@@ -71,23 +69,23 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // GET: api/Article/AcceptArticle
+        // GET: api/Article/AcceptArticle?articleId=&editorId=
         [HttpGet]
         [Route("api/article/acceptarticle")]
-        public IHttpActionResult AcceptArticle(int articleId)
+        public IHttpActionResult AcceptArticle(int articleId, int editorId)
         {
             if (articleId == 0) return BadRequest();
-            if (_bll.AcceptArticle(articleId)) return Ok();
+            if (_bll.AcceptArticle(articleId, editorId)) return Ok();
             return InternalServerError();
         }
 
-        // GET: api/Article/RejectArticle
+        // GET: api/Article/RejectArticle?articleId=&editorId=
         [HttpGet]
         [Route("api/article/rejectarticle")]
-        public IHttpActionResult RejectArticle(int articleId)
+        public IHttpActionResult RejectArticle(int articleId, int editorId)
         {
             if (articleId == 0) return BadRequest();
-            if (_bll.RejectArticle(articleId)) return Ok();
+            if (_bll.RejectArticle(articleId, editorId)) return Ok();
             return InternalServerError();
         }
 

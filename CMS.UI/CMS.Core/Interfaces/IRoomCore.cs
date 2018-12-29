@@ -9,7 +9,7 @@ namespace CMS.Core.Interfaces
     {
         Task<RoomDTO> GetRoomByIdAsync(int roomId);
         Task<List<RoomDTO>> GetRoomsForBuildingAsync(int buildingId);
-        Task<List<RoomDTO>> GetAvailableRoomsAsync(int buildingId, DateTime beginDate, DateTime endDate);
+        Task<List<RoomDTO>> GetAvailableRoomsAsync(int buildingId, DateTime beginDate, DateTime endDate, int roomId);
         Task<bool> AddRoomAsync(RoomDTO room);
         Task<bool> EditRoomAsync(RoomDTO room);
         Task<bool> DeleteRoomAsync(int roomId);

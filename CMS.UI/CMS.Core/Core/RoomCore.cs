@@ -36,9 +36,9 @@ namespace CMS.Core.Core
             else return null;
         }
 
-        public async Task<List<RoomDTO>> GetAvailableRoomsAsync(int buildingId, DateTime beginDate, DateTime endDate)
+        public async Task<List<RoomDTO>> GetAvailableRoomsAsync(int buildingId, DateTime beginDate, DateTime endDate, int roomId)
         {
-            var path = $"{Properties.Resources.getAvailableRoomsPath}?buildingId={buildingId}&beginDate={beginDate}&endDate={endDate}";
+            var path = $"{Properties.Resources.getAvailableRoomsPath}?buildingId={buildingId}&beginDate={beginDate}&endDate={endDate}&roomId={roomId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

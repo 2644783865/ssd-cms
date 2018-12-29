@@ -14,8 +14,8 @@ namespace CMS.API.BLL.Interfaces
         bool DeleteSession(int sessionId);
         IEnumerable<SessionDTO> GetSessions(int conferenceId);
         SessionDTO GetSessionByID(int sessionId);
-        Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end);
-        Response CheckOverlappingSessionForChairman(int chairId, DateTime beginDate, DateTime endDate);
+        Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end, int eventId);
+        Response CheckOverlappingSessionForChairman(int chairId, DateTime beginDate, DateTime endDate, int sessionId, int specialSessionId);
 
         // Special Session
         bool AddSpecialSession(SpecialSessionDTO specialSession);

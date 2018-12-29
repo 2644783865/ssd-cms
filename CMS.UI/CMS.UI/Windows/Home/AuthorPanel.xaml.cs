@@ -7,6 +7,7 @@ using MahApps.Metro.Controls;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CMS.UI.Windows.Home
@@ -45,6 +46,7 @@ namespace CMS.UI.Windows.Home
             {
                 var articles = await articleCore.GetArticlesForConferenceAndAuthorAsync(UserCredentials.Conference.ConferenceId,
                     UserCredentials.Author.AuthorId);
+                ArticleDataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
                 ArticleDataGrid.ItemsSource = articles;
             }
             else GoToUserPanelButton_Click(null, null);
@@ -101,11 +103,7 @@ namespace CMS.UI.Windows.Home
 
         private async void MetroWindow_Activated(object sender, EventArgs e)
         {
-           try
-            {
-                await LoadArticles();
-            }
-            catch { }
+            await LoadArticles();
         }
     }
 }

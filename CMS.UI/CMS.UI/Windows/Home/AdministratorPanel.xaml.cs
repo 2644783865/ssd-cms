@@ -7,6 +7,7 @@ using CMS.UI.Windows.Rooms;
 using MahApps.Metro.Controls;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CMS.UI.Windows.Home
 {
@@ -37,7 +38,7 @@ namespace CMS.UI.Windows.Home
 
         private async Task FillRoleBox()
         {
-            RoleBox.Items.Clear();
+            RoleBox.ClearValue(ItemsControl.ItemsSourceProperty);
             RoleBox.DisplayMemberPath = "Name";
             RoleBox.SelectedValuePath = "RoleId";
             RoleBox.ItemsSource = await authCore.GetAllRolesAsync();
@@ -47,7 +48,7 @@ namespace CMS.UI.Windows.Home
         {
             ConferencesBox.DisplayMemberPath = "Title";
             ConferencesBox.SelectedValuePath = "ConferenceId";
-            ConferencesBox.Items.Clear();
+            ConferencesBox.ClearValue(ItemsControl.ItemsSourceProperty);
             ConferencesBox.ItemsSource = await confCore.GetConferencesAsync();
         }
 

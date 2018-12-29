@@ -92,7 +92,7 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end)
+        public Response CheckOverlappingSession(int conferenceId, DateTime begin, DateTime end, int eventId)
         {
             Response res = new Response();
             // Function checks, whether a new session/special session will overlap with a existing event/session/special session.
@@ -102,7 +102,7 @@ namespace CMS.API.BLL.BLL
             {
                 bool resSession = _repository.CheckSessions(conferenceId, begin, end);
                 bool resSpecial = _repository.CheckSpecialSessions(conferenceId, begin, end);
-                bool resEvent = _repository.CheckEvents(conferenceId, begin, end);
+                bool resEvent = _repository.CheckEvents(conferenceId, begin, end, eventId);
 
                 if (resSession == false && resSpecial == false && resEvent == false)
                 {
@@ -152,13 +152,13 @@ namespace CMS.API.BLL.BLL
             return res;
         }
         
-        public Response CheckOverlappingSessionForChairman(int chairId, DateTime beginDate, DateTime endDate)
+        public Response CheckOverlappingSessionForChairman(int chairId, DateTime beginDate, DateTime endDate, int sessionId, int specialSessionId)
         {
             Response res = new Response();
             try
             {
-                bool resSession = _repository.CheckSessionForChair(chairId, beginDate, endDate);
-                bool resSpecial = _repository.CheckSpecialSessionForChair(chairId, beginDate, endDate);
+                bool resSession = _repository.CheckSessionForChair(chairId, beginDate, endDate, sessionId);
+                bool resSpecial = _repository.CheckSpecialSessionForChair(chairId, beginDate, endDate, specialSessionId);
 
                 if (resSession == false && resSpecial == false)
                 {

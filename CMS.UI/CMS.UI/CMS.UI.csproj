@@ -104,9 +104,6 @@
     <Compile Include="Windows\Articles\AssignAuthor.xaml.cs">
       <DependentUpon>AssignAuthor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Articles\EditorPanel.xaml.cs">
-      <DependentUpon>EditorPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Articles\SubmitArticle.xaml.cs">
       <DependentUpon>SubmitArticle.xaml</DependentUpon>
     </Compile>
@@ -184,8 +181,8 @@
     <Compile Include="Windows\Rooms\Building.xaml.cs">
       <DependentUpon>Building.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Session\AddSession.xaml.cs">
-      <DependentUpon>AddSession.xaml</DependentUpon>
+    <Compile Include="Windows\Session\AddEditSession.xaml.cs">
+      <DependentUpon>AddEditSession.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Session\Session.xaml.cs">
       <DependentUpon>Session.xaml</DependentUpon>
@@ -243,10 +240,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Articles\AssignAuthor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Articles\EditorPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -350,7 +343,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Session\AddSession.xaml">
+    <Page Include="Windows\Session\AddEditSession.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

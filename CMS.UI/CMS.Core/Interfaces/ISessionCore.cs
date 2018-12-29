@@ -14,8 +14,8 @@ namespace CMS.Core.Interfaces
         Task<bool> AddSessionAsync(SessionDTO session);
         Task<bool> EditSessionAsync(SessionDTO session);
         Task<bool> DeleteSessionAsync(int sessionId);
-        Task<Response> CheckOverlappingSessionAsync(int conferenceId, DateTime beginDate, DateTime endDate);
-        Task<Response> CheckOverlappingSessionForChairmanAsync(int chairId, DateTime beginDate, DateTime endDate);
+        Task<Response> CheckOverlappingSessionAsync(int conferenceId, DateTime beginDate, DateTime endDate, int eventId);
+        Task<Response> CheckOverlappingSessionForChairmanAsync(int chairId, DateTime beginDate, DateTime endDate, int sessionId, int specialSessionId);
 
 
         Task<List<SpecialSessionDTO>> GetSpecialSessionsAsync(int conferenceID);

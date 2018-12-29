@@ -3,6 +3,7 @@ using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
 using CMS.BE.Models.Article;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +14,7 @@ namespace CMS.API.BLL.BLL
     {
         private IArticleRepository _repository = new ArticleRepository();
         private IPresentationRepository _presentationRepository = new PresentationRepository();
+        private IMessageRepository _messageRepository = new MessageRepository();
 
         public IEnumerable<ArticleDTO> GetArticles(int conferenceId)
         {
@@ -95,21 +97,33 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public bool AcceptArticle(int articleId)
+        public bool AcceptArticle(int articleId, int editorId)
         {
             try
             {
                 var article = _repository.GetArticleById(articleId);
                 article.Status = "accepted";
                 article.AcceptanceDate = System.DateTime.Now;
+                var authors = _repository.GetAuthorsFromArticleId(articleId);
                 var presentation = new PresentationDTO()
                 {
-                    PresenterId = _repository.GetAuthorsFromArticleId(articleId).First().AccountId,
+                    PresenterId = authors.First().AccountId,
                     Title = article.Topic,
                     ArticleId = article.ArticleId
                 };
                 _repository.EditArticle(article);
                 _presentationRepository.AddPresentation(presentation);
+                foreach (var author in authors)
+                {
+                    var message = new MessageDTO()
+                    {
+                        SenderId = editorId,
+                        ReceiverId = author.AccountId,
+                        Date = DateTime.Now,
+                        Content = $"Your article {article.Topic} has been accepted"
+                    };
+                    if (message.SenderId != message.ReceiverId) _messageRepository.AddMessage(message);
+                }
             }
             catch
             {
@@ -117,13 +131,25 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
-        public bool RejectArticle(int articleId)
+        public bool RejectArticle(int articleId, int editorId)
         {
             try
             {
                 var article = _repository.GetArticleById(articleId);
                 article.Status = "rejected";
                 _repository.EditArticle(article);
+                var authors = _repository.GetAuthorsFromArticleId(articleId);
+                foreach (var author in authors)
+                {
+                    var message = new MessageDTO()
+                    {
+                        SenderId = editorId,
+                        ReceiverId = author.AccountId,
+                        Date = DateTime.Now,
+                        Content = $"Your article {article.Topic} has been rejected"
+                    };
+                    if (message.SenderId != message.ReceiverId) _messageRepository.AddMessage(message);
+                }
             }
             catch
             {

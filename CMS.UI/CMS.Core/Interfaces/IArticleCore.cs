@@ -23,8 +23,8 @@ namespace CMS.Core.Interfaces
         Task<bool> AddSubmissionAsync(SubmissionDTO submission);
         Task<bool> EditSubmissionAsync(SubmissionDTO submission);
         Task<bool> DeleteSubmissionAsync(int submissionId);
-        Task<bool> AcceptArticleAsync(int articleId);
-        Task<bool> RejectArticleAsync(int articleId);
+        Task<bool> AcceptArticleAsync(int articleId, int editorId);
+        Task<bool> RejectArticleAsync(int articleId, int editorId);
         Task<List<AuthorDTO>> GetAuthorsForArticleAsync(int articleId);
     }
 }
