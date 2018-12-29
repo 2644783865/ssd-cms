@@ -24,14 +24,15 @@ namespace CMS.UI.Windows.Rooms
     public partial class EditRoom : MetroWindow
     {
         private RoomDTO room_being_edited;
+        private int BuildingID;
         IRoomCore core;
-        public EditRoom(RoomDTO arg_edit_room)
+        public EditRoom(RoomDTO arg_edit_room, int arg_BuildingID)
         {
             core = new RoomCore(); 
-            this.room_being_edited = arg_edit_room; 
+            this.room_being_edited = arg_edit_room;
+            this.BuildingID = arg_BuildingID;
             InitializeComponent();
-            oldroomname.Text = room_being_edited.Code;
-            newroomname.Text = "Enter a new name";
+            InitializeData();
         }
 
         async private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,12 +42,23 @@ namespace CMS.UI.Windows.Rooms
             bool response = await core.EditRoomAsync(new_possible_code_room);
             if (response)
             {
+                this.room_being_edited = new_possible_code_room;
+                InitializeData();
                 MessageBox.Show("Successfully edited!");
             }
             else
             {
                 MessageBox.Show("Could not edit the room's code!");
             }
+        }
+
+        async private void InitializeData()
+        {
+            oldroomname.Text = room_being_edited.Code;
+            newroomname.Text = "Enter a new name";
+            BuildingDTO building_of_room = await core.GetBuildingByIdAsync(this.BuildingID);
+            // add building name and address  to the window title so it is easier to know which room is edited
+            this.Title = this.Title + " - " +building_of_room.Name + ", " + building_of_room.Address;
         }
 
     }

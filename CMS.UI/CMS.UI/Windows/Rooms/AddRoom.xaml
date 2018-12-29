@@ -6,12 +6,13 @@
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Rooms"
         mc:Ignorable="d"
-        Title="Add rooms" Height="450" Width="800"
+        Title="Add rooms" Height="250" Width="400"
 		ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-		<TextBox Name="roomnumber" HorizontalAlignment="Left" Height="23" Margin="239,192,0,0" TextWrapping="Wrap" Text="Room number" VerticalAlignment="Top" Width="120"/>
-		<Button Name="addRoomButton" Content="Add" HorizontalAlignment="Left" Margin="260,246,0,0" VerticalAlignment="Top" Width="75" Click="addRoomButton_Click"/>
+	<Grid>
+		<TextBox Name="roomnumber" HorizontalAlignment="Left" Height="23" Margin="135,78,0,0" TextWrapping="Wrap" Text="Enter the code" VerticalAlignment="Top" Width="120"/>
+		<Button Name="addRoomButton" Content="Add" HorizontalAlignment="Left" Margin="156,130,0,0" VerticalAlignment="Top" Width="75" Click="addRoomButton_Click"/>
+		<TextBlock HorizontalAlignment="Left" Margin="29,82,0,0" TextWrapping="Wrap" Text="Code of new room:" VerticalAlignment="Top"/>
 
 	</Grid>
 </Controls:MetroWindow>
