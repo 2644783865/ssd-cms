@@ -2,6 +2,7 @@ using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
 using CMS.API.Helpers;
 using CMS.BE.DTO;
+using CMS.BE.Models;
 using System;
 using System.Web.Http;
 
@@ -33,12 +34,12 @@ namespace CMS.API.Controllers
             return Ok(rooms);
         }
 
-        // GET: api/Room/GetAvailableRooms?buildingId=&beginDate=&endDate=&roomId=
-        [HttpGet]
+        // POST: api/Room/GetAvailableRooms?buildingId=&roomId=
+        [HttpPost]
         [Route("api/room/getavailablerooms")]
-        public IHttpActionResult GetAvailableRooms(int buildingId, DateTime beginDate, DateTime endDate, int roomId)
+        public IHttpActionResult GetAvailableRooms(int buildingId, [FromBody] DateModel dateModel, int roomId)
         {
-            var rooms = _bll.GetAvailableRooms(buildingId, beginDate, endDate, roomId);
+            var rooms = _bll.GetAvailableRooms(buildingId, dateModel.beginDate, dateModel.endDate, roomId);
             if (rooms == null) return BadRequest();
             return Ok(rooms);
         }

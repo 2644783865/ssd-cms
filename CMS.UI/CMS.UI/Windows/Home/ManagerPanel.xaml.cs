@@ -10,6 +10,7 @@ using CMS.UI.Windows.Emergency;
 using CMS.UI.Windows.Event;
 using CMS.UI.Windows.Tasks;
 using CMS.UI.Windows.Travel;
+using CMS.UI.Windows.WelcomePack;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
@@ -101,6 +102,8 @@ namespace CMS.UI.Windows.Home
                 ManageEmergency.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.InformationStaff)) != null ? Visibility.Visible : Visibility.Collapsed;
                 ManageTravel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.InformationStaff)) != null ? Visibility.Visible : Visibility.Collapsed;
                 ManageWelcomePack.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.WelcomePackStaff)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageArticlesEditor.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null ? Visibility.Visible : Visibility.Collapsed;
+                ManageArticlesEditorLabel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null ? Visibility.Visible : Visibility.Collapsed;
             }
 
             DownloadSchedule.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
@@ -247,19 +250,42 @@ namespace CMS.UI.Windows.Home
 
         private void AccomButton_Click(object sender, RoutedEventArgs e)
         {
-            AccommodationManage newWindow = new AccommodationManage();
+            AccommodationConference newWindow = new AccommodationConference();
             newWindow.ShowDialog();
         }
 
         private void TravelButton_Click(object sender, RoutedEventArgs e)
         {
-            TravelManage newWindow = new TravelManage();
+            TravelConference newWindow = new TravelConference();
             newWindow.ShowDialog();
         }
 
         private void EmergButton_Click(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        private void ManageEmergency_Click(object sender, RoutedEventArgs e)
+        {
             EmergencyInfo newWindow = new EmergencyInfo();
+            newWindow.ShowDialog();
+        }
+
+        private void ManageAccom_Click(object sender, RoutedEventArgs e)
+        {
+            AccommodationManage newWindow = new AccommodationManage();
+            newWindow.ShowDialog();
+        }
+
+        private void ManageTravel_Click(object sender, RoutedEventArgs e)
+        {
+            TravelManage newWindow = new TravelManage();
+            newWindow.ShowDialog();
+        }
+
+        private void ManageWelcomePack_Click(object sender, RoutedEventArgs e)
+        {
+            GuestsList newWindow = new GuestsList();
             newWindow.ShowDialog();
         }
     }

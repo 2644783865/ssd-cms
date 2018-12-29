@@ -27,10 +27,10 @@
             <Button Name="ManageAward" Content="Manage Awards"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17" Click="ManageAward_Click"/>
             <Button Name="ManageTasks" Content="Manage Tasks"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17" Click="ManageTasks_Click" />
             <Button Name="ManageSessions" Content="Manage Sessions"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17" Click="ManageSessions_Click"/>
-            <Button Name="ManageEmergency" Content="Manage Emergency"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17"/>
-            <Button Name="ManageAccom" Content="Manage Accommodation"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17"/>
-            <Button Name="ManageTravel" Content="Manage Travel"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17"/>
-            <Button Name="ManageWelcomePack" Content="Manage Welcome Pack"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="55" FontSize="17"/>
+            <Button Name="ManageEmergency" Content="Manage Emergency"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17" Click="ManageEmergency_Click"/>
+            <Button Name="ManageAccom" Content="Manage Accommodation"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17" Click="ManageAccom_Click"/>
+            <Button Name="ManageTravel" Content="Manage Travel"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,10" VerticalAlignment="Top" Height="55" FontSize="17" Click="ManageTravel_Click"/>
+            <Button Name="ManageWelcomePack" Content="Manage Welcome Pack"  Width="252" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="55" FontSize="17" Click="ManageWelcomePack_Click"/>
         </StackPanel>
 
         <Button Name="DownloadProgram" HorizontalAlignment="Right" Margin="0,0,30,30" VerticalAlignment="Bottom" Width="65" Height="71" BorderThickness="0" Click="DownloadProgram_Click">

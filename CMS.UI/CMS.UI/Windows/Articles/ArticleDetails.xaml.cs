@@ -153,7 +153,7 @@ namespace CMS.UI.Windows.Articles
                 {
                     AddExtension = true,
                     Filter = "pdf files (*.pdf)|*.pdf",
-                    FileName = $"{currentArticle.Topic} submission {selectedSubmission.SubmissionDate.ToShortDateString()}"
+                    FileName = $"{currentArticle.Topic} submission {selectedSubmission.SubmissionDate.ToString("dd-MM-yyyy")}"
                 };
 
                 var submission = await core.GetSubmissionByIdAsync(selectedSubmission.SubmissionId);

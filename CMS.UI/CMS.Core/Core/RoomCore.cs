@@ -38,8 +38,13 @@ namespace CMS.Core.Core
 
         public async Task<List<RoomDTO>> GetAvailableRoomsAsync(int buildingId, DateTime beginDate, DateTime endDate, int roomId)
         {
-            var path = $"{Properties.Resources.getAvailableRoomsPath}?buildingId={buildingId}&beginDate={beginDate}&endDate={endDate}&roomId={roomId}";
-            var result = await _apiHelper.Get(path);
+            var dateModel = new DateModel()
+            {
+                beginDate = beginDate,
+                endDate = endDate
+            };
+            var path = $"{Properties.Resources.getAvailableRoomsPath}?buildingId={buildingId}&roomId={roomId}";
+            var result = await _apiHelper.Post(path, dateModel);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
                 return JsonConvert.DeserializeObject<List<RoomDTO>>(result.Content);
