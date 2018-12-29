@@ -16,6 +16,8 @@
             <TextBox Name="EmergencyInfoBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" IsReadOnly="True" Text="" Height="171"/>
             
         </StackPanel>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="200,280,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="290,280,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Controls:MetroWindow>
 

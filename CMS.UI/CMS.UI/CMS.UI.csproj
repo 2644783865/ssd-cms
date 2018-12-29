@@ -80,6 +80,12 @@
     <Compile Include="Windows\Accommodation\AccommodationInfo.xaml.cs">
       <DependentUpon>AccommodationInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Accommodation\AccomodationConference.xaml.cs">
+      <DependentUpon>AccomodationConference.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Accommodation\AccomodationManage.xaml.cs">
+      <DependentUpon>AccomodationManage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Account\AddEditAccount.xaml.cs">
       <DependentUpon>AddEditAccount.xaml</DependentUpon>
     </Compile>
@@ -180,10 +186,30 @@
       <DependentUpon>ManageTasks.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Tasks\ViewTaskSchedule.xaml.cs" />
+    <Compile Include="Windows\Travel\TravelConference.xaml.cs">
+      <DependentUpon>TravelConference.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Travel\TravelInfo.xaml.cs">
       <DependentUpon>TravelInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Travel\TravelManage.xaml.cs">
+      <DependentUpon>TravelManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WelcomePack\GuestAdd.xaml.cs">
+      <DependentUpon>GuestAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WelcomePack\GuestsList.xaml.cs">
+      <DependentUpon>GuestsList.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\Accommodation\AccommodationInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Accommodation\AccomodationConference.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Accommodation\AccomodationManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -323,7 +349,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Travel\TravelConference.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Travel\TravelInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Travel\TravelManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WelcomePack\GuestAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WelcomePack\GuestsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

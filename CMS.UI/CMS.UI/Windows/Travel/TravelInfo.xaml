@@ -10,18 +10,20 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-            <Label Content="Title:" Margin="0,0,0,0"/>
+            <Label Content="Title:" Margin="0,0,0,0" Height="20"/>
             <TextBox Name="TitleBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" IsReadOnly="True" Text="" Width="337"/>
-            <Label Content="Airport Road:" Margin="0,0,0,0"/>
+            <Label Content="Airport Road:" Margin="0,0,0,0" Height="20"/>
             <TextBox Name="AirportRoadBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" IsReadOnly="True" Text="" Height="23"/>
-            <Label Content="Airport Road Time:" Margin="0,0,0,0"/>
+            <Label Content="Airport Road Time:" Margin="0,0,0,0" Height="20"/>
             <TextBox Name="AirportRoadTimeBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" IsReadOnly="True" Text="" Width="337"/>
-            <Label Content="Railway Road:" Margin="0,0,0,0"/>
+            <Label Content="Railway Road:" Margin="0,0,0,0" Height="20"/>
             <TextBox Name="RailwayRoadBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" IsReadOnly="True" Text="" Height="23"/>
-            <Label Content="Railway Road Time:" Margin="0,0,0,0"/>
+            <Label Content="Railway Road Time:" Margin="0,0,0,0" Height="20"/>
             <TextBox Name="RailwayRoadTimeBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" IsReadOnly="True" Text="" Height="23"/>
-            <Label Content="Taxi Number:" Margin="0,0,0,0"/>
+            <Label Content="Taxi Number:" Margin="0,0,0,0" Height="20"/>
             <TextBox Name="TaxiNumBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" IsReadOnly="True" Text="" Height="23"/>
         </StackPanel>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="201,323,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="290,323,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Controls:MetroWindow>
