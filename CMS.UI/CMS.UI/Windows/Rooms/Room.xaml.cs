@@ -33,7 +33,6 @@ namespace CMS.UI.Windows.Rooms
             InitializeComponent();
             HideButtonsOnUnselectedCell();
             LoadRoomsToDataGrid(building);
-            
         }
 
         private void AddRoom_Click(object sender, RoutedEventArgs e)
@@ -42,6 +41,7 @@ namespace CMS.UI.Windows.Rooms
             newAddRoomsWindow.ShowDialog();
             //this can be improved by tracking user's adding activity
             LoadRoomsToDataGrid(this.BuildingID);
+            HideButtonsOnUnselectedCell();
         }
 
         async private void EditRoom_Click(object sender, RoutedEventArgs e)

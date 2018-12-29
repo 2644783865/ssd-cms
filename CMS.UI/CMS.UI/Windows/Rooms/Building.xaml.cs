@@ -28,12 +28,11 @@ namespace CMS.UI.Windows.Rooms
         {
             core = new RoomCore();
             InitializeComponent();
-            initializeBuildingList();
-            editbuildingbutton.IsEnabled = false;
-            deletebuildingbutton.IsEnabled = false;
+            LoadBuildingList();
+            HideButtonsOnUnselectedCell();
         }
 
-        async private void initializeBuildingList()
+        async private void LoadBuildingList()
         {
             buildinglist.ItemsSource = await core.GetBuildingsAsync();
             
@@ -49,11 +48,31 @@ namespace CMS.UI.Windows.Rooms
 
         private void buildinglist_CurrentCellChanged(object sender, EventArgs e)
         {
-
            editbuildingbutton.IsEnabled = true;
            deletebuildingbutton.IsEnabled = true;
 
-            
+        }
+
+        private void deletebuildingbutton_Click(object sender, RoutedEventArgs e)
+        {
+            BuildingDTO buildingtodelete = (BuildingDTO)buildinglist.SelectedItem;
+            core.DeleteBuildingAsync(buildingtodelete.BuildingID);
+            LoadBuildingList();
+        }
+
+        private void HideButtonsOnUnselectedCell()
+        {
+            editbuildingbutton.IsEnabled = false;
+            deletebuildingbutton.IsEnabled = false;
+        }
+
+        private void addbuildingbutton_Click(object sender, RoutedEventArgs e)
+        {
+            AddBuildingWindow newAddBuildingWindow = new AddBuildingWindow();
+            newAddBuildingWindow.ShowDialog();
+            //this can be improved by tracking user's adding activity
+            LoadBuildingList();
+            HideButtonsOnUnselectedCell();
         }
     }
 }

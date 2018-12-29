@@ -157,6 +157,9 @@
     <Compile Include="Windows\Reviews\ReviewsShow.xaml.cs">
       <DependentUpon>ReviewsShow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Rooms\AddBuilding.xaml.cs">
+      <DependentUpon>AddBuilding.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Rooms\AddLocation.xaml.cs">
       <DependentUpon>AddLocation.xaml</DependentUpon>
     </Compile>
@@ -302,6 +305,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Reviews\ReviewsShow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Rooms\AddBuilding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
