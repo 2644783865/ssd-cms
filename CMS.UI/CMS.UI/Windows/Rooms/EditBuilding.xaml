@@ -1,0 +1,19 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Rooms.EditBuildingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CMS.UI.Windows.Rooms"
+        mc:Ignorable="d"
+        Title="Edit Building" Height="250" Width="400"
+		WindowStartupLocation="CenterScreen">
+    <Grid>
+		<TextBox Name="buildingNameTextBox" HorizontalAlignment="Left" Height="23" Margin="96,32,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" TextChanged="buildingNameTextBox_TextChanged"/>
+		<TextBox Name="addressTextBox" HorizontalAlignment="Left" Height="23" Margin="96,89,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" TextChanged="addressTextBox_TextChanges"/>
+		<Button Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="154,137,0,0" VerticalAlignment="Top" Width="76" Click="updateButton_Click"/>
+		<TextBlock HorizontalAlignment="Left" Margin="96,11,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
+		<TextBlock HorizontalAlignment="Left" Margin="96,68,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top"/>
+
+	</Grid>
+</Controls:MetroWindow>

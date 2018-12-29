@@ -87,5 +87,29 @@ namespace CMS.UI.Windows.Rooms
         {
             openRoomManagementWindow();
         }
+
+        async private void editbuildingbutton_Click(object sender, RoutedEventArgs e)
+        {
+            BuildingDTO buildingToEdit = (BuildingDTO)buildinglist.SelectedItem;
+            int focusID = buildingToEdit.BuildingID;
+            EditBuildingWindow newEditBuildingWindow = new EditBuildingWindow(buildingToEdit);
+            newEditBuildingWindow.ShowDialog();
+            //this can be improved by tracking user's editing activity
+            //await needed here explicitly, requires clarification
+            // do not lose focus on cell after editing
+            buildinglist.ItemsSource = await core.GetBuildingsAsync();
+            foreach (BuildingDTO row in this.buildinglist.Items)
+            {
+
+                int currentRoomID = row.BuildingID;
+                if (currentRoomID.Equals(focusID))
+                {
+                    buildinglist.CurrentCell = new DataGridCellInfo(row, buildinglist.Columns[0]);
+                    buildinglist.SelectedItem = row;
+                    break;
+                }
+            }
+
+        }
     }
 }
