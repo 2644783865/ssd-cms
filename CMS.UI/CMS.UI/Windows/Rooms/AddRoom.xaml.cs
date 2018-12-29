@@ -24,12 +24,14 @@ namespace CMS.UI.Windows.Rooms
     public partial class AddRoomsWindow : MetroWindow
     {
         private int BuildingID;
+        private String defaultInputText;
         IRoomCore core;
         public AddRoomsWindow(int arg_buildingID)
         {
             core = new RoomCore();
             this.BuildingID = arg_buildingID;
             InitializeComponent();
+            defaultInputText = roomnumber.Text;
         }
 
         async private void addRoomButton_Click(object sender, RoutedEventArgs e)
@@ -44,6 +46,15 @@ namespace CMS.UI.Windows.Rooms
             } else
             {
                 MessageBox.Show("Could not add the room!");
+            }
+            
+        }
+
+        private void roomnumber_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (roomnumber.Text.Equals(defaultInputText))
+            {
+                roomnumber.Text = "";
             }
             
         }

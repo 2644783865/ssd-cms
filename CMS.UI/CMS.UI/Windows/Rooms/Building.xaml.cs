@@ -40,9 +40,7 @@ namespace CMS.UI.Windows.Rooms
 
         private void buildinglist_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            BuildingDTO current = (BuildingDTO)buildinglist.CurrentItem; 
-            RoomWindow newRoomWindow = new RoomWindow(current.BuildingID);
-            newRoomWindow.ShowDialog();
+            openRoomManagementWindow();
 
         }
 
@@ -50,20 +48,22 @@ namespace CMS.UI.Windows.Rooms
         {
            editbuildingbutton.IsEnabled = true;
            deletebuildingbutton.IsEnabled = true;
-
+           manageroomsbutton.IsEnabled = true;
         }
 
-        private void deletebuildingbutton_Click(object sender, RoutedEventArgs e)
+        async private void deletebuildingbutton_Click(object sender, RoutedEventArgs e)
         {
             BuildingDTO buildingtodelete = (BuildingDTO)buildinglist.SelectedItem;
-            core.DeleteBuildingAsync(buildingtodelete.BuildingID);
+            await core.DeleteBuildingAsync(buildingtodelete.BuildingID);
             LoadBuildingList();
+            HideButtonsOnUnselectedCell();
         }
 
         private void HideButtonsOnUnselectedCell()
         {
             editbuildingbutton.IsEnabled = false;
             deletebuildingbutton.IsEnabled = false;
+            manageroomsbutton.IsEnabled = false;
         }
 
         private void addbuildingbutton_Click(object sender, RoutedEventArgs e)
@@ -73,6 +73,18 @@ namespace CMS.UI.Windows.Rooms
             //this can be improved by tracking user's adding activity
             LoadBuildingList();
             HideButtonsOnUnselectedCell();
+        }
+
+        private void openRoomManagementWindow()
+        {
+            BuildingDTO current = (BuildingDTO)buildinglist.SelectedItem;
+            RoomWindow newRoomWindow = new RoomWindow(current.BuildingID);
+            newRoomWindow.ShowDialog();
+        }
+
+        private void manageroomsbutton_Click(object sender, RoutedEventArgs e)
+        {
+            openRoomManagementWindow();
         }
     }
 }
