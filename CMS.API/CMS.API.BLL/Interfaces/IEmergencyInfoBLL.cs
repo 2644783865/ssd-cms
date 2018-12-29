@@ -10,5 +10,6 @@ namespace CMS.API.BLL.Interfaces
         bool AddEmergencyInfo(EmergencyInfoDTO emergencyinfo);
         bool EditEmergencyInfo(EmergencyInfoDTO emergencyinfo);
         bool DeleteEmergencyInfo(int emergencyinfoId);
+        EmergencyInfoDTO GetEmergencyInfoByConferenceId(int id);
     }
 }

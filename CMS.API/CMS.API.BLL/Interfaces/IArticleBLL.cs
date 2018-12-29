@@ -17,6 +17,8 @@ namespace CMS.API.BLL.Interfaces
         bool AcceptArticle(int articleId);
         bool RejectArticle(int articleId);
         IEnumerable<AuthorDTO> GetAuthorsFromArticleId(int articleId);
+        IEnumerable<ArticleDTO> GetSubmittedArticles();
+        IEnumerable<ArticleDTO> GetRejectedArticles();
 
         //Submission
 

@@ -74,5 +74,16 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+        public EmergencyInfoDTO GetEmergencyInfoByConferenceId(int id)
+        {
+            try
+            {
+                return _repository.GetEmergencyInfoByConferenceId(id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

@@ -144,6 +144,29 @@ namespace CMS.API.BLL.BLL
             }
         }
 
+        public IEnumerable<ArticleDTO> GetSubmittedArticles()
+        {
+            try
+            {
+                return _repository.GetSubmittedArticles();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public IEnumerable<ArticleDTO> GetRejectedArticles()
+        {
+            try
+            {
+                return _repository.GetRejectedArticles();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         //Submission
 
         public IEnumerable<SubmissionDTO> GetSubmissions()
