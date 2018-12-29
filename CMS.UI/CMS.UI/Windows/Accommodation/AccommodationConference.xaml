@@ -5,24 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="AccommodationConference" Height="350" Width="400"
+        Title="Accommodation Options" Height="400" Width="400"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
-            <Label Content="Place:" Margin="0,0,0,0" Height="20"/>
-            <Label Margin="0,0,0,0" Height="20"/>
-            <Label Content="Description:" Margin="0,0,0,0" Height="20"/>
-            <Label Margin="0,0,0,0" Height="40"/>
-            <Label Content="Currency:" Margin="0,0,0,0" Height="20"/>
-            <Label Margin="0,0,0,0" Height="20"/>
-            <Label Content="City:" Margin="0,0,0,0" Height="20"/>
-            <Label Margin="0,0,0,0" Height="20"/>
-            <Label Content="City description:" Margin="0,0,0,0" Height="20"/>
-            <Label Margin="0,0,0,0" Height="40"/>
+            <Label Content="Place:" Margin="0,0,0,0" Height="25"/>
+            <Label Margin="0,0,0,0" Height="25"/>
+            <Label Content="Description:" Margin="0,0,0,0" Height="25"/>
+            <Label Margin="0,0,0,0" Height="50"/>
+            <Label Content="Currency:" Margin="0,0,0,0" Height="25"/>
+            <Label Margin="0,0,0,0" Height="25"/>
+            <Label Content="City:" Margin="0,0,0,0" Height="25"/>
+            <Label Margin="0,0,0,0" Height="25"/>
+            <Label Content="City description:" Margin="0,0,0,0" Height="25"/>
+            <Label Margin="0,0,0,0" Height="50"/>
         </StackPanel>
-        <Button Content="Prev" HorizontalAlignment="Left" Margin="47,284,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Next" HorizontalAlignment="Left" Margin="272,284,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.128,0.563"/>
+        <Button Content="Prev" HorizontalAlignment="Left" Margin="47,323,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Next" HorizontalAlignment="Left" Margin="272,323,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.128,0.563"/>
 
     </Grid>
 </Controls:MetroWindow>
