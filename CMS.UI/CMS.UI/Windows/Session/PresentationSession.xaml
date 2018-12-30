@@ -28,7 +28,7 @@
         <Label Content="End:" HorizontalAlignment="Left" Margin="481,45,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Label Name="BeginLabel" Content="" HorizontalAlignment="Left" Margin="524,10,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Label Name="EndLabel" Content="" HorizontalAlignment="Left" Margin="524,45,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <Label Content="Room:" HorizontalAlignment="Left" Margin="31,45,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="84,45,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Room:" HorizontalAlignment="Left" Margin="74,45,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="131,45,0,0" VerticalAlignment="Top" FontSize="15"/>
     </Grid>
 </Controls:MetroWindow>

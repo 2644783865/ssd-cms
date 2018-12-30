@@ -35,7 +35,7 @@ namespace CMS.UI.Windows.Session
             {
                 IdLabel.Content = presentation.PresentationId;
                 TitleBox.Text = presentation.Title;
-                DescriptionBox.Text = presentation.Title;
+                DescriptionBox.Text = presentation.Description;
                 PresenterBox.Text = (await authCore.GetAccountByIdAsync(presentation.PresenterId)).Login;
                 ArticleLabel.Content = (await articleCore.GetArticleByIdAsync(presentation.ArticleId)).Topic;
                 GradeLabel.Content = presentation.Grade.HasValue ? presentation.Grade.Value.ToString() : "-";

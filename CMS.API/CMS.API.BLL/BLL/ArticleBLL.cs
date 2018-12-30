@@ -140,7 +140,11 @@ namespace CMS.API.BLL.BLL
             {
                 var article = _repository.GetArticleById(articleId);
                 article.Status = "rejected";
+                article.AcceptanceDate = null;
+                var tempPresentation = article.PresentationId;
+                article.PresentationId = null;
                 _repository.EditArticle(article);
+                if (tempPresentation.HasValue) _presentationRepository.DeletePresentation(tempPresentation.Value);
                 var authors = _repository.GetAuthorsFromArticleId(articleId);
                 foreach (var author in authors)
                 {

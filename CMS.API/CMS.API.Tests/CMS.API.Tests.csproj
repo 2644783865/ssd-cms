@@ -97,10 +97,6 @@
       <Project>{F5811DC9-3DFE-4ADE-9231-C85B434CC173}</Project>
       <Name>CMS.API.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CMS.API\CMS.API.csproj">
-      <Project>{C0AE18F0-614A-4395-AE6F-65501BBF17D1}</Project>
-      <Name>CMS.API</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

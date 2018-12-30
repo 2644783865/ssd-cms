@@ -37,11 +37,11 @@ namespace CMS.UI.Windows.Articles
             IdLabel.Content = currentArticle.ArticleId;
             TopicBox.Text = currentArticle.Topic;
             StatusBox.Text = currentArticle.Status;
-            AcceptanceDateBox.Text = currentArticle.AcceptanceDate.HasValue ? currentArticle.AcceptanceDate.Value.ToShortDateString() : string.Empty;
+            AcceptanceDateBox.Text = currentArticle.AcceptanceDate.HasValue 
+                ? currentArticle.AcceptanceDate.Value.ToShortDateString() : string.Empty;
             await LoadSubmissions();
             await LoadAuthors();
             SetVisibility();
-            SetReadOnly();
         }
 
         private async Task LoadSubmissions()
@@ -66,21 +66,13 @@ namespace CMS.UI.Windows.Articles
             else DeleteAuthorButton.IsEnabled = true;
         }
 
-        private void SetReadOnly()
-        {
-            if (isAuthor() && currentArticle.Status.Equals("submitted"))
-            {
-                TopicBox.IsReadOnly = false;
-            }
-            else TopicBox.IsReadOnly = true;
-        }
-
         private void SetVisibility()
         {
             AddReview.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Reviewer)) != null && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
             Accept.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
             Reject.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
-            EditButton.Visibility = isAuthor() && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
+            ChangeStatusButton.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null && !currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
+            EditButton.Visibility = isAuthor() && currentArticle.Status.Equals("submitted") && SubmissionBox.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
             Submit.IsEnabled = isAuthor() && currentArticle.Status.Equals("submitted");
             Presentation.IsEnabled = currentArticle.Status.Equals("accepted");
             AddAuthorButton.Visibility = isAuthor() && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
@@ -94,7 +86,7 @@ namespace CMS.UI.Windows.Articles
 
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Submit.IsEnabled = false;
             OpenFileDialog fileDialog = new OpenFileDialog()
             {
                 Filter = "pdf files (*.pdf)|*.pdf"
@@ -114,6 +106,7 @@ namespace CMS.UI.Windows.Articles
                 else MessageBox.Show("Error occured while submitting article");
                 await LoadSubmissions();
             }
+            Submit.IsEnabled = true;
         }
 
         private byte[] ReadData(Stream data)
@@ -124,36 +117,43 @@ namespace CMS.UI.Windows.Articles
 
         private async void PresentationButton_Click(object sender, RoutedEventArgs e)
         {
+            Presentation.IsEnabled = false;
             if (currentArticle.PresentationId.HasValue)
             {
                 var presentation = await presCore.GetPresentationByIdAsync(currentArticle.PresentationId.Value);
                 PresentationDetails newWindow = new PresentationDetails(presentation);
                 newWindow.ShowDialog();
             }
+            Presentation.IsEnabled = true;
         }
 
         private async void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
+            Accept.IsEnabled = false;
             if (await core.AcceptArticleAsync(currentArticle.ArticleId, UserCredentials.Account.AccountId))
             {
                 MessageBox.Show($"Article {currentArticle.Topic} accepted");
                 Close();
             }
             else MessageBox.Show("Something went wrong while accepting article");
+            Accept.IsEnabled = true;
         }
 
         private async void RejectButton_Click(object sender, RoutedEventArgs e)
         {
+            Reject.IsEnabled = false;
             if (await core.RejectArticleAsync(currentArticle.ArticleId, UserCredentials.Account.AccountId))
             {
                 MessageBox.Show($"Article {currentArticle.Topic} rejected");
                 Close();
             }
             else MessageBox.Show("Something went wrong while rejeting article");
+            Reject.IsEnabled = true;
         }
 
         private async void View_Click(object sender, RoutedEventArgs e)
         {
+            View.IsEnabled = false;
             if (SubmissionBox.SelectedIndex >= 0)
             {
                 var selectedSubmission = (SubmissionDTO)SubmissionBox.SelectedItem;
@@ -171,6 +171,7 @@ namespace CMS.UI.Windows.Articles
                 }
             }
             else MessageBox.Show("Select submission");
+            View.IsEnabled = false;
         }
 
         private void WriteData(string fileName, byte[] bytes)
@@ -183,14 +184,18 @@ namespace CMS.UI.Windows.Articles
 
         private void Reviews_Click(object sender, RoutedEventArgs e)
         {
+            Reviews.IsEnabled = false;
             Review newReviewsWindow = new Review(currentArticle);
             newReviewsWindow.ShowDialog();
+            Reviews.IsEnabled = true;
         }
 
         private void AddReview_Click(object sender, RoutedEventArgs e)
         {
+            AddReview.IsEnabled = false;
             AddReview newAddReviewWindow = new AddReview(currentArticle);
             newAddReviewWindow.ShowDialog();
+            AddReview.IsEnabled = true;
         }
 
         private void Expander_Expanded(object sender, RoutedEventArgs e)
@@ -207,29 +212,26 @@ namespace CMS.UI.Windows.Articles
             }
         }
 
-        private async void EditButton_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (TopicBox.Text.Length > 0)
-            {
-                currentArticle.Topic = TopicBox.Text;
-                if(await core.EditArticleAsync(currentArticle))
-                {
-                    MessageBox.Show("Successfully edited article");
-                    Close();
-                }
-                else MessageBox.Show("Something went wrong while editing article");
-            }
-            else MessageBox.Show("Topic cannot be empty");
+            EditButton.IsEnabled = false;
+            SubmitArticle newWindow = new SubmitArticle(currentArticle);
+            newWindow.ShowDialog();
+            Close();
+            EditButton.IsEnabled = true;
         }
 
         private void AddAuthorButton_Click(object sender, RoutedEventArgs e)
         {
+            AddAuthorButton.IsEnabled = false;
             AssignAuthor newWindow = new AssignAuthor(currentArticle.ArticleId);
             newWindow.ShowDialog();
+            AddAuthorButton.IsEnabled = true;
         }
 
         private async void DeleteAuthorButton_Click(object sender, RoutedEventArgs e)
         {
+            DeleteAuthorButton.IsEnabled = false;
             if (AuthorsBox.SelectedIndex >= 0)
             {
                 if (await core.DeleteAssignmentAuthorForArticleAsync(currentArticle.ArticleId,
@@ -241,12 +243,19 @@ namespace CMS.UI.Windows.Articles
                 else MessageBox.Show("Something went wrong while removing author from article");
             }
             else MessageBox.Show("Select author first");
+            DeleteAuthorButton.IsEnabled = true;
         }
 
         private async void MetroWindow_Activated(object sender, EventArgs e)
         {
             await LoadAuthors();
             await LoadSubmissions();
+        }
+
+        private void ChangeStatusButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(currentArticle.Status.Equals("rejected")) Accept.Visibility = Visibility.Visible;
+            if (currentArticle.Status.Equals("accepted")) Reject.Visibility = Visibility.Visible;
         }
     }
 }

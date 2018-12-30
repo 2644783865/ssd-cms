@@ -63,7 +63,7 @@ namespace CMS.UI.Windows.Session
         {
             if (SpecialSessionList.SelectedIndex >= 0)
             {
-                AddEditSession newWindow = new AddEditSession(null, (SpecialSessionDTO)SpecialSessionList.SelectedItem);
+                PresentationSpecialSession newWindow = new PresentationSpecialSession((SpecialSessionDTO)SpecialSessionList.SelectedItem);
                 newWindow.ShowDialog();
             }
             else MessageBox.Show("Select special session first");

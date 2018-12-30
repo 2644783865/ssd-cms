@@ -15,12 +15,22 @@ namespace CMS.UI.Windows.Articles
     {
         private IArticleCore core;
         private ISessionCore sessionCore;
-        public SubmitArticle()
+        private ArticleDTO currentArticle;
+        public SubmitArticle(ArticleDTO article)
         {
             InitializeComponent();
             core = new ArticleCore();
             sessionCore = new SessionCore();
             LoadSpecialSessions();
+            currentArticle = article;
+            if (article != null) FillArticleBoxes();
+        }
+
+        private void FillArticleBoxes()
+        {
+            Topic.Text = currentArticle.Topic;
+            SSCheck.IsChecked = currentArticle.SpecialSessionId.HasValue;
+            if (currentArticle.SpecialSessionId.HasValue) SSList.SelectedValue = currentArticle.SpecialSessionId.Value;
         }
 
         private async void LoadSpecialSessions()
@@ -43,26 +53,42 @@ namespace CMS.UI.Windows.Articles
                 {
                     int? specialSession = null;
                     if (SSCheck.IsChecked.Value) specialSession = ((SpecialSessionDTO)SSList.SelectedItem).SpecialSessionId;
-                    var article = new ArticleDTO()
-                    {
-                        Topic = Topic.Text,
-                        ConferenceID = UserCredentials.Conference.ConferenceId,
-                        Status = "submitted",
-                        SpecialSessionId = specialSession
-                    };
 
-                    var articleModel = new AddArticleModel()
+                    if (currentArticle == null)
                     {
-                        Article = article,
-                        AuthorId = UserCredentials.Account.AccountId
-                    };
+                        var article = new ArticleDTO()
+                        {
+                            Topic = Topic.Text,
+                            ConferenceID = UserCredentials.Conference.ConferenceId,
+                            Status = "submitted",
+                            SpecialSessionId = specialSession
+                        };
 
-                    if (await core.AddArticleAsync(articleModel))
-                    {
-                        MessageBox.Show("Successfully added article");
-                        Close();
+                        var articleModel = new AddArticleModel()
+                        {
+                            Article = article,
+                            AuthorId = UserCredentials.Account.AccountId
+                        };
+
+                        if (await core.AddArticleAsync(articleModel))
+                        {
+                            MessageBox.Show("Successfully added article");
+                            Close();
+                        }
+                        else MessageBox.Show("Error occured while adding article");
                     }
-                    else MessageBox.Show("Error occured while adding article");
+                    else
+                    {
+                        currentArticle.Topic = Topic.Text;
+                        currentArticle.SpecialSessionId = specialSession;
+
+                        if (await core.EditArticleAsync(currentArticle))
+                        {
+                            MessageBox.Show("Successfully edited article");
+                            Close();
+                        }
+                        else MessageBox.Show("Error occured while editing article");
+                    }
                 }
                 else MessageBox.Show("Provide topic!");
             }

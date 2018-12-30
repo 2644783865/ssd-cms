@@ -55,7 +55,8 @@ namespace CMS.UI.Windows.Session
             UnassignedPresentations.ClearValue(ItemsControl.ItemsSourceProperty);
             UnassignedPresentations.DisplayMemberPath = "PresentationDesc";
             UnassignedPresentations.SelectedValuePath = "PresentationId";
-            UnassignedPresentations.ItemsSource = (await core.GetPresentationsByIdAsync(UserCredentials.Conference.ConferenceId)).Where(p => p.SessionId.HasValue && p.SessionId.Value != session.SessionId);
+            UnassignedPresentations.ItemsSource = (await core.GetPresentationsByIdAsync(UserCredentials.Conference.ConferenceId))
+                .Where(p => p.SessionId.HasValue && p.SessionId.Value != session.SessionId);
         }
 
         private async void LoadAll()

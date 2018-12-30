@@ -35,6 +35,7 @@
         <Button x:Name="AddReview" Content="Add review" HorizontalAlignment="Right" Margin="0,0,283,59" VerticalAlignment="Bottom" Width="96" Background="Blue" Click="AddReview_Click" Visibility="Collapsed"/>
         <Button x:Name="Accept" Content="Accept" HorizontalAlignment="Right" Margin="0,0,281,10" VerticalAlignment="Bottom" Width="96" Click="AcceptButton_Click" Background="Green" Visibility="Collapsed"/>
         <Button x:Name="Reject" Content="Reject" HorizontalAlignment="Right" Margin="0,0,32,10" VerticalAlignment="Bottom" Width="96" Click="RejectButton_Click" Background="Red" Visibility="Collapsed"/>
-        <Button Name="EditButton" Content="Change topic" HorizontalAlignment="Left" Margin="277,10,0,0" VerticalAlignment="Top" Width="85" Click="EditButton_Click" Visibility="Collapsed"/>
+        <Button Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="277,10,0,0" VerticalAlignment="Top" Width="85" Click="EditButton_Click" Visibility="Collapsed"/>
+        <Button Name="ChangeStatusButton" Content="Change status"  HorizontalAlignment="Left" Margin="138,0,0,10" VerticalAlignment="Bottom" Width="103" Click="ChangeStatusButton_Click"/>
     </Grid>
 </Controls:MetroWindow>

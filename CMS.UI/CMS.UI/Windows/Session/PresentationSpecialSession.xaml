@@ -7,10 +7,22 @@
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:CMS.UI.Windows.Session"
         mc:Ignorable="d"
-        Title="PresentationSpecialSession" Height="450" Width="318">
+        Title="Presentations in Special Session" Height="533" Width="506"
+                      ResizeMode="NoResize"
+                      WindowStartupLocation="CenterScreen"
+                      Activated="MetroWindow_Activated">
     <Grid>
-        <ListBox HorizontalAlignment="Left" Height="310" Margin="50,35,0,0" VerticalAlignment="Top" Width="210"/>
-        <Button Name="RejectButton" Content="Reject" Background="Red" HorizontalAlignment="Left" Margin="225,382,0,0" VerticalAlignment="Top" Width="75"/>
-
+        <ListBox Name="PresentationsList" HorizontalAlignment="Left" Height="310" Margin="110,132,0,0" VerticalAlignment="Top" Width="279" BorderThickness="1" MouseDoubleClick="PresentationsList_MouseDoubleClick"/>
+        <Button Name="RejectButton" Content="Reject" Background="Red" HorizontalAlignment="Left" Margin="413,465,0,0" VerticalAlignment="Top" Width="75" Click="RejectButton_Click"/>
+        <Button Name="DetailsButton" Content="Details" HorizontalAlignment="Left" Margin="314,447,0,0" VerticalAlignment="Top" Width="75" Click="DetailsButton_Click"/>
+        <Label Content="Session Title:" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="131,10,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Begin:" HorizontalAlignment="Left" Margin="268,10,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="End:" HorizontalAlignment="Left" Margin="281,45,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Name="BeginLabel" Content="" HorizontalAlignment="Left" Margin="324,10,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Name="EndLabel" Content="" HorizontalAlignment="Left" Margin="324,45,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Content="Room:" HorizontalAlignment="Left" Margin="74,45,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="131,45,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <Button Name="EditButton" Content="Edit special session" HorizontalAlignment="Left" Margin="10,465,0,0" VerticalAlignment="Top" Width="131" Click="EditButton_Click"/>
     </Grid>
 </Controls:MetroWindow>

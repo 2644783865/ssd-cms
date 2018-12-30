@@ -40,7 +40,7 @@
 
         <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" Width="391" FontSize="30" FontWeight="SemiBold"/>
         <Label Name="DatesLabel" Content="" HorizontalAlignment="Left" Margin="350,107,0,0" VerticalAlignment="Top" Width="391" FontSize="20"/>
-        <TextBox Name="DescriptionBox" HorizontalAlignment="Left" Height="74" Margin="350,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="391" BorderThickness="0" FontSize="15"/>
+        <TextBox Name="DescriptionBox" IsReadOnly="True" HorizontalAlignment="Left" Height="74" Margin="350,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="391" BorderThickness="0" FontSize="15"/>
         <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="350,65,0,0" VerticalAlignment="Top" Width="391" FontSize="20"/>
         <ListBox Name="SessionList" HorizontalAlignment="Left" Height="371" Margin="350,0,0,45" VerticalAlignment="Bottom" Width="247" FontSize="15" BorderThickness="1"/>
         <ListBox Name="SpecialSessionList" HorizontalAlignment="Left" Height="371" Margin="620,0,0,45" VerticalAlignment="Bottom" Width="233" FontSize="15" BorderThickness="1"/>

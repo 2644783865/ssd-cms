@@ -71,7 +71,7 @@ namespace CMS.UI.Windows.Home
 
         private void AddArticles_Click(object sender, RoutedEventArgs e)
         {
-            SubmitArticle newSubmitArticleWindow = new SubmitArticle();
+            SubmitArticle newSubmitArticleWindow = new SubmitArticle(null);
             newSubmitArticleWindow.ShowDialog();
         }
 
