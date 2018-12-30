@@ -8,7 +8,7 @@ namespace CMS.API.DAL.Interfaces
     {
         IEnumerable<AccommodationInfoDTO> GetAccommodationInfoInfo();
         AccommodationInfoDTO GetAccommodationInfoById(int id);
-        IEnumerable<AccommodationInfoDTO> GetAccommodationInfoByConferenceId(int id)
+        IEnumerable<AccommodationInfoDTO> GetAccommodationInfoByConferenceId(int id);
         void AddAccommodationInfo(AccommodationInfoDTO accommodationDTO);
         void EditAccommodationInfo(AccommodationInfoDTO accommodationDTO);
         void DeleteAccommodationInfo(int accommodationId);

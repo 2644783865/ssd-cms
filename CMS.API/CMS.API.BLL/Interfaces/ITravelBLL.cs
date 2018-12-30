@@ -7,6 +7,7 @@ namespace CMS.API.BLL.Interfaces
     {
         IEnumerable<TravelInfoDTO> GetTravelInfo();
         TravelInfoDTO GetTravelById(int id);
+        IEnumerable<TravelInfoDTO> GetTravelInfoByConferenceId(int id);
         bool AddTravel(TravelInfoDTO travel);
         bool EditTravel(TravelInfoDTO travel);
         bool DeleteTravel(int travelId);

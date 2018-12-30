@@ -40,6 +40,18 @@ namespace CMS.API.BLL.BLL
             }
         }
 
+        public IEnumerable<WelcomePackReceiverDTO> GetGuestsByConferenceId(int id)
+        {
+                try
+                {
+                    return _repository.GetGuestsByConferenceId(id);
+                }
+                catch
+                {
+                    return null;
+                }
+        }
+
         public bool AddWelcomePackReceiver(WelcomePackReceiverDTO welcomepackreceiver)
         {
             try

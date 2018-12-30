@@ -36,6 +36,18 @@ namespace CMS.API.BLL.BLL
             }
         }
 
+        public IEnumerable<TravelInfoDTO> GetTravelInfoByConferenceId(int id)
+        {
+            try
+            {
+                return _repository.GetTravelInfoByConferenceId(id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public bool AddTravel(TravelInfoDTO travel)
         {
             try

@@ -36,6 +36,18 @@ namespace CMS.API.BLL.BLL
             }
         }
 
+        public IEnumerable<AccommodationInfoDTO> GetAccommodationInfoByConferenceId(int id)
+        {
+            try
+            {
+                return _repository.GetAccommodationInfoByConferenceId(id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public bool AddAccommodationInfo(AccommodationInfoDTO acommodationinfo)
         {
             try

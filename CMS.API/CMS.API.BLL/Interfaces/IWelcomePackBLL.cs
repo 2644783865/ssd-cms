@@ -8,6 +8,7 @@ namespace CMS.API.BLL.Interfaces
         //Welcome Pack Receiver
         IEnumerable<WelcomePackReceiverDTO> GetWelcomePackReceiverInfo();
         WelcomePackReceiverDTO GetWelcomePackReceiverById(int id);
+        IEnumerable<WelcomePackReceiverDTO> GetGuestsByConferenceId(int id);
         bool AddWelcomePackReceiver(WelcomePackReceiverDTO welcomepackreceiver);
         bool EditWelcomePackReceiver(WelcomePackReceiverDTO welcomepackreceiver);
         bool DeleteWelcomePackReceiver(int welcomepackreceiverId);
