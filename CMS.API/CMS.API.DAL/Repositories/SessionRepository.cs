@@ -154,8 +154,8 @@ namespace CMS.API.DAL.Repositories
             {
                 if (session.SpecialSessionId != specialSessionId)
                 {
-                    if (!(((DateTime.Compare(session.BeginDate, beginDate) > 0) && (DateTime.Compare(session.BeginDate, endDate) > 0))
-                    ||((DateTime.Compare(session.BeginDate, beginDate) < 0) && (DateTime.Compare(session.EndDate, beginDate) < 0))))
+                    if (!(((DateTime.Compare(session.BeginDate, beginDate) > 0) && (DateTime.Compare(session.BeginDate, endDate) >= 0))
+                    ||((DateTime.Compare(session.BeginDate, beginDate) < 0) && (DateTime.Compare(session.EndDate, beginDate) <= 0))))
                     {
                         return true;
                     }
