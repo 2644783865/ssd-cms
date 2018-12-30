@@ -17,27 +17,19 @@ namespace CMS.API.Tests
             bll = new MessageBLL();
         }
 
-
-/* Doesn't work, because a null value is returned although the is a message in the db
         [TestMethod]
         public void TestGetMessages()
         {
             var result = bll.GetMessages();
             Assert.AreEqual(1, result.Count());
         }
-*/
-
-
-/* Doesn't work, because a null value is returned although the is a message in the db
-        [TestMethod]
-        public void TestGetMessagesBySenderId1()
+        
+    public void TestGetMessagesBySenderId1()
         {
             var result = bll.GetMessagesBySenderId(1);
             Assert.AreEqual(1, result.Count());
         }
-*/
-
-
+        
         [TestMethod]
         public void TestGetMessagesBySenderId2()
         {
@@ -45,16 +37,12 @@ namespace CMS.API.Tests
             Assert.IsNull(result);
         }
 
-
-/* Doesn't work, because a null value is returned although the is a message in the db
         [TestMethod]
         public void TestGetMessagesByReceiverId1()
         {
             var result = bll.GetMessagesByReceiverId(2);
             Assert.AreEqual(1, result.Count());
         }
-*/
-
 
         [TestMethod]
         public void TestGetMessagesByReceiverId2()
@@ -66,7 +54,7 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestGetMessageById()
         {
-            var result = bll.GetMessageById(4);
+            var result = bll.GetMessageById(1);
             Assert.IsNotNull(result);
         }
     }

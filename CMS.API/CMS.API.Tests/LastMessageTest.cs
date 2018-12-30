@@ -23,24 +23,18 @@ namespace CMS.API.Tests
             Assert.IsNotNull(result);
         }
 
-
-/* Doesn't work correclty, work implementation in DAL
         [TestMethod]
         public void TestGetLastMessageByFirstId()
         {
             var result = bll.GetLastMessageByFirstId(1);
             Assert.IsNotNull(result);
         }
-*/
 
-
-/*  Doesn't work correclty, work implementation in DAL
         [TestMethod]
         public void TestGetLastMessageBySecondId()
         {
             var result = bll.GetLastMessageBySecondId(2);
             Assert.IsNotNull(result);
         }
-*/
     }
 } 

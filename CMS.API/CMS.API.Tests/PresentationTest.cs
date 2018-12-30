@@ -46,16 +46,13 @@ namespace CMS.API.Tests
             var result = bll.EditSpecialSessionOfPresentation(1, 1);
             Assert.IsFalse(result);
         }
-
-
+        
         [TestMethod]
         public void TestDeleteSessionFromPresentation()
         {
             var result = bll.DeleteSessionFromPresentation(1);
             Assert.IsTrue(result);
         }
-
-
 
         [TestMethod]
         public void TestEditSpecialSessionOfPresentation2()
@@ -71,8 +68,6 @@ namespace CMS.API.Tests
             Assert.IsFalse(result);
         }
 
-
-// Doesn't work because of error in EditPresentation
         [TestMethod]
         public void TestDeleteSpecialSessionFromPresentation()
         {
@@ -80,17 +75,13 @@ namespace CMS.API.Tests
             Assert.IsTrue(result);
         }
 
-
-
         [TestMethod]
         public void TestGetPresentationsById()
         {
             var result = bll.GetPresentationsById(1);
             Assert.AreEqual(1, result.Count());
         }
-
-
-
+               
         [TestMethod]
         public void TestGetPresentationById()
         {
