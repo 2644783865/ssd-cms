@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="AuthenticationTest.cs" />
     <Compile Include="AwardTest.cs" />
+    <Compile Include="EmergencyInfoTest.cs" />
+    <Compile Include="ReviewTest.cs" />
     <Compile Include="SessionTest.cs" />
     <Compile Include="PresentationTest.cs" />
     <Compile Include="TaskTest.cs" />
@@ -73,6 +75,11 @@
     <Compile Include="RoomTest.cs" />
     <Compile Include="MessageTest.cs" />
     <Compile Include="LastMessageTest.cs" />
+    <Compile Include="AcommodationInfoTest.cs" />
+    <Compile Include="ArticleTest.cs" />
+    <Compile Include="AuthorTest.cs" />
+    <Compile Include="TravelTest.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
