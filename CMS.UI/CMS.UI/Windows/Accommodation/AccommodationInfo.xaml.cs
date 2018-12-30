@@ -76,6 +76,7 @@ namespace CMS.UI.Windows.Accommodation
                         currentAccommodation.CityDesc = CityDescBox.Text;
 
                         result = await core.EditAccommodationInfoAsync(currentAccommodation);
+          
                     }
 
                     if (result)

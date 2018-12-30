@@ -122,6 +122,9 @@
     <Compile Include="Windows\Emergency\EmergencyInfo.xaml.cs">
       <DependentUpon>EmergencyInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Emergency\EmergencyInfoOnlyRead.xaml.cs">
+      <DependentUpon>EmergencyInfoOnlyRead.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Event\AddEditEvent.xaml.cs" />
     <Compile Include="Windows\Home\AdministratorPanel.xaml.cs">
       <DependentUpon>AdministratorPanel.xaml</DependentUpon>
@@ -264,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Emergency\EmergencyInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Emergency\EmergencyInfoOnlyRead.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
