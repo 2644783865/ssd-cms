@@ -79,7 +79,7 @@
     <Compile Include="ArticleTest.cs" />
     <Compile Include="AuthorTest.cs" />
     <Compile Include="TravelTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="WelcomePackTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
