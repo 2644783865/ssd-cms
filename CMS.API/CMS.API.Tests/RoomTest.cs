@@ -35,7 +35,7 @@ namespace CMS.API.Tests
         public void TestAssignedBuildingsForConference()
         {
             var result = bll.GetAssignedBuildingsForConference(1);
-            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual(1, result.Count());
         }
 
         [TestMethod]
