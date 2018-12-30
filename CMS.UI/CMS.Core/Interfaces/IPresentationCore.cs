@@ -18,7 +18,7 @@ namespace CMS.Core.Interfaces
         Task<bool> DeleteSessionFromPresentationAsync(int presentationId);
         Task<bool> DeleteSpecialSessionFromPresentationAsync(int presentationId);
 
-        Task<List<SessionDTO>> GetPresentationsByIdAsync(int conferenceID);
-        Task<SessionDTO> GetPresentationByIdAsync(int presentationId);
+        Task<List<PresentationDTO>> GetPresentationsByIdAsync(int conferenceID);
+        Task<PresentationDTO> GetPresentationByIdAsync(int presentationId);
     }
 }

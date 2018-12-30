@@ -75,24 +75,24 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        public async Task<List<SessionDTO>> GetPresentationsByIdAsync(int conferenceId)
+        public async Task<List<PresentationDTO>> GetPresentationsByIdAsync(int conferenceId)
         {
             var path = $"{Properties.Resources.getPresentationsByIdPath}?conferenceId={conferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                return JsonConvert.DeserializeObject<List<SessionDTO>>(result.Content);
+                return JsonConvert.DeserializeObject<List<PresentationDTO>>(result.Content);
             }
             else return null;
         }
 
-        public async Task<SessionDTO> GetPresentationByIdAsync(int presentationId)
+        public async Task<PresentationDTO> GetPresentationByIdAsync(int presentationId)
         {
             var path = $"{Properties.Resources.getPresentationByIdPath}?presentationId={presentationId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                return JsonConvert.DeserializeObject<SessionDTO>(result.Content);
+                return JsonConvert.DeserializeObject<PresentationDTO>(result.Content);
             }
             else return null;
         }

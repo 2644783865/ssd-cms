@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <DataGrid Name="SessionList"  HorizontalAlignment="Left" Height="301" AutoGenerateColumns="False" Margin="28,48,0,0" IsReadOnly="True" VerticalAlignment="Top" Width="490" Grid.ColumnSpan="2" MouseDoubleClick="SessionList_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ArticleId}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding SessionId}"/>
                 <DataGridTextColumn Header="Title" Binding="{Binding Title}" MaxWidth="200"/>
                 <DataGridTextColumn Header="BeginDate" Binding="{Binding BeginDate}"/>
                 <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}" />
@@ -26,7 +26,7 @@
         </DataGrid>
         <DataGrid Name="SpecialSessionList"  HorizontalAlignment="Left" Height="301" AutoGenerateColumns="False" Margin="291,48,0,0" IsReadOnly="True" VerticalAlignment="Top" Width="490" Grid.Column="1" MouseDoubleClick="SpecialSessionList_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ArticleId}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding SpecialSessionId}"/>
                 <DataGridTextColumn Header="Title" Binding="{Binding Title}" MaxWidth="200"/>
                 <DataGridTextColumn Header="BeginDate" Binding="{Binding BeginDate}"/>
                 <DataGridTextColumn Header="EndDate" Binding="{Binding EndDate}" />
