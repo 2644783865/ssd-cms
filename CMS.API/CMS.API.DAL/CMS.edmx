@@ -257,6 +257,7 @@
           <Property Name="LastName" Type="varchar" MaxLength="150" />
           <Property Name="Type" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="GetGift" Type="bit" Nullable="false" />
+          <Property Name="ConferenceId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Accommoda__Confe__68487DD7">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
@@ -582,6 +583,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__WelcomePa__Confe__3D2915A8">
+          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
+          <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conference">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="WelcomePackReceiver">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_PresentationArticle">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="Presentation" Type="Self.Presentation" Multiplicity="*" />
@@ -847,6 +860,10 @@
             <End Role="Conference" EntitySet="Conference" />
             <End Role="TravelInfo" EntitySet="TravelInfo" />
           </AssociationSet>
+          <AssociationSet Name="FK__WelcomePa__Confe__3D2915A8" Association="Self.FK__WelcomePa__Confe__3D2915A8">
+            <End Role="Conference" EntitySet="Conference" />
+            <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceiver" />
+          </AssociationSet>
           <AssociationSet Name="fk_PresentationArticle" Association="Self.fk_PresentationArticle">
             <End Role="Article" EntitySet="Article" />
             <End Role="Presentation" EntitySet="Presentation" />
@@ -1001,6 +1018,7 @@
           <NavigationProperty Name="Events" Relationship="Self.FK__Event__Conferenc__6E01572D" FromRole="Conference" ToRole="Event" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__Conference__59FA5E80" FromRole="Conference" ToRole="Task" />
           <NavigationProperty Name="TravelInfoes" Relationship="Self.FK__TravelInf__Confe__6B24EA82" FromRole="Conference" ToRole="TravelInfo" />
+          <NavigationProperty Name="WelcomePackReceivers" Relationship="Self.FK__WelcomePa__Confe__3D2915A8" FromRole="Conference" ToRole="WelcomePackReceiver" />
           <NavigationProperty Name="SpecialSessions" Relationship="Self.fk_SessionConference" FromRole="Conference" ToRole="SpecialSession" />
           <NavigationProperty Name="Sessions" Relationship="Self.fk_SpecialSessionConference" FromRole="Conference" ToRole="Session" />
           <NavigationProperty Name="Buildings" Relationship="Self.ConferenceBuilding" FromRole="Conference" ToRole="Building" />
@@ -1205,6 +1223,8 @@
           <Property Name="LastName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="GetGift" Type="Boolean" Nullable="false" />
+          <Property Name="ConferenceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Conference" Relationship="Self.FK__WelcomePa__Confe__3D2915A8" FromRole="WelcomePackReceiver" ToRole="Conference" />
         </EntityType>
         <Association Name="FK__Accommoda__Confe__68487DD7">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
@@ -1518,6 +1538,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__WelcomePa__Confe__3D2915A8">
+          <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
+          <End Role="WelcomePackReceiver" Type="Self.WelcomePackReceiver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conference">
+              <PropertyRef Name="ConferenceId" />
+            </Principal>
+            <Dependent Role="WelcomePackReceiver">
+              <PropertyRef Name="ConferenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_SessionConference">
           <End Role="Conference" Type="Self.Conference" Multiplicity="1" />
           <End Role="SpecialSession" Type="Self.SpecialSession" Multiplicity="*" />
@@ -1748,6 +1780,10 @@
           <AssociationSet Name="FK__TravelInf__Confe__6B24EA82" Association="Self.FK__TravelInf__Confe__6B24EA82">
             <End Role="Conference" EntitySet="Conferences" />
             <End Role="TravelInfo" EntitySet="TravelInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WelcomePa__Confe__3D2915A8" Association="Self.FK__WelcomePa__Confe__3D2915A8">
+            <End Role="Conference" EntitySet="Conferences" />
+            <End Role="WelcomePackReceiver" EntitySet="WelcomePackReceivers" />
           </AssociationSet>
           <AssociationSet Name="fk_SessionConference" Association="Self.fk_SessionConference">
             <End Role="Conference" EntitySet="Conferences" />
@@ -2050,6 +2086,7 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="GetGift" ColumnName="GetGift" />
+                <ScalarProperty Name="ConferenceId" ColumnName="ConferenceId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

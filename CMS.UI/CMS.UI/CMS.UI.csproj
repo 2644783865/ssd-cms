@@ -193,6 +193,9 @@
     <Compile Include="Windows\Session\PresentationSession.xaml.cs">
       <DependentUpon>PresentationSession.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Session\PresentationSpecialSession.xaml.cs">
+      <DependentUpon>PresentationSpecialSession.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Session\Session.xaml.cs">
       <DependentUpon>Session.xaml</DependentUpon>
     </Compile>
@@ -365,6 +368,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Session\PresentationSession.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Session\PresentationSpecialSession.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

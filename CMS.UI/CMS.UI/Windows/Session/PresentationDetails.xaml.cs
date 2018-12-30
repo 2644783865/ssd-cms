@@ -1,21 +1,10 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using CMS.UI.Windows.Articles;
 using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Session
 {
@@ -28,6 +17,7 @@ namespace CMS.UI.Windows.Session
         private IAuthenticationCore authCore;
         private IArticleCore articleCore;
         private ISessionCore sessionCore;
+        private IPresentationCore core;
         public PresentationDetails(PresentationDTO presentation)
         {
             InitializeComponent();
@@ -35,6 +25,7 @@ namespace CMS.UI.Windows.Session
             authCore = new AuthenticationCore();
             articleCore = new ArticleCore();
             sessionCore = new SessionCore();
+            core = new PresentationCore();
             FillPresentationBoxes();
         }
 
@@ -66,9 +57,27 @@ namespace CMS.UI.Windows.Session
             Close();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (ValidateForm())
+            {
+                var account = await authCore.GetAccountByLoginAsync(PresenterBox.Text);
+                if (account != null)
+                {
+                    presentation.Title = TitleBox.Text;
+                    presentation.Description = DescriptionBox.Text;
+                    presentation.PresenterId = account.AccountId;
 
+                    if (await core.EditPresentationAsync(presentation))
+                    {
+                        MessageBox.Show("Successfully edited presentation");
+                        Close();
+                    }
+                    else MessageBox.Show("Something went wrong while editing presentation");
+                }
+                else MessageBox.Show("Account with given login doesn't exits");
+            }
+            else MessageBox.Show("Form invalid");
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -79,6 +88,15 @@ namespace CMS.UI.Windows.Session
                 ArticleDetails newWindow = new ArticleDetails(article);
                 newWindow.ShowDialog();
             }
+        }
+
+        private bool ValidateForm()
+        {
+            var result = true;
+            result = !ValidationHelper.ValidateTextFiled(TitleBox.Text.Length > 0, TitleBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(DescriptionBox.Text.Length > 0, DescriptionBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(PresenterBox.Text.Length > 0, PresenterBox) ? false : result;
+            return result;
         }
     }
 }

@@ -19,5 +19,8 @@ namespace CMS.API.DAL
         public string LastName { get; set; }
         public string Type { get; set; }
         public bool GetGift { get; set; }
+        public int ConferenceId { get; set; }
+    
+        public virtual Conference Conference { get; set; }
     }
 }

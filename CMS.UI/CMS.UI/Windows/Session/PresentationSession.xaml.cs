@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
@@ -160,6 +152,11 @@ namespace CMS.UI.Windows.Session
             var presentation = (PresentationDTO)((ListBox)sender).SelectedItem;
             PresentationDetails newWindow = new PresentationDetails(presentation);
             newWindow.ShowDialog();
+        }
+
+        private void MetroWindow_Activated(object sender, System.EventArgs e)
+        {
+            Refresh();
         }
     }
 }

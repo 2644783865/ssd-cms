@@ -24,6 +24,7 @@ namespace CMS.API.DAL
             this.Events = new HashSet<Event>();
             this.Tasks = new HashSet<Task>();
             this.TravelInfoes = new HashSet<TravelInfo>();
+            this.WelcomePackReceivers = new HashSet<WelcomePackReceiver>();
             this.SpecialSessions = new HashSet<SpecialSession>();
             this.Sessions = new HashSet<Session>();
             this.Buildings = new HashSet<Building>();
@@ -50,6 +51,8 @@ namespace CMS.API.DAL
         public virtual ICollection<Task> Tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TravelInfo> TravelInfoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WelcomePackReceiver> WelcomePackReceivers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SpecialSession> SpecialSessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
