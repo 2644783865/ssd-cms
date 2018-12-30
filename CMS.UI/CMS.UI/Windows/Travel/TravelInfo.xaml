@@ -21,10 +21,10 @@
             <Label Content="Railway Road Time:" Margin="0,0,0,0" Height="25"/>
             <TextBox Name="RailwayRoadTimeBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
             <Label Content="Taxi Number:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="TaxiNumBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
+            <TextBox Name="TaxiNumBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25" MaxLength="15"/>
         </StackPanel>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="199,332,0,0" VerticalAlignment="Top" Width="75" Click="Button_Save"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="290,332,0,0" VerticalAlignment="Top" Width="75" Click="Button_Cancel"/>
+        <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="199,332,0,0" VerticalAlignment="Top" Width="75" Click="Button_Save"/>
+        <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="290,332,0,0" VerticalAlignment="Top" Width="75" Click="Button_Cancel"/>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" HorizontalAlignment="Left" Margin="28,0,0,1" VerticalAlignment="Bottom" Height="45" Width="36"/>
 
     </Grid>

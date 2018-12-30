@@ -28,7 +28,7 @@ namespace CMS.UI.Windows.Emergency
         private void InitializeEditFields()
         {
             currentEmergency.EmergencyNum= EmergencyNumBox.Text;
-            currentEmergency.EmergencyInfo= EmergencyInfoBox.Text;
+            currentEmergency.EmergencyInfo1= EmergencyInfoBox.Text;
             this.Title = "Edit Emergency Info";
 
         }
@@ -45,14 +45,15 @@ namespace CMS.UI.Windows.Emergency
                         var emergencyModel = new EmergencyInfoDTO()
                         {
                             EmergencyNum = EmergencyNumBox.Text,
-                            EmergencyInfo = EmergencyInfoBox.Text,
+                            EmergencyInfo1 = EmergencyInfoBox.Text,
+                            ConferenceId = UserCredentials.Conference.ConferenceId
                         };
                         result = await core.AddEmergencyInfoAsync(emergencyModel);
                     }
                     else
                     {
                         currentEmergency.EmergencyNum= EmergencyNumBox.Text;
-                        currentEmergency.EmergencyInfo= EmergencyInfoBox.Text;
+                        currentEmergency.EmergencyInfo1= EmergencyInfoBox.Text;
                         
                         result = await core.EditEmergencyInfoAsync(currentEmergency);
                     }

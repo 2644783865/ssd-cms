@@ -1,6 +1,5 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
-using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
@@ -22,7 +21,7 @@ namespace CMS.UI.Windows.Travel
             currenTravel = travel;
             if (travel != null) InitializeEditFields();
             this.Title = "Add Travel";
-
+            SaveButton.Content = "Add";
         }
 
         private void InitializeEditFields()
@@ -38,18 +37,16 @@ namespace CMS.UI.Windows.Travel
             currenTravel.RailwayRoadTime = RailwayRoadTime;
             currenTravel.TaxiNum = TaxiNumBox.Text;
             this.Title = "Edit Travel";
-
+            SaveButton.Content = "Save";
         }
 
         private async void Button_Save(object sender, RoutedEventArgs e)
         {
-
-            int AirportRoadTime = System.Convert.ToInt32(AirportRoadTimeBox.Text);
-            int RailwayRoadTime = System.Convert.ToInt32(RailwayRoadTimeBox.Text);
-
             ProgressSpin.IsActive = true;
             if (ValidateForm()) using (ITravelInfoCore core = new TravelInfoCore())
                 {
+                    int AirportRoadTime = System.Convert.ToInt32(AirportRoadTimeBox.Text);
+                    int RailwayRoadTime = System.Convert.ToInt32(RailwayRoadTimeBox.Text);
                     bool result = false;
 
                     if (currenTravel == null)
@@ -61,7 +58,8 @@ namespace CMS.UI.Windows.Travel
                             AirportRoadTime = AirportRoadTime,
                             RailwayRoad = RailwayRoadBox.Text,
                             RailwayRoadTime = RailwayRoadTime,
-                            TaxiNum= TaxiNumBox.Text
+                            TaxiNum= TaxiNumBox.Text,
+                            ConferenceId = UserCredentials.Conference.ConferenceId
                         };
                         result = await core.AddTravelAsync(travelModel);
                     }
@@ -104,6 +102,8 @@ namespace CMS.UI.Windows.Travel
             result = !ValidationHelper.ValidateTextFiled(TitleBox.Text.Length > 0, TitleBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(AirportRoadBox.Text.Length > 0, AirportRoadBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(RailwayRoadBox.Text.Length > 0, RailwayRoadBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(RailwayRoadTimeBox.Text.Length > 0 && int.TryParse(RailwayRoadTimeBox.Text, out _), RailwayRoadTimeBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(AirportRoadTimeBox.Text.Length > 0 && int.TryParse(AirportRoadTimeBox.Text, out _), AirportRoadTimeBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(TaxiNumBox.Text.Length > 0, TaxiNumBox) ? false : result;
             return result;
         }

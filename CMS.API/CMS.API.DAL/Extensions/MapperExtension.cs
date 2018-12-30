@@ -62,6 +62,7 @@ namespace CMS.API.DAL.Extensions
                     cfg.CreateMap<TravelInfo, TravelInfoDTO>();
                     cfg.CreateMap<TravelInfoDTO, TravelInfo>();
                     cfg.CreateMap<AccommodationInfo, AccommodationInfoDTO>();
+                    cfg.CreateMap<AccommodationInfoDTO, AccommodationInfo>();
                     cfg.CreateMap<EmergencyInfo, EmergencyInfoDTO>();
                     cfg.CreateMap<EmergencyInfoDTO, EmergencyInfo>();
                     cfg.CreateMap<WelcomePackReceiver, WelcomePackReceiverDTO>();

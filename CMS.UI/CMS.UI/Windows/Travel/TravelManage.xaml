@@ -15,6 +15,6 @@
         </StackPanel>
         <Button Content="Add" HorizontalAlignment="Left" Margin="47,232,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
         <Button Content="Edit" HorizontalAlignment="Left" Margin="159,232,0,0" VerticalAlignment="Top" Width="75" Click="Button_Edit"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="272,232,0,0" VerticalAlignment="Top" Width="75" Click="Button_Delete"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Background="Red" Margin="272,232,0,0" VerticalAlignment="Top" Width="75" Click="Button_Delete"/>
     </Grid>
 </Controls:MetroWindow>

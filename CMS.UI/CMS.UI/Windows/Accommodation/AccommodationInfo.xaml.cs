@@ -34,7 +34,7 @@ namespace CMS.UI.Windows.Accommodation
             currentAccommodation = accommodation;
             if (accommodation != null) InitializeEditFields();
             this.Title = "Add Accommodation";
-               
+            SaveButton.Content = "Add";   
         }
 
         private void InitializeEditFields()
@@ -46,6 +46,7 @@ namespace CMS.UI.Windows.Accommodation
             currentAccommodation.City = CityBox.Text;
             currentAccommodation.CityDesc = CityDescBox.Text;
             this.Title = "Edit Accommodation";
+            SaveButton.Content = "Save";
         }
 
         private async void Button_Save(object sender, RoutedEventArgs e)
@@ -63,7 +64,8 @@ namespace CMS.UI.Windows.Accommodation
                             Description = DescriptionBox.Text,
                             Currency = CurrencyBox.Text,
                             City = CityBox.Text,
-                            CityDesc = CityDescBox.Text
+                            CityDesc = CityDescBox.Text,
+                            ConferenceId = UserCredentials.Conference.ConferenceId
                         };
                         result = await core.AddAccommodationInfoAsync(accommodationModel);
                     }
@@ -106,6 +108,7 @@ namespace CMS.UI.Windows.Accommodation
             result = !ValidationHelper.ValidateTextFiled(DescriptionBox.Text.Length > 0, DescriptionBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(CityBox.Text.Length > 0, CityBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(CityDescBox.Text.Length > 0, CityDescBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(CurrencyBox.Text.Length > 0, CityDescBox) ? false : result;
             return result;
         }
     }
