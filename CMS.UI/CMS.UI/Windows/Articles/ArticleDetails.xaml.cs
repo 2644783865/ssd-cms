@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CMS.UI.Windows.Reviews;
 using System.Windows.Controls;
+using CMS.UI.Windows.Session;
 
 namespace CMS.UI.Windows.Articles
 {
@@ -20,11 +21,13 @@ namespace CMS.UI.Windows.Articles
     {
         private ArticleDTO currentArticle;
         private IArticleCore core;
+        private IPresentationCore presCore;
         private List<AuthorDTO> authors = new List<AuthorDTO>();
         public ArticleDetails(ArticleDTO article)
         {
             InitializeComponent();
             core = new ArticleCore();
+            presCore = new PresentationCore();
             currentArticle = article;
             FillArticleBoxes();
         }
@@ -34,7 +37,7 @@ namespace CMS.UI.Windows.Articles
             IdLabel.Content = currentArticle.ArticleId;
             TopicBox.Text = currentArticle.Topic;
             StatusBox.Text = currentArticle.Status;
-            AcceptanceDateBox.Text = currentArticle.AcceptanceDate.HasValue ? currentArticle.AcceptanceDate.Value.ToString() : string.Empty;
+            AcceptanceDateBox.Text = currentArticle.AcceptanceDate.HasValue ? currentArticle.AcceptanceDate.Value.ToShortDateString() : string.Empty;
             await LoadSubmissions();
             await LoadAuthors();
             SetVisibility();
@@ -119,9 +122,14 @@ namespace CMS.UI.Windows.Articles
             return reader.ReadBytes((int)data.Length);
         }
 
-        private void PresentationButton_Click(object sender, RoutedEventArgs e)
+        private async void PresentationButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (currentArticle.PresentationId.HasValue)
+            {
+                var presentation = await presCore.GetPresentationByIdAsync(currentArticle.PresentationId.Value);
+                PresentationDetails newWindow = new PresentationDetails(presentation);
+                newWindow.ShowDialog();
+            }
         }
 
         private async void AcceptButton_Click(object sender, RoutedEventArgs e)

@@ -103,16 +103,19 @@ namespace CMS.API.BLL.BLL
             {
                 var article = _repository.GetArticleById(articleId);
                 article.Status = "accepted";
-                article.AcceptanceDate = System.DateTime.Now;
+                article.AcceptanceDate = DateTime.Now;
                 var authors = _repository.GetAuthorsFromArticleId(articleId);
                 var presentation = new PresentationDTO()
                 {
                     PresenterId = authors.First().AccountId,
                     Title = article.Topic,
-                    ArticleId = article.ArticleId
+                    ArticleId = article.ArticleId,
+                    SpecialSessionId = article.SpecialSessionId
                 };
-                _repository.EditArticle(article);
                 _presentationRepository.AddPresentation(presentation);
+                var presentationId = (int)_presentationRepository.GetLastPresentationId();
+                article.PresentationId = presentationId;
+                _repository.EditArticle(article);
                 foreach (var author in authors)
                 {
                     var message = new MessageDTO()

@@ -69,5 +69,10 @@ namespace CMS.API.DAL.Repositories
             _db.Entry(_db.Presentations.Find(presentationId)).CurrentValues.SetValues(presentation);
             _db.SaveChanges();
         }
+
+        public decimal GetLastPresentationId()
+        {
+            return _db.Database.SqlQuery<decimal>("SELECT IDENT_CURRENT('Presentation')").FirstOrDefault();
+        }
     }
 }

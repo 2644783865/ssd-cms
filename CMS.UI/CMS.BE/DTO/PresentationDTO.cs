@@ -11,5 +11,6 @@
         public int? SpecialSessionId { get; set; }
         public decimal? Grade { get; set; }
 
+        public string PresentationDesc { get => $"{Title} s:{(SessionId.HasValue ? SessionId.Value.ToString() : "-")}"; }
     }
 }

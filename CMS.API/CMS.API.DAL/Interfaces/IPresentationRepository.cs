@@ -12,5 +12,6 @@ namespace CMS.API.DAL.Interfaces
         void AddPresentation(PresentationDTO presentationDTO);
         void EditPresentation(PresentationDTO presentationDTO);
         void DeletePresentation(int presentationId);
+        decimal GetLastPresentationId();
     }
 }

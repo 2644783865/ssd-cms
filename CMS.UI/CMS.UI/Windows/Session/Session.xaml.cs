@@ -40,7 +40,7 @@ namespace CMS.UI.Windows.Session
         {
             if (SessionList.SelectedIndex >= 0)
             {
-                AddEditSession newWindow = new AddEditSession((SessionDTO)SessionList.SelectedItem, null);
+                PresentationSession newWindow = new PresentationSession((SessionDTO)SessionList.SelectedItem);
                 newWindow.ShowDialog();
             }
             else MessageBox.Show("Select session first");
