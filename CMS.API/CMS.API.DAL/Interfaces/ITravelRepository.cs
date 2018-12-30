@@ -8,6 +8,7 @@ namespace CMS.API.DAL.Interfaces
     {
         IEnumerable<TravelInfoDTO> GetTravelInfo();
         TravelInfoDTO GetTravelInfoById(int id);
+        IEnumerable<TravelInfoDTO> GetTravelInfoByConferenceId(int id);
         void AddTravel(TravelInfoDTO travelDTO);
         void EditTravel(TravelInfoDTO travelDTO);
         void DeleteTravel(int travelId);

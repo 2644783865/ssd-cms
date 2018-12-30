@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -20,6 +21,15 @@ namespace CMS.API.DAL.Repositories
             var welcomePackReceiver = _db.WelcomePackReceivers.Find(welcomePackReceiverId);
             if (welcomePackReceiver == null) return null;
             else return MapperExtension.mapper.Map<WelcomePackReceiver, WelcomePackReceiverDTO>(welcomePackReceiver);
+        }
+
+        public IEnumerable<WelcomePackReceiverDTO> GetGuestsByConferenceId(int id)
+        {
+            var guests = _db.WelcomePackReceivers.Where(info => info.ConferenceId == id);
+            foreach (var guest in guests)
+            {
+                yield return MapperExtension.mapper.Map<WelcomePackReceiver, WelcomePackReceiverDTO>(guest);
+            }
         }
 
         public void AddWelcomePackReceiver(WelcomePackReceiverDTO welcomePackReceiverDTO)
@@ -48,5 +58,6 @@ namespace CMS.API.DAL.Repositories
         {
             _db.Dispose();
         }
+
     }
 }

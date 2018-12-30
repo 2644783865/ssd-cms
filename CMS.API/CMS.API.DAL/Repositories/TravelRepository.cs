@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -19,6 +20,15 @@ namespace CMS.API.DAL.Repositories
             var travel = _db.TravelInfoes.Find(travelId);
             if (travel == null) return null;
             else return MapperExtension.mapper.Map<TravelInfo, TravelInfoDTO>(travel);
+        }
+
+        public IEnumerable<TravelInfoDTO> GetTravelInfoByConferenceId(int id)
+        {
+            var infos = _db.TravelInfoes.Where(info => info.ConferenceId == id);
+            foreach (var info in infos)
+            {
+                yield return MapperExtension.mapper.Map<TravelInfo, TravelInfoDTO>(info);
+            }
         }
 
         public void AddTravel(TravelInfoDTO travelDTO)
