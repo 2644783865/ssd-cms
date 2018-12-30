@@ -14,7 +14,7 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                return _repository.GetMessages() as List<MessageDTO>;
+                return _repository.GetMessages();
             }
             catch
             {
@@ -26,7 +26,7 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                return _repository.GetMessagesBySenderId(senderId) as List<MessageDTO>;
+                return _repository.GetMessagesBySenderId(senderId);
             }
             catch
             {
@@ -38,7 +38,7 @@ namespace CMS.API.BLL.BLL
         {
             try
             {
-                return _repository.GetMessagesByReceiverId(receiverId) as List<MessageDTO>;
+                return _repository.GetMessagesByReceiverId(receiverId);
             }
             catch
             {

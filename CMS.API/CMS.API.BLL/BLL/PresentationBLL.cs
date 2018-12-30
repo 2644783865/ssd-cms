@@ -91,7 +91,7 @@ namespace CMS.API.BLL.BLL
                 }
                 else
                 {
-                    throw new Exception("There is already a Special Session existing!");
+                    return false;
                 }
                 _repository.EditPresentation(presentation);
             }
@@ -113,7 +113,7 @@ namespace CMS.API.BLL.BLL
                 }
                 else
                 {
-                    throw new Exception("There is already a Session existing!");
+                    return false;
                 }
                 _repository.EditPresentation(presentation);
             }

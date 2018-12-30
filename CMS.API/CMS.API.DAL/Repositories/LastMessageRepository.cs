@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -9,22 +10,22 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
-        public LastMessageDTO GetLastMessageByPairId(int PairId)
+        public LastMessageDTO GetLastMessageByPairId(int pairId)
         {
-            var lastMessage = _db.LastMessages.Find(PairId);
+            var lastMessage = _db.LastMessages.Find(pairId);
             if (lastMessage == null) return null;
             else return MapperExtension.mapper.Map<LastMessage, LastMessageDTO>(lastMessage);
         }
-        public LastMessageDTO GetLastMessageByFirstId(int FirstId)
+        public LastMessageDTO GetLastMessageByFirstId(int firstId)
         {
-            var lastMessage = _db.LastMessages.Find(FirstId);
+            var lastMessage = _db.LastMessages.Where(message => message.FirstId == firstId).ToList().First();
             if (lastMessage == null) return null;
             else return MapperExtension.mapper.Map<LastMessage, LastMessageDTO>(lastMessage);
         }
 
-        public LastMessageDTO GetLastMessageBySecondId(int SecondId)
+        public LastMessageDTO GetLastMessageBySecondId(int secondId)
         {
-            var lastMessage = _db.LastMessages.Find(SecondId);
+            var lastMessage = _db.LastMessages.Where(message => message.SecondId == secondId).ToList().First();
             if (lastMessage == null) return null;
             else return MapperExtension.mapper.Map<LastMessage, LastMessageDTO>(lastMessage);
         }

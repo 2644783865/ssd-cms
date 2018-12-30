@@ -22,15 +22,20 @@ namespace CMS.API.DAL.Repositories
             if (message == null) return null;
             else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
         }
+
         public IEnumerable<MessageDTO> GetMessagesBySenderId(int senderId)
         {
-            return _db.Messages.Where(message => message.SenderId == senderId).Select(message => message.Content).Distinct().Project().To<MessageDTO>();
-         
+            var msg = _db.Messages.Where(message => message.SenderId == senderId).Select(message => message.Content).Distinct().Project().To<MessageDTO>();
+            if (msg == null) return null;
+            else return msg;
         }
 
         public IEnumerable<MessageDTO> GetMessagesByReceiverId(int receiverId)
         {
-            return _db.Messages.Where(message => message.ReceiverId == receiverId).Select(message => message.Content).Distinct().Project().To<MessageDTO>();
+            var msg = _db.Messages.Where(message => message.ReceiverId == receiverId).Select(message => message.Content).Distinct().Project().To<MessageDTO>();
+            if (msg == null) return null;
+            else return msg;
+
         }
 
         public void AddMessage(MessageDTO messageDTO)

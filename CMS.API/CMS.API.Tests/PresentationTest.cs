@@ -43,6 +43,7 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestEditSpecialSessionOfPresentation1()
         {
+            var tmp = bll.EditSessionOfPresentation(1, 1);
             var result = bll.EditSpecialSessionOfPresentation(1, 1);
             Assert.IsFalse(result);
         }
@@ -64,6 +65,7 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestEditSessionOfPresentation2()
         {
+            var tmp = bll.EditSpecialSessionOfPresentation(1, 1);
             var result = bll.EditSessionOfPresentation(1, 1);
             Assert.IsFalse(result);
         }
