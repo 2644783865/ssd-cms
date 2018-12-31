@@ -23,7 +23,7 @@ namespace CMS.API.Tests
         public void TestGetMessages()
         {
             var result = bll.GetMessages();
-            Assert.AreEqual(1, result.Count());
+            Assert.AreEqual(2, result.Count());
         }
         
         [TestMethod]
@@ -37,7 +37,7 @@ namespace CMS.API.Tests
         public void TestGetMessagesBySenderId2()
         {
             var result = bll.GetMessagesBySenderId(2);
-            Assert.AreEqual(0, result.Count());
+            Assert.AreEqual(1, result.Count());
         }
 
         [TestMethod]
@@ -51,7 +51,7 @@ namespace CMS.API.Tests
         public void TestGetMessagesByReceiverId2()
         {
             var result = bll.GetMessagesByReceiverId(1);
-            Assert.AreEqual(0, result.Count());
+            Assert.AreEqual(1, result.Count());
         }
 
         [TestMethod]
@@ -59,6 +59,13 @@ namespace CMS.API.Tests
         {
             var result = bll.GetMessageById(1);
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestGetMessagesByAccountId()
+        {
+            var result = bll.GetMessagesByAccountId(1);
+            Assert.AreEqual(2, result.Count());
         }
     }
 }
