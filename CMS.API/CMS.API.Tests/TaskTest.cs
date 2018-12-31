@@ -20,15 +20,17 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestGetTasks()
         {
-            var result = taskTest.GetTasks(1);
-            Assert.AreEqual("TestTask", result.FirstOrDefault(task => task.ConferenceId == 1).Title);
+            int ConferenceId = 1;
+            var result = taskTest.GetTasks(ConferenceId);
+            Assert.AreEqual("TestTask", result.FirstOrDefault(task => task.ConferenceId == ConferenceId).Title);
         }
 
         [TestMethod]
         public void TestGetTaskById()
         {
-            var result = taskTest.GetTaskById(1);
-            Assert.AreNotEqual(null, result);
+            int id = 1;
+            var result = taskTest.GetTaskById(id);
+            Assert.AreEqual(null, result);
         }
 
         [TestMethod]
@@ -55,7 +57,7 @@ namespace CMS.API.Tests
             DateTime beginDate = new DateTime(2008, 5, 1, 8, 30, 52);
             DateTime endDate = new DateTime(2004, 5, 1, 8, 30, 52);
             var result = taskTest.CheckOverlappingTask(employeeId, beginDate, endDate);
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
     }
 }

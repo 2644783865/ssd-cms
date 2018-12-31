@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using CMS.API.BLL.BLL;
+﻿using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -28,7 +27,7 @@ namespace CMS.API.Tests
         {
             int id = 1;
             var result = awardTests.GetAwardById(id);
-            Assert.IsNull(result);
+            Assert.AreEqual(id, result.PresentationId);
         }
 
         [TestMethod]

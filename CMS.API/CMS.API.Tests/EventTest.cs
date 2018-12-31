@@ -33,6 +33,7 @@ namespace CMS.API.Tests
             var result = eventTest.GetEvents(1);
             Assert.AreEqual("TestEvent", result.FirstOrDefault(eventDTO => eventDTO.EventId == 1).Title);
         }
+
         [TestMethod]
         public void TestGetEventById()
         {
