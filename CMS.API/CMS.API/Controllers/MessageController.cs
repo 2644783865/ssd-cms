@@ -48,6 +48,18 @@ namespace CMS.API.Controllers
             return Ok(message);
         }
 
+        //Added function to get by account id
+        /*
+        // GET: api/Message/GetMessagesByAccountId?accountId=
+        [HttpGet]
+        [Route("api/message/getmessagesbyaccountid")]
+        public IHttpActionResult GetMessagesByAccountId(int accountId)
+        {
+            var messages = _bll.GetMessageByAccountId(accountId);
+            if (messages == null) return BadRequest();
+            return Ok(message);
+        }*/
+
         // POST: api/Message/AddMessage
         [HttpPost]
         [Route("api/message/addmessage")]

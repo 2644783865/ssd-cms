@@ -11,6 +11,8 @@ namespace CMS.Core.Interfaces
         Task<MessageDTO> GetMessageByIdAsync(int messageId);
         Task<MessageDTO> GetMessageBySenderIdAsync(int senderId);
         Task<MessageDTO> GetMessageByReceiverIdAsync(int receiverId);
+        //added function to get by account id
+        Task<List<MessageDTO>> GetMessagesByAccountIdAsync(int accountId);
         Task<bool> AddMessageAsync(MessageDTO message);
         Task<bool> EditMessageAsync(MessageDTO message);
         Task<bool> DeleteMessageAsync(int messageId);

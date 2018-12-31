@@ -1069,6 +1069,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/message/getmessagesbyaccountid.
+        /// </summary>
+        internal static string getMessagesByAccountIdPath {
+            get {
+                return ResourceManager.GetString("getMessagesByAccountIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/message/message.
         /// </summary>
         internal static string getMessagesPath {

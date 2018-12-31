@@ -55,6 +55,17 @@ namespace CMS.Core.Core
             }
             else return null;
         }
+        //added function to get by account id 
+        public async Task<List<MessageDTO>> GetMessagesByAccountIdAsync(int accountId)
+        {
+            var path = $"{Properties.Resources.getMessagesByAccountIdPath}?accountId={accountId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<MessageDTO>>(result.Content);
+            }
+            return null;
+        }
 
         public async Task<bool> AddMessageAsync(MessageDTO message)
         {
