@@ -351,6 +351,9 @@
   <data name="getAccommodationInfoInfoPath" xml:space="preserve">
     <value>api/accommodationinfo/accommodationinfoinfo</value>
   </data>
+  <data name="getAccomodationInfoByConferenceId" xml:space="preserve">
+    <value>api/accomodationinfo/getaccomodationinfobyconferenceid</value>
+  </data>
   <data name="getAccountByIdPath" xml:space="preserve">
     <value>api/authentication/accountbyid</value>
   </data>
@@ -515,6 +518,9 @@
   </data>
   <data name="getTravelByIdPath" xml:space="preserve">
     <value>api/travelinfo/travelbyid</value>
+  </data>
+  <data name="getTravelInfoByConferenceId" xml:space="preserve">
+    <value>api/travelinfo/gettravelinfobyconferenceid</value>
   </data>
   <data name="getTravelInfoPath" xml:space="preserve">
     <value>api/travelinfo/travelinfo</value>

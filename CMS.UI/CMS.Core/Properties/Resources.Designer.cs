@@ -763,6 +763,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/accomodationinfo/getaccomodationinfobyconferenceid.
+        /// </summary>
+        internal static string getAccomodationInfoByConferenceId {
+            get {
+                return ResourceManager.GetString("getAccomodationInfoByConferenceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/authentication/accountbyid.
         /// </summary>
         internal static string getAccountByIdPath {
@@ -1254,6 +1263,15 @@ namespace CMS.Core.Properties {
         internal static string getTravelByIdPath {
             get {
                 return ResourceManager.GetString("getTravelByIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to api/travelinfo/gettravelinfobyconferenceid.
+        /// </summary>
+        internal static string getTravelInfoByConferenceId {
+            get {
+                return ResourceManager.GetString("getTravelInfoByConferenceId", resourceCulture);
             }
         }
         

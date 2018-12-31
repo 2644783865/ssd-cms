@@ -12,5 +12,7 @@ namespace CMS.Core.Interfaces
         Task<bool> AddAccommodationInfoAsync(AccommodationInfoDTO accommodationInfo);
         Task<bool> EditAccommodationInfoAsync(AccommodationInfoDTO accommodationInfo);
         Task<bool> DeleteAccommodationInfoAsync(int accommodationInfoId);
+
+        Task<List<AccommodationInfoDTO>> GetAccommodationInfoByConferenceId(int id);
     }
 }

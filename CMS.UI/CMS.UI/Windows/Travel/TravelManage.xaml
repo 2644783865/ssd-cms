@@ -11,7 +11,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
             <Label Content="Travel Options:" Margin="0,0,0,0" Height="25"/>
-            <DataGrid Height="170" Width="300"/>
+            <DataGrid Name="TravelDataGrid" AutoGenerateColumns="True" Height="170" Width="300"/>
         </StackPanel>
         <Button Content="Add" HorizontalAlignment="Left" Margin="47,232,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
         <Button Content="Edit" HorizontalAlignment="Left" Margin="159,232,0,0" VerticalAlignment="Top" Width="75" Click="Button_Edit"/>

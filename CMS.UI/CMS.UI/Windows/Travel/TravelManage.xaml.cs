@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using CMS.Core.Interfaces;
+using CMS.Core.Core;
 
 namespace CMS.UI.Windows.Travel
 {
@@ -20,9 +12,24 @@ namespace CMS.UI.Windows.Travel
     /// </summary>
     public partial class TravelManage : MetroWindow
     {
+        private ITravelInfoCore travelCore;
         public TravelManage()
         {
             InitializeComponent();
+            travelCore = new TravelInfoCore();
+            InitializeData();
+        }
+
+        private async void InitializeData()
+        {
+            await LoadTravel();
+        }
+
+        private async Task LoadTravel()
+        {
+            var travel = await travelCore.GetTravelInfoByConferenceId(UserCredentials.Conference.ConferenceId);
+            TravelDataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
+            TravelDataGrid.ItemsSource = travel;
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)

@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using CMS.Core.Interfaces;
+using CMS.Core.Core;
 
 namespace CMS.UI.Windows.Accommodation
 {
@@ -20,9 +12,24 @@ namespace CMS.UI.Windows.Accommodation
     /// </summary>
     public partial class AccommodationManage : MetroWindow
     {
+        private IAccommodationInfoCore accomodationCore;
         public AccommodationManage()
         {
             InitializeComponent();
+            accomodationCore = new AccommodationInfoCore();
+            InitializeData();
+        }
+
+        private async void InitializeData()
+        {
+            await LoadAccomodation();
+        }
+
+        private async Task LoadAccomodation()
+        {
+            var accomodation = await accomodationCore.GetAccommodationInfoByConferenceId(UserCredentials.Conference.ConferenceId);
+            AccomodationDataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
+            AccomodationDataGrid.ItemsSource = accomodation;
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)

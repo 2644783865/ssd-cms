@@ -34,6 +34,17 @@ namespace CMS.Core.Core
             else return null;
         }
 
+        public async Task<List<TravelInfoDTO>> GetTravelInfoByConferenceId(int id)
+        {
+            var path = $"{Properties.Resources.getTravelInfoByConferenceId}?conferenceId={id}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<TravelInfoDTO>>(result.Content);
+            }
+            return null;
+        }
+
         public async Task<bool> AddTravelAsync(TravelInfoDTO travelInfo)
         {
             var path = Properties.Resources.addTravelPath;

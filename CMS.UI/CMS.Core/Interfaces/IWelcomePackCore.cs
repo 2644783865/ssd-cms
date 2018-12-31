@@ -12,5 +12,7 @@ namespace CMS.Core.Interfaces
         Task<bool> AddWelcomePackReceiverAsync(WelcomePackReceiverDTO welcomePackReceiver);
         Task<bool> EditWelcomePackReceiverAsync(WelcomePackReceiverDTO welcomePackReceiver);
         Task<bool> DeleteWelcomePackReceiverAsync(int welcomePackReceiverId);
+
+        Task<IEnumerable<WelcomePackReceiverDTO>> GetGuestsByConferenceId(int id);
     }
 }
