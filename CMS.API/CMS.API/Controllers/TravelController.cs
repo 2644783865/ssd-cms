@@ -30,6 +30,16 @@ namespace CMS.API.Controllers
             return Ok(travel);
         }
 
+        // GET: api/TravelInfo/TravelInfoByConferenceId?conferenceid=
+        [HttpGet]
+        [Route("api/travelinfo/travelinfobyconferenceid")]
+        public IHttpActionResult GetTravelInfoByConferenceId(int conferenceid)
+        {
+            var travel = _bll.GetTravelInfoByConferenceId(conferenceid);
+            if (travel == null) return BadRequest();
+            return Ok(travel);
+        }
+
         // POST: api/TravelInfo/AddTravel
         [HttpPost]
         [Route("api/travelinfo/addtravel")]

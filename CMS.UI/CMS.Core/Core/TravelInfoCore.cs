@@ -34,9 +34,9 @@ namespace CMS.Core.Core
             else return null;
         }
 
-        public async Task<List<TravelInfoDTO>> GetTravelInfoByConferenceId(int id)
+        public async Task<List<TravelInfoDTO>> GetTravelInfoByConferenceIdAsync(int conferenceid)
         {
-            var path = $"{Properties.Resources.getTravelInfoByConferenceId}?conferenceId={id}";
+            var path = $"{Properties.Resources.getTravelInfoByConferenceId}?conferenceId={conferenceid}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

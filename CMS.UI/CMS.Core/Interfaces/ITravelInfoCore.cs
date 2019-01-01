@@ -9,10 +9,9 @@ namespace CMS.Core.Interfaces
     {
         Task<List<TravelInfoDTO>> GetTravelInfoAsync();
         Task<TravelInfoDTO> GetTravelByIdAsync(int travelId);
+        Task<List<TravelInfoDTO>> GetTravelInfoByConferenceIdAsync(int conferenceid);
         Task<bool> AddTravelAsync(TravelInfoDTO travel);
         Task<bool> EditTravelAsync(TravelInfoDTO travel);
         Task<bool> DeleteTravelAsync(int travelId);
-
-        Task<List<TravelInfoDTO>> GetTravelInfoByConferenceId(int id);
     }
 }

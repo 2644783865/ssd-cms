@@ -35,9 +35,9 @@ namespace CMS.Core.Core
             else return null;
         }
 
-        public async Task<List<AuthorDTO>> GetAuthorsForArticleAsync(int articleId)
+        public async Task<List<AuthorDTO>> GetAuthorsFromArticleIdAsync(int articleId)
         {
-            var path = $"{Properties.Resources.getAuthorsForArticle}?articleId={articleId}";
+            var path = $"{Properties.Resources.getAuthorsFromArticleIdPath}?articleId={articleId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -55,6 +55,28 @@ namespace CMS.Core.Core
                 return JsonConvert.DeserializeObject<List<ArticleDTO>>(result.Content);
             }
             return null;
+        }
+
+        public async Task<List<ArticleDTO>> GetSubmittedArticlesAsync()
+        {
+            var path = $"{Properties.Resources.getSubmittedArticlesPath}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<ArticleDTO>>(result.Content);
+            }
+            else return null;
+        }
+
+        public async Task<List<ArticleDTO>> GetRejectedArticlesAsync()
+        {
+            var path = $"{Properties.Resources.getRejectedArticlesPath}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<ArticleDTO>>(result.Content);
+            }
+            else return null;
         }
 
         public async Task<bool> AddArticleAsync(AddArticleModel articleModel)

@@ -40,6 +40,14 @@ namespace CMS.API.Controllers
             return Ok(article);
         }
 
+        // GET: api/Article/AuthorsFromArticleId
+        [HttpGet]
+        [Route("api/article/authorsfromarticleid")]
+        public IHttpActionResult GetAuthorsFromArticleId(int articleId)
+        {
+            return Ok(_bll.GetAuthorsFromArticleId(articleId));
+        }
+
         // POST: api/Article/AddArticle
         [HttpPost]
         [Route("api/article/addarticle")]
@@ -50,7 +58,7 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // POST: api/Article/EditArticle
+        // PUT: api/Article/EditArticle
         [HttpPut]
         [Route("api/article/editarticle")]
         public IHttpActionResult EditArticle([FromBody] ArticleDTO article)
@@ -89,6 +97,23 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
+
+        // GET: api/Submission/SubmittedArticles
+        [HttpGet]
+        [Route("api/submission/submittedarticles")]
+        public IHttpActionResult GetSubmittedArticles()
+        {
+            return Ok(_bll.GetSubmittedArticles());
+        }
+
+        // GET: api/Submission/RejectedArticles
+        [HttpGet]
+        [Route("api/submission/rejectedarticles")]
+        public IHttpActionResult GetRejectedArticles()
+        {
+            return Ok(_bll.GetRejectedArticles());
+        }
+
         // GET: api/Submission/Submissions
         [HttpGet]
         [Route("api/submission/submissions")]
@@ -113,14 +138,6 @@ namespace CMS.API.Controllers
         public IHttpActionResult GetSubmissionsForArticle(int articleId)
         {
             return Ok(_bll.GetSubmissionsForArticle(articleId));
-        }
-
-        // GET: api/Article/authorsForArticle
-        [HttpGet]
-        [Route("api/article/authorsforarticle")]
-        public IHttpActionResult GetAuthorsForArticle(int articleId)
-        {
-            return Ok(_bll.GetAuthorsFromArticleId(articleId));
         }
 
         // POST: api/Submission/AddSubmission
@@ -152,8 +169,8 @@ namespace CMS.API.Controllers
             return InternalServerError();
         }
 
-        // GET: api/Article/SetAuthorForArticle?articleId=&authorId
-        [HttpGet]
+        // POST: api/Article/SetAuthorForArticle?articleId=&authorId
+        [HttpPost]
         [Route("api/article/setauthorforarticle")]
         public IHttpActionResult SetAuthorForArticle(int articleId, int authorId)
         {

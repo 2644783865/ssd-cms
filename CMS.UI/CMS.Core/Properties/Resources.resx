@@ -351,8 +351,8 @@
   <data name="getAccommodationInfoInfoPath" xml:space="preserve">
     <value>api/accommodationinfo/accommodationinfoinfo</value>
   </data>
-  <data name="getAccomodationInfoByConferenceId" xml:space="preserve">
-    <value>api/accomodationinfo/getaccomodationinfobyconferenceid</value>
+  <data name="getAccomodationInfoByConferenceIdPath" xml:space="preserve">
+    <value>api/accommodationinfo/accommodationinfobyconferenceid</value>
   </data>
   <data name="getAccountByIdPath" xml:space="preserve">
     <value>api/authentication/accountbyid</value>
@@ -381,8 +381,8 @@
   <data name="getAuthorByIdPath" xml:space="preserve">
     <value>api/author/authorbyid</value>
   </data>
-  <data name="getAuthorsForArticle" xml:space="preserve">
-    <value>api/article/authorsforarticle</value>
+  <data name="getAuthorsFromArticleIdPath" xml:space="preserve">
+    <value>api/article/authorsfromarticleid</value>
   </data>
   <data name="getAuthorsPath" xml:space="preserve">
     <value>api/author/authors</value>
@@ -417,6 +417,9 @@
   <data name="getConferencesPath" xml:space="preserve">
     <value>api/conference/conferences</value>
   </data>
+  <data name="getEmergencyInfoByConferenceIdPath" xml:space="preserve">
+    <value>api/emergencyinfo/emergencyinfobyconferenceid</value>
+  </data>
   <data name="getEmergencyInfoByIdPath" xml:space="preserve">
     <value>api/emergencyinfo/emergencyinfobyid</value>
   </data>
@@ -428,6 +431,9 @@
   </data>
   <data name="getEventsPath" xml:space="preserve">
     <value>api/event/events</value>
+  </data>
+  <data name="getGuestsByConferenceIdPath" xml:space="preserve">
+    <value>api/welcomepackreceiver/guestsbyconferenceid</value>
   </data>
   <data name="getHRRolesPath" xml:space="preserve">
     <value>api/authentication/hrroles</value>
@@ -464,6 +470,9 @@
   </data>
   <data name="getPresentationsByIdPath" xml:space="preserve">
     <value>api/presentation/getpresentationsbyid</value>
+  </data>
+  <data name="getRejectedArticlesPath" xml:space="preserve">
+    <value>api/submission/rejectedarticles</value>
   </data>
   <data name="getReviewByIdPath" xml:space="preserve">
     <value>api/review/reviewbyid</value>
@@ -510,6 +519,9 @@
   <data name="getSubmissionsPath" xml:space="preserve">
     <value>api/submission/submissions</value>
   </data>
+  <data name="getSubmittedArticlesPath" xml:space="preserve">
+    <value>api/submission/submittedarticles</value>
+  </data>
   <data name="getTaskByIdPath" xml:space="preserve">
     <value>api/task/taskbyid</value>
   </data>
@@ -523,7 +535,7 @@
     <value>api/travelinfo/travelbyid</value>
   </data>
   <data name="getTravelInfoByConferenceId" xml:space="preserve">
-    <value>api/travelinfo/gettravelinfobyconferenceid</value>
+    <value>api/travelinfo/travelinfobyconferenceid</value>
   </data>
   <data name="getTravelInfoPath" xml:space="preserve">
     <value>api/travelinfo/travelinfo</value>

@@ -30,6 +30,16 @@ namespace CMS.API.Controllers
             return Ok(emergency);
         }
 
+        // GET: api/EmergencyInfo/EmergencyInfoByConferenceId?conferenceid=
+        [HttpGet]
+        [Route("api/emergencyinfo/emergencyinfobyconferenceid")]
+        public IHttpActionResult GetEmergencyInfoByConferenceId(int conferenceid)
+        {
+            var emergency = _bll.GetEmergencyInfoByConferenceId(conferenceid);
+            if (emergency == null) return BadRequest();
+            return Ok(emergency);
+        }
+
         // POST: api/EmergencyInfo/AddEmergencyInfo
         [HttpPost]
         [Route("api/emergencyinfo/addemergencyinfo")]

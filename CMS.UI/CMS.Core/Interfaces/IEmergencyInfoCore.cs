@@ -9,6 +9,7 @@ namespace CMS.Core.Interfaces
     {
         Task<List<EmergencyInfoDTO>> GetEmergencyInfoInfoAsync();
         Task<EmergencyInfoDTO> GetEmergencyInfoByIdAsync(int emergencyInfoId);
+        Task<EmergencyInfoDTO> GetEmergencyInfoByConferenceIdAsync(int conferenceId);
         Task<bool> AddEmergencyInfoAsync(EmergencyInfoDTO emergencyInfo);
         Task<bool> EditEmergencyInfoAsync(EmergencyInfoDTO emergencyInfo);
         Task<bool> DeleteEmergencyInfoAsync(int emergencyInfoId);

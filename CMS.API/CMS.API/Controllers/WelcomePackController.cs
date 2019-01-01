@@ -30,6 +30,16 @@ namespace CMS.API.Controllers
             return Ok(receiver);
         }
 
+        // GET: api/WelcomePackReceiver/GuestsByConferenceId?conferenceid=
+        [HttpGet]
+        [Route("api/welcomepackreceiver/guestsbyconferenceid")]
+        public IHttpActionResult GetGuestsByConferenceId(int conferenceid)
+        {
+            var receiver = _bll.GetGuestsByConferenceId(conferenceid);
+            if (receiver == null) return BadRequest();
+            return Ok(receiver);
+        }
+
         // POST: api/WelcomePackReceiver/AddWelcomePackReceiver
         [HttpPost]
         [Route("api/welcomepackreceiver/addwelcomepackreceiver")]

@@ -10,7 +10,10 @@ namespace CMS.Core.Interfaces
     {
         Task<List<ArticleDTO>> GetArticlesAsync(int conferenceId);
         Task<ArticleDTO> GetArticleByIdAsync(int articleId);
+        Task<List<AuthorDTO>> GetAuthorsFromArticleIdAsync(int articleId);
         Task<List<ArticleDTO>> GetArticlesForConferenceAndAuthorAsync(int conferenceId, int authorId);
+        Task<List<ArticleDTO>> GetSubmittedArticlesAsync();
+        Task<List<ArticleDTO>> GetRejectedArticlesAsync();
         Task<bool> AddArticleAsync(AddArticleModel articleModel);
         Task<bool> EditArticleAsync(ArticleDTO article);
         Task<bool> DeleteArticleAsync(int articleId);
@@ -25,6 +28,5 @@ namespace CMS.Core.Interfaces
         Task<bool> DeleteSubmissionAsync(int submissionId);
         Task<bool> AcceptArticleAsync(int articleId, int editorId);
         Task<bool> RejectArticleAsync(int articleId, int editorId);
-        Task<List<AuthorDTO>> GetAuthorsForArticleAsync(int articleId);
     }
 }

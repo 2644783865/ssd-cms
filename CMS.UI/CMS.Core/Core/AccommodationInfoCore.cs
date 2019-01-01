@@ -34,9 +34,9 @@ namespace CMS.Core.Core
             else return null;
         }
 
-        public async Task<List<AccommodationInfoDTO>> GetAccommodationInfoByConferenceId(int id)
+        public async Task<List<AccommodationInfoDTO>> GetAccommodationInfoByConferenceIdAsync(int conferenceid)
         {
-            var path = $"{Properties.Resources.getAccomodationInfoByConferenceId}?conferenceId={id}";
+            var path = $"{Properties.Resources.getAccomodationInfoByConferenceIdPath}?conferenceId={conferenceid}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

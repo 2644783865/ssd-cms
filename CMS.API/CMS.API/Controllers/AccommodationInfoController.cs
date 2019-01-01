@@ -30,6 +30,16 @@ namespace CMS.API.Controllers
             return Ok(accommodation);
         }
 
+        // GET: api/AccommodationInfo/AccommodationInfoByConferenceId?conferenceid=
+        [HttpGet]
+        [Route("api/accommodationinfo/accommodationinfobyconferenceid")]
+        public IHttpActionResult GetAccommodationInfoByConferenceId(int conferenceid)
+        {
+            var accommodation = _bll.GetAccommodationInfoByConferenceId(conferenceid);
+            if (accommodation == null) return BadRequest();
+            return Ok(accommodation);
+        }
+
         // POST: api/AccommodationInfo/AddAccommodationInfo
         [HttpPost]
         [Route("api/accommodationInfo/addaccommodationinfo")]

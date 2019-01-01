@@ -9,10 +9,9 @@ namespace CMS.Core.Interfaces
     {
         Task<List<WelcomePackReceiverDTO>> GetWelcomePackReceiverInfoAsync();
         Task<WelcomePackReceiverDTO> GetWelcomePackReceiverByIdAsync(int welcomePackReceiverId);
+        Task<List<WelcomePackReceiverDTO>> GetGuestsByConferenceIdAsync(int conferenceid);
         Task<bool> AddWelcomePackReceiverAsync(WelcomePackReceiverDTO welcomePackReceiver);
         Task<bool> EditWelcomePackReceiverAsync(WelcomePackReceiverDTO welcomePackReceiver);
         Task<bool> DeleteWelcomePackReceiverAsync(int welcomePackReceiverId);
-
-        Task<IEnumerable<WelcomePackReceiverDTO>> GetGuestsByConferenceId(int id);
     }
 }

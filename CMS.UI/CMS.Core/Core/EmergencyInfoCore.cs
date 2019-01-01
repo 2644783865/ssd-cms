@@ -34,6 +34,17 @@ namespace CMS.Core.Core
             else return null;
         }
 
+        public async Task<EmergencyInfoDTO> GetEmergencyInfoByConferenceIdAsync(int conferenceid)
+        {
+            var path = $"{Properties.Resources.getEmergencyInfoByConferenceIdPath}?conferenceId={conferenceid}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<EmergencyInfoDTO>(result.Content);
+            }
+            else return null;
+        }
+
         public async Task<bool> AddEmergencyInfoAsync(EmergencyInfoDTO emergencyInfo)
         {
             var path = Properties.Resources.addEmergencyInfoPath;

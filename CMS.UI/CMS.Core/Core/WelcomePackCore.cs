@@ -34,15 +34,14 @@ namespace CMS.Core.Core
             else return null;
         }
 
-        // add async
-        public Task<IEnumerable<WelcomePackReceiverDTO>> GetGuestsByConferenceId(int id)
+        public async Task<List<WelcomePackReceiverDTO>> GetGuestsByConferenceIdAsync(int conferenceid)
         {
-            //var path = $"{Properties.Resources.getGuestsByConferenceId}?conferenceId={id}";
-            //var result = await _apiHelper.Get(path);
-            //if (result != null && result.ResponseType == ResponseType.Success)
-            //{
-              //  return JsonConvert.DeserializeObject<IEnumerable<WelcomePackReceiverDTO>>(result.Content);
-            //}
+            var path = $"{Properties.Resources.getGuestsByConferenceIdPath}?conferenceId={conferenceid}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<WelcomePackReceiverDTO>>(result.Content);
+            }
             return null;
         }
 
