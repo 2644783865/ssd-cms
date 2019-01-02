@@ -31,13 +31,13 @@ namespace CMS.API.Tests
         public void TestGetEvents()
         {
             var result = eventTest.GetEvents(1);
-            Assert.AreEqual("TestEvent", result.FirstOrDefault(eventDTO => eventDTO.EventId == 1).Title);
+            Assert.AreEqual("Event Title", result.FirstOrDefault(eventDTO => eventDTO.EventId == 1).Title);
         }
 
         [TestMethod]
         public void TestGetEventById()
         {
-            var result = eventTest.GetEventById(1);
+            var result = eventTest.GetEventById(5);
             Assert.AreEqual("TestEvent", result.Title);
         }
     }
