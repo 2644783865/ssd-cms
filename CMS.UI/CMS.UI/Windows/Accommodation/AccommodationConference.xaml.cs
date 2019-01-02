@@ -15,15 +15,8 @@ using MahApps.Metro.Controls;
 using CMS.Core.Interfaces;
 using CMS.BE.DTO;
 using CMS.Core.Core;
-using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Articles;
-using MahApps.Metro.Controls;
-using System;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace CMS.UI.Windows.Accommodation
 {

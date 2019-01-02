@@ -47,7 +47,7 @@ namespace CMS.UI.Windows.Reviews
                 var review = new ReviewDTO()
                 {
                     Title = TitleBox.Text,
-                    Grade = float.Parse(GradeBox.SelectedValue.ToString()),
+                    Grade = decimal.Parse(GradeBox.SelectedValue.ToString()),
                     Comment = CommentBox.Text,
                     ReviewDate = DateTime.Now,
                     ReviewerId = UserCredentials.Account.AccountId,

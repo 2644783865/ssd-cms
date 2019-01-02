@@ -35,14 +35,14 @@ namespace CMS.UI.Windows.Reviews
 
         private void CalculateAverage()
         {
-            double average = 0;
+            decimal average = 0;
             if (reviews != null)
             {
                 foreach (var review in reviews)
                 {
                     average += review.Grade;
                 }
-                average = average / reviews.Count;
+                average = reviews.Count == 0 ? 0 : average / reviews.Count;
             }
             AvgGrade.Content = average;
         }
