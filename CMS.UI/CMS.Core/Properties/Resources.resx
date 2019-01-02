@@ -447,6 +447,9 @@
   <data name="getLastMessageBySecondIdPath" xml:space="preserve">
     <value>api/lastmessage/getlastmessagebysecondid</value>
   </data>
+  <data name="getLastMessagesByAccountIdPath" xml:space="preserve">
+    <value>api/message/getlastmessagesbyaccountid</value>
+  </data>
   <data name="getListRoomsPath" xml:space="preserve">
     <value>null</value>
   </data>

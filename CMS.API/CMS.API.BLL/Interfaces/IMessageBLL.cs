@@ -10,6 +10,7 @@ namespace CMS.API.BLL.Interfaces
         IEnumerable<MessageDTO> GetMessagesBySenderId(int senderId);
         IEnumerable<MessageDTO> GetMessagesByReceiverId(int receiverId);
         IEnumerable<MessageDTO> GetMessagesByAccountId(int accountId);
+        IEnumerable<LastMessageDTO> GetLastMessagesByAccountId(int accountId);
         MessageDTO GetMessageById(int messageId);
         bool AddMessage(MessageDTO message);
         bool EditMessage(MessageDTO message);
