@@ -30,16 +30,16 @@ namespace CMS.API.Tests
         {
             int id = 1;
             var result = taskTest.GetTaskById(id);
-            Assert.AreEqual(null, result);
+            Assert.AreEqual("TestTask", result.Title);
         }
 
         [TestMethod]
         public void TestGetTasksForEmployee()
         {
-            int EmployeeId = 1;
+            int EmployeeId = 2;
             int ConferenceId = 1;
             var result = taskTest.GetTasksForEmployee(EmployeeId, ConferenceId);
-            Assert.IsNotNull(result);
+            Assert.AreEqual("TestTask", result.First().Title);
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace CMS.API.Tests
         {
             int ConferenceId = 1;
             var result = taskTest.GetTasksByConferenceId(ConferenceId);
-            Assert.IsNotNull(result);             
+            Assert.AreEqual("TestTask", result.First().Title);             
         }
 
         [TestMethod]
