@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -46,10 +47,11 @@ namespace CMS.API.DAL.Repositories
         {
             if (GetAwards() != null)
             {
-                if (presentationId == GetAwards().GetEnumerator().Current.PresentationId) return true;
+                if (presentationId == GetAwards().First().PresentationId)
+                    return true;
                 else return false;
             }
-           else return false;
+            else return false;
         }
 
         public void DeleteAssignmentAwardToPresentation(int presentationId)
