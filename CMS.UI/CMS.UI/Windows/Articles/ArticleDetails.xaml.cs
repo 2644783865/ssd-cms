@@ -58,7 +58,7 @@ namespace CMS.UI.Windows.Articles
             AuthorsBox.ClearValue(ItemsControl.ItemsSourceProperty);
             AuthorsBox.DisplayMemberPath = "AuthorDesc";
             AuthorsBox.SelectedValuePath = "AuthorId";
-            authors = await core.GetAuthorsForArticleAsync(currentArticle.ArticleId);
+            authors = await core.GetAuthorsFromArticleIdAsync(currentArticle.ArticleId);
             AuthorsBox.ItemsSource = authors;
             if (AuthorsBox.Items.Count == 4) AddAuthorButton.IsEnabled = false;
             else AddAuthorButton.IsEnabled = true;

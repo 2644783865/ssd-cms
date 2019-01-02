@@ -47,7 +47,7 @@ namespace CMS.UI.Windows.Accommodation
 
         private async Task LoadLabels()
         {
-            var accomodation = await accomodationCore.GetAccommodationInfoByConferenceId(UserCredentials.Conference.ConferenceId);
+            var accomodation = await accomodationCore.GetAccommodationInfoByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
 
             if (accomodation != null)
             {

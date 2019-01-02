@@ -30,5 +30,6 @@
         <ListBox Name="ConferenceList" HorizontalAlignment="Center" Height="260" Margin="53,0,1010,25" VerticalAlignment="Bottom" Width="209" BorderThickness="1" SelectionChanged="ConferenceList_SelectionChanged"/>
         <Label Content="Active Conferences:" HorizontalAlignment="Center" Margin="53,0,1010,290" VerticalAlignment="Bottom" Width="209" FontSize="15"/>
         <Label Name="IdLabel" Content="" HorizontalAlignment="Left" Margin="371,30,0,0" VerticalAlignment="Top" FontSize="20" Width="124"/>
-    </Grid>
+		<Button Name="MessageButton" Content="Button" HorizontalAlignment="Left" Margin="1124,95,0,0" VerticalAlignment="Top" Width="75" Click="MessageButton_Click"/>
+	</Grid>
 </Controls:MetroWindow>

@@ -148,6 +148,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\Messages\MessageMainWindow.xaml.cs">
+      <DependentUpon>MessageMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Reviews\AddReview.xaml.cs">
       <DependentUpon>AddReview.xaml</DependentUpon>
     </Compile>
@@ -310,6 +313,10 @@
     <Page Include="Windows\Home\UserPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Messages\MessageMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Reviews\AddReview.xaml">
       <SubType>Designer</SubType>

@@ -27,7 +27,7 @@ namespace CMS.UI.Windows.Accommodation
 
         private async Task LoadAccomodation()
         {
-            var accomodation = await accomodationCore.GetAccommodationInfoByConferenceId(UserCredentials.Conference.ConferenceId);
+            var accomodation = await accomodationCore.GetAccommodationInfoByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
             AccomodationDataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
             AccomodationDataGrid.ItemsSource = accomodation;
         }

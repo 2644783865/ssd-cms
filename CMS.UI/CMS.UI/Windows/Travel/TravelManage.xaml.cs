@@ -27,7 +27,7 @@ namespace CMS.UI.Windows.Travel
 
         private async Task LoadTravel()
         {
-            var travel = await travelCore.GetTravelInfoByConferenceId(UserCredentials.Conference.ConferenceId);
+            var travel = await travelCore.GetTravelInfoByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
             TravelDataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
             TravelDataGrid.ItemsSource = travel;
         }

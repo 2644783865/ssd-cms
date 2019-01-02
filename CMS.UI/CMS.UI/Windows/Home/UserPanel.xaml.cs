@@ -3,6 +3,7 @@ using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
+using CMS.UI.Windows.Messages;
 using MahApps.Metro.Controls;
 using System.Threading.Tasks;
 using System.Windows;
@@ -122,6 +123,12 @@ namespace CMS.UI.Windows.Home
                 var result = await core.CheckIsManager(((ConferenceDTO)ConferenceList.SelectedItem).ConferenceId);
                 SetButtonVisibility(result);
             }
+        }
+
+        private void MessageButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageMainWindow newMainMessageWindow = new MessageMainWindow();
+            newMainMessageWindow.Show();
         }
     }
 }
