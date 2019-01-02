@@ -23,6 +23,11 @@ namespace CMS.API.DAL.Repositories
             else return MapperExtension.mapper.Map<Message, MessageDTO>(message);
         }
 
+        public IEnumerable<MessageDTO> GetMessagesByAccountId(int accountId)
+        {
+            return _db.Messages.Where(message => message.SenderId == accountId || message.ReceiverId == accountId).Project().To<MessageDTO>();
+        }
+
         public IEnumerable<MessageDTO> GetMessagesBySenderId(int senderId)
         {
             var msg = _db.Messages.Where(message => message.SenderId == senderId).Project().To<MessageDTO>();

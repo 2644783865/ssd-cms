@@ -48,25 +48,14 @@ namespace CMS.API.BLL.BLL
 
         public IEnumerable<MessageDTO> GetMessagesByAccountId(int accountId)
         {
-            List<MessageDTO> res = new List<MessageDTO>();
             try
             {
-                var sendMsg = _repository.GetMessagesBySenderId(accountId);
-                var recMsg = _repository.GetMessagesByReceiverId(accountId);
-                foreach (MessageDTO msg in sendMsg)
-                {
-                    res.Add(msg);
-                }
-                foreach (MessageDTO msg in recMsg)
-                {
-                    res.Add(msg);
-                }
+                return _repository.GetMessagesByAccountId(accountId);
             }
             catch
             {
                 return null;
             }
-            return res;
         }
 
         public MessageDTO GetMessageById(int messageId)

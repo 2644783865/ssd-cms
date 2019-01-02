@@ -16,6 +16,12 @@ namespace CMS.API.DAL.Repositories
             if (lastMessage == null) return null;
             else return MapperExtension.mapper.Map<LastMessage, LastMessageDTO>(lastMessage);
         }
+
+        public IEnumerable<LastMessageDTO> GetLastMessagesByAccountId(int accountId)
+        {
+            return _db.LastMessages.Where(message => message.FirstId==accountId || message.SecondId==accountId).Project().To<LastMessageDTO>();
+        }
+
         public LastMessageDTO GetLastMessageByFirstId(int firstId)
         {
             var lastMessage = _db.LastMessages.Where(message => message.FirstId == firstId).ToList().First();

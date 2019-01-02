@@ -6,6 +6,7 @@ namespace CMS.API.DAL.Interfaces
 {
     public interface ILastMessageRepository : IDisposable
     {
+        IEnumerable<LastMessageDTO> GetLastMessagesByAccountId(int accountId);
         LastMessageDTO GetLastMessageByPairId(int pairId);
         LastMessageDTO GetLastMessageByFirstId(int firstId);
         LastMessageDTO GetLastMessageBySecondId(int secondId);
