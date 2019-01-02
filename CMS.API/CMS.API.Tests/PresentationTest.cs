@@ -43,7 +43,9 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestEditSpecialSessionOfPresentation1()
         {
+            var tmp = bll.EditSessionOfPresentation(1, 1);
             var result = bll.EditSpecialSessionOfPresentation(1, 1);
+            if (tmp == true) bll.DeleteSessionFromPresentation(1);
             Assert.IsFalse(result);
         }
         
@@ -66,6 +68,7 @@ namespace CMS.API.Tests
         {
             var tmp = bll.EditSpecialSessionOfPresentation(1, 1);
             var result = bll.EditSessionOfPresentation(1, 1);
+            if (tmp == true) bll.DeleteSpecialSessionFromPresentation(1);
             Assert.IsFalse(result);
         }
 
@@ -80,7 +83,7 @@ namespace CMS.API.Tests
         public void TestGetPresentationsById()
         {
             var result = bll.GetPresentationsById(1);
-            Assert.AreEqual(1, result.Count());
+            Assert.AreEqual(2, result.Count());
         }
                
         [TestMethod]
