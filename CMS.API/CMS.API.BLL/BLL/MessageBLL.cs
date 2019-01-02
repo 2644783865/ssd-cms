@@ -108,5 +108,17 @@ namespace CMS.API.BLL.BLL
             }
             return true;
         }
+
+        public IEnumerable<LastMessageDTO> GetLastMessagesByAccountId(int accountId)
+        {
+            try
+            {
+                return _repository.GetLastMessagesByAccountId(accountId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

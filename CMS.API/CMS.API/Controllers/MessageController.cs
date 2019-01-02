@@ -48,17 +48,27 @@ namespace CMS.API.Controllers
             return Ok(message);
         }
 
-        //Added function to get by account id
-        /*
+
+        
         // GET: api/Message/GetMessagesByAccountId?accountId=
         [HttpGet]
         [Route("api/message/getmessagesbyaccountid")]
         public IHttpActionResult GetMessagesByAccountId(int accountId)
         {
-            var messages = _bll.GetMessageByAccountId(accountId);
+            var messages = _bll.GetMessagesByAccountId(accountId);
             if (messages == null) return BadRequest();
-            return Ok(message);
-        }*/
+            return Ok(messages);
+        }
+
+        // GET: api/Message/GetLastMessagesByAccountId?accountId=
+        [HttpGet]
+        [Route("api/message/getlastmessagesbyaccountid")]
+        public IHttpActionResult GetLastMessagesByAccountId(int accountId)
+        {
+            var messages = _bll.GetLastMessagesByAccountId(accountId);
+            if (messages == null) return BadRequest();
+            return Ok(messages);
+        }
 
         // POST: api/Message/AddMessage
         [HttpPost]

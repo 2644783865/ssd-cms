@@ -26,13 +26,14 @@ namespace CMS.UI.Windows.Messages
         IMessageCore core;
         IAuthenticationCore authcore;
         List<MessageDTO> chat;
+        List<LastMessageDTO> mostrecent;
         public MessageMainWindow()
         {
 
             core =  new MessageCore();
             authcore = new AuthenticationCore();
             InitializeComponent();
-            LoadMessages();
+            LoadMessageImmediately();
             DisplayMessages();
 
         }
@@ -40,19 +41,37 @@ namespace CMS.UI.Windows.Messages
         public async void LoadMessages()
         {
 
-            chat = await core.GetMessagesAsync();
+            chat = await core.GetMessagesByAccountIdAsync(UserCredentials.Account.AccountId);
+            mostrecent = await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId);
         }
 
-        private void DisplayMessages()
+        public void LoadMessageImmediately()
+        {
+            chat = Task.Run(async () => { return await core.GetMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
+            mostrecent = Task.Run(async () => { return await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
+         
+        }
+
+        private async void DisplayMessages()
         {
             if(chat==null || chat.Count() == 0)
             {
                 chatBlock.Text = "Your conversation is empty. Say Hi!";
             } else
             {
+                chatBlock.Text = "";
                 foreach (var message in chat)
                 {
-                    String msg = message.Date.ToString() + " : " + message.Content + "\n\n";
+                    String author;
+                    if(message.SenderId == UserCredentials.Account.AccountId)
+                    {
+                        author = "You";
+                    } else
+                    {
+                        AccountDTO receiver_account = await authcore.GetAccountByIdAsync(message.ReceiverId);
+                        author = receiver_account.Name;
+                    }
+                    String msg = message.Date.ToString() + ", " + author + " : " + message.Content + "\n\n";
                     chatBlock.Text = chatBlock.Text + msg;
                 }
             }
@@ -72,7 +91,7 @@ namespace CMS.UI.Windows.Messages
             if (response)
             {
                 userinputmessageBox.Text = "success";
-                LoadMessages();
+                LoadMessageImmediately();
                 DisplayMessages();
             } else {
                 userinputmessageBox.Text = "failure";

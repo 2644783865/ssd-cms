@@ -89,5 +89,16 @@ namespace CMS.Core.Core
         }
 
         public void Dispose() => _apiHelper.Dispose();
+
+        public async Task<List<LastMessageDTO>> GetLastMessagesByAccountIdAsync(int accountId)
+        {
+            var path = $"{Properties.Resources.getLastMessagesByAccountIdPath}?accountId={accountId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<LastMessageDTO>>(result.Content);
+            }
+            return null;
+        }
     }
 }

@@ -67,5 +67,11 @@ namespace CMS.API.DAL.Repositories
         {
             _db.Dispose();
         }
+
+        public IEnumerable<LastMessageDTO> GetLastMessagesByAccountId(int accountId)
+        {
+            return _db.LastMessages.Where(message => message.FirstId == accountId || message.SecondId == accountId).Project().To<LastMessageDTO>();
+
+        }
     }
 }
