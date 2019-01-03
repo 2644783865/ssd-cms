@@ -4,6 +4,9 @@ using System.Windows.Controls;
 using MahApps.Metro.Controls;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
+using System.Windows.Input;
+using CMS.BE.DTO;
+using CMS.UI.Windows.Travel;
 
 namespace CMS.UI.Windows.Travel
 {
@@ -32,22 +35,43 @@ namespace CMS.UI.Windows.Travel
             TravelDataGrid.ItemsSource = travel;
         }
 
-        private void Button_Add(object sender, RoutedEventArgs e)
+        private async void Button_Add(object sender, RoutedEventArgs e)
         {
             TravelInfo newAddTravelWindow = new TravelInfo(null);
             newAddTravelWindow.ShowDialog();
+            await LoadTravel();
         }
 
-        private void Button_Edit(object sender, RoutedEventArgs e)
+        private async void Delete_Click(object sender, RoutedEventArgs e)
         {
-            // var travel = DATAGRID INFO
-            TravelInfo newAddTravelWindow = new TravelInfo(null/*travel*/);
-            newAddTravelWindow.ShowDialog();
+            if (TravelDataGrid.SelectedIndex >= 0)
+            {
+                var travel = await travelCore.DeleteTravelAsync(((TravelInfoDTO)TravelDataGrid.SelectedItem).TravelInfoId);
+                if (travel)
+                {
+                    MessageBox.Show("Successfully deleted travel");
+                    await LoadTravel();
+                }
+                else MessageBox.Show("Error occured while deleting travel");
+            }
+            else MessageBox.Show("Choose travel first");
         }
 
-        private void Button_Delete(object sender, RoutedEventArgs e)
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            EditTravel_Click(sender, e);
+        }
 
+        private async void EditTravel_Click(object sender, RoutedEventArgs e)
+        {
+            if (TravelDataGrid.SelectedIndex >= 0)
+            {
+                var travel = await travelCore.GetTravelByIdAsync(((TravelInfoDTO)TravelDataGrid.SelectedItem).TravelInfoId);
+                TravelInfo newTravelInfoWindow = new TravelInfo(travel);
+                newTravelInfoWindow.ShowDialog();
+                await LoadTravel();
+            }
+            else MessageBox.Show("Choose travel first");
         }
     }
 }

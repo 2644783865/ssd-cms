@@ -50,12 +50,12 @@ namespace CMS.UI.Windows.Accommodation
                 var result = await accomodationCore.DeleteAccommodationInfoAsync(((AccommodationInfoDTO)AccomodationDataGrid.SelectedItem).AccommodationInfoId);
                 if (result)
                 {
-                    MessageBox.Show("Successfully deleted article");
+                    MessageBox.Show("Successfully deleted accomodation");
                     await LoadAccomodation();
                 }
-                else MessageBox.Show("Error occured while deleting article");
+                else MessageBox.Show("Error occured while deleting accomodation");
             }
-            else MessageBox.Show("Choose article first");
+            else MessageBox.Show("Choose accomodation first");
         }
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
