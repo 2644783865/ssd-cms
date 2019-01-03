@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using CMS.Core.Interfaces;
+using CMS.Core.Core;
 
 namespace CMS.UI.Windows.WelcomePack
 {
@@ -20,9 +22,24 @@ namespace CMS.UI.Windows.WelcomePack
     /// </summary>
     public partial class GuestsList : MetroWindow
     {
+        IWelcomePackCore welcomePackCore;
         public GuestsList()
         {
             InitializeComponent();
+            welcomePackCore = new WelcomePackCore();
+            InitializeData();
+        }
+
+        private async void InitializeData()
+        {
+            LoadGuests();
+        }
+
+        private async Task LoadGuests()
+        {
+            var guestsList = await welcomePackCore.GetGuestsByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
+            GuestsDataGrid.ClearValue(ItemsControl.ItemsSourceProperty);
+            GuestsDataGrid.ItemsSource = guestsList;
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

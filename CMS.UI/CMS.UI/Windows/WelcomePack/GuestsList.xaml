@@ -11,15 +11,13 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-            <DataGrid x:Name="guestDataGrid" Height="210" Width="300"  Margin="0,5,0,10" RowHeight="40" AutoGenerateColumns="False" >
+            <DataGrid Name="GuestsDataGrid" Height="210" Width="340"  Margin="0,5,0,10" RowHeight="40" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Guest" Width="240" FontSize="20" />
-                    <DataGridCheckBoxColumn Header="Gift? " Width="60" IsThreeState="True"/>
+                    <DataGridTextColumn Header="First Name" Width="100" FontSize="20" Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Header="Last Name" Width="100" FontSize="20" Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="Type" Width="80" FontSize="20" Binding="{Binding Type}" />
+                    <DataGridCheckBoxColumn Header="Gift" Width="60" IsThreeState="True"/>
                 </DataGrid.Columns>
-                <CheckBox Content="CheckBox"/>
-                <CheckBox Content="CheckBox"/>
-                <CheckBox Content="CheckBox"/>
-                <CheckBox Content="CheckBox"/>
             </DataGrid>
         </StackPanel>
         <Button Content="Add" HorizontalAlignment="Left" Margin="182,266,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
