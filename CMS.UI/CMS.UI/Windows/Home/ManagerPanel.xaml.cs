@@ -262,7 +262,8 @@ namespace CMS.UI.Windows.Home
 
         private void EmergButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            EmergencyInfoOnlyRead newWindow = new EmergencyInfoOnlyRead();
+            newWindow.ShowDialog();
         }
 
         private void ManageEmergency_Click(object sender, RoutedEventArgs e)

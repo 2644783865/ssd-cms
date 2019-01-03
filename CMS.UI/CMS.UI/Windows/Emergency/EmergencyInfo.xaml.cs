@@ -5,7 +5,7 @@ using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
-
+using System.Threading.Tasks;
 
 namespace CMS.UI.Windows.Emergency
 {
@@ -19,18 +19,30 @@ namespace CMS.UI.Windows.Emergency
         public EmergencyInfo()
         {
             InitializeComponent();
-            //currentEmergency = 
-            //if (emergency != null) InitializeEditFields();
-            this.Title = "Add Emergency Info";
-
+            LoadData();
+        }
+ 
+        private async void LoadData()
+        {
+            await LoadEmergency();
         }
 
-        private void InitializeEditFields()
+        private async Task LoadEmergency()
         {
-            currentEmergency.EmergencyNum= EmergencyNumBox.Text;
-            currentEmergency.EmergencyInfo1= EmergencyInfoBox.Text;
-            this.Title = "Edit Emergency Info";
-
+            IEmergencyInfoCore emergencyCore = new EmergencyInfoCore();
+            currentEmergency = await emergencyCore.GetEmergencyInfoByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
+            if (currentEmergency != null)
+            {
+                EmergencyNumBox.Text = currentEmergency.EmergencyNum;
+                EmergencyInfoBox.Text = currentEmergency.EmergencyInfo1;
+                this.Title = "Edit Emergency Info";
+                SaveButton.Content = "Save";
+            }
+            else
+            {
+                this.Title = "Add Emergency Info";
+                SaveButton.Content = "Add";
+            }
         }
 
         private async void Button_Save(object sender, RoutedEventArgs e)
