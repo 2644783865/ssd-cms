@@ -65,6 +65,7 @@ namespace CMS.UI.Windows.Rooms
                 initializeData();
                 checkIfUpdatePossible();
                 MessageBox.Show("Successfully edited!");
+                Close();
             }
             else
             {

@@ -37,9 +37,13 @@ namespace CMS.UI.Windows.Accommodation
 
         private async void Button_Add(object sender, RoutedEventArgs e)
         {
-            AccommodationInfo newAddAccommodationWindow = new AccommodationInfo(null);
-            newAddAccommodationWindow.ShowDialog();
-            await LoadAccomodation();
+            if (AccomodationDataGrid.Items.Count < 5)
+            {
+                AccommodationInfo newAddAccommodationWindow = new AccommodationInfo(null);
+                newAddAccommodationWindow.ShowDialog();
+                await LoadAccomodation();
+            }
+            else MessageBox.Show("There can be only 5 accommodations");
         }
 
 

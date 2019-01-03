@@ -18,9 +18,9 @@
             <Label Content="Currency:" Margin="0,0,0,0" Height="25"/>
             <TextBox Name="CurrencyBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="City:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="CityBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
+            <TextBox Name="CityBox" MaxLength="100" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
             <Label Content="City Desc:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="CityDescBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="50
+            <TextBox Name="CityDescBox"  Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="50
                      "/>
         </StackPanel>
         <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="290,333,0,0" VerticalAlignment="Top" Width="75" Click="Button_Cancel"/>

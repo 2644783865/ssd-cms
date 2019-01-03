@@ -25,7 +25,7 @@ namespace CMS.Core.Core
 
         public async Task<TravelInfoDTO> GetTravelByIdAsync(int travelInfoId)
         {
-            var path = $"{Properties.Resources.getTravelByIdPath}?travelInfoId={travelInfoId}";
+            var path = $"{Properties.Resources.getTravelByIdPath}?travelid={travelInfoId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
@@ -52,7 +52,6 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        //not implemented
         public async Task<bool> EditTravelAsync(TravelInfoDTO travelInfo)
         {
             var path = Properties.Resources.editTravelPath;
@@ -62,7 +61,7 @@ namespace CMS.Core.Core
 
         public async Task<bool> DeleteTravelAsync(int travelInfoId)
         {
-            var path = $"{Properties.Resources.deleteTravelPath}?travelInfoId={travelInfoId}";
+            var path = $"{Properties.Resources.deleteTravelPath}?travelid={travelInfoId}";
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }

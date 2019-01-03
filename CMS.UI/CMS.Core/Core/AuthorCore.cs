@@ -53,7 +53,6 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        //not implemented
         public async Task<bool> EditAuthorAsync(AuthorDTO author)
         {
             var path = Properties.Resources.editAuthorPath;

@@ -52,7 +52,6 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        //not implemented
         public async Task<bool> EditWelcomePackReceiverAsync(WelcomePackReceiverDTO welcomePackReceiver)
         {
             var path = Properties.Resources.editWelcomePackReceiverPath;

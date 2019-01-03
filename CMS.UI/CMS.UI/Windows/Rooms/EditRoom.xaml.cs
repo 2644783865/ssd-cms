@@ -45,6 +45,7 @@ namespace CMS.UI.Windows.Rooms
                 this.room_being_edited = new_possible_code_room;
                 InitializeData();
                 MessageBox.Show("Successfully edited!");
+                Close();
             }
             else
             {

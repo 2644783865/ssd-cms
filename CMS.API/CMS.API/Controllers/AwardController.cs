@@ -25,7 +25,6 @@ namespace CMS.API.Controllers
         public IHttpActionResult GetAwardById(int awardId)
         {
             var award = _bll.GetAwardById(awardId);
-            if (award == null) return BadRequest();
             return Ok(award);
         }
 

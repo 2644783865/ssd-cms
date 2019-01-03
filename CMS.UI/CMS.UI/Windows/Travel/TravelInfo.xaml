@@ -15,7 +15,7 @@
             <Label Content="Airport Road:" Margin="0,0,0,0" Height="25"/>
             <TextBox Name="AirportRoadBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
             <Label Content="Airport Road Time:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="AirportRoadTimeBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <TextBox Name="AirportRoadTimeBox" MaxLength="9" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="Railway Road:" Margin="0,0,0,0" Height="25"/>
             <TextBox Name="RailwayRoadBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
             <Label Content="Railway Road Time:" Margin="0,0,0,0" Height="25"/>

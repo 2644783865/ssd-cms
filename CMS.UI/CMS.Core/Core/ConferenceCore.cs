@@ -41,7 +41,6 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        //not implemented
         public async Task<bool> EditConferenceAsync(ConferenceDTO conference)
         {
             var path = Properties.Resources.editConferencePath;
