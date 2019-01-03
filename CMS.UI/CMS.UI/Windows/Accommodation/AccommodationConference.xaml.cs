@@ -26,6 +26,9 @@ namespace CMS.UI.Windows.Accommodation
     public partial class AccommodationConference : MetroWindow
     {
         private IAccommodationInfoCore accomodationCore;
+        private int index = 0;
+        private int size;
+
         public AccommodationConference()
         {
             InitializeComponent();
@@ -41,16 +44,36 @@ namespace CMS.UI.Windows.Accommodation
         private async Task LoadLabels()
         {
             var accomodation = await accomodationCore.GetAccommodationInfoByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
+            size = accomodation.Count;
 
             if (accomodation != null)
             {
-                PlaceLabel.Content = accomodation[0].PlaceName;
-                DescriptionLabel.Content = accomodation[0].Description;
-                CurrencyLabel.Content = accomodation[0].Currency;
-                CityLabel.Content = accomodation[0].City;
-                CityDescriptionLabel.Content = accomodation[0].CityDesc;
+                Index.Content = "#" + (index + 1);
+                
+                PlaceLabel.Content = accomodation[index].PlaceName;
+                DescriptionLabel.Content = accomodation[index].Description;
+                CurrencyLabel.Content = accomodation[index].Currency;
+                CityLabel.Content = accomodation[index].City;
+                CityDescriptionLabel.Content = accomodation[index].CityDesc;
             }
-         } 
+         }
 
+        private async void Prev_Click(object sender, RoutedEventArgs e)
+        {
+            if (index > 0)
+            {
+                index -= 1;
+                await LoadLabels();
+            }
+        }
+
+        private async void Next_Click(object sender, RoutedEventArgs e)
+        {
+            if (index < size - 1)
+            {
+                index += 1;
+                await LoadLabels();
+            }
+        }
     }
 }

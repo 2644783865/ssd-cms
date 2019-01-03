@@ -10,19 +10,20 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
-            <Label Content="Place:" Margin="0,0,0,0" Height="25"/>
+            <Label Content="Place:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
             <Label Name="PlaceLabel" Margin="0,0,0,0" Height="25"/>
-            <Label Content="Description:" Margin="0,0,0,0" Height="25"/>
+            <Label Content="Description:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
             <Label Name="DescriptionLabel" Margin="0,0,0,0" Height="50"/>
-            <Label Content="Currency:" Margin="0,0,0,0" Height="25"/>
+            <Label Content="Currency:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
             <Label Name="CurrencyLabel" Margin="0,0,0,0" Height="25"/>
-            <Label Content="City:" Margin="0,0,0,0" Height="25"/>
+            <Label Content="City:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
             <Label Name="CityLabel" Margin="0,0,0,0" Height="25"/>
-            <Label Content="City description:" Margin="0,0,0,0" Height="25"/>
+            <Label Content="City description:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
             <Label Name="CityDescriptionLabel" Margin="0,0,0,0" Height="50"/>
         </StackPanel>
-        <Button Content="Prev" HorizontalAlignment="Left" Margin="47,323,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Next" HorizontalAlignment="Left" Margin="272,323,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.128,0.563"/>
+        <Button Name="PrevButton" Content="Prev" HorizontalAlignment="Left" Margin="47,323,0,0" VerticalAlignment="Top" Width="75" Click="Prev_Click"/>
+        <Button Name="NextButton" Content="Next" HorizontalAlignment="Left" Margin="272,323,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.128,0.563" Click="Next_Click"/>
+        <Label Name="Index" Content="" HorizontalAlignment="Center" Margin="182,323,181.6,0" VerticalAlignment="Top" Width="30"/>
 
     </Grid>
 </Controls:MetroWindow>
