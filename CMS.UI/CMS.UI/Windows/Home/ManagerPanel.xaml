@@ -65,13 +65,17 @@
             <iconPacks:FontAwesome Kind="CalendarCheckSolid"  Width="40" Height="50"/>
         </Button>
         <Label Name="DownloadICalLabel" Content="Download &#xD;&#xA;ICal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,369" Width="85" Height="41" HorizontalContentAlignment="Center"/>
-        <Button Name="ReviewArticles" HorizontalAlignment="Right" Margin="0,0,40,455" VerticalAlignment="Bottom" Width="85" Height="82" BorderThickness="0">
+        <Button Name="ReviewArticles" HorizontalAlignment="Right" Margin="0,0,419,459" VerticalAlignment="Bottom" Width="85" Height="82" BorderThickness="0">
             <iconPacks:FontAwesome Kind="FileSignatureSolid"  Width="55" Height="55"/>
         </Button>
-        <Label Name="ReviewArticlesLabel" Content="Reviewer &#xD;&#xA;Panel" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,40,541" Width="85" Height="41" HorizontalContentAlignment="Center"/>
-        <Button Name="ManageArticlesEditor" HorizontalAlignment="Right" Margin="0,0,146,455" VerticalAlignment="Bottom" Width="85" Height="82" BorderThickness="0" Click="ManageArticlesEditor_Click">
+        <Label Name="ReviewArticlesLabel" Content="Reviewer &#xD;&#xA;Panel" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,419,545" Width="85" Height="41" HorizontalContentAlignment="Center"/>
+        <Button Name="ManageArticlesEditor" HorizontalAlignment="Right" Margin="0,0,325,458" VerticalAlignment="Bottom" Width="85" Height="82" BorderThickness="0" Click="ManageArticlesEditor_Click">
             <iconPacks:FontAwesome Kind="ColumnsSolid"  Width="55" Height="55"/>
         </Button>
-        <Label Name="ManageArticlesEditorLabel" Content="Manage &#xD;&#xA;Articles" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,146,542" Width="85" Height="41" HorizontalContentAlignment="Center"/>
+        <Label Name="ManageArticlesEditorLabel" Content="Manage &#xD;&#xA;Articles" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,325,545" Width="85" Height="41" HorizontalContentAlignment="Center"/>
+        <Button Name="MySessionsButton" HorizontalAlignment="Right" Margin="0,0,30,458" VerticalAlignment="Bottom" Width="85" Height="82" BorderThickness="0" Click="MySessionsButton_Click">
+            <iconPacks:FontAwesome Kind="MicrophoneSolid"  Width="55" Height="55"/>
+        </Button>
+        <Label Name="MySessionsLabel" Content="My &#xD;&#xA;Sessions" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,30,545" Width="85" Height="41" HorizontalContentAlignment="Center"/>
     </Grid>
 </Controls:MetroWindow>

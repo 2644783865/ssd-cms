@@ -187,6 +187,9 @@
     <Compile Include="Windows\Session\AddEditSession.xaml.cs">
       <DependentUpon>AddEditSession.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Session\MySessions.xaml.cs">
+      <DependentUpon>MySessions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Session\PresentationDetails.xaml.cs">
       <DependentUpon>PresentationDetails.xaml</DependentUpon>
     </Compile>
@@ -360,6 +363,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Session\AddEditSession.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Session\MySessions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
