@@ -97,5 +97,10 @@ namespace CMS.UI.Windows.Messages
                 userinputmessageBox.Text = "failure";
             }
         }
+
+        private void UserinputmessageBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

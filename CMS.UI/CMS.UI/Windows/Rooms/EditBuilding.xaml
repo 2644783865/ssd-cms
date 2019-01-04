@@ -9,8 +9,8 @@
         Title="Edit Building" Height="250" Width="400"
 		WindowStartupLocation="CenterScreen">
     <Grid>
-		<TextBox Name="buildingNameTextBox" HorizontalAlignment="Left" Height="23" Margin="96,32,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" TextChanged="buildingNameTextBox_TextChanged"/>
-		<TextBox Name="addressTextBox" HorizontalAlignment="Left" Height="23" Margin="96,89,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" TextChanged="addressTextBox_TextChanges"/>
+		<TextBox Name="buildingNameTextBox" HorizontalAlignment="Left" Height="23" Margin="96,32,0,0" MaxLength="200" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" TextChanged="buildingNameTextBox_TextChanged"/>
+        <TextBox Name="addressTextBox" HorizontalAlignment="Left" Height="23" Margin="96,89,0,0" MaxLength="200" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" TextChanged="addressTextBox_TextChanges"/>
 		<Button Name="updateButton" Content="Update" HorizontalAlignment="Left" Margin="154,137,0,0" VerticalAlignment="Top" Width="76" Click="updateButton_Click"/>
 		<TextBlock HorizontalAlignment="Left" Margin="96,11,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
 		<TextBlock HorizontalAlignment="Left" Margin="96,68,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top"/>

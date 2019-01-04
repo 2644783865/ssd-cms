@@ -9,8 +9,8 @@
 		WindowStartupLocation="CenterScreen"
         Title="Add a New Building" Height="250" Width="400">
     <Grid>
-		<TextBox Name="inputname" HorizontalAlignment="Left" Height="23" Margin="143,45,0,0" TextWrapping="Wrap" Text="Enter a name" VerticalAlignment="Top" Width="120"/>
-		<TextBox Name="inputaddress" HorizontalAlignment="Left" Height="23" Margin="143,84,0,0" TextWrapping="Wrap" Text="Enter an address" VerticalAlignment="Top" Width="120"/>
+		<TextBox Name="inputname" HorizontalAlignment="Left" Height="23" Margin="143,45,0,0" MaxLength="200" TextWrapping="Wrap" Text="Enter a name" VerticalAlignment="Top" Width="120"/>
+		<TextBox Name="inputaddress" HorizontalAlignment="Left" Height="23" Margin="143,84,0,0" MaxLength="200" TextWrapping="Wrap" Text="Enter an address" VerticalAlignment="Top" Width="120"/>
 		<Button Name="addbuildingbutton" Content="Add" HorizontalAlignment="Left" Margin="163,129,0,0" VerticalAlignment="Top" Width="75" Click="addbuildingbutton_Click"/>
 		<TextBlock HorizontalAlignment="Left" Margin="91,49,0,0" TextWrapping="Wrap" Text="Name: " VerticalAlignment="Top"/>
 		<TextBlock HorizontalAlignment="Left" Margin="80,88,0,0" TextWrapping="Wrap" Text="Address: " VerticalAlignment="Top"/>

@@ -12,7 +12,7 @@
                       WindowStartupLocation="CenterScreen"
                       Activated="MetroWindow_Activated">
     <Grid>
-        <ListBox Name="PresentationsList" HorizontalAlignment="Left" Height="310" Margin="110,132,0,0" VerticalAlignment="Top" Width="279" BorderThickness="1" MouseDoubleClick="PresentationsList_MouseDoubleClick"/>
+        <ListBox Name="PresentationsList" HorizontalAlignment="Left" Height="310" Margin="110,84,0,0" VerticalAlignment="Top" Width="279" BorderThickness="1" MouseDoubleClick="PresentationsList_MouseDoubleClick"/>
         <Button Name="RejectButton" Content="Reject" Background="Red" HorizontalAlignment="Left" Margin="413,465,0,0" VerticalAlignment="Top" Width="75" Click="RejectButton_Click"/>
         <Button Name="DetailsButton" Content="Details" HorizontalAlignment="Left" Margin="314,447,0,0" VerticalAlignment="Top" Width="75" Click="DetailsButton_Click"/>
         <Label Content="Session Title:" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="15"/>

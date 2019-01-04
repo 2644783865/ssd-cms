@@ -10,7 +10,7 @@
 		ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 	<Grid>
-		<TextBox Name="roomnumber" HorizontalAlignment="Left" Height="23" Margin="135,78,0,0" TextWrapping="Wrap" Text="Enter the code" VerticalAlignment="Top" Width="120" GotFocus="roomnumber_GotFocus"/>
+		<TextBox Name="roomnumber" HorizontalAlignment="Left" Height="23" Margin="135,78,0,0" MaxLength="200" TextWrapping="Wrap" Text="Enter the code" VerticalAlignment="Top" Width="120" GotFocus="roomnumber_GotFocus"/>
 		<Button Name="addRoomButton" Content="Add" HorizontalAlignment="Left" Margin="156,130,0,0" VerticalAlignment="Top" Width="75" Click="addRoomButton_Click"/>
 		<TextBlock HorizontalAlignment="Left" Margin="135,57,0,0" TextWrapping="Wrap" Text="Room's code:" VerticalAlignment="Top"/>
 
