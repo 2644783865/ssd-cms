@@ -5,22 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Guests List" Height="350" Width="400"
+        Title="Guests List" Height="350" Width="600"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-            <DataGrid Name="GuestsDataGrid" Height="210" Width="340"  Margin="0,5,0,10" RowHeight="40" AutoGenerateColumns="False" >
+            <DataGrid Name="GuestsDataGrid" Height="210" Width="500" IsReadOnly="True" Margin="0,5,0,10" RowHeight="40" AutoGenerateColumns="False" CanUserAddRows="false">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="First Name" Width="100" FontSize="20" Binding="{Binding FirstName}" />
-                    <DataGridTextColumn Header="Last Name" Width="100" FontSize="20" Binding="{Binding LastName}" />
-                    <DataGridTextColumn Header="Type" Width="80" FontSize="20" Binding="{Binding Type}" />
-                    <DataGridCheckBoxColumn Header="Gift" Width="60" IsThreeState="True"/>
+                    <DataGridTextColumn Header="First Name" Width="145" FontSize="20" Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Header="Last Name" Width="145" FontSize="20" Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="Type" Width="140" FontSize="20" Binding="{Binding Type}" />
+                    <DataGridCheckBoxColumn Header="Gift" Width="70" IsThreeState="False" Binding="{Binding GetGift}"/>
+
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="182,266,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="272,266,0,0" VerticalAlignment="Top" Width="75" Click="Button_Delete"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="155,266,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="360,266,0,0" VerticalAlignment="Top" Width="75" Click="Button_Delete"/>
+        <Button Content="Gift" HorizontalAlignment="Left" Margin="259,266,0,0" VerticalAlignment="Top" Width="75" Click="AddGift_Click"/>
     </Grid>
 </Controls:MetroWindow>
