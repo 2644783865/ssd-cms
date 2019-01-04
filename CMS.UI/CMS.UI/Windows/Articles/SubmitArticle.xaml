@@ -13,7 +13,7 @@
         <Button x:Name="SubmitButton" Content="Submit" HorizontalAlignment="Right" Margin="0,0,19,64" VerticalAlignment="Bottom" Width="95" Click="SubmitButton_Click"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,147,64" VerticalAlignment="Bottom" Width="96" Click="CancelButton_Click"/>
         <Label Content="Topic:" Margin="21,10,164,189"/>
-        <TextBox x:Name="Topic" Margin="21,37,19,158" Height="23"/>
+        <TextBox x:Name="Topic" MaxLength="256" Margin="21,37,19,158" Height="23"/>
         <CheckBox Name="SSCheck" Content="SpecialSession" HorizontalAlignment="Left" Margin="21,70,0,0" VerticalAlignment="Top" Checked="SSCheck_Checked" Unchecked="SSCheck_Checked"/>
         <ComboBox Name="SSList" HorizontalAlignment="Left" Margin="21,93,0,0" VerticalAlignment="Top" Width="224" Visibility="Collapsed"/>
 

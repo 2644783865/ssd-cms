@@ -11,16 +11,16 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
             <Label Content="Place:" Margin="0,0,0,0" Height="25"/>
-            <TextBox x:Name="PlaceNameBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <TextBox x:Name="PlaceNameBox" MaxLength="100" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="Description:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="DescriptionBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="50
+            <TextBox Name="DescriptionBox" MaxLength="500" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="50
                      "/>
             <Label Content="Currency:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="CurrencyBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <TextBox Name="CurrencyBox" MaxLength="5" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="City:" Margin="0,0,0,0" Height="25"/>
             <TextBox Name="CityBox" MaxLength="100" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
             <Label Content="City Desc:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="CityDescBox"  Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="50
+            <TextBox Name="CityDescBox"  MaxLength="500" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="50
                      "/>
         </StackPanel>
         <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="290,333,0,0" VerticalAlignment="Top" Width="75" Click="Button_Cancel"/>

@@ -70,20 +70,10 @@ namespace CMS.UI.Windows.WelcomePack
         {
             if (GuestsDataGrid.SelectedIndex >= 0)
             {
-                var result = await welcomePackCore.GetWelcomePackReceiverByIdAsync((((WelcomePackReceiverDTO)GuestsDataGrid.SelectedItem).WelcomePackReceiverId));
-                if (result != null)
-                {
-                    if (result.GetGift == false)
-                    {
-                        result.GetGift = true;
-                    }
-                    else
-                    {
-                        result.GetGift = false;
-                    }
-                    await LoadGuests();
-                }
-                else MessageBox.Show("Error occured while selecting guest");
+                var guestToEdit = (WelcomePackReceiverDTO)GuestsDataGrid.SelectedItem;
+                guestToEdit.GetGift = !guestToEdit.GetGift;
+                await welcomePackCore.EditWelcomePackReceiverAsync(guestToEdit);
+                await LoadGuests();
             }
             else MessageBox.Show("Choose guest first");
         }

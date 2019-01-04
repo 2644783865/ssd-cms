@@ -11,9 +11,9 @@
     <Grid Margin="0,0,0,25">
         <StackPanel HorizontalAlignment="Center" Height="180" Margin="0,20,0,0" VerticalAlignment="Top" Width="400">
             <Label Content="First Name:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="FirstNameBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="400"/>
+            <TextBox Name="FirstNameBox" MaxLength="50" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="400"/>
             <Label Content="Last Name:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="LastNameBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="400"/>
+            <TextBox Name="LastNameBox" MaxLength="150" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="400"/>
             <Label Content="Title:" Margin="0,0,0,0" Height="25"/>
             <ComboBox Name="TypeNameBox" Height="31" Margin="0,0,0,0">
                 <ComboBoxItem>Guest</ComboBoxItem>

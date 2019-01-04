@@ -61,7 +61,7 @@ namespace CMS.Core.Core
 
         public async Task<bool> DeleteWelcomePackReceiverAsync(int welcomePackReceiverId)
         {
-            var path = $"{Properties.Resources.deleteWelcomePackReceiverPath}?welcomePackReceiverId={welcomePackReceiverId}";
+            var path = $"{Properties.Resources.deleteWelcomePackReceiverPath}?receiverid={welcomePackReceiverId}";
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }

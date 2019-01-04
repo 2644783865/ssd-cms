@@ -11,15 +11,15 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
             <Label Content="Title:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="TitleBox" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <TextBox Name="TitleBox" MaxLength="100" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="Airport Road:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="AirportRoadBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
+            <TextBox Name="AirportRoadBox" MaxLength="1000" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
             <Label Content="Airport Road Time:" Margin="0,0,0,0" Height="25"/>
             <TextBox Name="AirportRoadTimeBox" MaxLength="9" Height="25" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="Railway Road:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="RailwayRoadBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
+            <TextBox Name="RailwayRoadBox" MaxLength="1000" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
             <Label Content="Railway Road Time:" Margin="0,0,0,0" Height="25"/>
-            <TextBox Name="RailwayRoadTimeBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
+            <TextBox Name="RailwayRoadTimeBox" MaxLength="9" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25"/>
             <Label Content="Taxi Number:" Margin="0,0,0,0" Height="25"/>
             <TextBox Name="TaxiNumBox" Margin="0,0,0,0" Width="337" TextWrapping="Wrap" Text="" Height="25" MaxLength="15"/>
         </StackPanel>

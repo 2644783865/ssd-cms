@@ -97,6 +97,23 @@ namespace CMS.UI.Windows.Emergency
             result = !ValidationHelper.ValidateTextFiled(EmergencyInfoBox.Text.Length > 0, EmergencyInfoBox) ? false : result;
             return result;
         }
+
+        private async void Button_Delete(object sender, RoutedEventArgs e)
+        {
+            IEmergencyInfoCore emergencyCore = new EmergencyInfoCore();
+            currentEmergency = await emergencyCore.GetEmergencyInfoByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
+            if (currentEmergency != null)
+            {
+                var result = await emergencyCore.DeleteEmergencyInfoAsync(currentEmergency.EmergencyInfoId);
+                if (result)
+                {
+                    MessageBox.Show("Successfully deleted emergency");
+                    Close();
+                }
+                else MessageBox.Show("Error occured while deleting emergency");
+            }
+            else MessageBox.Show("There is nothing to delete");
+        }
     }
 }
 
