@@ -6,7 +6,6 @@ using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using System.Windows.Input;
 using CMS.BE.DTO;
-using CMS.UI.Windows.Accommodation;
 
 namespace CMS.UI.Windows.Accommodation
 {

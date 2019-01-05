@@ -4,7 +4,6 @@ using CMS.BE.DTO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
-using System;
 
 namespace CMS.API.DAL.Repositories
 {

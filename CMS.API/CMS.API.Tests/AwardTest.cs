@@ -38,13 +38,5 @@ namespace CMS.API.Tests
             var result = awardTests.CheckIfPresentationHasAward(presentationId);
             Assert.IsTrue(result);
         }
-
-        [TestMethod]
-        public void TestDeleteAssignmentAwardToPresentation()
-        {
-            int presentationId = 1;
-            var result = awardTests.DeleteAssignmentAwardToPresentation(presentationId);
-            Assert.AreEqual(true, result);
-        }
     }
 }

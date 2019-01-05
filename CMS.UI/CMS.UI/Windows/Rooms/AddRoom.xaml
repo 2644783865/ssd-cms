@@ -6,7 +6,7 @@
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Rooms"
         mc:Ignorable="d"
-        Title="Add rooms" Height="250" Width="400"
+        Title="Add room" Height="250" Width="400"
 		ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 	<Grid>

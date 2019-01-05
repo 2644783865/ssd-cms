@@ -3,18 +3,7 @@ using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CMS.UI.Windows.Rooms
 {
@@ -36,19 +25,23 @@ namespace CMS.UI.Windows.Rooms
 
         async private void addRoomButton_Click(object sender, RoutedEventArgs e)
         {
-            RoomDTO newroom = new RoomDTO();
-            newroom.BuildingID = this.BuildingID;
-            newroom.Code = roomnumber.Text;
-            bool response = await core.AddRoomAsync(newroom);
-            if (response)
+            if (roomnumber.Text.Length > 0)
             {
-                MessageBox.Show("Successfully added!");
-                Close();
-            } else
-            {
-                MessageBox.Show("Could not add the room!");
+                RoomDTO newroom = new RoomDTO();
+                newroom.BuildingID = this.BuildingID;
+                newroom.Code = roomnumber.Text;
+                bool response = await core.AddRoomAsync(newroom);
+                if (response)
+                {
+                    MessageBox.Show("Successfully added!");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Could not add the room!");
+                }
             }
-            
+            else MessageBox.Show("Code cannot be empty");
         }
 
         private void roomnumber_GotFocus(object sender, RoutedEventArgs e)

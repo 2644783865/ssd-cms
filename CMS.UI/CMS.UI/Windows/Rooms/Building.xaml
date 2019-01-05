@@ -18,7 +18,7 @@
 		</DataGrid>
 		<Button Name="addbuildingbutton" Content="Add building" HorizontalAlignment="Left" Margin="615,36,0,0" VerticalAlignment="Top" Width="131" Height="26" Click="addbuildingbutton_Click" />
 		<Button Name="editbuildingbutton" Content="Edit Building" HorizontalAlignment="Left" Margin="615,86,0,0" VerticalAlignment="Top" Width="131" Height="22" Click="editbuildingbutton_Click"/>
-		<Button Name="deletebuildingbutton" Content="Delete Building" HorizontalAlignment="Left" Margin="615,132,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.16,-0.093" Height="22" Click="deletebuildingbutton_Click"/>
+		<Button Name="deletebuildingbutton" Background="Red" Content="Delete Building" HorizontalAlignment="Left" Margin="615,132,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.16,-0.093" Height="22" Click="deletebuildingbutton_Click"/>
 		<Button x:Name="manageroomsbutton" Content="Manage Rooms" HorizontalAlignment="Left" Margin="615,178,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.16,-0.093" Height="22" Click="manageroomsbutton_Click"/>
 
 	</Grid>

@@ -17,7 +17,7 @@
 		</DataGrid>
 		<Button Name="AddRoom" Content="Add" HorizontalAlignment="Left" Margin="558,45,0,0" VerticalAlignment="Top" Width="176" Click="AddRoom_Click"/>
         <Button Name="EditRoom" Content="Edit" HorizontalAlignment="Left" Margin="558,99,0,0" VerticalAlignment="Top" Width="176" Click="EditRoom_Click"/>
-        <Button Name="DeleteRoom" Content="Delete" HorizontalAlignment="Left" Margin="558,171,0,0" VerticalAlignment="Top" Width="176" Click="DeleteRoom_Click"/>
+        <Button Name="DeleteRoom" Background="Red" Content="Delete" HorizontalAlignment="Left" Margin="558,171,0,0" VerticalAlignment="Top" Width="176" Click="DeleteRoom_Click"/>
 
     </Grid>
 </Controls:MetroWindow>

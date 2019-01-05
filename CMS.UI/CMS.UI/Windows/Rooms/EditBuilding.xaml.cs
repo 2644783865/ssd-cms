@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using CMS.BE.DTO;
@@ -77,7 +67,8 @@ namespace CMS.UI.Windows.Rooms
         private void checkIfUpdatePossible()
         {
             bool relative_change = (!buildingNameTextBox.Text.Equals(originalName) || !addressTextBox.Text.Equals(originalAddress));
-            updateButton.IsEnabled = relative_change;
+            bool notEmpty = buildingNameTextBox.Text.Length > 0 && addressTextBox.Text.Length > 0;
+            updateButton.IsEnabled = relative_change && notEmpty;
            
         }
 

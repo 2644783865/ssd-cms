@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,-6.4,0.2">
         <ComboBox x:Name="RoleEmployeeBox" HorizontalAlignment="Left" Margin="125,10,0,0" VerticalAlignment="Top" Width="351" Height="26" />
-        <Button x:Name="SubmitButton" Content="Add Task" HorizontalAlignment="Left" Margin="444,0,0,9.8" Height="30" VerticalAlignment="Bottom" Width="75" Click="SubmitButton_Click"/>
+        <Button x:Name="SubmitButton" Content="Add" HorizontalAlignment="Left" Margin="444,0,0,9.8" Height="30" VerticalAlignment="Bottom" Width="75" Click="SubmitButton_Click"/>
         <TextBox x:Name="TitleBox" HorizontalAlignment="Left" Height="26" Margin="125,41,0,0" MaxLength="200" TextWrapping="Wrap" VerticalAlignment="Top" Width="351" />
         <TextBox x:Name="DescriptionBox" HorizontalAlignment="Left" Height="121" Margin="125,72,0,0" MaxLength="2000" TextWrapping="Wrap" VerticalAlignment="Top" Width="351"/>
         <Controls:DateTimePicker Name="BeginDatePicker" HorizontalAlignment="Left" Margin="125,198,0,0" VerticalAlignment="Top" Height="28" Width="164"/>

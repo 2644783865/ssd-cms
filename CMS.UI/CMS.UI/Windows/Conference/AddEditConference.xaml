@@ -23,8 +23,8 @@
                 <DatePicker Name="EndDatePicker" Margin="0,0,0,0"/>
             </StackPanel>
         </StackPanel>
-        <Button Name="SubmitButton" Content="Add Conference" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="121" Click="SubmitButton_Click"/>
-        <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,150,20" VerticalAlignment="Bottom" Width="79" Click="CancelButton_Click"/>
+        <Button Name="SubmitButton" Content="Add" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="71" Click="SubmitButton_Click"/>
+        <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,96,20" VerticalAlignment="Bottom" Width="79" Click="CancelButton_Click"/>
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" HorizontalAlignment="Left" Margin="20,0,0,20" VerticalAlignment="Bottom" Height="45" Width="35"/>
     </Grid>
 </Controls:MetroWindow>

@@ -2,7 +2,6 @@
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
-using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
 {

@@ -35,7 +35,7 @@ namespace CMS.API.Tests
         public void TestAssignedBuildingsForConference()
         {
             var result = bll.GetAssignedBuildingsForConference(1);
-            Assert.AreEqual(1, result.Count());
+            Assert.AreEqual(2, result.Count());
         }
 
         [TestMethod]
@@ -74,20 +74,6 @@ namespace CMS.API.Tests
             var result = bll.GetBuildingById(1);
             Assert.IsNotNull(result);
 
-        }
-
-        [TestMethod]
-        public void TestSetBuildingForConference()
-        {
-            var result = bll.SetBuildingForConference(1, 2);
-            Assert.IsTrue(result);
-        }
-
-        [TestMethod]
-        public void TestDeleteAssignmentBuildingForConference()
-        {
-            var result = bll.DeleteAssignmentBuildingForConference(1, 2);
-            Assert.IsTrue(result);
         }
     }
 }

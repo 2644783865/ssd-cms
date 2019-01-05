@@ -19,7 +19,7 @@ namespace CMS.API.Tests
         [TestMethod]
         public void TestGetReviewInfo()
         {
-            var result = bll.GetReviewInfo();
+            var result = bll.GetReviewInfo(1);
             Assert.AreEqual(1, result.FirstOrDefault().ReviewId);
         }
 
