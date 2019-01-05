@@ -185,6 +185,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Pdf\GetSchedule.cshtml" />
     <Content Include="Views\Pdf\GetProgram.cshtml" />
+    <Content Include="Views\Pdf\GetPresentersList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

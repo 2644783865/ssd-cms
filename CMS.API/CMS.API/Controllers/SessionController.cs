@@ -131,5 +131,22 @@ namespace CMS.API.Controllers
             if (_bll.DeleteSpecialSession(specialSessionId)) return Ok();
             return InternalServerError();
         }
+
+        // GET: api/Session/PresentersList
+        [HttpGet]
+        [Route("api/session/presenterslist")]
+        public IHttpActionResult GetPresentersList(int? sessionId, int? specialSessionId)
+        {
+            try
+            {
+                var model = _bll.GetPresentersList(sessionId, specialSessionId);
+                PdfController controller = PdfHelper.Setup("GetPresentersList");
+                return Ok(new ByteArray() { Content = controller.GetPresentersList(model) });
+            }
+            catch
+            {
+                return InternalServerError();
+            }
+        }
     }
 }

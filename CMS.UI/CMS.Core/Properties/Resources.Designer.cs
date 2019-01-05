@@ -1132,6 +1132,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/session/presenterslist.
+        /// </summary>
+        internal static string getPresentersListPath {
+            get {
+                return ResourceManager.GetString("getPresentersListPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/submission/rejectedarticles.
         /// </summary>
         internal static string getRejectedArticlesPath {

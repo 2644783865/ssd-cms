@@ -75,6 +75,7 @@
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Models\ResponseType.cs" />
+    <Compile Include="Models\Session\PresenterListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

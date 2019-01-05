@@ -227,5 +227,19 @@ namespace CMS.API.DAL.Repositories
                 "INNER JOIN Account ON SpecialSession.ChairId = Account.AccountId " +
                 "WHERE ConferenceId = @ConferenceId", new SqlParameter("ConferenceId", conferenceId));
         }
+
+        public IEnumerable<AccountDTO> GetPresentersForSession(int sessionId)
+        {
+            return _db.Database.SqlQuery<AccountDTO>("SELECT DISTINCT AccountId, Name, PhoneNumber, Email, Login " +
+                "FROM Presentation p JOIN Account a ON p.PresenterId = a.AccountId " +
+                "WHERE SessionId = @SessionId", new SqlParameter("SessionId", sessionId));
+        }
+
+        public IEnumerable<AccountDTO> GetPresentersForSpecialSession(int specialSessionId)
+        {
+            return _db.Database.SqlQuery<AccountDTO>("SELECT DISTINCT AccountId, Name, PhoneNumber, Email, Login " +
+                "FROM Presentation p JOIN Account a ON p.PresenterId = a.AccountId " +
+                "WHERE SpecialSessionId = @SpecialSessionId", new SqlParameter("SpecialSessionId", specialSessionId));
+        }
     }
 }

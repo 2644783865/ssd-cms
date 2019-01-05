@@ -30,5 +30,7 @@ namespace CMS.API.DAL.Interfaces
         void DeleteSpecialSession(int specialSessionId);
         IEnumerable<SpecialSessionDTO> GetSpecialSessionsForConferenceWithBaseEntryAttributes(int conferenceId);
         IEnumerable<SpecialSessionDTO> GetSpecialSessionsForConferenceAndChairWithBaseEntryAttributes(int accountId, int conferenceId);
+        IEnumerable<AccountDTO> GetPresentersForSession(int sessionId);
+        IEnumerable<AccountDTO> GetPresentersForSpecialSession(int specialSessionId);
     }
 }

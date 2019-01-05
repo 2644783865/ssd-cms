@@ -3,8 +3,10 @@ using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Windows.Articles;
 using MahApps.Metro.Controls;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,9 +100,41 @@ namespace CMS.UI.Windows.Session
             }
         }
 
-        private void ListOfPresentersButton_Click(object sender, RoutedEventArgs e)
+        private async void ListOfPresentersButton_Click(object sender, RoutedEventArgs e)
         {
+            if (SessionsBox.SelectedIndex >= 0)
+            {
+                ListOfPresentersButton.IsEnabled = false;
+                try
+                {
+                    byte[] document = null;
+                    if (SpecialCheck.IsChecked.Value) document = await core.GetPresentersListAsync(null,((SpecialSessionDTO)SessionsBox.SelectedItem).SpecialSessionId);
+                    else document = await core.GetPresentersListAsync(((SessionDTO)SessionsBox.SelectedItem).SessionId, null);
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        AddExtension = true,
+                        Filter = "pdf files (*.pdf)|*.pdf",
+                        FileName = $"List of presenters for {(SpecialCheck.IsChecked.Value ? ((SpecialSessionDTO)SessionsBox.SelectedItem).Title : ((SessionDTO)SessionsBox.SelectedItem).Title)}.pdf"
+                    };
 
+                    if ((bool)saveFileDialog.ShowDialog())
+                    {
+                        using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
+                        {
+                            writer.Write(document);
+                        }
+                    }
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Cannot override the file. The file may be opened.");
+                }
+                catch
+                {
+                    MessageBox.Show("Error downloading list of presenters");
+                }
+                ListOfPresentersButton.IsEnabled = true;
+            }
         }
 
         private void SessionDetailsButton_Click(object sender, RoutedEventArgs e)
