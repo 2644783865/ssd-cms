@@ -1,0 +1,18 @@
+﻿<Controls:MetroWindow x:Class="CMS.UI.Windows.Reviews.ReviewerPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CMS.UI.Windows.Reviews"
+        mc:Ignorable="d"
+        Title="Reviewer Panel" Height="476" Width="456"
+                      ResizeMode="NoResize"
+                      WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListBox Name="ArticlesList" HorizontalAlignment="Left" Height="331" Margin="70,44,0,0" VerticalAlignment="Top" Width="308" MouseDoubleClick="ArticlesList_MouseDoubleClick" BorderThickness="1"/>
+        <Button Name="MyReviewsButton" Content="My Reviews" HorizontalAlignment="Center" Margin="179,0,179,10" VerticalAlignment="Bottom" Width="90" Height="39" Click="MyReviewsButton_Click"/>
+        <Label Content="Submitted articles:" HorizontalAlignment="Left" Margin="70,13,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Controls:MetroWindow>

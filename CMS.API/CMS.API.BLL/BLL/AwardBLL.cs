@@ -2,6 +2,7 @@
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace CMS.API.BLL.BLL
@@ -35,18 +36,17 @@ namespace CMS.API.BLL.BLL
             return true;
         }
 
-        public AwardDTO GetAwardById(int id)
+        public bool GetAwardById(int id)
         {
             try
             {
-                var award = GetAwardById(id);
-                if (award == null) return null;
-                return award;
+                _repository.GetAwardById(id);
             }
             catch
             {
-                return null;
+                return false;
             }
+            return true;
         }
 
         public bool EditAward(AwardDTO award)
@@ -99,6 +99,11 @@ namespace CMS.API.BLL.BLL
                 return false;
             }
             return false;
+        }
+
+        public static implicit operator AwardBLL(bool v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -55,7 +55,7 @@ namespace CMS.Core.Core
             }
             else return null;
         }
-        //added function to get by account id 
+
         public async Task<List<MessageDTO>> GetMessagesByAccountIdAsync(int accountId)
         {
             var path = $"{Properties.Resources.getMessagesByAccountIdPath}?accountId={accountId}";

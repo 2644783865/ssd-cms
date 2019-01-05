@@ -5,7 +5,7 @@ using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
-
+using System.Threading.Tasks;
 
 namespace CMS.UI.Windows.Emergency
 {
@@ -19,18 +19,30 @@ namespace CMS.UI.Windows.Emergency
         public EmergencyInfo()
         {
             InitializeComponent();
-            //currentEmergency = 
-            //if (emergency != null) InitializeEditFields();
-            this.Title = "Add Emergency Info";
-
+            LoadData();
+        }
+ 
+        private async void LoadData()
+        {
+            await LoadEmergency();
         }
 
-        private void InitializeEditFields()
+        private async Task LoadEmergency()
         {
-            currentEmergency.EmergencyNum= EmergencyNumBox.Text;
-            currentEmergency.EmergencyInfo1= EmergencyInfoBox.Text;
-            this.Title = "Edit Emergency Info";
-
+            IEmergencyInfoCore emergencyCore = new EmergencyInfoCore();
+            currentEmergency = await emergencyCore.GetEmergencyInfoByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
+            if (currentEmergency != null)
+            {
+                EmergencyNumBox.Text = currentEmergency.EmergencyNum;
+                EmergencyInfoBox.Text = currentEmergency.EmergencyInfo1;
+                this.Title = "Edit Emergency Info";
+                SaveButton.Content = "Save";
+            }
+            else
+            {
+                this.Title = "Add Emergency Info";
+                SaveButton.Content = "Add";
+            }
         }
 
         private async void Button_Save(object sender, RoutedEventArgs e)
@@ -84,6 +96,23 @@ namespace CMS.UI.Windows.Emergency
             result = !ValidationHelper.ValidateTextFiled(EmergencyNumBox.Text.Length > 0, EmergencyNumBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(EmergencyInfoBox.Text.Length > 0, EmergencyInfoBox) ? false : result;
             return result;
+        }
+
+        private async void Button_Delete(object sender, RoutedEventArgs e)
+        {
+            IEmergencyInfoCore emergencyCore = new EmergencyInfoCore();
+            currentEmergency = await emergencyCore.GetEmergencyInfoByConferenceIdAsync(UserCredentials.Conference.ConferenceId);
+            if (currentEmergency != null)
+            {
+                var result = await emergencyCore.DeleteEmergencyInfoAsync(currentEmergency.EmergencyInfoId);
+                if (result)
+                {
+                    MessageBox.Show("Successfully deleted emergency");
+                    Close();
+                }
+                else MessageBox.Show("Error occured while deleting emergency");
+            }
+            else MessageBox.Show("There is nothing to delete");
         }
     }
 }

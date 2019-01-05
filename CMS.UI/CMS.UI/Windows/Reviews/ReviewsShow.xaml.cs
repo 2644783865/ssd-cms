@@ -25,7 +25,7 @@ namespace CMS.UI.Windows.Reviews
     /// </summary>
     public partial class ReviewsShow : MetroWindow
     {
-        public ReviewsShow()
+        public ReviewsShow(int reviewerId)
         {
             InitializeComponent();
         }

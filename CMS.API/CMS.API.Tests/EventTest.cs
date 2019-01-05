@@ -21,17 +21,17 @@ namespace CMS.API.Tests
         public void TestCheckEvents()
         {
             int conferenceId = 1;
-            DateTime begin = new DateTime(2008, 5, 1, 8, 30, 52);
-            DateTime end = new DateTime(2004, 5, 1, 8, 30, 52);
+            DateTime begin = new DateTime(2018, 11, 20, 11, 00, 00);
+            DateTime end = new DateTime(2018, 11, 20, 16, 00, 00);
             var result = eventTest.CheckOverlappingEvent(conferenceId, begin, end);
-            Assert.AreEqual(false, result.Status);
+            Assert.AreEqual(true, result.Status);
         }
 
         [TestMethod]
         public void TestGetEvents()
         {
             var result = eventTest.GetEvents(1);
-            Assert.AreEqual("Event Title", result.FirstOrDefault(eventDTO => eventDTO.EventId == 1).Title);
+            Assert.AreEqual("Event Title", result.First().Title);
         }
 
         [TestMethod]

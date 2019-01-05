@@ -1,10 +1,9 @@
-﻿using CMS.BE.DTO;
+﻿using MahApps.Metro.Controls;
+using System.Windows;
+using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
-using MahApps.Metro.Controls;
-using System.Windows;
-
 
 namespace CMS.UI.Windows.Travel
 {
@@ -19,23 +18,25 @@ namespace CMS.UI.Windows.Travel
         {
             InitializeComponent();
             currenTravel = travel;
-            if (travel != null) InitializeEditFields();
-            this.Title = "Add Travel";
-            SaveButton.Content = "Add";
+            if (travel != null)
+            {
+                InitializeEditFields();
+            }
+            else
+            {
+                this.Title = "Add Travel";
+                SaveButton.Content = "Add";
+            }
         }
 
         private void InitializeEditFields()
         {
-            int AirportRoadTime = System.Convert.ToInt32(AirportRoadTimeBox.Text);
-            int RailwayRoadTime = System.Convert.ToInt32(RailwayRoadTimeBox.Text);
-
-
-            currenTravel.Title = TitleBox.Text;
-            currenTravel.AirportRoad = AirportRoadBox.Text;
-            currenTravel.AirportRoadTime= AirportRoadTime;
-            currenTravel.RailwayRoad= RailwayRoadBox.Text;
-            currenTravel.RailwayRoadTime = RailwayRoadTime;
-            currenTravel.TaxiNum = TaxiNumBox.Text;
+            TitleBox.Text = currenTravel.Title;
+            AirportRoadBox.Text = currenTravel.AirportRoad;
+            AirportRoadTimeBox.Text = System.Convert.ToString(currenTravel.AirportRoadTime);
+            RailwayRoadBox.Text = currenTravel.RailwayRoad;
+            RailwayRoadTimeBox.Text = System.Convert.ToString(currenTravel.RailwayRoadTime);
+            TaxiNumBox.Text = currenTravel.TaxiNum;
             this.Title = "Edit Travel";
             SaveButton.Content = "Save";
         }
@@ -71,7 +72,6 @@ namespace CMS.UI.Windows.Travel
                         currenTravel.RailwayRoad= RailwayRoadBox.Text;
                         currenTravel.RailwayRoadTime= RailwayRoadTime;
                         currenTravel.TaxiNum= TaxiNumBox.Text;
-
 
                         result = await core.EditTravelAsync(currenTravel);
                     }

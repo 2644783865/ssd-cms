@@ -6,7 +6,7 @@ namespace CMS.API.BLL.Interfaces
     public interface IAwardBLL
     {
         IEnumerable<AwardDTO> GetAwards();
-        AwardDTO GetAwardById(int id);
+        bool GetAwardById(int id);
         bool AddAward(AwardDTO award);
         bool EditAward(AwardDTO award);
         bool DeleteAward(int AwardId);

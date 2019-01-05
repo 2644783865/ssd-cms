@@ -474,6 +474,9 @@
   <data name="getPresentationsByIdPath" xml:space="preserve">
     <value>api/presentation/getpresentationsbyid</value>
   </data>
+  <data name="getPresentersListPath" xml:space="preserve">
+    <value>api/session/presenterslist</value>
+  </data>
   <data name="getRejectedArticlesPath" xml:space="preserve">
     <value>api/submission/rejectedarticles</value>
   </data>

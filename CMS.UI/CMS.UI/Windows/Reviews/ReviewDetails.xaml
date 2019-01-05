@@ -6,17 +6,17 @@
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Reviews"
         mc:Ignorable="d"
-        Title="Review Details" Height="382.5" Width="306.5"
+        Title="Review Details" Height="382.5" Width="358.5"
                       ResizeMode="NoResize"
                       WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label Content="Reviewer:" HorizontalAlignment="Left" Margin="26,296,0,0" VerticalAlignment="Top"/>
-        <Label Name="ReviewerLabel" Content="" HorizontalAlignment="Left" Margin="95,296,0,0" VerticalAlignment="Top" Width="163"/>
-        <Label Content="Grade:" HorizontalAlignment="Left" Margin="26,73,0,0" VerticalAlignment="Top"/>
-        <Label Name="GradeLabel" Content="" HorizontalAlignment="Left" Margin="95,73,0,0" VerticalAlignment="Top" Width="164"/>
-        <Label Content="Title:" HorizontalAlignment="Left" Margin="26,27,0,0" VerticalAlignment="Top" Width="44"/>
-        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="95,27,0,0" VerticalAlignment="Top" Width="164"/>
-        <Label Content="Comment:" HorizontalAlignment="Left" Margin="26,139,0,0" VerticalAlignment="Top" Width="53"/>
-        <TextBox HorizontalAlignment="Left" Name="CommentBox" Height="139" Margin="97,139,0,0" TextWrapping="Wrap" Text="" BorderThickness="0" VerticalAlignment="Top" Width="161" IsReadOnly="True"/>
+        <Label Content="Reviewer:" HorizontalAlignment="Left" Margin="63,296,0,0" VerticalAlignment="Top"/>
+        <Label Name="ReviewerLabel" Content="" HorizontalAlignment="Left" Margin="128,296,0,0" VerticalAlignment="Top" Width="163"/>
+        <Label Content="Grade:" HorizontalAlignment="Left" Margin="81,73,0,0" VerticalAlignment="Top"/>
+        <Label Name="GradeLabel" Content="" HorizontalAlignment="Left" Margin="130,73,0,0" VerticalAlignment="Top" Width="164"/>
+        <Label Content="Title:" HorizontalAlignment="Left" Margin="81,27,0,0" VerticalAlignment="Top" Width="44"/>
+        <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="130,27,0,0" VerticalAlignment="Top" Width="164"/>
+        <Label Content="Comment:" HorizontalAlignment="Left" Margin="26,139,0,0" VerticalAlignment="Top" Width="99"/>
+        <TextBox HorizontalAlignment="Left" Name="CommentBox" MaxLength="1000" Height="139" Margin="130,139,0,0" TextWrapping="Wrap" Text="" BorderThickness="0" VerticalAlignment="Top" Width="161" IsReadOnly="True"/>
     </Grid>
 </Controls:MetroWindow>

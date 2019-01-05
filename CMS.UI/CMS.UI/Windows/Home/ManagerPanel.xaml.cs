@@ -8,6 +8,8 @@ using CMS.UI.Windows.Author;
 using CMS.UI.Windows.Award;
 using CMS.UI.Windows.Emergency;
 using CMS.UI.Windows.Event;
+using CMS.UI.Windows.Reviews;
+using CMS.UI.Windows.Session;
 using CMS.UI.Windows.Tasks;
 using CMS.UI.Windows.Travel;
 using CMS.UI.Windows.WelcomePack;
@@ -106,6 +108,8 @@ namespace CMS.UI.Windows.Home
                 ManageArticlesEditorLabel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null ? Visibility.Visible : Visibility.Collapsed;
             }
 
+            MySessionsButton.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
+            MySessionsLabel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
             DownloadSchedule.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
             DownloadScheduleLabel.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
             DownloadICal.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.SessionChair)) != null ? Visibility.Visible : Visibility.Collapsed;
@@ -262,7 +266,8 @@ namespace CMS.UI.Windows.Home
 
         private void EmergButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            EmergencyInfoOnlyRead newWindow = new EmergencyInfoOnlyRead();
+            newWindow.ShowDialog();
         }
 
         private void ManageEmergency_Click(object sender, RoutedEventArgs e)
@@ -286,6 +291,18 @@ namespace CMS.UI.Windows.Home
         private void ManageWelcomePack_Click(object sender, RoutedEventArgs e)
         {
             GuestsList newWindow = new GuestsList();
+            newWindow.ShowDialog();
+        }
+
+        private void MySessionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MySessions newWindow = new MySessions();
+            newWindow.ShowDialog();
+        }
+
+        private void ReviewArticles_Click(object sender, RoutedEventArgs e)
+        {
+            ReviewerPanel newWindow = new ReviewerPanel();
             newWindow.ShowDialog();
         }
     }

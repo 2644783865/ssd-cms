@@ -15,8 +15,8 @@
         <Label Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,108,0,0" Width="345"/>
         <Label Content="Acceptance Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,170,0,0" Width="345"/>
         <Label Content="Submissions" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="21,0,0,211" Width="345"/>
-        <TextBox Name="TopicBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="17,74,0,0"/>
-        <TextBox Name="StatusBox" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,139,0,0"/>
+        <TextBox Name="TopicBox" MaxLength="256" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="17,74,0,0"/>
+        <TextBox Name="StatusBox" MaxLength="10" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,139,0,0"/>
         <TextBox Name="AcceptanceDateBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="345" Margin="19,201,0,0" IsReadOnly="True"/>
         <Expander Name="AuthorsExpander" Header="Authors" HorizontalAlignment="Center" Height="30" Margin="21,243,32,0" VerticalAlignment="Top" Width="343" IsExpanded="False" Expanded="Expander_Expanded" Collapsed="Expander_Expanded">
             <StackPanel Orientation="Horizontal">

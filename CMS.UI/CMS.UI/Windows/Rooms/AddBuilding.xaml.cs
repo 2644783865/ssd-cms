@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using MahApps.Metro.Controls;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MahApps.Metro.Controls;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using CMS.BE.DTO;
@@ -39,6 +27,7 @@ namespace CMS.UI.Windows.Rooms
             if (response)
             {
                 MessageBox.Show("Successfully added!");
+                Close();
             }
             else
             {

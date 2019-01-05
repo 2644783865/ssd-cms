@@ -4,6 +4,7 @@ using CMS.UI.Helpers;
 using CMS.UI.Windows.Accommodation;
 using CMS.UI.Windows.Tasks;
 using CMS.UI.Windows.Travel;
+using CMS.UI.Windows.Emergency;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
@@ -148,6 +149,12 @@ namespace CMS.UI.Windows.Home
         private void TravelButton_Click(object sender, RoutedEventArgs e)
         {
             TravelConference newWindow = new TravelConference();
+            newWindow.ShowDialog();
+        }
+
+        private void EmergButton_Click(object sender, RoutedEventArgs e)
+        {
+            EmergencyInfoOnlyRead newWindow = new EmergencyInfoOnlyRead();
             newWindow.ShowDialog();
         }
     }

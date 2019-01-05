@@ -11,13 +11,13 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
             <Label Content="First Name:" Margin="0,0,0,0"/>
-            <TextBox Name="FirstNameBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <TextBox Name="FirstNameBox" MaxLength="256" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="Last Name:" Margin="0,0,0,0"/>
-            <TextBox Name="LastNameBox" Margin="0,0,0,0" Width="337" Height="23"/>
+            <TextBox Name="LastNameBox" MaxLength="256" Margin="0,0,0,0" Width="337" Height="23"/>
             <Label Content="Title:" Margin="0,0,0,0"/>
             <ComboBox Name="TitleBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="165"/>
             <Label Content="FieldOfStudy:" Margin="0,0,0,0"/>
-            <TextBox Name="FieldOfStudyBox" Margin="0,0,0,0" Width="337" Height="23"/>
+            <TextBox Name="FieldOfStudyBox" MaxLength="256" Margin="0,0,0,0" Width="337" Height="23"/>
 
         </StackPanel>
         <Button Name="SubmitButton" Content="Add Author" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Width="121" Click="SubmitButton_Click"/>

@@ -30,16 +30,16 @@ namespace CMS.API.Tests
         {
             int id = 1;
             var result = taskTest.GetTaskById(id);
-            Assert.AreEqual(null, result);
+            Assert.AreEqual("TestTask", result.Title);
         }
 
         [TestMethod]
         public void TestGetTasksForEmployee()
         {
-            int EmployeeId = 1;
+            int EmployeeId = 2;
             int ConferenceId = 1;
             var result = taskTest.GetTasksForEmployee(EmployeeId, ConferenceId);
-            Assert.IsNotNull(result);
+            Assert.AreEqual("TestTask", result.First().Title);
         }
 
         [TestMethod]
@@ -47,17 +47,51 @@ namespace CMS.API.Tests
         {
             int ConferenceId = 1;
             var result = taskTest.GetTasksByConferenceId(ConferenceId);
-            Assert.IsNotNull(result);             
+            Assert.AreEqual("TestTask", result.First().Title);             
         }
 
         [TestMethod]
         public void TestCheckOverlappingTask()
         {
-            int employeeId = 1;
-            DateTime beginDate = new DateTime(2008, 5, 1, 8, 30, 52);
-            DateTime endDate = new DateTime(2004, 5, 1, 8, 30, 52);
+            int employeeId = 2;
+            DateTime beginDate = new DateTime(2018, 11, 22, 16, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 18, 00, 00);
+
+            /*DateTime beginDate = new DateTime(2018, 11, 22, 14, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 16, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 12, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 16, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 12, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 14, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 10, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 16, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 10, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 14, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 10, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 12, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 9, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 16, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 9, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 14, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 9, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 12, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 9, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 10, 00, 00);
+
+            DateTime beginDate = new DateTime(2018, 11, 22, 8, 00, 00);
+            DateTime endDate = new DateTime(2018, 11, 22, 9, 00, 00);*/
+
             var result = taskTest.CheckOverlappingTask(employeeId, beginDate, endDate);
-            Assert.IsFalse(result);
+            Assert.IsTrue(result);
         }
     }
 }

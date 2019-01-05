@@ -1,6 +1,7 @@
 ﻿using CMS.API.BLL.BLL;
 using CMS.API.BLL.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace CMS.API.Tests
 {
@@ -19,15 +20,15 @@ namespace CMS.API.Tests
         public void TestGetAwards()
         {
             var result = awardTests.GetAwards();
-            Assert.IsNotNull(result);
+            Assert.AreEqual(3, result.First().AwardId);
         }
 
         [TestMethod]
         public void TestGetAwardById()
         {
-            int id = 1;
+            int id = 3;
             var result = awardTests.GetAwardById(id);
-            Assert.AreEqual(id, result.PresentationId);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -35,7 +36,7 @@ namespace CMS.API.Tests
         {
             int presentationId = 1;
             var result = awardTests.CheckIfPresentationHasAward(presentationId);
-            Assert.AreEqual(false, result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
@@ -43,7 +44,7 @@ namespace CMS.API.Tests
         {
             int presentationId = 1;
             var result = awardTests.DeleteAssignmentAwardToPresentation(presentationId);
-            Assert.AreEqual(false, result);
+            Assert.AreEqual(true, result);
         }
     }
 }

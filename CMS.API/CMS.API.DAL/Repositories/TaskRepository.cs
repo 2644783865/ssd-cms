@@ -58,8 +58,10 @@ namespace CMS.API.DAL.Repositories
 
         public bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate)
         {
-            return _db.Tasks.Where(t => (t.BeginDate <= beginDate && t.EndDate >= beginDate) 
-            || (t.BeginDate <= endDate && t.EndDate >= endDate)).Count() == 0;
+            return _db.Tasks.Where(t => ((t.BeginDate <= beginDate && t.EndDate > beginDate) 
+            || (t.BeginDate < endDate && t.EndDate >= endDate) 
+            || (t.BeginDate > beginDate && t.EndDate < endDate))
+            && t.EmployeeId==employeeId).Count() == 0;
         }
 
         public void Dispose()

@@ -31,7 +31,7 @@
         <Label Content="Sessions:" HorizontalAlignment="Left" Margin="45,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
         <Label Content="Special Sessions:" HorizontalAlignment="Left" Margin="390,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
         <Label Content="Events:" HorizontalAlignment="Left" Margin="737,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
-        <Button Name="EmergButton" HorizontalAlignment="Right" Margin="0,10,138,0" Foreground="Red" VerticalAlignment="Top" Width="60" Height="50">
+        <Button Name="EmergButton" HorizontalAlignment="Right" Margin="0,10,138,0" Foreground="Red" VerticalAlignment="Top" Width="60" Height="50" Click="EmergButton_Click">
             <iconPacks:FontAwesome Kind="InfoCircleSolid"  Width="20" Height="20"/>
         </Button>
         <Button Name="AccomButton" HorizontalAlignment="Right" Margin="0,10,268,0" VerticalAlignment="Top" Width="60" Height="50" Click="AccomButton_Click">

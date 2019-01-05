@@ -160,14 +160,14 @@
     <Compile Include="Windows\Reviews\ReviewDetails.xaml.cs">
       <DependentUpon>ReviewDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Reviews\ReviewerPanel.xaml.cs">
+      <DependentUpon>ReviewerPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Reviews\ReviewsShow.xaml.cs">
       <DependentUpon>ReviewsShow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Rooms\AddBuilding.xaml.cs">
       <DependentUpon>AddBuilding.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Rooms\AddLocation.xaml.cs">
-      <DependentUpon>AddLocation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Rooms\EditBuilding.xaml.cs">
       <DependentUpon>EditBuilding.xaml</DependentUpon>
@@ -189,6 +189,9 @@
     </Compile>
     <Compile Include="Windows\Session\AddEditSession.xaml.cs">
       <DependentUpon>AddEditSession.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Session\MySessions.xaml.cs">
+      <DependentUpon>MySessions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Session\PresentationDetails.xaml.cs">
       <DependentUpon>PresentationDetails.xaml</DependentUpon>
@@ -330,6 +333,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Reviews\ReviewerPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Reviews\ReviewsShow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -337,10 +344,6 @@
     <Page Include="Windows\Rooms\AddBuilding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Rooms\AddLocation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Rooms\EditBuilding.xaml">
       <SubType>Designer</SubType>
@@ -367,6 +370,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Session\AddEditSession.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Session\MySessions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

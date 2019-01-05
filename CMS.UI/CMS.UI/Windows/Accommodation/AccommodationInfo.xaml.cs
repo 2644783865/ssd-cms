@@ -1,20 +1,7 @@
 ﻿using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using CMS.BE.DTO;
 using CMS.Core.Core;
-using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 
@@ -32,19 +19,24 @@ namespace CMS.UI.Windows.Accommodation
         {
             InitializeComponent();
             currentAccommodation = accommodation;
-            if (accommodation != null) InitializeEditFields();
-            this.Title = "Add Accommodation";
-            SaveButton.Content = "Add";   
+            if (accommodation != null)
+            {
+                InitializeEditFields();
+            }
+            else
+            {
+                this.Title = "Add Accommodation";
+                SaveButton.Content = "Add";
+            }
         }
 
         private void InitializeEditFields()
         {
-
-            currentAccommodation.PlaceName= PlaceNameBox.Text;
-            currentAccommodation.Description= DescriptionBox.Text;
-            currentAccommodation.Currency = CurrencyBox.Text;
-            currentAccommodation.City = CityBox.Text;
-            currentAccommodation.CityDesc = CityDescBox.Text;
+            PlaceNameBox.Text = currentAccommodation.PlaceName;
+            DescriptionBox.Text = currentAccommodation.Description;
+            CurrencyBox.Text = currentAccommodation.Currency;
+            CityBox.Text = currentAccommodation.City;
+            CityDescBox.Text = currentAccommodation.CityDesc;
             this.Title = "Edit Accommodation";
             SaveButton.Content = "Save";
         }
@@ -78,7 +70,6 @@ namespace CMS.UI.Windows.Accommodation
                         currentAccommodation.CityDesc = CityDescBox.Text;
 
                         result = await core.EditAccommodationInfoAsync(currentAccommodation);
-          
                     }
 
                     if (result)
@@ -106,9 +97,9 @@ namespace CMS.UI.Windows.Accommodation
             var result = true;
             result = !ValidationHelper.ValidateTextFiled(PlaceNameBox.Text.Length > 0, PlaceNameBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(DescriptionBox.Text.Length > 0, DescriptionBox) ? false : result;
+            result = !ValidationHelper.ValidateTextFiled(CurrencyBox.Text.Length > 0, CityDescBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(CityBox.Text.Length > 0, CityBox) ? false : result;
             result = !ValidationHelper.ValidateTextFiled(CityDescBox.Text.Length > 0, CityDescBox) ? false : result;
-            result = !ValidationHelper.ValidateTextFiled(CurrencyBox.Text.Length > 0, CityDescBox) ? false : result;
             return result;
         }
     }

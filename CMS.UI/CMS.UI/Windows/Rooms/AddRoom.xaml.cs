@@ -43,6 +43,7 @@ namespace CMS.UI.Windows.Rooms
             if (response)
             {
                 MessageBox.Show("Successfully added!");
+                Close();
             } else
             {
                 MessageBox.Show("Could not add the room!");

@@ -1,0 +1,27 @@
+﻿@model CMS.BE.Models.Session.PresentersListModel
+
+<h3>@(Model.Session == null ? "Special session" : "Session")</h3>
+<h2>@(Model.Session == null ? Model.SpecialSession.Title : Model.Session.Title)</h2>
+<h3>@(Model.Session == null ? Model.SpecialSession.Description : Model.Session.Description)</h3>
+<h3>Room @(Model.Session == null ? Model.SpecialSession.RoomCode : Model.Session.RoomCode)</h3>
+<h3>@(Model.Session == null ? Model.SpecialSession.BeginDate.ToString() : Model.Session.BeginDate.ToString()) - @(Model.Session == null ? Model.SpecialSession.EndDate.ToString() : Model.Session.EndDate.ToString())</h3>
+<br />
+<h2>Presenters:</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Id </th>
+        <th>Name </th>
+        <th>Phone</th>
+        <th>Email</th>
+    </tr>
+    @foreach (var m in Model.Presenters)
+    {
+        <tr>
+            <td>@m.AccountId</td>
+            <td>@m.Name</td>
+            <td>@m.PhoneNumber</td>
+            <td>@m.Email</td>
+        </tr>
+    }
+</table>
+

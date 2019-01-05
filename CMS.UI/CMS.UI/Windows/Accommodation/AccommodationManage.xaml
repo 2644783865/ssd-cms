@@ -10,11 +10,17 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-            <Label Content="Accomodation Options:" Margin="0,0,0,0" Height="25"/>
-            <DataGrid Name="AccomodationDataGrid" Height="170" Width="300"/>
+            <Label Content="Accomodation Options:" Margin="0,0,0,0" Height="35"/>
+            <DataGrid Name="AccomodationDataGrid" IsReadOnly="True" Height="170" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" AutoGenerateColumns="False" MouseDoubleClick="DataGrid_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding AccommodationInfoId}" Width="40"/>
+                    <DataGridTextColumn Header="Place" Binding="{Binding PlaceName}" Width="130"/>
+                    <DataGridTextColumn Header="City" Binding="{Binding City}" Width="130"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
         <Button Content="Add" HorizontalAlignment="Left" Margin="47,241,0,0" VerticalAlignment="Top" Width="75" Click="Button_Add"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="159,241,0,0" VerticalAlignment="Top" Width="75" Click="Button_Edit"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="159,241,0,0" VerticalAlignment="Top" Width="75" Click="EditAccomodation_Click"/>
         <Button Content="Delete" HorizontalAlignment="Left" Background="Red" Margin="272,241,0,0" VerticalAlignment="Top" Width="75" Click="Button_Delete"/>
 
     </Grid>

@@ -4,6 +4,9 @@ using System.Windows.Controls;
 using MahApps.Metro.Controls;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
+using System.Windows.Input;
+using CMS.BE.DTO;
+using CMS.UI.Windows.Accommodation;
 
 namespace CMS.UI.Windows.Accommodation
 {
@@ -32,22 +35,48 @@ namespace CMS.UI.Windows.Accommodation
             AccomodationDataGrid.ItemsSource = accomodation;
         }
 
-        private void Button_Add(object sender, RoutedEventArgs e)
+        private async void Button_Add(object sender, RoutedEventArgs e)
         {
-            AccommodationInfo newAddAccommodationWindow = new AccommodationInfo(null);
-            newAddAccommodationWindow.ShowDialog();
+            if (AccomodationDataGrid.Items.Count < 5)
+            {
+                AccommodationInfo newAddAccommodationWindow = new AccommodationInfo(null);
+                newAddAccommodationWindow.ShowDialog();
+                await LoadAccomodation();
+            }
+            else MessageBox.Show("There can be only 5 accommodations");
         }
 
-        private void Button_Edit(object sender, RoutedEventArgs e)
+
+        private async void Button_Delete(object sender, RoutedEventArgs e)
         {
-            // var account = DATAGRID INFO
-            AccommodationInfo newAddAccommodationWindow = new AccommodationInfo(null /*accommodation*/);
-            newAddAccommodationWindow.ShowDialog();
+            if (AccomodationDataGrid.SelectedIndex >= 0)
+            {
+                var result = await accomodationCore.DeleteAccommodationInfoAsync(((AccommodationInfoDTO)AccomodationDataGrid.SelectedItem).AccommodationInfoId);
+                if (result)
+                {
+                    MessageBox.Show("Successfully deleted accomodation");
+                    await LoadAccomodation();
+                }
+                else MessageBox.Show("Error occured while deleting accomodation");
+            }
+            else MessageBox.Show("Choose accomodation first");
         }
 
-        private void Button_Delete(object sender, RoutedEventArgs e)
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            EditAccomodation_Click(sender, e);
+        }
+ 
+        private async void EditAccomodation_Click(object sender, RoutedEventArgs e)
+        {
+            if (AccomodationDataGrid.SelectedIndex >= 0)
+            {
+                var accomodation = await accomodationCore.GetAccommodationInfoByIdAsync(((AccommodationInfoDTO)AccomodationDataGrid.SelectedItem).AccommodationInfoId);
+                AccommodationInfo newAccommodationInfoWindow = new AccommodationInfo(accomodation);
+                newAccommodationInfoWindow.ShowDialog();
+                await LoadAccomodation();
+            }
+            else MessageBox.Show("Choose accomodation first");
         }
     }
 }

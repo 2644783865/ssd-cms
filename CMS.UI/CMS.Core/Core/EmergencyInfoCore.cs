@@ -52,7 +52,6 @@ namespace CMS.Core.Core
             return result != null && result.ResponseType == ResponseType.Success;
         }
 
-        //not implemented
         public async Task<bool> EditEmergencyInfoAsync(EmergencyInfoDTO emergencyInfo)
         {
             var path = Properties.Resources.editEmergencyInfoPath;
@@ -62,7 +61,7 @@ namespace CMS.Core.Core
 
         public async Task<bool> DeleteEmergencyInfoAsync(int emergencyInfoId)
         {
-            var path = $"{Properties.Resources.deleteEmergencyInfoPath}?emergencyInfoId={emergencyInfoId}";
+            var path = $"{Properties.Resources.deleteEmergencyInfoPath}?emergencyId={emergencyInfoId}";
             var result = await _apiHelper.Delete(path);
             return result != null && result.ResponseType == ResponseType.Success;
         }

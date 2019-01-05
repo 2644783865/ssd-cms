@@ -23,5 +23,7 @@ namespace CMS.Core.Interfaces
         Task<bool> AddSpecialSessionAsync(SpecialSessionDTO specialSessio);
         Task<bool> EditSpecialSessionAsync(SpecialSessionDTO specialSessio);
         Task<bool> DeleteSpecialSessionAsync(int specialSessionId);
+
+        Task<byte[]> GetPresentersListAsync(int? sessionId, int? specialSessionId);
     }
 }

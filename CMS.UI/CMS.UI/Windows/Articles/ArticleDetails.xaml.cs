@@ -34,14 +34,21 @@ namespace CMS.UI.Windows.Articles
 
         private async void FillArticleBoxes()
         {
-            IdLabel.Content = currentArticle.ArticleId;
-            TopicBox.Text = currentArticle.Topic;
-            StatusBox.Text = currentArticle.Status;
-            AcceptanceDateBox.Text = currentArticle.AcceptanceDate.HasValue 
-                ? currentArticle.AcceptanceDate.Value.ToShortDateString() : string.Empty;
-            await LoadSubmissions();
-            await LoadAuthors();
-            SetVisibility();
+            try
+            {
+                IdLabel.Content = currentArticle.ArticleId;
+                TopicBox.Text = currentArticle.Topic;
+                StatusBox.Text = currentArticle.Status;
+                AcceptanceDateBox.Text = currentArticle.AcceptanceDate.HasValue
+                    ? currentArticle.AcceptanceDate.Value.ToShortDateString() : string.Empty;
+                await LoadSubmissions();
+                await LoadAuthors();
+                SetVisibility();
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong while loading the data");
+            }
         }
 
         private async Task LoadSubmissions()
@@ -254,7 +261,7 @@ namespace CMS.UI.Windows.Articles
 
         private void ChangeStatusButton_Click(object sender, RoutedEventArgs e)
         {
-            if(currentArticle.Status.Equals("rejected")) Accept.Visibility = Visibility.Visible;
+            if (currentArticle.Status.Equals("rejected")) Accept.Visibility = Visibility.Visible;
             if (currentArticle.Status.Equals("accepted")) Reject.Visibility = Visibility.Visible;
         }
     }

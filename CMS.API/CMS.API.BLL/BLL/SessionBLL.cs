@@ -3,8 +3,10 @@ using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
 using CMS.BE.Models;
+using CMS.BE.Models.Session;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CMS.API.BLL.BLL
 {
@@ -235,6 +237,31 @@ namespace CMS.API.BLL.BLL
             {
                 return null;
             }
+        }
+
+        public PresentersListModel GetPresentersList(int? sessionId, int? specialSessionId)
+        {
+            SessionDTO session = null;
+            SpecialSessionDTO specialSession = null;
+            List<AccountDTO> presenters = null;
+
+            if (sessionId.HasValue)
+            {
+                session = _repository.GetSessionById(sessionId.Value);
+                presenters = _repository.GetPresentersForSession(sessionId.Value).ToList();
+            }
+            if (specialSessionId.HasValue)
+            {
+                specialSession = _repository.GetSpecialSessionById(specialSessionId.Value);
+                presenters = _repository.GetPresentersForSpecialSession(specialSessionId.Value).ToList();
+            }
+
+            return new PresentersListModel()
+            {
+                Session = session,
+                SpecialSession = specialSession,
+                Presenters = presenters
+            };
         }
     }
 }
