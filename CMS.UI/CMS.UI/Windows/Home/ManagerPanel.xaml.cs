@@ -8,6 +8,7 @@ using CMS.UI.Windows.Author;
 using CMS.UI.Windows.Award;
 using CMS.UI.Windows.Emergency;
 using CMS.UI.Windows.Event;
+using CMS.UI.Windows.Reviews;
 using CMS.UI.Windows.Session;
 using CMS.UI.Windows.Tasks;
 using CMS.UI.Windows.Travel;
@@ -296,6 +297,12 @@ namespace CMS.UI.Windows.Home
         private void MySessionsButton_Click(object sender, RoutedEventArgs e)
         {
             MySessions newWindow = new MySessions();
+            newWindow.ShowDialog();
+        }
+
+        private void ReviewArticles_Click(object sender, RoutedEventArgs e)
+        {
+            ReviewerPanel newWindow = new ReviewerPanel();
             newWindow.ShowDialog();
         }
     }

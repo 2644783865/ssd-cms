@@ -160,6 +160,9 @@
     <Compile Include="Windows\Reviews\ReviewDetails.xaml.cs">
       <DependentUpon>ReviewDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Reviews\ReviewerPanel.xaml.cs">
+      <DependentUpon>ReviewerPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Reviews\ReviewsShow.xaml.cs">
       <DependentUpon>ReviewsShow.xaml</DependentUpon>
     </Compile>
@@ -327,6 +330,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Reviews\ReviewDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Reviews\ReviewerPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

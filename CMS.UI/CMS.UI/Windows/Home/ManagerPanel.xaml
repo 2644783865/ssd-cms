@@ -65,7 +65,7 @@
             <iconPacks:FontAwesome Kind="CalendarCheckSolid"  Width="40" Height="50"/>
         </Button>
         <Label Name="DownloadICalLabel" Content="Download &#xD;&#xA;ICal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,369" Width="85" Height="41" HorizontalContentAlignment="Center"/>
-        <Button Name="ReviewArticles" HorizontalAlignment="Right" Margin="0,0,419,459" VerticalAlignment="Bottom" Width="85" Height="82" BorderThickness="0">
+        <Button Name="ReviewArticles" HorizontalAlignment="Right" Margin="0,0,419,459" VerticalAlignment="Bottom" Width="85" Height="82" BorderThickness="0" Click="ReviewArticles_Click">
             <iconPacks:FontAwesome Kind="FileSignatureSolid"  Width="55" Height="55"/>
         </Button>
         <Label Name="ReviewArticlesLabel" Content="Reviewer &#xD;&#xA;Panel" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,419,545" Width="85" Height="41" HorizontalContentAlignment="Center"/>
