@@ -12,9 +12,9 @@ namespace CMS.Core.Core
     {
         private ApiHelper _apiHelper = new ApiHelper();
 
-        public async Task<List<ReviewDTO>> GetReviewInfoAsync()
+        public async Task<List<ReviewDTO>> GetReviewInfoAsync(int conferenceId)
         {
-            var path = $"{Properties.Resources.getReviewInfoPath}";
+            var path = $"{Properties.Resources.getReviewInfoPath}?conferenceId={conferenceId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

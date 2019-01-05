@@ -5,20 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Reviews" Height="350" Width="400"
+        Title="My Reviews" Height="446.078" Width="491.503"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-            <ListView Height="211" Width="333">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </StackPanel>
-        <Button Name="ReadButton" Content="Read" HorizontalAlignment="Right" Margin="0,0,242,38" VerticalAlignment="Bottom" Width="122"  Click="ReadButton_Click"/>
-        <Button Name="DeleteButton" Content="Delete" HorizontalAlignment="Right" Margin="0,0,30,38" VerticalAlignment="Bottom" Width="122" Background="Red" Click="DeleteButton_Click"/>
+        <Button Name="ReadButton" Content="Read" HorizontalAlignment="Right" Margin="0,0,334,29" VerticalAlignment="Bottom" Width="122"  Click="ReadButton_Click"/>
+        <Button Name="DeleteButton" Content="Delete" HorizontalAlignment="Right" Margin="0,0,49,29" VerticalAlignment="Bottom" Width="122" Background="Red" Click="DeleteButton_Click"/>
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Name="ReviewsGrid" HorizontalAlignment="Left" Height="302" Margin="30,29,0,0" VerticalAlignment="Top" Width="407" MouseDoubleClick="ReviewsGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding="{Binding ReviewDate}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="200"/>
+                <DataGridTextColumn Header="Grade" Binding="{Binding Grade}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Controls:MetroWindow>

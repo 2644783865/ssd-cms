@@ -12,12 +12,12 @@ namespace CMS.API.Controllers
     {
         private IReviewBLL _bll = new ReviewBLL();
 
-        // GET: api/Review/Reviews
+        // GET: api/Review/Reviews?conferenceId=
         [HttpGet]
         [Route("api/review/reviews")]
-        public IHttpActionResult GetReviewInfo()
+        public IHttpActionResult GetReviewInfo(int conferenceId)
         {
-            return Ok(_bll.GetReviewInfo());
+            return Ok(_bll.GetReviewInfo(conferenceId));
         }
 
         // GET: api/Review/ReviewById?reviewid=

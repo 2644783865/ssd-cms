@@ -5,7 +5,7 @@ namespace CMS.API.BLL.Interfaces
 {
     public interface IReviewBLL
     {
-        IEnumerable<ReviewDTO> GetReviewInfo();
+        IEnumerable<ReviewDTO> GetReviewInfo(int conferenceId);
         ReviewDTO GetReviewById(int id);
         bool AddReview(ReviewDTO review);
         bool EditReview(ReviewDTO review);

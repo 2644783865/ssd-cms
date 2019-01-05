@@ -10,9 +10,9 @@ namespace CMS.API.DAL.Repositories
     {
         private cmsEntities _db = new cmsEntities();
 
-        public IEnumerable<ReviewDTO> GetReviewInfo()
+        public IEnumerable<ReviewDTO> GetReviewInfo(int conferenceId)
         {
-            return _db.Reviews.Project().To<ReviewDTO>();
+            return _db.Reviews.Where(r => r.Article.ConferenceID==conferenceId).Project().To<ReviewDTO>();
         }
 
         public ReviewDTO GetReviewById(int reviewId)

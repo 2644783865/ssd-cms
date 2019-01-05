@@ -6,7 +6,7 @@ namespace CMS.API.DAL.Interfaces
 {
     public interface IReviewRepository : IDisposable
     {
-        IEnumerable<ReviewDTO> GetReviewInfo();
+        IEnumerable<ReviewDTO> GetReviewInfo(int conferenceId);
         ReviewDTO GetReviewById(int id);
         IEnumerable<ReviewDTO> GetReviewsByArticleId(int articleId);
         void AddReview(ReviewDTO reviewDTO);

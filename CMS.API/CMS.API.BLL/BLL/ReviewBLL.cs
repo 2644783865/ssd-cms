@@ -10,11 +10,11 @@ namespace CMS.API.BLL.BLL
     {
         private IReviewRepository _repository = new ReviewRepository();
 
-        public IEnumerable<ReviewDTO> GetReviewInfo()
+        public IEnumerable<ReviewDTO> GetReviewInfo(int conferenceId)
         {
             try
             {
-                return _repository.GetReviewInfo();
+                return _repository.GetReviewInfo(conferenceId);
             }
             catch
             {
