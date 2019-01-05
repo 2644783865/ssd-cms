@@ -11,20 +11,20 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Width="300">
             <Label Content="Title:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
-            <Label Name="TitleLabel"  Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="TitleLabel" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Height="25"/>
             <Label Content="Airport Road:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
-            <Label Name="AirportLabel" Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="AirportLabel" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Height="25"/>
             <Label Content="Airport Road Time:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
-            <Label Name="AirportTimeLabel" Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="AirportTimeLabel" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Height="25"/>
             <Label Content="Railway Road:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
-            <Label Name="RailwayLabel" Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="RailwayLabel" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Height="25"/>
             <Label Content="Railway Road Time:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
-            <Label Name="RailwayTimeLabel" Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="RailwayTimeLabel" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Height="25"/>
             <Label Content="Taxi Number:" Margin="0,0,0,0" Height="25" FontWeight="Bold"/>
-            <Label Name="TaxiLabel" Margin="0,0,0,0" Height="25"/>
+            <TextBox Name="TaxiLabel" IsReadOnly="True" BorderThickness="0" Margin="0,0,0,0" Height="25"/>
         </StackPanel>
-        <Button Content="Prev" HorizontalAlignment="Left" Margin="47,323,0,0" VerticalAlignment="Top" Width="75" Click="Prev_Click"/>
-        <Button Content="Next" HorizontalAlignment="Left" Margin="272,323,0,0" VerticalAlignment="Top" Width="75" Click="Next_Click"/>
+        <Button Content="Prev" HorizontalAlignment="Left" Margin="47,332,0,0" VerticalAlignment="Top" Width="75" Click="Prev_Click"/>
+        <Button Content="Next" HorizontalAlignment="Left" Margin="272,332,0,0" VerticalAlignment="Top" Width="75" Click="Next_Click"/>
         <Label x:Name="Index" Content="" HorizontalAlignment="Center" Margin="181,323,182.6,0" VerticalAlignment="Top" Width="30"/>
 
     </Grid>

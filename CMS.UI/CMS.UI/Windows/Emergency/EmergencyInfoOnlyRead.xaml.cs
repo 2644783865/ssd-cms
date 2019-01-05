@@ -41,8 +41,8 @@ namespace CMS.UI.Windows.Emergency
 
             if (emergency != null)
             {
-                EmergencyNumLabel.Content = emergency.EmergencyNum;
-                EmergencyInfoLabel.Content = emergency.EmergencyInfo1;
+                EmergencyNumLabel.Text = emergency.EmergencyNum;
+                EmergencyInfoLabel.Text = emergency.EmergencyInfo1;
             }
         }
 

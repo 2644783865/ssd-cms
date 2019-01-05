@@ -11,13 +11,12 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
-            <DataGrid Name="GuestsDataGrid" Height="210" Width="500" IsReadOnly="True" Margin="0,5,0,10" RowHeight="40" AutoGenerateColumns="False" CanUserAddRows="false">
+            <DataGrid Name="GuestsDataGrid" Height="210" Width="500" IsReadOnly="True" Margin="0,5,0,10" AutoGenerateColumns="False" CanUserAddRows="false">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="First Name" Width="145" FontSize="20" Binding="{Binding FirstName}" />
-                    <DataGridTextColumn Header="Last Name" Width="145" FontSize="20" Binding="{Binding LastName}" />
-                    <DataGridTextColumn Header="Type" Width="140" FontSize="20" Binding="{Binding Type}" />
+                    <DataGridTextColumn Header="First Name" Width="145" Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Header="Last Name" Width="145" Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="Type" Width="140" Binding="{Binding Type}" />
                     <DataGridCheckBoxColumn Header="Gift" Width="70" IsThreeState="False" Binding="{Binding GetGift}"/>
-
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

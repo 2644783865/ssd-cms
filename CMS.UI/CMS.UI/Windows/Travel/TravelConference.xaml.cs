@@ -36,12 +36,12 @@ namespace CMS.UI.Windows.Travel
             {
                 Index.Content = "#" + (index + 1);
 
-                TitleLabel.Content = travel[index].Title;
-                AirportLabel.Content = travel[index].AirportRoad;
-                AirportTimeLabel.Content = travel[index].AirportRoadTime;
-                RailwayLabel.Content = travel[index].RailwayRoad;
-                RailwayTimeLabel.Content = travel[index].RailwayRoadTime;
-                TaxiLabel.Content = travel[index].TaxiNum;
+                TitleLabel.Text = travel[index].Title;
+                AirportLabel.Text = travel[index].AirportRoad;
+                AirportTimeLabel.Text = System.Convert.ToString(travel[index].AirportRoadTime);
+                RailwayLabel.Text = travel[index].RailwayRoad;
+                RailwayTimeLabel.Text = System.Convert.ToString(travel[index].RailwayRoadTime);
+                TaxiLabel.Text = travel[index].TaxiNum;
             }
         }
 

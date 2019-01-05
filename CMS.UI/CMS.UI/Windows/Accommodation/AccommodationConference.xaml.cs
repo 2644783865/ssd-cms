@@ -36,11 +36,11 @@ namespace CMS.UI.Windows.Accommodation
             {
                 Index.Content = "#" + (index + 1);
                 
-                PlaceLabel.Content = accomodation[index].PlaceName;
-                DescriptionLabel.Content = accomodation[index].Description;
-                CurrencyLabel.Content = accomodation[index].Currency;
-                CityLabel.Content = accomodation[index].City;
-                CityDescriptionLabel.Content = accomodation[index].CityDesc;
+                PlaceLabel.Text = accomodation[index].PlaceName;
+                DescriptionLabel.Text = accomodation[index].Description;
+                CurrencyLabel.Text = accomodation[index].Currency;
+                CityLabel.Text = accomodation[index].City;
+                CityDescriptionLabel.Text = accomodation[index].CityDesc;
             }
          }
 
