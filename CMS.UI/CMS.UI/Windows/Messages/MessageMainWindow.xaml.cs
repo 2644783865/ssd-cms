@@ -16,24 +16,41 @@ using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using CMS.BE.DTO;
 
+
 namespace CMS.UI.Windows.Messages
 {
+
+    
     /// <summary>
     /// Interaction logic for MessageMainWindow.xaml
     /// </summary>
     public partial class MessageMainWindow : MetroWindow
     {
+        
+        private class ContactListItem
+        {
+            public String Name { get; set; }
+            public int AccountId { get; set; }
+
+            public bool gotmessage { get; set; }
+
+        }
+
         IMessageCore core;
         IAuthenticationCore authcore;
         List<MessageDTO> chat;
         List<LastMessageDTO> mostrecent;
+        List<ContactListItem> contactlist = new List<ContactListItem>();
+        int CurrentUserAccountID;
         public MessageMainWindow()
         {
-
+            CurrentUserAccountID = UserCredentials.Account.AccountId;
             core =  new MessageCore();
             authcore = new AuthenticationCore();
             InitializeComponent();
             LoadMessageImmediately();
+            CastToContactList();
+            DataContext = contactlist;
             DisplayMessages();
 
         }
@@ -49,8 +66,10 @@ namespace CMS.UI.Windows.Messages
         {
             chat = Task.Run(async () => { return await core.GetMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
             mostrecent = Task.Run(async () => { return await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
-         
+            chatscroll.ScrollToEnd();
         }
+
+        
 
         private async void DisplayMessages()
         {
@@ -78,7 +97,30 @@ namespace CMS.UI.Windows.Messages
             
         }
 
+        private async void CastToContactList()
+        {
+            foreach(var recent_msg in mostrecent)
+            {
+                ContactListItem converted = new ContactListItem();
+                converted.AccountId = recent_msg.FirstId == CurrentUserAccountID ? recent_msg.SecondId : recent_msg.FirstId;
+                AccountDTO contact_account = await authcore.GetAccountByIdAsync(converted.AccountId);
+                if (contact_account == null) continue;
+                converted.Name = contact_account.Name;
+                converted.gotmessage = false; // todo: check if message
+                contactlist.Add(converted);
+            }
+        }
 
+        private void DisplayContactList()
+        {
+            foreach(var linked_contact in mostrecent)
+            {
+                //string dummy = linked_contact.
+
+                contacts.Items.Add("fhfhf");
+            }
+        }
+                   
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageDTO msg_to_be_sent = new MessageDTO();
@@ -98,4 +140,6 @@ namespace CMS.UI.Windows.Messages
             }
         }
     }
+
+
 }
