@@ -1,0 +1,28 @@
+﻿@model CMS.BE.Models.Program.ConferencesModel
+
+@{
+    ViewBag.Title = "Conferences";
+}
+
+<h2>Conferences</h2>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Id </th>
+        <th>Conference </th>
+        <th>Visit</th>
+    </tr>
+    @foreach (var m in Model.Conferences)
+    {
+        <tr>
+            <td>@m.ConferenceId</td>
+            <td>@m.ConferenceDesc</td>
+            <td>
+                <a href="@Url.Action("ConferenceProgram", "Web", new { id = m.ConferenceId})">
+                    Details
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+

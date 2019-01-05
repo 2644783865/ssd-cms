@@ -83,6 +83,7 @@ namespace CMS.API.BLL.BLL
         public ConferenceProgramModel GetConferenceProgram(int conferenceId)
         {
             var conference = _repository.GetConferenceById(conferenceId);
+            if (conference == null) return null;
             var events = _eventRepository.GetEventsForConferenceWithBaseEntryAttributes(conferenceId).ToList();
             var sessions = _sessionRepository.GetSessionsForConferenceWithBaseEntryAttributes(conferenceId).ToList();
             var specialSessions = _sessionRepository.GetSpecialSessionsForConferenceWithBaseEntryAttributes(conferenceId).ToList();
