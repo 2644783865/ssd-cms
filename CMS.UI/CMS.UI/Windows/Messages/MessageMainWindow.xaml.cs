@@ -140,10 +140,6 @@ namespace CMS.UI.Windows.Messages
             }
         }
 
-        private void UserinputmessageBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 
 
