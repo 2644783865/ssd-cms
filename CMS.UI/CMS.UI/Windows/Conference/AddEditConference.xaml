@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Add Conference" Height="400" Width="400"
+        Title="Add Conference" Height="414" Width="400"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
             <Label Content="Title:" Margin="0,0,0,0"/>
-            <TextBox Name="TitleBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <TextBox Name="TitleBox" MaxLength="200" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <Label Content="Description:" Margin="0,0,0,0"/>
-            <TextBox Name="DescriptionBox" Margin="0,0,0,0" Width="337" Height="23"/>
+            <TextBox Name="DescriptionBox" MaxLength="500" Margin="0,0,0,0" Width="337" Height="46"/>
             <Label Content="Place:" Margin="0,0,0,0"/>
-            <TextBox Name="PlaceBox" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
+            <TextBox Name="PlaceBox" MaxLength="400" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text="" Width="337"/>
             <StackPanel HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top">
                 <Label Content="Begin Date:" Margin="0,0,0,0"/>
                 <DatePicker Name="BeginDatePicker" Margin="0,0,0,0"/>

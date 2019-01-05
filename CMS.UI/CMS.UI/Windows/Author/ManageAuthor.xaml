@@ -12,9 +12,9 @@
         <Button Name="GoToAddAuthor" Content="Add Author" HorizontalAlignment="Left" Margin="73,61,0,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToAddAuthor_Click"/>
         <Button Name="GoToEditAuthor" Content="Edit Author" HorizontalAlignment="Left" Margin="73,139,0,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToEditAuthor_Click"/>
         <Button Name="GoToDeleteAuthor" Content="Delete Author" HorizontalAlignment="Left" Margin="73,222,0,0" VerticalAlignment="Top" Width="101" Height="34" Background="Red" Click="GoToDeleteAuthor_Click"/>
-        <TextBox Name="LoginBox" MaxLength="256" Margin="200,62,0,0" TextWrapping="Wrap" Text="" FontSize="17" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left"/>
-        <TextBox Name="AuthorBox" MaxLength="256" Margin="200,139,0,0" TextWrapping="Wrap" Text="" FontSize="17" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left" RenderTransformOrigin="1.471,0.809"/>
-        <TextBox Name="AuthorBox2" MaxLength="256" Margin="200,222,0,0" TextWrapping="Wrap" Text="" FontSize="17" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left"/>
+        <TextBox Name="LoginBox" MaxLength="15" Margin="200,62,0,0" TextWrapping="Wrap" Text="" FontSize="17" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left"/>
+        <TextBox Name="AuthorBox" MaxLength="15" Margin="200,139,0,0" TextWrapping="Wrap" Text="" FontSize="17" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left" RenderTransformOrigin="1.471,0.809"/>
+        <TextBox Name="AuthorBox2" MaxLength="15" Margin="200,222,0,0" TextWrapping="Wrap" Text="" FontSize="17" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left"/>
         <Label Content="Account (login:)" Margin="200,28,0,0" VerticalAlignment="Top" Width="101" Height="34" HorizontalAlignment="Left"/>
         <Label Content="Author (Account Login:)" Margin="174,105,0,0" VerticalAlignment="Top" Width="182" Height="34" HorizontalAlignment="Left"/>
         <Label Content="Author (Account Login:)" Margin="174,188,0,0" VerticalAlignment="Top" Width="182" Height="34" HorizontalAlignment="Left"/>

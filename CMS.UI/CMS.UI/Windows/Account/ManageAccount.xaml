@@ -23,7 +23,7 @@
             </StackPanel>
             <StackPanel Margin="10,0,0,0">
                 <Label Content="Account (login):" Margin="0,1,0,0" Width="141" HorizontalAlignment="Left"/>
-                <TextBox Name="LoginBox" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text="" Width="141" HorizontalAlignment="Left"/>
+                <TextBox MaxLength="15" Name="LoginBox" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text="" Width="141" HorizontalAlignment="Left"/>
                 <Label Content="Account's roles:" Margin="0,10,0,0" Width="141" HorizontalAlignment="Left"/>
                 <StackPanel Margin="0,10,0,0" Orientation="Horizontal" Width="225">
                     <ComboBox Name="AccountRoleBox" Margin="0,0,0,0" Width="141"/>

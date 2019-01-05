@@ -11,9 +11,9 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top">
             <Label Content="Login:" Margin="0,0,0,10"/>
-            <TextBox Name="LoginBox" Height="23" TextWrapping="Wrap" Text="" Width="230" KeyDown="Box_KeyDown"/>
+            <TextBox Name="LoginBox" MaxLength="15" Height="23" TextWrapping="Wrap" Text="" Width="230" KeyDown="Box_KeyDown"/>
             <Label Content="Password:" Margin="0,10,0,0"/>
-            <PasswordBox Name="PasswordBox" Width="230" Height="23" KeyDown="Box_KeyDown"/>
+            <PasswordBox Name="PasswordBox" MaxLength="10" Width="230" Height="23" KeyDown="Box_KeyDown"/>
         </StackPanel>
         <Button Name="LogInButton" Content="Log In" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Bottom" Width="75" Click="LogInButton_Click"/>
         <Label Name="LoginFailed" Content="Login Failed!" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,110" VerticalAlignment="Bottom" Width="86" Foreground="Red" FontWeight="Medium"/>
