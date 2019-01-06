@@ -357,7 +357,9 @@ namespace CMS.UI.Windows.Home
 
         private void EventList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            var @event = (EventDTO)EventList.SelectedItem;
+            EventDetails newWindow = new EventDetails(@event);
+            newWindow.ShowDialog();
         }
     }
 }

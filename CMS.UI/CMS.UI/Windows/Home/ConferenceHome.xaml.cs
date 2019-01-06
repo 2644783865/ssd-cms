@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using CMS.BE.DTO;
 using CMS.UI.Windows.Session;
+using CMS.UI.Windows.Event;
 
 namespace CMS.UI.Windows.Home
 {
@@ -176,7 +177,9 @@ namespace CMS.UI.Windows.Home
 
         private void EventList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
+            var @event = (EventDTO)EventList.SelectedItem;
+            EventDetails newWindow = new EventDetails(@event);
+            newWindow.ShowDialog();
         }
     }
 }
