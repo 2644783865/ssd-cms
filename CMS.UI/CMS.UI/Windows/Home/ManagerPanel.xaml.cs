@@ -1,4 +1,5 @@
-﻿using CMS.Core.Core;
+﻿using CMS.BE.DTO;
+using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using CMS.UI.Helpers;
 using CMS.UI.Windows.Accommodation;
@@ -338,6 +339,27 @@ namespace CMS.UI.Windows.Home
             }
             DownloadICal.IsEnabled = true;
             ProgressSpin.IsActive = false;
+        }
+
+        private void SessionList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var session = (SessionDTO)SessionList.SelectedItem;
+            SessionDetails newWindow = new SessionDetails(session, null);
+            newWindow.ShowDialog();
+        }
+
+        private void SpecialSessionList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var specialSession = (SpecialSessionDTO)SpecialSessionList.SelectedItem;
+            SessionDetails newWindow = new SessionDetails(null, specialSession);
+            newWindow.ShowDialog();
+        }
+
+        private void EventList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var @event = (EventDTO)EventList.SelectedItem;
+            EventDetails newWindow = new EventDetails(@event);
+            newWindow.ShowDialog();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace CMS.UI.Windows.Account
 
                     if (await core.ChangePasswordAsync(passwordModel))
                     {
-                        Close();
+                        Logout();
                     }
                     else WrongPassLabel.Visibility = Visibility.Visible;
                 }
@@ -62,11 +62,24 @@ namespace CMS.UI.Windows.Account
             return result;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void BackToUserPanel()
+        {
+            UserPanel newMainWindow = new UserPanel();
+            newMainWindow.Show();
+            Close();
+        }
+
+        private void Logout()
         {
             UserCredentials.Clear();
             LogIn newLoginWindow = new LogIn();
             newLoginWindow.Show();
+            Close();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            BackToUserPanel();
         }
     }
 }

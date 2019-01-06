@@ -42,9 +42,9 @@
         <Label Name="DatesLabel" Content="" HorizontalAlignment="Left" Margin="350,107,0,0" VerticalAlignment="Top" Width="391" FontSize="20"/>
         <TextBox Name="DescriptionBox" IsReadOnly="True" HorizontalAlignment="Left" Height="74" Margin="350,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="391" BorderThickness="0" FontSize="15"/>
         <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="350,65,0,0" VerticalAlignment="Top" Width="391" FontSize="20"/>
-        <ListBox Name="SessionList" HorizontalAlignment="Left" Height="371" Margin="350,0,0,45" VerticalAlignment="Bottom" Width="247" FontSize="15" BorderThickness="1"/>
-        <ListBox Name="SpecialSessionList" HorizontalAlignment="Left" Height="371" Margin="620,0,0,45" VerticalAlignment="Bottom" Width="233" FontSize="15" BorderThickness="1"/>
-        <ListBox Name="EventList" HorizontalAlignment="Left" Height="371" Margin="880,0,0,45" VerticalAlignment="Bottom" Width="246" FontSize="15" BorderThickness="1"/>
+        <ListBox Name="SessionList" HorizontalAlignment="Left" Height="371" Margin="350,0,0,45" VerticalAlignment="Bottom" Width="247" FontSize="15" BorderThickness="1" MouseDoubleClick="SessionList_MouseDoubleClick"/>
+        <ListBox Name="SpecialSessionList" HorizontalAlignment="Left" Height="371" Margin="620,0,0,45" VerticalAlignment="Bottom" Width="233" FontSize="15" BorderThickness="1" MouseDoubleClick="SpecialSessionList_MouseDoubleClick"/>
+        <ListBox Name="EventList" HorizontalAlignment="Left" Height="371" Margin="880,0,0,45" VerticalAlignment="Bottom" Width="246" FontSize="15" BorderThickness="1" MouseDoubleClick="EventList_MouseDoubleClick"/>
         <Label Content="Sessions:" HorizontalAlignment="Left" Margin="350,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
         <Label Content="Special Sessions:" HorizontalAlignment="Left" Margin="620,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>
         <Label Content="Events:" HorizontalAlignment="Left" Margin="880,0,0,421" VerticalAlignment="Bottom" FontSize="20"/>

@@ -135,14 +135,14 @@ namespace CMS.UI.Windows.Session
             if (SpecialCheck.IsChecked.Value)
             {
                 var specialSession = (SpecialSessionDTO)SessionsBox.SelectedItem;
-                //SessionDetails newWindow = new SessionDetails(null, specialSession);
-                //newWindow.ShowDialog();
+                SessionDetails newWindow = new SessionDetails(null, specialSession);
+                newWindow.ShowDialog();
             }
             else
             {
                 var session = (SessionDTO)SessionsBox.SelectedItem;
-                //SessionDetails newWindow = new SessionDetails(session, null);
-                //newWindow.ShowDialog();
+                SessionDetails newWindow = new SessionDetails(session, null);
+                newWindow.ShowDialog();
             }
         }
 
@@ -167,8 +167,8 @@ namespace CMS.UI.Windows.Session
         private void PresentationsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var presentation = (PresentationDTO)PresentationsGrid.SelectedItem;
-            //PresentationDetails newWindow = new PresentationDetails(presentation);
-            //newWindow.ShowDialog();
+            PresentationDetailsReadOnly newWindow = new PresentationDetailsReadOnly(presentation);
+            newWindow.ShowDialog();
         }
 
         private void PresentationsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

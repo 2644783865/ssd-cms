@@ -126,6 +126,9 @@
       <DependentUpon>EmergencyInfoOnlyRead.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Event\AddEditEvent.xaml.cs" />
+    <Compile Include="Windows\Event\EventDetails.xaml.cs">
+      <DependentUpon>EventDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Home\AdministratorPanel.xaml.cs">
       <DependentUpon>AdministratorPanel.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,9 @@
     <Compile Include="Windows\Session\PresentationDetails.xaml.cs">
       <DependentUpon>PresentationDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Session\PresentationDetailsReadOnly.xaml.cs">
+      <DependentUpon>PresentationDetailsReadOnly.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Session\PresentationSession.xaml.cs">
       <DependentUpon>PresentationSession.xaml</DependentUpon>
     </Compile>
@@ -201,6 +207,9 @@
     </Compile>
     <Compile Include="Windows\Session\Session.xaml.cs">
       <DependentUpon>Session.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Session\SessionDetails.xaml.cs">
+      <DependentUpon>SessionDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Tasks\AddEditTask.xaml.cs" />
     <Compile Include="Windows\Tasks\ManageTasks.xaml.cs">
@@ -290,6 +299,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\Event\EventDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Home\AdministratorPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -374,6 +387,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Session\PresentationDetailsReadOnly.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Session\PresentationSession.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -385,6 +402,10 @@
     <Page Include="Windows\Session\Session.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Session\SessionDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Tasks\AddEditTask.xaml">
       <Generator>MSBuild:Compile</Generator>
