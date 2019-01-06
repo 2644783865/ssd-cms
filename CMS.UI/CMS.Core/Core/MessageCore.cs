@@ -113,14 +113,15 @@ namespace CMS.Core.Core
             return null;
         }
 
-        public async Task<int> HasNewMessages(int accountId)
+        public async Task<int> HasNewMessages()
         {
+            int currentUserId = UserCredentials.Account.AccountId;
             int counter = 0;
-            var path = $"{Properties.Resources.getLastMessagesByAccountIdPath}?accountId={accountId}";
+            var path = $"{Properties.Resources.getLastMessagesByAccountIdPath}?accountId={currentUserId}";
             var result = await _apiHelper.Get(path);
             if (result != null && result.ResponseType == ResponseType.Success)
             {
-                int currentUserId = UserCredentials.Account.AccountId;
+                
                 var recent_messages = JsonConvert.DeserializeObject<List<LastMessageDTO>>(result.Content);
                 counter = 0;
                 foreach(var msg in recent_messages)

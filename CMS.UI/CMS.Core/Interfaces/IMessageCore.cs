@@ -18,6 +18,6 @@ namespace CMS.Core.Interfaces
         Task<bool> AddMessageAsync(MessageDTO message);
         Task<bool> EditMessageAsync(MessageDTO message);
         Task<bool> DeleteMessageAsync(int messageId);
-        Task<int> HasNewMessages(int accountID);
+        Task<int> HasNewMessages();
     }
 }
