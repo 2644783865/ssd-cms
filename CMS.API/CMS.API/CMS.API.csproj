@@ -139,6 +139,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Configuration\ConnectionStrings.prod.config" />
+    <Content Include="Configuration\AppSettings.prod.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -178,12 +180,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Configuration\AppSettings.local.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Configuration\ConnectionStrings.local2.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Configuration\AppSettings.local.config" />
+    <Content Include="Configuration\ConnectionStrings.local2.config" />
     <Content Include="App_Browsers\qt.browser" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\testcmstest - FTP.pubxml" />

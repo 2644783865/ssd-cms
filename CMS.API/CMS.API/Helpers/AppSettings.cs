@@ -10,8 +10,6 @@ namespace CMS.API.Helpers
 
         public static string BasicAPIUsername => KeyHasValue("API_USERNAME") ? GetString("API_USERNAME") : String.Empty;
 
-        public static string WebpageAddress => KeyHasValue("WebAddress") ? GetString("WebAddress") : String.Empty;
-
         private static bool KeyHasValue(string key) => ConfigurationManager.AppSettings.AllKeys.Contains(key)
             && ConfigurationManager.AppSettings[key] != string.Empty;
 
