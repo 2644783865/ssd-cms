@@ -19,5 +19,6 @@ namespace CMS.Core.Interfaces
         Task<bool> EditMessageAsync(MessageDTO message);
         Task<bool> DeleteMessageAsync(int messageId);
         Task<int> HasNewMessages();
+        Task<bool> markReceived(int FirstId, int SecondId);
     }
 }

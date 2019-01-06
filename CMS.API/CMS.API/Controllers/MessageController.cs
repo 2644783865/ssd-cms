@@ -108,5 +108,14 @@ namespace CMS.API.Controllers
             if (_bll.DeleteMessage(messageId)) return Ok();
             return InternalServerError();
         }
+
+        [HttpGet]
+        [Route("api/message/markreceived")]
+        public IHttpActionResult markReceived(int FirstId, int SecondId)
+        {
+            if (_bll.markReceived(FirstId, SecondId)) return Ok();
+            return InternalServerError();
+
+        }
     }
 }

@@ -570,6 +570,9 @@
   <data name="loginPath" xml:space="preserve">
     <value>api/authentication/login</value>
   </data>
+  <data name="markMessageReceivedPath" xml:space="preserve">
+    <value>api/message/markreceived</value>
+  </data>
   <data name="rejectArticlePath" xml:space="preserve">
     <value>api/article/rejectarticle</value>
   </data>

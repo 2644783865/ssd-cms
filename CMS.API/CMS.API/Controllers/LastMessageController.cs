@@ -46,7 +46,7 @@ namespace CMS.API.Controllers
         [Route("api/lastmessage/addlastmessage")]
         public IHttpActionResult AddLastMessage([FromBody] LastMessageDTO lastmessage)
         {
-            if (string.IsNullOrEmpty(lastmessage.LastMessageContent)) return BadRequest();
+            if (string.IsNullOrEmpty(lastmessage.LastMessage1)) return BadRequest();
             if (_bll.AddLastMessage(lastmessage)) return Ok();
             return InternalServerError();
         }
@@ -56,7 +56,7 @@ namespace CMS.API.Controllers
         [Route("api/lastmessage/editlastmessage")]
         public IHttpActionResult EditLastMessage([FromBody] LastMessageDTO lastmessage)
         {
-            if (string.IsNullOrEmpty(lastmessage.LastMessageContent)) return BadRequest();
+            if (string.IsNullOrEmpty(lastmessage.LastMessage1)) return BadRequest();
             if (_bll.EditLastMessage(lastmessage)) return Ok();
             return InternalServerError();
         }

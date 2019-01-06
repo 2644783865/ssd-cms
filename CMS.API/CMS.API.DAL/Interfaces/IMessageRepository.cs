@@ -16,5 +16,6 @@ namespace CMS.API.DAL.Interfaces
         void EditMessage(MessageDTO messageDTO);
         void DeleteMessage(int messageId);
         IEnumerable<LastMessageDTO> GetLastMessagesByAccountId(int accountId);
+        void MarkReceived(int firstId, int secondId);
     }
 }

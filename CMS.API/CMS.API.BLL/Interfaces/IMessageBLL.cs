@@ -17,5 +17,6 @@ namespace CMS.API.BLL.Interfaces
         bool AddMessage(MessageDTO message);
         bool EditMessage(MessageDTO message);
         bool DeleteMessage(int messageId);
+        bool markReceived(int FirstId, int SecondId);
     }
 }

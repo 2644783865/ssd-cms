@@ -3,6 +3,8 @@ using CMS.API.DAL.Interfaces;
 using CMS.BE.DTO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CMS.API.DAL.Repositories
 {
@@ -70,14 +72,21 @@ namespace CMS.API.DAL.Repositories
 
         public IEnumerable<LastMessageDTO> GetLastMessagesByAccountId(int accountId)
         {
-            return _db.LastMessages.Where(message => message.FirstId == accountId || message.SecondId == accountId).Project().To<LastMessageDTO>();
-
+            return _db.LastMessages.Where(message => message.FirstId == accountId || message.SecondId == accountId).Project().To<LastMessageDTO>(); 
         }
 
         public IEnumerable<MessageDTO> GetMessagesByTargetId(int requesterId, int targetId)
         {
             return _db.Messages.Where(message => (message.ReceiverId == requesterId &&  message.SenderId == targetId) || (message.ReceiverId == targetId && message.SenderId == requesterId)).Project().To<MessageDTO>();
 
+        }
+
+        public void MarkReceived(int firstId, int secondId)
+        {
+            var sql = @"update LastMessages
+	                    set FirstidReceived =1, secondidReceived=1
+	                    where (FirstId=@arg_firstId and SecondId=@arg_secondId ) or (FirstId=@arg_secondId and SecondId=@arg_firstId)";
+            _db.Database.ExecuteSqlCommand(sql, firstId, secondId);
         }
     }
 }

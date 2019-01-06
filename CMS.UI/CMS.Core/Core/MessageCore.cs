@@ -126,14 +126,21 @@ namespace CMS.Core.Core
                 counter = 0;
                 foreach(var msg in recent_messages)
                 {
-                    if (msg.FirstId == currentUserId && !Convert.ToBoolean(msg.FirstIdReceived) ||
-                        msg.SecondId == currentUserId && !Convert.ToBoolean(msg.SecondIdReceived))
+                    if (msg.FirstId == currentUserId && !Convert.ToBoolean(msg.firstIdReceived) ||
+                        (msg.SecondId == currentUserId && !Convert.ToBoolean(msg.secondIdReceived)))
                     {
                         ++counter;
                     }
                 }
             }
             return counter;
+        }
+
+        public async Task<bool> markReceived(int FirstId, int SecondId)
+        {
+            var path = $"{Properties.Resources.markMessageReceivedPath}?FirstId={FirstId}&SecondId={SecondId}";
+            var result = await _apiHelper.Get(path);
+            return result != null && result.ResponseType == ResponseType.Success;
         }
     }
 }

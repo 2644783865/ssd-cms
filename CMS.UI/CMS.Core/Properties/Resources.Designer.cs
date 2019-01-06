@@ -1420,6 +1420,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/message/markreceived.
+        /// </summary>
+        internal static string markMessageReceivedPath {
+            get {
+                return ResourceManager.GetString("markMessageReceivedPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/article/rejectarticle.
         /// </summary>
         internal static string rejectArticlePath {

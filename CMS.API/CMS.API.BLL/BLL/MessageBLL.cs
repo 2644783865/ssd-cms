@@ -132,5 +132,19 @@ namespace CMS.API.BLL.BLL
                 return null;
             }
         }
+
+        public bool markReceived(int FirstId, int SecondId)
+        {
+            try
+            {
+                _repository.MarkReceived(FirstId, SecondId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
     }
 }

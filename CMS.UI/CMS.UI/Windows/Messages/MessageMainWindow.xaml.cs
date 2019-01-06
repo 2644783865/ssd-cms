@@ -107,17 +107,22 @@ namespace CMS.UI.Windows.Messages
 
         private async void CastToContactList()
         {
-            foreach(var recent_msg in mostrecent)
+            if (mostrecent != null)
             {
-                ContactListItem converted = new ContactListItem();
-                converted.AccountId = recent_msg.FirstId == CurrentUserAccountID ? recent_msg.SecondId : recent_msg.FirstId;
-                AccountDTO contact_account = await authcore.GetAccountByIdAsync(converted.AccountId);
-                if (contact_account == null || recent_msg.LastDate == null /* after added but not sent message*/) continue;
-                converted.Name = contact_account.Name;
-                converted.LastMessageContent = recent_msg.LastMessageContent;
-                converted.Date = recent_msg.LastDate.Date.ToShortDateString();
-                converted.gotmessage = false; // todo: check if message
-                contactlist.Add(converted);
+
+                foreach(var recent_msg in mostrecent)
+                {
+                    ContactListItem converted = new ContactListItem();
+                    converted.AccountId = recent_msg.FirstId == CurrentUserAccountID ? recent_msg.SecondId : recent_msg.FirstId;
+                    AccountDTO contact_account = await authcore.GetAccountByIdAsync(converted.AccountId);
+                    if (contact_account == null || recent_msg.LastDate == null /* after added but not sent message*/) continue;
+                    converted.Name = contact_account.Name;
+                    converted.LastMessageContent = recent_msg.LastMessage1;
+                    converted.Date = recent_msg.LastDate.Date.ToShortDateString();
+                    converted.gotmessage = false; // todo: check if message
+                    contactlist.Add(converted);
+                }
+
             }
         }
 
@@ -165,6 +170,13 @@ namespace CMS.UI.Windows.Messages
             var selectedId = ((ContactListItem)contacts.SelectedItem).AccountId;
             var targetedConversation = await core.GetMessagesByTargetIdAsync(CurrentUserAccountID, selectedId);
             DisplayMessages(targetedConversation);
+            if (await core.markReceived(CurrentUserAccountID, selectedId))
+            {
+                userinputmessageBox.Text = "poszło na baze";
+            } else
+            {
+                userinputmessageBox.Text = "dupa";
+            }
         }
 
         private void chatscroll_ScrollChanged(object sender, ScrollChangedEventArgs e)
