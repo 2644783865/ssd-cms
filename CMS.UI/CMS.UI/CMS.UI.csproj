@@ -205,6 +205,9 @@
     <Compile Include="Windows\Session\Session.xaml.cs">
       <DependentUpon>Session.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Session\SessionDetails.xaml.cs">
+      <DependentUpon>SessionDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Tasks\AddEditTask.xaml.cs" />
     <Compile Include="Windows\Tasks\ManageTasks.xaml.cs">
       <DependentUpon>ManageTasks.xaml</DependentUpon>
@@ -392,6 +395,10 @@
     <Page Include="Windows\Session\Session.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Session\SessionDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Tasks\AddEditTask.xaml">
       <Generator>MSBuild:Compile</Generator>

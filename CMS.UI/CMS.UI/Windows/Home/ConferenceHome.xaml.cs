@@ -10,6 +10,8 @@ using Microsoft.Win32;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using CMS.BE.DTO;
+using CMS.UI.Windows.Session;
 
 namespace CMS.UI.Windows.Home
 {
@@ -156,6 +158,25 @@ namespace CMS.UI.Windows.Home
         {
             EmergencyInfoOnlyRead newWindow = new EmergencyInfoOnlyRead();
             newWindow.ShowDialog();
+        }
+
+        private void SessionList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var session = (SessionDTO)SessionList.SelectedItem;
+            SessionDetails newWindow = new SessionDetails(session, null);
+            newWindow.ShowDialog();
+        }
+
+        private void SpecialSessionList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var specialSession = (SpecialSessionDTO)SpecialSessionList.SelectedItem;
+            SessionDetails newWindow = new SessionDetails(null, specialSession);
+            newWindow.ShowDialog();
+        }
+
+        private void EventList_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
     }
 }

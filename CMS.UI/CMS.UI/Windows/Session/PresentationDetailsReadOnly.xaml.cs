@@ -32,9 +32,9 @@ namespace CMS.UI.Windows.Session
             try
             {
                 IdLabel.Content = presentation.PresentationId;
-                TitleBox.Content = presentation.Title;
+                TitleLabel.Content = presentation.Title;
                 DescriptionBox.Text = presentation.Description;
-                PresenterBox.Content = (await authCore.GetAccountByIdAsync(presentation.PresenterId)).Login;
+                PresenterLabel.Content = (await authCore.GetAccountByIdAsync(presentation.PresenterId)).Login;
                 ArticleLabel.Content = (await articleCore.GetArticleByIdAsync(presentation.ArticleId)).Topic;
                 GradeLabel.Content = presentation.Grade.HasValue ? presentation.Grade.Value.ToString() : "-";
                 SessionTypeLabel.Content = presentation.SpecialSessionId.HasValue ? "Special session:" : "Session:";
