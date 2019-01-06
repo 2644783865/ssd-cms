@@ -43,6 +43,7 @@ namespace CMS.UI.Windows.Messages
         List<MessageDTO> chat;
         List<LastMessageDTO> mostrecent;
         List<MessageDTO> target;
+        Dictionary<int, string> targeted_conversation;
         ObservableCollection<ContactListItem> contactlist = new ObservableCollection<ContactListItem>();
         int CurrentUserAccountID;
         public MessageMainWindow()
@@ -54,7 +55,7 @@ namespace CMS.UI.Windows.Messages
             LoadMessageImmediately();
             CastToContactList();
             DataContext = contactlist;
-            DisplayMessages();
+            DisplayMessages(chat);
 
         }
 
@@ -78,15 +79,15 @@ namespace CMS.UI.Windows.Messages
 
         
 
-        private async void DisplayMessages()
+        private async void DisplayMessages(List<MessageDTO> conversation)
         {
-            if(chat==null || chat.Count() == 0)
+            if(conversation == null || conversation.Count() == 0)
             {
                 chatBlock.Text = "Your conversation is empty. Say Hi!";
             } else
             {
                 chatBlock.Text = "";
-                foreach (var message in chat)
+                foreach (var message in conversation)
                 {
                     String author;
                     if(message.SenderId == UserCredentials.Account.AccountId)
@@ -111,7 +112,7 @@ namespace CMS.UI.Windows.Messages
                 ContactListItem converted = new ContactListItem();
                 converted.AccountId = recent_msg.FirstId == CurrentUserAccountID ? recent_msg.SecondId : recent_msg.FirstId;
                 AccountDTO contact_account = await authcore.GetAccountByIdAsync(converted.AccountId);
-                if (contact_account == null) continue;
+                if (contact_account == null || recent_msg.LastDate == null /* after added but not sent message*/) continue;
                 converted.Name = contact_account.Name;
                 converted.LastMessageContent = recent_msg.LastMessageContent;
                 converted.Date = recent_msg.LastDate.Date.ToShortDateString();
@@ -129,13 +130,19 @@ namespace CMS.UI.Windows.Messages
                 contacts.Items.Add("fhfhf");
             }
         }
+
+        private int getSelectedContactId()
+        {
+            return ((ContactListItem)contacts.SelectedItem).AccountId;
+        }
                    
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            int targetReceiver = getSelectedContactId();
             MessageDTO msg_to_be_sent = new MessageDTO();
             msg_to_be_sent.Content = userinputmessageBox.Text.Trim();
             msg_to_be_sent.SenderId = UserCredentials.Account.AccountId;
-            msg_to_be_sent.ReceiverId = 2;
+            msg_to_be_sent.ReceiverId = targetReceiver;
             msg_to_be_sent.Date = DateTime.Now;
 
             bool response = await core.AddMessageAsync(msg_to_be_sent);
@@ -143,7 +150,8 @@ namespace CMS.UI.Windows.Messages
             {
                 userinputmessageBox.Text = "success";
                 LoadMessageImmediately();
-                DisplayMessages();
+                var targetedConversation = await core.GetMessagesByTargetIdAsync(CurrentUserAccountID, targetReceiver);
+                DisplayMessages(targetedConversation);
             } else {
                 userinputmessageBox.Text = "failure";
             }
@@ -151,10 +159,23 @@ namespace CMS.UI.Windows.Messages
 
 
 
-        private void contacts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private async void contacts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selected = ((ContactListItem)contacts.SelectedItem).AccountId;
 
+            var selectedId = ((ContactListItem)contacts.SelectedItem).AccountId;
+            var targetedConversation = await core.GetMessagesByTargetIdAsync(CurrentUserAccountID, selectedId);
+            DisplayMessages(targetedConversation);
+        }
+
+        private void chatscroll_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (chatscroll.HorizontalOffset.Equals(0))
+            {
+                userinputmessageBox.Text = "jest zero";
+            } else
+            {
+                userinputmessageBox.Text = "nima";
+            }
         }
     }
 
