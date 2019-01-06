@@ -5,9 +5,13 @@ using CMS.UI.Helpers;
 using CMS.UI.Windows.Account;
 using CMS.UI.Windows.Messages;
 using MahApps.Metro.Controls;
+using MahApps.Metro.IconPacks;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace CMS.UI.Windows.Home
 {
@@ -18,13 +22,95 @@ namespace CMS.UI.Windows.Home
     {
         private IAuthenticationCore core;
         private IAuthorCore authorCore;
+        private IMessageCore messageCore;
+        Timer messageTimer;
         public UserPanel()
         {
             InitializeComponent();
             core = new AuthenticationCore();
             authorCore = new AuthorCore();
+            messageCore = new MessageCore();
             WindowHelper.WindowSettings(this, UserLabel);
             InitializeData();
+            SetMessageTimer();
+            
+        }
+
+        private void SetMessageTimer()
+        {
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromSeconds(30);
+
+            messageTimer = new Timer((e) =>
+            {
+               Dispatcher.Invoke(() => CheckNewMessages());
+            }, null, startTimeSpan, periodTimeSpan);
+        }
+
+        private async void CheckNewMessages()
+        {
+            var numberOfMessages = await messageCore.HasNewMessages();
+            if (numberOfMessages > 0) SetNewMessageIcon(numberOfMessages);
+            else SetStandardMessageIcon();
+        }
+
+        private void SetStandardMessageIcon()
+        {
+            var stackPanel = new StackPanel() { Orientation = Orientation.Horizontal };
+            var packIcon = new PackIconFontAwesome()
+            {
+                Kind = PackIconFontAwesomeKind.EnvelopeRegular,
+                Margin = new Thickness(0, 0, 0, 0),
+                Width = 50,
+                Height = 50,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            stackPanel.Children.Add(packIcon);
+            
+            MessageButton.Content = stackPanel;
+        }
+
+        private void SetNewMessageIcon(int numberOfMessages)
+        {
+            var stackPanel = new StackPanel() { Orientation = Orientation.Horizontal };
+            var packIcon = new PackIconFontAwesome()
+            {
+                Kind = PackIconFontAwesomeKind.EnvelopeRegular,
+                Margin = new Thickness(0, -10, 0, 0),
+                Width = 45,
+                Height = 45,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            stackPanel.Children.Add(packIcon);
+            if (numberOfMessages < 10)
+            {
+                var label = new Label()
+                {
+                    Content = numberOfMessages,
+                    Margin = new Thickness(-17, 20, 0, -5),
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Background = Brushes.Red,
+                    FontSize = 15,
+                    Height = 30,
+                    Width = 20
+                };
+                stackPanel.Children.Add(label);
+            }
+            else
+            {
+                var label = new Label()
+                {
+                    Content = "9+",
+                    Margin = new Thickness(-17, 15, 0, 0),
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Background = Brushes.Red,
+                    FontSize = 15,
+                    Height = 30,
+                    Width = 30
+                };
+                stackPanel.Children.Add(label);
+            }
+            MessageButton.Content = stackPanel;
         }
 
         private async void InitializeData()
