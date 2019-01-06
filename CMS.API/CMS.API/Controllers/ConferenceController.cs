@@ -95,5 +95,21 @@ namespace CMS.API.Controllers
                 return InternalServerError();
             }
         }
+
+        // GET: api/Conference/ScheduleICal
+        [HttpGet]
+        [Route("api/conference/scheduleical")]
+        public IHttpActionResult GetConferenceScheduleICal(int accountId, int conferenceId)
+        {
+            try
+            {
+                var schedule = _bll.GetConferenceScheduleICal(accountId, conferenceId);
+                return Ok(new ByteArray() { Content = schedule });
+            }
+            catch
+            {
+                return InternalServerError();
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace CMS.API.BLL.Interfaces
         IEnumerable<TaskDTO> GetTasksForEmployee(int EmployeeId, int ConferenceId);
         IEnumerable<TaskDTO> GetTasksByConferenceId(int ConferenceId);
         bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate);
+        byte[] GetTaskScheduleICal(int employeeId, int conferenceId);
     }   
 }
 

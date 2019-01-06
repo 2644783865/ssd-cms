@@ -36,10 +36,12 @@ namespace CMS.API.Controllers
 
         public ActionResult Conferences()
         {
+            var conferences = _bll.GetConferences();
             var model = new ConferencesModel()
             {
-                Conferences = _bll.GetConferences().ToList()
+                Conferences = new List<BE.DTO.ConferenceDTO>()
             };
+            if (conferences != null) model.Conferences = conferences.ToList(); 
 
             return View(model);
         }

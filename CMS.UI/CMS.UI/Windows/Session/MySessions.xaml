@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Session"
                       xmlns:system="clr-namespace:System;assembly=mscorlib"
                       mc:Ignorable="d"
-        Title="My Sessions" Height="450" Width="543"
+        Title="My Sessions" Height="532" Width="566"
                       ResizeMode="NoResize"
                       WindowStartupLocation="CenterScreen">
     <Grid>
@@ -16,6 +16,10 @@
             <ColumnDefinition Width="184*"/>
             <ColumnDefinition Width="353*"/>
         </Grid.ColumnDefinitions>
+        <Button Name="DownloadICal" HorizontalAlignment="Right" Margin="0,0,10,57" VerticalAlignment="Bottom" Width="40" Height="40" BorderThickness="0" Click="DownloadICal_Click" Grid.Column="1">
+            <iconPacks:FontAwesome Kind="CalendarCheckSolid"  Width="20" Height="20"/>
+        </Button>
+        <Label Name="DownloadICalLabel" Content="Download &#xD;&#xA;ICal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,55,56" Width="85" Height="41" HorizontalContentAlignment="Center" Grid.Column="1"/>
         <ComboBox Name="SessionsBox" HorizontalAlignment="Left" Margin="36,41,0,0" VerticalAlignment="Top" Width="216" SelectionChanged="SessionsBox_SelectionChanged" Grid.ColumnSpan="2"/>
         <ListBox Name="ArticlesList" HorizontalAlignment="Left" Height="268" Margin="148,84,0,0" VerticalAlignment="Top" Width="174" BorderThickness="1" MouseDoubleClick="ArticlesList_MouseDoubleClick" Grid.Column="1"/>
         <DataGrid MouseDoubleClick="PresentationsGrid_MouseDoubleClick" SelectionChanged="PresentationsGrid_SelectionChanged" Name="PresentationsGrid" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="268" Margin="36,84,0,0" VerticalAlignment="Top" Width="276" BorderThickness="1" Grid.ColumnSpan="2">
@@ -29,10 +33,10 @@
         <Label Content="My Sessions:" HorizontalAlignment="Left" Margin="36,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Articles (for special session):" HorizontalAlignment="Left" Margin="148,53,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Double click to select" HorizontalAlignment="Left" Margin="36,352,0,0" VerticalAlignment="Top"/>
-        <Button Name="ListOfPresentersButton" HorizontalAlignment="Left" Margin="292,368,0,0" VerticalAlignment="Top" Width="30" Height="30" Click="ListOfPresentersButton_Click" Grid.Column="1">
-            <iconPacks:FontAwesome Kind="DownloadSolid"  Width="15" Height="15"/>
+        <Button Name="ListOfPresentersButton" HorizontalAlignment="Left" Margin="318,451,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="ListOfPresentersButton_Click" Grid.Column="1">
+            <iconPacks:FontAwesome Kind="DownloadSolid"  Width="20" Height="20"/>
         </Button>
-        <Label Content="Download list of presenters:" HorizontalAlignment="Left" Margin="129,372,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Download list &#xD;&#xA; of presenters:" HorizontalAlignment="Left" Margin="227,451,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <CheckBox Name="SpecialCheck" Checked="SpecialCheck_Checked" Unchecked="SpecialCheck_Checked" Content="Special" HorizontalAlignment="Left" Margin="7,18,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label Content="Assign grade:" HorizontalAlignment="Left" Margin="43,354,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <ComboBox Name="GradeBox" HorizontalAlignment="Left" Margin="43,385,0,0" VerticalAlignment="Top" Width="81" SelectionChanged="GradeBox_SelectionChanged" Grid.Column="1"/>

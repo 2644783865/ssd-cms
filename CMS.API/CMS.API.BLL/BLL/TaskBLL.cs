@@ -2,8 +2,13 @@
 using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
+using Ical.Net.CalendarComponents;
+using Ical.Net.DataTypes;
+using Ical.Net.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace CMS.API.BLL.BLL
 {
@@ -109,5 +114,28 @@ namespace CMS.API.BLL.BLL
             }
         }
 
+        public byte[] GetTaskScheduleICal(int employeeId, int conferenceId)
+        {
+            var entries = GetTasksForEmployee(employeeId, conferenceId).ToList();
+
+            var calendar = new Ical.Net.Calendar();
+            foreach (var entry in entries)
+            {
+                calendar.Events.Add(new CalendarEvent
+                {
+                    Class = "PUBLIC",
+                    Summary = "Task " + entry.Title,
+                    Created = new CalDateTime(DateTime.Now),
+                    Description = entry.Description,
+                    Start = new CalDateTime(Convert.ToDateTime(entry.BeginDate)),
+                    End = new CalDateTime(Convert.ToDateTime(entry.EndDate)),
+                    Sequence = 0,
+                    Uid = Guid.NewGuid().ToString()
+                });
+            }
+            var serializer = new CalendarSerializer(new SerializationContext());
+            var serializedCalendar = serializer.SerializeToString(calendar);
+            return Encoding.UTF8.GetBytes(serializedCalendar);
+        }
     }
 }

@@ -61,7 +61,7 @@
             <iconPacks:FontAwesome Kind="CalendarAltRegular"  Width="40" Height="50"/>
         </Button>
         <Label Name="DownloadScheduleLabel" Content="Download &#xD;&#xA;Schedule" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,247" Width="85" Height="41" HorizontalContentAlignment="Center"/>
-        <Button Name="DownloadICal" HorizontalAlignment="Right" Margin="0,0,30,293" VerticalAlignment="Bottom" Width="65" Height="71" BorderThickness="0">
+        <Button Name="DownloadICal" HorizontalAlignment="Right" Margin="0,0,30,293" VerticalAlignment="Bottom" Width="65" Height="71" BorderThickness="0" Click="DownloadICal_Click">
             <iconPacks:FontAwesome Kind="CalendarCheckSolid"  Width="40" Height="50"/>
         </Button>
         <Label Name="DownloadICalLabel" Content="Download &#xD;&#xA;ICal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,369" Width="85" Height="41" HorizontalContentAlignment="Center"/>

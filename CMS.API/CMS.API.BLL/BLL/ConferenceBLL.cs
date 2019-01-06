@@ -3,8 +3,13 @@ using CMS.API.DAL.Interfaces;
 using CMS.API.DAL.Repositories;
 using CMS.BE.DTO;
 using CMS.BE.Models.Program;
+using Ical.Net.CalendarComponents;
+using Ical.Net.DataTypes;
+using Ical.Net.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace CMS.API.BLL.BLL
 {
@@ -114,6 +119,33 @@ namespace CMS.API.BLL.BLL
                 Entries = entries,
                 Person = person
             };
+        }
+
+        public byte[] GetConferenceScheduleICal(int accountId, int conferenceId)
+        {
+            var entries = (_sessionRepository.GetSessionsForConferenceAndChairWithBaseEntryAttributes(accountId, conferenceId) as IEnumerable<BaseEntryEntity>).OrderBy(ent => ent.BeginDate).ToList();
+            entries.AddRange((_sessionRepository.GetSpecialSessionsForConferenceAndChairWithBaseEntryAttributes(accountId, conferenceId) as IEnumerable<BaseEntryEntity>).OrderBy(ent => ent.BeginDate));
+            entries = entries.OrderBy(ent => ent.BeginDate).ToList();
+
+            var calendar = new Ical.Net.Calendar();
+            foreach (var entry in entries)
+            {
+                calendar.Events.Add(new CalendarEvent
+                {
+                    Class = "PUBLIC",
+                    Summary = (entry.GetType() == typeof(SessionDTO) ? "Session " : "Special session ") + entry.Title,
+                    Created = new CalDateTime(DateTime.Now),
+                    Description = entry.GetType() == typeof(SessionDTO) ? ((SessionDTO)entry).Description : ((SpecialSessionDTO)entry).Description,
+                    Start = new CalDateTime(Convert.ToDateTime(entry.BeginDate)),
+                    End = new CalDateTime(Convert.ToDateTime(entry.EndDate)),
+                    Sequence = 0,
+                    Uid = Guid.NewGuid().ToString(),
+                    Location = entry.BuildingName + " r:" + entry.RoomCode,
+                });
+            }
+            var serializer = new CalendarSerializer(new SerializationContext());
+            var serializedCalendar = serializer.SerializeToString(calendar);
+            return Encoding.UTF8.GetBytes(serializedCalendar);
         }
     }
 }

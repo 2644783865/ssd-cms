@@ -13,5 +13,6 @@ namespace CMS.API.BLL.Interfaces
         bool DeleteConference(int conferenceId);
         ConferenceProgramModel GetConferenceProgram(int conferenceId);
         ConferenceScheduleModel GetConferenceSchedule(int accountId, int conferenceId);
+        byte[] GetConferenceScheduleICal(int accountId, int conferenceId);
     }
 }

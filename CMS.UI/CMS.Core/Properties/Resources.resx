@@ -411,6 +411,9 @@
   <data name="getConferenceProgramPath" xml:space="preserve">
     <value>api/conference/program</value>
   </data>
+  <data name="getConferenceScheduleICalPath" xml:space="preserve">
+    <value>api/conference/scheduleical</value>
+  </data>
   <data name="getConferenceSchedulePath" xml:space="preserve">
     <value>api/conference/schedule</value>
   </data>

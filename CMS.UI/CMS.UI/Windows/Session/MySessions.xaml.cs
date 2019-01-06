@@ -20,12 +20,14 @@ namespace CMS.UI.Windows.Session
         private ISessionCore core;
         private IArticleCore articleCore;
         private IPresentationCore presentationCore;
+        private IConferenceCore confCore;
         public MySessions()
         {
             InitializeComponent();
             core = new SessionCore();
             articleCore = new ArticleCore();
             presentationCore = new PresentationCore();
+            confCore = new ConferenceCore();
             InitializeGradeBox();
             LoadSessions();
         }
@@ -194,6 +196,38 @@ namespace CMS.UI.Windows.Session
                     LoadPresentations();
                 }
             }
+        }
+
+        private async void DownloadICal_Click(object sender, RoutedEventArgs e)
+        {
+            DownloadICal.IsEnabled = false;
+            try
+            {
+                var document = await confCore.GetConferenceScheduleICalAsync(UserCredentials.Account.AccountId, UserCredentials.Conference.ConferenceId);
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    AddExtension = true,
+                    Filter = "ics files (*.ics)|*.ics",
+                    FileName = $"{UserCredentials.Conference.Title} Schedule for {UserCredentials.Account.Name} iCal.ics"
+                };
+
+                if ((bool)saveFileDialog.ShowDialog())
+                {
+                    using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
+                    {
+                        writer.Write(document);
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Cannot override the file. The file may be opened.");
+            }
+            catch
+            {
+                MessageBox.Show("Error downloading schedule iCal");
+            }
+            DownloadICal.IsEnabled = true;
         }
     }
 }
