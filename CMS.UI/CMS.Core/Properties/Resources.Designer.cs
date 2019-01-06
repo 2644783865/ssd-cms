@@ -1123,6 +1123,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/message/getmessagesbytargetid.
+        /// </summary>
+        internal static string getMessagesByTargetIdPath {
+            get {
+                return ResourceManager.GetString("getMessagesByTargetIdPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/message/message.
         /// </summary>
         internal static string getMessagesPath {

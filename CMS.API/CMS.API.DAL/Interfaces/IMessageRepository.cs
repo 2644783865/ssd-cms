@@ -8,6 +8,7 @@ namespace CMS.API.DAL.Interfaces
     {
         IEnumerable<MessageDTO> GetMessages();
         IEnumerable<MessageDTO> GetMessagesByAccountId(int accountId);
+        IEnumerable<MessageDTO> GetMessagesByTargetId(int requesterId, int targetId);
         IEnumerable<MessageDTO> GetMessagesBySenderId(int senderId);
         IEnumerable<MessageDTO> GetMessagesByReceiverId(int receiverId);
         MessageDTO GetMessageById(int messageId);

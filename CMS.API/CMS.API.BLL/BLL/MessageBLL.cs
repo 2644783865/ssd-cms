@@ -120,5 +120,17 @@ namespace CMS.API.BLL.BLL
                 return null;
             }
         }
+
+        public IEnumerable<MessageDTO> GetMessagesByTargetId(int requesterId, int targetId)
+        {
+            try
+            {
+                return _repository.GetMessagesByTargetId(requesterId, targetId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

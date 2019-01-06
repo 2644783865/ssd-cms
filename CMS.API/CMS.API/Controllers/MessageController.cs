@@ -60,6 +60,16 @@ namespace CMS.API.Controllers
             return Ok(messages);
         }
 
+        // GET: api/Message/GetMessagesByAccountId?accountId=
+        [HttpGet]
+        [Route("api/message/getmessagesbytargetid")]
+        public IHttpActionResult GetMessagesByTargetAccountId(int requesterId, int targetId)
+        {
+            var messages = _bll.GetMessagesByTargetId(requesterId, targetId);
+            if (messages == null) return BadRequest();
+            return Ok(messages);
+        }
+
         // GET: api/Message/GetLastMessagesByAccountId?accountId=
         [HttpGet]
         [Route("api/message/getlastmessagesbyaccountid")]

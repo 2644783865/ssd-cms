@@ -100,5 +100,16 @@ namespace CMS.Core.Core
             }
             return null;
         }
+
+        public async Task<List<MessageDTO>> GetMessagesByTargetIdAsync(int requesterId, int targetId)
+        {
+            var path = $"{Properties.Resources.getMessagesByTargetIdPath}?requesterId={requesterId}&targetId={targetId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<List<MessageDTO>>(result.Content);
+            }
+            return null;
+        }
     }
 }

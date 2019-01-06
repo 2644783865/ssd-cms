@@ -471,6 +471,9 @@
   <data name="getMessagesByAccountIdPath" xml:space="preserve">
     <value>api/message/getmessagesbyaccountid</value>
   </data>
+  <data name="getMessagesByTargetIdPath" xml:space="preserve">
+    <value>api/message/getmessagesbytargetid</value>
+  </data>
   <data name="getMessagesPath" xml:space="preserve">
     <value>api/message/message</value>
   </data>

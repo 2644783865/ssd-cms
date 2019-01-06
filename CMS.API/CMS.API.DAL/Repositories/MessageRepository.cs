@@ -73,5 +73,11 @@ namespace CMS.API.DAL.Repositories
             return _db.LastMessages.Where(message => message.FirstId == accountId || message.SecondId == accountId).Project().To<LastMessageDTO>();
 
         }
+
+        public IEnumerable<MessageDTO> GetMessagesByTargetId(int requesterId, int targetId)
+        {
+            return _db.Messages.Where(message => (message.ReceiverId == requesterId &&  message.SenderId == targetId) || (message.ReceiverId == targetId && message.SenderId == requesterId)).Project().To<MessageDTO>();
+
+        }
     }
 }

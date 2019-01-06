@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using CMS.BE.DTO;
-
+using System.Collections.ObjectModel;
 
 namespace CMS.UI.Windows.Messages
 {
@@ -32,6 +32,8 @@ namespace CMS.UI.Windows.Messages
             public String Name { get; set; }
             public int AccountId { get; set; }
 
+            public String Date { get; set; }
+            public String LastMessageContent { get; set; }
             public bool gotmessage { get; set; }
 
         }
@@ -40,7 +42,8 @@ namespace CMS.UI.Windows.Messages
         IAuthenticationCore authcore;
         List<MessageDTO> chat;
         List<LastMessageDTO> mostrecent;
-        List<ContactListItem> contactlist = new List<ContactListItem>();
+        List<MessageDTO> target;
+        ObservableCollection<ContactListItem> contactlist = new ObservableCollection<ContactListItem>();
         int CurrentUserAccountID;
         public MessageMainWindow()
         {
@@ -60,12 +63,16 @@ namespace CMS.UI.Windows.Messages
 
             chat = await core.GetMessagesByAccountIdAsync(UserCredentials.Account.AccountId);
             mostrecent = await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId);
+            target = await core.GetMessagesByTargetIdAsync(UserCredentials.Account.AccountId, 2);
+
+
         }
 
         public void LoadMessageImmediately()
         {
             chat = Task.Run(async () => { return await core.GetMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
             mostrecent = Task.Run(async () => { return await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
+            target = Task.Run(async () => { return await core.GetMessagesByTargetIdAsync(UserCredentials.Account.AccountId, 2); }).Result;
             chatscroll.ScrollToEnd();
         }
 
@@ -106,6 +113,8 @@ namespace CMS.UI.Windows.Messages
                 AccountDTO contact_account = await authcore.GetAccountByIdAsync(converted.AccountId);
                 if (contact_account == null) continue;
                 converted.Name = contact_account.Name;
+                converted.LastMessageContent = recent_msg.LastMessageContent;
+                converted.Date = recent_msg.LastDate.Date.ToShortDateString();
                 converted.gotmessage = false; // todo: check if message
                 contactlist.Add(converted);
             }
@@ -140,6 +149,13 @@ namespace CMS.UI.Windows.Messages
             }
         }
 
+
+
+        private void contacts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selected = ((ContactListItem)contacts.SelectedItem).AccountId;
+
+        }
     }
 
 
