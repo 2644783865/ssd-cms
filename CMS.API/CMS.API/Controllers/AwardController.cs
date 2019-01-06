@@ -28,6 +28,16 @@ namespace CMS.API.Controllers
             return Ok(award);
         }
 
+        // GET: api/Award/AwardForSession?sessionId=&specialSesssionId=
+        [HttpGet]
+        [Route("api/award/awardforsession")]
+
+        public IHttpActionResult GetAwardForSession(int? sessionId, int? specialSessionId)
+        {
+            var award = _bll.GetAwardForSession(sessionId, specialSessionId);
+            return Ok(award);
+        }
+
         // POST: api/Award/AddAward
         [HttpPost]
         [Route("api/award/addaward")]

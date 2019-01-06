@@ -10,10 +10,10 @@
                       ResizeMode="NoResize"
                       WindowStartupLocation="CenterScreen">
     <Grid>
-        <ComboBox x:Name="SessionComboBox" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="SessionComboBox" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="SessionComboBox_SelectionChanged"/>
         <Button x:Name="ClearButton" Content="Clear Awards" HorizontalAlignment="Left" Margin="340,406,0,0" VerticalAlignment="Top" Width="95" Click="Button_Clear"/>
-        <DataGrid x:Name="SessionDataGrid" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Height="306" Width="187"/>
-        <DataGrid x:Name="PresentationDataGrid" HorizontalAlignment="Left" Margin="242,47,0,0" VerticalAlignment="Top" Height="306" Width="193"/>
+        <ListBox x:Name="SessionList" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Height="306" Width="187" BorderThickness="1" SelectionChanged="SessionList_SelectionChanged"/>
+        <ListBox x:Name="PresentationList" HorizontalAlignment="Left" Margin="242,47,0,0" VerticalAlignment="Top" Height="306" Width="193" BorderThickness="1" SelectionChanged="PresentationList_SelectionChanged"/>
         <Label Content="Sessions:" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,1.038"/>
         <Label Content="Presentations:" HorizontalAlignment="Left" Margin="242,16,0,0" VerticalAlignment="Top"/>
         <Label Content="Session Type:" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top"/>

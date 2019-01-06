@@ -8,6 +8,7 @@ namespace CMS.API.DAL.Interfaces
     {
         IEnumerable<AwardDTO> GetAwards();
         AwardDTO GetAwardById(int id);
+        AwardDTO GetAwardForSession(int? sessionId, int? specialSessionId);
         void AddAward(AwardDTO awardDTO);
         void EditAward(AwardDTO awardDTO);
         void DeleteAward(int AwardId);

@@ -23,6 +23,18 @@ namespace CMS.API.BLL.BLL
             }
         }
 
+        public AwardDTO GetAwardForSession(int? sessionId, int? specialSessionId)
+        {
+            try
+            {
+                return _repository.GetAwardForSession(sessionId, specialSessionId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public bool AddAward(AwardDTO award)
         {
             try

@@ -22,6 +22,15 @@ namespace CMS.API.DAL.Repositories
             else return MapperExtension.mapper.Map<Award, AwardDTO>(award);
         }
 
+        public AwardDTO GetAwardForSession(int? sessionId, int? specialSessionId)
+        {
+            Award award = null;
+            if (sessionId.HasValue) award = _db.Awards.Where(a => a.Presentation.SessionId == sessionId.Value).FirstOrDefault();
+            if (specialSessionId.HasValue) award = _db.Awards.Where(a => a.Presentation.SpecialSessionId == specialSessionId.Value).FirstOrDefault();
+            if (award == null) return null;
+            else return MapperExtension.mapper.Map<Award, AwardDTO>(award);
+        }
+
         public void AddAward(AwardDTO awardDTO)
         {
             var award = MapperExtension.mapper.Map<AwardDTO, Award>(awardDTO);

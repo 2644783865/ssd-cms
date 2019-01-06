@@ -34,6 +34,17 @@ namespace CMS.Core.Core
             else return null;
         }
 
+        public async Task<AwardDTO> GetAwardForSessionAsync(int? sessionId, int? specialSessionId)
+        {
+            var path = $"{Properties.Resources.getAwardForSessionPath}?sessionId={sessionId}&specialSessionId={specialSessionId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<AwardDTO>(result.Content);
+            }
+            else return null;
+        }
+
         public async Task<bool> AddAwardAsync(AwardDTO award)
         {
             var path = Properties.Resources.addAwardPath;

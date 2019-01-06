@@ -393,6 +393,9 @@
   <data name="getAwardByIdPath" xml:space="preserve">
     <value>api/award/awardbyid</value>
   </data>
+  <data name="getAwardForSessionPath" xml:space="preserve">
+    <value>api/award/awardforsession</value>
+  </data>
   <data name="getAwardsPath" xml:space="preserve">
     <value>api/award/awards</value>
   </data>

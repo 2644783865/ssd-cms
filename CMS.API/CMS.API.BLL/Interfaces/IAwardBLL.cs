@@ -7,6 +7,7 @@ namespace CMS.API.BLL.Interfaces
     {
         IEnumerable<AwardDTO> GetAwards();
         bool GetAwardById(int id);
+        AwardDTO GetAwardForSession(int? sessionId, int? specialSessionId);
         bool AddAward(AwardDTO award);
         bool EditAward(AwardDTO award);
         bool DeleteAward(int AwardId);

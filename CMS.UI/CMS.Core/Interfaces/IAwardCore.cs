@@ -9,6 +9,7 @@ namespace CMS.Core.Interfaces
 {
     Task<List<AwardDTO>> GetAwardsAsync();
     Task<AwardDTO> GetAwardByIdAsync(int awardId);
+    Task<AwardDTO> GetAwardForSessionAsync(int? sessionId, int? specialSessionId);
     Task<bool> AddAwardAsync(AwardDTO award);
     Task<bool> EditAwardAsync(AwardDTO award);
     Task<bool> DeleteAwardAsync(int awardId);

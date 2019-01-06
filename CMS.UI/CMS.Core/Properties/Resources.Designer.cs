@@ -889,6 +889,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/award/awardforsession.
+        /// </summary>
+        internal static string getAwardForSessionPath {
+            get {
+                return ResourceManager.GetString("getAwardForSessionPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/award/awards.
         /// </summary>
         internal static string getAwardsPath {
