@@ -67,7 +67,7 @@ namespace CMS.UI.Windows.Articles
                         var articleModel = new AddArticleModel()
                         {
                             Article = article,
-                            AuthorId = UserCredentials.Account.AccountId
+                            AuthorId = UserCredentials.Author.AuthorId
                         };
 
                         if (await core.AddArticleAsync(articleModel))

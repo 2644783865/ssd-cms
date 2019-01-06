@@ -208,7 +208,7 @@ namespace CMS.UI.Windows.Session
                 {
                     AddExtension = true,
                     Filter = "ics files (*.ics)|*.ics",
-                    FileName = $"{UserCredentials.Conference.Title} Schedule for {UserCredentials.Account.Name} iCal.ics"
+                    FileName = $"{UserCredentials.Conference.Title} sessions schedule for {UserCredentials.Account.Name} iCal.ics"
                 };
 
                 if ((bool)saveFileDialog.ShowDialog())

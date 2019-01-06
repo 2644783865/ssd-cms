@@ -90,6 +90,17 @@ namespace CMS.Core.Core
             }
             return false;
         }
+
+        public async Task<byte[]> GetTaskScheduleICalAsync(int employeeId, int conferenceId)
+        {
+            var path = $"{Properties.Resources.getTaskScheduleICalPath}?employeeId={employeeId}&conferenceId={conferenceId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                return JsonConvert.DeserializeObject<ByteArray>(result.Content).Content;
+            }
+            return null;
+        }
         public void Dispose() => _apiHelper.Dispose();
     }
 }

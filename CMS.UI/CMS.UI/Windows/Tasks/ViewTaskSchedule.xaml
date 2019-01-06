@@ -4,13 +4,27 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Task Schedule" Height="518.41" Width="699.163"
+        Title="Task Schedule" Height="566.41" Width="841.163"
                       ResizeMode="NoResize"
                       WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid x:Name="TaskDataGrid" HorizontalAlignment="Left" Margin="32,68,0,0" VerticalAlignment="Top" Height="389" Width="619" />
+        <DataGrid x:Name="TaskDataGrid" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="32,68,0,0" VerticalAlignment="Top" Height="441" Width="775" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding TaskId}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="200"/>
+                <DataGridTextColumn Header="Begin Date" Binding="{Binding BeginDate}"/>
+                <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}"/>
+                <DataGridTextColumn Header="Employee Id" Binding="{Binding EmployeeId}" />
+                <DataGridTextColumn Header="Manager Id" Binding="{Binding ManagerId}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <ComboBox Name="EmployeeBox" HorizontalAlignment="Left" Margin="156,22,0,0" VerticalAlignment="Top" Width="203" SelectionChanged="EmployeeBox_SelectionChanged"/>
         <Label Name="ChooseEmpLabel" Content="Display schedule for:" HorizontalAlignment="Left" Margin="32,22,0,0" VerticalAlignment="Top"/>
+        <Button Name="DownloadICal" HorizontalAlignment="Right" Margin="0,0,10,484" VerticalAlignment="Bottom" Width="40" Height="40" BorderThickness="0" Click="DownloadICal_Click">
+            <iconPacks:FontAwesome Kind="CalendarCheckSolid"  Width="20" Height="20"/>
+        </Button>
+        <Label Name="DownloadICalLabel" Content="Download &#xD;&#xA;ICal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,50,483" Width="85" Height="41" HorizontalContentAlignment="Center" RenderTransformOrigin="0.506,-0.439"/>
     </Grid>
 </Controls:MetroWindow>

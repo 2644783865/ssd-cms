@@ -2,6 +2,8 @@
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using MahApps.Metro.Controls;
+using Microsoft.Win32;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,6 +15,7 @@ namespace CMS.UI.Windows.Tasks
     public partial class ViewTaskSchedule : MetroWindow
     {
         private ITaskCore taskCore;
+        private AccountDTO currentEmployee;
 
         public ViewTaskSchedule(bool isEmployee)
         {
@@ -22,7 +25,8 @@ namespace CMS.UI.Windows.Tasks
             if (isEmployee)
             {
                 HideChooseEmployee();
-                LoadTasksForToDatagrid(UserCredentials.Account.AccountId);
+                currentEmployee = UserCredentials.Account; 
+                LoadTasksForToDatagrid(currentEmployee.AccountId);
             }
             else ShowChooseEmployee();
         }
@@ -52,10 +56,45 @@ namespace CMS.UI.Windows.Tasks
             TaskDataGrid.ItemsSource = await taskCore.GetTasksForEmployeeAsync(employeeId, UserCredentials.Conference.ConferenceId);
         }
 
-        private void EmployeeBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void EmployeeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (EmployeeBox.SelectedIndex >= 0)
-            LoadTasksForToDatagrid(((AccountDTO)EmployeeBox.SelectedItem).AccountId);
+            {
+                currentEmployee = (AccountDTO)EmployeeBox.SelectedItem;
+                LoadTasksForToDatagrid(currentEmployee.AccountId);
+            }
+        }
+
+        private async void DownloadICal_Click(object sender, RoutedEventArgs e)
+        {
+            DownloadICal.IsEnabled = false;
+            try
+            {
+                var document = await taskCore.GetTaskScheduleICalAsync(currentEmployee.AccountId, UserCredentials.Conference.ConferenceId);
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    AddExtension = true,
+                    Filter = "ics files (*.ics)|*.ics",
+                    FileName = $"{UserCredentials.Conference.Title} tasks schedule for {currentEmployee.Name} iCal.ics"
+                };
+
+                if ((bool)saveFileDialog.ShowDialog())
+                {
+                    using (BinaryWriter writer = new BinaryWriter(File.Open(saveFileDialog.FileName, FileMode.Create)))
+                    {
+                        writer.Write(document);
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Cannot override the file. The file may be opened.");
+            }
+            catch
+            {
+                MessageBox.Show("Error downloading schedule iCal");
+            }
+            DownloadICal.IsEnabled = true;
         }
     }
 }

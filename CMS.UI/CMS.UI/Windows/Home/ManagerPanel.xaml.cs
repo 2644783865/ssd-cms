@@ -212,7 +212,7 @@ namespace CMS.UI.Windows.Home
                 {
                     AddExtension = true,
                     Filter = "pdf files (*.pdf)|*.pdf",
-                    FileName = $"{UserCredentials.Conference.Title} Schedule for {UserCredentials.Account.Name}.pdf"
+                    FileName = $"{UserCredentials.Conference.Title} schedule for {UserCredentials.Account.Name}.pdf"
                 };
 
                 if ((bool)saveFileDialog.ShowDialog())
@@ -317,7 +317,7 @@ namespace CMS.UI.Windows.Home
                 {
                     AddExtension = true,
                     Filter = "ics files (*.ics)|*.ics",
-                    FileName = $"{UserCredentials.Conference.Title} Schedule for {UserCredentials.Account.Name} iCal.ics"
+                    FileName = $"{UserCredentials.Conference.Title} sessions schedule for {UserCredentials.Account.Name} iCal.ics"
                 };
 
                 if ((bool)saveFileDialog.ShowDialog())
