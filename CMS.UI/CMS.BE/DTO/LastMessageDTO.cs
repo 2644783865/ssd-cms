@@ -8,7 +8,7 @@ namespace CMS.BE.DTO
         public int FirstId { get; set; }
         public int SecondId { get; set; }
         public DateTime LastDate { get; set; }
-        public String LastMessage { get; set; }
+        public String LastMessageContent { get; set; }
         public int FirstIdReceived { get; set; }
         public int SecondIdReceived { get; set; }
        

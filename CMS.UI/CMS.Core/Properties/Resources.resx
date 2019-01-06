@@ -537,6 +537,9 @@
   <data name="getTaskByIdPath" xml:space="preserve">
     <value>api/task/taskbyid</value>
   </data>
+  <data name="getTaskScheduleICalPath" xml:space="preserve">
+    <value>api/task/scheduleical</value>
+  </data>
   <data name="getTasksForEmployeePath" xml:space="preserve">
     <value>api/task/tasksforemployee</value>
   </data>

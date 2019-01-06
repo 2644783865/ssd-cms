@@ -76,5 +76,21 @@ namespace CMS.API.Controllers
             var tasks = _bll.CheckOverlappingTask(employeeId, dateModel.beginDate, dateModel.endDate);
             return Ok(tasks);
         }
+
+        // GET: api/Task/ScheduleICal
+        [HttpGet]
+        [Route("api/task/scheduleical")]
+        public IHttpActionResult GetTaskScheduleICal(int employeeId, int conferenceId)
+        {
+            try
+            {
+                var schedule = _bll.GetTaskScheduleICal(employeeId, conferenceId);
+                return Ok(new ByteArray() { Content = schedule });
+            }
+            catch
+            {
+                return InternalServerError();
+            }
+        }
     }
 }

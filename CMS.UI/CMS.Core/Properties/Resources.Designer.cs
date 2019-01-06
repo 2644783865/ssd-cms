@@ -1321,6 +1321,15 @@ namespace CMS.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to api/task/scheduleical.
+        /// </summary>
+        internal static string getTaskScheduleICalPath {
+            get {
+                return ResourceManager.GetString("getTaskScheduleICalPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to api/task/tasksforemployee.
         /// </summary>
         internal static string getTasksForEmployeePath {

@@ -37,8 +37,8 @@ namespace CMS.API.DAL.Extensions
                     cfg.CreateMap<BuildingDTO, Building>();
                     cfg.CreateMap<Message, MessageDTO>();
                     cfg.CreateMap<MessageDTO, Message>();
-                    cfg.CreateMap<LastMessage, LastMessageDTO>();
-                    cfg.CreateMap<LastMessageDTO, LastMessage>();
+                    cfg.CreateMap<LastMessage, LastMessageDTO>().ForMember(dest => dest.LastMessageContent, opt => opt.MapFrom(src => src.LastMessage1));
+                    cfg.CreateMap<LastMessageDTO, LastMessage>().ForMember(dest => dest.LastMessage1, opt => opt.MapFrom(src => src.LastMessageContent));
 
 
 
