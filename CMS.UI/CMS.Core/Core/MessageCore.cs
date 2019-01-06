@@ -3,6 +3,7 @@ using CMS.BE.Models;
 using CMS.Core.Helpers;
 using CMS.Core.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -110,6 +111,28 @@ namespace CMS.Core.Core
                 return JsonConvert.DeserializeObject<List<MessageDTO>>(result.Content);
             }
             return null;
+        }
+
+        public async Task<int> HasNewMessages(int accountId)
+        {
+            int counter = 0;
+            var path = $"{Properties.Resources.getLastMessagesByAccountIdPath}?accountId={accountId}";
+            var result = await _apiHelper.Get(path);
+            if (result != null && result.ResponseType == ResponseType.Success)
+            {
+                int currentUserId = UserCredentials.Account.AccountId;
+                var recent_messages = JsonConvert.DeserializeObject<List<LastMessageDTO>>(result.Content);
+                counter = 0;
+                foreach(var msg in recent_messages)
+                {
+                    if (msg.FirstId == currentUserId && !Convert.ToBoolean(msg.FirstIdReceived) ||
+                        msg.SecondId == currentUserId && !Convert.ToBoolean(msg.SecondIdReceived))
+                    {
+                        ++counter;
+                    }
+                }
+            }
+            return counter;
         }
     }
 }

@@ -169,7 +169,7 @@ namespace CMS.UI.Windows.Messages
 
         private void chatscroll_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            if (chatscroll.HorizontalOffset.Equals(0))
+            if (chatscroll.VerticalOffset.Equals(0))
             {
                 userinputmessageBox.Text = "jest zero";
             } else
