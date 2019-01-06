@@ -6,23 +6,23 @@
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Messages"
         mc:Ignorable="d"
-        Title="MessageMainWindow" Height="450" Width="800"
+        Title="Messages" Height="450" Width="800"
 		WindowStartupLocation="CenterScreen"
 		ResizeMode="CanMinimize">
 	<Grid>
 		<TextBox Name="userinputmessageBox" HorizontalAlignment="Left" Height="56" Margin="276,327,0,0" TextWrapping="Wrap" Text="Enter your message" VerticalAlignment="Top" Width="488" AcceptsReturn="True"/>
 		<Grid Margin="276,0,10,97">
 			<ScrollViewer Name="chatscroll" MaxHeight="270" ScrollChanged="chatscroll_ScrollChanged">
-				<TextBlock  Name="chatBlock" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Your conversation is empty. Say Hi!" VerticalAlignment="Top"  Width="488"/>
+				<TextBlock  Name="chatBlock" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Seems you do not have any conversation started. Click Add Message to start talking to your peers! :)" VerticalAlignment="Top"  Width="488"/>
 
 			</ScrollViewer>
 		</Grid>
 
 
-		<Button Content="SEND" HorizontalAlignment="Left" Margin="689,388,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+		<Button Name="SendButton" Content="SEND" HorizontalAlignment="Left" Margin="689,388,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 		<ListBox Name="contacts" ItemsSource="{Binding}"
                  SelectedItem="{Binding ContactListItem, RelativeSource={RelativeSource AncestorType=Window}}"
-				  HorizontalAlignment="Left" Height="351" Margin="10,32,0,0" VerticalAlignment="Top" Width="236" SelectionMode="Extended" MouseDoubleClick="contacts_MouseDoubleClick">
+				  HorizontalAlignment="Left" Height="351" Margin="10,32,0,0" VerticalAlignment="Top" Width="236" SelectionMode="Extended" MouseDoubleClick="contacts_MouseDoubleClick"  >
 			<ListBox.ItemTemplate>
 				
 				<DataTemplate>

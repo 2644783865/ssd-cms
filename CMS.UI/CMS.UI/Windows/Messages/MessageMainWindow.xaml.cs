@@ -40,66 +40,98 @@ namespace CMS.UI.Windows.Messages
 
         IMessageCore core;
         IAuthenticationCore authcore;
-        List<MessageDTO> chat;
         List<LastMessageDTO> mostrecent;
         List<MessageDTO> target;
         Dictionary<int, string> targeted_conversation;
         ObservableCollection<ContactListItem> contactlist = new ObservableCollection<ContactListItem>();
         int CurrentUserAccountID;
+        int recentlyselected;
         public MessageMainWindow()
         {
             CurrentUserAccountID = UserCredentials.Account.AccountId;
             core =  new MessageCore();
             authcore = new AuthenticationCore();
+            targeted_conversation = new Dictionary<int, string>();
             InitializeComponent();
-            LoadMessageImmediately();
-            CastToContactList();
+            LoadRecentMessagesImmediately();
+            GetPrimaryFocusAtContactAsync();
             DataContext = contactlist;
-            DisplayMessages(chat);
+            SendButton.IsEnabled = false;
+            //DisplayMessages(null);
 
         }
 
-        public async void LoadMessages()
+        private void GetPrimaryFocusAtContactAsync()
+        {
+            if(mostrecent.Count > 0)
+            {
+                contacts.SelectedIndex = 0;
+                contacts.Focus();
+
+            }
+        }
+
+        public async void LoadRecentMessages()
         {
 
-            chat = await core.GetMessagesByAccountIdAsync(UserCredentials.Account.AccountId);
             mostrecent = await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId);
-            target = await core.GetMessagesByTargetIdAsync(UserCredentials.Account.AccountId, 2);
 
 
         }
 
-        public void LoadMessageImmediately()
+        public void LoadRecentMessagesImmediately()
         {
-            chat = Task.Run(async () => { return await core.GetMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
             mostrecent = Task.Run(async () => { return await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
-            target = Task.Run(async () => { return await core.GetMessagesByTargetIdAsync(UserCredentials.Account.AccountId, 2); }).Result;
             chatscroll.ScrollToEnd();
+            CastToContactList();
+
         }
 
         
 
-        private async void DisplayMessages(List<MessageDTO> conversation)
+        private async void DisplayMessages(List<MessageDTO> conversation, int targetId, bool forced = false)
         {
-            if(conversation == null || conversation.Count() == 0)
+            /*
+             if there is new message , load and if there is no previously loaded msgs , also load
+             
+             */
+            if (Convert.ToBoolean(await core.HasNewMessages()) || !targeted_conversation.ContainsKey(targetId) || forced)
             {
-                chatBlock.Text = "Your conversation is empty. Say Hi!";
+
+
+                if (conversation == null || conversation.Count() == 0)
+                {
+                    chatBlock.Text = "Your conversation is empty. Say Hi!";
+                }
+                else
+                {
+                    string chat_content_buffer = "";
+                    foreach (var message in conversation)
+                    {
+                        String author;
+                        if (message.SenderId == UserCredentials.Account.AccountId)
+                        {
+                            author = "You";
+                        }
+                        else
+                        {
+                            AccountDTO receiver_account = await authcore.GetAccountByIdAsync(message.ReceiverId);
+                            author = receiver_account.Name;
+                        }
+                        String msg = message.Date.ToString() + ", " + author + " : " + message.Content + "\n\n";
+                        chat_content_buffer = chat_content_buffer + msg;
+                    }
+                    chatBlock.Text = chat_content_buffer;
+                }
+
+                targeted_conversation[targetId] = chatBlock.Text;
             } else
             {
-                chatBlock.Text = "";
-                foreach (var message in conversation)
+                String result;
+                targeted_conversation.TryGetValue(targetId, out result);
+                if (result!= null)
                 {
-                    String author;
-                    if(message.SenderId == UserCredentials.Account.AccountId)
-                    {
-                        author = "You";
-                    } else
-                    {
-                        AccountDTO receiver_account = await authcore.GetAccountByIdAsync(message.ReceiverId);
-                        author = receiver_account.Name;
-                    }
-                    String msg = message.Date.ToString() + ", " + author + " : " + message.Content + "\n\n";
-                    chatBlock.Text = chatBlock.Text + msg;
+                    chatBlock.Text = result;
                 }
             }
             
@@ -109,7 +141,7 @@ namespace CMS.UI.Windows.Messages
         {
             if (mostrecent != null)
             {
-
+                contactlist.Clear();
                 foreach(var recent_msg in mostrecent)
                 {
                     ContactListItem converted = new ContactListItem();
@@ -122,6 +154,8 @@ namespace CMS.UI.Windows.Messages
                     converted.gotmessage = false; // todo: check if message
                     contactlist.Add(converted);
                 }
+
+                
 
             }
         }
@@ -138,7 +172,13 @@ namespace CMS.UI.Windows.Messages
 
         private int getSelectedContactId()
         {
-            return ((ContactListItem)contacts.SelectedItem).AccountId;
+            int selectedid = ((ContactListItem)contacts.SelectedItem).AccountId;
+            if(selectedid.Equals(null))
+            {
+                return recentlyselected;
+            }
+            recentlyselected = selectedid;
+            return selectedid;
         }
                    
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -154,9 +194,9 @@ namespace CMS.UI.Windows.Messages
             if (response)
             {
                 userinputmessageBox.Text = "success";
-                LoadMessageImmediately();
+                LoadRecentMessagesImmediately();
                 var targetedConversation = await core.GetMessagesByTargetIdAsync(CurrentUserAccountID, targetReceiver);
-                DisplayMessages(targetedConversation);
+                DisplayMessages(targetedConversation, targetReceiver, true);
             } else {
                 userinputmessageBox.Text = "failure";
             }
@@ -166,17 +206,20 @@ namespace CMS.UI.Windows.Messages
 
         private async void contacts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
-            var selectedId = ((ContactListItem)contacts.SelectedItem).AccountId;
-            var targetedConversation = await core.GetMessagesByTargetIdAsync(CurrentUserAccountID, selectedId);
-            DisplayMessages(targetedConversation);
-            if (await core.markReceived(CurrentUserAccountID, selectedId))
+            SendButton.IsEnabled = true;
+            ContactListItem selectedContactItem = ((ContactListItem)contacts.SelectedItem);
+            if (selectedContactItem != null)
             {
-                userinputmessageBox.Text = "poszło na baze";
-            } else
-            {
-                userinputmessageBox.Text = "dupa";
+                var selectedId = selectedContactItem.AccountId;
+                var targetedConversation = await core.GetMessagesByTargetIdAsync(CurrentUserAccountID, selectedId);
+                DisplayMessages(targetedConversation, selectedId);
+                if (!selectedContactItem.gotmessage)
+                {
+                    await core.markReceived(CurrentUserAccountID, selectedId);
+                }
             }
+            
+            
         }
 
         private void chatscroll_ScrollChanged(object sender, ScrollChangedEventArgs e)
@@ -189,6 +232,7 @@ namespace CMS.UI.Windows.Messages
                 userinputmessageBox.Text = "nima";
             }
         }
+
     }
 
 
