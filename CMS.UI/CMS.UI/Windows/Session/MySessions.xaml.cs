@@ -167,8 +167,8 @@ namespace CMS.UI.Windows.Session
         private void PresentationsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var presentation = (PresentationDTO)PresentationsGrid.SelectedItem;
-            //PresentationDetails newWindow = new PresentationDetails(presentation);
-            //newWindow.ShowDialog();
+            PresentationDetailsReadOnly newWindow = new PresentationDetailsReadOnly(presentation);
+            newWindow.ShowDialog();
         }
 
         private void PresentationsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

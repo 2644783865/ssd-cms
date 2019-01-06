@@ -193,6 +193,9 @@
     <Compile Include="Windows\Session\PresentationDetails.xaml.cs">
       <DependentUpon>PresentationDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Session\PresentationDetailsReadOnly.xaml.cs">
+      <DependentUpon>PresentationDetailsReadOnly.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Session\PresentationSession.xaml.cs">
       <DependentUpon>PresentationSession.xaml</DependentUpon>
     </Compile>
@@ -371,6 +374,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Session\PresentationDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Session\PresentationDetailsReadOnly.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
