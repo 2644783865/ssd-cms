@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="Administrator" Height="450" Width="900"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+                      Activated="MetroWindow_Activated">
 	<Controls:MetroWindow.RightWindowCommands>
 		<Controls:WindowCommands>
 			<Button Content="logout" Click="LogOut_Click"/>

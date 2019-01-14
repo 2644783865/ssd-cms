@@ -171,7 +171,7 @@ namespace CMS.Core.Core
         public async Task<bool> SetAuthorForArticleAsync(int articleId, int authorId)
         {
             var path = $"{Properties.Resources.setAuthorForArticlePath}?articleId={articleId}&authorId={authorId}";
-            var result = await _apiHelper.Get(path);
+            var result = await _apiHelper.Post(path, null);
             return result != null && result.ResponseType == ResponseType.Success;
         }
 

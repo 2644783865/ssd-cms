@@ -11,6 +11,7 @@ using System.Windows;
 using CMS.UI.Windows.Reviews;
 using System.Windows.Controls;
 using CMS.UI.Windows.Session;
+using System.Linq;
 
 namespace CMS.UI.Windows.Articles
 {
@@ -56,7 +57,7 @@ namespace CMS.UI.Windows.Articles
             SubmissionBox.ClearValue(ItemsControl.ItemsSourceProperty);
             SubmissionBox.DisplayMemberPath = "SubmissionDate";
             SubmissionBox.SelectedValuePath = "SubmissionId";
-            SubmissionBox.ItemsSource = await core.GetSubmissionsForArticleAsync(currentArticle.ArticleId);
+            SubmissionBox.ItemsSource = (await core.GetSubmissionsForArticleAsync(currentArticle.ArticleId)).OrderByDescending( s => s.SubmissionId);
             SubmissionBox.SelectedIndex = SubmissionBox.Items.Count > 0 ? 0 : -1;
         }
 
@@ -160,30 +161,41 @@ namespace CMS.UI.Windows.Articles
 
         private async void View_Click(object sender, RoutedEventArgs e)
         {
-            View.IsEnabled = false;
-            if (SubmissionBox.SelectedIndex >= 0)
+            try
             {
-                var selectedSubmission = (SubmissionDTO)SubmissionBox.SelectedItem;
-                SaveFileDialog fileDialog = new SaveFileDialog
+                View.IsEnabled = false;
+                if (SubmissionBox.SelectedIndex >= 0)
                 {
-                    AddExtension = true,
-                    Filter = "pdf files (*.pdf)|*.pdf",
-                    FileName = $"{currentArticle.Topic} submission {selectedSubmission.SubmissionDate.ToString("dd-MM-yyyy")}"
-                };
+                    var selectedSubmission = (SubmissionDTO)SubmissionBox.SelectedItem;
+                    SaveFileDialog fileDialog = new SaveFileDialog
+                    {
+                        AddExtension = true,
+                        Filter = "pdf files (*.pdf)|*.pdf",
+                        FileName = $"{currentArticle.Topic} submission {selectedSubmission.SubmissionDate.ToString("dd-MM-yyyy")}"
+                    };
 
-                var submission = await core.GetSubmissionByIdAsync(selectedSubmission.SubmissionId);
-                if ((bool)fileDialog.ShowDialog())
-                {
-                    WriteData(fileDialog.FileName, submission.ArticleFile);
+                    var submission = await core.GetSubmissionByIdAsync(selectedSubmission.SubmissionId);
+                    if ((bool)fileDialog.ShowDialog())
+                    {
+                        WriteData(fileDialog.FileName, submission.ArticleFile);
+                    }
                 }
+                else MessageBox.Show("Select submission");
             }
-            else MessageBox.Show("Select submission");
-            View.IsEnabled = false;
+            catch (IOException)
+            {
+                MessageBox.Show("Cannot override the file. The file may be opened.");
+            }
+            catch
+            {
+                MessageBox.Show("Error downloading view");
+            }
+            View.IsEnabled = true;
         }
 
         private void WriteData(string fileName, byte[] bytes)
         {
-            using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.CreateNew)))
+            using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
             {
                 writer.Write(bytes);
             }

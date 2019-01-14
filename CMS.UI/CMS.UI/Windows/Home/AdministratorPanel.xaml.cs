@@ -167,5 +167,10 @@ namespace CMS.UI.Windows.Home
             ManageBuildingWindow newManageBuilding = new ManageBuildingWindow();
             newManageBuilding.ShowDialog();
         }
+
+        private async void MetroWindow_Activated(object sender, System.EventArgs e)
+        {
+            await FillConferenceBox();
+        }
     }
 }
