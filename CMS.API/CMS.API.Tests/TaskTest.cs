@@ -57,62 +57,62 @@ namespace CMS.API.Tests
           
             DateTime beginDate = new DateTime(2018, 11, 22, 16, 00, 00);
             DateTime endDate = new DateTime(2018, 11, 22, 18, 00, 00);
-            var result = taskTest.CheckOverlappingTask(employeeId, beginDate, endDate);
+            var result = taskTest.CheckOverlappingTask(employeeId, beginDate, endDate, 0);
             Assert.IsTrue(result);
             
             DateTime beginDate1 = new DateTime(2018, 11, 22, 14, 00, 00);
             DateTime endDate1 = new DateTime(2018, 11, 22, 16, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate1, endDate1);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate1, endDate1, 0);
             Assert.IsTrue(result);
             
             DateTime beginDate2 = new DateTime(2018, 11, 22, 12, 00, 00);
             DateTime endDate2 = new DateTime(2018, 11, 22, 16, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate2, endDate2);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate2, endDate2, 0);
             Assert.IsFalse(result);
 
             DateTime beginDate3 = new DateTime(2018, 11, 22, 12, 00, 00);
             DateTime endDate3 = new DateTime(2018, 11, 22, 14, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate3, endDate3);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate3, endDate3, 0);
             Assert.IsFalse(result);
 
             DateTime beginDate4 = new DateTime(2018, 11, 22, 10, 00, 00);
             DateTime endDate4 = new DateTime(2018, 11, 22, 16, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate4, endDate4);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate4, endDate4, 0);
             Assert.IsFalse(result);
 
             DateTime beginDate5 = new DateTime(2018, 11, 22, 10, 00, 00);
             DateTime endDate5 = new DateTime(2018, 11, 22, 14, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate5, endDate5);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate5, endDate5, 0);
             Assert.IsFalse(result);
 
             DateTime beginDate6 = new DateTime(2018, 11, 22, 10, 00, 00);
             DateTime endDate6 = new DateTime(2018, 11, 22, 12, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate6, endDate6);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate6, endDate6, 0);
             Assert.IsFalse(result);
 
             DateTime beginDate7 = new DateTime(2018, 11, 22, 9, 00, 00);
             DateTime endDate7 = new DateTime(2018, 11, 22, 16, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate7, endDate7);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate7, endDate7, 0);
             Assert.IsFalse(result);
 
             DateTime beginDate8 = new DateTime(2018, 11, 22, 9, 00, 00);
             DateTime endDate8 = new DateTime(2018, 11, 22, 14, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate8, endDate8);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate8, endDate8, 0);
             Assert.IsFalse(result);
 
             DateTime beginDate9 = new DateTime(2018, 11, 22, 9, 00, 00);
             DateTime endDate9 = new DateTime(2018, 11, 22, 12, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate9, endDate9);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate9, endDate9, 0);
             Assert.IsFalse(result);
 
             DateTime beginDate10 = new DateTime(2018, 11, 22, 9, 00, 00);
             DateTime endDate10 = new DateTime(2018, 11, 22, 10, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate10, endDate10);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate10, endDate10, 0);
             Assert.IsTrue(result);
 
             DateTime beginDate11 = new DateTime(2018, 11, 22, 8, 00, 00);
             DateTime endDate11 = new DateTime(2018, 11, 22, 9, 00, 00);
-            result = taskTest.CheckOverlappingTask(employeeId, beginDate11, endDate11);
+            result = taskTest.CheckOverlappingTask(employeeId, beginDate11, endDate11, 0);
             Assert.IsTrue(result);
         }
     }

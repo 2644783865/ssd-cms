@@ -57,8 +57,8 @@ namespace CMS.API.DAL.Repositories
             IEnumerable<EventDTO> eve = GetEvents(conferenceId);
             foreach (EventDTO even in eve)
             {
-                if (!((even.BeginDate < begin && even.EndDate < begin)
-                || (even.BeginDate > begin && even.EndDate > end)))
+                if (!((begin < even.BeginDate && end <= even.BeginDate)
+                || (begin >= even.EndDate && end > even.EndDate)))
                 {
                     return true;
                 }

@@ -15,7 +15,7 @@ namespace CMS.Core.Interfaces
         Task<bool> DeleteTaskAsync(int TaskID);
         Task<List<AccountDTO>> GetAccountsForConferenceEmployeeAsync(int ConferenceId);
         Task<List<TaskDTO>> GetTasksForEmployeeAsync(int EmployeeId, int ConferenceId);
-        Task<bool> CheckOverlappingTaskAsync(int EmployeeId, DateTime beginDate, DateTime endDate);
+        Task<bool> CheckOverlappingTaskAsync(int EmployeeId, DateTime beginDate, DateTime endDate, int taskId);
         Task<byte[]> GetTaskScheduleICalAsync(int employeeId, int conferenceId);
     }
 }

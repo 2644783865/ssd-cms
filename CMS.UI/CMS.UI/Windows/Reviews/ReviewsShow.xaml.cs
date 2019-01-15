@@ -42,7 +42,7 @@ namespace CMS.UI.Windows.Reviews
         {
             if (ReviewsGrid.SelectedIndex >= 0)
             {
-                if (await core.DeleteReviewAsync(((ReviewDTO)ReviewsGrid.SelectedItem).ReviewerId))
+                if (await core.DeleteReviewAsync(((ReviewDTO)ReviewsGrid.SelectedItem).ReviewId))
                 {
                     MessageBox.Show("Successfully deleted review");
                     LoadData();

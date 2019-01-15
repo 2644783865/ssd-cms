@@ -80,7 +80,7 @@ namespace CMS.UI.Windows.Articles
             Accept.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
             Reject.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
             ChangeStatusButton.Visibility = UserCredentials.Roles.Find(r => r.Name.Equals(Properties.RoleResources.Editor)) != null && !currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
-            EditButton.Visibility = isAuthor() && currentArticle.Status.Equals("submitted") && SubmissionBox.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            EditButton.Visibility = isAuthor() && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
             Submit.IsEnabled = isAuthor() && currentArticle.Status.Equals("submitted");
             Presentation.IsEnabled = currentArticle.Status.Equals("accepted");
             AddAuthorButton.Visibility = isAuthor() && currentArticle.Status.Equals("submitted") ? Visibility.Visible : Visibility.Collapsed;
@@ -89,7 +89,7 @@ namespace CMS.UI.Windows.Articles
 
         private bool isAuthor()
         {
-            return authors.Find(auth => auth.AuthorId == UserCredentials.Author.AuthorId) != null;
+            return UserCredentials.Author != null && authors.Find(auth => auth.AuthorId == UserCredentials.Author.AuthorId) != null;
         }
 
         private async void SubmitButton_Click(object sender, RoutedEventArgs e)

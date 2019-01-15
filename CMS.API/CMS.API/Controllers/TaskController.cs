@@ -68,12 +68,12 @@ namespace CMS.API.Controllers
             return Ok(tasks);
         }
 
-        // GET: api/Task/CheckOverlappingTask?EmployeeId=&BeginDate=&EndDate=
+        // GET: api/Task/CheckOverlappingTask?EmployeeId=&TaskId=
         [HttpPost]
         [Route("api/task/checkoverlappingtask")]
-        public IHttpActionResult CheckOverlappingTask(int employeeId,[FromBody] DateModel dateModel)
+        public IHttpActionResult CheckOverlappingTask(int employeeId, int taskId, [FromBody] DateModel dateModel)
         {
-            var tasks = _bll.CheckOverlappingTask(employeeId, dateModel.beginDate, dateModel.endDate);
+            var tasks = _bll.CheckOverlappingTask(employeeId, dateModel.beginDate, dateModel.endDate, taskId);
             return Ok(tasks);
         }
 

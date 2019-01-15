@@ -102,11 +102,11 @@ namespace CMS.API.BLL.BLL
             }
         }
 
-        public bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate)
+        public bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate, int taskId)
         {
             try
             {
-                return _repository.CheckOverlappingTask(employeeId, beginDate, endDate);
+                return _repository.CheckOverlappingTask(employeeId, beginDate, endDate, taskId);
             }
             catch
             {

@@ -86,7 +86,7 @@ namespace CMS.UI.Windows.Tasks
             if (ValidateForm())
             {
                 var response = await taskCore.CheckOverlappingTaskAsync(((AccountDTO)RoleEmployeeBox.SelectedItem).AccountId, 
-                    BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value);
+                    BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value, currentTask != null ? currentTask.TaskId : 0);
                 if (response)
                 {
                     if (currentTask != null)
