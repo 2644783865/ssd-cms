@@ -171,6 +171,9 @@
     <Compile Include="Windows\Messages\MessageMainWindow.xaml.cs">
       <DependentUpon>MessageMainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Messages\NewConversation.xaml.cs">
+      <DependentUpon>NewConversation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Reviews\AddReview.xaml.cs">
       <DependentUpon>AddReview.xaml</DependentUpon>
     </Compile>
@@ -348,6 +351,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\Messages\MessageMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Messages\NewConversation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

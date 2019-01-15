@@ -10,6 +10,7 @@ using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using CMS.BE.DTO;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 namespace CMS.UI.Windows.Messages
 {
@@ -40,6 +41,7 @@ namespace CMS.UI.Windows.Messages
         ObservableCollection<ContactListItem> contactlist = new ObservableCollection<ContactListItem>();
         int CurrentUserAccountID;
         int recentlyselected;
+        Timer messageTimer;
         public MessageMainWindow()
         {
             CurrentUserAccountID = UserCredentials.Account.AccountId;
@@ -51,8 +53,19 @@ namespace CMS.UI.Windows.Messages
             GetPrimaryFocusAtContactAsync();
             DataContext = contactlist;
             SendButton.IsEnabled = false;
-            //DisplayMessages(null);
+            SetMessageTimer();
 
+        }
+
+        private void SetMessageTimer()
+        {
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromSeconds(5);
+
+            messageTimer = new Timer((e) =>
+            {
+                Dispatcher.Invoke(() => LoadRecentMessages());
+            }, null, startTimeSpan, periodTimeSpan);
         }
 
         private void GetPrimaryFocusAtContactAsync()
@@ -65,10 +78,18 @@ namespace CMS.UI.Windows.Messages
             }
         }
 
-        public async void LoadRecentMessages()
+        private async void LookforNewMessages()
+        {
+                var numberOfMessages = await core.HasNewMessages();
+                if (numberOfMessages > 0) LoadRecentMessages();
+
+        }
+
+        private async void LoadRecentMessages()
         {
 
             mostrecent = await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId);
+            mostrecent.Sort(delegate (LastMessageDTO c1, LastMessageDTO c2) { return c1.LastDate.CompareTo(c2.LastDate); });
 
 
         }
@@ -76,6 +97,7 @@ namespace CMS.UI.Windows.Messages
         public void LoadRecentMessagesImmediately()
         {
             mostrecent = Task.Run(async () => { return await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId); }).Result;
+            mostrecent.Sort(delegate (LastMessageDTO c1, LastMessageDTO c2) { return -c1.LastDate.CompareTo(c2.LastDate); });
             chatscroll.ScrollToEnd();
             CastToContactList();
 
@@ -154,16 +176,6 @@ namespace CMS.UI.Windows.Messages
             }
         }
 
-        private void DisplayContactList()
-        {
-            foreach(var linked_contact in mostrecent)
-            {
-                //string dummy = linked_contact.
-
-                contacts.Items.Add("fhfhf");
-            }
-        }
-
         private int getSelectedContactId()
         {
             int selectedid = ((ContactListItem)contacts.SelectedItem).AccountId;
@@ -192,7 +204,7 @@ namespace CMS.UI.Windows.Messages
                 var targetedConversation = await core.GetMessagesByTargetIdAsync(CurrentUserAccountID, targetReceiver);
                 DisplayMessages(targetedConversation, targetReceiver, true);
             } else {
-                userinputmessageBox.Text = "failure";
+                MessageBox.Show("Could not send the message");
             }
         }
 
@@ -216,17 +228,14 @@ namespace CMS.UI.Windows.Messages
             
         }
 
-        private void chatscroll_ScrollChanged(object sender, ScrollChangedEventArgs e)
-        {
-            if (chatscroll.VerticalOffset.Equals(0))
-            {
-                userinputmessageBox.Text = "jest zero";
-            } else
-            {
-                userinputmessageBox.Text = "nima";
-            }
-        }
 
+        private void newconvButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewConversation ncWindow = new NewConversation();
+            ncWindow.ShowDialog();
+            LoadRecentMessagesImmediately();
+
+        }
     }
 
 
