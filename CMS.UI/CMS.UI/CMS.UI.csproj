@@ -189,6 +189,9 @@
     <Compile Include="Windows\Rooms\AddBuilding.xaml.cs">
       <DependentUpon>AddBuilding.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Rooms\AssignBuildingToConference.xaml.cs">
+      <DependentUpon>AssignBuildingToConference.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Rooms\EditBuilding.xaml.cs">
       <DependentUpon>EditBuilding.xaml</DependentUpon>
     </Compile>
@@ -369,6 +372,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Rooms\AddBuilding.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Rooms\AssignBuildingToConference.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

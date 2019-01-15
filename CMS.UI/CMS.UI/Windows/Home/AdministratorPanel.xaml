@@ -22,7 +22,7 @@
 		<Button Name="RemoveRole" Content="Remove Role" HorizontalAlignment="Left" Margin="376,186,0,0" VerticalAlignment="Top" Width="120" Background="Red" Click="RemoveRole_Click"/>
 		<TextBox Name="LoginBox" MaxLength="15" HorizontalAlignment="Left" Height="23" Margin="143,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
 		<ComboBox Name="RoleBox" HorizontalAlignment="Left" Margin="139,92,0,0" VerticalAlignment="Top" Width="280"/>
-		<ComboBox Name="ConferencesBox" HorizontalAlignment="Left" Margin="435,92,0,0" VerticalAlignment="Top" Width="280"/>
+		<ComboBox Name="ConferencesBox" HorizontalAlignment="Left" Margin="435,92,0,0" VerticalAlignment="Top" Width="280" SelectionChanged="ConferencesBox_SelectionChanged"/>
 		<Button Name="AddConference" Content="Add Conference" HorizontalAlignment="Left" Margin="739,90,0,0" VerticalAlignment="Top" Width="120" Click="AddConference_Click"/>
 		<Button Name="EditConference" Content="Edit Conference" HorizontalAlignment="Left" Margin="739,122,0,0" VerticalAlignment="Top" Width="120" Click="EditConference_Click"/>
 		<Button Name="RemoveConference" Content="Remove Conference" HorizontalAlignment="Left" Margin="739,154,0,0" VerticalAlignment="Top" Width="120" Background="Red" Click="RemoveConference_Click"/>
@@ -32,5 +32,6 @@
 		<Label Content="Conference (title):" HorizontalAlignment="Left" Margin="440,61,0,0" VerticalAlignment="Top" Width="276"/>
 		<Label Content="Account (login):" HorizontalAlignment="Left" Margin="143,123,0,0" VerticalAlignment="Top" Width="141"/>
 		<Button Content="Manage buildings" HorizontalAlignment="Left" Margin="739,225,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="ManageBuilding_Click"/>
+		<Button Name="assignBuildings_button" Content="Assign Buildings" HorizontalAlignment="Left" Margin="581,227,0,0" VerticalAlignment="Top" Width="134" Click="assignBuildings_button_Click" />
 	</Grid>
 </Controls:MetroWindow>

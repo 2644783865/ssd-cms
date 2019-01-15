@@ -34,6 +34,7 @@ namespace CMS.UI.Windows.Home
             await FillRoleBox();
             await FillConferenceBox();
             ProgressSpin.IsActive = false;
+            assignBuildings_button.IsEnabled = false;
         }
 
         private async Task FillRoleBox()
@@ -171,6 +172,30 @@ namespace CMS.UI.Windows.Home
         private async void MetroWindow_Activated(object sender, System.EventArgs e)
         {
             await FillConferenceBox();
+        }
+
+        private void assignBuildings_button_Click(object sender, RoutedEventArgs e)
+        {
+            ConferenceDTO selected_conference = (ConferenceDTO)ConferencesBox.SelectedItem;
+            if(selected_conference != null)
+            {
+                AssignBuildingToConference newAssignBuildingWindow = new AssignBuildingToConference(selected_conference);
+                newAssignBuildingWindow.ShowDialog();
+            }
+
+        }
+
+        private void ConferencesBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ConferenceDTO selected = (ConferenceDTO)ConferencesBox.SelectedItem;
+            if(selected != null)
+            {
+                assignBuildings_button.IsEnabled = true;
+            } else
+            {
+                assignBuildings_button.IsEnabled = false;
+            }
+           
         }
     }
 }
