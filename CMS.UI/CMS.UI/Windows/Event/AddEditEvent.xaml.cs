@@ -85,7 +85,7 @@ namespace CMS.UI.Windows.Event
             if (currentEvent != null)
             {
                 TitleBox.Text = currentEvent.Title;
-                DescriptionBox.Text = currentEvent.Title;
+                DescriptionBox.Text = currentEvent.Description;
                 if (currentEvent.RoomId.HasValue)
                 {
                     var room = await roomCore.GetRoomByIdAsync(currentEvent.RoomId.Value);
