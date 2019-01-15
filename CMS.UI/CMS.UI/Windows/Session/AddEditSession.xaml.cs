@@ -142,7 +142,8 @@ namespace CMS.UI.Windows.Session
                 && BeginDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
                 && BeginDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate
                 && EndDatePicker.SelectedDate.Value >= UserCredentials.Conference.BeginDate
-                && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate)
+                && EndDatePicker.SelectedDate.Value <= UserCredentials.Conference.EndDate
+                && BeginDatePicker.SelectedDate.Value < EndDatePicker.SelectedDate.Value)
             {
                 var response = await eventCore.CheckOverlappingEventAsync(UserCredentials.Conference.ConferenceId,
                     BeginDatePicker.SelectedDate.Value, EndDatePicker.SelectedDate.Value);

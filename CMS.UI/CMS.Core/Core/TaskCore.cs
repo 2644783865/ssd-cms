@@ -75,14 +75,14 @@ namespace CMS.Core.Core
             return null;
         }
 
-        public async Task<bool> CheckOverlappingTaskAsync(int EmployeeId, DateTime beginDate, DateTime endDate)
+        public async Task<bool> CheckOverlappingTaskAsync(int EmployeeId, DateTime beginDate, DateTime endDate, int taskId)
         {
             var dateModel = new DateModel()
             {
                 beginDate = beginDate,
                 endDate = endDate
             };
-            var path = $"{Properties.Resources.checkOvelappingTaskPath}?employeeId={EmployeeId}";
+            var path = $"{Properties.Resources.checkOvelappingTaskPath}?employeeId={EmployeeId}&taskId={taskId}";
             var result = await _apiHelper.Post(path, dateModel);
             if (result != null && result.ResponseType == ResponseType.Success)
             {

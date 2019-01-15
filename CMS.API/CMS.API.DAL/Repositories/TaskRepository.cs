@@ -56,12 +56,13 @@ namespace CMS.API.DAL.Repositories
                 .Distinct().Project().To<TaskDTO>();
         }
 
-        public bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate)
+        public bool CheckOverlappingTask(int employeeId, DateTime beginDate, DateTime endDate, int taskId)
         {
             return _db.Tasks.Where(t => ((t.BeginDate <= beginDate && t.EndDate > beginDate) 
             || (t.BeginDate < endDate && t.EndDate >= endDate) 
             || (t.BeginDate > beginDate && t.EndDate < endDate))
-            && t.EmployeeId==employeeId).Count() == 0;
+            && t.EmployeeId==employeeId
+            && t.TaskId != taskId).Count() == 0;
         }
 
         public void Dispose()

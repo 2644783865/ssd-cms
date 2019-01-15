@@ -32,8 +32,7 @@ namespace CMS.UI.Windows.Home
             messageCore = new MessageCore();
             WindowHelper.WindowSettings(this, UserLabel);
             InitializeData();
-            SetMessageTimer();
-            
+            SetMessageTimer(); 
         }
 
         private void SetMessageTimer()
@@ -215,6 +214,11 @@ namespace CMS.UI.Windows.Home
         {
             MessageMainWindow newMainMessageWindow = new MessageMainWindow();
             newMainMessageWindow.Show();
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            messageTimer.Dispose();
         }
     }
 }

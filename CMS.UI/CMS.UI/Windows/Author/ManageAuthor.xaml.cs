@@ -25,9 +25,9 @@ namespace CMS.UI.Windows.Author
         {
             if (LoginBox.Text.Length > 0)
             {
-                if (await CheckAccountExistsAsync())
+                if (await CheckAccountExistsAsync(LoginBox.Text))
                 {
-                    if (!await CheckAuthorExistsAsync())
+                    if (!await CheckAuthorExistsAsync(LoginBox.Text))
                     {
                         var account = await authCore.GetAccountByLoginAsync(LoginBox.Text);
                         AddEditAuthor newAddAuthorWindow = new AddEditAuthor(null, account);
@@ -44,14 +44,14 @@ namespace CMS.UI.Windows.Author
         {
             if (AuthorBox.Text.Length > 0)
             {
-                if (await CheckAccountExistsAsync())
+                if (await CheckAuthorExistsAsync(AuthorBox.Text))
                 {
                     var account = await authCore.GetAccountByLoginAsync(AuthorBox.Text);
                     var author = await authorCore.GetAuthorByAccountIdAsync(account.AccountId);
                     AddEditAuthor newAddAuthorWindow = new AddEditAuthor(author, account);
                     newAddAuthorWindow.ShowDialog();
                 }
-                else MessageBox.Show("Account doesn't exist");
+                else MessageBox.Show("Author doesn't exist");
             }
             else MessageBox.Show("Login empty");
 
@@ -61,7 +61,7 @@ namespace CMS.UI.Windows.Author
         {
             if (AuthorBox2.Text.Length > 0)
             {
-                if (await CheckAccountExistsAsync())
+                if (await CheckAuthorExistsAsync(AuthorBox2.Text))
                 {
                     var account = await authCore.GetAccountByLoginAsync(AuthorBox2.Text);
                     var author = await authorCore.GetAuthorByAccountIdAsync(account.AccountId);
@@ -71,19 +71,19 @@ namespace CMS.UI.Windows.Author
                     else
                         MessageBox.Show("Failure");
                 }
-                else MessageBox.Show("Account doesn't exist");
+                else MessageBox.Show("Author doesn't exist");
             }
             else MessageBox.Show("Login empty");
         }
 
-        private async Task<bool> CheckAccountExistsAsync()
+        private async Task<bool> CheckAccountExistsAsync(string login)
         {
-            return await authCore.GetAccountIdByLoginAsync(LoginBox.Text) >= 0;
+            return await authCore.GetAccountIdByLoginAsync(login) >= 0;
         }
 
-        private async Task<bool> CheckAuthorExistsAsync()
+        private async Task<bool> CheckAuthorExistsAsync(string login)
         {
-            var id = await authCore.GetAccountIdByLoginAsync(LoginBox.Text);
+            var id = await authCore.GetAccountIdByLoginAsync(login);
             if (id >= 0)
             {
                 return await authorCore.GetAuthorByAccountIdAsync(id) != null;

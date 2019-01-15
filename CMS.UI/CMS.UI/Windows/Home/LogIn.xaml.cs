@@ -25,6 +25,7 @@ namespace CMS.UI.Windows.Home
         {
             ProgressSpin.IsActive = true;
             LoginFailed.Visibility = Visibility.Hidden;
+            LogInButton.IsEnabled = false;
 
             if (LoginBox.Text.Length > 0 && PasswordBox.Password.Length > 0)
             {
@@ -60,7 +61,7 @@ namespace CMS.UI.Windows.Home
             }
             else MessageBox.Show("Invalid form");
             ProgressSpin.IsActive = false;
-            
+            LogInButton.IsEnabled = true;
         }
 
         private void Box_KeyDown(object sender, KeyEventArgs e)
