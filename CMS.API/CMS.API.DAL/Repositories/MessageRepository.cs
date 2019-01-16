@@ -85,7 +85,7 @@ namespace CMS.API.DAL.Repositories
         {
             var sql = @"update LastMessages
 	                    set FirstidReceived =1, secondidReceived=1
-	                    where (FirstId=@firstId and SecondId=@secondId ) or (FirstId=@secondId and SecondId=@firstId)";
+	                    where FirstId=@firstId and SecondId=@secondId";
             _db.Database.ExecuteSqlCommand(sql, 
                     new SqlParameter("@firstId", firstId),
                     new SqlParameter("@secondId", secondId));

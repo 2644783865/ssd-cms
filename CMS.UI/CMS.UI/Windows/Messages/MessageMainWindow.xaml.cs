@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
-using System.Windows.Controls;
 using System.Windows.Input;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
@@ -13,9 +12,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 
 namespace CMS.UI.Windows.Messages
-{
-
-    
+{ 
     /// <summary>
     /// Interaction logic for MessageMainWindow.xaml
     /// </summary>
@@ -30,13 +27,11 @@ namespace CMS.UI.Windows.Messages
             public String Date { get; set; }
             public String LastMessageContent { get; set; }
             public bool gotmessage { get; set; }
-
         }
 
         IMessageCore core;
         IAuthenticationCore authcore;
         List<LastMessageDTO> mostrecent;
-        List<MessageDTO> target;
         Dictionary<int, string> targeted_conversation;
         ObservableCollection<ContactListItem> contactlist = new ObservableCollection<ContactListItem>();
         int CurrentUserAccountID;
@@ -54,7 +49,6 @@ namespace CMS.UI.Windows.Messages
             DataContext = contactlist;
             SendButton.IsEnabled = false;
             SetMessageTimer();
-
         }
 
         private void SetMessageTimer()
@@ -74,7 +68,6 @@ namespace CMS.UI.Windows.Messages
             {
                 contacts.SelectedIndex = 0;
                 contacts.Focus();
-
             }
         }
 
@@ -82,16 +75,12 @@ namespace CMS.UI.Windows.Messages
         {
                 var numberOfMessages = await core.HasNewMessages();
                 if (numberOfMessages > 0) LoadRecentMessages();
-
         }
 
         private async void LoadRecentMessages()
         {
-
             mostrecent = await core.GetLastMessagesByAccountIdAsync(UserCredentials.Account.AccountId);
             mostrecent.Sort(delegate (LastMessageDTO c1, LastMessageDTO c2) { return c1.LastDate.CompareTo(c2.LastDate); });
-
-
         }
 
         public void LoadRecentMessagesImmediately()
@@ -102,7 +91,6 @@ namespace CMS.UI.Windows.Messages
             CastToContactList();
 
         }
-
         
 
         private async void DisplayMessages(List<MessageDTO> conversation, int targetId, bool forced = false)
@@ -113,8 +101,6 @@ namespace CMS.UI.Windows.Messages
              */
             if (Convert.ToBoolean(await core.HasNewMessages()) || !targeted_conversation.ContainsKey(targetId) || forced)
             {
-
-
                 if (conversation == null || conversation.Count() == 0)
                 {
                     chatBlock.Text = "Your conversation is empty. Say Hi!";
@@ -149,8 +135,7 @@ namespace CMS.UI.Windows.Messages
                 {
                     chatBlock.Text = result;
                 }
-            }
-            
+            } 
         }
 
         private async void CastToContactList()
@@ -158,7 +143,7 @@ namespace CMS.UI.Windows.Messages
             if (mostrecent != null)
             {
                 contactlist.Clear();
-                foreach(var recent_msg in mostrecent)
+                foreach (var recent_msg in mostrecent)
                 {
                     ContactListItem converted = new ContactListItem();
                     converted.AccountId = recent_msg.FirstId == CurrentUserAccountID ? recent_msg.SecondId : recent_msg.FirstId;
@@ -170,9 +155,6 @@ namespace CMS.UI.Windows.Messages
                     converted.gotmessage = false; // todo: check if message
                     contactlist.Add(converted);
                 }
-
-                
-
             }
         }
 
@@ -186,7 +168,7 @@ namespace CMS.UI.Windows.Messages
             recentlyselected = selectedid;
             return selectedid;
         }
-                   
+
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             int targetReceiver = getSelectedContactId();
@@ -203,12 +185,12 @@ namespace CMS.UI.Windows.Messages
                 LoadRecentMessagesImmediately();
                 var targetedConversation = await core.GetMessagesByTargetIdAsync(CurrentUserAccountID, targetReceiver);
                 DisplayMessages(targetedConversation, targetReceiver, true);
-            } else {
+            }
+            else
+            {
                 MessageBox.Show("Could not send the message");
             }
         }
-
-
 
         private async void contacts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -221,22 +203,22 @@ namespace CMS.UI.Windows.Messages
                 DisplayMessages(targetedConversation, selectedId);
                 if (!selectedContactItem.gotmessage)
                 {
+                    await core.markReceived(selectedId, CurrentUserAccountID);
                     await core.markReceived(CurrentUserAccountID, selectedId);
                 }
-            }
-            
-            
+            } 
         }
-
 
         private void newconvButton_Click(object sender, RoutedEventArgs e)
         {
             NewConversation ncWindow = new NewConversation();
             ncWindow.ShowDialog();
             LoadRecentMessagesImmediately();
+        }
 
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            messageTimer.Dispose();
         }
     }
-
-
 }

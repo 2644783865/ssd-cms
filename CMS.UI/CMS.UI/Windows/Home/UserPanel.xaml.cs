@@ -38,7 +38,7 @@ namespace CMS.UI.Windows.Home
         private void SetMessageTimer()
         {
             var startTimeSpan = TimeSpan.Zero;
-            var periodTimeSpan = TimeSpan.FromSeconds(30);
+            var periodTimeSpan = TimeSpan.FromSeconds(5);
 
             messageTimer = new Timer((e) =>
             {
