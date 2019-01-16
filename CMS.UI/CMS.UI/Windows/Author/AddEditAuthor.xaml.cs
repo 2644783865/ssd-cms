@@ -20,6 +20,7 @@ namespace CMS.UI.Windows.Author
         public AddEditAuthor(AuthorDTO author, AccountDTO account)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             currentAuthor = author;
             currentAccount = account;
             FillTitleBox();

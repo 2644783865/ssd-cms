@@ -3,6 +3,7 @@ using System.Windows;
 using MahApps.Metro.Controls;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Emergency
 {
@@ -15,6 +16,7 @@ namespace CMS.UI.Windows.Emergency
         public EmergencyInfoOnlyRead()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             emergencyCore = new EmergencyInfoCore();
             InitializeData();
         }

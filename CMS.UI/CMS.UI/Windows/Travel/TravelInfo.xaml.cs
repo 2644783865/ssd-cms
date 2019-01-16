@@ -17,6 +17,7 @@ namespace CMS.UI.Windows.Travel
         public TravelInfo(TravelInfoDTO travel)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             currenTravel = travel;
             if (travel != null)
             {

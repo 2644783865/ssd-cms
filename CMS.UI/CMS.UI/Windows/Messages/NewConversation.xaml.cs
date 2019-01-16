@@ -4,6 +4,7 @@ using System.Windows;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using CMS.BE.DTO;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Messages
 {
@@ -17,6 +18,7 @@ namespace CMS.UI.Windows.Messages
         public NewConversation()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

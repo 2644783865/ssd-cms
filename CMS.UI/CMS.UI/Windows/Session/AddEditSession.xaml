@@ -7,9 +7,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
-        Title="Add Session" Height="371" Width="629"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"   >
+        Title="Add Session" Height="371" Width="629">
     <Grid>
         <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,258,9,0" VerticalAlignment="Top" Width="30" Height="30" Click="Refresh_Click">
             <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" Width="15" Height="15"/>

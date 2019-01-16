@@ -3,6 +3,7 @@ using System.Windows;
 using MahApps.Metro.Controls;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Travel
 {
@@ -18,6 +19,7 @@ namespace CMS.UI.Windows.Travel
         public TravelConference()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             travelCore = new TravelInfoCore();
             InitializeData();
         }

@@ -3,6 +3,7 @@ using System.Windows;
 using MahApps.Metro.Controls;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Accommodation
 {
@@ -18,6 +19,7 @@ namespace CMS.UI.Windows.Accommodation
         public AccommodationConference()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             accomodationCore = new AccommodationInfoCore();
             InitializeData();
         }

@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Reviews" Height="442" Width="479"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="Reviews" Height="442" Width="479">
     <Grid>
         <DataGrid AutoGenerateColumns="False" IsReadOnly="True" Name="ReviewsBox" HorizontalAlignment="Left" Height="326" Margin="33,27,0,0" VerticalAlignment="Top" Width="403" MouseDoubleClick="ReviewsBox_MouseDoubleClick">
             <DataGrid.Columns>

@@ -6,8 +6,6 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Article Details" Height="553" Width="402"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
                       Activated="MetroWindow_Activated">
     <Grid>
         <Label Name="IdLabel" Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,10,0,0" Width="177"/>

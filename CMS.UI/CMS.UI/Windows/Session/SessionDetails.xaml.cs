@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
 
@@ -17,6 +18,7 @@ namespace CMS.UI.Windows.Session
         public SessionDetails(SessionDTO session, SpecialSessionDTO specialSession)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             this.session = session;
             this.specialSession = specialSession;
             roomCore = new RoomCore();

@@ -17,6 +17,7 @@ namespace CMS.UI.Windows.Account
         public ChangePassword()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
         }
 
         private async void ChangePassButton_Click(object sender, RoutedEventArgs e)

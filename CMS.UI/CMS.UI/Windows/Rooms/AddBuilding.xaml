@@ -7,8 +7,7 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Rooms"
         mc:Ignorable="d"
 		WindowStartupLocation="CenterScreen"
-        Title="Add a New Building" Height="250" Width="400"
-                       ResizeMode="NoResize">
+        Title="Add a New Building" Height="250" Width="400">
     <Grid>
 		<TextBox Name="inputname" HorizontalAlignment="Left" Height="23" Margin="143,45,0,0" MaxLength="200" TextWrapping="Wrap" Text="Enter a name" VerticalAlignment="Top" Width="120" GotFocus="Inputname_GotFocus"/>
 		<TextBox Name="inputaddress" HorizontalAlignment="Left" Height="23" Margin="143,84,0,0" MaxLength="200" TextWrapping="Wrap" Text="Enter an address" VerticalAlignment="Top" Width="120" GotFocus="Inputaddress_GotFocus"/>

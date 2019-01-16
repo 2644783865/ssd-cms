@@ -83,9 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Content Include="Configuration\ConnectionStrings.local2.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Configuration\ConnectionStrings.prod.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

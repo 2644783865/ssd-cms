@@ -18,6 +18,7 @@ namespace CMS.UI.Windows.Emergency
         public EmergencyInfo()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             LoadData();
         }
  

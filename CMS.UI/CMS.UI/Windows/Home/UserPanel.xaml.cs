@@ -27,10 +27,10 @@ namespace CMS.UI.Windows.Home
         public UserPanel()
         {
             InitializeComponent();
+            WindowHelper.FullScreenWindowSettings(this, UserLabel);
             core = new AuthenticationCore();
             authorCore = new AuthorCore();
             messageCore = new MessageCore();
-            WindowHelper.WindowSettings(this, UserLabel);
             InitializeData();
             SetMessageTimer(); 
         }

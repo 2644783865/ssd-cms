@@ -6,6 +6,7 @@ using System.Windows.Input;
 using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Reviews
 {
@@ -18,6 +19,7 @@ namespace CMS.UI.Windows.Reviews
         public ReviewsShow()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new ReviewCore();
             LoadData();
         }

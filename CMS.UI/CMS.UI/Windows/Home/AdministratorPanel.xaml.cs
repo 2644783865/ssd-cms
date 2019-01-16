@@ -21,9 +21,10 @@ namespace CMS.UI.Windows.Home
 
         public AdministratorPanel()
         {
+            InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             authCore = new AuthenticationCore();
             confCore = new ConferenceCore();
-            InitializeComponent();
             UserCredentials.Username = "Admin";
             InitializeData();
         }

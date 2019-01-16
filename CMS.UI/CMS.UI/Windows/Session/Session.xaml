@@ -8,8 +8,6 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Session"
         mc:Ignorable="d"
         Title="Sessions" Height="515" Width="1151.35"
-     ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
     Activated="MetroWindow_Activated">
     <Grid>
         <Grid.ColumnDefinitions>

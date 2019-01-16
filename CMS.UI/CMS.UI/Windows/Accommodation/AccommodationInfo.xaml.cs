@@ -18,6 +18,7 @@ namespace CMS.UI.Windows.Accommodation
         public AccommodationInfo(AccommodationInfoDTO accommodation)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             currentAccommodation = accommodation;
             if (accommodation != null)
             {

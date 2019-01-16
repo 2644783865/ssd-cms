@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using CMS.UI.Windows.Articles;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
@@ -24,6 +25,7 @@ namespace CMS.UI.Windows.Session
         public MySessions()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new SessionCore();
             articleCore = new ArticleCore();
             presentationCore = new PresentationCore();

@@ -17,8 +17,9 @@ namespace CMS.UI.Windows.Rooms
         private string defaultInputAddress;
         public AddBuildingWindow()
         {
-            core = new RoomCore();
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
+            core = new RoomCore();
             defaultInputName = inputname.Text;
             defaultInputAddress = inputaddress.Text;
         }

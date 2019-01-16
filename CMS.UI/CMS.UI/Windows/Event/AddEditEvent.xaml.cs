@@ -22,6 +22,7 @@ namespace CMS.UI.Windows.Event
         public AddEditEvent()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             eventCore = new EventCore();
             roomCore = new RoomCore();
             sessionCore = new SessionCore();

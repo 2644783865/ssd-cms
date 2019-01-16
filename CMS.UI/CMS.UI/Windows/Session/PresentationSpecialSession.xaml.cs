@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace CMS.UI.Windows.Session
         public PresentationSpecialSession(SpecialSessionDTO session)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             this.session = session;
             core = new PresentationCore();
             articleCore = new ArticleCore();

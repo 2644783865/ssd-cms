@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Add Account" Height="350" Width="400"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="Add Account" Height="350" Width="400">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top">
             <Label Content="Login:" Margin="0,0,0,0"/>

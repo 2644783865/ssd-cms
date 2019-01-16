@@ -7,8 +7,6 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Session"
         mc:Ignorable="d"
         Title="Presentations in Session" Height="599" Width="800"
-                      ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen" 
                       Activated="MetroWindow_Activated">
     <Grid>
         <Button Name="EditButton" Content="Edit Session" HorizontalAlignment="Left" Margin="689,533,0,0" VerticalAlignment="Top" Width="88" Click="EditButton_Click"/>

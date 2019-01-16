@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="My Reviews" Height="446.078" Width="491.503"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="My Reviews" Height="446.078" Width="491.503">
     <Grid>
         <Button Name="ReadButton" Content="Read" HorizontalAlignment="Right" Margin="0,0,334,29" VerticalAlignment="Bottom" Width="122"  Click="ReadButton_Click"/>
         <Button Name="DeleteButton" Content="Delete" HorizontalAlignment="Right" Margin="0,0,49,29" VerticalAlignment="Bottom" Width="122" Background="Red" Click="DeleteButton_Click"/>

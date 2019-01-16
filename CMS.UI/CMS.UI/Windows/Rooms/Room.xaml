@@ -6,9 +6,7 @@
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Rooms"
         mc:Ignorable="d"
-        Title="Manage Room" Height="450" Width="800"
-		ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="Manage Room" Height="450" Width="800">
     <Grid>
 		<DataGrid Name="RoomList" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" Height="339" Margin="42,27,0,0" VerticalAlignment="Top" Width="438" AutoGenerateColumns="False" CurrentCellChanged="RoomList_CurrentCellChanged">
 			<DataGrid.Columns>

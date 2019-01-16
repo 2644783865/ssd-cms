@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Manage Author" Height="350" Width="400"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="Manage Author" Height="350" Width="400">
     <Grid>
         <Button Name="GoToAddAuthor" Content="Add Author" HorizontalAlignment="Left" Margin="73,61,0,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToAddAuthor_Click"/>
         <Button Name="GoToEditAuthor" Content="Edit Author" HorizontalAlignment="Left" Margin="73,139,0,0" VerticalAlignment="Top" Width="101" Height="34" Click="GoToEditAuthor_Click"/>

@@ -23,7 +23,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetArticles(1);
             Assert.AreEqual(1, result.FirstOrDefault().ArticleId);
-            result = bll.GetArticles(2);
+            result = bll.GetArticles(0);
             Assert.AreEqual(null, result.FirstOrDefault());
         }
 
@@ -41,11 +41,11 @@ namespace CMS.API.Tests
         {
             var result = bll.GetArticlesForConferenceAndAuthor(1, 1);
             Assert.AreEqual(1, result.FirstOrDefault().ArticleId);
-            result = bll.GetArticlesForConferenceAndAuthor(2, 1);
+            result = bll.GetArticlesForConferenceAndAuthor(0, 1);
             Assert.AreEqual(null, result.FirstOrDefault());
-            result = bll.GetArticlesForConferenceAndAuthor(1, 2);
+            result = bll.GetArticlesForConferenceAndAuthor(1, 0);
             Assert.AreEqual(null, result.FirstOrDefault());
-            result = bll.GetArticlesForConferenceAndAuthor(2, 2);
+            result = bll.GetArticlesForConferenceAndAuthor(0, 0);
             Assert.AreEqual(null, result.FirstOrDefault());
         }
 

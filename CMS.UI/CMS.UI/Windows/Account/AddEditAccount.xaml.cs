@@ -18,6 +18,7 @@ namespace CMS.UI.Windows.Account
         public AddEditAccount(AccountDTO account)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             currentAccount = account;
             if (account != null) InitializeEditFields();
         }

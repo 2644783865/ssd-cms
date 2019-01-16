@@ -28,7 +28,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetReviewById(1);
             Assert.AreEqual(1, result.ReviewId);
-            result = bll.GetReviewById(2);
+            result = bll.GetReviewById(0);
             Assert.AreEqual(null, result);
         }
 

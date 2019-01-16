@@ -6,6 +6,7 @@ using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using System.Windows.Input;
 using CMS.BE.DTO;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Accommodation
 {
@@ -18,6 +19,7 @@ namespace CMS.UI.Windows.Accommodation
         public AccommodationManage()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             accomodationCore = new AccommodationInfoCore();
             InitializeData();
         }

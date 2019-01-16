@@ -6,9 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="Task Schedule" Height="566.41" Width="841.163"
-                      ResizeMode="NoResize"
-                      WindowStartupLocation="CenterScreen">
+        Title="Task Schedule" Height="566.41" Width="841.163">
     <Grid>
         <DataGrid x:Name="TaskDataGrid" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="32,68,0,0" VerticalAlignment="Top" Height="441" Width="775" >
             <DataGrid.Columns>

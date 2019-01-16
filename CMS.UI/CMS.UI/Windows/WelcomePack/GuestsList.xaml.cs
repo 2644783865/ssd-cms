@@ -5,6 +5,7 @@ using MahApps.Metro.Controls;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using CMS.BE.DTO;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.WelcomePack
 {
@@ -17,6 +18,7 @@ namespace CMS.UI.Windows.WelcomePack
         public GuestsList()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             welcomePackCore = new WelcomePackCore();
             InitializeData();
         }

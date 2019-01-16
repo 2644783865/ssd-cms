@@ -1,5 +1,6 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System;
 using System.Windows;
@@ -16,10 +17,11 @@ namespace CMS.UI.Windows.Rooms
         private int BuildingID;
         public RoomWindow(int building)
         {
+            InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             BuildingID = building;
             core = new RoomCore();
             InitializeTitle();
-            InitializeComponent();
             HideButtonsOnUnselectedCell();
             LoadRoomsToDataGrid(building);
         }

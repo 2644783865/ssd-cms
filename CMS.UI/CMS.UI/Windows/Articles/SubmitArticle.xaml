@@ -6,9 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Author"
         mc:Ignorable="d"
-        Title="Submit Articles" Height="200" Width="274.072"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="Submit Articles" Height="200" Width="274.072">
     <Grid Margin="0,0,4,-54" Height="225" VerticalAlignment="Top">
         <Button x:Name="SubmitButton" Content="Submit" HorizontalAlignment="Right" Margin="0,0,19,64" VerticalAlignment="Bottom" Width="95" Click="SubmitButton_Click"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,147,64" VerticalAlignment="Bottom" Width="96" Click="CancelButton_Click"/>

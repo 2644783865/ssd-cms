@@ -1,5 +1,6 @@
 ﻿using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
 
@@ -17,6 +18,7 @@ namespace CMS.UI.Windows.Articles
         public AssignAuthor(int articleId)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             authorCore = new AuthorCore();
             authCore = new AuthenticationCore();
             articleCore = new ArticleCore();

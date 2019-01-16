@@ -28,7 +28,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetTravelById(1);
             Assert.AreEqual(1, result.TravelInfoId);
-            result = bll.GetTravelById(2);
+            result = bll.GetTravelById(0);
             Assert.AreEqual(null, result);
         }
 
@@ -37,7 +37,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetTravelInfoByConferenceId(1);
             Assert.AreEqual(1, result.FirstOrDefault().TravelInfoId);
-            result = bll.GetTravelInfoByConferenceId(2);
+            result = bll.GetTravelInfoByConferenceId(0);
             Assert.AreEqual(null, result.FirstOrDefault());
         }
     }

@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="CMS Log In" Height="389.822" Width="306.575"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="CMS Log In" Height="389.822" Width="306.575">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top">
             <Label Content="Login:" Margin="0,0,0,10"/>

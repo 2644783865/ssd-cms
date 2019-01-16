@@ -28,7 +28,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetAccommodationInfoById(1);
             Assert.AreEqual("No City", result.City);
-            result = bll.GetAccommodationInfoById(2);
+            result = bll.GetAccommodationInfoById(0);
             Assert.AreEqual(result, null);
         }
 
@@ -37,7 +37,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetAccommodationInfoByConferenceId(1);
             Assert.AreEqual(1, result.FirstOrDefault().AccommodationInfoId);
-            result = bll.GetAccommodationInfoByConferenceId(2);
+            result = bll.GetAccommodationInfoByConferenceId(0);
             Assert.AreEqual(null, result.FirstOrDefault());
         }
     }

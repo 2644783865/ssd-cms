@@ -1,5 +1,6 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +18,7 @@ namespace CMS.UI.Windows.Tasks
         public ManageTasksWindow()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new TaskCore();
             loadTasksToDatagrid();
         }

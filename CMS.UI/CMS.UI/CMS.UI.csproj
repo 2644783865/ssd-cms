@@ -496,6 +496,7 @@
     </EmbeddedResource>
     <None Include="Configuration\AppSettings.local.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Configuration\AppSettings.prod.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

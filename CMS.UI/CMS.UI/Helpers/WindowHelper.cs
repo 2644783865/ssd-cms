@@ -7,13 +7,19 @@ namespace CMS.UI.Helpers
 {
     public static class WindowHelper
     {
-        public static void WindowSettings(Window window, Label userLabel = null, Label conferenceLabel = null)
+        public static void FullScreenWindowSettings(Window window, Label userLabel = null, Label conferenceLabel = null)
         {
             window.WindowState = WindowState.Maximized;
             window.ResizeMode = ResizeMode.CanMinimize;
             if (userLabel != null) userLabel.Content = "User: " + UserCredentials.Username;
             if (conferenceLabel != null)
                 conferenceLabel.Content = $"Conference: {UserCredentials.Conference.Title} [{UserCredentials.Conference.ConferenceId}]";
+        }
+
+        public static void SmallWindowSettings(Window window)
+        {
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            window.ResizeMode = ResizeMode.CanMinimize;
         }
 
         public static bool CheckOtherWindows()

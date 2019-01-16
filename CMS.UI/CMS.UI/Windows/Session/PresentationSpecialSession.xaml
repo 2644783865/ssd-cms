@@ -8,8 +8,6 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Session"
         mc:Ignorable="d"
         Title="Presentations in Special Session" Height="533" Width="506"
-                      ResizeMode="NoResize"
-                      WindowStartupLocation="CenterScreen"
                       Activated="MetroWindow_Activated">
     <Grid>
         <ListBox Name="PresentationsList" HorizontalAlignment="Left" Height="310" Margin="110,84,0,0" VerticalAlignment="Top" Width="279" BorderThickness="1" MouseDoubleClick="PresentationsList_MouseDoubleClick"/>

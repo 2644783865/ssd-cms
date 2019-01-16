@@ -6,8 +6,6 @@
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Messages"
         mc:Ignorable="d"
-					  WindowStartupLocation="CenterScreen"
-		ResizeMode="NoResize"
         Title="Start a new conversation" Height="500" Width="500">
 	<Grid>
 		<TextBlock HorizontalAlignment="Left" Margin="50,30,0,0" TextWrapping="Wrap" Text="To: " VerticalAlignment="Top" RenderTransformOrigin="-2,-5.125" Height="16" Width="20"/>

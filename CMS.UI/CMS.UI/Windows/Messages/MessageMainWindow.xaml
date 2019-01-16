@@ -7,8 +7,6 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Messages"
         mc:Ignorable="d"
         Title="Messages" Height="500" Width="800"
-		WindowStartupLocation="CenterScreen"
-		ResizeMode="CanMinimize"
                       Closing="MetroWindow_Closing">
 	<Grid>
 		<TextBox Name="userinputmessageBox" MaxLength="170" HorizontalAlignment="Left" Height="56" Margin="276,354,0,0" TextWrapping="Wrap" Text="Enter your message" VerticalAlignment="Top" Width="488" AcceptsReturn="True"/>

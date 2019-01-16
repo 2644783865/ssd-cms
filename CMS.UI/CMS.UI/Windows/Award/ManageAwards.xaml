@@ -6,9 +6,7 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Award"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Manage Awards" Height="473" Width="453"
-                      ResizeMode="NoResize"
-                      WindowStartupLocation="CenterScreen">
+        Title="Manage Awards" Height="473" Width="453">
     <Grid>
         <ComboBox x:Name="SessionComboBox" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="SessionComboBox_SelectionChanged"/>
         <Button x:Name="ClearButton" Content="Clear Awards" HorizontalAlignment="Left" Margin="340,406,0,0" VerticalAlignment="Top" Width="95" Click="Button_Clear"/>

@@ -10,6 +10,7 @@ using CMS.Core.Core;
 using CMS.BE.DTO;
 using System.Collections.ObjectModel;
 using System.Threading;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Messages
 { 
@@ -18,7 +19,6 @@ namespace CMS.UI.Windows.Messages
     /// </summary>
     public partial class MessageMainWindow : MetroWindow
     {
-        
         private class ContactListItem
         {
             public String Name { get; set; }
@@ -39,11 +39,12 @@ namespace CMS.UI.Windows.Messages
         Timer messageTimer;
         public MessageMainWindow()
         {
+            InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             CurrentUserAccountID = UserCredentials.Account.AccountId;
             core =  new MessageCore();
             authcore = new AuthenticationCore();
             targeted_conversation = new Dictionary<int, string>();
-            InitializeComponent();
             LoadRecentMessagesImmediately();
             GetPrimaryFocusAtContactAsync();
             DataContext = contactlist;

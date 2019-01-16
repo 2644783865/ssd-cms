@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
 
@@ -16,10 +17,11 @@ namespace CMS.UI.Windows.Rooms
         IRoomCore core;
         public EditRoom(RoomDTO arg_edit_room, int arg_BuildingID)
         {
+            InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new RoomCore(); 
             this.room_being_edited = arg_edit_room;
             this.BuildingID = arg_BuildingID;
-            InitializeComponent();
             InitializeData();
         }
 

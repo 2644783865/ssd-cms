@@ -34,11 +34,11 @@ namespace CMS.UI.Windows.Home
         public ManagerPanel()
         {
             InitializeComponent();
+            WindowHelper.FullScreenWindowSettings(this, UserLabel, ConferenceLabel);
             authCore = new AuthenticationCore();
             confCore = new ConferenceCore();
             eventCore = new EventCore();
             sessionCore = new SessionCore();
-            WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
             InitializeData();
         }
 

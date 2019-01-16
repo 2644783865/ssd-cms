@@ -1,5 +1,6 @@
 ﻿using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +18,7 @@ namespace CMS.UI.Windows.Account
         public ManageAccount()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             authCore = new AuthenticationCore();
             InitializeData();
         }

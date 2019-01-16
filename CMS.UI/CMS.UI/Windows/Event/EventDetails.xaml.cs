@@ -1,4 +1,5 @@
 ﻿using CMS.BE.DTO;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
 
@@ -13,6 +14,7 @@ namespace CMS.UI.Windows.Event
         public EventDetails(EventDTO currentEvent)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             this.currentEvent = currentEvent;
             FillEventBoxes();
         }

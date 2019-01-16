@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 
 namespace CMS.UI.Windows.Reviews
@@ -15,6 +16,7 @@ namespace CMS.UI.Windows.Reviews
         public ReviewDetails(ReviewDTO review)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new AuthenticationCore();
             currentReview = review;
             LoadData();

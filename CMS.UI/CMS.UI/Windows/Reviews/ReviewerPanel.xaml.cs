@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using CMS.UI.Windows.Articles;
 using MahApps.Metro.Controls;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace CMS.UI.Windows.Reviews
         public ReviewerPanel()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new ArticleCore();
             LoadData();
         }

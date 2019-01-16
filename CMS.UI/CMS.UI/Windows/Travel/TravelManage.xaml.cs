@@ -6,6 +6,7 @@ using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using System.Windows.Input;
 using CMS.BE.DTO;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Travel
 {
@@ -18,6 +19,7 @@ namespace CMS.UI.Windows.Travel
         public TravelManage()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             travelCore = new TravelInfoCore();
             InitializeData();
         }

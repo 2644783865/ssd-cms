@@ -6,6 +6,7 @@ using System.Windows.Media;
 using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 
 namespace CMS.UI.Windows.Session
@@ -20,6 +21,7 @@ namespace CMS.UI.Windows.Session
         public PresentationSession(SessionDTO session)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             this.session = session;
             core = new PresentationCore();
             FillSessionBoxes();

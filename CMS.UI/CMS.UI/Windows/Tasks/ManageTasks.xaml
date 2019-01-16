@@ -7,8 +7,6 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Manage Tasks" Height="551.548" Width="985.356"
-                      ResizeMode="NoResize"
-                      WindowStartupLocation="CenterScreen"
                       Activated="MetroWindow_Activated">
     <Grid>
         <Grid.RowDefinitions>

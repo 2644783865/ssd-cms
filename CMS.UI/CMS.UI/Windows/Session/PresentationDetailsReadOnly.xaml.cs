@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using CMS.UI.Windows.Articles;
 using MahApps.Metro.Controls;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace CMS.UI.Windows.Session
         public PresentationDetailsReadOnly(PresentationDTO presentation)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             authCore = new AuthenticationCore();
             articleCore = new ArticleCore();
             sessionCore = new SessionCore();

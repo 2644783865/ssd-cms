@@ -28,7 +28,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetAuthorById(1);
             Assert.AreEqual(1, result.AuthorId);
-            result = bll.GetAuthorById(2);
+            result = bll.GetAuthorById(0);
             Assert.AreEqual(null, result);
         }
 

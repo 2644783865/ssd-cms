@@ -37,7 +37,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetEmergencyInfoByConferenceId(1);
             Assert.AreEqual(1, result.EmergencyInfoId);
-            result = bll.GetEmergencyInfoByConferenceId(2);
+            result = bll.GetEmergencyInfoByConferenceId(0);
             Assert.AreEqual(null, result);
         }
     }

@@ -6,6 +6,7 @@ using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
 using System.Windows.Controls;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Reviews
 {
@@ -20,6 +21,7 @@ namespace CMS.UI.Windows.Reviews
         public Review(ArticleDTO article)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new ReviewCore();
             this.article = article;
             LoadData();

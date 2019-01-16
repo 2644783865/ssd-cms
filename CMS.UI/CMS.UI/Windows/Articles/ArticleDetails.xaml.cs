@@ -12,6 +12,7 @@ using CMS.UI.Windows.Reviews;
 using System.Windows.Controls;
 using CMS.UI.Windows.Session;
 using System.Linq;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Articles
 {
@@ -27,6 +28,7 @@ namespace CMS.UI.Windows.Articles
         public ArticleDetails(ArticleDTO article)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new ArticleCore();
             presCore = new PresentationCore();
             currentArticle = article;

@@ -18,6 +18,7 @@ namespace CMS.UI.Windows.Conference
         public AddEditConference(ConferenceDTO conference)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new ConferenceCore();
             currentConference = conference;
             if (conference != null) InitializeEditFields();

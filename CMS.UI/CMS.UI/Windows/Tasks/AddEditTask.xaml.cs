@@ -21,6 +21,7 @@ namespace CMS.UI.Windows.Tasks
         public AddEditTask(TaskDTO task)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             taskCore = new TaskCore();
             authCore = new AuthenticationCore();
             currentTask = task;

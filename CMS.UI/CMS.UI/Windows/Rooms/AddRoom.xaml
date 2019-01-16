@@ -6,9 +6,7 @@
 		xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Rooms"
         mc:Ignorable="d"
-        Title="Add room" Height="250" Width="400"
-		ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="Add room" Height="250" Width="400">
 	<Grid>
 		<TextBox Name="roomnumber" HorizontalAlignment="Left" Height="23" Margin="135,78,0,0" MaxLength="200" TextWrapping="Wrap" Text="Enter the code" VerticalAlignment="Top" Width="120" GotFocus="roomnumber_GotFocus"/>
 		<Button Name="addRoomButton" Content="Add" HorizontalAlignment="Left" Margin="156,130,0,0" VerticalAlignment="Top" Width="75" Click="addRoomButton_Click"/>

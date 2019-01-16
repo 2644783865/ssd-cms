@@ -8,9 +8,7 @@
         xmlns:local="clr-namespace:CMS.UI.Windows.Session"
                       xmlns:system="clr-namespace:System;assembly=mscorlib"
                       mc:Ignorable="d"
-        Title="My Sessions" Height="532" Width="566"
-                      ResizeMode="NoResize"
-                      WindowStartupLocation="CenterScreen">
+        Title="My Sessions" Height="532" Width="566">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="184*"/>

@@ -26,6 +26,7 @@ namespace CMS.UI.Windows.Session
         public AddEditSession(SessionDTO session, SpecialSessionDTO specialSession)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new SessionCore();
             authCore = new AuthenticationCore();
             eventCore = new EventCore();

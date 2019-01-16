@@ -7,8 +7,6 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="Administrator" Height="450" Width="900"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
                       Activated="MetroWindow_Activated">
 	<Controls:MetroWindow.RightWindowCommands>
 		<Controls:WindowCommands>

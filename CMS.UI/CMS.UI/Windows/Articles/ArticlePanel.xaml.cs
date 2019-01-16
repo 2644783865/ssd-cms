@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Linq;
 using System.Windows.Controls;
@@ -17,6 +18,7 @@ namespace CMS.UI.Windows.Articles
         public ArticlePanel()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new ArticleCore();
             LoadData();
         }

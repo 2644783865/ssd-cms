@@ -19,6 +19,7 @@ namespace CMS.UI.Windows.Reviews
         public AddReview(ArticleDTO article)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new ReviewCore();
             this.article = article;
             FillGradeBox();

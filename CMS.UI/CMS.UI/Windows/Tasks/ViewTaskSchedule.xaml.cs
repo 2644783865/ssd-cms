@@ -1,6 +1,7 @@
 ﻿using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System.IO;
@@ -20,6 +21,7 @@ namespace CMS.UI.Windows.Tasks
         public ViewTaskSchedule(bool isEmployee)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             taskCore = new TaskCore();
             LoadEmployees();
             if (isEmployee)

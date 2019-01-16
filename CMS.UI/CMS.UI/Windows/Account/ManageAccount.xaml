@@ -6,9 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
-        Title="Manage Account" Height="300" Width="400"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        Title="Manage Account" Height="300" Width="400">
     <Grid>
         <Button Name="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="38" Height="34" Click="Refresh_Click">
             <iconPacks:PackIconMaterial Kind="Refresh" VerticalAlignment="Center" HorizontalAlignment="Center" />

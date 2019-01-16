@@ -7,9 +7,7 @@
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:CMS.UI.Windows.Session"
         mc:Ignorable="d"
-        Title="Presentation Details" Height="492" Width="417"
-                      ResizeMode="NoResize"
-                      WindowStartupLocation="CenterScreen">
+        Title="Presentation Details" Height="492" Width="417">
     <Grid>
         <Button Name="SaveButton" Content="Save" HorizontalAlignment="Left" Margin="285,418,0,0" VerticalAlignment="Top" Width="75" Click="SaveButton_Click"/>
         <Button Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="205,418,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>

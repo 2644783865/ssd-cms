@@ -1,6 +1,7 @@
 ﻿using CMS.BE.Models.Authentication;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,7 @@ namespace CMS.UI.Windows.Home
         public LogIn()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             UserCredentials.Clear();
             LoginFailed.Visibility = Visibility.Hidden;
             LoginBox.Focus();

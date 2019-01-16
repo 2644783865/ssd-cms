@@ -163,6 +163,8 @@
     <Content Include="Configuration\AppSettings.prod.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\cms-ssd - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\cms-ssd - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ssd-cms - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ssd-cms - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js">
@@ -212,12 +214,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Configuration\AppSettings.local.config" />
-    <Content Include="Configuration\ConnectionStrings.local2.config" />
     <Content Include="App_Browsers\qt.browser" />
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\testcmstest - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\testcmstest - Web Deploy.pubxml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />

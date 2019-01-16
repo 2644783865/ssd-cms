@@ -21,6 +21,7 @@ namespace CMS.UI.Windows.Session
         public PresentationDetails(PresentationDTO presentation)
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             this.presentation = presentation;
             authCore = new AuthenticationCore();
             articleCore = new ArticleCore();

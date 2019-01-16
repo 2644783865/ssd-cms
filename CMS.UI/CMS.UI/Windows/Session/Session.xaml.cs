@@ -5,6 +5,7 @@ using System.Windows.Input;
 using CMS.BE.DTO;
 using CMS.Core.Core;
 using CMS.Core.Interfaces;
+using CMS.UI.Helpers;
 using MahApps.Metro.Controls;
 
 namespace CMS.UI.Windows.Session
@@ -18,6 +19,7 @@ namespace CMS.UI.Windows.Session
         public Session()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             core = new SessionCore();
             LoadData();
         }

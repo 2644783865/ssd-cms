@@ -28,7 +28,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetWelcomePackReceiverById(1);
             Assert.AreEqual(1, result.WelcomePackReceiverId);
-            result = bll.GetWelcomePackReceiverById(2);
+            result = bll.GetWelcomePackReceiverById(0);
             Assert.AreEqual(null, result);
         }
 
@@ -37,7 +37,7 @@ namespace CMS.API.Tests
         {
             var result = bll.GetGuestsByConferenceId(1);
             Assert.AreEqual(1, result.FirstOrDefault().ConferenceId);
-            result = bll.GetGuestsByConferenceId(2);
+            result = bll.GetGuestsByConferenceId(0);
             Assert.AreEqual(null, result.FirstOrDefault());
         }
     }

@@ -6,9 +6,7 @@
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CMS.UI.Windows.Event"
         mc:Ignorable="d"
-        Title="Event Details" Height="383.839" Width="417"
-                      ResizeMode="NoResize"
-                      WindowStartupLocation="CenterScreen">
+        Title="Event Details" Height="383.839" Width="417">
     <Grid>
         <Label Name="TitleLabel" HorizontalAlignment="Left" Height="23" Margin="131,59,0,0" Content="" VerticalAlignment="Top" Width="229"/>
         <TextBox Name="DescriptionBox" IsReadOnly="True" BorderThickness="0" HorizontalAlignment="Left" Height="75" Margin="131,107,0,0" MaxLength="500" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="229"/>

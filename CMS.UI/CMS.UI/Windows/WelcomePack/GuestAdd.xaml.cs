@@ -15,6 +15,7 @@ namespace CMS.UI.Windows.WelcomePack
         public GuestAdd()
         {
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
             this.Title = "Add Guest";
             AddButton.Content = "Add";
         }

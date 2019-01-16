@@ -21,7 +21,7 @@ namespace CMS.UI.Windows.Home
         public AuthorPanel()
         {
             InitializeComponent();
-            WindowHelper.WindowSettings(this, UserLabel, ConferenceLabel);
+            WindowHelper.FullScreenWindowSettings(this, UserLabel, ConferenceLabel);
             articleCore = new ArticleCore();
             InitializeData();
         }

@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using CMS.Core.Interfaces;
 using CMS.Core.Core;
 using CMS.BE.DTO;
+using CMS.UI.Helpers;
 
 namespace CMS.UI.Windows.Rooms
 {
@@ -20,8 +21,9 @@ namespace CMS.UI.Windows.Rooms
         {
             originalAtomic = edited_building;
           
-            core = new RoomCore();
             InitializeComponent();
+            WindowHelper.SmallWindowSettings(this);
+            core = new RoomCore();
             initializeData();
             buildingNameTextBox.Text = originalName;
             addressTextBox.Text = originalAddress;
