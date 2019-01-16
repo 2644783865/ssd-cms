@@ -23,7 +23,7 @@
         <Controls:ProgressRing Name="ProgressSpin" IsActive="False" Margin="0,0,110,45" Height="40" Width="35" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         <Label Name="TitleLabel" Content="" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="592" FontSize="30" FontWeight="SemiBold"/>
         <Label Name="DatesLabel" Content="" HorizontalAlignment="Left" Margin="21,107,0,0" VerticalAlignment="Top" Width="526" FontSize="20"/>
-        <TextBox Name="DescriptionBox" HorizontalAlignment="Left" Height="74" Margin="21,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1200" BorderThickness="0" FontSize="15"/>
+        <TextBox Name="DescriptionBox" IsReadOnly="True" HorizontalAlignment="Left" Height="74" Margin="21,152,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1200" BorderThickness="0" FontSize="15"/>
         <Label Name="PlaceLabel" Content="" HorizontalAlignment="Left" Margin="21,65,0,0" VerticalAlignment="Top" Width="571" FontSize="20"/>
         <ListBox Name="SessionList" HorizontalAlignment="Left" Height="371" Margin="45,0,0,45" VerticalAlignment="Bottom" Width="320" FontSize="20" BorderThickness="1" MouseDoubleClick="SessionList_MouseDoubleClick"/>
         <ListBox Name="SpecialSessionList" HorizontalAlignment="Left" Height="371" Margin="390,0,0,45" VerticalAlignment="Bottom" Width="320" FontSize="20" BorderThickness="1" MouseDoubleClick="SpecialSessionList_MouseDoubleClick"/>
