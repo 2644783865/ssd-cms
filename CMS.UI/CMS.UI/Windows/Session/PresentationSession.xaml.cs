@@ -49,7 +49,7 @@ namespace CMS.UI.Windows.Session
             UnassignedPresentations.ClearValue(ItemsControl.ItemsSourceProperty);
             UnassignedPresentations.DisplayMemberPath = "PresentationDesc";
             UnassignedPresentations.SelectedValuePath = "PresentationId";
-            UnassignedPresentations.ItemsSource = (await core.GetPresentationsByIdAsync(UserCredentials.Conference.ConferenceId)).Where(p => !p.SessionId.HasValue);
+            UnassignedPresentations.ItemsSource = (await core.GetPresentationsByIdAsync(UserCredentials.Conference.ConferenceId)).Where(p => !p.SessionId.HasValue && !p.SpecialSessionId.HasValue);
         }
 
         private async void LoadOther()
@@ -66,7 +66,7 @@ namespace CMS.UI.Windows.Session
             UnassignedPresentations.ClearValue(ItemsControl.ItemsSourceProperty);
             UnassignedPresentations.DisplayMemberPath = "PresentationDesc";
             UnassignedPresentations.SelectedValuePath = "PresentationId";
-            UnassignedPresentations.ItemsSource = (await core.GetPresentationsByIdAsync(UserCredentials.Conference.ConferenceId));
+            UnassignedPresentations.ItemsSource = (await core.GetPresentationsByIdAsync(UserCredentials.Conference.ConferenceId)).Where(p => !p.SpecialSessionId.HasValue);
         }
 
         private void Refresh()
